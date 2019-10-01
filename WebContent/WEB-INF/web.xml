@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>WillCinema</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 디비 연결정보 -->
+  <resource-ref>
+  	<description>willcinema</description>
+  	<res-ref-name>jdbc/willcinema</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <!-- 회원관리 서블릿 -->
+  <servlet>
+    <servlet-name>MemberFrontController</servlet-name>
+    <servlet-class>com.member.action.MemberFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberFrontController</servlet-name>
+    <url-pattern>*.me</url-pattern>
+  </servlet-mapping>
+  <!-- 회원관리 서블릿 -->
+  
+  <!-- 예매 서블릿 -->
+  <servlet>
+    <servlet-name>TicketingFrontController</servlet-name>
+    <servlet-class>com.ticketing.action.TicketingFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TicketingFrontController</servlet-name>
+    <url-pattern>*.ti</url-pattern>
+  </servlet-mapping>
+  <!-- 예매 서블릿 -->
+  
+  <!-- 영화 관리 서블릿 -->
+  <servlet>
+    <servlet-name>AdminMovieFrontController</servlet-name>
+    <servlet-class>com.admin.movie.action.AdminMovieFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminMovieFrontController</servlet-name>
+    <url-pattern>*.am</url-pattern>
+  </servlet-mapping>
+  <!-- 영화 관리 서블릿 -->
+  
+  <!-- 영화 서블릿 -->
+  <servlet>
+    <servlet-name>MovieFrontController</servlet-name>
+    <servlet-class>com.movie.action.MovieFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieFrontController</servlet-name>
+    <url-pattern>*.mo</url-pattern>
+  </servlet-mapping>
+  <!-- 영화 서블릿 -->
+  
+  <!-- 영화관 서블릿 -->
+  <servlet>
+    <servlet-name>CinemaFrontController</servlet-name>
+    <servlet-class>com.cinema.action.CinemaFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CinemaFrontController</servlet-name>
+    <url-pattern>*.ci</url-pattern>
+  </servlet-mapping>
+  <!-- 영화관 서블릿 -->
+  
+  <!-- 쇼핑 관리 서블릿 -->
+  <servlet>
+    <servlet-name>AdminMallFrontController</servlet-name>
+    <servlet-class>com.admin.mall.action.AdminMallFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminMallFrontController</servlet-name>
+    <url-pattern>*.al</url-pattern>
+  </servlet-mapping>
+  <!-- 쇼핑 관리 서블릿 -->
+  
+  <!-- 쇼핑 서블릿 -->
+  <servlet>
+    <servlet-name>MallFrontController</servlet-name>
+    <servlet-class>com.mall.action.MallFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MallFrontController</servlet-name>
+    <url-pattern>*.ml</url-pattern>
+  </servlet-mapping>
+  <!-- 쇼핑 서블릿 -->
+  
+  <!-- 고객센터 서블릿 -->
+  <servlet>
+    <servlet-name>ServiceQnAFrontController</servlet-name>
+    <servlet-class>com.service.QnA.action.ServiceQnAFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceQnAFrontController</servlet-name>
+    <url-pattern>*.sq</url-pattern>
+  </servlet-mapping>
+  <!-- 고객센터 서블릿 -->
+  
+  <!-- FAQ관리 서블릿 -->
+  <servlet>
+    <servlet-name>AdminServiceFAQFrontController</servlet-name>
+    <servlet-class>com.admin.service.FAQ.action.AdminFAQFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServiceFAQFrontController</servlet-name>
+    <url-pattern>*.af</url-pattern>
+  </servlet-mapping>
+  <!-- FAQ관리 서블릿 -->
+  
+  <!-- 공지사항 관리 서블릿 -->
+  <servlet>
+    <servlet-name>AdminNoticeFrontController</servlet-name>
+    <servlet-class>com.admin.service.notice.action.AdminNoticeFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminNoticeFrontController</servlet-name>
+    <url-pattern>*.an</url-pattern>
+  </servlet-mapping>
+  <!-- 공지사항 관리 서블릿 -->
+  
+  <!-- 이벤트 관리(갤러리형식) 서블릿 -->
+  <servlet>
+    <servlet-name>AdminEventFrontController</servlet-name>
+    <servlet-class>com.admin.service.event.action.AdminEventFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminEventFrontController</servlet-name>
+    <url-pattern>*.ae</url-pattern>
+  </servlet-mapping>
+  <!-- 이벤트 관리(갤러리형식) 서블릿 -->
+</web-app>
