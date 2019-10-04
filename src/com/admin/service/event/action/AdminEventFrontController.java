@@ -24,7 +24,7 @@ public class AdminEventFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/EventWrite.ae")){ //이벤트 글 쓰기 
 			forward = new ActionForward();
-			forward.setPath("./board/eventWrite.jsp");
+			forward.setPath("./service/eventBoard/eventWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/EventWriteAction.ae")){ //Event리스트 페이지
 			//action = new EventWriteAction();
