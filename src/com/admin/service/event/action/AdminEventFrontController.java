@@ -35,7 +35,7 @@ public class AdminEventFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventList.ae")){ //Event리스트 페이지
-			//action = new EventListAction();
+			//action = new EventListAction();ㅇㅇ
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
