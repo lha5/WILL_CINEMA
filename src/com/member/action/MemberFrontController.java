@@ -14,9 +14,9 @@ import com.action.ActionForward;
 //마이페이지
 public class MemberFrontController extends HttpServlet{
 
-	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String requestURI = req.getRequestURI();
-		String contextPath=req.getContextPath();
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String requestURI = request.getRequestURI();
+		String contextPath=request.getContextPath();
 		String command=requestURI.substring(contextPath.length());
 		
 		ActionForward forward =null;
@@ -26,9 +26,8 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MyPageAction(); 
 			
 			try {
-				forward=action.execute(req, resp);
+				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Main.me")){ //메인 페이지
@@ -45,7 +44,7 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MemberLoginAction();
 			
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -57,7 +56,7 @@ public class MemberFrontController extends HttpServlet{
 		}else if(command.equals("/MemberJoinAction.me")){ //회원가입 페이지
 			//action = new MemberJoinAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -65,7 +64,7 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MemberLogoutAction();
 			
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -73,7 +72,7 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MemberUpdate();
 			
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -81,7 +80,7 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MemberUpdateAction();
 			
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -94,14 +93,14 @@ public class MemberFrontController extends HttpServlet{
 			//action = new MemberDeleteAction();
 			
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
 		}else if(command.equals("/MemberList.me")){ //회원 관리 페이지(관리자 전용)
 			//action = new MemberListAction();
 			try {
-			   	forward = action.execute(req, resp);
+			   	forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -110,21 +109,21 @@ public class MemberFrontController extends HttpServlet{
 		//가상주소를 가지고 이동
 		if(forward !=null){
 			if(forward.isRedirect()){
-				resp.sendRedirect(forward.getPath());
+				response.sendRedirect(forward.getPath());
 			}else{
-				RequestDispatcher dis = req.getRequestDispatcher(forward.getPath());
-				dis.forward(req, resp);
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
 			}
 		}
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request,response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request,response);
 	}
 }
