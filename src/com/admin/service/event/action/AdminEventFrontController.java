@@ -30,6 +30,7 @@ public class AdminEventFrontController extends HttpServlet{
 			//action = new EventWriteAction();
 			try {
 				forward = action.execute(req, resp);
+				//수정
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
