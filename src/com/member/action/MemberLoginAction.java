@@ -15,10 +15,22 @@ public class MemberLoginAction implements Action {
 		
 		//id,pass
 		
-		//String id = 
+	//String id = 
+		
+		// 디비 만들고   생성 하고 
+		
+		// 아이디 비번 으로 체크하고 
+		
+		//이프문 써서 아이디 체크하기 
+		
+		// 세션값을 가지고 간다 .
 		
 		
-		return null;
+		ActionForward forward = new ActionForward();
+		forward.setPath("./MemberJoin.me"); // 로그인 안되어 있음 회원가입으로 감
+		forward.setRedirect(true);
+		 // 정보값 가져가지 않아서  true
+		return forward;
 	}
 
 }
