@@ -24,8 +24,8 @@ public class AdminMallDAOImpl implements AdminMallDAO{
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
 	}
-	//DB자원해제
 	
+	//DB자원해제
 	private void closeDB(){
 		try{
 			if(rs != null){
