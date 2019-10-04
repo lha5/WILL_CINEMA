@@ -5,8 +5,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 등록</title>
+
+<!-- 제품등록 내역 부족시 submit 차단  -->
 <script type="text/javascript">
-	
+	function goodsCheck() { 
+		if(document.goodsAddfr.category.value == ""){
+			alert("카테고리를 입력하세요.");
+			document.goodsAddfr.category.focus();
+			return false;
+		}
+		if(document.goodsAddfr.name.value == ""){
+			alert("제품명 입력하세요.");
+			document.goodsAddfr.name.focus();
+			return false;
+		}
+		if(document.goodsAddfr.content.value == ""){
+			alert("제품설명을 입력하세요.");
+			document.goodsAddfr.content.focus();
+			return false;
+		}
+		if(document.goodsAddfr.price.value == ""){
+			alert("제품가격을 입력하세요.");
+			document.goodsAddfr.price.focus();
+			return false;
+		}
+		if(document.goodsAddfr.image.value == ""){
+			alert("제품이미지를 입력하세요.");
+			document.goodsAddfr.image.focus();
+			return false;
+		}
+		
+	}
 
 
 
@@ -18,14 +47,16 @@
 
 <h1> 상품 등록 </h1>
 
-	<form action="./GoodsAddAction.al" method="post" enctype="multipart/form-data" >
+	<form action="./GoodsAddAction.al" method="post"
+		 name="goodsAddfr" enctype="multipart/form-data" 
+		 onsubmit="return goodsCheck()">
 	<table border="1">
 	<tr>
 	
 	<td>카테고리</td>
 	<td>
 	<select name="category">
-		<option value="">을 입력하십시오.</option>
+		<option value="">카테고리를 입력하십시오.</option>
 		<option value="ticket">관람권</option>
 		<option value="snack">스낵음료</option>
 	</select>
@@ -46,7 +77,7 @@
 	
 	</table>
 	<input type="submit" value="제품등록">
-	<input type="reset" value="취소">
+	<input type="reset" value="제품 재등록">
 	<input type="button" value="메인으로" onclick="location.href='../Main.me'">
 	</form>
 	
