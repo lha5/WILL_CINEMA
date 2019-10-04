@@ -14,9 +14,9 @@ import com.action.ActionForward;
 //매점(mall) 관리 페이지
 public class AdminMallFrontController extends HttpServlet{
 
-	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String requestURI = req.getRequestURI();
-		String contextPath=req.getContextPath();
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String requestURI = request.getRequestURI();
+		String contextPath=request.getContextPath();
 		String command=requestURI.substring(contextPath.length());
 		
 		ActionForward forward =null;
@@ -25,7 +25,7 @@ public class AdminMallFrontController extends HttpServlet{
 		if (command.equals("/GoodsList.al")) { // 상품(간식,상품권) 리스트 페이지(관리자)
 			//action = new GoodsListAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -36,14 +36,14 @@ public class AdminMallFrontController extends HttpServlet{
 		} else if (command.equals("/GoodsAddAction.al")) { // 상품(간식,상품권) 추가 페이지
 			//action = new GoodsAddAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/GoodsDelete.al")) { // 상품(간식,상품권) 삭제 페이지
 			//action = new GoodsDeleteAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -54,7 +54,7 @@ public class AdminMallFrontController extends HttpServlet{
 		}else if (command.equals("/GoodsModifyAction.al")) { // 상품(간식,상품권) 수정 페이지
 			//action = new GoodsModifyAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -64,21 +64,21 @@ public class AdminMallFrontController extends HttpServlet{
 		//가상주소를 가지고 이동
 		if(forward !=null){
 			if(forward.isRedirect()){
-				resp.sendRedirect(forward.getPath());
+				response.sendRedirect(forward.getPath());
 			}else{
-				RequestDispatcher dis = req.getRequestDispatcher(forward.getPath());
-				dis.forward(req, resp);
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
 			}
 		}
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request,response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request,response);
 	}
 }
