@@ -14,9 +14,9 @@ public class MemberDTO {
 	private String preference;
 	private int book_num;
 	private int buy_num;
-	
-	
-	
+
+  
+  
 	public String getId() {
 		return id;
 	}
