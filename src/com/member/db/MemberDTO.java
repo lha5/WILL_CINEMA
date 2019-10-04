@@ -1,7 +1,6 @@
 package com.member.db;
 
 public class MemberDTO {
-
 	private String id;
 	private String pass;
 	private String name;
@@ -15,7 +14,9 @@ public class MemberDTO {
 	private String preference;
 	private int book_num;
 	private int buy_num;
-	
+
+  
+  
 	public String getId() {
 		return id;
 	}
@@ -94,6 +95,4 @@ public class MemberDTO {
 	public void setBuy_num(int buy_num) {
 		this.buy_num = buy_num;
 	}
-	
-	
 }
