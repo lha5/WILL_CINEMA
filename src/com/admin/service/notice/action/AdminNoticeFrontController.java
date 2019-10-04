@@ -22,7 +22,7 @@ public class AdminNoticeFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if(command.equals("/NoticeWrite.an")){ //공지 쓰기 
+		if(command.equals("/NoticeWrite.an")){ //공지 쓰기
 			forward = new ActionForward();
 			forward.setPath("./board/noticeWrite.jsp");
 			forward.setRedirect(false);

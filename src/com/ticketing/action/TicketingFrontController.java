@@ -44,7 +44,6 @@ public class TicketingFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
