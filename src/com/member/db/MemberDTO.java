@@ -1,5 +1,7 @@
 package com.member.db;
 
+import java.sql.Timestamp;
+
 public class MemberDTO {
 	private String id;
 	private String pass;
@@ -14,9 +16,16 @@ public class MemberDTO {
 	private String preference;
 	private int book_num;
 	private int buy_num;
+	private Timestamp reg_date;
 	
 	
 	
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
+	}
 	public String getId() {
 		return id;
 	}
