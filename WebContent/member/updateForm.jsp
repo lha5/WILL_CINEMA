@@ -14,7 +14,7 @@
 String id=(String)session.getAttribute("id");
 /* 아이디 없으면 메인으로   */
 if(id == null){
-	response.sendRedirect("./Main.me");
+	response.sendRedirect("./MemberLogin.me");
 }
 
 // MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");

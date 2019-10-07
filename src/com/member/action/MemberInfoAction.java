@@ -23,7 +23,7 @@ public class MemberInfoAction implements Action {
 		// 아이디 없으면 메인으로
 		ActionForward forward = new ActionForward();
 		if(id == null){
-			forward.setPath("./Main.me");
+			forward.setPath("./MemberLogin.me");
 			 forward.setRedirect(true);
 			 return forward;
 		

@@ -24,16 +24,16 @@ public class MemberUpdate implements Action {
 		
 		ActionForward forward = new ActionForward();
 		if(id == null){
-			forward.setPath("./Main.me");
+			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
 		
 		
 		MemberDAO mdao = new MemberDAOImpl();
-	/*	MemberDTO mdto = mdao.getMember(id);*/
+		MemberDTO mdto = mdao.getMember(id);
 		
-		//request.setAttribute("", );
+		request.setAttribute("mdto", mdto );
 
 		
 		forward.setPath("./member/updateForm.jsp");
