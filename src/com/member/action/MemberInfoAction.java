@@ -8,6 +8,7 @@ import com.action.Action;
 import com.action.ActionForward;
 import com.member.db.MemberDAO;
 import com.member.db.MemberDAOImpl;
+import com.member.db.MemberDTO;
 
 public class MemberInfoAction implements Action {
 
@@ -26,15 +27,19 @@ public class MemberInfoAction implements Action {
 			forward.setPath("./MemberLogin.me");
 			 forward.setRedirect(true);
 			 return forward;
-		
-		
-		
 		}
 		
+		MemberDAO mdao = new MemberDAOImpl();
+		MemberDTO mdto = mdao.getMember(id);
+		
+		request.setAttribute("mdto", mdto);
+		
+		forward.setPath("./member/info.jsp");
+		forward.setRedirect(false); //mdto 가지고 가자
+		return forward;
 		
 		
-		
-		return null;
+	
 	}
 
 }

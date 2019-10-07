@@ -7,9 +7,9 @@ public interface MemberDAO {
 		
 	public MemberDTO getMember(String id);
 	
-	//public int updateMember(MemberDTO mdto);
+	public int updateMember(MemberDTO mdto);
 	
-	//public int deleteMember(String id,String pass);
+	public int deleteMember(String id,String pass);
 	
 	
 	
