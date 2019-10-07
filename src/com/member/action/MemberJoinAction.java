@@ -1,6 +1,7 @@
 package com.member.action;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +31,7 @@ public class MemberJoinAction implements Action {
 		mdto.setAddr(request.getParameter("addr"));
 		mdto.setReceive(request.getParameter("receive"));
 		mdto.setPreference(request.getParameter("preference"));
-		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		mdto.setReg_date(new Date(System.currentTimeMillis()));
 		
 		// DAO 객체를 생성하고 insertMember() 메소드로 처리
 		
