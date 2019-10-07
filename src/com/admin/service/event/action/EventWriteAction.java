@@ -26,8 +26,7 @@ public class EventWriteAction implements Action {
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
 		//aedao.eventInsert();
-		
-		
+
 		ActionForward forward=new ActionForward();
 		forward.setPath("/Main.me");
 		forward.setRedirect(true);
