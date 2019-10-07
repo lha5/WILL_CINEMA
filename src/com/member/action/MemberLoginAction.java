@@ -14,10 +14,12 @@ public class MemberLoginAction implements Action {
 		System.out.println("MemberLoginAction! 실행문 나옵니다.");
 		
 		//id,pass
-		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
 	//String id = 
 		
 		// 디비 만들고   생성 하고 
+	
 		
 		// 아이디 비번 으로 체크하고 
 		

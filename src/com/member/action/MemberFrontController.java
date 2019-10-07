@@ -62,7 +62,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberLogout.me")){ //로그아웃 처리 페이지
-		//	action = new MemberLogoutAction();
+			action = new MemberLogoutAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -70,7 +70,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberUpdate.me")){ //정보수정 페이지
-			//action = new MemberUpdate();
+			action = new MemberUpdate();
 			
 			try {
 				forward = action.execute(request, response);
@@ -105,7 +105,22 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("MemberInfo.me")){ // 회원정보조회
+			
+			action = new MemberInfoAction();
+			
+			try {
+			   	forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
+		
+		
+		
+		
+		
 		
 		//가상주소를 가지고 이동
 		if(forward !=null){
