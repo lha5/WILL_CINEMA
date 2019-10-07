@@ -30,8 +30,8 @@ public class AdminMallDAOImpl implements AdminMallDAO{
 		
 		return con;
 	}
-	//DB자원해제
 	
+	//DB자원해제
 	private void closeDB(){
 		try{
 			if(rs != null){

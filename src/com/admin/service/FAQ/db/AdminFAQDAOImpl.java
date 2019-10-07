@@ -15,7 +15,7 @@ public class AdminFAQDAOImpl implements AdminFAQDAO{
 	ResultSet rs =null;
 	String sql="";
 	
-	//DB연결
+	//DB 연결
 	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
@@ -30,8 +30,8 @@ public class AdminFAQDAOImpl implements AdminFAQDAO{
 		
 		return con;
 	}
-	//DB자원해제
 	
+	//DB 자원해제
 	private void closeDB(){
 		try{
 			if(rs != null){
