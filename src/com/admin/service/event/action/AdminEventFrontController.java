@@ -24,7 +24,7 @@ public class AdminEventFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/EventWrite.ae")){ //이벤트 글 쓰기 
 			forward = new ActionForward();
-			forward.setPath("./board/eventWrite.jsp");
+			forward.setPath("./service/eventBoard/eventWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/EventWriteAction.ae")){ //Event리스트 페이지
 			//action = new EventWriteAction();
@@ -34,7 +34,7 @@ public class AdminEventFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventList.ae")){ //Event리스트 페이지
-			//action = new EventListAction();
+			//action = new EventListAction();ㅇㅇ
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -98,4 +98,3 @@ public class AdminEventFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-}

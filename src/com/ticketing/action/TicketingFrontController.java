@@ -27,7 +27,6 @@ public class TicketingFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/SeatSelectAction.ti")){ //좌석 선택 페이지
@@ -36,7 +35,6 @@ public class TicketingFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/TicketOrderAction.ti")){ //티켓 결제 페이지
@@ -46,7 +44,6 @@ public class TicketingFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
@@ -55,7 +52,6 @@ public class TicketingFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

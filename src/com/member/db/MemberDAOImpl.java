@@ -24,6 +24,8 @@ public class MemberDAOImpl implements MemberDAO{
 		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
+    
+    System.out.println("DB 접속 완료 : " + con);
 		
 		return con;
 	}
@@ -44,6 +46,7 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 		}
 	}
+
 //getmember
 @Override
 public MemberDTO getMember(String id){
@@ -155,6 +158,20 @@ public int deleteMember(String id,String pass){
 	return delete;
 }
 //deleteMember(String id,String pass)
+
+	
+	
+	
+	@Override
+	public void insertMember(MemberDTO mdto) {
+		try {
+			con = getCon();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 }
 
 
