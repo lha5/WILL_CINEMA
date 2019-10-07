@@ -15,7 +15,7 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 	ResultSet rs =null;
 	String sql="";
 	
-	//DB연결
+	//DB 연결
 	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();

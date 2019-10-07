@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 등록</title>
-
 <!-- 제품등록 내역 부족시 submit 차단  -->
 <script type="text/javascript">
 	function goodsCheck() { 
@@ -36,9 +35,6 @@
 		}
 		
 	}
-
-
-
 </script>
 </head>
 <body>
@@ -78,10 +74,8 @@
 	</table>
 	<input type="submit" value="제품등록">
 	<input type="reset" value="제품 재등록">
-	<input type="button" value="메인으로" onclick="location.href='../Main.me'">
+	<input type="button" value="메인으로" onclick="location.href='./Main.me'">
 	</form>
 	
-
-
 </body>
 </html>

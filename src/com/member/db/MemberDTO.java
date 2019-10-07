@@ -1,6 +1,6 @@
 package com.member.db;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class MemberDTO {
 	private String id;
@@ -14,16 +14,28 @@ public class MemberDTO {
 	private int level;
 	private String receive;
 	private String preference;
-	private int book_num;
-	private int buy_num;
-	private Timestamp reg_date;
+	private Date reg_date;
+	private int zipcode;
+	private String detailaddr;
 	
 	
 	
-	public Timestamp getReg_date() {
+	public int getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
+	}
+	public Date getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Timestamp reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 	public String getId() {
