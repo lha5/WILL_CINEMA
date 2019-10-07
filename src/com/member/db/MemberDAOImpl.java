@@ -8,7 +8,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-//회원관련 DB
 public class MemberDAOImpl implements MemberDAO{
 	
 	Connection con = null;
@@ -24,6 +23,8 @@ public class MemberDAOImpl implements MemberDAO{
 		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
+    
+    System.out.println("DB 접속 완료 : " + con);
 		
 		return con;
 	}
@@ -44,6 +45,7 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 		}
 	}
+
 //getmember
 @Override
 public MemberDTO getMember(String id){
@@ -51,7 +53,7 @@ public MemberDTO getMember(String id){
 	//정보가지고 오기 
 	try {
 		con = getCon();
-		sql= "select into from will_cinema where id=?";
+		sql= "select into from member where id=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, id);
 	
@@ -61,20 +63,20 @@ public MemberDTO getMember(String id){
 			mdto = new MemberDTO();
 		
 			// 인트는 북 바이 (넘버), 포인트 레벨
-		mdto.setAddr(rs.getString("addr"));
-		mdto.setBirthday(rs.getString("birthday"));
-		mdto.setEmail(rs.getString("email"));
-		mdto.setId(rs.getString("id"));
-		mdto.setLevel(rs.getInt("level"));
-		mdto.setMobile(rs.getString("mobile"));
-		mdto.setName(rs.getString("name"));
-		mdto.setPass(rs.getString("pass"));
-		mdto.setPoint(rs.getInt("point"));
-		mdto.setPreference(rs.getString("preference"));
-		mdto.setReceive(rs.getString("receive"));
-		mdto.setAddrdetail(rs.getString("addrdetail"));
-		mdto.setZipcode(rs.getInt("zipcode"));
-		mdto.setReg_date(rs.getDate("reg_date"));
+			mdto.setAddr(rs.getString("addr"));
+			mdto.setBirthday(rs.getString("birthday"));
+			mdto.setEmail(rs.getString("email"));
+			mdto.setId(rs.getString("id"));
+			mdto.setLevel(rs.getInt("level"));
+			mdto.setMobile(rs.getString("mobile"));
+			mdto.setName(rs.getString("name"));
+			mdto.setPass(rs.getString("pass"));
+			mdto.setPoint(rs.getInt("point"));
+			mdto.setPreference(rs.getString("preference"));
+			mdto.setReceive(rs.getString("receive"));
+			mdto.setDetailaddr(rs.getString("detailAddr"));
+			mdto.setZipcode(rs.getInt("zipcode"));
+			mdto.setReg_date(rs.getDate("reg_date"));
 		}
 		
 		
@@ -95,41 +97,16 @@ public MemberDTO getMember(String id){
 
 @Override
 public int updateMember(MemberDTO mdto){
-	int update = -1;
+	int update = 1;
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cinema where id=?";
+		sql="select pass from will_cenema where id=?";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		if(rs.next()){
-		if(mdto.getPass().equals(rs.getString("pass"))){
-			sql="update will_cinema set name=?, birthday=?, mobile=?, email=?"
-					+ "addr=?,addrdetail=?,zipcode=?, receive=? preference=? where id=?";
-			pstmt= con.prepareStatement(sql);
-			// int = 우편번호 zipcode
-			pstmt.setString(1, mdto.getName());
-			pstmt.setString(2, mdto.getBirthday());
-			pstmt.setString(3, mdto.getMobile());
-			pstmt.setString(4, mdto.getEmail());
-			pstmt.setString(5, mdto.getAddr());
-			pstmt.setString(6, mdto.getAddrdetail());
-			pstmt.setInt(7, mdto.getZipcode());
-			pstmt.setString(8, mdto.getReceive());
-			pstmt.setString(9, mdto.getPreference());
-			pstmt.setString(10, mdto.getId());
 			
-			pstmt.executeUpdate();
-			
-			update= 1;
-		}else{
-			update =0;
 		}
-		}else{
-			update =-1;
-		}
-		
-		
 		
 		
 		
@@ -152,14 +129,14 @@ public int deleteMember(String id,String pass){
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cinema where id=?";
+		sql="select pass from will_cenema where id=?";
 		pstmt= con.prepareStatement(sql);
 		rs= pstmt.executeQuery();
 		
 		if(rs.next()){
 		if(pass.equals(rs.getString("pass"))){
 			
-			sql= "delete from will_cinema where id=? ";
+			sql= "delete from will_cenema where id=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -180,7 +157,19 @@ public int deleteMember(String id,String pass){
 	return delete;
 }
 //deleteMember(String id,String pass)
+
+	
+	
+	
+	@Override
+	public void insertMember(MemberDTO mdto) {
+		try {
+			con = getCon();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 }
-
-
 

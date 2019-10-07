@@ -28,7 +28,6 @@ public class MemberFrontController extends HttpServlet{
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/Main.me")){ //메인 페이지

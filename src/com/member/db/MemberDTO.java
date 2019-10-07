@@ -1,27 +1,43 @@
-
 package com.member.db;
 
-import java.sql.Date;
-
+import java.util.Date;
 
 public class MemberDTO {
-
 	private String id;
 	private String pass;
 	private String name;
 	private String birthday;
 	private String mobile;
 	private String email;
-	private int zipcode; 
 	private String addr;
-	private String addrdetail;
 	private int point;
 	private int level;
 	private String receive;
 	private String preference;
 	private Date reg_date;
+	private int zipcode;
+	private String detailaddr;
 	
 	
+	
+	public int getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
+	}
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
 	public String getId() {
 		return id;
 	}
@@ -88,24 +104,4 @@ public class MemberDTO {
 	public void setPreference(String preference) {
 		this.preference = preference;
 	}
-	public int getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getAddrdetail() {
-		return addrdetail;
-	}
-	public void setAddrdetail(String addrdetail) {
-		this.addrdetail = addrdetail;
-	}
-	public Date getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
-
-	
 }

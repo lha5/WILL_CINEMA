@@ -22,7 +22,7 @@ public class AdminFAQFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if(command.equals("/FAQWrite.af")){ //FAQ쓰기 
+		if(command.equals("/FAQWrite.af")){ //FAQ쓰기
 			forward = new ActionForward();
 			forward.setPath("./board/FAQWrite.jsp");
 			forward.setRedirect(false);

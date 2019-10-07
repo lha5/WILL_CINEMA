@@ -35,7 +35,7 @@ if(id == null){
 휴대폰 : <input type="text" name="mobile" value="<%=mdto.getMobile()%>">
 이메일 :  <input type="text" name="email" value="<%=mdto.getEmail()%>">
 주소 : <input type="text" name="addr" value="<%=mdto.getAddr()%>">
-상세주소 : <input type="text" name="addrdetail" value="<%=mdto.getAddrdetail()%>">
+상세주소 : <input type="text" name="addrdetail" value="<%=mdto.getDetailaddr()%>">
 우편번호: <input type="text" name="zipcode" value="<%=mdto.getZipcode()%>">
 수신 : <input type="text" name="receive" value="<%=mdto.getReceive()%>">
 선호장르:<input type="text" name="preference" value="<%=mdto.getPreference()%>">

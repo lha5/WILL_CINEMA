@@ -52,7 +52,7 @@ MemberDTO mdto=(MemberDTO)request.getAttribute("mdto");
 <td><%=mdto.getEmail() %></td>
 <td><%=mdto.getZipcode() %></td>
 <td><%=mdto.getAddr() %></td>
-<td><%=mdto.getAddrdetail() %></td>
+<td><%=mdto.getDetailaddr() %></td>
 <td><%=mdto.getPoint() %></td>
 </tr>
 
