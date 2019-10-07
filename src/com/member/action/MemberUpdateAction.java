@@ -79,9 +79,6 @@ public class MemberUpdateAction implements Action {
 			return null;
 		}
 
-		// 1 수정성공 메시지 출력
-		// 페이지 이동 메인페이지로 이동 (자바스크립트)
-		//check == 1
 		
 		PrintWriter out = response.getWriter();
 		
