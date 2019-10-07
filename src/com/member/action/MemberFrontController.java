@@ -41,7 +41,7 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./member/loginForm.jsp");
 			forward.setRedirect(false);	
 		}else if(command.equals("/MemberLoginAction.me")){ //로그인 페이지
-			//action = new MemberLoginAction();
+			action = new MemberLoginAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -61,7 +61,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberLogout.me")){ //로그아웃 처리 페이지
-			//action = new MemberLogoutAction();
+			action = new MemberLogoutAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -69,7 +69,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberUpdate.me")){ //정보수정 페이지
-			//action = new MemberUpdate();
+			action = new MemberUpdate();
 			
 			try {
 				forward = action.execute(request, response);
@@ -77,7 +77,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberUpdateAction.me")){ //정보수정 페이지
-			//action = new MemberUpdateAction();
+			action = new MemberUpdateAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -90,7 +90,7 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
 		}else if(command.equals("/MemberDeleteAction.me")){ //회원 탈퇴 페이지
-			//action = new MemberDeleteAction();
+			action = new MemberDeleteAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -104,7 +104,22 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("MemberInfo.me")){ // 회원정보조회
+			
+			action = new MemberInfoAction();
+			
+			try {
+			   	forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
+		
+		
+		
+		
+		
 		
 		//가상주소를 가지고 이동
 		if(forward !=null){
@@ -119,11 +134,11 @@ public class MemberFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 }

@@ -92,16 +92,4 @@ public class MemberDTO {
 	public void setPreference(String preference) {
 		this.preference = preference;
 	}
-	public int getBook_num() {
-		return book_num;
-	}
-	public void setBook_num(int book_num) {
-		this.book_num = book_num;
-	}
-	public int getBuy_num() {
-		return buy_num;
-	}
-	public void setBuy_num(int buy_num) {
-		this.buy_num = buy_num;
-	}
 }
