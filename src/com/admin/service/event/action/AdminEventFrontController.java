@@ -22,7 +22,7 @@ public class AdminEventFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if(command.equals("/EventWrite.ae")){ //이벤트 글 쓰기 
+		if(command.equals("/EventWrite.ae")){ //이벤트 글 쓰기
 			forward = new ActionForward();
 			forward.setPath("./board/eventWrite.jsp");
 			forward.setRedirect(false);

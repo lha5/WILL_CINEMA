@@ -16,16 +16,22 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 	String sql="";
 	
 	//DB연결
-	private void getCon() throws Exception{
+	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
+		
 		//DB연동 이름으로 DB 호출 -> DataSource저장
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
+		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
+		
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
+		
+		System.out.println("DB 접속 완료 : " + con);
+		
+		return con;
 	}
-	//DB자원해제
 	
+	//DB자원해제
 	private void closeDB(){
 		try{
 			if(rs != null){

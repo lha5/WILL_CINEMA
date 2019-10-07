@@ -19,10 +19,16 @@ public class AdminMallDAOImpl implements AdminMallDAO{
 	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
+		
 		//DB연동 이름으로 DB 호출 -> DataSource저장
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
+		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
+		
 		//연결정보를 가져와서 리턴
-		return con = ds.getConnection();
+		con=ds.getConnection();
+		
+		System.out.println("DB 접속 완료 : " + con);
+		
+		return con;
 	}
 	
 	//DB자원해제
