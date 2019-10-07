@@ -21,7 +21,7 @@ public class MemberDAOImpl implements MemberDAO{
 		//Context 객체 생성
 		Context init=new InitialContext();
 		//DB연동 이름으로 DB 호출 -> DataSource저장
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
+		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
 		
@@ -51,7 +51,7 @@ public MemberDTO getMember(String id){
 	//정보가지고 오기 
 	try {
 		con = getCon();
-		sql= "select into from will_cenema where id=?";
+		sql= "select into from will_cinema where id=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, id);
 	
@@ -95,16 +95,41 @@ public MemberDTO getMember(String id){
 
 @Override
 public int updateMember(MemberDTO mdto){
-	int update = 1;
+	int update = -1;
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cenema where id=?";
+		sql="select pass from will_cinema where id=?";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		if(rs.next()){
+		if(mdto.getPass().equals(rs.getString("pass"))){
+			sql="update will_cinema set name=?, birthday=?, mobile=?, email=?"
+					+ "addr=?,addrdetail=?,zipcode=?, receive=? preference=? where id=?";
+			pstmt= con.prepareStatement(sql);
+			// int = 우편번호 zipcode
+			pstmt.setString(1, mdto.getName());
+			pstmt.setString(2, mdto.getBirthday());
+			pstmt.setString(3, mdto.getMobile());
+			pstmt.setString(4, mdto.getEmail());
+			pstmt.setString(5, mdto.getAddr());
+			pstmt.setString(6, mdto.getAddrdetail());
+			pstmt.setInt(7, mdto.getZipcode());
+			pstmt.setString(8, mdto.getReceive());
+			pstmt.setString(9, mdto.getPreference());
+			pstmt.setString(10, mdto.getId());
 			
+			pstmt.executeUpdate();
+			
+			update= 1;
+		}else{
+			update =0;
 		}
+		}else{
+			update =-1;
+		}
+		
+		
 		
 		
 		
@@ -127,14 +152,14 @@ public int deleteMember(String id,String pass){
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cenema where id=?";
+		sql="select pass from will_cinema where id=?";
 		pstmt= con.prepareStatement(sql);
 		rs= pstmt.executeQuery();
 		
 		if(rs.next()){
 		if(pass.equals(rs.getString("pass"))){
 			
-			sql= "delete from will_cenema where id=? ";
+			sql= "delete from will_cinema where id=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

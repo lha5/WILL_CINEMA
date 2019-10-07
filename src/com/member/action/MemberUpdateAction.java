@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 import com.member.db.MemberDTO;
 
 public class MemberUpdateAction implements Action {
@@ -28,8 +30,15 @@ public class MemberUpdateAction implements Action {
 		// 수정해야하니깐 한글
 		
 		request.setCharacterEncoding("UTF-8");
-		
 		MemberDTO mdto = new MemberDTO();
+		
+		
+		///////////////////////////////////
+		mdto.setId(id);
+		mdto.setPass(request.getParameter("pass"));
+		
+		MemberDAO mdao = new MemberDAOImpl();
+		int update =  mdao.updateMember(mdto);
 		
 		// 무엇을 수정할것인가에대해서 이야기한후 작성 
 		
