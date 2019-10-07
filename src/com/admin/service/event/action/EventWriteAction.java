@@ -25,7 +25,7 @@ public class EventWriteAction implements Action {
 		AdminEventDTO aedto=new AdminEventDTO();
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
-		aedao.eventInsert();
+		//aedao.eventInsert();
 		
 		
 		ActionForward forward=new ActionForward();
