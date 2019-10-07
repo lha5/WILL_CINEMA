@@ -22,36 +22,37 @@ public class AdminMallFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if (command.equals("/GoodsList.al")) { // 상품(간식,상품권) 리스트 페이지(관리자)
+		if (command.equals("/GoodsList.al")) { // 상품(간식,상품권) 리스트 페이지(관리자) 구현 x
 			//action = new GoodsListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/GoodsAdd.al")) { // 상품(간식,상품권)추가 페이지
+		} else if (command.equals("/GoodsAdd.al")) { // 상품(간식,상품권)추가 페이지 구현O
 			forward = new ActionForward();
 			forward.setPath("./adminGoods/goodsAdd.jsp");
 			forward.setRedirect(false);
-		} else if (command.equals("/GoodsAddAction.al")) { // 상품(간식,상품권) 추가 페이지
+		} else if (command.equals("/GoodsAddAction.al")) { // 상품(간식,상품권) 추가 페이지 구현 x
 			//action = new GoodsAddAction();
+			action = new GoodsAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/GoodsDelete.al")) { // 상품(간식,상품권) 삭제 페이지
+		} else if (command.equals("/GoodsDelete.al")) { // 상품(간식,상품권) 삭제 페이지 구현 x
 			//action = new GoodsDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/GoodsModify.al")) { // 상품(간식,상품권) 수정 페이지
+		}else if (command.equals("/GoodsModify.al")) { // 상품(간식,상품권) 수정 페이지 구현 x
 			forward = new ActionForward();
 			forward.setPath("./adminGoods/goodsModify.jsp");
 			forward.setRedirect(false);
-		}else if (command.equals("/GoodsModifyAction.al")) { // 상품(간식,상품권) 수정 페이지
+		}else if (command.equals("/GoodsModifyAction.al")) { // 상품(간식,상품권) 수정 페이지 구현 x
 			//action = new GoodsModifyAction();
 			try {
 				forward = action.execute(request, response);
@@ -79,6 +80,6 @@ public class AdminMallFrontController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 }
