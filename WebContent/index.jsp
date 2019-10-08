@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	response.sendRedirect("./Main.me");
+	response.sendRedirect("./EventWrite.ae");
 %>
 </body>
 </html>

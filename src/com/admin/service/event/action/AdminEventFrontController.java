@@ -27,14 +27,14 @@ public class AdminEventFrontController extends HttpServlet{
 			forward.setPath("./service/eventBoard/eventWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/EventWriteAction.ae")){ //Event리스트 페이지
-			//action = new EventWriteAction();
+			action = new EventWriteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventList.ae")){ //Event리스트 페이지
-			//action = new EventListAction();ㅇㅇ
+			//action = new EventListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

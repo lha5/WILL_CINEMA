@@ -48,5 +48,35 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 		}
 	}
 	
-	
+	public void eventInsert(AdminEventDTO aedto){
+		int num=0;
+		try {
+			con=getCon();
+			
+			sql="select max(num) from event";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				num=rs.getInt(1)+1;
+			}else{
+				num=1;
+			}
+			
+			sql="insert into event(num,category,subject,image,f_date,e_date) "
+					+ "values(?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, aedto.getCategory());
+			pstmt.setString(3, aedto.getSubject());
+			pstmt.setString(4, aedto.getImage());
+			pstmt.setDate(5, aedto.getF_date());
+			pstmt.setDate(6, aedto.getE_date());
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
