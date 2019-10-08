@@ -3,9 +3,6 @@ package com.member.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.action.Action;
-import com.action.ActionForward;
-
 public class MemberLoginAction implements Action {
 
 	@Override
@@ -16,10 +13,10 @@ public class MemberLoginAction implements Action {
 		//id,pass
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
-	//String id = 
+
 		
 		// 디비 만들고   생성 하고 
-	
+		
 		
 		// 아이디 비번 으로 체크하고 
 		
