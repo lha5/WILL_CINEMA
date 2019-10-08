@@ -24,7 +24,7 @@ public class CinemaFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/CinemaDetail.ci")){ //영화관 메인 페이지(현재 상영작/상영 예정작 탭 이동)
 			//예매 - 상영시간표 - 영화관별 상영시간표와 같음
-			//action = new CinemaDetailAction(); 
+			//action = new CinemaDetailAction();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
@@ -77,11 +77,11 @@ public class CinemaFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 }

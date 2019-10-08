@@ -8,21 +8,25 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-//회원관련 DB
 public class MemberDAOImpl implements MemberDAO{
+	
 	Connection con = null;
 	PreparedStatement pstmt =null;
 	ResultSet rs =null;
 	String sql="";
 	
 	//DB연결
-	private void getCon() throws Exception{
+	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
 		//DB연동 이름으로 DB 호출 -> DataSource저장
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
+		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
+    
+    System.out.println("DB 접속 완료 : " + con);
+		
+		return con;
 	}
 	//DB자원해제
 	
@@ -41,4 +45,150 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 		}
 	}
+
+//getmember
+@Override
+public MemberDTO getMember(String id){
+	MemberDTO mdto = null;
+	//정보가지고 오기 
+	try {
+		con = getCon();
+		sql= "select into from member where id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+	
+		rs= pstmt.executeQuery();
+		
+		if(rs.next()){
+			mdto = new MemberDTO();
+		
+			// 인트는 북 바이 (넘버), 포인트 레벨
+			mdto.setAddr(rs.getString("addr"));
+			mdto.setBirthday(rs.getString("birthday"));
+			mdto.setEmail(rs.getString("email"));
+			mdto.setId(rs.getString("id"));
+			mdto.setLevel(rs.getInt("level"));
+			mdto.setMobile(rs.getString("mobile"));
+			mdto.setName(rs.getString("name"));
+			mdto.setPass(rs.getString("pass"));
+			mdto.setPoint(rs.getInt("point"));
+			mdto.setPreference(rs.getString("preference"));
+			mdto.setReceive(rs.getString("receive"));
+			mdto.setDetailaddr(rs.getString("detailAddr"));
+			mdto.setZipcode(rs.getInt("zipcode"));
+			mdto.setReg_date(rs.getTimestamp("reg_date"));
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally{
+		closeDB();
+	}
+	
+	return mdto;
 }
+	
+//getmember
+
+//updateMember(MemberDTO mdto)
+
+@Override
+public int updateMember(MemberDTO mdto){
+	int update = 1;
+	
+	try {
+		con = getCon();
+		sql="select pass from member where id=?";
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		if(rs.next()){
+			
+		}
+		
+		
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		closeDB();
+	}
+	
+	return update;
+}
+
+//updateMember(MemberDTO mdto)
+
+//deleteMember(String id,String pass)
+
+@Override
+public int deleteMember(String id,String pass){
+	int delete = 1;
+	
+	try {
+		con = getCon();
+		sql="select pass from member where id=?";
+		pstmt= con.prepareStatement(sql);
+		rs= pstmt.executeQuery();
+		
+		if(rs.next()){
+		if(pass.equals(rs.getString("pass"))){
+			
+			sql= "delete from member where id=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+			delete = 1;
+		}else{
+			delete=0;
+		}
+		}else{
+			delete =-1;
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		closeDB();
+	}
+	
+	return delete;
+}
+//deleteMember(String id,String pass)
+
+	
+	
+	
+	@Override
+	public void insertMember(MemberDTO mdto) {
+		try {
+			con = getCon();
+			
+			sql = "INSERT INTO member(id, pass, name, birthday, mobile, email, zipcode, addr, detailaddr, receive, preference, reg_date)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mdto.getId());
+			pstmt.setString(2, mdto.getPass());
+			pstmt.setString(3, mdto.getName());
+			pstmt.setString(4, mdto.getBirthday());
+			pstmt.setString(5, mdto.getMobile());
+			pstmt.setString(6, mdto.getEmail());
+			pstmt.setInt(7, mdto.getZipcode());
+			pstmt.setString(8, mdto.getAddr());
+			pstmt.setString(9, mdto.getDetailaddr());
+			pstmt.setString(10, mdto.getReceive());
+			pstmt.setString(11, mdto.getPreference());
+			pstmt.setTimestamp(12, mdto.getReg_date());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("회원 가입 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+}
+

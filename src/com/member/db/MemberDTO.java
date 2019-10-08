@@ -1,5 +1,7 @@
 package com.member.db;
 
+import java.sql.Timestamp;
+
 public class MemberDTO {
 	private String id;
 	private String pass;
@@ -12,11 +14,30 @@ public class MemberDTO {
 	private int level;
 	private String receive;
 	private String preference;
-	private int book_num;
-	private int buy_num;
-
-  
-  
+	private Timestamp reg_date;
+	private int zipcode;
+	private String detailaddr;
+	
+	
+	
+	public int getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getDetailaddr() {
+		return detailaddr;
+	}
+	public void setDetailaddr(String detailaddr) {
+		this.detailaddr = detailaddr;
+	}
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
+	}
 	public String getId() {
 		return id;
 	}
@@ -82,17 +103,5 @@ public class MemberDTO {
 	}
 	public void setPreference(String preference) {
 		this.preference = preference;
-	}
-	public int getBook_num() {
-		return book_num;
-	}
-	public void setBook_num(int book_num) {
-		this.book_num = book_num;
-	}
-	public int getBuy_num() {
-		return buy_num;
-	}
-	public void setBuy_num(int buy_num) {
-		this.buy_num = buy_num;
 	}
 }

@@ -215,5 +215,4 @@ public class AdminMallDAOImpl implements AdminMallDAO{
 	
 	
 	
-	
 }//AdminMallDAOImpl
