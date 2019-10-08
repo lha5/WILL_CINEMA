@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 import com.member.db.MemberDTO;
 
 public class MemberJoinAction implements Action {
@@ -27,18 +28,25 @@ public class MemberJoinAction implements Action {
 		mdto.setBirthday(request.getParameter("birthday"));
 		mdto.setMobile(request.getParameter("mobile"));
 		mdto.setEmail(request.getParameter("email"));
-		mdto.setAddr(request.getParameter("addr"));
+		mdto.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
+		mdto.setAddr(request.getParameter("addr") + " " + request.getParameter("refaddr"));
+		mdto.setDetailaddr(request.getParameter("detailaddr"));
 		mdto.setReceive(request.getParameter("receive"));
 		mdto.setPreference(request.getParameter("preference"));
 		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		// DAO 객체를 생성하고 insertMember() 메소드로 처리
+		MemberDAO mdao = new MemberDAOImpl();
 		
+		mdao.insertMember(mdto);
 		
 		// 페이지 이동("./MemberLogin.me") - ActionForward
+		ActionForward forward = new ActionForward();
 		
+		forward.setPath("./MemberLogin.me");
+		forward.setRedirect(true);
 		
-		return null;
+		return forward;
 	}
 
 }
