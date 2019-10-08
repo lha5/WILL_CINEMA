@@ -8,7 +8,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
 public class MemberDAOImpl implements MemberDAO{
 	
 	Connection con = null;
@@ -192,3 +191,4 @@ public int deleteMember(String id,String pass){
 		}
 	}
 }
+

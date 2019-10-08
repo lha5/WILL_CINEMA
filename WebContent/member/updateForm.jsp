@@ -30,7 +30,15 @@ if(id == null){
 <form action="/MemberUpdateAction.me" method="post">
 아이디 : <input type="text" name="id" value="<%=id%>" readonly>
 비밀번호: <input type="password" name="pass" value ="<%=mdto.getPass() %>">
-
+이름 : <input type="text" name ="name" value="<%=mdto.getName()%>">
+생일 : <input type="text" name="birthday" value="<%=mdto.getBirthday()%>">
+휴대폰 : <input type="text" name="mobile" value="<%=mdto.getMobile()%>">
+이메일 :  <input type="text" name="email" value="<%=mdto.getEmail()%>">
+주소 : <input type="text" name="addr" value="<%=mdto.getAddr()%>">
+상세주소 : <input type="text" name="addrdetail" value="<%=mdto.getDetailaddr()%>">
+우편번호: <input type="text" name="zipcode" value="<%=mdto.getZipcode()%>">
+수신 : <input type="text" name="receive" value="<%=mdto.getReceive()%>">
+선호장르:<input type="text" name="preference" value="<%=mdto.getPreference()%>">
 
 <input type="submit" value="회원정보 수정">
 </form>
