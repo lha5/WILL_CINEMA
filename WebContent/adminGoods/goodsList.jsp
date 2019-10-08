@@ -45,7 +45,7 @@
 	    <td><%=amdto.getPrice() %> 원</td>
 	    <td> <a href="./GoodsModify.al?num=<%=amdto.getGoods_num()%>">수정</a>
 	      / 
-	      <a href="#">삭제</a></td>
+	      <a href="./GoodsDelete.al?num=<%=amdto.getGoods_num()%>">삭제</a></td>
 	  </tr>
 	  <%} %>
 	  

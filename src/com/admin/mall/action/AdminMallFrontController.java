@@ -42,14 +42,15 @@ public class AdminMallFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/GoodsDelete.al")) { // 상품(간식,상품권) 삭제 페이지 구현 x
+		} else if (command.equals("/GoodsDelete.al")) { // 상품(간식,상품권) 삭제 페이지 구현 o
 			//action = new GoodsDeleteAction();
+			action = new GoodsDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/GoodsModify.al")) { // 상품(간식,상품권) 수정 페이지 구현 x
+		}else if (command.equals("/GoodsModify.al")) { // 상품(간식,상품권) 수정 페이지 구현 o
 			//action = new GoodsModify();
 			action = new GoodsModify();
 			try {
@@ -58,8 +59,9 @@ public class AdminMallFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if (command.equals("/GoodsModifyAction.al")) { // 상품(간식,상품권) 수정 페이지 구현 x
+		}else if (command.equals("/GoodsModifyAction.al")) { // 상품(간식,상품권) 수정 페이지 구현 o
 			//action = new GoodsModifyAction();
+			action = new GoodsModifyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

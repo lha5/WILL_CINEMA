@@ -161,6 +161,57 @@ public class AdminMallDAOImpl implements AdminMallDAO{
 		return amdto;
 	}
 	//getGoods(num)
+
+	
+	//제품 수정
+	@Override
+	public void modifyGoodsMall(AdminMallDTO amdto) {
+		try {
+			con = getCon();
+			
+			sql = "update goods "
+					+ "set category=?, name=?, content=?, price=?, image=? "
+					+ "where goods_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, amdto.getCategory());
+			pstmt.setString(2, amdto.getName());
+			pstmt.setString(3, amdto.getContent());
+			pstmt.setInt(4, amdto.getPrice());
+			pstmt.setString(5, amdto.getImage());
+			pstmt.setInt(6, amdto.getGoods_num());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("(관리자)제품 수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+	}
+	//modifyGoodsMall(amdto)
+
+	
+	//제품 삭제
+	@Override
+	public void deleteGoodsMall(int num) {
+		try {
+			con = getCon();
+			sql = "delete from goods where goods_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+	}
+	//deleteGoodsMall(num)
 	
 	
 	
