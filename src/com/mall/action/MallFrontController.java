@@ -1,3 +1,4 @@
+
 package com.mall.action;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class MallFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/GoodsList.ml")){ //상품(간식,상품권) 리스트 페이지
 			//action = new GoodsListAction();
-			
+			action = new GoodsListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -54,11 +55,14 @@ public class MallFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		doProcess(request,response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		doProcess(request,response);
 	}
+
+
+
 }
