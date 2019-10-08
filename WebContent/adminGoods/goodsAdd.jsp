@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 등록</title>
-
 <!-- 제품등록 내역 부족시 submit 차단  -->
 <script type="text/javascript">
 	function goodsCheck() { 
@@ -36,9 +35,6 @@
 		}
 		
 	}
-
-
-
 </script>
 </head>
 <body>
@@ -81,7 +77,5 @@
 	<input type="button" value="리스트" onclick="location.href='./GoodsList.al'">
 	</form>
 	
-
-
 </body>
 </html>

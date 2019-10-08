@@ -1,3 +1,4 @@
+
 package com.mall.action;
 
 import java.io.IOException;
@@ -61,4 +62,7 @@ public class MallFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request,response);
 	}
+
+
+
 }
