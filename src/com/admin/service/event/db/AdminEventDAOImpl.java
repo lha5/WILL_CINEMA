@@ -15,17 +15,23 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 	ResultSet rs =null;
 	String sql="";
 	
-	//DB연결
-	private void getCon() throws Exception{
+	//DB 연결
+	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
+		
 		//DB연동 이름으로 DB 호출 -> DataSource저장
-		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/willcinema");
+		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
+		
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
+		
+		System.out.println("DB 접속 완료 : " + con);
+		
+		return con;
 	}
-	//DB자원해제
 	
+	//DB자원해제
 	private void closeDB(){
 		try{
 			if(rs != null){
@@ -38,6 +44,38 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 				con.close();
 			}
 		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void eventInsert(AdminEventDTO aedto){
+		int num=0;
+		try {
+			con=getCon();
+			
+			sql="select max(num) from event";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				num=rs.getInt(1)+1;
+			}else{
+				num=1;
+			}
+			
+			sql="insert into event(num,category,subject,image,f_date,e_date) "
+					+ "values(?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, aedto.getCategory());
+			pstmt.setString(3, aedto.getSubject());
+			pstmt.setString(4, aedto.getImage());
+			pstmt.setDate(5, aedto.getF_date());
+			pstmt.setDate(6, aedto.getE_date());
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

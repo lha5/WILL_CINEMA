@@ -23,7 +23,8 @@ public class QnADAOImpl implements QnADAO{
 		Context init=new InitialContext();
 		//DB연동 이름으로 DB 호출 -> DataSource저장
 		DataSource ds= (DataSource)init.lookup("java:comp/env/jdbc/will_cinema");
-		//연결정보를 가져와서 리턴.l 
+
+		//연결정보를 가져와서 리턴.
 		con=ds.getConnection();
 		
 		System.out.println("con : 완료");
