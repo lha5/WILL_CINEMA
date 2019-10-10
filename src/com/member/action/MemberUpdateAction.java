@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.action.Action;
-import com.action.ActionForward;
 import com.member.db.MemberDAO;
 import com.member.db.MemberDAOImpl;
 import com.member.db.MemberDTO;
@@ -21,6 +19,7 @@ public class MemberUpdateAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		String pass = (String) session.getAttribute("pass");
 		
 		ActionForward forward = new ActionForward();
 		if (id == null) {
@@ -70,7 +69,7 @@ public class MemberUpdateAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script>");
-			out.println("  alert('비밀번호 오류!');  ");
+			out.println("  alert('비밀번호가 다릅니다.');  ");
 			out.println("  history.back(); ");
 			out.println("</script>");	
 			
@@ -84,7 +83,7 @@ public class MemberUpdateAction implements Action {
 		
 		out.println("<script>");
 		out.println("  alert('정보수정 완료!');  ");
-		out.println("  location.href='./MemberLogin.me'; ");
+		out.println("  location.href='./Main.me'; ");
 		out.println("</script>");	
 		
 		out.close();	
