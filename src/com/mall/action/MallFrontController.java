@@ -23,7 +23,7 @@ public class MallFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if(command.equals("/GoodsList.ml")){ //상품(간식,상품권) 리스트 페이지
+		if(command.equals("/GoodsList.ml")){ //상품(간식,상품권) 리스트 페이지 구현o
 			//action = new GoodsListAction();
 			action = new GoodsListAction();
 			try {
@@ -31,10 +31,10 @@ public class MallFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/GoodsDetail.ml")){ //상품(간식,상품권) 페이지
+		}else if(command.equals("/GoodsDetail.ml")){ //상품(간식,상품권) 페이지 (상세페이지 구현)
 			//결제 페이지 -> TicketingOrderAction()
 			//action = new GoodsDetailAction();
-			
+			action = new GoodsDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

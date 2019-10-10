@@ -49,7 +49,7 @@
 	<tr>
 	<td>제품이미지</td> 
 	<td><input type="file" name="image">
-	<img src="/goodsImageUpload/<%=amdto.getImage()%>"></td>
+	<img src="./goodsImageUpload/<%=amdto.getImage()%>"></td>
 	</tr>
 	
 	</table>
