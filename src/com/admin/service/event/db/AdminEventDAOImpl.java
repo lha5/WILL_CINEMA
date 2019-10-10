@@ -128,6 +128,7 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
+				aedto.setCategory(rs.getString("category"));
 				aedto.setSubject(rs.getString("subject"));
 				aedto.setF_date(rs.getDate("f_date"));
 				aedto.setE_date(rs.getDate("e_date"));

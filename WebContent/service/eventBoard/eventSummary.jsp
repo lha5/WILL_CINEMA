@@ -21,7 +21,7 @@
 	<ul>
 		<%for(int i=0; i<eventMovieList.size(); i++){ //영화 카테고리 리스트
 			AdminEventDTO aedto=(AdminEventDTO)eventMovieList.get(i);
-			if(i>3){break;}
+			if(i>3){break;}//4줄까지만 보여주기
 		%>
 		<li>
 			<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
@@ -36,7 +36,7 @@
 		<h2>시사회/무대인사</h2> <a href="./EventContent.ae?item=preview">더보기</a>
 	</div>
 	<ul>
-		<%for(int i=0; i<eventPreviewList.size(); i++){ //영화 카테고리 리스트
+		<%for(int i=0; i<eventPreviewList.size(); i++){ //시사회 카테고리 리스트
 			AdminEventDTO aedto=(AdminEventDTO)eventPreviewList.get(i);
 			if(i>3){break;}
 		%>
@@ -53,7 +53,7 @@
 		<h2>윌시 NOW</h2> <a href="./EventContent.ae?item=nevent">더보기</a>
 	</div>
 	<ul>
-		<%for(int i=0; i<eventNeventList.size(); i++){ //영화 카테고리 리스트
+		<%for(int i=0; i<eventNeventList.size(); i++){ //윌시NOW 카테고리 리스트
 			AdminEventDTO aedto=(AdminEventDTO)eventNeventList.get(i);
 			if(i>3){break;}
 		%>
@@ -70,7 +70,7 @@
 		<h2>제휴 할인</h2> <a href="./EventContent.ae?item=collabo">더보기</a>
 	</div>
 	<ul>
-		<%for(int i=0; i<eventCollaboList.size(); i++){ //영화 카테고리 리스트
+		<%for(int i=0; i<eventCollaboList.size(); i++){ //제휴할인 카테고리 리스트
 			AdminEventDTO aedto=(AdminEventDTO)eventCollaboList.get(i);
 			if(i>3){break;}
 		%>

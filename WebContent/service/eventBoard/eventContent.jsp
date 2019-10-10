@@ -36,7 +36,7 @@
 			AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
 		%>
 		<li>
-			<a href="#" >
+			<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 				<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 			</a>
 			<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
@@ -44,5 +44,6 @@
 		<%} %>
 	</ul>
 	<br>
+	<a href="./EventSummary.ae">이벤트 목록</a>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <body>
 <%
 	AdminEventDTO aedto = (AdminEventDTO)request.getAttribute("aedto");
-	System.out.println("이벤트 길이 : "+aedto.getImage().split(",")[1]);
+	System.out.println("이미지:" + aedto.getImage().split(",")[2]);
 %>
 <table border="1">
 	<tr>
@@ -23,10 +23,12 @@
 </table>
 <%for(int i=1; i<aedto.getImage().split(",").length; i++){ 
 	String image=aedto.getImage().split(",")[i];
-	if(image.equals(null)){
+	if(!image.equals("null")){
 %>
 <img src="./upload/<%=aedto.getImage().split(",")[i]%>">
 	<%}
 }%>
+<br>
+<a href="./EventContent.ae?item=<%=aedto.getCategory()%>">목록으로</a>
 </body>
 </html>

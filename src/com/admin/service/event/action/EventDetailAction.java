@@ -28,7 +28,7 @@ public class EventDetailAction implements Action {
 		request.setAttribute("aedto", aedto);
 
 		ActionForward forward=new ActionForward();
-		forward.setPath("./service/eventBoard/EventDetail.jsp");
+		forward.setPath("./service/eventBoard/eventDetail.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
