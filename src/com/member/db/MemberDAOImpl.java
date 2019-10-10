@@ -54,7 +54,8 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			con = getCon();
 
-			sql = "INSERT INTO member(id, pass, name, birthday, mobile, email, zipcode, addr, detailaddr, receive, preference, reg_date)"
+			sql = "INSERT INTO member(id, pass, name, birthday, mobile, email,"
+					+ " zipcode, addr, detailaddr, receive, preference, reg_date)"
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			pstmt = con.prepareStatement(sql);
@@ -181,13 +182,36 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()){
-
+			if (rs.next()) {
+				if (mdto.getPass().equals(rs.getString("pass"))) {
+					sql = "UPDATE member SET name=?, birthday=?, mobile=?, email=?,"
+							+ " zipcode=?, addr=?, detailaddr=?, receive=?, preference=? WHERE id=?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setString(1, mdto.getName());
+					pstmt.setString(2, mdto.getBirthday());
+					pstmt.setString(3, mdto.getMobile());
+					pstmt.setString(4, mdto.getEmail());
+					pstmt.setInt(5, mdto.getZipcode());
+					pstmt.setString(6, mdto.getAddr());
+					pstmt.setString(7, mdto.getDetailaddr());
+					pstmt.setString(8, mdto.getReceive());
+					pstmt.setString(9, mdto.getPreference());
+					pstmt.setString(10, mdto.getId());
+					
+					pstmt.executeUpdate();
+					
+					update = 1;
+				} else {
+					update = 0;
+				}
+			} else {
+				update = -1;
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeDB();
 		}
 		System.out.println("회원 정보 수정 완료, check(update) 값 : " + update);

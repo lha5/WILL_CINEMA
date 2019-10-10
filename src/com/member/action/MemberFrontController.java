@@ -70,7 +70,7 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/MemberUpdateAction.me")){ //정보수정 페이지
+		}else if(command.equals("/MemberUpdateAction.me")){ //정보수정 처리
 			action = new MemberUpdateAction();
 			try {
 				forward = action.execute(request, response);
@@ -91,7 +91,7 @@ public class MemberFrontController extends HttpServlet{
 			}			
 		}else if(command.equals("/MemberList.me")){ //회원 관리 페이지(관리자 전용)
 			// action = new MemberListAction();
-		}else if(command.equals("MemberInfo.me")){ // 회원정보조회
+		}else if(command.equals("/MemberInfo.me")){ // 회원정보조회
 			action = new MemberInfoAction();
 			try {
 				forward = action.execute(request, response);

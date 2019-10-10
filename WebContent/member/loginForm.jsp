@@ -17,8 +17,8 @@
 			비밀번호 <input type="password" name="pass"><br>
 			<input type="submit" value="로그인">
 			<br><br>
-			<input type="button" value="회원가입" onclick="location.href='./MemberJoin.me'">
 		</form>
+		<input type="button" value="회원가입" onclick="location.href='./MemberJoin.me'">
 	</fieldset>
 </body>
 </html>
