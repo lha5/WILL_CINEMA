@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 회원 가입</title>
 
+<!-- jQuery -->
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <!-- 다음 우편번호 찾기 API -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -76,7 +81,7 @@
 
 
 	// 가입 오류 방지
-	/* function checkValue() {
+	function checkValue() {
 		var form = document.upForm;
 		
 		if (!form.id.value) {
@@ -89,10 +94,6 @@
 			document.form.id.focus();
 			return false;
 		}
-		if (form.idDup.value != "idCheck") {
-			alert("아이디 중복 체크를 해주세요.");
-			return false;
-		}
 		if (!form.pass.value) {
 			alert("비밀번호를 입력하세요.");
 			document.upForm.pass.focus();
@@ -103,8 +104,8 @@
 			document.upForm.pass2.focus();
 			return false;
 		}
-		if (!form.nickname.value) {
-			alert("닉네임을 입력하세요.");
+		if (!form.birthday.value) {
+			alert("생년월일을 입력하세요.");
 			document.upForm.nickname.focus();
 			return false;
 		}
@@ -113,32 +114,47 @@
 			document.upForm.email.focus();
 			return false;
 		}
-	} */
+		if (!form.mobile.value) {
+			alert("전화번호를 입력하세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+		if (!form.addr.value) {
+			alert("주소를 입력하세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+		if (!form.receive.value) {
+			alert("이벤트 안내 메일 수신 여부를 체크해주세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 	<fieldset>
 		<legend>회원 가입</legend>
-		<form action="./MemberJoinAction.me" method="post">
+		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return checkValue();">
 			<table border="1">
 				<tr>
-					<td>*아이디</td>
+					<td>아이디</td>
 					<td><input type="text" name="id"></td>
 				</tr>
 				<tr>
-					<td>*비밀번호</td>
+					<td>비밀번호</td>
 					<td><input type="password" name="pass"></td>
 				</tr>
 				<tr>
-					<td>*비밀번호 재입력</td>
+					<td>비밀번호 재입력</td>
 					<td><input type="password" name="pass2"></td>
 				</tr>
 				<tr>
-					<td>*성명</td>
+					<td>성명</td>
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>*생년월일</td>
+					<td>생년월일</td>
 					<td>
 						<div class="input-group date" data-date-format="yyyy.mm.dd">
 							<input type="text" class="form-control" placeholder="예) 2019.01.01" name="birthday">
@@ -149,11 +165,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td>*전화번호</td>
+					<td>전화번호</td>
 					<td><input type="text" name="mobile"></td>
 				</tr>
 				<tr>
-					<td>*이메일</td>
+					<td>이메일</td>
 					<td><input type="text" name="email"></td>
 				</tr>
 				<tr>
@@ -170,7 +186,7 @@
 				</tr>
 				<tr>
 					<td>
-						*이벤트 안내 수신 체크
+						이벤트 안내 수신 체크
 						<br>
 						(예매 내역에 관련된 안내는 수신 여부에 상관없이 발송됩니다.)
 					</td>

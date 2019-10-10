@@ -1,5 +1,6 @@
 package com.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,13 +41,17 @@ public class MemberJoinAction implements Action {
 		
 		mdao.insertMember(mdto);
 		
-		// 페이지 이동("./MemberLogin.me") - ActionForward
-		ActionForward forward = new ActionForward();
+		// 페이지 이동("./MemberLogin.me")
+		PrintWriter out = response.getWriter();
 		
-		forward.setPath("./MemberLogin.me");
-		forward.setRedirect(true);
+		out.println("<script>");
+		out.println("alert('가입을 환영합니다.');");
+		out.println("location.href='./MemberLogin.me';");
+		out.println("</script>");	
 		
-		return forward;
+		out.close();	
+
+		return null;
 	}
 
 }
