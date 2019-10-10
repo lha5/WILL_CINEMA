@@ -83,7 +83,7 @@ public class MemberUpdateAction implements Action {
 		
 		out.println("<script>");
 		out.println("  alert('정보수정 완료!');  ");
-		out.println("  location.href='./MemberLogin.me'; ");
+		out.println("  location.href='./Main.me'; ");
 		out.println("</script>");	
 		
 		out.close();	
