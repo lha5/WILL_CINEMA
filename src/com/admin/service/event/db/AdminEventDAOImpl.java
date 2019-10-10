@@ -3,6 +3,8 @@ package com.admin.service.event.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -26,7 +28,7 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
 		
-		System.out.println("DB 접속 완료 : " + con);
+		//System.out.println("DB 접속 완료 : " + con);
 		
 		return con;
 	}
@@ -48,6 +50,7 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 		}
 	}
 	
+	/*-------------------- 이벤트 작성(관리자) --------------------*/
 	public void eventInsert(AdminEventDTO aedto){
 		int num=0;
 		try {
@@ -79,4 +82,64 @@ public class AdminEventDAOImpl implements AdminEventDAO{
 			e.printStackTrace();
 		}
 	}
+	/*-------------------- 이벤트 작성(관리자) --------------------*/
+	
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	public List<AdminEventDTO> getGoodsList(String item){
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
+		try {
+			con=getCon();
+			String sql = "select * from event where category=? order by f_date desc";
+			
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, item);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return arr;
+	}
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	
+	/*-------------------- 이벤트 내용 가져오기(사용자) --------------------*/
+	public AdminEventDTO getEvent(int eventId){
+		AdminEventDTO aedto = new AdminEventDTO();
+		try {
+			con=getCon();
+			sql="select * from event where num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, eventId);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				aedto.setImage(rs.getString("image"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+
+		return aedto;
+	}
+	/*-------------------- 이벤트 내용 가져오기(사용자) --------------------*/
 }

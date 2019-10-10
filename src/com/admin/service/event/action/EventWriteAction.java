@@ -53,8 +53,8 @@ public class EventWriteAction implements Action {
 		aedao.eventInsert(aedto);
 
 		ActionForward forward=new ActionForward();
-		forward.setPath("./Main.me");
-		forward.setRedirect(true);
+		forward.setPath("./EventSummary.ae");
+		forward.setRedirect(false);
 		return forward;
 	}
 

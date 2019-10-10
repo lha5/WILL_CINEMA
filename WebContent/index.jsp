@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	response.sendRedirect("./EventWrite.ae");
+	response.sendRedirect("./EventSummary.ae");
 %>
 </body>
 </html>
