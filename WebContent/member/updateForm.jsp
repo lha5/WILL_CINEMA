@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>UpdateMember</title>
+<title>WILL CINEMA - 회원 정보</title>
 </head>
 <body>
 

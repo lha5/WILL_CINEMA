@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>deleteform.jsp</title>
+<title>WILL CINEMA - 회원 계정 삭제</title>
 </head>
 <body>
 <h1>회원탈퇴하는곳</h1>
@@ -22,8 +22,10 @@ if(id ==null){
 <fieldset>
      <legend> 회원 탈퇴 </legend>
      <form action="./MemberDeleteAction.me" method="post">
-       	아이디 : <input type="text" name="id" value="<%=id %>" readonly><br>
-               비밀번호 : <input type="password" name="pass" ><br>               
+       	아이디 : <input type="text" name="id" value="<%=id %>" readonly>
+       	<br>
+		비밀번호 : <input type="password" name="pass">
+		<br>               
         <input type="submit" value="회원 탈퇴">
      </form>  
   </fieldset>

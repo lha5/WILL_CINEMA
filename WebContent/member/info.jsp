@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 회원 목록</title>
 </head>
 <body>
 <h1>멤버 정보 보기 CSS 해야 합니다 </h1>
