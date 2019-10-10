@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL_CINEMA</title>
+<title>WILL CINEMA</title>
 </head>
 <body>
 <%
-	response.sendRedirect("./EventWrite.ae");
+	response.sendRedirect("./Main.me");
+	// response.sendRedirect("./EventWrite.ae");
 %>
 </body>
 </html>

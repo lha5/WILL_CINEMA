@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 마이 페이지</title>
 </head>
 <body>
 <h1>메인페이지</h1>
@@ -28,10 +28,8 @@ onclick="location.href='./MemberLogout.me'">
 <!-- css 수정할때 조정하기  -->
 <hr>
 <a href="./MemberInfo.me">회원 정보 조회</a> 
-<hr>
-<a href="./MemberUpdate.me">회원 정보 수정</a>
-<hr>
-<a href="./MemberDelete.me">회원 정보 삭제</a>
+<br>
+<a href="./MemberDelete.me">회원 계정 삭제</a>
 <hr>
 
 <!-- 관리자전용 -->
