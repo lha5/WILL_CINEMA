@@ -11,13 +11,13 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 //QnA게시판 DB
-public class QnADAOImpl implements QnADAO{
+public class QnADAOImpl implements QnADAO {
 	Connection con = null;
 	PreparedStatement pstmt =null;
 	ResultSet rs =null;
 	String sql="";
 	
-	//DB연결
+	// DB 연결
 	private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
@@ -27,12 +27,12 @@ public class QnADAOImpl implements QnADAO{
 		//연결정보를 가져와서 리턴.
 		con=ds.getConnection();
 		
-		System.out.println("con : 완료");
+		System.out.println("DB 연결 완료 : " + con);
 		
 		return con;
 	}
-	//DB자원해제
 	
+	// DB 자원 해제
 	private void closeDB(){
 		try{
 			if(rs != null){
@@ -49,6 +49,10 @@ public class QnADAOImpl implements QnADAO{
 		}
 	}
 	
+	
+	
+	// 게시판 글쓰기
+	@Override
 	public void insertBoard(QnADTO qadto) {
 		int num = 0;
 		try {
@@ -92,6 +96,10 @@ public class QnADAOImpl implements QnADAO{
 		}
 	}
 	
+	
+	
+	// 게시판 총 글 갯수 세기
+	@Override
 	public int getBoardCount(){
 		int count = 0;
 		
@@ -117,6 +125,10 @@ public class QnADAOImpl implements QnADAO{
 		return count;
 	}
 	
+	
+	
+	// 게시판 글 목록 가져오기
+	@Override
 	public List<QnADTO> getBoardList(int startRow,int pageSize) {
 		List<QnADTO> boardList = new ArrayList<QnADTO>();
 		
@@ -159,7 +171,11 @@ public class QnADAOImpl implements QnADAO{
 		return boardList;
 	}
 	
-	public void updateReadCount(int num){
+	
+	
+	// 게시판에 있는 글의 조회수 증가
+	@Override
+	public void updateReadCount(int num) {
 		try {
 			con = getCon();
 			
@@ -171,7 +187,7 @@ public class QnADAOImpl implements QnADAO{
 			
 			int value = pstmt.executeUpdate();
 			
-			System.out.println("조회수 1증가 글 개수 value : "+value);
+			System.out.println("조회수 1증가 글 개수 value : " + value);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -181,7 +197,11 @@ public class QnADAOImpl implements QnADAO{
 	
 	}
 	
-	public QnADTO getBoard(int num){
+	
+	
+	// 번호에 맞는 글 내용 가져오기
+	@Override
+	public QnADTO getBoard(int num) {
 		QnADTO qadto = null;
 		
 		try {
@@ -221,7 +241,11 @@ public class QnADAOImpl implements QnADAO{
 		return qadto;
 	}
 	
-	public int updateBoard(QnADTO qadto){
+	
+	
+	// 게시글 수정
+	@Override
+	public int updateBoard(QnADTO qadto) {
 		int check = -1;
 		
 		try {
@@ -271,7 +295,11 @@ public class QnADAOImpl implements QnADAO{
 		
 	}
 	
-public int deleteBoard(int num,String pass){
+	
+	
+	// 게시글 삭제
+	@Override
+	public int deleteBoard(int num,String pass) {
 		
 		int check = -1;
 		

@@ -12,20 +12,17 @@
 
 <%
 
-String id = (String)session.getAttribute("id");  
+String id = (String) session.getAttribute("id");  
 
-if(id == null){
+if (id == null) {
 	response.sendRedirect("./MemberLogin.me");
-	
 }
-MemberDTO mdto=(MemberDTO)request.getAttribute("mdto");
 
-//비밀번호가 노출이 안되게 *로 치환
-int lengthOfPw = mdto.getPass().length();
-String pw = new String(new char[lengthOfPw]).replace("\0", "*");
+MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
+
 %>
 
-<table border="1">
+<%-- <table border="1">
 	<tr>
 		<td>아이디</td>
 		<td><%=mdto.getId() %></td>
@@ -60,9 +57,36 @@ String pw = new String(new char[lengthOfPw]).replace("\0", "*");
 		<td>가입 날짜</td>
 		<td><%=mdto.getReg_date() %></td>
 	</tr>
-</table>
+</table> --%>
 
-<h2><a href="./Main.me">메인으로 이동</a></h2>
+<br>
+	<br>
+	<a href="./MemberInfo.me">회원 정보 조회</a>
+	<br>
+	<br>
+	<a href="./MemberUpdate.me">회원 정보 수정</a>
+	<!-- 정보 조회와 수정 합치기 의논 -->
+	<br>
+	<br>
+	<a href="./MemberDelete.me">회원 계정 삭제</a>
+	<br>
+	<br>
+	<a href="./QnAList.sq">1:1 문의하기</a>
+	<br>
+	<br>
+	<hr>
+
+	<!-- 관리자전용 -->
+
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+			%>
+			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
+			<%	
+		}
+	}
+	%>
 
 
 
