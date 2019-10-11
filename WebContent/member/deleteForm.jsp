@@ -4,7 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>deleteform.jsp</title>
+<title>WILL CINEMA - 회원 계정 삭제</title>
+<script type="text/javascript">
+	function check() {
+		var checking = confirm('정말 계정을 삭제하시겠습니까? 탈퇴한 회원의 정보는 복원되지 않습니다.');
+	}
+</script>
 </head>
 <body>
 <h1>회원탈퇴하는곳</h1>
@@ -21,9 +26,11 @@ if(id ==null){
 %>
 <fieldset>
      <legend> 회원 탈퇴 </legend>
-     <form action="./MemberDeleteAction.me" method="post">
-       	아이디 : <input type="text" name="id" value="<%=id %>" readonly><br>
-               비밀번호 : <input type="password" name="pass" ><br>               
+     <form action="./MemberDeleteAction.me" method="post" onsubmit="check();">
+       	아이디 : <input type="text" name="id" value="<%=id %>" readonly>
+       	<br>
+		비밀번호 : <input type="password" name="pass">
+		<br>               
         <input type="submit" value="회원 탈퇴">
      </form>  
   </fieldset>

@@ -1,12 +1,13 @@
 package com.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 import com.member.db.MemberDTO;
 
 public class MemberJoinAction implements Action {
@@ -28,17 +29,28 @@ public class MemberJoinAction implements Action {
 		mdto.setBirthday(request.getParameter("birthday"));
 		mdto.setMobile(request.getParameter("mobile"));
 		mdto.setEmail(request.getParameter("email"));
-		mdto.setAddr(request.getParameter("addr"));
+		mdto.setZipcode(Integer.parseInt(request.getParameter("zipcode")));
+		mdto.setAddr(request.getParameter("addr") + " " + request.getParameter("refaddr"));
+		mdto.setDetailaddr(request.getParameter("detailaddr"));
 		mdto.setReceive(request.getParameter("receive"));
 		mdto.setPreference(request.getParameter("preference"));
-		mdto.setReg_date(new Date(System.currentTimeMillis()));
+		mdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		// DAO 객체를 생성하고 insertMember() 메소드로 처리
+		MemberDAO mdao = new MemberDAOImpl();
 		
+		mdao.insertMember(mdto);
 		
-		// 페이지 이동("./MemberLogin.me") - ActionForward
+		// 페이지 이동("./MemberLogin.me")
+		PrintWriter out = response.getWriter();
 		
+		out.println("<script>");
+		out.println("alert('가입을 환영합니다.');");
+		out.println("location.href='./MemberLogin.me';");
+		out.println("</script>");	
 		
+		out.close();	
+
 		return null;
 	}
 

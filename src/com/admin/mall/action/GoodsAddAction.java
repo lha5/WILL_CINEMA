@@ -16,10 +16,12 @@ public class GoodsAddAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println();
+		System.out.println("GoodsAddAction_exeucte");
 		
 		// upload 생성
 		// * upload 폴더 생성후  서버 Clean 할경우 해당 파일 삭제 될수 있다.
+		
+		// 관리자 확인 코드 필요
 		
 		// 파일 위치(가상경로) 
 		ServletContext context = request.getServletContext();
