@@ -32,8 +32,8 @@ public class MemberUpdateAction implements Action {
 		
 		request.setCharacterEncoding("UTF-8");
 		MemberDTO mdto = new MemberDTO();
-		// int - 우편번호만 
 		
+		// int - 우편번호만 
 		mdto.setAddr(request.getParameter("addr"));
 		mdto.setBirthday(request.getParameter("birthday"));
 		mdto.setDetailaddr(request.getParameter("detailaddr"));

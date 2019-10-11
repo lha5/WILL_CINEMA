@@ -6,54 +6,75 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/mypage.css">
+
 <title>WILL CINEMA - 마이 페이지</title>
 </head>
 <body>
-<h1>마이 페이지</h1>
-<%
-
-String id=(String)session.getAttribute("id");
-if(id==null){
-	response.sendRedirect("./MemberLogin.me");
-}
-
-%>
-<!--css 만들때 로그인 로그아웃 버튼 만들기  
-표현식 - =id 님이 로그안하셨습니다.
-  -->
-
-<input type="button" value="로그아웃" 
-onclick="location.href='./MemberLogout.me'">
-
-<!-- css 수정할때 조정하기  -->
-<hr>
-<br>
-<a href="./MemberInfo.me">회원 정보 조회</a> 
-<br><br>
-<a href="./MemberUpdate.me">회원 정보 수정</a><!-- 정보 조회와 수정 합치기 의논 -->
-<br><br>
-<a href="./MemberDelete.me">회원 계정 삭제</a>
-<br><br>
-<hr>
-<br>
-<a href="./QnAList.sq">1:1 문의하기</a>
-<br><br>
-<hr>
-
-<!-- 관리자전용 -->
 
 <%
-if(id != null){
-	if(id.equals("admin")){
-	
-		%>
-		<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
-		<%	
+
+	String id = (String) session.getAttribute("id");
+
+	if (id == null) {
+		response.sendRedirect("./MemberLogin.me");
 	}
-}
 
 %>
+	<div id="wrap">
+	
+	<jsp:include page="../include/header.jsp"/>
+	
+	<section id="sec01">
+		<h2 class="mc">마이시네마</h2>
+		<table>
+			<tr>
+				<td colspan="2">
+					<%=id%>님, 환영합니다!
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h3>W.POINT</h3>
+					<div id="look_point">조회하기</div><!-- ajax로 구현 -->
+					<div id="availability">가능하면[사용가능]/불가하면[사용불가]</div>
+					<div id="left_point">조회하기누르면뜨게</div>
+					<ul>
+						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
+						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
+					</ul>
+				</td>
+				<td>
+					<div id="ranking">
+						<h2><%=id%>님의 현재 등급은<br>OOO입니다.</h2>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</section>
+	
+	
+	
+	<!-- 각 메뉴를 클릭하면 페이지가 달라지게 Ajax로 구현하기 -->
+	<section id="sec02">
+		<div id="my_menu">
+			<ul>
+				<li><a href="#">예매내역</a></li>
+				<li><a href="#">구매내역</a></li>
+				<li><a href="#">멤버십</a></li>
+				<li><a href="#">내가 본 영화</a></li>
+				<li><a href="#">내 정보 관리</a></li>
+			</ul>
+		</div>
+	</section>
 
-
+	<div id="contents">
+		(내용 들어오는 곳)
+	</div>
+	
+	<jsp:include page="../include/footer.jsp"/>
+	</div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 /* -------- 글씨체 -------- */
 /* -------- 글씨체 -------- */
 
@@ -108,53 +109,13 @@ nav>ul>li {
 
 
 
-/* ----------- section ----------- */
-
-#center {
-	text-align: center;
-	position: relative;
+/* ----------- 게시판 ----------- */
+table {
+	border-collapse: collapse;
+	border: 1px solid #000000;
+	margin: 20px auto;
 }
-
-#list {
-	border: 1px solid navy;
-	float: left;
-	width: 18%;
-	height: 400px;
-	margin-bottom: 20px;
-}
-
-#image {
-	border: 1px solid tomato;
-	float: right;
-	width: 850px;
-	height: 400px;
-	margin-bottom: 20px;
-}
-
-#event {
-	border: 1px solid blue;
-	clear: both;
-	margin: 100px auto 10px auto;
-	padding: 10px auto;
-	text-align: center;
-}
-
-#service {
-	border: 1px solid gray;
-	clear: both;
-	margin: 20px auto 10px auto;
-	padding: 10px auto;
-	text-align: center;
-}
-
-#notice {
-	border: 1px solid red;
-	clear: both;
-	margin: 20px auto 10px auto;
-	padding: 10px auto;
-	text-align: center;
-}
-/* ----------- section ----------- */
+/* ----------- 게시판 ----------- */
 
 
 

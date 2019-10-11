@@ -12,20 +12,50 @@
 	<fieldset>
 		<legend>글쓰기</legend>
 		<form action="./QnAWriteAction.sq" method="post">
-			글쓴이 : <input type="text" name="name"><br>
-			비밀번호 : <input type="password" name="pass"><br>
-			제목 : <input type="text" name="subject"><br>
-			카테고리 : <select name="category">
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-					</select><br>
-			첨부이미지 : <input type="file" name="image"><br>
-			내용 : <textarea name="content" row="10" cols="20"></textarea><br>
-			<input type="submit" value="글쓰기">
+		
+			<table>
+				<tr>
+					<td>작성자</td>
+					<td>
+						<input type="text" name="name" value="">
+						<input type="hidden" value=""><!-- 비밀번호 저장 -->
+					</td>
+					<td>카테고리</td>
+					<td>
+						<select name="category">
+						<option value="영화예매">영화 예매</option>
+						<option value="매점구매">매점 구매</option>
+						<option value="이용안내">사이트 이용 안내</option>
+						<option value="이벤트">이벤트</option>
+						<option value="멤버십">멤버십/포인트</option>
+						<option value="쿠폰">쿠폰</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td colspan="3">
+						<input type="text" name="subject">
+					</td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td colspan="3">
+						<textarea name="content" row="10" cols="50">summernote넣기</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>첨부파일</td>
+					<td colspan="3">
+						<input type="file" name="image">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<input type="submit" value="글쓰기">
+					</td>
+				</tr>
+			</table>
 		</form>
 	</fieldset>
 	
