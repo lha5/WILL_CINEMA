@@ -25,7 +25,7 @@ body {
 
 
 
-/* -------- header -------- */
+/* ----------- header ----------- */
 header {
 	/* border: 1px dashed black; */
 	height: 300px;
@@ -103,12 +103,12 @@ nav>ul>li {
 	margin: 20px 20px 20px 40px;
 	padding: 3px;
 }
-/* -------- header -------- */
+/* ----------- header ----------- */
 
 
 
 
-/* -------- section -------- */
+/* ----------- section ----------- */
 #list {
 	border: 1px solid navy;
 	float: left;
@@ -148,11 +148,11 @@ nav>ul>li {
 	padding: 10px auto;
 	text-align: center;
 }
-/* -------- section -------- */
+/* ----------- section ----------- */
 
 
 
-/* -------- footer -------- */
+/* ----------- footer ----------- */
 #sub_logo {
 	border: 1px solid purple;
 	float: left;
@@ -202,4 +202,4 @@ nav>ul>li {
 	padding: auto;
 	text-align: left;
 }
-/* -------- footer -------- */
+/* ----------- footer ----------- */
