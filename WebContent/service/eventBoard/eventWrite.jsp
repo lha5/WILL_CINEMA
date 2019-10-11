@@ -100,6 +100,7 @@ $( function() {
 		</table>
 		<input type="submit" value="글 쓰기"> <input type="reset" value="취소">
 	</form>
+	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
 </body>
 </html>

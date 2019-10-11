@@ -13,8 +13,11 @@
 </head>
 <body>
 <%
+
+	response.sendRedirect("./EventSummary.ae");
 	// response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
+
 %>
 <div id="wrap">
 	
