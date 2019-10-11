@@ -101,7 +101,7 @@ public int updateMember(MemberDTO mdto){
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cenema where id=?";
+		sql="select pass from member where id=?";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		if(rs.next()){
@@ -129,14 +129,14 @@ public int deleteMember(String id,String pass){
 	
 	try {
 		con = getCon();
-		sql="select pass from will_cenema where id=?";
+		sql="select pass from member where id=?";
 		pstmt= con.prepareStatement(sql);
 		rs= pstmt.executeQuery();
 		
 		if(rs.next()){
 		if(pass.equals(rs.getString("pass"))){
 			
-			sql= "delete from will_cenema where id=? ";
+			sql= "delete from member where id=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -159,6 +159,11 @@ public int deleteMember(String id,String pass){
 //deleteMember(String id,String pass)
 
 	
+
+
+
+
+
 	
 	
 	@Override
@@ -171,5 +176,38 @@ public int deleteMember(String id,String pass){
 			closeDB();
 		}
 	}
-}
 
+	//id 체크 (id,pass)
+	@Override
+	public int idcheck(String id, String pass) {
+int idcheck = -1;
+		
+		try {
+			con = getCon();
+			
+			sql="select pass from member where id=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs= pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pass.equals(rs.getString("pass"))){
+					idcheck= 1;
+				}else{
+					idcheck=0;
+				}
+				
+			}else{
+				idcheck= -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return idcheck;
+	}
+	
+}
+//id 체크 (id,pass)

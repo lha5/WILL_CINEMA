@@ -10,6 +10,7 @@ public interface MemberDAO {
 	
 	public int deleteMember(String id,String pass);
 	
+	public int idcheck(String id, String pass);
 	
 	public void insertMember(MemberDTO mdto);	
 }
