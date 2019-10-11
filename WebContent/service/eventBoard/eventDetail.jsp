@@ -10,7 +10,6 @@
 <body>
 <%
 	AdminEventDTO aedto = (AdminEventDTO)request.getAttribute("aedto");
-	System.out.println("이미지:" + aedto.getImage().split(",")[2]);
 %>
 <table border="1">
 	<tr>

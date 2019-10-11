@@ -23,10 +23,10 @@ public class EventSummaryAction implements Action {
 		AdminEventDAO aedao = new AdminEventDAOImpl();
 		
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
-		List eventMovieList = aedao.getGoodsList("movie");
-		List eventPreviewList = aedao.getGoodsList("preview");		
-		List eventNeventList = aedao.getGoodsList("nevent");
-		List eventCollaboList = aedao.getGoodsList("collabo");
+		List eventMovieList = aedao.getEventList("movie");
+		List eventPreviewList = aedao.getEventList("preview");		
+		List eventNeventList = aedao.getEventList("nevent");
+		List eventCollaboList = aedao.getEventList("collabo");
 		
 		// 정보 저장 
 		request.setAttribute("eventMovieList", eventMovieList);

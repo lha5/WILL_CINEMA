@@ -26,7 +26,7 @@ public class EventContentAction implements Action {
 		AdminEventDAO aedao = new AdminEventDAOImpl();
 
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
-		List eventList = aedao.getGoodsList(item);
+		List eventList = aedao.getEventList(item);
 
 		// 정보 저장
 		request.setAttribute("eventList", eventList);
