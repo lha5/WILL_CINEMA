@@ -9,31 +9,29 @@ import com.action.Action;
 import com.action.ActionForward;
 import com.mall.db.MallDAO;
 import com.mall.db.MallDAOImpl;
+import com.mall.db.MallDTO;
 
-public class GoodsListAction implements Action{
+public class GoodsDetailAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("GoodsListAction_execute()-----------");
+		System.out.println("GoodsDetailAction_execute()--------");
 		
-		
-		String item = request.getParameter("item");
-		if(item==null || item==""){
-			item="all";
-		}
+		//num 저장
+		int num = Integer.parseInt(request.getParameter("num"));
 		
 		//DAO
 		MallDAO mdao = new MallDAOImpl();
 		
-		//상품 가져오기 매서드 getGoodsList();
-		List goodsList = mdao.getGoodsList(item);
+		//상품번호의 정보가져오는 매서드 getGoods(num);
+		MallDTO mdto = mdao.getGoods(num);
 		
-		//리스트 저장
-		request.setAttribute("goodsList", goodsList);
+		//가져온 정보 저장
+		request.setAttribute("mdto", mdto);
 		
 		//전송
 		ActionForward forward = new ActionForward();
-		forward.setPath("./costomGoods/costomGoodsList.jsp");
+		forward.setPath("./costomGoods/costomGoodsDetail.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

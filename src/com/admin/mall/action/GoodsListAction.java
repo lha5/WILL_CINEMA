@@ -29,8 +29,6 @@ public class GoodsListAction implements Action{
 		//가져온 list 정보 저장
 		request.setAttribute("goodsList", goodsList);
 		
-		
-		
 		//페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./adminGoods/goodsList.jsp");

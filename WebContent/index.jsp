@@ -13,8 +13,11 @@
 </head>
 <body>
 <%
+
+	response.sendRedirect("./EventSummary.ae");
 	// response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
+
 %>
 <div id="wrap">
 	
@@ -36,7 +39,7 @@
 			</ul>
 		</div>
 		<div id="logo">
-			로고 이미지
+			(logo image)
 		</div>
 		
 		<hr>
