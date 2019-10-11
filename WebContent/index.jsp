@@ -36,7 +36,7 @@
 			</ul>
 		</div>
 		<div id="logo">
-			(logo image)
+			로고 이미지
 		</div>
 		
 		<hr>
