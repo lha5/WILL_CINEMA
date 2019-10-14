@@ -42,7 +42,7 @@
 		
 	</tr>
 	
-	<%-- 	<% 
+		<% 
 		 for(int i=0;i<boardList.size();i++){
 			 AdminNoticeDTO andto = boardList.get(i);
 		 
@@ -51,8 +51,15 @@
 		%>
 	  	
 	  	<tr>
-			<td><%=andto.getNum() %></td>
-		<%} %> --%>
+			<td><%=andto.getNum()%></td>
+			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>"><%=andto.getSubject()%></a></td>
+			<td><%=andto.getName()%></td>
+			<td><%=andto.getDate()%></td>
+			
+			
+		<%} %> 
+		
+	
 	
 	</table>
  <%

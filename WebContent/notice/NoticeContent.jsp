@@ -34,7 +34,8 @@
 	<td>글쓴이</td><td><%=andto.getName() %></td>
 </tr>
 	<tr>
-	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
+	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td></tr>
+	<tr>
 	<td>작성일</td><td><%=andto.getDate() %></td>
 </tr>
 	<tr>

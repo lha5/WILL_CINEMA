@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>WebContent/notice/NoticeDelete.jsp</h1>
+
+	<%
+		// 로그인 여부를 체크하여 비로그인시 삭제 불가
+		// 로그인 페이지로 이동
+		String id = (String)session.getAttribute("id");
+		
+		
+	%>
 
 </body>
 </html>
