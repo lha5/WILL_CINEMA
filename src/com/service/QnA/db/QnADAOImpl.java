@@ -65,7 +65,7 @@ public class QnADAOImpl implements QnADAO{
 			}
 			System.out.println("num : "+num);
 			
-			sql = "insert into qna(num,category,name,pass,subject,content,readcount,date,re_ref,re_lev,re_seq,image) values(?,?,?,?,?,?,?,now(),?,?,?,?);";
+			sql = "insert into qna(num,category,name,pass,subject,content,readcount,date,re_ref,re_lev,re_seq,image,secreat) values(?,?,?,?,?,?,?,now(),?,?,?,?,?);";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -80,6 +80,7 @@ public class QnADAOImpl implements QnADAO{
 			pstmt.setInt(9, qadto.getRe_lev());
 			pstmt.setInt(10, qadto.getRe_seq());
 			pstmt.setString(11, qadto.getImage());
+			pstmt.setString(12, qadto.getSecreat());
 			
 			int value = pstmt.executeUpdate();
 			
@@ -145,6 +146,7 @@ public class QnADAOImpl implements QnADAO{
 				qadto.setRe_seq(rs.getInt("re_seq"));
 				qadto.setDate(rs.getDate("date"));
 				qadto.setImage(rs.getString("image"));
+				qadto.setSecreat(rs.getString("secreat"));
 				
 				boardList.add(qadto);
 				
@@ -313,6 +315,51 @@ public int deleteBoard(int num,String pass){
 		
 		return check;
 		
+	}
+
+	public List<QnADTO> getSearch(String search,int startRow,int pageSize) {
+		List<QnADTO> boardList = new ArrayList<QnADTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from qna where subject like ?";
+			pstmt = con.prepareStatement(sql);
+			
+			System.out.println(search);
+			
+			pstmt.setString(1, "%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				QnADTO qadto = new QnADTO();
+				
+				qadto.setNum(rs.getInt("num"));
+				qadto.setName(rs.getString("name"));
+				qadto.setPass(rs.getString("pass"));
+				qadto.setSubject(rs.getString("subject"));
+				qadto.setContent(rs.getString("content"));
+				qadto.setCategory(rs.getString("category"));
+				qadto.setReadcount(rs.getInt("readcount"));
+				qadto.setRe_ref(rs.getInt("re_ref"));
+				qadto.setRe_lev(rs.getInt("re_lev"));
+				qadto.setRe_seq(rs.getInt("re_seq"));
+				qadto.setDate(rs.getDate("date"));
+				qadto.setImage(rs.getString("image"));
+				qadto.setSecreat(rs.getString("secreat"));
+				
+				boardList.add(qadto);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return boardList;
 	}
 	
 }	

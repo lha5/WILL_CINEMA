@@ -26,6 +26,7 @@ public class QnAWriteAction implements Action {
 		String realPath = context.getRealPath("/upload");
 		
 		System.out.println("realPath : "+realPath);
+		System.out.println("secreat : "+request.getParameter("secreat"));
 		
 		int maxSize = 10 * 1024 * 1024; // 10MB
 		
@@ -37,12 +38,17 @@ public class QnAWriteAction implements Action {
 		
 		System.out.print("name : "+name+" pass : "+pass);
 		
+		String secreat = request.getParameter("secreat");
+		
 		qadto.setName(request.getParameter("name"));
 		qadto.setPass(request.getParameter("pass"));
 		qadto.setSubject(request.getParameter("subject"));
 		qadto.setCategory(request.getParameter("category"));
 		qadto.setContent(request.getParameter("content"));
 		qadto.setImage(request.getParameter("image"));
+		if(!secreat.equals("on")){
+			 secreat = "no";
+		}
 		
 		// QnaDAOImpl객체 생성
 		QnADAOImpl qadaoImpl = new QnADAOImpl();
@@ -53,6 +59,7 @@ public class QnAWriteAction implements Action {
 		forward.setPath("./QnAList.sq");
 		forward.setRedirect(true);
 		return forward;
+		/*return null;*/
 	}
 
 }

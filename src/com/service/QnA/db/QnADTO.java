@@ -15,7 +15,14 @@ public class QnADTO {
 	private int re_lev;
 	private int re_seq;
 	private String image;
+	private String secreat;
 	
+	public String getSecreat() {
+		return secreat;
+	}
+	public void setSecreat(String secreat) {
+		this.secreat = secreat;
+	}
 	public int getNum() {
 		return num;
 	}

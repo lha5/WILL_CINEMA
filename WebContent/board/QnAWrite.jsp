@@ -13,7 +13,7 @@
 		<legend>글쓰기</legend>
 		<form action="./QnAWriteAction.sq" method="post">
 			글쓴이 : <input type="text" name="name"><br>
-			비밀번호 : <input type="password" name="pass"><br>
+			비밀번호 : <input type="password" name="pass"> 비밀글 설정 : <input type="checkbox" name="secreat"><br>
 			제목 : <input type="text" name="subject"><br>
 			카테고리 : <select name="category">
 						<option value="#">#</option>
