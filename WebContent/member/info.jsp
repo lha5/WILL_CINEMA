@@ -83,6 +83,16 @@ MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 		if (id.equals("admin")) {
 			%>
 			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">이벤트 등록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">예매 목록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">매점 주문 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">매점 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">영화관 지점 관리(관리자 전용)</a>
 			<%	
 		}
 	}
