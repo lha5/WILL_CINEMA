@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+import com.action.Action;
+import com.action.ActionForward;
+
 import com.member.db.MemberDAO;
 import com.member.db.MemberDAOImpl;
 
@@ -22,44 +26,52 @@ public class MemberLoginAction implements Action {
 
 		
 		// 디비 만들고   생성 하고 
+ 
 		MemberDAO mdao = new MemberDAOImpl();
 		
 		// 아이디 비번 으로 체크하고 
 		int check = mdao.idCheck(id, pass);
 		System.out.println("로그인 정보 출력" + check);
 		
-		// 이프문 써서 아이디 체크하기 
-		if (check == 0) {
+		if(check == 0){
+			
 			response.setContentType("text/html; charset=UTF-8");
 			
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>");
-			out.println("alert('아이디 또는 비밀번호가 다릅니다.');");
-			out.println("history.back();");
+			out.println("<script> ");
+			out.println("  alert('비밀번호 오류!!'); ");
+			out.println("  history.back(); ");
 			out.println("</script>");
 			
 			out.close();
 			
-			return null;	// actionForward를 사용한 페이지 이동을 하지 않음
-		} else if (check == -1) {
+			// actionForward를 사용한 페이지 이동 X
+			return null;			
+		}else if(check == -1){
+			
 			response.setContentType("text/html; charset=UTF-8");
 			
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>");
-			out.println("alert('아이디 또는 비밀번호가 다릅니다.');");
-			out.println("history.back();");
+			out.println("<script> ");
+			out.println("  alert('아이디 없음!!'); ");
+			out.println("  history.back(); ");
 			out.println("</script>");
 			
 			out.close();
 			
-			return null;
+			// actionForward를 사용한 페이지 이동 X
+			return null;			
 		}
 		
-		// 세션값을 가지고 간다 .
+		
+		
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
+
+		// 세션값을 가지고 간다 .
 		
 		ActionForward forward = new ActionForward();
 		
@@ -69,6 +81,13 @@ public class MemberLoginAction implements Action {
 		forward.setRedirect(true);
 		
 		return forward;
-	}
+	
 
+		
+		
+		// 이프문 써서 아이디 체크하기 
+		
+		
+		
+	}
 }

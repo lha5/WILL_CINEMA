@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO{
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
     
-    System.out.println("DB 접속 완료 : " + con);
+ 
 		
 		return con;
 	}
@@ -118,8 +118,6 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
-
-	// getMember(id) - 회원 자신의 정보 열람
 	@Override
 	public MemberDTO getMember(String id){
 		MemberDTO mdto = null;
@@ -153,6 +151,8 @@ public class MemberDAOImpl implements MemberDAO{
 				mdto.setDetailaddr(rs.getString("detailAddr"));
 				mdto.setZipcode(rs.getInt("zipcode"));
 				mdto.setReg_date(rs.getTimestamp("reg_date"));
+			
+				
 			}
 			System.out.println("getMember(id) - 회원 정보 저장 완료");
 		} catch (Exception e) {
@@ -160,7 +160,7 @@ public class MemberDAOImpl implements MemberDAO{
 		} finally {
 			closeDB();
 		}
-		return mdto;
+	return mdto;
 	}
 	//getMember(id)
 
@@ -314,4 +314,4 @@ public class MemberDAOImpl implements MemberDAO{
 		return memberList;
 	}
 }
-
+//id 체크 (id,pass)
