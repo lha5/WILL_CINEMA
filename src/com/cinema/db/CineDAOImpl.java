@@ -45,4 +45,49 @@ public class CineDAOImpl implements CineDAO{
 			e.printStackTrace();
 		}
 	}
+
+	
+	
+	// 영화관 등록
+	@Override
+	public void insertCinema(CineDTO cdto) {
+		int location_num = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "SELECT MAX(location_num) FROM cinema";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				location_num = rs.getInt(1) + 1;
+			} else {
+				location_num = 1;
+			}
+			
+			sql = "INSERT INTO cinema(location_num, region, name, addr, room, tel, image)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, location_num);
+			pstmt.setString(2, cdto.getRegion());
+			pstmt.setString(3, cdto.getName());
+			pstmt.setString(4, cdto.getRoom());
+			pstmt.setString(5, cdto.getTel());
+			pstmt.setString(6, cdto.getImage());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("관리자 영화관 지점 등록 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 }
