@@ -27,9 +27,13 @@ public class EventContentAction implements Action {
 
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
 		List eventList = aedao.getEventList(item,0,4);
-
+		
+		//EventConSearch에서 받아오는 검색
+		String keyward = request.getParameter("keyward");
+		System.out.println("ventContent 검색어 "+keyward);
 		// 정보 저장
 		request.setAttribute("eventList", eventList);
+		request.setAttribute("keyward", keyward);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("./service/eventBoard/eventContent.jsp");

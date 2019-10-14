@@ -16,18 +16,21 @@ public class EventConSearchAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("/*-------- eventContent.jsp -> EventConSearchAction()[검색] -------------*/");
+		request.setCharacterEncoding("UTF-8");
+		
 		//수정
 		String keyward=request.getParameter("keyward");
-		String title=request.getParameter("title");
+		String item=request.getParameter("item");
+		System.out.println("카테고리 : "+item);
+		System.out.println("키워드 : "+keyward);
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
 		List<AdminEventDTO> eventList=aedao.getSearch(keyward);
 		
 		request.setAttribute("eventList", eventList);
-		request.setAttribute(keyward, "keyward");
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("./EventContent.ae?item="+title);
+		forward.setPath("./EventContent.ae?item="+item+"&keyward="+keyward);
 		forward.setRedirect(true);
 		return forward;
 	}
