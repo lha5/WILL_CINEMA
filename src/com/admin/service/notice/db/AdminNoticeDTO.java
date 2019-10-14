@@ -13,6 +13,10 @@ public class AdminNoticeDTO {
 	private Date date;
 	private String category;
 	private String image;
+	
+	
+	
+	
 	public int getNum() {
 		return num;
 	}

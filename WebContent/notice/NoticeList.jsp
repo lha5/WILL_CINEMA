@@ -23,10 +23,12 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
+	System.out.println("boardList :"+boardList.toString());
+	
 	
 	%>
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-	
+
 	<h3><a href="./NoticeWrite.an">글쓰기</a></h3>
 
 
@@ -40,7 +42,7 @@
 		
 	</tr>
 	
-		<% 
+	<%-- 	<% 
 		 for(int i=0;i<boardList.size();i++){
 			 AdminNoticeDTO andto = boardList.get(i);
 		 
@@ -50,10 +52,10 @@
 	  	
 	  	<tr>
 			<td><%=andto.getNum() %></td>
-		<%} %>
+		<%} %> --%>
 	
 	</table>
-<%
+ <%
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
