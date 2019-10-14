@@ -34,7 +34,7 @@
 			제휴할인
 		<%} %>
 		</h2>
-		<form action="./EventConSearch.ae" method="post">
+		<form action="./EventConSearch.ae?item=<%=title %>" method="post">
 		<input type="text" name="keyward" value="<%=keyward%>">
 		<input type="submit" value="검색">
 		</form>

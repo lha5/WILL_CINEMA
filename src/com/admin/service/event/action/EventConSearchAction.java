@@ -18,6 +18,7 @@ public class EventConSearchAction implements Action {
 		System.out.println("/*-------- eventContent.jsp -> EventConSearchAction()[검색] -------------*/");
 		
 		String keyward=request.getParameter("keyward");
+		String title=request.getParameter("title");
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
 		List<AdminEventDTO> eventList=aedao.getSearch(keyward);
@@ -26,7 +27,7 @@ public class EventConSearchAction implements Action {
 		request.setAttribute(keyward, "keyward");
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("./EventContent.ae");
+		forward.setPath("./EventContent.ae?item="+title);
 		forward.setRedirect(true);
 		return forward;
 	}
