@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="./js/jquery-3.4.1.min.js"></script>
+
 <style type="text/css">
 	.event_cwrap {
     	width: 980px;
@@ -73,32 +75,43 @@
     	text-decoration: none;
     	color: #555;
 	}
+	
+	.clear{
+		clear: both;
+	}
 </style>
 
 <script type="text/javascript">
 	function moreRead(){
-/* 		alert(123);
-		var listLen=$('.event_list li').length+1;
-		var startCnt=$('#startCnt').val(listLen);
-		alert(startCnt.val()); */
 		var viewCnt=4;
 		var listLen=$('.event_list li').length;
 		var startCnt=$('#startCnt').val(listLen).val();
 		var item=$('#item').val();
-		$.getJSON({
+		$.ajax({
 			url:"./EventMore.ae",
 			type:"post",
 			data:{startCnt:startCnt,viewCnt:viewCnt, item:item},
-			/* dataType:"json", */
+			/* dataType:"JSON", */
 			success:function(data){
-					$.each(data,function(index,item){
-						alert(index);
-						/* var image=item.image.split(',');
-						alert(image[index].val()); */
-						alert(item.num);
-						/* $('.event_list').append("<li><a href='./EventDetail.ae?eventId="+item.num+"'>"
-								+"<img src='./upload/"+image[0]+"'></a>"
-								+"<p>"+item.f_date+'~'+item.e_date+"</p></li>"); */
+				var cnt=viewCnt;
+				
+				//https://maengdev.tistory.com/162 참고사이트
+				//dataType:'json'(jQuery)으로 받지 않고,
+				//순수 ajax를 통해 데이터를 받아왔을때는 eval함수를 써야된다
+				//jquery의 ajax에서는 자체적으로 JSON Object로 변환 시켜줌
+				var jData=eval(data);
+				
+					$.each(jData,function(index,item){
+						cnt=cnt-1;
+						if(cnt!=0){//다음번에 불러올 페이지가 없으면
+							$('.btn_view').hide();
+						}else{//다음번에 불러올 페이지가 있으면
+							$('.btn_view').fadeIn();
+						}
+						$('.event_list').append("<li><a href='./EventDetail.ae?eventId="+item.num+"'>"
+								+"<img src='./upload/"+item.image.split(',')[0]+"'></a>"
+								+"<p>"+item.f_date+'~'+item.e_date+"</p></li>");
+						
 					});
 				},
 			error:function(request,status,error){
@@ -126,44 +139,47 @@
 	 <input type="hidden" id="viewCnt" value="4">
 	 <input type="hidden" id="item" value="<%=item%>">
 	<div class="event_cwrap">
-		<div>
-			<h2>
-			<%if(item.equals("movie") ){%>
-				영화
-			<%}else if(item.equals("preview") ){%>
-				시사회/무대인사
-			<%}else if(item.equals("nevnet") ){%>
-				윌시 NOW
-			<%}else if(item.equals("collabo") ){%>
-				제휴할인
-			<%} %>
-			</h2>
-			<form action="./EventConSearch.ae?item=<%=item %>" method="post">
-			<input type="text" name="keyward" value="<%=keyward%>">
-			<input type="submit" value="검색">
-			</form>
-		</div>
-		<ul class="event_list">
-			<%
-			if(eventList.size()!=0){
-				for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
-					AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
-			%>
-			<li>
-				<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
-					<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
-				</a>
-				<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-			</il>
-			<%	}
-			}else{%>
-				진행되는 이벤트가 없습니다.
-			<%}%>
-		</ul>
+	<div>
+		<h2>
+		<%if(item.equals("movie") ){%>
+			영화
+		<%}else if(item.equals("preview") ){%>
+			시사회/무대인사
+		<%}else if(item.equals("nevnet") ){%>
+			윌시 NOW
+		<%}else if(item.equals("collabo") ){%>
+			제휴할인
+		<%} %>
+		</h2>
+		<form action="./EventConSearch.ae?item=<%=item %>" method="post">
+		<input type="text" name="keyward" value="<%=keyward%>">
+		<input type="submit" value="검색">
+		</form>
+	</div>
+	<%
+		if(eventList.size()!=0){
+	%>
+	<ul class="event_list">
+	<%
+			for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
+				AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
+	%>
+	
+		<li>
+			<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+				<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+			</a>
+			<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+		</il>
+	<% }%>
+	</ul>
 		<div class="btn_view">
-				<a href="javascript:void(0);" onclick="moreRead();"><span>더보기</span></a>
+			<a href="javascript:void(0);" onclick="moreRead();"><span>더보기</span></a>
 		</div>
-		<br>
+		<%}else{%>
+			진행되는 이벤트가 없습니다.
+		<%}%>
+		<br class="clear">
 		<a href="./EventSummary.ae">이벤트 목록</a>
 	</div>
 </body>
