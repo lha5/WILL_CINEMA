@@ -16,7 +16,7 @@ public class EventConSearchAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("/*-------- eventContent.jsp -> EventConSearchAction()[검색] -------------*/");
-		
+		//수정
 		String keyward=request.getParameter("keyward");
 		String title=request.getParameter("title");
 		
