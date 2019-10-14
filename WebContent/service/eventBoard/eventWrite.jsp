@@ -65,7 +65,7 @@ $( function() {
 <body>
 <h1>이벤트 작성 페이지</h1>
 <fieldset>
-	<form action="./EventWriteAction.ae" method="post"  enctype="multipart/form-data">
+	<form action="./EventWriteAction.ae" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td>카테고리</td> 
@@ -81,8 +81,8 @@ $( function() {
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td><input type="text" name="fDate" id="from">
-				 ~ <input type="text" name="eDate" id="to">
+				<td><input type="text" name="fDate" id="from" readonly="readonly" >
+				 ~ <input type="text" name="eDate" id="to" readonly="readonly" >
 				 </td>
 			</tr><!-- 날짜 선택 드롭박스 -->
 			<tr>
