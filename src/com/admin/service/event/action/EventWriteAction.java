@@ -23,7 +23,7 @@ public class EventWriteAction implements Action {
 		//파일 위치(가상경로)
 		ServletContext context=request.getServletContext();
 		String realpath=context.getRealPath("/upload");
-		
+		System.out.println("저장 경로 : "+realpath);
 		//파일 크기
 		int maxSize=10*1024*1024;
 		
@@ -53,7 +53,7 @@ public class EventWriteAction implements Action {
 		aedao.eventInsert(aedto);
 
 		ActionForward forward=new ActionForward();
-		forward.setPath("./Main.me");
+		forward.setPath("./EventSummary.ae");
 		forward.setRedirect(true);
 		return forward;
 	}

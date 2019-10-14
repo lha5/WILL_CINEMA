@@ -7,11 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/qnalist.css">
+
 </head>
 <body>
 	<%
+		String id = (String) session.getAttribute("id");
+		
 		int count = (Integer) request.getAttribute("count");
-		List<QnADTO> boardList = (List<QnADTO>)request.getAttribute("boardList");
+		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
 		String pageNum = (String)request.getAttribute("pageNum");
 	
 		int pageCount = (Integer) request.getAttribute("pageCount");
@@ -20,39 +26,38 @@
 		int endPage = (Integer) request.getAttribute("endPage");
 	%>
 	
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-   
-   <table border="1">
-     <tr>
-       <td>번호</td>
-       <td>카테고리</td>
-       <td>제목</td>
-       <td>글쓴이</td>
-       <td>날짜</td>
-       <td>조회수</td>
-     </tr> 
+   	<table>
+    	<tr>
+    		<td>번호</td>
+    		<td>카테고리</td>
+    		<td>제목</td>
+    		<td>글쓴이</td>
+    		<td>날짜</td>
+    		<td>조회수</td>
+    	</tr> 
      
-     <%
-       for(int i=0;i<boardList.size();i++){
-    	   QnADTO qadto = boardList.get(i);    	   
-     %>
-     <tr>
-       <td><%=qadto.getNum() %></td>
-       <td><%=qadto.getCategory()%></td>
-       <td>
-           <a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
-           <%=qadto.getSubject() %>
-           </a>
-       </td>
-       <td><%=qadto.getName() %></td>
-       <td><%=qadto.getDate() %></td>
-       <td><%=qadto.getReadcount() %></td>
-     </tr>
-     <%} %>
-     
-   </table>
-
+		<%
+     	for (int i=0;i<boardList.size();i++) {
+    		QnADTO qadto = boardList.get(i);    	   
+		%>
+			<tr>
+				<td><%=qadto.getNum() %></td>
+				<td><%=qadto.getCategory()%></td>
+				<td>
+					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
+					<%=qadto.getSubject() %>
+					</a>
+				</td>
+				<td><%=qadto.getName() %></td>
+				<td><%=qadto.getDate() %></td>
+				<td><%=qadto.getReadcount() %></td>
+			</tr>
+		<%} %>
+	</table>
+	
+	<div id="paging">
 	<%
+		// 페이징 처리
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -77,8 +82,10 @@
 				}
 		}
 	%>
-	
+	</div>
 	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
-
+	
+	
+	
 </body>
 </html>
