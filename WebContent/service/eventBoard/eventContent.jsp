@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -84,7 +83,7 @@
 
 <script type="text/javascript">
 	function moreRead(){
-		var viewCnt=4;
+		var viewCnt=5;
 		var listLen=$('.event_list li').length;
 		var startCnt=$('#startCnt').val(listLen).val();
 		var item=$('#item').val();
@@ -94,17 +93,18 @@
 			data:{startCnt:startCnt,viewCnt:viewCnt, item:item},
 			/* dataType:"JSON", */
 			success:function(data){
-				var cnt=viewCnt;
-				
 				//https://maengdev.tistory.com/162 참고사이트
 				//dataType:'json'(jQuery)으로 받지 않고,
 				//순수 ajax를 통해 데이터를 받아왔을때는 eval함수를 써야된다
 				//jquery의 ajax에서는 자체적으로 JSON Object로 변환 시켜줌
 				var jData=eval(data);
-				
+				var cnt=jData.toString().split(',').length;
+				alert(jData);
+				alert(cnt);
 					$.each(jData,function(index,item){
+						if(index>3){return false;} //4개까지 가져온다
 						cnt=cnt-1;
-						if(cnt!=0){//다음번에 불러올 페이지가 없으면
+						if(cnt==4||cnt!=1){//다음번에 불러올 페이지가 없으면
 							$('.btn_view').hide();
 						}else{//다음번에 불러올 페이지가 있으면
 							$('.btn_view').fadeIn();
@@ -123,11 +123,11 @@
 </script>
 </head>
 <%	
+	//request.setCharacterEncoding("UTF-8");
 	List eventList = (List)request.getAttribute("eventList");
 	String item=request.getParameter("item");
 	String keyward=(String)request.getAttribute("keyward");
-	System.out.println("카테고리 : "+item);
-	System.out.println("키워드 : "+keyward);
+	int viewList=3;//보여줄 이벤트 개수-1
 	
 	if(keyward==null){
 		keyward="";
@@ -166,6 +166,7 @@
 	<ul class="event_list">
 	<%
 			for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
+				if(i>viewList){break;}
 				AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
 	%>
 	
@@ -177,10 +178,12 @@
 		</il>
 	<% }%>
 	</ul>
+		<%if(eventList.size()>4){//남아있는 이벤트가 있으면 %>
 		<div class="btn_view">
 			<a href="javascript:void(0);" onclick="moreRead();"><span>더보기</span></a>
 		</div>
-		<%}else{%>
+		<%}
+		}else{%>
 			진행되는 이벤트가 없습니다.
 		<%}%>
 		<br class="clear">
