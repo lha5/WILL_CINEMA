@@ -97,6 +97,13 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/EventMore.ae")){ //Event 내용 더보기
+			action = new EventMoreAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//가상주소를 가지고 이동
