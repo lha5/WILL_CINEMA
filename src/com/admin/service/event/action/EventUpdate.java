@@ -14,7 +14,7 @@ public class EventUpdate implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("/*--------- EventUpdate() -> eventUpdate.jsp ------------------------*/");
-		
+		//수정
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		AdminEventDAO aedao = new AdminEventDAOImpl();
