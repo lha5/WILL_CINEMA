@@ -14,10 +14,10 @@ public class NoticeWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
 		
-		System.out.println("AdminNoticeWriteAction_execute()------------------------");
+		System.out.println("NoticeWriteAction_execute()------------------------");
 		
 		// 한글 처리
-		request.setCharacterEncoding("UFT-8");
+		request.setCharacterEncoding("UTF-8");
 		// 전달된 정보 객체
 		// boardDTO 객체 생성 저장
 		AdminNoticeDTO andto = new AdminNoticeDTO(); 
@@ -34,10 +34,10 @@ public class NoticeWriteAction implements Action {
 		
 		// 페이지 이동
 		// 글목록 보여주는 페이지로 이동
-		// ./BoardList.bo
+		// ./NoticeWrite.an
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./AdminNoticeWriteAction.an");
+		forward.setPath("./NoticeWrite.an");
 		forward.setRedirect(true);
 		return forward;
 	

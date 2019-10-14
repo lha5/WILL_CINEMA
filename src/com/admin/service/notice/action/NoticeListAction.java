@@ -46,9 +46,10 @@ public class NoticeListAction implements Action{
 				// DB에서 글 가져오기
 				// getBoardList();
 				List<AdminNoticeDTO> boardList = null;
-				if (count != 0) {
-					 boardList = andao.getBoardList(startRow, pageSize);
-				}
+			
+				//if (count != 0) {
+					boardList = andao.getBoardList(startRow, pageSize);
+				//}
 				// 페이지 출력
 				// if (count != 0) {
 				// 전체 페이지수 계산

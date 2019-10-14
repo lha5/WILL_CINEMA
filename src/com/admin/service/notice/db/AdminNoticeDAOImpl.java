@@ -107,7 +107,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						System.out.println("디비 연결 성공 : "+con);
 					
 						// 글번호 계산
-						sql = "select max(num) from board";
+						sql = "select max(num) from notice";
 						
 						pstmt = con.prepareStatement(sql);
 						
@@ -155,7 +155,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 							
-							sql="select count(*) from board";
+							sql="select count(*) from notice";
 							
 							pstmt = con.prepareStatement(sql);
 							
@@ -186,7 +186,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 						
-							sql="select * from board order by re_ref desc,re_seq asc limit ?,?";
+							sql="select * from notice order by re_ref desc,re_seq asc limit ?,?";
 							pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, startRow-1);
 							pstmt.setInt(2, pageSize);
@@ -259,7 +259,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 						
-							sql = "select * from board where num=?";
+							sql = "select * from notice where num=?";
 						
 							pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, num);
@@ -307,7 +307,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 					
-							sql = "select pass from board where num=?";
+							sql = "select pass from notice where num=?";
 							pstmt = con.prepareStatement(sql);
 							
 							pstmt.setInt(1, andto.getNum());

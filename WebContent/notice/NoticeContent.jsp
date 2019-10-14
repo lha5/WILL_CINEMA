@@ -32,10 +32,10 @@
 </tr>
 	<tr>	
 	<td>글쓴이</td><td><%=andto.getName() %></td>
-	<td>작성일</td><td>%=andto.getDate() %></td>
 </tr>
 	<tr>
 	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
+	<td>작성일</td><td><%=andto.getDate() %></td>
 </tr>
 	<tr>
 	<td>첨부파일</td>
@@ -45,7 +45,7 @@
 	
 	</a>
 	</td>
-</tr>
+</tr> 
 
 <tr>
 	<td>공지 내용</td><td colspan="3"><%=andto.getContent() %></td>
