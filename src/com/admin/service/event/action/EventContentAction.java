@@ -17,7 +17,7 @@ public class EventContentAction implements Action {
 		System.out.println("/*--------- eventSummary.jsp -> EventContentAction() ------------------------*/");
 
 		// 한글처리
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 
 		
 		String item = request.getParameter("item");
@@ -26,14 +26,11 @@ public class EventContentAction implements Action {
 		AdminEventDAO aedao = new AdminEventDAOImpl();
 
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
-		List eventList = aedao.getEventList(item,0,4);
+		List eventList = aedao.getEventList(item);
 		
-		//EventConSearch에서 받아오는 검색
-		String keyward = request.getParameter("keyward");
-		System.out.println("ventContent 검색어 "+keyward);
 		// 정보 저장
 		request.setAttribute("eventList", eventList);
-		request.setAttribute("keyward", keyward);
+		
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("./service/eventBoard/eventContent.jsp");

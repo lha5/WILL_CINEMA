@@ -25,13 +25,14 @@ public class EventConSearchAction implements Action {
 		System.out.println("키워드 : "+keyward);
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
-		List<AdminEventDTO> eventList=aedao.getSearch(keyward);
+		List<AdminEventDTO> eventList=aedao.getSearch(item,keyward);
 		
+		request.setAttribute("keyward", keyward);
 		request.setAttribute("eventList", eventList);
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("./EventContent.ae?item="+item+"&keyward="+keyward);
-		forward.setRedirect(true);
+		forward.setPath("./service/eventBoard/eventContent.jsp");
+		forward.setRedirect(false);
 		return forward;
 	}
 }

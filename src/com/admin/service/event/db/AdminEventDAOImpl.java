@@ -114,6 +114,42 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	@Override
+	public List<AdminEventDTO> getEventList(String item) {
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
+		try {
+			con=getCon();
+			//startCnt:시작 위치, viewCnt:가져올 리스트 수
+			String sql = "select * from event where category=?"
+					+ " order by f_date desc";
+			
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, item);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return arr;
+	}
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	
+	
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 	public List<AdminEventDTO> getEventList(String item, int startCnt, int viewCnt){
 		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
 		try {
@@ -149,16 +185,18 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	}
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 
-	
 	/*-------------------- 검색 내용 가져오기(사용자) --------------------*/
 	@Override
-	public List<AdminEventDTO> getSearch(String keyward) {
+	public List<AdminEventDTO> getSearch(String item,String keyward) {
 		List<AdminEventDTO> arr = new ArrayList<AdminEventDTO>();
 		try {
 			con = getCon();
-			sql = "select * from event where subject like ?";
+			sql = "select * from event where category=? and "
+					+ "subject like ?  order by f_date desc";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+keyward+"%");
+			pstmt.setString(1, item);
+			pstmt.setString(2, "%"+keyward+"%");
+			
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
