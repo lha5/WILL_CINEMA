@@ -114,20 +114,23 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
-	public List<AdminEventDTO> getEventList(String item) {
-		List<AdminEventDTO> arr = new ArrayList<AdminEventDTO>();
+	public List<AdminEventDTO> getEventList(String item, int startCnt, int viewCnt){
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
 		try {
-			con = getCon();
-			//sysdate()<e_date : 현재 진행중인 이벤트
-			String sql = "select * from event where category=? and sysdate()<e_date order by f_date desc";
-
-			pstmt = con.prepareStatement(sql);
-
+			con=getCon();
+			//startCnt:시작 위치, viewCnt:가져올 리스트 수
+			String sql = "select * from event where category=?"
+					+ " order by f_date desc limit ?,?";
+			
+			pstmt=con.prepareStatement(sql);
+			
 			pstmt.setString(1, item);
+			pstmt.setInt(2, startCnt);
+			pstmt.setInt(3, viewCnt);
 
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
 				AdminEventDTO aedto = new AdminEventDTO();
 				aedto.setNum(rs.getInt("num"));
 				aedto.setCategory(rs.getString("category"));
@@ -139,10 +142,9 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally{
 			closeDB();
 		}
-
 		return arr;
 	}
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/

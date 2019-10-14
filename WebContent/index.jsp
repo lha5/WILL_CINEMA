@@ -14,7 +14,7 @@
 <body>
 <%
 	// response.sendRedirect("./EventSummary.ae");
-	// response.sendRedirect("./Main.me");
+	response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
 	
 	// String id = (String) session.getAttribute("id");
