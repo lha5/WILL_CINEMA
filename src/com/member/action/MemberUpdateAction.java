@@ -21,6 +21,7 @@ public class MemberUpdateAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		String pass = (String) session.getAttribute("pass");
 		
 		ActionForward forward = new ActionForward();
 		if (id == null) {
@@ -33,8 +34,8 @@ public class MemberUpdateAction implements Action {
 		
 		request.setCharacterEncoding("UTF-8");
 		MemberDTO mdto = new MemberDTO();
-		// int - 우편번호만 
 		
+		// int - 우편번호만 
 		mdto.setAddr(request.getParameter("addr"));
 		mdto.setBirthday(request.getParameter("birthday"));
 		mdto.setDetailaddr(request.getParameter("detailaddr"));
@@ -70,7 +71,7 @@ public class MemberUpdateAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script>");
-			out.println("  alert('비밀번호 오류!');  ");
+			out.println("  alert('비밀번호가 다릅니다.');  ");
 			out.println("  history.back(); ");
 			out.println("</script>");	
 			
@@ -84,7 +85,7 @@ public class MemberUpdateAction implements Action {
 		
 		out.println("<script>");
 		out.println("  alert('정보수정 완료!');  ");
-		out.println("  location.href='./MemberLogin.me'; ");
+		out.println("  location.href='./Main.me'; ");
 		out.println("</script>");	
 		
 		out.close();	

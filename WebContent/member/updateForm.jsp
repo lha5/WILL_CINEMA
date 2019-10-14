@@ -5,47 +5,89 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>UpdateMember</title>
+<title>WILL CINEMA - 회원 정보</title>
 </head>
 <body>
 
-<%
-/* 세션 가져오기  */
-String id=(String)session.getAttribute("id");
-/* 아이디 없으면 메인으로   */
-if(id == null){
-	response.sendRedirect("./MemberLogin.me");
+	<%
+		// 세션 가져오기 
+		String id = (String) session.getAttribute("id");
 
-}
+		// 아이디 없으면 메인으로 
+		if (id == null) {
+			response.sendRedirect("./MemberLogin.me");
+		}
 
+		MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 
- MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
+		String detailAddr = mdto.getDetailaddr();
+		if (detailAddr == null) {
+			detailAddr = "";
+		}
+	%>
 
-%>
-
-<!--  나중에 앞에꺼 다하고 하기   -->
-
-<fieldset>
-<legend> 회원정보수정- 무엇을 수정할것인지 대화하기 </legend>
-<form action="/MemberUpdateAction.me" method="post">
-아이디 : <input type="text" name="id" value="<%=id%>" readonly>
-비밀번호: <input type="password" name="pass" value ="<%=mdto.getPass() %>">
-이름 : <input type="text" name ="name" value="<%=mdto.getName()%>">
-생일 : <input type="text" name="birthday" value="<%=mdto.getBirthday()%>">
-휴대폰 : <input type="text" name="mobile" value="<%=mdto.getMobile()%>">
-이메일 :  <input type="text" name="email" value="<%=mdto.getEmail()%>">
-주소 : <input type="text" name="addr" value="<%=mdto.getAddr()%>">
-상세주소 : <input type="text" name="addrdetail" value="<%=mdto.getDetailaddr()%>">
-우편번호: <input type="text" name="zipcode" value="<%=mdto.getZipcode()%>">
-수신 : <input type="text" name="receive" value="<%=mdto.getReceive()%>">
-선호장르:<input type="text" name="preference" value="<%=mdto.getPreference()%>">
-
-<input type="submit" value="회원정보 수정">
-</form>
-
-</fieldset>
-
-
+	<fieldset>
+		<legend> <%=mdto.getName()%>님의 정보 수정 </legend>
+		<form action="./MemberUpdateAction.me" method="post">
+		
+			<table border="1">
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" value="<%=id%>" readonly></td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="pass"></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" value="<%=mdto.getName()%>"></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birthday" value="<%=mdto.getBirthday()%>"></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" name="mobile" value="<%=mdto.getMobile()%>"></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email" value="<%=mdto.getEmail()%>"></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>
+						<input type="text" name="zipcode" value="<%=mdto.getZipcode()%>">
+						<br>
+						<input type="text" name="addr" value="<%=mdto.getAddr()%>">
+						<br>
+						<input type="text" name="detailaddr" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>이벤트 메일 수신</td>
+					<td>
+						<input type="radio" name="receive" value="yes" <%if (mdto.getReceive().equals("yes")) {%>checked<%}%>> 예
+						&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="receive" value="no" <%if (mdto.getReceive().equals("no")) {%>checked<%}%>> 아니오
+					</td>
+				</tr>
+				<tr>
+					<td>선호하는 장르</td>
+					<td><input type="text" name="preference" value="<%=mdto.getPreference()%>"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="정보 수정">
+						&nbsp;&nbsp;
+						<input type="reset" value="다시 입력">
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+	</fieldset>
 
 </body>
 </html>

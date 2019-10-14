@@ -5,6 +5,62 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- jqueryui.com의 jquery파일(인터넷 사용 가능일때)-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script type="text/javascript">
+/* 달력 한글 출력 코드 */
+$.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd',
+	prevText: '이전 달',
+    nextText: '다음 달',
+    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+    showMonthAfterYear: true,
+    yearSuffix: '년'
+});
+
+$( function() {
+
+    var dateFormat = "yy-mm-dd",
+
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 2
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 2
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+      return date;
+    }
+  } );
+
+</script>
 </head>
 <body>
 <h1>이벤트 작성 페이지</h1>
@@ -24,7 +80,10 @@
 				<td>제목</td><td><input type="text" name="subject"></td>
 			</tr>
 			<tr>
-				<td>날짜</td><td><input type="text" name="fDate"> ~ <input type="text" name="eDate"></td>
+				<td>날짜</td>
+				<td><input type="text" name="fDate" id="from">
+				 ~ <input type="text" name="eDate" id="to">
+				 </td>
 			</tr><!-- 날짜 선택 드롭박스 -->
 			<tr>
 				<td>썸네일 이미지</td><td><input type="file" name="img1"></td>
@@ -41,6 +100,7 @@
 		</table>
 		<input type="submit" value="글 쓰기"> <input type="reset" value="취소">
 	</form>
+	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
 </body>
 </html>
