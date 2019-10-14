@@ -15,6 +15,8 @@
 	List eventNeventList = (List)request.getAttribute("eventNeventList");
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 %>
+	<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
+
 	<div>
 		<h2>영화</h2> <a href="./EventContent.ae?item=movie">더보기</a>
 	</div>
@@ -83,6 +85,7 @@
 		<%} %>
 	</ul>
 	<br>
-	<a href="./EventWrite.ae">이벤트 글쓰기</a>
+	<a href="./EventWrite.ae">이벤트 글쓰기</a><br>
+	<a href="./EventList.ae">이벤트 목록(관리자)</a>
 </body>
 </html>

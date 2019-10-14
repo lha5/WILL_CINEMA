@@ -32,6 +32,7 @@ public class EventWriteAction implements Action {
 				new MultipartRequest(request, realpath, maxSize, "UTF-8"
 				,new DefaultFileRenamePolicy());
 		
+		/*dto에 전달받은 내용 저장*/
 		AdminEventDTO aedto=new AdminEventDTO();
 		aedto.setCategory(multi.getParameter("category"));
 		aedto.setSubject(multi.getParameter("subject"));
@@ -48,7 +49,8 @@ public class EventWriteAction implements Action {
 		String image=multi.getFilesystemName("img1")+","+multi.getFilesystemName("img2")+
 				","+multi.getFilesystemName("img3")+","+multi.getFilesystemName("img4");
 		aedto.setImage(image);
-
+		/*dto에 전달받은 내용 저장*/
+		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
 		aedao.eventInsert(aedto);
 

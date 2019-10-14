@@ -11,21 +11,24 @@ import com.admin.service.event.db.AdminEventDAO;
 import com.admin.service.event.db.AdminEventDAOImpl;
 import com.admin.service.event.db.AdminEventDTO;
 
-public class EventListAction implements Action {
+public class EventConSearchAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("/*--------------- EventListAction()[관리자 리스트]-------------------------*/");
+		System.out.println("/*-------- eventContent.jsp -> EventConSearchAction()[검색] -------------*/");
+		//수정
+		String keyward=request.getParameter("keyward");
+		String title=request.getParameter("title");
 		
-		AdminEventDAO aedao =new AdminEventDAOImpl();
-		List<AdminEventDTO> arr=aedao.getEventList();
-		//DB에서 가져온 정보 저장
-		request.setAttribute("arr", arr);
+		AdminEventDAO aedao=new AdminEventDAOImpl();
+		List<AdminEventDTO> eventList=aedao.getSearch(keyward);
+		
+		request.setAttribute("eventList", eventList);
+		request.setAttribute(keyward, "keyward");
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("./service/eventBoard/eventList.jsp");
-		forward.setRedirect(false);
+		forward.setPath("./EventContent.ae?item="+title);
+		forward.setRedirect(true);
 		return forward;
 	}
-
 }

@@ -1,7 +1,5 @@
 package com.admin.service.event.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,19 +9,21 @@ import com.admin.service.event.db.AdminEventDAO;
 import com.admin.service.event.db.AdminEventDAOImpl;
 import com.admin.service.event.db.AdminEventDTO;
 
-public class EventListAction implements Action {
+public class EventUpdate implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("/*--------------- EventListAction()[관리자 리스트]-------------------------*/");
+		System.out.println("/*--------- EventUpdate() -> eventUpdate.jsp ------------------------*/");
+		//수정
+		int num=Integer.parseInt(request.getParameter("num"));
 		
-		AdminEventDAO aedao =new AdminEventDAOImpl();
-		List<AdminEventDTO> arr=aedao.getEventList();
-		//DB에서 가져온 정보 저장
-		request.setAttribute("arr", arr);
+		AdminEventDAO aedao = new AdminEventDAOImpl();
+		AdminEventDTO aedto=aedao.getEvent(num);
 		
+		request.setAttribute("aedto", aedto);
+
 		ActionForward forward=new ActionForward();
-		forward.setPath("./service/eventBoard/eventList.jsp");
+		forward.setPath("./service/eventBoard/eventUpdate.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

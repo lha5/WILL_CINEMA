@@ -4,6 +4,10 @@ import java.util.List;
 
 public interface AdminEventDAO {
 	public void eventInsert(AdminEventDTO aedto);
-	public List<AdminEventDTO> getGoodsList(String item);
+	public List<AdminEventDTO> getEventList();
+	public List<AdminEventDTO> getEventList(String item);
+	public List<AdminEventDTO> getSearch(String keyward);
 	public AdminEventDTO getEvent(int eventId);
+	public int updateEvent(AdminEventDTO aedto);
+	public int deleteEvent(int num);
 }

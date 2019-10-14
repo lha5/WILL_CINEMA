@@ -42,28 +42,21 @@ public class AdminEventFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/EventUpdate.ae")){ //Event수정 페이지(관리자)
 			//EventUpdate() -> eventUpdateForm -> EventUpdateAction()
-			//action = new FAQUpdate();
+			action = new EventUpdate();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventUpdateAction.ae")){ //Event수정 페이지(관리자)
-			//action = new EventUpdateAction();
+			action = new EventUpdateAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventDelete.ae")){ //Event 삭제 페이지
-			//action = new EventDelete();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/EventDeleteAction.ae")){ //Event 삭제 페이지
-			//action = new EventDeleteAction();
+			action = new EventDelete();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -76,8 +69,22 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/EventPast.ae")){ //지난 Event 리스트 페이지(사용자)
+			action = new EventPastAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/EventContent.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
 			action = new EventContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/EventConSearch.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
+			action = new EventConSearchAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
