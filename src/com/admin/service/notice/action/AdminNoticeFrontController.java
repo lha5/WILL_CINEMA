@@ -19,25 +19,22 @@ public class AdminNoticeFrontController extends HttpServlet{
 		String contextPath=request.getContextPath();
 		String command=requestURI.substring(contextPath.length());
 		
-		Action action =null;
-		ActionForward forward = null;
+		ActionForward forward =null;
+		Action action=null;
 		//가상주소 비교
-		if(command.equals("/NoticeWrite.an")){ //공지 쓰기 
+		if(command.equals("/NoticeWrite.an")){ //공지 쓰기
 			forward = new ActionForward();
-			forward.setPath("./notice/noticeWrite.jsp");
+			forward.setPath("./board/noticeWrite.jsp");
 			forward.setRedirect(false);
-		}else if(command.equals("/NoticeWriteAction.an")){ //공지 리스트 페이지	
+		}else if(command.equals("/NoticeWriteAction.an")){ //공지 리스트 페이지
 			//action = new NoticeWriteAction();
-			action = new NoticeWriteAction();
 			try {
-				action = new NoticeWriteAction();
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeList.an")){ //공지 리스트 페이지
 			//action = new NoticeListAction();
-			action = new NoticeListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -74,7 +71,6 @@ public class AdminNoticeFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/NoticeContent.an")){ //공지 내용 페이지
 			//action = new NoticeContentAction();
-			action = new NoticeContentAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -95,11 +91,11 @@ public class AdminNoticeFrontController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		doProcess(request, response);
 	}
 }

@@ -12,8 +12,8 @@
   
   <!-- 디비 연결정보 -->
   <resource-ref>
-  	<description>willcinema</description>
-  	<res-ref-name>jdbc/willcinema</res-ref-name>
+  	<description>will_cinema</description>
+  	<res-ref-name>jdbc/will_cinema</res-ref-name>
   	<res-type>javax.sql.DataSource</res-type>
   	<res-auth>Container</res-auth>
   </resource-ref>

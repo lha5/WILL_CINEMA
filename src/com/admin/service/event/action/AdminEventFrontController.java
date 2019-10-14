@@ -14,9 +14,9 @@ import com.action.ActionForward;
 //이벤트 관리 페이지(관리자)
 public class AdminEventFrontController extends HttpServlet{
 
-	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String requestURI = req.getRequestURI();
-		String contextPath=req.getContextPath();
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String requestURI = request.getRequestURI();
+		String contextPath=request.getContextPath();
 		String command=requestURI.substring(contextPath.length());
 		
 		ActionForward forward =null;
@@ -24,55 +24,76 @@ public class AdminEventFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/EventWrite.ae")){ //이벤트 글 쓰기 
 			forward = new ActionForward();
-			forward.setPath("./board/eventWrite.jsp");
+			forward.setPath("./service/eventBoard/eventWrite.jsp");
 			forward.setRedirect(false);
-		}else if(command.equals("/EventWriteAction.ae")){ //Event리스트 페이지
-			//action = new EventWriteAction();
+		}else if(command.equals("/EventWriteAction.ae")){ //이벤트 글 쓰기 액션 
+			action = new EventWriteAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventList.ae")){ //Event리스트 페이지
-			//action = new EventListAction();
+		}else if(command.equals("/EventList.ae")){ //Event리스트 페이지(관리자)
+			action = new EventListAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventUpdate.ae")){ //Event수정 페이지
+		}else if(command.equals("/EventUpdate.ae")){ //Event수정 페이지(관리자)
 			//EventUpdate() -> eventUpdateForm -> EventUpdateAction()
-			//action = new FAQUpdate();
+			action = new EventUpdate();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventUpdateAction.ae")){ //Event수정 페이지
-			//action = new EventUpdateAction();
+		}else if(command.equals("/EventUpdateAction.ae")){ //Event수정 페이지(관리자)
+			action = new EventUpdateAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/EventDelete.ae")){ //Event 삭제 페이지
-			//action = new EventDelete();
+			action = new EventDelete();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventDeleteAction.ae")){ //Event 삭제 페이지
-			//action = new EventDeleteAction();
+		}else if(command.equals("/EventSummary.ae")){ //전체 Event 리스트 요약 페이지(사용자)
+			action = new EventSummaryAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventContent.ae")){ //Event 내용 페이지
-			//action = new EventContentAction();
+		}else if(command.equals("/EventPast.ae")){ //지난 Event 리스트 페이지(사용자)
+			action = new EventPastAction();
 			try {
-				forward = action.execute(req, resp);
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/EventContent.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
+			action = new EventContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/EventConSearch.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
+			action = new EventConSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/EventDetail.ae")){ //Event 상세 내용 페이지
+			action = new EventDetailAction();
+			try {
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -81,21 +102,21 @@ public class AdminEventFrontController extends HttpServlet{
 		//가상주소를 가지고 이동
 		if(forward !=null){
 			if(forward.isRedirect()){
-				resp.sendRedirect(forward.getPath());
+				response.sendRedirect(forward.getPath());
 			}else{
-				RequestDispatcher dis = req.getRequestDispatcher(forward.getPath());
-				dis.forward(req, resp);
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
 			}
 		}
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doProcess(req,resp);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
 	}
 }
