@@ -27,8 +27,7 @@ public class  NoticeContentAction implements Action {
 		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
 	
 		// readcount 1증가 => updateReadcount(num);
-			andao.updateReaadcount(num);
-		
+		andao.updateReaadcount(num);
 		
 		// 글번호에 해당하는 글정보를 가져오기
 		AdminNoticeDTO andto = andao.getBoard(num);
