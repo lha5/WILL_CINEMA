@@ -7,9 +7,15 @@ public class CineDTO {
 	private String addr;
 	private String room;
 	private String tel;
+	private String image;
 	
 	
-	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String getRegion() {
 		return region;
 	}
