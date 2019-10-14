@@ -4,22 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>loginForm.jsp</title>
+<title>WILL CINEMA - 로그인</title>
 </head>
 <body>
-	<h1>로그인 페이지</h1> <!--우선 적어두기  -->
+	<h1>로그인 페이지</h1>
+	<!--우선 적어두기  -->
 
-<fieldset>
-<legend> 로그인 </legend>
-<form action="./MemberLoginAction.me" method="post">
-	아이디 :  <input type="text" name="id"><br>
-	비밀번호 : <input type="password" name="pass" ><br>
-	<input type="submit" value="로그인">
-</form>
-
-<input type="button" value="회원가입" onclick="location.href='./MemberJoin.me'">
-</fieldset>
-
-
+	<fieldset>
+		<legend> 로그인 </legend>
+		<form action="./MemberLoginAction.me" method="post">
+			아이디 <input type="text" name="id"><br>
+			비밀번호 <input type="password" name="pass"><br>
+			<input type="submit" value="로그인">
+			<br><br>
+		</form>
+		<input type="button" value="회원가입" onclick="location.href='./MemberJoin.me'">
+	</fieldset>
 </body>
 </html>

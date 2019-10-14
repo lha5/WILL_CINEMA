@@ -74,7 +74,7 @@
 	</table>
 	<input type="submit" value="제품등록">
 	<input type="reset" value="제품 재등록">
-	<input type="button" value="메인으로" onclick="location.href='./Main.me'">
+	<input type="button" value="리스트" onclick="location.href='./GoodsList.al'">
 	</form>
 	
 </body>

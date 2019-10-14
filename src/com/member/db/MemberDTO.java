@@ -1,6 +1,6 @@
 package com.member.db;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class MemberDTO {
 	private String id;
@@ -14,7 +14,7 @@ public class MemberDTO {
 	private int level;
 	private String receive;
 	private String preference;
-	private Date reg_date;
+	private Timestamp reg_date;
 	private int zipcode;
 	private String detailaddr;
 	
@@ -32,10 +32,10 @@ public class MemberDTO {
 	public void setDetailaddr(String detailaddr) {
 		this.detailaddr = detailaddr;
 	}
-	public Date getReg_date() {
+	public Timestamp getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Date reg_date) {
+	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
 	public String getId() {
