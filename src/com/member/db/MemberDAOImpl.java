@@ -24,7 +24,7 @@ public class MemberDAOImpl implements MemberDAO{
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
     
-    System.out.println("DB 접속 완료 : " + con);
+ 
 		
 		return con;
 	}
