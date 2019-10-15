@@ -18,6 +18,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		String id = (String)session.getAttribute("id");
 	%>
 	
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
@@ -30,13 +31,11 @@
        <td>날짜</td>
        <td>조회수</td>
        <td>첨부</td>
-       <td>비밀글 여부</td>
      </tr>
      <%
        for(int i=0;i<boardList.size();i++){
-    	   QnADTO qadto = boardList.get(i); 
-    	   String secreat = qadto.getSecreat();
-    	  
+    	   QnADTO qadto = boardList.get(i);
+    	   if(id == qadto.getId()){
      %>
      <tr>
        <td><%=qadto.getNum() %></td>
@@ -49,9 +48,9 @@
        <td><%=qadto.getDate() %></td>
        <td><%=qadto.getReadcount() %></td>
        <td><%=qadto.getImage() %></td>
-       <td><%=secreat %></td>
      </tr>
-    <%}%>
+    <%}
+    }%>
      
    </table>
 

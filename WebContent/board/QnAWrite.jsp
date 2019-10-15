@@ -9,6 +9,15 @@
 <body>
 <h1>WebContent/board/QnAWrite.jsp</h1>
 	
+	<%
+		String id = (String)session.getAttribute("id");
+		if(id == null){
+			response.sendRedirect("./MemberLogin.me");
+		}else if(id == "admin"){
+			response.sendRedirect("./QnAList.sq");
+		}
+	%>
+	
 	<fieldset>
 		<legend>글쓰기</legend>
 		<form action="./QnAWriteAction.sq" method="post">
