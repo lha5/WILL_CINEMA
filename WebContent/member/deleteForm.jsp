@@ -4,32 +4,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>deleteform.jsp</title>
+<title>WILL CINEMA - 회원 계정 삭제</title>
+<script type="text/javascript">
+	/* const del = document.querySelector('input[type=submit]');
+	var cnfrm = confirm('정말 회원 탈퇴를 진행하시겠습니까? 한번 삭제된 계정은 복구할 수 없습니다.');
+	
+	del.addEventListener('click', function(e) {
+		if (cnfrm) {
+			document.getElementById('fm').submit();
+		} else {
+			return false;
+		}
+	}); */
+</script>
 </head>
 <body>
-<h1>회원탈퇴하는곳</h1>
 
-<%
-String id = (String)session.getAttribute("id");
+	<%
+	String id = (String) session.getAttribute("id");
 
-if(id ==null){
-	response.sendRedirect("./MemberLogin.me");
-}
+	if (id == null) {
+		response.sendRedirect("./MemberLogin.me");
+	}
+	%>
 
-
-
-%>
-<fieldset>
-     <legend> 회원 탈퇴 </legend>
-     <form action="./MemberDeleteAction.me" method="post">
-       	아이디 : <input type="text" name="id" value="<%=id %>" readonly><br>
-               비밀번호 : <input type="password" name="pass" ><br>               
-        <input type="submit" value="회원 탈퇴">
-     </form>  
-  </fieldset>
-  
-
-
+	<fieldset>
+		<legend> 회원 탈퇴 </legend>
+		<form action="./MemberDeleteAction.me" id="fm" method="post">
+			아이디 : <input type="text" name="id" value="<%=id%>" readonly>
+			<br>
+			비밀번호 : <input type="password" name="pass">
+			<br>
+			<input type="submit" value="회원 탈퇴">
+		</form>
+	</fieldset>
 
 </body>
 </html>

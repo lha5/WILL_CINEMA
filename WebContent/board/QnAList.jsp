@@ -6,12 +6,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/qnalist.css">
+
 </head>
 <body>
 	<%
+		String id = (String) session.getAttribute("id");
+		
 		int count = (Integer) request.getAttribute("count");
-		List<QnADTO> boardList = (List<QnADTO>)request.getAttribute("boardList");
+		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
 		String pageNum = (String)request.getAttribute("pageNum");
 	
 		int pageCount = (Integer) request.getAttribute("pageCount");
@@ -21,6 +27,7 @@
 		String id = (String)session.getAttribute("id");
 	%>
 	
+
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
    
    <table border="1">
@@ -52,9 +59,28 @@
     <%}
     }%>
      
-   </table>
-
+		<%
+     	for (int i=0;i<boardList.size();i++) {
+    		QnADTO qadto = boardList.get(i);    	   
+		%>
+			<tr>
+				<td><%=qadto.getNum() %></td>
+				<td><%=qadto.getCategory()%></td>
+				<td>
+					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
+					<%=qadto.getSubject() %>
+					</a>
+				</td>
+				<td><%=qadto.getName() %></td>
+				<td><%=qadto.getDate() %></td>
+				<td><%=qadto.getReadcount() %></td>
+			</tr>
+		<%} %>
+	</table>
+	
+	<div id="paging">
 	<%
+		// 페이징 처리
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -79,9 +105,10 @@
 				}
 		}
 	%>
-	
+	</div>
 	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
 	
+
 	<form action="./QnASearchAction.sq" method="post">
 		<input type="text" name="search">
 		<button type="submit">검색</button>

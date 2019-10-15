@@ -6,75 +6,97 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 회원 목록</title>
 </head>
 <body>
-<h1>멤버 정보 보기 CSS 해야 합니다 </h1>
+
 <%
 
-String id = (String)session.getAttribute("id");  
+String id = (String) session.getAttribute("id");  
 
-if(id == null){
+if (id == null) {
 	response.sendRedirect("./MemberLogin.me");
-	
 }
-MemberDTO mdto=(MemberDTO)request.getAttribute("mdto"); 
+
+MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 
 %>
 
-<table border="1">
-<tr>
-<td>아이디</td>
-<td>패스워드</td>
-<td>이름</td>
-<td>생일</td>
-<td>모바일</td>
-</tr>
+<%-- <table border="1">
+	<tr>
+		<td>아이디</td>
+		<td><%=mdto.getId() %></td>
+		<td>이름</td>
+		<td><%=mdto.getName() %></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><%=pw%></td>
+		<td>생년월일</td>
+		<td><%=mdto.getBirthday() %></td>
+	</tr>
+	<tr>
+		<td>전화번호</td>
+		<td><%=mdto.getMobile() %></td>
+		<td>이메일</td>
+		<td><%=mdto.getEmail() %></td>
+	</tr>
+	<tr>
+		<td>주소</td><!-- null값 치환하기 -->
+		<td colspan="3"><%=mdto.getZipcode() %> <%=mdto.getAddr() %> <%=mdto.getDetailaddr() %></td>
+	</tr>
+	<tr>
+		<td>회원 등급</td>
+		<td><%=mdto.getLevel() %></td>
+		<td>포인트</td>
+		<td><%=mdto.getPoint() %></td>
+	</tr>
+	<tr>
+		<td>선호 장르</td>
+		<td><%=mdto.getPreference() %></td>
+		<td>가입 날짜</td>
+		<td><%=mdto.getReg_date() %></td>
+	</tr>
+</table> --%>
 
+<br>
+	<br>
+	<a href="./MemberInfo.me">회원 정보 조회</a>
+	<br>
+	<br>
+	<a href="./MemberUpdate.me">회원 정보 수정</a>
+	<!-- 정보 조회와 수정 합치기 의논 -->
+	<br>
+	<br>
+	<a href="./MemberDelete.me">회원 계정 삭제</a>
+	<br>
+	<br>
+	<a href="./QnAList.sq">1:1 문의하기</a>
+	<br>
+	<br>
+	<hr>
 
-<tr>
-<td><%=mdto.getId() %></td>
-<td><%=mdto.getPass() %></td>
-<td><%=mdto.getName() %></td>
-<td><%=mdto.getBirthday() %></td>
-<td><%=mdto.getMobile() %></td>
-</tr>
+	<!-- 관리자전용 -->
 
-<tr>
-<td>이메일</td>
-<td>우편번호</td>
-<td>주소</td>
-<td>상세주소</td>
-<td>포인트</td>
-</tr>
-
-<tr>
-<td><%=mdto.getEmail() %></td>
-<td><%=mdto.getZipcode() %></td>
-<td><%=mdto.getAddr() %></td>
-<td><%=mdto.getDetailaddr() %></td>
-<td><%=mdto.getPoint() %></td>
-</tr>
-
-<tr>
-<td>회원등급</td>
-<td>수신</td>
-<td>선호장르</td>
-<td colspan="2">회원가입날짜</td>
-
-</tr>
-
-<tr>
-<td><%=mdto.getLevel() %></td>
-<td><%=mdto.getReceive() %></td>
-<td><%=mdto.getPreference() %></td>
-<td colspan="2"><%=mdto.getReg_date() %></td>
-</tr>
-
-</table>
-
-
-<h2><a href="./Main.me">메인으로 이동</a></h2>
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+			%>
+			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">이벤트 등록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">예매 목록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">매점 주문 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">매점 관리(관리자 전용)</a>
+			<br><br>
+			<a href="#">영화관 지점 관리(관리자 전용)</a>
+			<%	
+		}
+	}
+	%>
 
 
 

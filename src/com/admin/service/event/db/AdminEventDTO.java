@@ -45,4 +45,10 @@ public class AdminEventDTO {
 	public void setE_date(Date e_date) {
 		this.e_date = e_date;
 	}
+	@Override
+	public String toString() {
+		return "["+num+","+category+","+subject+","+image+","+f_date+","+e_date+"]";
+	}
+	
+	
 }
