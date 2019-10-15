@@ -20,6 +20,7 @@ public class NoticeDeleteAction implements Action{
 		
 			// 로그인 정보가 있을경우에만 삭제 처리
 			// 로그인 정보가 없을경우 (로그인 페이지로 이동)
+
 			HttpSession session = request.getSession();
 		
 			String id = (String) session.getAttribute("id");
@@ -40,6 +41,7 @@ public class NoticeDeleteAction implements Action{
 			// pass,num저장
 			String pass = request.getParameter("pass");
 			int num = Integer.parseInt(request.getParameter("num"));
+
 			
 			System.out.println("pass : "+pass + ", num :" + num);
 			
@@ -76,10 +78,12 @@ public class NoticeDeleteAction implements Action{
 			}
 			
 			// 1 (삭제 성공)
+
 			// 자바 스크립트 사용 페이지 이동 (./NoticeList.an)
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println(" alert('게시판 글 삭제 성공');");
+
 			out.println(" location.href='./NoticeList.an?pageNum="+pageNum+"'");
 			out.println("</script>");
 			out.close();
@@ -88,9 +92,3 @@ public class NoticeDeleteAction implements Action{
 		}
 
 	}
-
-
-
-
-
-

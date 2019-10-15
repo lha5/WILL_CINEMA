@@ -246,7 +246,6 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	// getBoard(num)
 					
 					
-					
 	// updateBoard(andto)
 	@Override
 	public int updateBoard(AdminNoticeDTO andto){
@@ -294,7 +293,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return check;
 	}
 	// updateBoard(andto)
-					
+
 					
 					
 	// deleteNotice(num,pass)
@@ -306,7 +305,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 			con = getCon();
 							
 			sql = "select pass from notice where num=?";
-								
+
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);
@@ -324,7 +323,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 					pstmt.setInt(1, num);
 
 					check = pstmt.executeUpdate();
-									
+						
 					// check = 1;
 				} else {
 					check = 0;
@@ -342,5 +341,4 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return check;		
 	}
 	// deleteNotice(num,pass)
-					
 }
