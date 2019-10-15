@@ -57,7 +57,7 @@
 	           onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
 	    >
 	    <input type="button" value="삭제하기"
-	           onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
+	           onclick="location.href='./NoticeDeleteAction.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
 	    >
 	    <input type="button" value="목록보기" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
 	    </td>	  

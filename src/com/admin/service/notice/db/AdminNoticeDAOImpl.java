@@ -228,7 +228,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 					//getBoardList(startRow,pageSize)
 					
 					// updateReadcount(num)
-					public void updateReaadcount(int num){
+					public void updateReadcount(int num){
 						
 						try {
 							con = getCon();
@@ -272,9 +272,9 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 								andto.setCategory(rs.getString("category"));
 								andto.setContent(rs.getString("content"));
 								andto.setDate(rs.getDate("date"));
-								andto.setImage(rs.getString("iamge"));
+								andto.setImage(rs.getString("image"));
 								andto.setName(rs.getString("name"));
-								andto.setNum(rs.getInt("name"));
+								andto.setNum(rs.getInt("num"));
 								andto.setPass(rs.getString("pass"));
 								andto.setSubject(rs.getString("subject"));
 								
@@ -319,8 +319,25 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 							if(rs.next()){
 								if(andto.getPass().equals(rs.getString("pass"))){
 									
+								sql = "update notice set name=?,subject=?,content=? where num=?";
+									
+									pstmt = con.prepareStatement(sql);
+									pstmt.setString(1, andto.getName());
+									pstmt.setString(2, andto.getSubject());
+									pstmt.setString(3, andto.getContent());
+									pstmt.setInt(4, andto.getNum());
+									
+									check = pstmt.executeUpdate();
+										// check = -1;
+								}else{
+									check = 0;
 								}
+							}else{
+								check = -1;
 							}
+							
+							System.out.println("글 수정 동작 완료 : "+check);	
+							
 							
 						} catch (Exception e) {
 							
@@ -328,13 +345,57 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						}finally{
 							closeDB();
 						}
-						
+						System.out.println("글 수정 동작 완료 : "+check);	
 						return check;
 					}
+					// updateBoard(andto)
 					
 					
-					
-					
+					// deleteNotice(num,pass)
+					public int deleteNotice(int num, String pass){
+							int check = -1;
+							try {
+								
+								con = getCon();
+							
+								sql = "select pass from notice where num=?";
+								
+								pstmt = con.prepareStatement(sql);
+								pstmt.setInt(1, num);
+								
+								rs = pstmt.executeQuery();
+								
+								if(rs.next()){
+									
+									if(pass.equals(rs.getString("pass"))){
+										sql ="delete from notice where num=?";
+										System.out.println("삭제2");
+										pstmt = con.prepareStatement(sql);
+										pstmt.setInt(1, num);
+
+										check = pstmt.executeUpdate();
+									
+										// check = 1;
+									
+									}else{
+										check = 0;
+									}
+								}else{
+									System.out.println("삭제3");
+									check = -1;
+								}
+								
+							} catch (Exception e) {
+								
+								e.printStackTrace();
+							}finally{
+								closeDB();
+							}
+							System.out.println("삭제 체크값"+check);
+							return check;		
 					
 					}
+						
 		
+
+}
