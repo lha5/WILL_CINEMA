@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 		<div id="logo">
-			(logo image)
+			<img alt="logo" src="../img/logo.png" width="230">
 		</div>
 		
 		<hr>

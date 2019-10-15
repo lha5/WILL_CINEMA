@@ -25,7 +25,7 @@
 				<td>상영관 수</td>
 				<td><input type="text" name="room"></td>
 				<td>사진</td>
-				<td><input type="text" name="image"></td>
+				<td><input type="file" name="image"></td>
 			</tr>
 			<tr>
 				<td colspan="4">

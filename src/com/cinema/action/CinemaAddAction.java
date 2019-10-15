@@ -42,11 +42,7 @@ public class CinemaAddAction implements Action {
 		cdto.setAddr(multi.getParameter("addr"));
 		cdto.setTel(multi.getParameter("tel"));
 		cdto.setRoom(multi.getParameter("room"));
-		String image = 
-				multi.getFilesystemName("file1") +
-				"," + multi.getFilesystemName("file2") +
-				"," + multi.getFilesystemName("file3");
-		cdto.setImage(image);
+		cdto.setImage(multi.getFilesystemName("image"));
 
 		// CineDAO 객체 생성
 		// insertCinema(DTO)
