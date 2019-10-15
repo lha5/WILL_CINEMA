@@ -20,6 +20,13 @@ public class NoticeListAction implements Action{
 		
 		System.out.println("AdminNoticeListAction_execute()---------------------");
 		
+		
+		//한글 처리 
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		
+		
 		// DB 처리객체 생성
 		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
 			

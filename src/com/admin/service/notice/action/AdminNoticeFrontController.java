@@ -44,7 +44,7 @@ public class AdminNoticeFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/NoticeUpdate.an")){ //공지 수정 페이지
 			//NoticeUpdate() -> noticeUpdateForm -> NoticeUpdateAction()
-			//action = new NoticeUpdate();
+			action = new NoticeUpdate();
 			//action = new NoticeUpdate();
 			try {
 				forward = action.execute(request, response);
@@ -53,22 +53,19 @@ public class AdminNoticeFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/NoticeUpdateAction.an")){ //공지 수정 페이지
 			//action = new NoticeUpdateAction();	
-			//action = new NoticeUpdateAction();
+			action = new NoticeUpdateAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeDelete.an")){ //공지 삭제 페이지
-			//action = new NoticeDelete();
-			//action = new NoticeDelete();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			forward = new ActionForward();
+			
+			forward.setPath("./notice/NoticeDelete.jsp");
+			forward.setRedirect(false);
 		}else if(command.equals("/NoticeDeleteAction.an")){ //공지 삭제 페이지
-			//action = new NoticeDeleteAction();
+			action = new NoticeDeleteAction();
 			//action = new NoticeDeleteAction();
 			try {
 				forward = action.execute(request, response);

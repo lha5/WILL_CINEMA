@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <h1>WebContent/notice/noticeUpdateForm</h1>
+	 <h1>WebContent/notice/NoticeUpdateForm</h1>
 <%
 AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
 String pageNum = (String) request.getAttribute("pageNum");
@@ -17,7 +17,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 <fieldset>
 	<legend>게시판 글 수정하기</legend>
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" method="post">
-	      <input type="hidden" name="num" value="<%= andto.getNum()%>">
+	      <input type="hidden" name="num" value="<%=andto.getNum()%>"> 
 		     글쓴이 : <input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
 		     비밀번호 : <input type="password" name="pass"><br>
 		     제목 : <input type="text" name="subject" value="<%=andto.getSubject()%>"><br>
@@ -25,7 +25,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 		     <textarea name="content" rows="10" cols="20"><%=andto.getContent() %></textarea><br>
 		   <input type="submit" value="글수정하기">
 	   </form>
-</fieldset>
+</fieldset> 
 
 
 
