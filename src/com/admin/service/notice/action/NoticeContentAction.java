@@ -17,21 +17,22 @@ public class  NoticeContentAction implements Action {
 		System.out.println("BoardContentAction_execute()---------------------------");
 	
 		// DB에서 글번호 해당하는 글의 정보를 보여주는 페이지
-		
+
 		// 전달 정보를 저장(num,numpage)
-		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
 		// AdminNoticeDAO 객체 생성
 		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
 	
-		// readcount 1증가 => updateReadcount(num);
-		andao.updateReaadcount(num);
+		/*// readcount 1증가 => updateReadcount(num);
+		andao.updateReaadcount(num);*/
 		
 		// 글번호에 해당하는 글정보를 가져오기
 		AdminNoticeDTO andto = andao.getBoard(num);
-	
+		System.out.println(andto.getNum());
+		System.out.println(andto.getName());
+		System.out.println(andto.getSubject());
 		// 정보 저장 (글정보,pageNum)
 		request.setAttribute("andto", andto);
 		request.setAttribute("pageNum", pageNum);
