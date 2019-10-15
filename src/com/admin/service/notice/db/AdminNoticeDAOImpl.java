@@ -363,7 +363,8 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 								pstmt = con.prepareStatement(sql);
 								pstmt.setInt(1, num);
 								
-								rs = pstmt.executeQuery();
+								rs = pstmt.executeQuery(); 
+								//123
 								
 								if(rs.next()){
 									
