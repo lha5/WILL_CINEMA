@@ -3,6 +3,8 @@ package com.cinema.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -76,9 +78,10 @@ public class CineDAOImpl implements CineDAO{
 			pstmt.setInt(1, location_num);
 			pstmt.setString(2, cdto.getRegion());
 			pstmt.setString(3, cdto.getName());
-			pstmt.setString(4, cdto.getRoom());
-			pstmt.setString(5, cdto.getTel());
-			pstmt.setString(6, cdto.getImage());
+			pstmt.setString(4, cdto.getAddr());
+			pstmt.setString(5, cdto.getRoom());
+			pstmt.setString(6, cdto.getTel());
+			pstmt.setString(7, cdto.getImage());
 			
 			pstmt.executeUpdate();
 			
@@ -89,5 +92,43 @@ public class CineDAOImpl implements CineDAO{
 		} finally {
 			closeDB();
 		}
+	}
+
+	
+	
+	// 등록된 지점 목록 보여주기
+	@Override
+	public List<CineDTO> getCineList() {
+		List<CineDTO> cineList = new ArrayList<CineDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT * FROM cinema";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				CineDTO cdto = new CineDTO();
+				
+				cdto.setLocation_num(rs.getInt("location_num"));
+				cdto.setRegion(rs.getString("region"));
+				cdto.setName(rs.getString("name"));
+				cdto.setAddr(rs.getString("addr"));
+				cdto.setTel(rs.getString("tel"));
+				cdto.setRoom(rs.getString("room"));
+				cdto.setImage(rs.getString("image"));
+				
+				cineList.add(cdto);
+			}
+			
+			System.out.println("cineList 목록 저장 완료------------------------------");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cineList;
 	}
 }

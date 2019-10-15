@@ -1,11 +1,13 @@
 package com.cinema.db;
 
+import java.util.List;
+
 public interface CineDAO {
 	// 영화관 지점 등록
 	public void insertCinema(CineDTO cdto);
 	
 	// 영화관 보여주기
-	
+	public List<CineDTO> getCineList();
 	
 	// 등록된 영화관 지점 수정
 	
