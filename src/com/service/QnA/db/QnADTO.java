@@ -15,7 +15,15 @@ public class QnADTO {
 	private int re_lev;
 	private int re_seq;
 	private String image;
+	private String id;
 	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getNum() {
 		return num;
 	}
