@@ -33,7 +33,7 @@ public class  NoticeContentAction implements Action {
 		AdminNoticeDTO andto = andao.getBoard(num);
 	
 		// 정보 저장 (글정보,pageNum)
-		request.setAttribute("bdto", andto);
+		request.setAttribute("andto", andto);
 		request.setAttribute("pageNum", pageNum);
 		
 		// 페이지 이동

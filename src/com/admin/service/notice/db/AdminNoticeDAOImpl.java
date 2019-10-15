@@ -32,7 +32,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 		con=ds.getConnection();
 		
 		System.out.println("DB 접속 완료 : " + con);
-		
+		 
 		return con;
 	}
 	
@@ -119,7 +119,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						System.out.println("num = "+num);
 						
 						sql = "insert into "
-							  + "board(num,name,pass,subject,content,date,category,image) "
+							  + "notice(num,name,pass,subject,content,date,category,image) "
 							  + "values(?,?,?,?,?,now(),?,?)";
 							  	
 						pstmt = con.prepareStatement(sql);
@@ -186,10 +186,10 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 						
-							sql="select * from notice order by re_ref desc,re_seq asc limit ?,?";
+							sql="select * from notice";
 							pstmt = con.prepareStatement(sql);
-							pstmt.setInt(1, startRow-1);
-							pstmt.setInt(2, pageSize);
+							//pstmt.setInt(1, startRow-1);
+							//pstmt.setInt(2, pageSize);
 						
 							rs = pstmt.executeQuery();
 							
@@ -202,6 +202,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 								andto.setSubject(rs.getString("subject"));
 								andto.setContent(rs.getString("content"));
 								andto.setCategory(rs.getString("category"));
+								andto.setDate(rs.getDate("date"));
 								andto.setImage(rs.getString("image"));
 							
 							
@@ -232,7 +233,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO{
 						try {
 							con = getCon();
 						
-							sql = "update board set readcount=readcount+1 where num=?";
+							sql = "update notice set readcount=readcount+1 where num=?";
 							
 							pstmt = con.prepareStatement(sql);
 							

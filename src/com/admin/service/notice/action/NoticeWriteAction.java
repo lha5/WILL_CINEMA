@@ -37,7 +37,7 @@ public class NoticeWriteAction implements Action {
 		// ./NoticeWrite.an
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./NoticeWrite.an");
+		forward.setPath("./NoticeList.an");
 		forward.setRedirect(true);
 		return forward;
 	
