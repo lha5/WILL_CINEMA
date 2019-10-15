@@ -37,8 +37,7 @@
 	int pageBlock= (Integer)request.getAttribute("pageBlock");
 	int startPage= (Integer)request.getAttribute("startPage");
 	int endPage= (Integer)request.getAttribute("endPage");
-	
-	System.out.println("jsp 리스트 개수" + eventList.size()+" 카테고리 : "+item);
+
 %>
 
 <h1>상품 리스트</h1>

@@ -5,6 +5,8 @@ import java.util.List;
 public interface AdminEventDAO {
 	public void eventInsert(AdminEventDTO aedto);
 	
+	public List<AdminEventDTO> getAllList(int startCnt, int viewCnt);
+	
 	public List<AdminEventDTO> getEventList();
 	public List<AdminEventDTO> getEventList(String item);
 	public List<AdminEventDTO> getEventList(int startCnt, int viewCnt);

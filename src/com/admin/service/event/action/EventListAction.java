@@ -58,7 +58,7 @@ public class EventListAction implements Action {
 		//시작행 구하는 작업
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage -1)*pageSize +1;//->1 4 7
-		
+		int viewCnt=5;
 		//끝행 구하는 작업
 		int endRow = currentPage*pageSize;//=>3 6 9
 		/********************************************/
@@ -71,19 +71,19 @@ public class EventListAction implements Action {
 			//DB에서 가져온 정보 저장
 			if(keyward=="" && item==""){
 				
-				eventList=aedao.getEventList(startRow-1 ,endRow);
+				eventList=aedao.getAllList(startRow-1 ,viewCnt);
 				System.out.println("검색 없이 얻어온 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
 					+", 끝 : " + endRow);
 			}else if(keyward!=""&&item==""){
 				cnt = aedao.getEventCount(keyward);
-				eventList=aedao.getSearch(keyward,startRow-1 ,endRow);
+				eventList=aedao.getSearch(keyward,startRow-1 ,viewCnt);
 				System.out.println("카테고리X 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
 						+", 끝 : " + endRow);
 			}else{
 				cnt = aedao.getEventCount(item,keyward);
 				System.out.println("검색 시 리스트 개수 "+cnt);
 				
-				eventList=aedao.getEventList(item,keyward,startRow-1 ,endRow);
+				eventList=aedao.getEventList(item,keyward,startRow-1 ,viewCnt);
 				System.out.println("검색해서 얻어온 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
 					+", 끝 : " + endRow);
 			}

@@ -49,6 +49,40 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 			e.printStackTrace();
 		}
 	}
+	/*-------------------- 날짜 관계없이 모든 이벤트 리스트(관리자) --------------------*/
+	@Override
+	public List<AdminEventDTO> getAllList(int startCnt, int viewCnt) {
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
+		try {
+			con=getCon();
+			//startCnt:시작 위치, viewCnt:가져올 리스트 수
+			String sql = "select * from event"
+					+ " order by f_date desc limit ?,?";
+			
+			pstmt=con.prepareStatement(sql);
+
+			pstmt.setInt(1, startCnt);
+			pstmt.setInt(2, viewCnt);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return arr;
+	}
 
 	/*-------------------- 이벤트 작성(관리자) --------------------*/
 	public void eventInsert(AdminEventDTO aedto) {
