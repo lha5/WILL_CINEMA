@@ -17,9 +17,8 @@ public class  NoticeContentAction implements Action {
 		System.out.println("BoardContentAction_execute()---------------------------");
 	
 		// DB에서 글번호 해당하는 글의 정보를 보여주는 페이지
-		
+
 		// 전달 정보를 저장(num,numpage)
-		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		

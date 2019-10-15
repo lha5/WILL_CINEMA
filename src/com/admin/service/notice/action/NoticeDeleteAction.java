@@ -20,19 +20,18 @@ public class NoticeDeleteAction implements Action{
 		
 			// 로그인 정보가 있을경우에만 삭제 처리
 			// 로그인 정보가 없을경우 (로그인 페이지로 이동)
-		
+
 			HttpSession session = request.getSession();
 		
 			String id = (String) session.getAttribute("id");
 		
 			ActionForward forward = new ActionForward();
-			
-			
-			/*if(id == null){
-				forward.setPath("./NoticeList.an");
+
+			if(id == null){
+				forward.setPath("./Main.me");
 				forward.setRedirect(true);	
 				return forward;
-			}*/
+			}
 
 			
 			// pageNum 저장(get)
@@ -42,10 +41,13 @@ public class NoticeDeleteAction implements Action{
 			// pass,num저장
 			String pass = request.getParameter("pass");
 			int num = Integer.parseInt(request.getParameter("num"));
-			System.out.println("pass"+pass);
-			System.out.println("num"+num);
+
+			
+			System.out.println("pass : "+pass + ", num :" + num);
+			
 			// AdminNoticeDAOImpl 객체를 저장
-			AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl(); 
+			AdminNoticeDAO andao = new AdminNoticeDAOImpl(); 
+			
 			// deleteNotice(num,pass)
 			int check = andao.deleteNotice(num,pass);
 			
@@ -76,10 +78,12 @@ public class NoticeDeleteAction implements Action{
 			}
 			
 			// 1 (삭제 성공)
-			// 자바 스크립트 사용 페이지 이동 (BoardList.bo)
+
+			// 자바 스크립트 사용 페이지 이동 (./NoticeList.an)
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			//out.println(" alert('게시판 글 삭제 성공');");
+			out.println(" alert('게시판 글 삭제 성공');");
+
 			out.println(" location.href='./NoticeList.an?pageNum="+pageNum+"'");
 			out.println("</script>");
 			out.close();
@@ -88,9 +92,3 @@ public class NoticeDeleteAction implements Action{
 		}
 
 	}
-
-
-
-
-
-
