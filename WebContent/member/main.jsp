@@ -65,7 +65,7 @@
 				<li><a href="#">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
-				<li><a href="#">내 정보 관리</a></li>
+				<li><a href="./MemberInfo.me">내 정보 관리</a></li>
 			</ul>
 		</div>
 	</section>

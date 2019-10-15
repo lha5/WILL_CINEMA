@@ -22,16 +22,16 @@ MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 
 %>
 
-<%-- <table border="1">
+< <table border="1">
 	<tr>
 		<td>아이디</td>
 		<td><%=mdto.getId() %></td>
-		<td>이름</td>
+		<td>성명</td>
 		<td><%=mdto.getName() %></td>
 	</tr>
 	<tr>
 		<td>비밀번호</td>
-		<td><%=pw%></td>
+		<td></td>
 		<td>생년월일</td>
 		<td><%=mdto.getBirthday() %></td>
 	</tr>
@@ -57,12 +57,10 @@ MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 		<td>가입 날짜</td>
 		<td><%=mdto.getReg_date() %></td>
 	</tr>
-</table> --%>
+</table> 
 
 <br>
-	<br>
-	<a href="./MemberInfo.me">회원 정보 조회</a>
-	<br>
+	
 	<br>
 	<a href="./MemberUpdate.me">회원 정보 수정</a>
 	<!-- 정보 조회와 수정 합치기 의논 -->

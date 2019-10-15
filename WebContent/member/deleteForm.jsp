@@ -7,9 +7,14 @@
 <title>WILL CINEMA - 회원 계정 삭제</title>
 <script type="text/javascript">
 	function check() {
-		var checking = confirm('정말 계정을 삭제하시겠습니까? 탈퇴한 회원의 정보는 복원되지 않습니다.');
+		
+	if(confirm('정말 계정을 삭제하시겠습니까? 탈퇴한 회원의 정보는 복원되지 않습니다.')){
+
+	}else{
+		 history.back();
+	 }
 	}
-</script>
+	</script>
 </head>
 <body>
 <h1>회원탈퇴하는곳</h1>

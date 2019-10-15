@@ -39,7 +39,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li>고객센터</li>
+				<li><a href="./FAQContent.af">고객센터</a> </li>
 				<li>ENGLISH</li>
 			</ul>
 		</div>
