@@ -148,8 +148,45 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	}
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 	
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	@Override
+	public List<AdminEventDTO> getEventList(int startCnt, int viewCnt){
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
+		try {
+			con=getCon();
+			//startCnt:시작 위치, viewCnt:가져올 리스트 수
+			String sql = "select * from event where"
+					+ " order by f_date desc limit ?,?";
+			
+			pstmt=con.prepareStatement(sql);
+
+			pstmt.setInt(1, startCnt);
+			pstmt.setInt(2, viewCnt);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return arr;
+	}
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	
 	
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	@Override
 	public List<AdminEventDTO> getEventList(String item, int startCnt, int viewCnt){
 		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
 		try {
@@ -184,7 +221,47 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 		return arr;
 	}
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+	
+	/*-------------------- 이벤트 리스트 가져오기[검색,카테고리,시작행,끝행](사용자)(사용자) --------------------*/
+	@Override
+	public List<AdminEventDTO> getEventList(String item,String keyward, 
+			int startCnt, int viewCnt){
+		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
+		try {
+			con=getCon();
+			//startCnt:시작 위치, viewCnt:가져올 리스트 수
+			String sql = "select * from event where category=? and"
+					+ " subject like ? order by f_date desc limit ?,?";
+			
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, item);
+			pstmt.setString(2, keyward);
+			pstmt.setInt(3, startCnt);
+			pstmt.setInt(4, viewCnt);
 
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return arr;
+	}
+	/*-------------------- 이벤트 리스트 가져오기[검색,카테고리,시작행,끝행](사용자) --------------------*/
+	
+	
 	/*-------------------- 검색 내용 가져오기(사용자) --------------------*/
 	@Override
 	public List<AdminEventDTO> getSearch(String item,String keyward) {
@@ -192,7 +269,7 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 		try {
 			con = getCon();
 			sql = "select * from event where category=? and "
-					+ "subject like ?  order by f_date desc";
+					+ "subject like ? order by f_date desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, item);
 			pstmt.setString(2, "%"+keyward+"%");
@@ -294,4 +371,56 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 		return chk;
 	}
 	/*-------------------- 이벤트 삭제(관리자) --------------------*/
+
+	/*-------------------- 이벤트 개수(검색어) --------------------*/
+	@Override
+	public int getEventCount(String item, String keyward) {
+		int cnt=0;
+		try {
+			con=getCon();
+			sql = "select count(*) from event where category=? and subject like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, item);
+			pstmt.setString(2, "%"+keyward+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				cnt=rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return cnt;
+	}
+	/*-------------------- 이벤트 개수(검색어) --------------------*/
+	
+	/*-------------------- 이벤트 개수 --------------------*/
+	@Override
+	public int getEventCount() {
+		int cnt=0;
+		try {
+			con=getCon();
+			sql = "select count(*) from event";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				cnt=rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return cnt;
+	}
+	/*-------------------- 이벤트 개수 --------------------*/
 }
