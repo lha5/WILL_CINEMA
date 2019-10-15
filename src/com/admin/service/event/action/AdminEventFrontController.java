@@ -90,13 +90,6 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventConSearch.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
-			action = new EventConSearchAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}else if(command.equals("/EventDetail.ae")){ //Event 상세 내용 페이지
 			action = new EventDetailAction();
 			try {
@@ -106,6 +99,13 @@ public class AdminEventFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/EventMore.ae")){ //Event 내용 더보기
 			action = new EventMoreAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/PastMore.ae")){ //Event 내용 더보기
+			action = new PastMoreAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

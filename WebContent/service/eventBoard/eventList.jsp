@@ -61,12 +61,15 @@
 	<tr><td>번호</td><td>카테고리</td><td>제목</td>
 	<td>이미지</td><td>이벤트 기간</td><td>수정/삭제</td></tr>
 <%
+int currentPage = Integer.parseInt(pageNum);
+int startRow = (currentPage -1)*5 +1;//->1 4 7
+
 if(eventList.size()!=0){
 	for(int i=0; i<eventList.size(); i++){
 		AdminEventDTO aedto=eventList.get(i);
 		%>
 		<tr>
-		<td><%=i+1 %></td>
+		<td><%=i+startRow %></td>
 		<td><%=aedto.getCategory() %></td>
 		<td><%=aedto.getSubject() %></td>
 		<td>
@@ -86,7 +89,7 @@ if(eventList.size()!=0){
 		if(startPage>pageBlock){
 			//if(keyward!=null){
 			%>
-			<a href="./EventList.ae?item=<%=item %>&pageNum=<%=startPage-pageBlock%>
+			<a href="./EventList.ae?category=<%=item %>&pageNum=<%=startPage-pageBlock%>
 			&keyward=<%=keyward %>">[이전]</a>
 			<%
 			//}
@@ -94,7 +97,7 @@ if(eventList.size()!=0){
 		//1...3 4...6
 		for(int i=startPage; i<=endPage; i++){
 			%>
-			<a href="./EventList.ae?item=<%=item %>&pageNum=<%=i%>
+			<a href="./EventList.ae?category=<%=item %>&pageNum=<%=i%>
 			&keyward=<%=keyward %>">[<%=i%>]</a>
 			
 			<%
@@ -102,7 +105,7 @@ if(eventList.size()!=0){
 		//다음
 		if(endPage<pageCount){
 			%>
-			<a href="./EventList.ae?&item=<%=item %>&pageNum=<%=startPage+pageBlock%>
+			<a href="./EventList.ae?&category=<%=item %>&pageNum=<%=startPage+pageBlock%>
 			&keyward=<%=keyward %>"">[다음]</a>
 			<%
 		}

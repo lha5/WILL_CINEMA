@@ -14,13 +14,11 @@ import com.admin.service.event.db.AdminEventDAO;
 import com.admin.service.event.db.AdminEventDAOImpl;
 import com.admin.service.event.db.AdminEventDTO;
 
-import jdk.nashorn.internal.parser.JSONParser;
-
-public class EventMoreAction implements Action {
+public class PastMoreAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("/*--------------- EventMoreAction()[이벤트 리스트 더보기(사용자)]-------------------------*/");
+		System.out.println("/*--------------- PastMoreAction()[이벤트 리스트 더보기(사용자)]-------------------------*/");
 		
 		//시작 행
 		int startCnt=Integer.parseInt(request.getParameter("startCnt"));
@@ -30,7 +28,7 @@ public class EventMoreAction implements Action {
 		String item=request.getParameter("item");
 		
 		AdminEventDAO aedao=new AdminEventDAOImpl();
-		List<AdminEventDTO> eventList=aedao.getEventList(item, startCnt, viewCnt);
+		List<AdminEventDTO> eventList=aedao.getPastList(item, startCnt, viewCnt);
 		
 		JSONArray resultList= new JSONArray();
 		
@@ -49,4 +47,5 @@ public class EventMoreAction implements Action {
 		
 		return null;
 	}
+
 }
