@@ -152,6 +152,7 @@
 	<%-- <%@ include file="include/footer.jsp" %> --%>
 	
 	<br>
+	<div id="bttm">
 	<footer>
 		<div id="sub_logo">
 			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
@@ -190,6 +191,7 @@
 			COPYRIGHT© WILL CINEMA ALL RIGHT RESERVED SINCE 2019
 		</div>
 	</footer>
+	</div>
 	</div>
 </body>
 </html>

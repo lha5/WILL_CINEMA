@@ -31,7 +31,7 @@ public class MemberLoginAction implements Action {
 		
 		// 아이디 비번 으로 체크하고 
 		int check = mdao.idCheck(id, pass);
-		System.out.println("로그인 정보 출력" + check);
+		System.out.println("로그인 정보 출력 : " + check);
 		
 		if(check == 0){
 			
@@ -40,7 +40,7 @@ public class MemberLoginAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script> ");
-			out.println("  alert('비밀번호 오류!!'); ");
+			out.println("  alert('아이디 또는 비밀번호가 다릅니다!'); ");
 			out.println("  history.back(); ");
 			out.println("</script>");
 			
@@ -55,7 +55,7 @@ public class MemberLoginAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script> ");
-			out.println("  alert('아이디 없음!!'); ");
+			out.println("  alert('아이디 또는 비밀번호가 다릅니다.'); ");
 			out.println("  history.back(); ");
 			out.println("</script>");
 			
@@ -82,12 +82,6 @@ public class MemberLoginAction implements Action {
 		
 		return forward;
 	
-
-		
-		
-		// 이프문 써서 아이디 체크하기 
-		
-		
 		
 	}
 }
