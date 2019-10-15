@@ -1,5 +1,5 @@
-<%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,7 +34,7 @@
 	
 	li {
 		float: left;
-		border: solid black 1px;
+		/* border: solid black 1px; */
 		width: 228px;
 		height: 229px;
 		list-style: none;
@@ -79,6 +79,31 @@
 	.clear{
 		clear: both;
 	}
+	.last_event {
+    overflow: hidden;
+    margin-bottom: 30px;
+	}
+	.last_event li>a {
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    color: #6f6247;
+    border: 1px solid #efebdb;
+	}
+	
+	.last_event>li {
+    display: inline-block;
+    width: 192px;
+    height:52px;
+    float: left;
+    margin-right: 5px;
+    background-color: #efebdb;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 3px;
+	}
 </style>
 
 <script type="text/javascript">
@@ -88,7 +113,7 @@
 		var startCnt=$('#startCnt').val(listLen).val(); //li개수=ajax에서 가져올 리스트의 시작행
 		var item=$('#item').val();
 		$.ajax({
-			url:"./EventMore.ae",
+			url:"./PastMore.ae",
 			type:"post",
 			data:{startCnt:startCnt,viewCnt:viewCnt, item:item},
 			/* dataType:"JSON", */
@@ -142,19 +167,27 @@
 	 <input type="hidden" id="viewCnt" value="4">
 	 <input type="hidden" id="item" value="<%=item%>">
 	<div class="event_cwrap">
+	<div class="last_wrap">
+		<ul class="last_event">
+			<li><a href="./EventPast.ae?item=movie">영화</a></li>
+			<li><a href="./EventPast.ae?item=preview">시사회/무대인사</a></li>
+			<li><a href="./EventPast.ae?item=nevent">윌시 NOW</a></li>
+			<li><a href="./EventPast.ae?item=collabo">제휴 할인</a></li>
+		</ul>
+	</div>
 	<div>
 		<h2>
 		<%if(item.equals("movie") ){%>
 			영화
 		<%}else if(item.equals("preview") ){%>
 			시사회/무대인사
-		<%}else if(item.equals("nevnet") ){%>
+		<%}else if(item.equals("nevent") ){%>
 			윌시 NOW
 		<%}else if(item.equals("collabo") ){%>
 			제휴할인
 		<%} %>
 		</h2>
-		<form action="./EventContent.ae?item=<%=item %>" method="post">
+		<form action="./EventPast.ae?item=<%=item %>&keyward=<%=keyward%>" method="post">
 		<input type="text" name="keyward" value="<%=keyward%>">
 		<input type="submit" value="검색">
 		</form>

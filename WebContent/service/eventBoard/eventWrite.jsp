@@ -59,13 +59,48 @@ $( function() {
       return date;
     }
   } );
+  
+  function checkValue(){
+	  var form = document.fr;
+	  
+	  if (!form.subject.value) {
+			alert("제목을 입력하세요.");
+			document.fr.subject.focus();
+			return false;
+	  }
+	  
+	  if (!form.from.value) {
+			alert("시작 날짜를 선택하세요.");
+			document.fr.from.focus();
+			return false;
+	  }
+	  
+	  if (!form.to.value) {
+			alert("끝 날짜를 선택하세요.");
+			document.fr.to.focus();
+			return false;
+	  }
+	  
+	  if (!form.img1.value) {
+			alert("메인 이미지를 선택하세요.");
+			document.fr.img1.focus();
+			return false;
+	  }
+	  
+	  if (!form.img2.value) {
+			alert("최소 1개의 본문 이미지를 선택하세요.");
+			document.fr.img2.focus();
+			return false;
+	  }
+  }
+  
 
 </script>
 </head>
 <body>
 <h1>이벤트 작성 페이지</h1>
 <fieldset>
-	<form action="./EventWriteAction.ae" method="post" enctype="multipart/form-data">
+	<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td>카테고리</td> 
