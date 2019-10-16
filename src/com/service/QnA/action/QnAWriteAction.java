@@ -26,6 +26,8 @@ public class QnAWriteAction implements Action {
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/upload");
 		
+		int maxSize = 10 * 1024 * 1024; // 10MB
+		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
@@ -38,24 +40,23 @@ public class QnAWriteAction implements Action {
 		
 		System.out.println("realPath : "+realPath);
 		
-		int maxSize = 10 * 1024 * 1024; // 10MB
-		
 		// QnADTO객체 생성
 		QnADTO qadto = new QnADTO();
 		
-		String name = request.getParameter("name");
-		String pass = request.getParameter("pass");
+		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		
+		String name = multi.getParameter("name");
+		String pass = multi.getParameter("pass");
 		
 		System.out.print("name : "+ name + " pass : "+ pass + " id : "+id);
 		
-		String secreat = request.getParameter("secreat");
-		
-		qadto.setName(request.getParameter("name"));
-		qadto.setPass(request.getParameter("pass"));
-		qadto.setSubject(request.getParameter("subject"));
-		qadto.setCategory(request.getParameter("category"));
-		qadto.setContent(request.getParameter("content"));
-		qadto.setImage(request.getParameter("image"));
+		qadto.setName(multi.getParameter("name"));
+		qadto.setPass(multi.getParameter("pass"));
+		qadto.setSubject(multi.getParameter("subject"));
+		qadto.setCategory(multi.getParameter("category"));
+		qadto.setContent(multi.getParameter("content"));
+		String image = multi.getFilesystemName("image");
+		qadto.setImage(image);
 		qadto.setId(id);
 		
 		// QnaDAOImpl객체 생성

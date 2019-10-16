@@ -20,7 +20,7 @@
 	
 	<fieldset>
 		<legend>글쓰기</legend>
-		<form action="./QnAWriteAction.sq" method="post">
+		<form action="./QnAWriteAction.sq" method="post" enctype="multipart/form-data">
 		
 			<table>
 				<tr>
