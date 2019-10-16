@@ -15,16 +15,19 @@ public class FAQUpdate implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 	int  num= Integer.parseInt(request.getParameter("num"));	
-		
-		
+	String pageNum = request.getParameter("pageNum");
+			
+	System.out.println(num+","+pageNum);
+	
 	 AdminFAQDAO afdao = new AdminFAQDAOImpl();
 	 AdminFAQDTO afdto = afdao.getFAQ(num);
 		
 	 // 정보저장
-	 request.setAttribute("afdao", afdao);
+	 request.setAttribute("afdto", afdto);
+	 request.setAttribute("pageNum", pageNum);
 	 
 	 ActionForward forward = new ActionForward();
-	 forward.setPath("./faq/faqupdateForm.jsp");
+	 forward.setPath("./FAQBoard/faqUpdate.jsp");
 	 forward.setRedirect(false);
 	 return forward;
 	}

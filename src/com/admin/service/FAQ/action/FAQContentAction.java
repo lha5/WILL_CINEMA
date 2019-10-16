@@ -1,7 +1,5 @@
 package com.admin.service.FAQ.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,31 +7,36 @@ import com.action.Action;
 import com.action.ActionForward;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
+import com.admin.service.FAQ.db.AdminFAQDTO;
 
 public class FAQContentAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		
-		// 한글처리
-				request.setCharacterEncoding("UTF-8");
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+		
+		// AdminNoticeDAO 객체 생성
+		AdminFAQDAO afdao = new AdminFAQDAOImpl();
+	
+	
+		afdao.updateReadcount(num);
+		
+		// 글번호에 해당하는 글정보를 가져오기
+		AdminFAQDTO afdto = afdao.getFAQ(num);
+	
+		// 정보 저장 (글정보,pageNum)
+		request.setAttribute("afdto", afdto);
+		request.setAttribute("pageNum", pageNum);
+		
+		// 페이지 이동
+		ActionForward forward = new ActionForward();
+		forward.setPath("./FAQBoard/faqContent.jsp");
+		forward.setRedirect(false);
+		return forward;
+	
+	}
 
-				
-				String item = request.getParameter("item");
-				// DB처리 객체 생성
-				// AdminEventDAO 객체 생성
-				AdminFAQDAO afdao = new AdminFAQDAOImpl();
-
-				// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
-				List FAQList = afdao.getFAQList(item,0,4);
-
-				// 정보 저장
-				request.setAttribute("FAQList", FAQList);
-				
-				ActionForward forward=new ActionForward();
-				forward.setPath("./faq/faqContent.jsp");
-				forward.setRedirect(false);
-				return forward;
-			}
-		}
+}

@@ -16,22 +16,20 @@ public class FAQWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		
+		System.out.println("FAQWrite액션 나옵니다~!!~!");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String id= (String)session.getAttribute("id");
 		
 		ActionForward forward = new ActionForward();
-		if(!id.equals("admin")){
-			forward.setPath("./Main.me");
-			forward.setRedirect(true);
-			return forward;
-		}
+		
 						
 		AdminFAQDTO afdto = new AdminFAQDTO();
 		
+		afdto.setCategory(request.getParameter("category"));
 		afdto.setSubject(request.getParameter("subject"));
 		afdto.setContent(request.getParameter("content"));
+		afdto.setImage(request.getParameter("image"));
 		
 		AdminFAQDAO afdao = new AdminFAQDAOImpl();
 		afdao.insertFAQ(afdto);

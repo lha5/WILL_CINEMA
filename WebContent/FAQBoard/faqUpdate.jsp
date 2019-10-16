@@ -10,17 +10,19 @@
 <body>
 
 <%
-
 AdminFAQDTO afdto =(AdminFAQDTO) request.getAttribute("afdto");
-Integer num = (Integer)request.getAttribute("num");
+String pageNum = (String) request.getAttribute("pageNum");	
 %>
 
 <fieldset>
 <legend>FAQ 글 수정하기</legend>
-<form action="./FAQUpdateAction.af" method="post">
+<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
+ <input type="hidden" name="num" value="<%= afdto.getNum()%>">
+카테고리<input type="text" name ="category" value="<%=afdto.getCategory() %>">
 제목:<input type="text" name = "subject" value="<%=afdto.getSubject()%>"><br>
-내용:<textarea name="content" rows="10" cols="10"></textarea><br>
-<input type="submit" value="글 수정하기">
+내용:<textarea name="content" rows="10" cols="10"><%=afdto.getContent() %></textarea><br>
+
+<input type="submit" value="FAQ 수정하기">
 </form>
 </fieldset>
 
