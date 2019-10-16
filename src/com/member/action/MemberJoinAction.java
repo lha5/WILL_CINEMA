@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.action.Action;
+import com.action.ActionForward;
 import com.member.db.MemberDAO;
 import com.member.db.MemberDAOImpl;
 import com.member.db.MemberDTO;

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.action.Action;
+import com.action.ActionForward;
+
 
 public class MemberFrontController extends HttpServlet{
 

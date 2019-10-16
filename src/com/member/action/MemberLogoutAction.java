@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.action.Action;
+import com.action.ActionForward;
+
 public class MemberLogoutAction implements Action {
 
 	@Override
