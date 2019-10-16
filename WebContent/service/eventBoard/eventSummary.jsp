@@ -7,6 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" href="././css/eventsummary.css">
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </head>
 <body>
 <%
@@ -15,11 +19,90 @@
 	List eventNeventList = (List)request.getAttribute("eventNeventList");
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 %>
+<<<<<<< HEAD
 	<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
 
 	<div>
 		<h2>영화</h2> <a href="./EventContent.ae?item=movie">더보기</a>
+=======
+
+<%@ include file="/include/header.jsp" %>
+
+	<div class="event_cwrap">
+		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
+		<div class="clear">
+			<h2>영화</h2> <a href="./EventContent.ae?item=movie">더보기</a>
+		</div>
+			<ul class="event_list">
+				<%for(int i=0; i<eventMovieList.size(); i++){ //영화 카테고리 리스트
+					AdminEventDTO aedto=(AdminEventDTO)eventMovieList.get(i);
+					if(i>3){break;}//4줄까지만 보여주기
+				%>
+				<li>
+					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+					</a>
+					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+				</il>
+				<%} %>
+			</ul>
+			<br>
+			<div class="clear">
+				<h2>시사회/무대인사</h2> <a href="./EventContent.ae?item=preview">더보기</a>
+			</div>
+			<ul class="event_list">
+				<%for(int i=0; i<eventPreviewList.size(); i++){ //시사회 카테고리 리스트
+					AdminEventDTO aedto=(AdminEventDTO)eventPreviewList.get(i);
+					if(i>3){break;}
+				%>
+				<li>
+					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+					</a>
+					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+				</il>
+				<%} %>
+			</ul>
+			<br>
+			<div class="clear">
+				<h2>윌시 NOW</h2> <a href="./EventContent.ae?item=nevent">더보기</a>
+			</div>
+			<ul class="event_list">
+				<%for(int i=0; i<eventNeventList.size(); i++){ //윌시NOW 카테고리 리스트
+					AdminEventDTO aedto=(AdminEventDTO)eventNeventList.get(i);
+					if(i>3){break;}
+				%>
+				<li>
+					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+					</a>
+					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+				</il>
+				<%} %>
+			</ul>
+			<br>
+			<div class="clear">
+				<h2>제휴 할인</h2> <a href="./EventContent.ae?item=collabo">더보기</a>
+			</div>
+			<ul class="event_list">
+				<%
+				for(int i=0; i<eventCollaboList.size(); i++){ //제휴할인 카테고리 리스트
+					AdminEventDTO aedto=(AdminEventDTO)eventCollaboList.get(i);
+					if(i>3){break;}
+				%>
+				<li>
+					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+					</a>
+					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+				</il>
+				<%} %>
+			</ul>
+		<br class="clear">
+		
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	</div>
+<<<<<<< HEAD
 	<ul>
 		<%for(int i=0; i<eventMovieList.size(); i++){ //영화 카테고리 리스트
 			AdminEventDTO aedto=(AdminEventDTO)eventMovieList.get(i);
@@ -87,5 +170,10 @@
 	<br>
 	<a href="./EventWrite.ae">이벤트 글쓰기</a><br>
 	<a href="./EventList.ae">이벤트 목록(관리자)</a>
+=======
+	
+	
+<%@ include file="/include/footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </body>
 </html>

@@ -17,6 +17,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 <fieldset>
 <legend>FAQ 글 수정하기</legend>
 <form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
+<<<<<<< HEAD
  
 		
 			<table>
@@ -58,6 +59,14 @@ String pageNum = (String) request.getAttribute("pageNum");
 				</tr>
 			</table>
 	
+=======
+ <input type="hidden" name="num" value="<%= afdto.getNum()%>">
+카테고리<input type="text" name ="category" value="<%=afdto.getCategory() %>">
+제목:<input type="text" name = "subject" value="<%=afdto.getSubject()%>"><br>
+내용:<textarea name="content" rows="10" cols="10"><%=afdto.getContent() %></textarea><br>
+
+<input type="submit" value="FAQ 수정하기">
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </form>
 </fieldset>
 

@@ -14,6 +14,7 @@ if(!id.equals("admin")){
 %>
 
 <h1>FAQ 글쓰기 (admin)가능</h1>
+<<<<<<< HEAD
 <fieldset>
 		<legend>FAQ쓰기</legend>
 		<form action="./FAQWriteAction.af" method="post">
@@ -58,6 +59,23 @@ if(!id.equals("admin")){
 			</table>
 		</form>
 	</fieldset>
+=======
+
+<fieldset>
+<legend>FAQ 쓰기</legend>
+<form action="./FAQWriteAction.af" method="post">
+
+카테고리 <input type="text" name ="category"><br>
+제목  <input type="text" name = "subject" > <br>
+내용 <br>
+<textarea name="content" rows="10" cols="10"></textarea>
+이미지 <input type="file" name="image">
+<input type="submit" value="FAQ 쓰기"> 
+</form>
+
+</fieldset>
+
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 
 </body>
 </html>

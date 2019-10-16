@@ -7,8 +7,7 @@
 <title>WILL CINEMA - 로그인</title>
 </head>
 <body>
-	<h1>로그인 페이지</h1>
-	<!--우선 적어두기  -->
+	<%@ include file="../include/header.jsp" %>
 
 	<fieldset>
 		<legend> 로그인 </legend>
@@ -20,5 +19,8 @@
 		</form>
 		<input type="button" value="회원가입" onclick="location.href='./MemberJoin.me'">
 	</fieldset>
+	
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

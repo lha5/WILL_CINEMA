@@ -1,6 +1,9 @@
 @CHARSET "UTF-8";
-
 /* -------- 글씨체 -------- */
+@font-face {
+	font-family: 'BinggreaB';
+	src: url('../font/Binggrae-Bold.otf') format('opentype');
+}
 /* -------- 글씨체 -------- */
 
 
@@ -10,17 +13,30 @@ a {
 	text-decoration: none;
 }
 
+a:VISITED {
+	text-decoration: none;
+}
+a:HOVER {
+	text-decoration: none;
+}
+a:FOCUS { 
+	text-decoration: none; 
+}
+
 ul>li {
 	list-style: none;
 }
 body {
+	/* border: 1px solid red; */
 	padding: 0;
+	margin: 0;
 }
 
 #wrap {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	width: 100%;
 	margin: 0;
+	padding: 0;
 }
 /* -------- 전체에 적용할 속성들 --------*/
 
@@ -29,35 +45,37 @@ body {
 /* ----------- header ----------- */
 header {
 	/* border: 1px dashed black; */
+	width: 1100px;
 	height: 300px;
+	margin: 10px auto;
 }
-
 #social {
-	border: 1px solid orange;
-	width: 350px;
+	/* border: 1px solid orange; */
+	width: 450px;
 	height: 30px;
 	padding: 0;
+	font-size: 13px;
 }
 
 #social>ul {
-	margin: auto 0;
+	margin: auto 0 auto 15px;
 	padding: 2px 5px;
 }
 
 #social>ul>li {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	float: left;
 	width: 100px;
 	text-align: center;
 }
 
 #my {
-	border: 1px solid orange;
-	width: 550px;
+	/* border: 1px solid orange; */
+	width: 480px;
 	height: 30px;
-	margin-top: -32px;
-	margin-right: 0;
+	margin-top: -30px;
 	float: right;
+	font-size: 13px;
 }
 
 #my>ul {
@@ -68,40 +86,114 @@ header {
 }
 
 #my>ul>li {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	float: left;
-	width: 100px;
+	width: 85px;
 	text-align: center;
+}
+
+#my>ul>li:NTH-CHILD(1) {
+	border-right: 2px solid #CCCCCC;
+}
+
+#my>ul>li:NTH-CHILD(2) {
+	border-right: 2px solid #CCCCCC;
+}
+
+#my>ul>li:NTH-CHILD(3) {
+	border-right: 2px solid #CCCCCC;
+}
+
+#my>ul>li:NTH-CHILD(4) {
+	border-right: 2px solid #CCCCCC;
+}
+
+.top_space {
+	/* border: 1px solid green; */
+	height: 70px;
 }
 
 
 #logo {
 	clear: both;
-	border: 1px solid green;
-	width: 200px;
-	height: 40px;
-	margin: 50px auto;
+	/* border: 1px solid green; */
+	width: 300px;
+	margin: 35px auto 15px auto;
 	text-align: center;
+}
+
+#logo>span {
+	/* border: 1px solid purple; */
+	font-size: 2em;
+	font-family: BinggreaB;
 }
 
 nav {
 	/* border: 1px dotted lime; */
-	height: 70px;
+	height: 140px;
 	padding: 10px auto;
 }
 
 nav>ul {
-	border: 1px solid pink;
-	margin: 10px auto;
-	padding: auto 20px auto 50px;
-	width: 700px;
+	/* border: 1px solid pink; */
+	margin: 30px auto;
+	padding: auto;
+	width: 800px;
 	height: 70px;
+	position: relative;
 }
 
 nav>ul>li {
-	border: 1px solid skyblue;
+	/* border: 1px solid skyblue; */
 	float: left;
-	margin: 20px 20px 20px 40px;
-	padding: 3px;
+	margin: 20px 19px 30px 38px;
+	padding: 3px 5px 3px 7px;
+	font-size: 1.2em;
+	letter-spacing: 0.2em;
+}
+
+nav>ul>li>ul {
+	/* border: 1px dashed pink; */
+	margin: 2px auto;
+	padding: 3px 10px 3px 0;
+	position: absolute;
+}
+
+nav>ul>li:NTH-CHILD(3) ul {
+	width: 810px;
+	position: absolute;
+	left: 50px;
+}
+
+nav>ul>li:NTH-CHILD(4) ul {
+	width: 500px;
+}
+
+nav>ul>li>ul {
+	display: none;
+}
+
+nav>ul>li>ul>li {
+	float: left;
+	padding: 5px 9px 5px 5px;
+	margin-right: 15px;
+	font-size: 13px;
+	position: relative;
+}
+
+/* nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(1),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(2),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(3),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(4),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(5),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(6),
+nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(7){
+	border-right: 1px solid #CCCCCC;
+} */
+
+nav>ul>li:HOVER ul {
+	display: block;
+	position: absolute;
+	padding-top: 10px;
 }
 /* ----------- header ----------- */

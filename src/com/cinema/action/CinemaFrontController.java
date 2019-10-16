@@ -24,7 +24,7 @@ public class CinemaFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/CinemaDetail.ci")){ //영화관 메인 페이지(현재 상영작/상영 예정작 탭 이동)
 			//예매 - 상영시간표 - 영화관별 상영시간표와 같음
-			//action = new CinemaDetailAction();
+			action = new CinemaDetailAction();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
@@ -34,8 +34,13 @@ public class CinemaFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("./adminCinema/cinemaAdd.jsp");
 			forward.setRedirect(false);
+<<<<<<< HEAD
 		}else if (command.equals("CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
 			//action = new CinemaAddAction();
+=======
+		}else if (command.equals("/CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
+			action = new CinemaAddAction();
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			
 			try {
 				forward = action.execute(request, response);

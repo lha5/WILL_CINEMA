@@ -8,10 +8,10 @@
 <title>WILL CINEMA - 회원 정보</title>
 </head>
 <body>
-
+	<%@ include file="../include/header.jsp" %>
 	<%
 		// 세션 가져오기 
-		String id = (String) session.getAttribute("id");
+		// String id = (String) session.getAttribute("id");
 
 		// 아이디 없으면 메인으로 
 		if (id == null) {
@@ -88,6 +88,6 @@
 			
 		</form>
 	</fieldset>
-
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

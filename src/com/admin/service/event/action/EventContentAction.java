@@ -9,6 +9,7 @@ import com.action.Action;
 import com.action.ActionForward;
 import com.admin.service.event.db.AdminEventDAO;
 import com.admin.service.event.db.AdminEventDAOImpl;
+import com.admin.service.event.db.AdminEventDTO;
 
 public class EventContentAction implements Action {
 
@@ -19,17 +20,29 @@ public class EventContentAction implements Action {
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 
-		
+		String keyward=request.getParameter("keyward");
+		if(keyward==null){
+			keyward="";
+		}
 		String item = request.getParameter("item");
 		// DB처리 객체 생성
 		// AdminEventDAO 객체 생성
 		AdminEventDAO aedao = new AdminEventDAOImpl();
 
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
+<<<<<<< HEAD
 		List eventList = aedao.getEventList(item);
 
+=======
+		List<AdminEventDTO> eventList=aedao.getSearch(item,keyward);
+		
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		// 정보 저장
 		request.setAttribute("eventList", eventList);
+<<<<<<< HEAD
+=======
+		request.setAttribute("keyward", keyward);//검색어
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("./service/eventBoard/eventContent.jsp");

@@ -23,6 +23,7 @@
 	   <%-- <td>글번호</td><td><%=afdto.getNum() %></td> --%>
 	  </tr>
 	  
+<<<<<<< HEAD
 	  <tr> 
 	     <td>글 제목</td><td colspan="3"><%=afdto.getSubject() %></td> 
 	  </tr>
@@ -50,6 +51,23 @@
 					</select>
 					</td>
 				</tr>
+=======
+	  <tr>
+	     <td>글 제목</td><td colspan="3"><%=afdto.getSubject() %></td> 
+	  </tr>
+	  <tr> 
+	     <td>첨부파일</td>
+	     <td colspan="3">
+	     <a href="./upload/<%=afdto.getImage()%>">
+	       <%=afdto.getImage() %>
+	     </a>
+	     </td> 
+	  </tr>
+	  <tr> 
+	     <td>글 내용</td><td colspan="3"><%=afdto.getContent() %></td> 
+	  </tr>
+	  
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	  <tr>
 	   <td colspan="4">
 	    <input type="button" value="수정하기"

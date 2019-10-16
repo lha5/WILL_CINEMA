@@ -17,15 +17,22 @@
 	</script>
 </head>
 <body>
+<<<<<<< HEAD
 <h1>회원탈퇴하는곳</h1>
 
 <%
 String id = (String)session.getAttribute("id");
+=======
+	<%@ include file="../include/header.jsp" %>
+	<%
+	// String id = (String) session.getAttribute("id");
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 
 if(id ==null){
 	response.sendRedirect("./MemberLogin.me");
 }
 
+<<<<<<< HEAD
 
 
 %>
@@ -43,5 +50,18 @@ if(id ==null){
 
 
 
+=======
+	<fieldset>
+		<legend> 회원 탈퇴 </legend>
+		<form action="./MemberDeleteAction.me" id="fm" method="post">
+			아이디 : <input type="text" name="id" value="<%=id%>" readonly>
+			<br>
+			비밀번호 : <input type="password" name="pass">
+			<br>
+			<input type="submit" value="회원 탈퇴">
+		</form>
+	</fieldset>
+	<%@ include file="../include/footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </body>
 </html>

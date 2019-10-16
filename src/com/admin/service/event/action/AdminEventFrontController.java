@@ -40,6 +40,13 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/EventListSearch.ae")){ //Event리스트 페이지(관리자)
+			action = new EventListSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/EventUpdate.ae")){ //Event수정 페이지(관리자)
 			//EventUpdate() -> eventUpdateForm -> EventUpdateAction()
 			action = new EventUpdate();
@@ -83,13 +90,6 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/EventConSearch.ae")){ //카테고리 선택한 Event 전체 리스트 페이지(사용자)
-			action = new EventConSearchAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}else if(command.equals("/EventDetail.ae")){ //Event 상세 내용 페이지
 			action = new EventDetailAction();
 			try {
@@ -97,6 +97,23 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
+=======
+		}else if(command.equals("/EventMore.ae")){ //Event 내용 더보기
+			action = new EventMoreAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/PastMore.ae")){ //Event 내용 더보기
+			action = new PastMoreAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		}
 		
 		//가상주소를 가지고 이동

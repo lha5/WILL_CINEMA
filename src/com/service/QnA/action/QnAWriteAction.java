@@ -3,6 +3,7 @@ package com.service.QnA.action;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
@@ -25,6 +26,16 @@ public class QnAWriteAction implements Action {
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/upload");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		ActionForward forward = new ActionForward();
+		if(id == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
 		System.out.println("realPath : "+realPath);
 		
 		int maxSize = 10 * 1024 * 1024; // 10MB
@@ -35,7 +46,9 @@ public class QnAWriteAction implements Action {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		
-		System.out.print("name : "+name+" pass : "+pass);
+		System.out.print("name : "+ name + " pass : "+ pass + " id : "+id);
+		
+		String secreat = request.getParameter("secreat");
 		
 		qadto.setName(request.getParameter("name"));
 		qadto.setPass(request.getParameter("pass"));
@@ -43,16 +56,17 @@ public class QnAWriteAction implements Action {
 		qadto.setCategory(request.getParameter("category"));
 		qadto.setContent(request.getParameter("content"));
 		qadto.setImage(request.getParameter("image"));
+		qadto.setId(id);
 		
 		// QnaDAOImpl객체 생성
 		QnADAOImpl qadaoImpl = new QnADAOImpl();
 		// insertBoard()
 		qadaoImpl.insertBoard(qadto);
 		
-		ActionForward forward = new ActionForward();
 		forward.setPath("./QnAList.sq");
 		forward.setRedirect(true);
 		return forward;
+		/*return null;*/
 	}
 
 }
