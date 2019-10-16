@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/eventsummary.css">
+<link rel="stylesheet" href="././css/eventsummary.css">
 </head>
 <body>
 <%
@@ -17,7 +17,7 @@
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 %>
 
-<%@ include file="../../include/header.jsp" %>
+<%@ include file="/include/header.jsp" %>
 
 	<div class="event_cwrap">
 		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
@@ -95,6 +95,6 @@
 	</div>
 	
 	
-<%@ include file="../../include/footer.jsp" %>
+<%@ include file="/include/footer.jsp" %>
 </body>
 </html>
