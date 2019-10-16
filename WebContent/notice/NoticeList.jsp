@@ -39,14 +39,14 @@
        <td>제목</td>
        <td>글쓴이</td>
        <td>날짜</td>
-		
+	   <td>조회수</td>	
 	</tr>
 	
 		<% 
 		 for(int i=0;i<boardList.size();i++){
 			 AdminNoticeDTO andto = boardList.get(i);
 		 
-		
+		System.out.println(andto.getReadcount());
 		 
 		%>
 	  	
@@ -55,8 +55,8 @@
 			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>"><%=andto.getSubject()%></a></td>
 			<td><%=andto.getName()%></td>
 			<td><%=andto.getDate()%></td>
-			
-			
+			 <td><%=andto.getReadcount() %></td>
+			</tr>
 		<%} %> 
 		
 	

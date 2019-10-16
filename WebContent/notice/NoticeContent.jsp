@@ -39,8 +39,6 @@
 	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
 	</tr>
 	
-	
-
 	<tr>
 	<td>첨부파일</td>
 	<td colspan="3">

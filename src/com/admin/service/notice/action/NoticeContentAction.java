@@ -24,15 +24,13 @@ public class  NoticeContentAction implements Action {
 		
 		// AdminNoticeDAO 객체 생성
 		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
-	// 1
+		
 		// readcount 1증가 => updateReadcount(num);
 		andao.updateReadcount(num);
 		
 		// 글번호에 해당하는 글정보를 가져오기
 		AdminNoticeDTO andto = andao.getBoard(num);
-		System.out.println(andto.getNum());
-		System.out.println(andto.getName());
-		System.out.println(andto.getSubject());
+		
 		// 정보 저장 (글정보,pageNum)
 		request.setAttribute("andto", andto);
 		request.setAttribute("pageNum", pageNum);
