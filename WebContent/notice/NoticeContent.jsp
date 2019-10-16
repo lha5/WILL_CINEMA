@@ -47,7 +47,7 @@
 	</tr>
 	
 	<tr>
-	<td>첨부파일</td>
+	<td>이미지</td>
 	<td colspan="3">
 	<a href="./upload/<%=andto.getImage() %>">
 	<%=andto.getImage() %>
