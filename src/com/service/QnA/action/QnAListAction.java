@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
@@ -24,6 +25,16 @@ public class QnAListAction implements Action {
 		int pageSize = 10;
 		
 		System.out.println("pageNum - 1 : " + request.getParameter("pageNum"));
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		ActionForward forward = new ActionForward();
+		if(id == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
@@ -66,9 +77,13 @@ public class QnAListAction implements Action {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		
-		ActionForward forward = new ActionForward();
+		if(id.equals("admin")){
 		forward.setPath("./board/QnAList.jsp");
 		forward.setRedirect(false);
+		}else{
+		forward.setPath("./board/QnAUserList.jsp");
+		forward.setRedirect(false);
+		}
 		
 		return forward;
 	}
