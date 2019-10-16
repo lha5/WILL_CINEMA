@@ -240,17 +240,10 @@ public class AdminFAQDAOImpl implements AdminFAQDAO{
 		try {
 			con = getCon();
 		
-<<<<<<< HEAD
 			sql="select * from faq limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
-=======
-			sql="select * from faq";
-			pstmt = con.prepareStatement(sql);
-			//pstmt.setInt(1, startRow-1);
-			//pstmt.setInt(2, pageSize);
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		
 			rs = pstmt.executeQuery();
 			

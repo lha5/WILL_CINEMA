@@ -47,8 +47,6 @@ public class CineDAOImpl implements CineDAO{
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-=======
 
 	
 	
@@ -133,5 +131,4 @@ public class CineDAOImpl implements CineDAO{
 		}
 		return cineList;
 	}
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 }

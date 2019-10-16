@@ -11,6 +11,9 @@
 </head>
 <body>
 
+	<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>)request.getAttribute("boardList");
@@ -20,16 +23,10 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
-<<<<<<< HEAD
-=======
-	System.out.println("boardList :"+boardList.toString());
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	
 	%>
 	
-	<%@ include file="../include/header.jsp" %>
 	
-	<%@ include file="../service/serviceMain.jsp" %>
 	
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 	
@@ -55,21 +52,13 @@
 		%>
 	  	
 	  	<tr>
-<<<<<<< HEAD
-			<td><%=andto.getNum() %></td>
-		<%} %>
-=======
 			<td><%=andto.getNum()%></td>
 			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>"><%=andto.getSubject()%></a></td>
 			<td><%=andto.getName()%></td>
 			<td><%=andto.getDate()%></td>
 			 <td><%=andto.getReadcount() %></td>
 			</tr>
-		<%} %> 
-		
-	
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
-	
+		<%} %> 	
 	</table>
 <%
 		if(count != 0) {
@@ -93,7 +82,7 @@
 			%>
 			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 			<%
-				}
+			}
 		}
 	%>
 

@@ -10,8 +10,6 @@ import com.action.ActionForward;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
-<<<<<<< HEAD
-
 
 public class FAQListAction implements Action {
 
@@ -61,53 +59,6 @@ public class FAQListAction implements Action {
 						// 끝페이지
 						int endPage = startPage+pageBlock-1;
 						if(endPage > pageCount){
-=======
-import com.admin.service.notice.db.AdminNoticeDAOImpl;
-import com.admin.service.notice.db.AdminNoticeDTO;
-
-public class FAQListAction implements Action {
-
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		
-		// DB 처리객체 생성
-				AdminFAQDAO afdao = new AdminFAQDAOImpl();
-					
-				int count = afdao.getFAQCount();
-				
-				/*********************************************************/
-				// 페이지에서 보여줄 글의 개수 설정
-				int pageSize = 5;
-				
-				// 페이지가 몇페이지 인지를 가져오기
-				String pageNum = request.getParameter("pageNum");
-				if (pageNum == null || pageNum.equals("null")) {
-					pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
-				}
-				// 시작행 구하는 작업
-						int currentPage = Integer.parseInt(pageNum);
-						int startRow = (currentPage - 1) * pageSize + 1;
-						// => 1 11 21 31 ....
-						// 끝행 구하는 작업
-						int endRow = currentPage * pageSize;
-						// => 10 20 30 40....	
-					
-						/*********************************************************/
-						// DB에서 글 가져오기
-						// getBoardList();
-						List<AdminFAQDTO> FAQList = null;
-				
-					FAQList = afdao.getFAQList(startRow, pageSize);
-						
-
-						int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-
-						int pageBlock = 2;
-						int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-						int endPage = startPage + pageBlock - 1;
-						if (endPage > pageCount) {
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 							endPage = pageCount;
 						}
 						

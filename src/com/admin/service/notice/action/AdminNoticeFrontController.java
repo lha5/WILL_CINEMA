@@ -41,10 +41,6 @@ public class AdminNoticeFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/NoticeUpdate.an")){ //공지 수정 페이지
 			//NoticeUpdate() -> noticeUpdateForm -> NoticeUpdateAction()
-<<<<<<< HEAD
-=======
-			action = new NoticeUpdate();
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			//action = new NoticeUpdate();
 			try {
 				forward = action.execute(request, response);
@@ -52,35 +48,19 @@ public class AdminNoticeFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeUpdateAction.an")){ //공지 수정 페이지
-<<<<<<< HEAD
-			//action = new NoticeUpdateAction();
-=======
 			//action = new NoticeUpdateAction();	
 			action = new NoticeUpdateAction();
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeDelete.an")){ //공지 삭제 페이지
-<<<<<<< HEAD
-			//action = new NoticeDelete();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-=======
 			forward = new ActionForward();
 			forward.setPath("./notice/NoticeDelete.jsp");
 			forward.setRedirect(false);
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		}else if(command.equals("/NoticeDeleteAction.an")){ //공지 삭제 페이지
-<<<<<<< HEAD
-=======
-			action = new NoticeDeleteAction();
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+
 			//action = new NoticeDeleteAction();
 			try {
 				forward = action.execute(request, response);

@@ -31,11 +31,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		con=ds.getConnection();
 
 		System.out.println("DB 접속 완료 : " + con);
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		return con;
 	}
 	
@@ -57,53 +53,6 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	}
 	
 	
-<<<<<<< HEAD
-			// insertBoard(andto)
-			public void insertBoard(AdminNoticeDTO andto){
-					int num =0;
-					try {
-						con = getCon();
-						System.out.println("디비 연결 성공 : "+con);
-					
-						// 글번호 계산
-						sql = "select max(num) from board";
-						
-						pstmt = con.prepareStatement(sql);
-						
-						rs = pstmt.executeQuery();
-						
-						if(rs.next()){
-							num = rs.getInt(1)+1;
-						}
-						System.out.println("num = "+num);
-						
-						sql = "insert into "
-							  + "board(num,name,pass,subject,content,date,category,image) "
-							  + "values(?,?,?,?,?,now(),?,?)";
-							  	
-						pstmt = con.prepareStatement(sql);
-						
-						pstmt.setInt(1, num);
-						pstmt.setString(2, andto.getName());
-						pstmt.setString(3, andto.getPass());
-						pstmt.setString(4, andto.getSubject());
-						pstmt.setString(5, andto.getContent());
-						pstmt.setString(6, andto.getCategory());
-						pstmt.setString(7, andto.getImage());
-						
-						int value = pstmt.executeUpdate();
-						
-						System.out.println("게시판 글 저장 완료 " +value+"개");
-						
-						
-						
-						
-					} catch (Exception e) {
-						e.printStackTrace();
-					} finally {
-						closeDB();
-					}
-=======
 	
 	// insertBoard(andto)
 	@Override
@@ -121,212 +70,16 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 
 			if(rs.next()){
 				num = rs.getInt(1)+1;
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			}
 			
 			System.out.println("num = " + num);
 
-<<<<<<< HEAD
-					// getBoardCount()
-					public int getBoardCount(){
-						
-						int count = 0;
-					
-						try {
-							con = getCon();
-							
-							sql="select count(*) from board";
-							
-							pstmt = con.prepareStatement(sql);
-							
-							rs = pstmt.executeQuery();
-						
-						
-							if(rs.next()){
-								count = rs.getInt(1);
-							}
-							
-							
-						} catch (Exception e) {
-							
-							e.printStackTrace();
-						} finally{
-							closeDB();
-						}
-							return count;
-						
-						}
-					// getBoardCount()
-					
-					// getBoardList(startRow,pageSize)
-					public List<AdminNoticeDTO> getBoardList(int startRow,int pageSize){
-				
-						List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
-						
-						try {
-							con = getCon();
-						
-							sql="select * from board order by re_ref desc,re_seq asc limit ?,?";
-							pstmt = con.prepareStatement(sql);
-							pstmt.setInt(1, startRow-1);
-							pstmt.setInt(2, pageSize);
-						
-							rs = pstmt.executeQuery();
-							
-							while(rs.next()){
-								AdminNoticeDTO  andto = new AdminNoticeDTO();
-								
-								andto.setNum(rs.getInt("num"));
-								andto.setName(rs.getString("name"));
-								andto.setPass(rs.getString("pass"));
-								andto.setSubject(rs.getString("subject"));
-								andto.setContent(rs.getString("content"));
-								andto.setCategory(rs.getString("category"));
-								andto.setImage(rs.getString("image"));
-							
-							
-								boardList.add(andto);
-							
-							}
-						
-						
-						
-						
-						
-						
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} finally{
-							closeDB();
-						}
-						
-						return boardList;
-					}
-=======
 			sql = "insert into "
-					+ "notice(num,name,pass,subject,content,date,category,image,readcount) "
-					+ "values(?,?,?,?,?,now(),?,?,?)";
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+					+ "notice(num,name,pass,subject,content,date,category,image) "
+					+ "values(?,?,?,?,?,now(),?,?)";
 
-<<<<<<< HEAD
-					//getBoardList(startRow,pageSize)
-					
-					// updateReadcount(num)
-					public void updateReaadcount(int num){
-						
-						try {
-							con = getCon();
-						
-							sql = "update board set readcount=readcount+1 where num=?";
-							
-							pstmt = con.prepareStatement(sql);
-							
-							pstmt.setInt(1, num);
-							
-							int value = pstmt.executeUpdate();
-						
-						} catch (Exception e) {
-						
-							e.printStackTrace();
-						}finally{
-							closeDB();
-						}
-					
-						
-						
-					}
-					// updateReadcount(num)
-=======
 			pstmt = con.prepareStatement(sql);
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 
-<<<<<<< HEAD
-					// getBoard(num)
-					public AdminNoticeDTO getBoard(int num){
-						AdminNoticeDTO andto = null;
-						
-						try {
-							con = getCon();
-						
-							sql = "select * from board where num=?";
-						
-							pstmt = con.prepareStatement(sql);
-							pstmt.setInt(1, num);
-							
-							rs = pstmt.executeQuery();
-							
-							if(rs.next()){
-								andto = new AdminNoticeDTO();
-								andto.setCategory(rs.getString("category"));
-								andto.setContent(rs.getString("content"));
-								andto.setDate(rs.getDate("date"));
-								andto.setImage(rs.getString("iamge"));
-								andto.setName(rs.getString("name"));
-								andto.setNum(rs.getInt("name"));
-								andto.setPass(rs.getString("pass"));
-								andto.setSubject(rs.getString("subject"));
-								
-								
-								
-							}
-							System.out.println("게시판 글 저장: "+andto);
-						
-						
-						
-						
-						} catch (Exception e) {
-							
-							e.printStackTrace();
-						}finally{
-							closeDB();
-						}
-						
-						return andto;
-						
-					}
-					// getBoard(num)
-					
-					
-					
-					// updateBoard(andto)
-					public int updateBoard(AdminNoticeDTO andto){
-						int check = -1;
-					
-					
-						try {
-							con = getCon();
-					
-							sql = "select pass from board where num=?";
-							pstmt = con.prepareStatement(sql);
-							
-							pstmt.setInt(1, andto.getNum());
-						
-							rs = pstmt.executeQuery();
-							
-							
-							if(rs.next()){
-								if(andto.getPass().equals(rs.getString("pass"))){
-									
-								}
-							}
-							
-						} catch (Exception e) {
-							
-							e.printStackTrace();
-						}finally{
-							closeDB();
-						}
-						
-						return check;
-					}
-					
-					
-					
-					
-					
-					}
-=======
 			pstmt.setInt(1, num);
 			pstmt.setString(2, andto.getName());
 			pstmt.setString(3, andto.getPass());
@@ -334,7 +87,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 			pstmt.setString(5, andto.getContent());
 			pstmt.setString(6, andto.getCategory());
 			pstmt.setString(7, andto.getImage());
-			pstmt.setInt(8, 0);
+
 			int value = pstmt.executeUpdate();
 
 			System.out.println("게시판 글 저장 완료 " +value+"개");
@@ -372,7 +125,6 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		} finally{
 			closeDB();
 		}
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		
 		System.out.println("게시판에 있는 글의 개수 : " + count);
 		
@@ -390,7 +142,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		try {
 			con = getCon();
 
-			sql="select * from notice order by num DESC LIMIT ?, ?";
+			sql="select * from notice ORDER BY num DESC LIMIT ?, ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -410,8 +162,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 				andto.setCategory(rs.getString("category"));
 				andto.setDate(rs.getDate("date"));
 				andto.setImage(rs.getString("image"));
-				andto.setReadcount(rs.getInt("readcount"));
-				
+
 				boardList.add(andto);
 			}
 		} catch (Exception e) {
@@ -428,7 +179,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 					
 					
 	// updateReadcount(num)
-
+	@Override
 	public void updateReadcount(int num) {
 		try {
 			con = getCon();
@@ -439,10 +190,9 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 
 			pstmt.setInt(1, num);
 
-			int value = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			
-			System.out.println("조회수 1증가 글 개수  value : "+value);
-		
+			System.out.println("글 번호" + num + "의 조회수가 1 증가 됨");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -481,7 +231,6 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 				andto.setNum(rs.getInt("num"));
 				andto.setPass(rs.getString("pass"));
 				andto.setSubject(rs.getString("subject"));
-				andto.setReadcount(rs.getInt("readcount"));
 			}
 			System.out.println("게시판 글 저장: "+andto);
 		} catch (Exception e) {
@@ -495,6 +244,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return andto;
 	}
 	// getBoard(num)
+					
 					
 					
 	// updateBoard(andto)
@@ -544,31 +294,28 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return check;
 	}
 	// updateBoard(andto)
-
+					
 					
 					
 	// deleteNotice(num,pass)
 	@Override
 	public int deleteNotice(int num, String pass){
 		int check = -1;
-		System.out.println(pass);
+		
 		try {
 			con = getCon();
 							
 			sql = "select pass from notice where num=?";
-
+								
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);
 								
 			rs = pstmt.executeQuery(); 
 			//123
-				System.out.println("삭제확인1");				
-			
-				if(rs.next()){	
-					System.out.println(rs.getString("pass"));
+								
+			if(rs.next()){	
 				if(pass.equals(rs.getString("pass"))){
-					System.out.println("삭제확인2");
 					
 					sql ="delete from notice where num=?";
 					
@@ -577,7 +324,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 					pstmt.setInt(1, num);
 
 					check = pstmt.executeUpdate();
-						
+									
 					// check = 1;
 				} else {
 					check = 0;
@@ -595,4 +342,5 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return check;		
 	}
 	// deleteNotice(num,pass)
+					
 }
