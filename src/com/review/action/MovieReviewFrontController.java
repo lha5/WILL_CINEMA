@@ -22,11 +22,19 @@ public class MovieReviewFrontController extends HttpServlet {
 		
 		ActionForward forward = null;
 		Action action = null;
-		if (command.equals("/MovieReviewList.mr")) {
+		
+		if (command.equals("/MovieReviewWrite.mr")) {
 			forward = new ActionForward();
 			
-			forward.setPath("./review/reviewList.jsp");
+			forward.setPath("./review/reviewWrite.jsp");
 			forward.setRedirect(false);
+		} else if (command.equals("/MovieReviewList.mr")) {
+			action = new MoviewReviewListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if (command.equals("/MovieReviewWriteAction.mr")) {
 			action = new MoviewReviewWriteAction();
 			try {
@@ -54,7 +62,6 @@ public class MovieReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
 		
 		
 		// 가상주소를 가지고 이동

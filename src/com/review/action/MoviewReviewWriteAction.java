@@ -2,9 +2,12 @@ package com.review.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.review.db.MovieReviewDAOImpl;
+import com.review.db.MovieReviewDTO;
 
 public class MoviewReviewWriteAction implements Action {
 
@@ -13,7 +16,26 @@ public class MoviewReviewWriteAction implements Action {
 		
 		System.out.println("MoviewReviewWriteAction execute()------------------------------------------------");
 		
-		return null;
+		// 한글처리 
+		request.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		MovieReviewDTO mrdto = new MovieReviewDTO();
+		System.out.println("rating : "+request.getParameter("rating"));
+		mrdto.setId(id);
+		mrdto.setRating(Integer.parseInt(request.getParameter("rating")));
+		mrdto.setContent(request.getParameter("content"));
+		
+		MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl();
+		
+		mrdaoImpl.writeComment(mrdto);
+		
+		ActionForward forward = new ActionForward();
+		forward.setPath("./MovieReviewList.mr");
+		forward.setRedirect(true);
+		return forward;
 	}
 
 }

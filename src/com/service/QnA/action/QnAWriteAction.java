@@ -37,7 +37,6 @@ public class QnAWriteAction implements Action {
 		}
 		
 		System.out.println("realPath : "+realPath);
-		System.out.println("secreat1 : "+request.getParameter("secreat"));
 		
 		int maxSize = 10 * 1024 * 1024; // 10MB
 		
