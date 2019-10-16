@@ -23,56 +23,12 @@
 		MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 	%>
 
-<<<<<<< HEAD
-%>
-
-< <table border="1">
-	<tr>
-		<td>아이디</td>
-		<td><%=mdto.getId() %></td>
-		<td>성명</td>
-		<td><%=mdto.getName() %></td>
-	</tr>
-	<tr>
-		<td>비밀번호</td>
-		<td></td>
-		<td>생년월일</td>
-		<td><%=mdto.getBirthday() %></td>
-	</tr>
-	<tr>
-		<td>전화번호</td>
-		<td><%=mdto.getMobile() %></td>
-		<td>이메일</td>
-		<td><%=mdto.getEmail() %></td>
-	</tr>
-	<tr>
-		<td>주소</td><!-- null값 치환하기 -->
-		<td colspan="3"><%=mdto.getZipcode() %> <%=mdto.getAddr() %> <%=mdto.getDetailaddr() %></td>
-	</tr>
-	<tr>
-		<td>회원 등급</td>
-		<td><%=mdto.getLevel() %></td>
-		<td>포인트</td>
-		<td><%=mdto.getPoint() %></td>
-	</tr>
-	<tr>
-		<td>선호 장르</td>
-		<td><%=mdto.getPreference() %></td>
-		<td>가입 날짜</td>
-		<td><%=mdto.getReg_date() %></td>
-	</tr>
-</table> 
-
-<br>
-	
-=======
 	<br>
 	<br>
 	
 	<a href="./MemberInfo.me">회원 정보 조회</a>
 	
 	<br>
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	<br>
 	
 	<a href="./MemberUpdate.me">회원 정보 수정</a>
@@ -92,10 +48,8 @@
 	<%
 	if (id != null) {
 		if (id.equals("admin")) {
-			%>
+	%>
 			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
-<<<<<<< HEAD
-=======
 			<br><br>
 			<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a>
 			<br><br>
@@ -108,11 +62,11 @@
 			<a href="./GoodsList.al">매점 관리(관리자 전용)</a>
 			<br><br>
 			<a href="#">영화관 지점 관리(관리자 전용)</a>
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
-			<%	
+	<%	
 		}
 	}
 	%>
+	
 	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

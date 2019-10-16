@@ -23,7 +23,6 @@
 %>
 	<div id="wrap">
 	
-	<%-- <jsp:include page="include/header.jsp"/> --%>
 	
 	<%
 	String id = (String) session.getAttribute("id");
@@ -146,10 +145,10 @@
 	
 	<br>
 	<br>
-	
-	<%-- <%@ include file="include/footer.jsp" %> --%>
-	
 	<br>
+	
+	
+	
 	<div id="bttm">
 	<footer>
 		<div id="sub_logo">

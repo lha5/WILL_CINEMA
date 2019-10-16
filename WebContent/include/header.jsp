@@ -43,11 +43,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-<<<<<<< HEAD
-				<li><a href="./FAQContent.af">고객센터</a> </li>
-=======
 				<li><a href="./FAQList.af">고객센터</a></li>
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 				<li>ENGLISH</li>
 			</ul>
 		</div>

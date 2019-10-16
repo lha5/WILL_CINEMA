@@ -7,10 +7,10 @@
 <title>WILL CINEMA</title>
 </head>
 <body>
-<h1>WebContent/board/QnAWrite.jsp</h1>
-	
+<%@ include file="../include/header.jsp" %>
+	<%@ include file="../service/serviceMain.jsp" %>
 	<%
-		String id = (String)session.getAttribute("id");
+		// String id = (String)session.getAttribute("id");
 		if(id == null){
 			response.sendRedirect("./MemberLogin.me");
 		}else if(id == "admin"){
@@ -68,6 +68,6 @@
 
 		</form>
 	</fieldset>
-	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
