@@ -29,15 +29,18 @@
 
 	<tr>
 	<td>공지번호</td><td><%=andto.getNum() %></td>
+	<td>조회수</td><td><%=andto.getReadcount() %></td>
 </tr>
 	<tr>	
 	<td>글쓴이</td><td><%=andto.getName() %></td>
-</tr>
-	<tr>
-	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td></tr>
-	<tr>
 	<td>작성일</td><td><%=andto.getDate() %></td>
 </tr>
+	<tr>
+	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
+	</tr>
+	
+	
+
 	<tr>
 	<td>첨부파일</td>
 	<td colspan="3">
@@ -57,7 +60,8 @@
 	           onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
 	    >
 	    <input type="button" value="삭제하기"
-	           onclick="location.href='./NoticeDeleteAction.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
+	           onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
+	    		
 	    >
 	    <input type="button" value="목록보기" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
 	    </td>	  

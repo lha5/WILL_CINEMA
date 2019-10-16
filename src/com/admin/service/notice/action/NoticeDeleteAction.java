@@ -21,7 +21,7 @@ public class NoticeDeleteAction implements Action{
 			// 로그인 정보가 있을경우에만 삭제 처리
 			// 로그인 정보가 없을경우 (로그인 페이지로 이동)
 
-			HttpSession session = request.getSession();
+			/*HttpSession session = request.getSession();
 		
 			String id = (String) session.getAttribute("id");
 		
@@ -31,7 +31,7 @@ public class NoticeDeleteAction implements Action{
 				forward.setPath("./Main.me");
 				forward.setRedirect(true);	
 				return forward;
-			}
+			}*/
 
 			
 			// pageNum 저장(get)
