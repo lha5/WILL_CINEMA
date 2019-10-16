@@ -98,12 +98,13 @@
 					</ul>
 				</li>
 				<li>
-					이벤트
+					<a href="./EventSummary.ae">이벤트</a>
 					<ul>
-						<li>영화</li>
-						<li>시사회/무대인사</li>
-						<li>제휴할인</li>
-						<li>진행중이벤트</li>
+						<li><a href="./EventContent.ae?item=movie">영화</a></li>
+						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
+						<li><a href="./EventContent.ae?item=nevnet">제휴할인</a></li>
+						<li><a href="./EventContent.ae?item=collabo">진행중이벤트</a></li>
+						
 					</ul>
 				</li>
 				<li>매점</li>
