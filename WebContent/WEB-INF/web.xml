@@ -95,6 +95,17 @@
   </servlet-mapping>
   <!-- 쇼핑 서블릿 -->
   
+    <!-- 쇼핑 주문 서블릿 -->
+  <servlet>
+    <servlet-name>MallOrderFrontController</servlet-name>
+    <servlet-class>com.mall.order.action.MallOrderFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MallOrderFrontController</servlet-name>
+    <url-pattern>*.mor</url-pattern>
+  </servlet-mapping>
+  <!-- 쇼핑 주문 서블릿 -->
+  
   <!-- 고객센터 서블릿 -->
   <servlet>
     <servlet-name>ServiceQnAFrontController</servlet-name>

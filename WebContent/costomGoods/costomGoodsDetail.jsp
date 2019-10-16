@@ -20,8 +20,8 @@
 %>
 
 <h1> 제품 상세 페이지</h1>
-<form action="" method="post">
-	
+<form action="./MallOrderStar.mor" method="post">
+	<input type="hidden" name="goods_num" value="<%=mdto.getGoods_num()%>">
 <table border="1">
 	<tr>
 		<td><img src="./goodsImageUpload/<%=mdto.getImage()%>" width="300" height="300"></td>
@@ -33,8 +33,10 @@
 			구매수량 : <input type="text" name="amount" value="1"><br>
 			
 				
-				<a href="#">[구매하기]</a><br>
-				<a href="./GoodsList.ml">[상품 리스트]</a><br>
+				<input type="submit" value="[구매하기]"><br>
+				<input type="button" onclick="location.href='./GoodsList.ml'" value="[상품 리스트]"><br>
+				<!-- <a href="./MallOrderStar.mor?">[구매하기]</a><br>
+				<a href="./GoodsList.ml">[상품 리스트]</a><br> -->
 		</td>
 	</tr>
 	
