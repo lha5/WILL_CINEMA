@@ -10,14 +10,13 @@
 </head>
 <body>
 
-	<jsp:include page="../include/header.jsp"/>
-	
-	<jsp:include page="info.jsp"/>
+	<%@ include file="../include/header.jsp" %>
+
 	
 	<hr>
 	
 	<%
-	String id = (String)session.getAttribute("id");
+	// String id = (String)session.getAttribute("id");
 	// 관리자가 로그인 했을 때만 진행
 	if (id == null || !id.equals("admin")) {
 		response.sendRedirect("./Main.me");
@@ -66,6 +65,6 @@
 	%>
 	</table>
 	
-	<jsp:include page="../include/footer.jsp"/>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

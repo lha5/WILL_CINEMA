@@ -51,7 +51,9 @@
 			%>
 			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
 			<br><br>
-			<a href="./EventList.ae">이벤트 등록 관리(관리자 전용)</a>
+			<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a>
+			<br><br>
+			<a href="./EventList.ae">이벤트 목록(관리자)</a>
 			<br><br>
 			<a href="#">예매 목록 관리(관리자 전용)</a>
 			<br><br>
