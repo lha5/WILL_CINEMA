@@ -19,9 +19,9 @@
 </script>
 </head>
 <body>
-
+	<%@ include file="../include/header.jsp" %>
 	<%
-	String id = (String) session.getAttribute("id");
+	// String id = (String) session.getAttribute("id");
 
 	if (id == null) {
 		response.sendRedirect("./MemberLogin.me");
@@ -38,6 +38,6 @@
 			<input type="submit" value="회원 탈퇴">
 		</form>
 	</fieldset>
-
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
