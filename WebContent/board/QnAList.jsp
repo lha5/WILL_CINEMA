@@ -13,8 +13,10 @@
 
 </head>
 <body>
+	<h1>관리자 전용 리스트</h1>
 	<%
-		String id = (String) session.getAttribute("id");
+		String id = (String)session.getAttribute("id");
+		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -24,7 +26,6 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
-		String id = (String)session.getAttribute("id");
 	%>
 	
 
@@ -33,39 +34,22 @@
    <table border="1">
      <tr>
        <td>번호</td>
+       <td>카테고리</td>
+       <td>ID</td>
        <td>제목</td>
        <td>글쓴이</td>
        <td>날짜</td>
        <td>조회수</td>
-       <td>첨부</td>
      </tr>
-     <%
-       for(int i=0;i<boardList.size();i++){
-    	   QnADTO qadto = boardList.get(i);
-    	   if(id == qadto.getId()){
-     %>
-     <tr>
-       <td><%=qadto.getNum() %></td>
-       <td>
-           <a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
-           <%=qadto.getSubject() %>
-           </a>
-       </td>
-       <td><%=qadto.getName() %></td>
-       <td><%=qadto.getDate() %></td>
-       <td><%=qadto.getReadcount() %></td>
-       <td><%=qadto.getImage() %></td>
-     </tr>
-    <%}
-    }%>
      
 		<%
      	for (int i=0;i<boardList.size();i++) {
-    		QnADTO qadto = boardList.get(i);    	   
+    		QnADTO qadto = boardList.get(i);
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
 				<td><%=qadto.getCategory()%></td>
+				<td><%=qadto.getId() %></td>
 				<td>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
@@ -75,7 +59,7 @@
 				<td><%=qadto.getDate() %></td>
 				<td><%=qadto.getReadcount() %></td>
 			</tr>
-		<%} %>
+		<%}%>
 	</table>
 	
 	<div id="paging">

@@ -22,7 +22,6 @@ public class ServiceQnAFrontController extends HttpServlet{
 		System.out.println("contextPath : "+contextPath);
 		System.out.println("command(이동할 가상주소) : "+command);
 		
-		
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
