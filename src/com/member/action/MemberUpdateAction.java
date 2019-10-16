@@ -19,6 +19,8 @@ public class MemberUpdateAction implements Action {
 		
 		System.out.println("MemberUpdateAction 실행중!!");
 		
+		request.setCharacterEncoding("UTF-8");
+
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		String pass = (String) session.getAttribute("pass");
@@ -30,9 +32,7 @@ public class MemberUpdateAction implements Action {
 			return forward;
 		}
 		
-		// 수정해야하니깐 한글
 		
-		request.setCharacterEncoding("UTF-8");
 		MemberDTO mdto = new MemberDTO();
 		
 		// int - 우편번호만 
@@ -59,7 +59,7 @@ public class MemberUpdateAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script>");
-			out.println("  alert('아이디 없음!');  ");
+			out.println("  alert('아이디가 존재하지 않습니다.');  ");
 			out.println("  history.back(); ");
 			out.println("</script>");	
 			
@@ -84,7 +84,7 @@ public class MemberUpdateAction implements Action {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<script>");
-		out.println("  alert('정보수정 완료!');  ");
+		out.println("  alert('개인 정보 수정을 완료하였습니다.');  ");
 		out.println("  location.href='./Main.me'; ");
 		out.println("</script>");	
 		
