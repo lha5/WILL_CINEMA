@@ -37,27 +37,28 @@
        <td>카테고리</td>
        <td>ID</td>
        <td>제목</td>
+       <td>카테고리</td>
        <td>글쓴이</td>
        <td>날짜</td>
        <td>조회수</td>
+       <td>첨부</td>
      </tr>
-     
-		<%
+     <%
      	for (int i=0;i<boardList.size();i++) {
     		QnADTO qadto = boardList.get(i);
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
-				<td><%=qadto.getCategory()%></td>
-				<td><%=qadto.getId() %></td>
 				<td>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
 					</a>
 				</td>
+				<td><%=qadto.getCategory()%></td>
 				<td><%=qadto.getName() %></td>
 				<td><%=qadto.getDate() %></td>
 				<td><%=qadto.getReadcount() %></td>
+				<td><%=qadto.getImage()%></td>
 			</tr>
 		<%}%>
 	</table>
