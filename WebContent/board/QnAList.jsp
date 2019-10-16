@@ -13,8 +13,10 @@
 
 </head>
 <body>
+	<h1>관리자 전용 리스트</h1>
 	<%
-		String id = (String) session.getAttribute("id");
+		String id = (String)session.getAttribute("id");
+		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -32,6 +34,8 @@
    <table border="1">
      <tr>
        <td>번호</td>
+       <td>카테고리</td>
+       <td>ID</td>
        <td>제목</td>
        <td>카테고리</td>
        <td>글쓴이</td>
@@ -41,7 +45,7 @@
      </tr>
      <%
      	for (int i=0;i<boardList.size();i++) {
-    		QnADTO qadto = boardList.get(i);    	   
+    		QnADTO qadto = boardList.get(i);
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
@@ -56,7 +60,7 @@
 				<td><%=qadto.getReadcount() %></td>
 				<td><%=qadto.getImage()%></td>
 			</tr>
-		<%} %>
+		<%}%>
 	</table>
 	
 	<div id="paging">

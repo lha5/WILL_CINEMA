@@ -300,7 +300,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	@Override
 	public int deleteNotice(int num, String pass){
 		int check = -1;
-		
+		System.out.println(pass);
 		try {
 			con = getCon();
 							
@@ -312,9 +312,12 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 								
 			rs = pstmt.executeQuery(); 
 			//123
-								
-			if(rs.next()){	
+				System.out.println("삭제확인1");				
+			
+				if(rs.next()){	
+					System.out.println(rs.getString("pass"));
 				if(pass.equals(rs.getString("pass"))){
+					System.out.println("삭제확인2");
 					
 					sql ="delete from notice where num=?";
 					
