@@ -7,7 +7,7 @@
 <title>WILL CINEMA</title>
 
 <!-- CSS -->
-<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="./css/header.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -88,7 +88,13 @@
 					</ul>
 				</li>
 				<li>
-					<li><a href="./EventSummary.ae">이벤트</a></li>
+					<a href="./EventSummary.ae">이벤트</a>
+					<ul>
+						<li><a href="./EventContent.ae?item=movie">영화</a></li>
+						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
+						<li><a href="./EventContent.ae?item=nevent">윌시NOW</a></li>
+						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
+					</ul>
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>

@@ -97,6 +97,12 @@
 				</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
+					<ul>
+						<li><a href="./EventContent.ae?item=movie">영화</a></li>
+						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
+						<li><a href="./EventContent.ae?item=nevent">윌시NOW</a></li>
+						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
+					</ul>
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>

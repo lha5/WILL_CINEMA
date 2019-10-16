@@ -11,8 +11,7 @@
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href="././css/eventcontent.css">
-
+<link rel="stylesheet" href="././css/eventsummary.css">
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
