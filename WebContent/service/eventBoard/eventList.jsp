@@ -16,10 +16,12 @@
 			return false;
 		}
 	}
-
 </script>
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <%
 	List<AdminEventDTO> eventList = (ArrayList<AdminEventDTO>)request.getAttribute("eventList");
 	String keyward=(String)request.getAttribute("keyward");
@@ -112,6 +114,8 @@ if(eventList.size()!=0){
 	}
 /********************************************/
 %>
+
+<%@ include file="../../include/footer.jsp" %>
 
 </body>
 </html>

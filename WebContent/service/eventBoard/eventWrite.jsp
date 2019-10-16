@@ -101,13 +101,8 @@ $( function() {
 
 <%@ include file="../../include/header.jsp" %>
 
-<h1>이벤트 작성 페이지</h1>
 <fieldset>
-<<<<<<< HEAD
-	<form action="./EventWriteAction.ae" method="post"  enctype="multipart/form-data">
-=======
-	<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td>카테고리</td> 
