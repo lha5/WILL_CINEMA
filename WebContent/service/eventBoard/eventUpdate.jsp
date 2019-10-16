@@ -85,6 +85,9 @@ $( function() {
 </script>
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <%
 	AdminEventDTO aedto=(AdminEventDTO)request.getAttribute("aedto");
 %>
@@ -141,5 +144,7 @@ $( function() {
 	</form>
 	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

@@ -10,17 +10,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>WebContent/adminGoods/goodsList.jsp</h1>
-<%
-	//
+
+	<%@ include file="../include/header.jsp" %>
+
+	<h1>WebContent/adminGoods/goodsList.jsp</h1>
 	
+	<%
 	// DB에서 가져온 정보 저장
 	//request.setAttribute("goodsList", goodsList);
 	List goodsList = (List)request.getAttribute("goodsList");
-	
 	%>
 
-<h1>상품 목록(관리자 전용)</h1>
+	<h1>상품 목록(관리자 전용)</h1>
 	
 	<h3><a href="./GoodsAdd.al">상품 등록하기(관리자)</a></h3>
 	
@@ -50,5 +51,7 @@
 	  <%} %>
 	  
 	  </table>
+	  
+	  <%@ include file="../include/footer.jsp" %>
 </body>
 </html>
