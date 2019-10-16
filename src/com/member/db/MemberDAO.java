@@ -23,4 +23,7 @@ public interface MemberDAO {
 
 	// 회원 마이 페이지 이름값 가져가기
 	public String forName(String id);
+	
+	// 비밀번호 변경
+	public void updatePass(String id, String pass);
 }

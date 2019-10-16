@@ -22,25 +22,21 @@
 
 		MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
 	%>
-
-	<br>
-	<br>
-	
-	<a href="./MemberInfo.me">회원 정보 조회</a>
 	
 	<br>
 	<br>
 	
 	<a href="./MemberUpdate.me">회원 정보 수정</a>
-	<!-- 정보 조회와 수정 합치기 의논 -->
+	
+	<br>
+	<br>
+	
+	<a href="./MemberPassCheck.me">비밀번호 변경</a>
 	
 	<br>
 	<br>
 	
 	<a href="./MemberDelete.me">회원 계정 삭제</a>
-	
-	<br>
-	<br>
 	
 	<hr>
 
@@ -50,6 +46,8 @@
 		if (id.equals("admin")) {
 	%>
 			<a href="./MemberList.me">회원 목록 관리(관리자 전용)</a>
+			<br><br>
+			<a href="./NoticeWrite.an">공지사항 글쓰기(관리자 전용)</a>
 			<br><br>
 			<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a>
 			<br><br>

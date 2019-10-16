@@ -340,4 +340,28 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return name;
 	}
+
+	
+	
+	// 비밀번호 변경
+	@Override
+	public void updatePass(String id, String pass) {
+		try {
+			con = getCon();
+			
+			sql = "UPDATE member SET pass=? WHERE id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pass);
+			pstmt.setString(2, id);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("비밀번호 변경 완료.");
+	}
 }
