@@ -22,11 +22,10 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
-	System.out.println("FAQList :"+FAQList.toString());
+	//System.out.println("FAQList :"+FAQList.toString());
 	
 	
 	%>
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 
 	<h3><a href="./FAQWrite.af">글쓰기</a></h3>
 
@@ -62,6 +61,7 @@
 	
 	
 	</table>
+ <div id="pag">
  <%
 		if(count != 0) {
 			// 이전
@@ -71,7 +71,6 @@
 			<%
 			}
 
-			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
 			<a href="./FAQList.af?pageNum=<%=i%>">[<%=i%>]
@@ -87,7 +86,7 @@
 				}
 		}
 	%>
-
+</div>
 
 </body>
 </html>

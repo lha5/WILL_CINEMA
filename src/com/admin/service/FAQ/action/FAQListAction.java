@@ -10,8 +10,7 @@ import com.action.ActionForward;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
-import com.admin.service.notice.db.AdminNoticeDAOImpl;
-import com.admin.service.notice.db.AdminNoticeDTO;
+
 
 public class FAQListAction implements Action {
 
@@ -30,31 +29,37 @@ public class FAQListAction implements Action {
 				
 				// 페이지가 몇페이지 인지를 가져오기
 				String pageNum = request.getParameter("pageNum");
-				if (pageNum == null || pageNum.equals("null")) {
-					pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
+				if (pageNum == null ) {
+					pageNum = "1"; //|| pageNum.equals("null") pageNum의 값이 없을경우 무조건 1페이지
 				}
 				// 시작행 구하는 작업
-						int currentPage = Integer.parseInt(pageNum);
-						int startRow = (currentPage - 1) * pageSize + 1;
+			int currentPage = Integer.parseInt(pageNum);
+			int startRow = (currentPage - 1) * pageSize + 1;
 						// => 1 11 21 31 ....
 						// 끝행 구하는 작업
-						int endRow = currentPage * pageSize;
-						// => 10 20 30 40....	
+			int endRow = currentPage * pageSize;
+						
 					
 						/*********************************************************/
 						// DB에서 글 가져오기
 						// getBoardList();
 						List<AdminFAQDTO> FAQList = null;
 				
-					FAQList = afdao.getFAQList(startRow, pageSize);
-						
-
-						int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-
-						int pageBlock = 2;
-						int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;
-						int endPage = startPage + pageBlock - 1;
-						if (endPage > pageCount) {
+						if( count != 0 ){ 
+							FAQList = afdao.getFAQList(startRow,pageSize);
+						}
+						System.out.println("갯수:"+FAQList.size());
+						// getFAQList(int startRow,int pageSize);
+						// 전체 페이지수 계산
+						int pageCount = count/pageSize+(count % pageSize == 0? 0:1); 
+									
+						int pageBlock = 1;
+									
+						// 시작페이지
+						int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
+						// 끝페이지
+						int endPage = startPage+pageBlock-1;
+						if(endPage > pageCount){
 							endPage = pageCount;
 						}
 						

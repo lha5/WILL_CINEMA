@@ -53,56 +53,50 @@
 
 	<h3><a href="./FAQWrite.af">글쓰기</a></h3>
 
-<table >
-  <!--    <tr>
-       <td>번호</td>
-       <td>카테고리</td>
-       <td>제목</td>
-       <td>내용</td>
-		<td>이미지</td>
-	</tr> -->
-
+<table>
+ 
+<h6>FAQ</h6>
 <% 
 		 for(int i=0;i<FAQList.size();i++){
 			 AdminFAQDTO afdto = FAQList.get(i);
 		 
 		%>
-	  	
-	  	<tr>
-			<%-- <td><%=afdto.getNum()%></td>
-			<td><%=afdto.getCategory() %></td> --%>
-			<%-- <td><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">
-           
-           </a></td> --%>
-			
-			
-			
-			
-		
-<h6>FAQ</h6>
-
+	
 <button class="accordion"><%=afdto.getSubject() %></button>
 <div class="panel">
   <p><%=afdto.getContent()%></p>
-  <%-- <%if(id.equals("admin")){
-   %> --%>
-  <a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">
-            글수정
-           </a>
-  <%-- <a href="./FAQContent.af?Num=<%=afdto.getNum()%>">글수정</a> --%>
- <%--  <%} %> --%>
-</div>
-<!-- <button class="accordion">Section 2</button>
-<div class="panel">
-  <p>
-</p>
+ 
+  <a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정</a>
+  
 </div>
 
-<button class="accordion">Section 3</button>
-<div class="panel">
-<p></p>
-</div> -->
 <%} %> 
+		<div id="pag">
+<%
+		if(count != 0) {
+			// 이전
+			if (startPage > pageBlock) {
+			%>
+			<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+			<%
+			}
+
+			for (int i = startPage; i <= endPage; i++) {
+			%>
+			<a href="./FAQList.af?pageNum=<%=i%>">[<%=i%>]
+			</a>
+			<%
+			}
+
+			// 다음
+			if (endPage < pageCount) {
+			%>
+			<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+			<%
+				}
+		}
+	%>
+</div>
 		
 <script>
 var acc = document.getElementsByClassName("accordion");
@@ -119,6 +113,8 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+
 
 
 </script>

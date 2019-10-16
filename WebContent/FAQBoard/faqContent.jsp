@@ -37,7 +37,19 @@
 	  <tr> 
 	     <td>글 내용</td><td colspan="3"><%=afdto.getContent() %></td> 
 	  </tr>
-	  
+	  <tr>
+				<td>카테고리</td>
+					<td>
+						<select name="category">
+						<option value="영화예매">영화 예매</option>
+						<option value="매점구매">매점 구매</option>
+						<option value="이용안내">사이트 이용 안내</option>
+						<option value="이벤트">이벤트</option>
+						<option value="멤버십">멤버십/포인트</option>
+						<option value="쿠폰">쿠폰</option>
+					</select>
+					</td>
+				</tr>
 	  <tr>
 	   <td colspan="4">
 	    <input type="button" value="수정하기"
