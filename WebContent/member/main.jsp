@@ -17,18 +17,15 @@
 	<%@ include file="../include/header.jsp" %>
 
 	<%
-
 	// String id = (String) session.getAttribute("id");
 	String name = (String) session.getAttribute("name");
 
 	if (id == null) {
 		response.sendRedirect("./MemberLogin.me");
 	}
-
 	%>
 	<div id="wrap">
 	
-	<jsp:include page="../include/header.jsp"/>
 	
 	<section id="sec01">
 		<h2 class="mc">마이시네마</h2>

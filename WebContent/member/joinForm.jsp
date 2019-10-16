@@ -134,6 +134,9 @@
 </script>
 </head>
 <body>
+
+	<%@ include file="../include/header.jsp" %>
+
 	<fieldset>
 		<legend>회원 가입</legend>
 		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return checkValue();">
@@ -223,5 +226,8 @@
 			</table>
 		</form>
 	</fieldset>
+	
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

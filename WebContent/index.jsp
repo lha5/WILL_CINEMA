@@ -60,7 +60,7 @@
 		
 		<div id="logo">
 			<!-- <img alt="logo" src="img/logo.png" width="230"> -->
-			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
+			<a href="index.jsp"><i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
