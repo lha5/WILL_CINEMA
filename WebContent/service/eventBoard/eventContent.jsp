@@ -7,9 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<!-- jQuery -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
+<!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
 <script type="text/javascript">
 	function moreRead(){
