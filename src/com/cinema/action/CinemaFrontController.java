@@ -30,19 +30,24 @@ public class CinemaFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/CinemaAdd.ci")) { //영화관 등록 페이지(관리자)
+		}else if (command.equals("CinemaAdd.ci")) { //영화관 등록 페이지(관리자)
 			forward = new ActionForward();
 			forward.setPath("./adminCinema/cinemaAdd.jsp");
 			forward.setRedirect(false);
+<<<<<<< HEAD
+		}else if (command.equals("CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
+			//action = new CinemaAddAction();
+=======
 		}else if (command.equals("/CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
 			action = new CinemaAddAction();
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/CinemaDelete.ci")) { //영화관 삭제 페이지(관리자)
+		}else if (command.equals("CinemaDelete.ci")) { //영화관 삭제 페이지(관리자)
 			//action = new CinemaDeleteAction();
 			
 			try {
@@ -50,11 +55,11 @@ public class CinemaFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/CinemaModify.ci")) { //영화관 수정 페이지(관리자)
+		}else if (command.equals("CinemaModify.ci")) { //영화관 수정 페이지(관리자)
 			forward = new ActionForward();
 			forward.setPath("./adminCinema/cinemaModify.jsp");
 			forward.setRedirect(false);
-		}else if (command.equals("/CinemaModifyAction.ci")) { //영화관 수정 페이지(관리자)
+		}else if (command.equals("CinemaModifyAction.ci")) { //영화관 수정 페이지(관리자)
 			//action = new CinemaModifyAction();
 			
 			try {

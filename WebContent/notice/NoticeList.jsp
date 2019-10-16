@@ -20,7 +20,10 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
+<<<<<<< HEAD
+=======
 	System.out.println("boardList :"+boardList.toString());
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	
 	%>
 	
@@ -29,7 +32,7 @@
 	<%@ include file="../service/serviceMain.jsp" %>
 	
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-
+	
 	<h3><a href="./NoticeWrite.an">글쓰기</a></h3>
 
 
@@ -52,6 +55,10 @@
 		%>
 	  	
 	  	<tr>
+<<<<<<< HEAD
+			<td><%=andto.getNum() %></td>
+		<%} %>
+=======
 			<td><%=andto.getNum()%></td>
 			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>"><%=andto.getSubject()%></a></td>
 			<td><%=andto.getName()%></td>
@@ -61,9 +68,10 @@
 		<%} %> 
 		
 	
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	
 	</table>
- <%
+<%
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {

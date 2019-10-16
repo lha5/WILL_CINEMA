@@ -103,7 +103,11 @@ $( function() {
 
 <h1>이벤트 작성 페이지</h1>
 <fieldset>
+<<<<<<< HEAD
+	<form action="./EventWriteAction.ae" method="post"  enctype="multipart/form-data">
+=======
 	<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		<table border="1">
 			<tr>
 				<td>카테고리</td> 
@@ -119,8 +123,8 @@ $( function() {
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td><input type="text" name="fDate" id="from" readonly="readonly" >
-				 ~ <input type="text" name="eDate" id="to" readonly="readonly" >
+				<td><input type="text" name="fDate" id="from">
+				 ~ <input type="text" name="eDate" id="to">
 				 </td>
 			</tr><!-- 날짜 선택 드롭박스 -->
 			<tr>

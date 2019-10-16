@@ -13,7 +13,10 @@ public class AdminNoticeDTO {
 	private Date date;
 	private String category;
 	private String image;
+<<<<<<< HEAD
+=======
 	private int Readcount;
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	public int getNum() {
 		return num;
 	}

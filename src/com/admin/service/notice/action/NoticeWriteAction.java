@@ -14,11 +14,15 @@ public class NoticeWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("NoticeWriteAction_execute()------------------------");
+		System.out.println("AdminNoticeWriteAction_execute()------------------------");
 		
 		// 한글 처리
+<<<<<<< HEAD
+		request.setCharacterEncoding("UFT-8");
+=======
 		request.setCharacterEncoding("UTF-8");
 		
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		// 전달된 정보 객체
 		// boardDTO 객체 생성 저장
 		AdminNoticeDTO andto = new AdminNoticeDTO(); 
@@ -36,9 +40,13 @@ public class NoticeWriteAction implements Action {
 		
 		// 페이지 이동
 		// 글목록 보여주는 페이지로 이동
+<<<<<<< HEAD
+		// ./BoardList.bo
+=======
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./NoticeList.an");
+		forward.setPath("./AdminNoticeWriteAction.an");
 		forward.setRedirect(true);
 		
 		return forward;

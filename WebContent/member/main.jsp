@@ -64,7 +64,11 @@
 				<li><a href="#">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
+<<<<<<< HEAD
+				<li><a href="./MemberInfo.me">내 정보 관리</a></li>
+=======
 				<li><a href="./MyPage.me">내 정보 관리</a></li>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			</ul>
 		</div>
 	</section>

@@ -148,8 +148,9 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
 
 	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
-	@Override
 	public List<AdminEventDTO> getEventList(String item) {
+<<<<<<< HEAD
+=======
 		List<AdminEventDTO> arr=new ArrayList<AdminEventDTO>();
 		try {
 			con=getCon();
@@ -329,15 +330,54 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 	/*-------------------- 검색 내용 가져오기(사용자) --------------------*/
 	@Override
 	public List<AdminEventDTO> getSearch(String item,String keyward) {
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		List<AdminEventDTO> arr = new ArrayList<AdminEventDTO>();
 		try {
 			con = getCon();
+<<<<<<< HEAD
+			//sysdate()<e_date : 현재 진행중인 이벤트
+			String sql = "select * from event where category=? and sysdate()<e_date order by f_date desc";
+
+=======
 			sql = "select * from event where curdate()<=e_date and category=? and "
 					+ "subject like ? order by f_date desc";
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			pstmt = con.prepareStatement(sql);
+
 			pstmt.setString(1, item);
-			pstmt.setString(2, "%"+keyward+"%");
-			
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				AdminEventDTO aedto = new AdminEventDTO();
+				aedto.setNum(rs.getInt("num"));
+				aedto.setCategory(rs.getString("category"));
+				aedto.setSubject(rs.getString("subject"));
+				aedto.setImage(rs.getString("image"));
+				aedto.setF_date(rs.getDate("f_date"));
+				aedto.setE_date(rs.getDate("e_date"));
+				arr.add(aedto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return arr;
+	}
+	/*-------------------- 이벤트 리스트 가져오기(사용자) --------------------*/
+
+	
+	/*-------------------- 검색 내용 가져오기(사용자) --------------------*/
+	@Override
+	public List<AdminEventDTO> getSearch(String keyward) {
+		List<AdminEventDTO> arr = new ArrayList<AdminEventDTO>();
+		try {
+			con = getCon();
+			sql = "select * from event where subject like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+keyward+"%");
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {

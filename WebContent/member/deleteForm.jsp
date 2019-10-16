@@ -6,28 +6,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 회원 계정 삭제</title>
 <script type="text/javascript">
-	/* const del = document.querySelector('input[type=submit]');
-	var cnfrm = confirm('정말 회원 탈퇴를 진행하시겠습니까? 한번 삭제된 계정은 복구할 수 없습니다.');
-	
-	del.addEventListener('click', function(e) {
-		if (cnfrm) {
-			document.getElementById('fm').submit();
-		} else {
-			return false;
-		}
-	}); */
-</script>
+	function check() {
+		
+	if(confirm('정말 계정을 삭제하시겠습니까? 탈퇴한 회원의 정보는 복원되지 않습니다.')){
+
+	}else{
+		 history.back();
+	 }
+	}
+	</script>
 </head>
 <body>
+<<<<<<< HEAD
+<h1>회원탈퇴하는곳</h1>
+
+<%
+String id = (String)session.getAttribute("id");
+=======
 	<%@ include file="../include/header.jsp" %>
 	<%
 	// String id = (String) session.getAttribute("id");
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 
-	if (id == null) {
-		response.sendRedirect("./MemberLogin.me");
-	}
-	%>
+if(id ==null){
+	response.sendRedirect("./MemberLogin.me");
+}
 
+<<<<<<< HEAD
+
+
+%>
+<fieldset>
+     <legend> 회원 탈퇴 </legend>
+     <form action="./MemberDeleteAction.me" method="post" onsubmit="check();">
+       	아이디 : <input type="text" name="id" value="<%=id %>" readonly>
+       	<br>
+		비밀번호 : <input type="password" name="pass">
+		<br>               
+        <input type="submit" value="회원 탈퇴">
+     </form>  
+  </fieldset>
+  
+
+
+
+=======
 	<fieldset>
 		<legend> 회원 탈퇴 </legend>
 		<form action="./MemberDeleteAction.me" id="fm" method="post">
@@ -39,5 +62,6 @@
 		</form>
 	</fieldset>
 	<%@ include file="../include/footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </body>
 </html>
