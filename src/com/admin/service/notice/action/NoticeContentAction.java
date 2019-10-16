@@ -24,7 +24,7 @@ public class  NoticeContentAction implements Action {
 		
 		// AdminNoticeDAO 객체 생성
 		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
-	
+	// 1
 		// readcount 1증가 => updateReadcount(num);
 		andao.updateReadcount(num);
 		
