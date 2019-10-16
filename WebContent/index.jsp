@@ -20,8 +20,6 @@
 	// response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
 	
-	// String id = (String) session.getAttribute("id");
-	
 %>
 	<div id="wrap">
 	
@@ -53,7 +51,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li>고객센터</li>
+				<li><a href="./FAQList.af">고객센터</a></li>
 				<li>ENGLISH</li>
 			</ul>
 		</div>
@@ -98,15 +96,9 @@
 					</ul>
 				</li>
 				<li>
-					이벤트
-					<ul>
-						<li>영화</li>
-						<li>시사회/무대인사</li>
-						<li>제휴할인</li>
-						<li>진행중이벤트</li>
-					</ul>
+					<a href="./EventSummary.ae">이벤트</a>
 				</li>
-				<li>매점</li>
+				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
 			</ul>
 						

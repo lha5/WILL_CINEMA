@@ -36,11 +36,12 @@
 
 <body>
 <!--바디  -->
+
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>)request.getAttribute("FAQList");
 	String pageNum = (String)request.getAttribute("pageNum");
-	String id = (String)request.getAttribute("id");
+	// String id = (String)request.getAttribute("id");
 	int pageCount = (Integer) request.getAttribute("pageCount");
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
@@ -48,6 +49,10 @@
 	System.out.println("FAQList :"+FAQList.toString());
 		
 	%>
+	
+	<%@ include file="../include/header.jsp" %>
+	
+	<jsp:include page="../service/serviceMain.jsp"/>
 
 <h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 
@@ -123,6 +128,8 @@ for (i = 0; i < acc.length; i++) {
 
 </script>
 </table>
+
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
 

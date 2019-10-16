@@ -98,6 +98,9 @@ $( function() {
 </script>
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <h1>이벤트 작성 페이지</h1>
 <fieldset>
 	<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
@@ -137,5 +140,8 @@ $( function() {
 	</form>
 	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
+
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>
