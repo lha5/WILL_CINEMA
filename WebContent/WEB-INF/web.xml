@@ -149,4 +149,14 @@
     <url-pattern>*.ae</url-pattern>
   </servlet-mapping>
   <!-- 이벤트 관리(갤러리형식) 서블릿 -->
+  
+  <!-- 영화 리뷰 서블릿 -->
+  <servlet>
+    <servlet-name>MovieReviewFrontController</servlet-name>
+    <servlet-class>com.review.action.MovieReviewFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieReviewFrontController</servlet-name>
+    <url-pattern>*.mr</url-pattern>
+  </servlet-mapping>
 </web-app>

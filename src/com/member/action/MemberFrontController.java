@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.action.Action;
+import com.action.ActionForward;
+
 
 public class MemberFrontController extends HttpServlet{
 
@@ -20,7 +23,7 @@ public class MemberFrontController extends HttpServlet{
 		Action action=null;
 		//가상주소 비교
 		if(command.equals("/MyPage.me")){ //마이페이지([구매/예매, 문의내역, 회원(수정,탈퇴)])
-			//action = new MyPageAction(); 
+			action = new MyPageAction(); 
 			
 			try {
 				forward=action.execute(request, response);
@@ -90,7 +93,12 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}			
 		}else if(command.equals("/MemberList.me")){ //회원 관리 페이지(관리자 전용)
-			// action = new MemberListAction();
+			action = new MemberListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/MemberInfo.me")){ // 회원정보조회
 			action = new MemberInfoAction();
 			try {

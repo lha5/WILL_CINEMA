@@ -14,15 +14,18 @@
 </head>
 <body>
 
-<%
+	<%@ include file="../include/header.jsp" %>
 
-	String id = (String) session.getAttribute("id");
+	<%
+
+	// String id = (String) session.getAttribute("id");
+	String name = (String) session.getAttribute("name");
 
 	if (id == null) {
 		response.sendRedirect("./MemberLogin.me");
 	}
 
-%>
+	%>
 	<div id="wrap">
 	
 	<jsp:include page="../include/header.jsp"/>
@@ -32,15 +35,14 @@
 		<table>
 			<tr>
 				<td colspan="2">
-					<%=id%>님, 환영합니다!
+					<%=name%>님, 환영합니다!
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h3>W.POINT</h3>
-					<div id="look_point">조회하기</div><!-- ajax로 구현 -->
 					<div id="availability">가능하면[사용가능]/불가하면[사용불가]</div>
-					<div id="left_point">조회하기누르면뜨게</div>
+					<div id="left_point">잔여포인트량</div>
 					<ul>
 						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
@@ -48,7 +50,7 @@
 				</td>
 				<td>
 					<div id="ranking">
-						<h2><%=id%>님의 현재 등급은<br>OOO입니다.</h2>
+						<h2><%=name%>님의 현재 등급은<br>OOO입니다.</h2>
 					</div>
 				</td>
 			</tr>
@@ -65,7 +67,7 @@
 				<li><a href="#">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
-				<li><a href="#">내 정보 관리</a></li>
+				<li><a href="./MyPage.me">내 정보 관리</a></li>
 			</ul>
 		</div>
 	</section>
@@ -74,7 +76,7 @@
 		(내용 들어오는 곳)
 	</div>
 	
-	<jsp:include page="../include/footer.jsp"/>
+	<%@ include file="../include/footer.jsp" %>
 	</div>
 </body>
 </html>

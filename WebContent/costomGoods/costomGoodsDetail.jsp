@@ -8,16 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>WebContent/costomGoods/costomGoodsDetail.jsp</h1>
 
-<%
+	<%@ include file="../include/header.jsp" %>
+
+
+
+	<%
 	request.setCharacterEncoding("UTF-8");
 
 	//DTO 객체 저장
 	MallDTO mdto = (MallDTO)request.getAttribute("mdto");
 	
 	//제품 상세 페이지 작성
-%>
+	%>
+
 
 <h1> 제품 상세 페이지</h1>
 <form action="./MallOrderStar.mor" method="post">
@@ -43,5 +47,7 @@
 </table>
 </form>
 
+	</form>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

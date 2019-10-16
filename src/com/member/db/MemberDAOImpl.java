@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO{
 		//연결정보를 가져와서 리턴
 		con=ds.getConnection();
     
-    System.out.println("DB 접속 완료 : " + con);
+ 
 		
 		return con;
 	}
@@ -118,8 +118,6 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
-
-	// getMember(id) - 회원 자신의 정보 열람
 	@Override
 	public MemberDTO getMember(String id){
 		MemberDTO mdto = null;
@@ -153,6 +151,8 @@ public class MemberDAOImpl implements MemberDAO{
 				mdto.setDetailaddr(rs.getString("detailAddr"));
 				mdto.setZipcode(rs.getInt("zipcode"));
 				mdto.setReg_date(rs.getTimestamp("reg_date"));
+			
+				
 			}
 			System.out.println("getMember(id) - 회원 정보 저장 완료");
 		} catch (Exception e) {
@@ -160,7 +160,7 @@ public class MemberDAOImpl implements MemberDAO{
 		} finally {
 			closeDB();
 		}
-		return mdto;
+	return mdto;
 	}
 	//getMember(id)
 
@@ -287,7 +287,6 @@ public class MemberDAOImpl implements MemberDAO{
 				MemberDTO mdto = new MemberDTO();
 
 				mdto.setId(rs.getString("id"));
-				mdto.setPass(rs.getString("pass"));
 				mdto.setName(rs.getString("name"));
 				mdto.setEmail(rs.getString("email"));
 				mdto.setBirthday(rs.getString("birthday"));
@@ -313,5 +312,32 @@ public class MemberDAOImpl implements MemberDAO{
 
 		return memberList;
 	}
-}
 
+	
+	
+	// 회원 마이 페이지 이름값 가져가기
+	@Override
+	public String forName(String id) {
+		String name = "";
+		try {
+			con = getCon();
+			
+			sql = "SELECT name FROM member WHERE id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return name;
+	}
+}

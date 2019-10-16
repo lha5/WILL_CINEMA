@@ -60,16 +60,40 @@ $( function() {
       return date;
     }
   } );
-
+  
+	function checkValue(){
+	  var form = document.fr;
+	  
+	  if (!form.subject.value) {
+			alert("제목을 입력하세요.");
+			document.fr.subject.focus();
+			return false;
+	  }
+	  
+	  if (!form.from.value) {
+			alert("시작 날짜를 선택하세요.");
+			document.fr.from.focus();
+			return false;
+	  }
+	  
+	  if (!form.to.value) {
+			alert("끝 날짜를 선택하세요.");
+			document.fr.to.focus();
+			return false;
+	  }
+}
 </script>
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <%
 	AdminEventDTO aedto=(AdminEventDTO)request.getAttribute("aedto");
 %>
 <h1>이벤트 수정 페이지</h1>
 <fieldset>
-	<form action="./EventUpdateAction.ae" method="post"  enctype="multipart/form-data">
+	<form action="./EventUpdateAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
 		<input type="hidden" name="num" value="<%=aedto.getNum()%>">
 		<input type="hidden" name="file2" value="<%=aedto.getImage()%>">
 		<table border="1">
@@ -120,5 +144,7 @@ $( function() {
 	</form>
 	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

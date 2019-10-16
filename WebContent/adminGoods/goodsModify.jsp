@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%@ include file="../include/header.jsp" %>
+
 <h1>WebCotent/adminGoods/goodsModify.jsp</h1>
 <%
 	//상품의 정보를 저장(request)
@@ -57,5 +60,7 @@
 	<input type="reset" value="제품 수정 취소">
 	<input type="button" value="리스트" onclick="location.href='./GoodsList.al'">
 	</form>
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

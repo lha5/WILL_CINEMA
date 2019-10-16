@@ -20,4 +20,7 @@ public interface MemberDAO {
 	
 	// 가입한 회원의 목록 가져오기
 	public List<MemberDTO> getMemberList();	
+
+	// 회원 마이 페이지 이름값 가져가기
+	public String forName(String id);
 }

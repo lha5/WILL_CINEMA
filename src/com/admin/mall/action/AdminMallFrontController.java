@@ -23,7 +23,7 @@ public class AdminMallFrontController extends HttpServlet{
 		Action action=null;
 		//가상주소 비교
 		if (command.equals("/GoodsList.al")) { // 상품(간식,상품권) 리스트 페이지(관리자) 구현 O
-			//action = new GoodsListAction();
+			// action = new GoodsListAction();
 			action = new GoodsListAction();
 			try {
 				forward = action.execute(request, response);
@@ -68,7 +68,6 @@ public class AdminMallFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
 		
 		//가상주소를 가지고 이동
 		if(forward !=null){
