@@ -36,7 +36,7 @@
 			<td>카테고리</td><td colspan="3"><%=qadto.getCategory() %></td>
 		</tr>
 		<tr>
-			<td>첨부파일</td><td colspan="3"><img src="../upload/캡처4.PNG"></td>
+			<td>첨부파일</td><td colspan="3"><img src="./upload/<%=qadto.getImage()%>"></td>
 		</tr>
 		<tr>
 			<td>글 내용</td><td colspan="3"><%=qadto.getContent() %></td>

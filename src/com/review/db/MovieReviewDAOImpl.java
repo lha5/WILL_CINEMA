@@ -61,7 +61,7 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		try {
 			con = getCon();
 			
-			sql = "select max(num) from review";
+			sql = "select max(num) from qna";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -138,8 +138,9 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				MovieReviewDTO mrdto = new MovieReviewDTO();
 				
+				MovieReviewDTO mrdto = new MovieReviewDTO();
+				System.out.println("num : "+rs.getInt("num"));
 				mrdto.setNum(rs.getInt("num"));
 				mrdto.setId(rs.getString("id"));
 				mrdto.setPass(rs.getString("pass"));
