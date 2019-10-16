@@ -12,11 +12,10 @@ import com.action.ActionForward;
 public class MemberLogoutAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		
-System.out.println("MemberLogoutAction 실행됩니다 ");
+		System.out.println("MemberLogoutAction 실행됩니다 ");
 		
 		HttpSession session = request.getSession();
 		session.invalidate();

@@ -287,7 +287,6 @@ public class MemberDAOImpl implements MemberDAO{
 				MemberDTO mdto = new MemberDTO();
 
 				mdto.setId(rs.getString("id"));
-				mdto.setPass(rs.getString("pass"));
 				mdto.setName(rs.getString("name"));
 				mdto.setEmail(rs.getString("email"));
 				mdto.setBirthday(rs.getString("birthday"));
@@ -313,5 +312,32 @@ public class MemberDAOImpl implements MemberDAO{
 
 		return memberList;
 	}
+
+	
+	
+	// 회원 마이 페이지 이름값 가져가기
+	@Override
+	public String forName(String id) {
+		String name = "";
+		try {
+			con = getCon();
+			
+			sql = "SELECT name FROM member WHERE id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return name;
+	}
 }
-//id 체크 (id,pass)

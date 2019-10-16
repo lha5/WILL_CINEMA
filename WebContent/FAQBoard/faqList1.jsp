@@ -32,15 +32,16 @@
 }
 </style>
 </head>
-
-
 <body>
-<!--바디  -->
+	<%@ include file="../include/header.jsp" %>
+	
+	<jsp:include page="../service/serviceMain.jsp"/>
+
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>)request.getAttribute("FAQList");
 	String pageNum = (String)request.getAttribute("pageNum");
-	String id = (String)request.getAttribute("id");
+	// String id = (String)request.getAttribute("id");
 	int pageCount = (Integer) request.getAttribute("pageCount");
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
@@ -48,12 +49,14 @@
 	System.out.println("FAQList :"+FAQList.toString());
 		
 	%>
+	
+	
 
-<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
+	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 
 	<h3><a href="./FAQWrite.af">글쓰기</a></h3>
 
-<table >
+<table>
   <!--    <tr>
        <td>번호</td>
        <td>카테고리</td>
@@ -123,9 +126,7 @@ for (i = 0; i < acc.length; i++) {
 
 </script>
 </table>
+
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
-
-
-
-

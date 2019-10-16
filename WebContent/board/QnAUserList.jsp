@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../service/serviceMain.jsp" %>
 	<h1>유저 전용 리스트</h1>
 	<%
-		String id = (String)session.getAttribute("id");
+		// String id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
@@ -93,5 +95,7 @@
 		<input type="text" name="search">
 		<button type="submit">검색</button>
 	</form>
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

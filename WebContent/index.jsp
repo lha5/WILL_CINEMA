@@ -20,12 +20,9 @@
 	// response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
 	
-	// String id = (String) session.getAttribute("id");
-	
 %>
 	<div id="wrap">
 	
-	<%-- <jsp:include page="include/header.jsp"/> --%>
 	
 	<%
 	String id = (String) session.getAttribute("id");
@@ -53,7 +50,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li>고객센터</li>
+				<li><a href="./FAQList.af">고객센터</a></li>
 				<li>ENGLISH</li>
 			</ul>
 		</div>
@@ -62,7 +59,7 @@
 		
 		<div id="logo">
 			<!-- <img alt="logo" src="img/logo.png" width="230"> -->
-			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
+			<a href="index.jsp"><i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
@@ -98,15 +95,15 @@
 					</ul>
 				</li>
 				<li>
-					이벤트
+					<a href="./EventSummary.ae">이벤트</a>
 					<ul>
-						<li>영화</li>
-						<li>시사회/무대인사</li>
-						<li>제휴할인</li>
-						<li>진행중이벤트</li>
+						<li><a href="./EventContent.ae?item=movie">영화</a></li>
+						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
+						<li><a href="./EventContent.ae?item=nevent">윌시NOW</a></li>
+						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
 					</ul>
 				</li>
-				<li>매점</li>
+				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
 			</ul>
 						
@@ -148,10 +145,10 @@
 	
 	<br>
 	<br>
-	
-	<%-- <%@ include file="include/footer.jsp" %> --%>
-	
 	<br>
+	
+	
+	
 	<div id="bttm">
 	<footer>
 		<div id="sub_logo">

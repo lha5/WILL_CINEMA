@@ -5,29 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 회원 계정 삭제</title>
-<script type="text/javascript">
-	/* const del = document.querySelector('input[type=submit]');
-	var cnfrm = confirm('정말 회원 탈퇴를 진행하시겠습니까? 한번 삭제된 계정은 복구할 수 없습니다.');
-	
-	del.addEventListener('click', function(e) {
-		if (cnfrm) {
-			document.getElementById('fm').submit();
-		} else {
-			return false;
-		}
-	}); */
-</script>
 </head>
 <body>
 
+	<%@ include file="../include/header.jsp" %>
 	<%
-	String id = (String) session.getAttribute("id");
+	// String id = (String) session.getAttribute("id");
 
-	if (id == null) {
+	if(id ==null){
 		response.sendRedirect("./MemberLogin.me");
 	}
 	%>
-
+	
 	<fieldset>
 		<legend> 회원 탈퇴 </legend>
 		<form action="./MemberDeleteAction.me" id="fm" method="post">
@@ -38,6 +27,6 @@
 			<input type="submit" value="회원 탈퇴">
 		</form>
 	</fieldset>
-
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

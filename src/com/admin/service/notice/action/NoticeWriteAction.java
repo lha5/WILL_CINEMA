@@ -19,12 +19,10 @@ public class NoticeWriteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("NoticeWriteAction_execute()------------------------");
+		System.out.println("AdminNoticeWriteAction_execute()------------------------");
 		
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
-		
-		
 		
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/upload");
@@ -57,9 +55,8 @@ public class NoticeWriteAction implements Action {
 		
 		// 페이지 이동
 		// 글목록 보여주는 페이지로 이동
-		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./NoticeList.an");
+		forward.setPath("./AdminNoticeWriteAction.an");
 		forward.setRedirect(true);
 		
 		return forward;

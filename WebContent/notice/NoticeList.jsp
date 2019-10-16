@@ -11,9 +11,9 @@
 </head>
 <body>
 
-<h1>WebContent/notice/NoticeList.jsp</h1>
-
-
+	<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>)request.getAttribute("boardList");
@@ -23,12 +23,13 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
-	System.out.println("boardList :"+boardList.toString());
-	
 	
 	%>
+	
+	
+	
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-
+	
 	<h3><a href="./NoticeWrite.an">글쓰기</a></h3>
 
 
@@ -57,12 +58,9 @@
 			<td><%=andto.getDate()%></td>
 			 <td><%=andto.getReadcount() %></td>
 			</tr>
-		<%} %> 
-		
-	
-	
+		<%} %> 	
 	</table>
- <%
+<%
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -84,10 +82,10 @@
 			%>
 			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 			<%
-				}
+			}
 		}
 	%>
 
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

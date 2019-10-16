@@ -8,10 +8,10 @@
 <title>WILL CINEMA - 회원 정보</title>
 </head>
 <body>
-
+	<%@ include file="../include/header.jsp" %>
 	<%
 		// 세션 가져오기 
-		String id = (String) session.getAttribute("id");
+		// String id = (String) session.getAttribute("id");
 
 		// 아이디 없으면 메인으로 
 		if (id == null) {
@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pass"></td>
+					<td><input type="password" name="pass" ></td>
 				</tr>
 				<tr>
 					<td>이름</td>
@@ -66,12 +66,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td>이벤트 메일 수신</td>
+					 <td>이벤트 메일 수신</td>
 					<td>
 						<input type="radio" name="receive" value="yes" <%if (mdto.getReceive().equals("yes")) {%>checked<%}%>> 예
-						&nbsp;&nbsp;&nbsp;
+						 &nbsp;&nbsp;&nbsp;
 						<input type="radio" name="receive" value="no" <%if (mdto.getReceive().equals("no")) {%>checked<%}%>> 아니오
-					</td>
+					</td> 
 				</tr>
 				<tr>
 					<td>선호하는 장르</td>
@@ -88,6 +88,6 @@
 			
 		</form>
 	</fieldset>
-
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

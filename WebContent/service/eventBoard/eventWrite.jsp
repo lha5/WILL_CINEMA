@@ -98,9 +98,11 @@ $( function() {
 </script>
 </head>
 <body>
-<h1>이벤트 작성 페이지</h1>
+
+<%@ include file="../../include/header.jsp" %>
+
 <fieldset>
-	<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
+<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td>카테고리</td> 
@@ -116,8 +118,8 @@ $( function() {
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td><input type="text" name="fDate" id="from" readonly="readonly" >
-				 ~ <input type="text" name="eDate" id="to" readonly="readonly" >
+				<td><input type="text" name="fDate" id="from">
+				 ~ <input type="text" name="eDate" id="to">
 				 </td>
 			</tr><!-- 날짜 선택 드롭박스 -->
 			<tr>
@@ -137,5 +139,8 @@ $( function() {
 	</form>
 	<a href="./EventSummary.ae">이벤트 목록</a>
 </fieldset>
+
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

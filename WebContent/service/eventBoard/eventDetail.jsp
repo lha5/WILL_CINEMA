@@ -6,8 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <%
 	AdminEventDTO aedto = (AdminEventDTO)request.getAttribute("aedto");
 %>
@@ -29,5 +33,7 @@
 }%>
 <br>
 <a href="./EventContent.ae?item=<%=aedto.getCategory()%>">목록으로</a>
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

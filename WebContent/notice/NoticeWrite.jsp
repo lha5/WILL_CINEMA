@@ -9,9 +9,10 @@
 <body>
 	<h1>WebContent/notice/NoticeWrite.jsp</h1>
 
-	<fieldset> 
+	<fieldset>
 		<legend>게시판 글쓰기</legend>
 	
+
 	<form action="./NoticeWriteAction.an" method="post" enctype="multipart/form-data">
 		글쓴이: <input type="text" name="name"><br>
 		비밀번호 : <input type="password" name="pass"><br>

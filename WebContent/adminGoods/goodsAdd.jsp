@@ -39,7 +39,8 @@
 </head>
 <body>
 
-<h1>WebContent/adminGoods/goodsAdd.jsp</h1>
+	<%@ include file="../include/header.jsp" %>
+
 
 <h1> 상품 등록 </h1>
 
@@ -77,5 +78,7 @@
 	<input type="button" value="리스트" onclick="location.href='./GoodsList.al'">
 	</form>
 	
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

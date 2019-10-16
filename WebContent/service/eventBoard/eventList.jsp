@@ -16,10 +16,12 @@
 			return false;
 		}
 	}
-
 </script>
 </head>
 <body>
+
+<%@ include file="../../include/header.jsp" %>
+
 <%
 	List<AdminEventDTO> eventList = (ArrayList<AdminEventDTO>)request.getAttribute("eventList");
 	String keyward=(String)request.getAttribute("keyward");
@@ -39,6 +41,7 @@
 	int endPage= (Integer)request.getAttribute("endPage");
 
 %>
+
 
 <h1>상품 리스트</h1>
 <h3><a href="./EventSummary.ae">이벤트 페이지</a></h3>
@@ -112,6 +115,7 @@ if(eventList.size()!=0){
 /********************************************/
 %>
 
+<%@ include file="../../include/footer.jsp" %>
 
 </body>
 </html>
