@@ -13,10 +13,7 @@ public class AdminNoticeDTO {
 	private Date date;
 	private String category;
 	private String image;
-	
-	
-	
-	
+	private int Readcount;
 	public int getNum() {
 		return num;
 	}
@@ -65,7 +62,12 @@ public class AdminNoticeDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+	public int getReadcount() {
+		return Readcount;
+	}
+	public void setReadcount(int readcount) {
+		Readcount = readcount;
+	}
 	
 	
 	
