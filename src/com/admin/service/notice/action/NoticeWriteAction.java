@@ -1,5 +1,6 @@
 package com.admin.service.notice.action;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +9,10 @@ import com.action.ActionForward;
 import com.admin.service.notice.db.AdminNoticeDAO;
 import com.admin.service.notice.db.AdminNoticeDAOImpl;
 import com.admin.service.notice.db.AdminNoticeDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+
 
 public class NoticeWriteAction implements Action {
 
@@ -19,15 +24,31 @@ public class NoticeWriteAction implements Action {
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
 		
-		// 전달된 정보 객체
-		// boardDTO 객체 생성 저장
-		AdminNoticeDTO andto = new AdminNoticeDTO(); 
 		
-		andto.setName(request.getParameter("name"));
-		andto.setPass(request.getParameter("pass"));
-		andto.setSubject(request.getParameter("subject"));
-		andto.setContent(request.getParameter("content"));
 		
+		ServletContext context = request.getServletContext();
+		String realPath = context.getRealPath("/upload");
+		
+		System.out.println("realPath : "+realPath);
+		
+		
+		int maxSize = 10 * 1024 * 1024;
+		
+		MultipartRequest multi = new MultipartRequest(request,realPath,maxSize,"UTF-8",
+				new DefaultFileRenamePolicy());
+				// 전달된 정보 객체
+				// boardDTO 객체 생성 저장
+				AdminNoticeDTO andto = new AdminNoticeDTO(); 
+				
+				andto.setName(multi.getParameter("name"));
+				andto.setPass(multi.getParameter("pass"));
+				andto.setSubject(multi.getParameter("subject"));
+				andto.setContent(multi.getParameter("content"));
+		
+		String image=multi.getFilesystemName("image");
+		andto.setImage(image);
+		
+		System.out.println("image : "+image);
 		// BoardDAOImpl 객체 생성
 		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
 		
