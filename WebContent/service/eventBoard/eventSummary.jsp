@@ -90,7 +90,7 @@
 				<%} %>
 			</ul>
 		<br class="clear">
-		<a href="./EventWrite.ae">이벤트 글쓰기</a><br>
+		<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a><br>
 		<a href="./EventList.ae">이벤트 목록(관리자)</a>
 	</div>
 	
