@@ -11,9 +11,6 @@
 </head>
 <body>
 
-<h1>WebContent/notice/NoticeList.jsp</h1>
-
-
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>)request.getAttribute("boardList");
@@ -25,8 +22,12 @@
 	int endPage = (Integer) request.getAttribute("endPage");
 	System.out.println("boardList :"+boardList.toString());
 	
-	
 	%>
+	
+	<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../service/serviceMain.jsp" %>
+	
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 
 	<h3><a href="./NoticeWrite.an">글쓰기</a></h3>
@@ -39,14 +40,14 @@
        <td>제목</td>
        <td>글쓴이</td>
        <td>날짜</td>
-		
+	   <td>조회수</td>	
 	</tr>
 	
 		<% 
 		 for(int i=0;i<boardList.size();i++){
 			 AdminNoticeDTO andto = boardList.get(i);
 		 
-		
+		System.out.println(andto.getReadcount());
 		 
 		%>
 	  	
@@ -55,8 +56,8 @@
 			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>"><%=andto.getSubject()%></a></td>
 			<td><%=andto.getName()%></td>
 			<td><%=andto.getDate()%></td>
-			
-			
+			 <td><%=andto.getReadcount() %></td>
+			</tr>
 		<%} %> 
 		
 	
@@ -88,6 +89,6 @@
 		}
 	%>
 
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

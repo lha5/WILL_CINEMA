@@ -20,11 +20,7 @@ public class NoticeUpdate implements Action{
 		
 		//한글 처리 
 		request.setCharacterEncoding("UTF-8");
-		
-		
-		
-		
-		
+
 		// num, pageNum 저장
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
@@ -43,7 +39,6 @@ public class NoticeUpdate implements Action{
 		forward.setPath("./notice/NoticeUpdateForm.jsp");
 		forward.setRedirect(false);	
 		return forward;
-		
 		
 	}
 

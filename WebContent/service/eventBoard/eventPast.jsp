@@ -158,6 +158,9 @@
 	}
 %>
 <body>
+
+
+<%@ include file="../../include/header.jsp" %>
 	<!-- 
 		CSS li줄바꿈 처리
 		li{float:left;width:100px;height:100px;background:#000;color:#fff;}
@@ -221,5 +224,8 @@
 		<br class="clear">
 		<a href="./EventSummary.ae">이벤트 목록</a>
 	</div>
+	
+	
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

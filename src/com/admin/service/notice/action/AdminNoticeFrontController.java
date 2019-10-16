@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.action.Action;
 import com.action.ActionForward;
 
-//공지사항 관리 페이지(관리자 전용)
 public class AdminNoticeFrontController extends HttpServlet{
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +26,7 @@ public class AdminNoticeFrontController extends HttpServlet{
 			forward.setPath("./notice/NoticeWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/NoticeWriteAction.an")){ //공지 리스트 페이지
-			//action = new NoticeWriteAction();
+			action = new NoticeWriteAction();
 			try {
 				action = new NoticeWriteAction();
 				forward = action.execute(request, response);
@@ -35,7 +34,7 @@ public class AdminNoticeFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeList.an")){ //공지 리스트 페이지
-			//action = new NoticeListAction();
+			action = new NoticeListAction();
 			try {
 				action = new NoticeListAction();  
 				forward = action.execute(request, response);
@@ -61,7 +60,6 @@ public class AdminNoticeFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/NoticeDelete.an")){ //공지 삭제 페이지
 			forward = new ActionForward();
-			
 			forward.setPath("./notice/NoticeDelete.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/NoticeDeleteAction.an")){ //공지 삭제 페이지

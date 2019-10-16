@@ -7,76 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.event_cwrap {
-    	width: 980px;
-    	margin: 0 auto;
-   		padding: 55px 0 50px;
-	}
-	.event_list {
-    	margin-left: -60px;
-    	width: 1000px;
-	}
-	
-	.event_list li{
-		position: relative;
-	    float: left;
-	    width: 230px;
-	    height: 234px;
-	    margin: 0 0 30px 20px;
-	    border: 1px solid #dedede;
-	    background: #fff;
-	    box-sizing: border-box;
-	    -webkit-box-sizing: border-box;
-	}
-	
-	li {
-		float: left;
-		border: solid black 1px;
-		width: 228px;
-		height: 229px;
-		list-style: none;
-		margin: 0px 0px 30px 20px;
-	}
-	li>p {
-		margin-top: 4px;
-		text-align: center;
-		font-size: 0.8em;
-	}
-	
-	li>img {
-		width: 228px;
-		height: 129px;
-	}
-	
-	.btn_view a{
-		clear: both;
-		display: block;
-		width: 100%;
-		height: 40px;
-		padding: 8px 0;
-		background: #efefef;
-		border: 1px solid #dedede;
-		text-align: center;
-		font-size: 14px;
-		color: #231f20;
-		font-weight: bold;
-		box-sizing: border-box; /* -webkit-box-sizing:border-box; */
-		-moz-box-sizing: border-box;
-	}
-	
-	.btn_view span {
-    	padding-bottom: 6px;
-	}
-	
-	a {
-    	text-decoration: none;
-    	color: #555;
-	}
-	.clear{
-		clear: both;
-	}
-</style>
+<link rel="stylesheet" href="../../css/eventsummary.css">
 </head>
 <body>
 <%
@@ -85,6 +16,9 @@
 	List eventNeventList = (List)request.getAttribute("eventNeventList");
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 %>
+
+<%@ include file="../../include/header.jsp" %>
+
 	<div class="event_cwrap">
 		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
 		<div class="clear">
@@ -142,7 +76,8 @@
 				<h2>제휴 할인</h2> <a href="./EventContent.ae?item=collabo">더보기</a>
 			</div>
 			<ul class="event_list">
-				<%for(int i=0; i<eventCollaboList.size(); i++){ //제휴할인 카테고리 리스트
+				<%
+				for(int i=0; i<eventCollaboList.size(); i++){ //제휴할인 카테고리 리스트
 					AdminEventDTO aedto=(AdminEventDTO)eventCollaboList.get(i);
 					if(i>3){break;}
 				%>
@@ -158,5 +93,8 @@
 		<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a><br>
 		<a href="./EventList.ae">이벤트 목록(관리자)</a>
 	</div>
+	
+	
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

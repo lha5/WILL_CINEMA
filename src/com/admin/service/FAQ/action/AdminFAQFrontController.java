@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.service.notice.action.NoticeContentAction;
 
 //FAQ관리 페이지(관리자)
 public class AdminFAQFrontController extends HttpServlet{
@@ -24,17 +25,17 @@ public class AdminFAQFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/FAQWrite.af")){ //FAQ쓰기
 			forward = new ActionForward();
-			forward.setPath("./board/FAQWrite.jsp");
+			forward.setPath("./FAQBoard/faqWrite.jsp");
 			forward.setRedirect(false);
-		}else if(command.equals("/FAQWriteAction.af")){ //FAQ리스트 페이지
-			//action = new FAQWriteAction();
+		}else if(command.equals("/FAQWriteAction.af")){ //FAQ쓰기 페이지
+			action = new FAQWriteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/FAQList.af")){ //FAQ리스트 페이지
-			//action = new FAQListAction();
+			action = new FAQListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -42,35 +43,36 @@ public class AdminFAQFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/FAQUpdate.af")){ //FAQ수정 페이지
 			//FAQUpdate() -> FAQUpdateForm -> FAQUpdateAction()
-			//action = new FAQUpdate();
+			action = new FAQUpdate();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/FAQUpdateAction.af")){ //FAQ수정 페이지
-			//action = new FAQUpdateAction();
+			action = new FAQUpdateAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/FAQDelete.af")){ //FAQ삭제 페이지
-			//action = new FAQDelete();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/FAQDeleteAction.af")){ //FAQ삭제 페이지
 			//action = new FAQDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/FAQContent.af")){ //FAQ내용 페이지
-			//action = new FAQContentAction();
+		}else if(command.equals("/FAQDeleteAction.af")){ //FAQ삭제 페이지
+			action = new FAQDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FAQContent.af")){ //공지 내용 페이지
+			//action = new NoticeContentAction();
+			action = new FAQContentAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -78,6 +80,7 @@ public class AdminFAQFrontController extends HttpServlet{
 			}
 		}
 		
+			
 		//가상주소를 가지고 이동
 		if(forward !=null){
 			if(forward.isRedirect()){

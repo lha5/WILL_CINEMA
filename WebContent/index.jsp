@@ -20,8 +20,6 @@
 	// response.sendRedirect("./Main.me");
 	// response.sendRedirect("./EventWrite.ae");
 	
-	// String id = (String) session.getAttribute("id");
-	
 %>
 	<div id="wrap">
 	
@@ -53,7 +51,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li>고객센터</li>
+				<li><a href="./FAQList.af">고객센터</a></li>
 				<li>ENGLISH</li>
 			</ul>
 		</div>
@@ -99,15 +97,8 @@
 				</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
-					<ul>
-						<li><a href="./EventContent.ae?item=movie">영화</a></li>
-						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
-						<li><a href="./EventContent.ae?item=nevnet">제휴할인</a></li>
-						<li><a href="./EventContent.ae?item=collabo">진행중이벤트</a></li>
-						
-					</ul>
 				</li>
-				<li>매점</li>
+				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
 			</ul>
 						
@@ -153,6 +144,7 @@
 	<%-- <%@ include file="include/footer.jsp" %> --%>
 	
 	<br>
+	<div id="bttm">
 	<footer>
 		<div id="sub_logo">
 			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
@@ -191,6 +183,7 @@
 			COPYRIGHT© WILL CINEMA ALL RIGHT RESERVED SINCE 2019
 		</div>
 	</footer>
+	</div>
 	</div>
 </body>
 </html>

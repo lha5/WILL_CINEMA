@@ -23,6 +23,8 @@ public class GoodsAddAction implements Action{
 		
 		// 관리자 확인 코드 필요
 		
+		
+		
 		// 파일 위치(가상경로) 
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/goodsImageUpload");

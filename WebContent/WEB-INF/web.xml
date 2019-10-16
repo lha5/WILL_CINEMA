@@ -95,6 +95,17 @@
   </servlet-mapping>
   <!-- 쇼핑 서블릿 -->
   
+    <!-- 쇼핑 주문 서블릿 -->
+  <servlet>
+    <servlet-name>MallOrderFrontController</servlet-name>
+    <servlet-class>com.mall.order.action.MallOrderFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MallOrderFrontController</servlet-name>
+    <url-pattern>*.mor</url-pattern>
+  </servlet-mapping>
+  <!-- 쇼핑 주문 서블릿 -->
+  
   <!-- 고객센터 서블릿 -->
   <servlet>
     <servlet-name>ServiceQnAFrontController</servlet-name>
@@ -138,4 +149,14 @@
     <url-pattern>*.ae</url-pattern>
   </servlet-mapping>
   <!-- 이벤트 관리(갤러리형식) 서블릿 -->
+  
+  <!-- 영화 리뷰 서블릿 -->
+  <servlet>
+    <servlet-name>MovieReviewFrontController</servlet-name>
+    <servlet-class>com.review.action.MovieReviewFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MovieReviewFrontController</servlet-name>
+    <url-pattern>*.mr</url-pattern>
+  </servlet-mapping>
 </web-app>
