@@ -97,8 +97,6 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-=======
 		}else if(command.equals("/EventMore.ae")){ //Event 내용 더보기
 			action = new EventMoreAction();
 			try {
@@ -113,7 +111,6 @@ public class AdminEventFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		}
 		
 		//가상주소를 가지고 이동
