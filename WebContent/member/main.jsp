@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.member.db.MemberDAOImpl"%>
 <%@page import="com.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,11 +7,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<!-- CSS -->
-<link rel="stylesheet" href="../css/mypage.css">
-
 <title>WILL CINEMA - 마이 페이지</title>
+
+<!-- jQuery 연결 -->
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<!-- CSS 연결 -->
+<link rel="stylesheet" href="./css/mypage.css">
+
+<!-- 비동기 처리 -->
+<script>
+function acyncMovePage(url){
+    // ajax option
+    var ajaxOption = {
+            url : url,
+            async : true,
+            type : "POST",
+            dataType : "html",
+            cache : false
+    };
+    
+    $.ajax(ajaxOption).done(function(data){
+        // Contents 영역 삭제
+        $('#contents').children().remove();
+        // Contents 영역 교체
+        $('#contents').html(data);
+    });
+}
+</script>
+
 </head>
 <body>
 
@@ -18,21 +43,46 @@
 
 	<%
 	// String id = (String) session.getAttribute("id");
-	String name = (String) session.getAttribute("name");
+	List info = (List) session.getAttribute("info");
 
 	if (id == null) {
 		response.sendRedirect("./MemberLogin.me");
+	}
+	
+	String level = "";
+	
+	switch (String.valueOf(info.get(1))) {
+		case "0":
+			level = "관리자";
+   		break;
+		case "1":
+			level = "MVP";
+   		break;
+		case "2":
+			level = "VVIP";
+   		break;
+		case "3":
+			level = "VIP";
+   		break;
+		case "4":
+			level = "일반";
+   		break;
+		case "5":
+			level = "신규";
+   		break;
 	}
 	%>
 	<div id="wrap">
 	
 	
 	<section id="sec01">
-		<h2 class="mc">마이시네마</h2>
 		<table>
 			<tr>
+				<td colspan="2">마이시네마</td>
+			</tr>
+			<tr>
 				<td colspan="2">
-					<%=name%>님, 환영합니다!
+					<%=info.get(0)%>님, 환영합니다!
 				</td>
 			</tr>
 			<tr>
@@ -47,7 +97,7 @@
 				</td>
 				<td>
 					<div id="ranking">
-						<h2><%=name%>님의 현재 등급은<br>OOO입니다.</h2>
+						<h2><%=info.get(0)%>님의<br>현재 등급은 <%=level%>입니다.</h2>
 					</div>
 				</td>
 			</tr>
@@ -64,14 +114,14 @@
 				<li><a href="#">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
-				<li><a href="./MyPage.me">내 정보 관리</a></li>
+				<li><input type="button" value="내 정보 관리" onclick="acyncMovePage('./MyPage.me');"></li>
 			</ul>
+		</div>
+		<div id="contents">
+			
 		</div>
 	</section>
 
-	<div id="contents">
-		(내용 들어오는 곳)
-	</div>
 	
 	<%@ include file="../include/footer.jsp" %>
 	</div>

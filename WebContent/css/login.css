@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+fieldset {
+	border-style: none;
+	width: 500px;
+	margin: 100px auto;
+	text-align: center;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 50px auto;
+	width: 350px;
+	height: 200px;
+}
+
+#signup {
+	margin: 50px auto;
+	width: 350px;
+	text-align: center;
+}

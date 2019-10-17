@@ -12,22 +12,20 @@
 <body>
 
 	<%@ include file="../include/header.jsp" %>
-	
-	<%@ include file="../service/serviceMain.jsp" %>
+
 	<%
-	int count = (Integer) request.getAttribute("count");
-	List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>)request.getAttribute("boardList");
-	String pageNum = (String)request.getAttribute("pageNum");
-	
-	int pageCount = (Integer) request.getAttribute("pageCount");
-	int pageBlock = (Integer) request.getAttribute("pageBlock");
-	int startPage = (Integer) request.getAttribute("startPage");
-	int endPage = (Integer) request.getAttribute("endPage");
-	
+		int count = (Integer) request.getAttribute("count");
+		List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>) request.getAttribute("boardList");
+		String pageNum = (String) request.getAttribute("pageNum");
+
+		int pageCount = (Integer) request.getAttribute("pageCount");
+		int pageBlock = (Integer) request.getAttribute("pageBlock");
+		int startPage = (Integer) request.getAttribute("startPage");
+		int endPage = (Integer) request.getAttribute("endPage");
 	%>
-	
-		
-   <table border="1">
+
+
+	<table border="1">
      <tr>
        <td>번호</td>
        <td>제목</td>
@@ -79,6 +77,8 @@
 		}
 	%>
 
-<%@ include file="../include/footer.jsp" %>
+	
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

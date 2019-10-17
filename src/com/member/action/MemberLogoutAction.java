@@ -27,7 +27,7 @@ public class MemberLogoutAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("  alert('로그아웃 성공!!');");
-		out.println("  location.href='./Main.me'; ");
+		out.println("  location.href='./index.jsp'; ");
 		out.println("</script>");
 		
 		
