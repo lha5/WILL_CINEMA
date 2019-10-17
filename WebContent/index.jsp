@@ -88,7 +88,8 @@
 					<li>영화의전당</li>
 				</ul>
 				</li>
-				<li>영화관
+				<li>
+					<a href="./CinemaDetail.ci">영화관</a>
 					<ul>
 						<li>서울</li>
 						<li>경기/인천</li>
