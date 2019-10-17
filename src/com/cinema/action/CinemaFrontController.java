@@ -35,7 +35,7 @@ public class CinemaFrontController extends HttpServlet{
 			forward.setPath("./adminCinema/cinemaAdd.jsp");
 			forward.setRedirect(false);
 		}else if (command.equals("/CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
-			action = new CinemaAddAction();
+			action = new CinemaAddAction(); 
 			
 			try {
 				forward = action.execute(request, response);
