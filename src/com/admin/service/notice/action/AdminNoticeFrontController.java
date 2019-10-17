@@ -60,15 +60,14 @@ public class AdminNoticeFrontController extends HttpServlet{
 			forward.setPath("./service/noticeBoard/NoticeDelete.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/NoticeDeleteAction.an")){ //공지 삭제 페이지
-
-			//action = new NoticeDeleteAction();
+			action = new NoticeDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/NoticeContent.an")){ //공지 내용 페이지
-			//action = new NoticeContentAction();
+			action = new NoticeContentAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

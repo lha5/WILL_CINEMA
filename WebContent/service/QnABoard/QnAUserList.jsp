@@ -25,13 +25,11 @@
 		int endPage = (Integer) request.getAttribute("endPage");
 	%>
 	
-
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
    
    <table border="1">
      <tr>
+     	<td>번호</td>
        <td>카테고리</td>
-       <td>ID</td>
        <td>제목</td>
        <td>글쓴이</td>
        <td>날짜</td>
@@ -44,6 +42,7 @@
     		if(id.equals(qadto.getId())){
 		%>
 			<tr>
+				<td><%=qadto.getNum()%></td>
 				<td><%=qadto.getCategory()%></td>
 				<td><%=qadto.getId() %></td>
 				<td>

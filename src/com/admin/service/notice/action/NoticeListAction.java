@@ -19,7 +19,7 @@ public class NoticeListAction implements Action{
 		System.out.println("AdminNoticeListAction_execute()---------------------");
 
 		// DB 처리객체 생성
-		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
+		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
 
 		
 		int count = andao.getBoardCount();
@@ -33,6 +33,7 @@ public class NoticeListAction implements Action{
 		if (pageNum == null || pageNum.equals("null")) {
 			pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
 		}
+		System.out.println("pageNum 값 : " + pageNum);
 		// 시작행 구하는 작업
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;

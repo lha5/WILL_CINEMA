@@ -13,13 +13,17 @@
 
 </head>
 <body>
+
 	<%@ include file="../../include/header.jsp" %>
+	
 	<%
 		// String id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
+		
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
+		
 		String pageNum = (String)request.getAttribute("pageNum");
 	
 		int pageCount = (Integer) request.getAttribute("pageCount");
@@ -36,13 +40,10 @@
      <tr>
        <td>번호</td>
        <td>카테고리</td>
-       <td>ID</td>
        <td>제목</td>
        <td>카테고리</td>
        <td>글쓴이</td>
        <td>날짜</td>
-       <td>조회수</td>
-       <td>첨부</td>
      </tr>
      <%
      	for (int i=0;i<boardList.size();i++) {
@@ -59,7 +60,6 @@
 				<td><%=qadto.getName() %></td>
 				<td><%=qadto.getDate() %></td>
 				<td><%=qadto.getReadcount() %></td>
-				<td><%=qadto.getImage()%></td>
 			</tr>
 		<%}%>
 	</table>

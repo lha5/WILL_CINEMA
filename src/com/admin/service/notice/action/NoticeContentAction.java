@@ -22,8 +22,10 @@ public class  NoticeContentAction implements Action {
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
+		System.out.println("num : " + num + ", pageNum : " + pageNum);
+		
 		// AdminNoticeDAO 객체 생성
-		AdminNoticeDAOImpl andao = new AdminNoticeDAOImpl();
+		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
 		
 		// readcount 1증가 => updateReadcount(num);
 		andao.updateReadcount(num);
@@ -32,12 +34,12 @@ public class  NoticeContentAction implements Action {
 		AdminNoticeDTO andto = andao.getBoard(num);
 		
 		// 정보 저장 (글정보,pageNum)
-		request.setAttribute("bdto", andto);
+		request.setAttribute("andto", andto);
 		request.setAttribute("pageNum", pageNum);
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./service/noticeBoard/noticeContent.jsp");
+		forward.setPath("./service/noticeBoard/NoticeContent.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
