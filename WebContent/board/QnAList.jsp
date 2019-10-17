@@ -28,6 +28,7 @@
 		int endPage = (Integer) request.getAttribute("endPage");
 	%>
 	
+	
 
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
    
@@ -98,6 +99,8 @@
 		<input type="text" name="search">
 		<button type="submit">검색</button>
 	</form>
-
+	
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>

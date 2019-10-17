@@ -18,8 +18,9 @@ public interface MemberDAO {
 	// 회원 탈퇴(계정 삭제)
 	public int deleteMember(String id,String pass);
 	
-
 	// 가입한 회원의 목록 가져오기
 	public List<MemberDTO> getMemberList();	
 
+	// 회원 마이 페이지 이름값 가져가기
+	public String forName(String id);
 }

@@ -1,53 +1,139 @@
 @CHARSET "UTF-8";
 
+/* -------- 글씨체 -------- */
+@font-face {
+	font-family: 'BinggreaB';
+	src: url('../font/Binggrae-Bold.otf') format('opentype');
+}
+/* -------- 글씨체 -------- */
+
+
+
+/* -------- 전체에 적용할 속성들 --------*/
+a {
+	text-decoration: none;
+}
+
+a:VISITED {
+	text-decoration: none;
+}
+a:HOVER {
+	text-decoration: none;
+}
+a:FOCUS { 
+	text-decoration: none; 
+}
+
+ul>li {
+	list-style: none;
+}
+body {
+	/* border: 1px solid red; */
+	padding: 0;
+	margin: 0;
+}
+
+#wrap {
+	/* border: 1px solid red; */
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+/* -------- 전체에 적용할 속성들 --------*/
+
+
+
 /* ----------- footer ----------- */
+#bttm {
+	width: 100%;
+	margin: 0;
+	background-color: #CCCCCC;
+}
+
+footer {
+	width: 1100px;
+	margin: 20px auto 0 auto;
+	padding: 20px auto 0 auto;
+}
+
 #sub_logo {
-	border: 1px solid purple;
+	/* border: 1px solid purple; */
 	float: left;
-	padding: 5px;
+	padding: 5px 7px;
+}
+
+#sub_logo>span {
+	font-family: BinggreaB;
+	font-size: 1.7em;
+	margin-bottom: 7px;
 }
 
 #family_site {
 	float: right;
 	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+select {
+  width: 200px;
+  padding: .8em .5em;
+  font-family: inherit; /* 수정 하기 */
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  border-radius: 0px;
 }
 
 #sub_menu {
-	border: 1px solid maroon;
+	/* border: 1px solid maroon; */
 	clear: both;
 	hieght: 50px;
 }
 
 #sub_menu>ul {
-	border: 1px solid black;
-	width: 1000px;
+	/* border: 1px solid black; */
+	width: inherit;
 	height: 50px;
 	margin: 10px auto;
+	padding: 17px;
 }
 
 #sub_menu>ul>li {
 	float: left;
 	margin: 5px 10px;
+	padding-right: 15px;
+}
+
+#sub_menu>ul>li:NTH-CHILD(1), #sub_menu>ul>li:NTH-CHILD(2), 
+#sub_menu>ul>li:NTH-CHILD(3), #sub_menu>ul>li:NTH-CHILD(4), 
+#sub_menu>ul>li:NTH-CHILD(5), #sub_menu>ul>li:NTH-CHILD(6), 
+#sub_menu>ul>li:NTH-CHILD(7) {
+	border-right: 2px solid #CCCCCC;
 }
 
 #sub_info>ul {
-	width: 700px;
-	height: 70px;
-	margin: 5px auto;
+	/* border: 1px dotted black; */
+	width: inherit;
+	height: 80px;
+	margin: 10px auto 15px auto;
+	padding: 30px auto 15px auto;
+	text-align: center;
 }
 
 #sub_info>ul>li {
-	display: inline-block;
-	margin-right: 15px;
+	display: block;
+	margin: 10px auto;
 	text-align: center;
 }
 
 #copy {
-	border: 1px dashed black;
+	/* border: 1px dashed black; */
 	width: 700px;
-	height: 50px;
-	margin: 10px auto;
-	padding: auto;
-	text-align: left;
+	height: 30px;
+	margin: 10px auto 0 auto;
+	padding-top: 12px;
+	text-align: center;
 }
 /* ----------- footer ----------- */
