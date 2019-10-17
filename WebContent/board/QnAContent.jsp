@@ -9,7 +9,6 @@
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
-	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		// 이전 페이지에서 전달해준 정보를 저장 -> 사용
 		QnADTO qadto = (QnADTO)request.getAttribute("qadto");

@@ -9,7 +9,6 @@
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
-<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		QnADTO qadto = (QnADTO)request.getAttribute("qadto");
 		String pageNum = (String)request.getAttribute("pageNum");
