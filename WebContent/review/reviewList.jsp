@@ -24,7 +24,7 @@
 	
 	 <table border="1">
 	 <%for(int i=0;i<boardList.size();i++){ 
-	 	MovieReviewDTO mrdto = new MovieReviewDTO();
+	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
      <tr>
        <td>번호</td><td><%=mrdto.getNum() %></td>

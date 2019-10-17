@@ -106,6 +106,29 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MemberPassCheck.me")) {
+			forward = new ActionForward();
+			
+			forward.setPath("./member/updatePass.jsp");
+		} else if (command.equals("/MemberPassCheckAction.me")) {
+			action = new MemberPassCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/MemberPassUpdate.me")) {
+			forward = new ActionForward();
+			
+			forward.setPath("./member/updatePass2.jsp");
+			forward.setRedirect(false);
+		} else if (command.equals("/MemberPassUpdateAction.me")) {
+			action = new MemberPassUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

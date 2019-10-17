@@ -23,7 +23,6 @@
 %>
 	<div id="wrap">
 	
-	<%-- <jsp:include page="include/header.jsp"/> --%>
 	
 	<%
 	String id = (String) session.getAttribute("id");
@@ -60,7 +59,7 @@
 		
 		<div id="logo">
 			<!-- <img alt="logo" src="img/logo.png" width="230"> -->
-			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
+			<a href="index.jsp"><i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
@@ -97,6 +96,12 @@
 				</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
+					<ul>
+						<li><a href="./EventContent.ae?item=movie">영화</a></li>
+						<li><a href="./EventContent.ae?item=preview">시사회/무대인사</a></li>
+						<li><a href="./EventContent.ae?item=nevent">윌시NOW</a></li>
+						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
+					</ul>
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
@@ -140,10 +145,10 @@
 	
 	<br>
 	<br>
-	
-	<%-- <%@ include file="include/footer.jsp" %> --%>
-	
 	<br>
+	
+	
+	
 	<div id="bttm">
 	<footer>
 		<div id="sub_logo">

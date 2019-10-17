@@ -587,5 +587,4 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 		return cnt;
 	}
 	/*-------------------- 이벤트 개수 --------------------*/
-
 }

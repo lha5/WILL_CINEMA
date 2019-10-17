@@ -6,43 +6,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import com.action.Action;
 import com.action.ActionForward;
-
 import com.member.db.MemberDAO;
 import com.member.db.MemberDAOImpl;
 
-public class MemberLoginAction implements Action {
+public class MemberPassCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		System.out.println("MemberPassCheckAction execute()-----------------------------------");
 		
-		System.out.println("MemberLoginAction! 실행문 나옵니다.");
+		request.setCharacterEncoding("UTF-8");
 		
-		//id,pass
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
-		
-		// 디비 만들고   생성 하고 
 		MemberDAO mdao = new MemberDAOImpl();
-		
-		// 아이디 비번 으로 체크하고 
+				
 		int check = mdao.idCheck(id, pass);
-		String name = mdao.forName(id);
-			
-		System.out.println("로그인 정보 출력 : " + check);
 		
-		if(check == 0){
+		if (check == 0) {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script> ");
-			out.println("  alert('아이디 또는 비밀번호가 다릅니다!'); ");
-			out.println("  history.back(); ");
+			out.println("alert('비밀번호가 다릅니다.');");
+			out.println("history.back();");
 			out.println("</script>");
 			
 			out.close();
@@ -55,8 +48,8 @@ public class MemberLoginAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script> ");
-			out.println("  alert('아이디 또는 비밀번호가 다릅니다.'); ");
-			out.println("  history.back(); ");
+			out.println("alert('아이디가 존재하지 않습니다.');");
+			out.println("history.back(); ");
 			out.println("</script>");
 			
 			out.close();
@@ -64,25 +57,16 @@ public class MemberLoginAction implements Action {
 			// actionForward를 사용한 페이지 이동 X
 			return null;			
 		}
-		
-		
-		
-		
-		// 세션값을 가지고 간다 .
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		session.setAttribute("name", name);
-		
 		
 		ActionForward forward = new ActionForward();
 		
-		// 로그인 안되어 있음 회원가입으로 감
-		forward.setPath("./Main.me");
-		// 정보값 가져가지 않아서  true
+		forward.setPath("./MemberPassUpdate.me");
 		forward.setRedirect(true);
 		
-		return forward;
-	
 		
+		return forward;
 	}
+
 }

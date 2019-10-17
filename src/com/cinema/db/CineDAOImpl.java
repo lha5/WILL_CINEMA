@@ -130,6 +130,7 @@ public class CineDAOImpl implements CineDAO{
 			closeDB();
 		}
 		return cineList;
+
 	}
 
 	
@@ -224,8 +225,5 @@ public class CineDAOImpl implements CineDAO{
 		}
 		
 	}
-	
-	
-	
 	
 }

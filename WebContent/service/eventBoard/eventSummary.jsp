@@ -7,9 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/eventsummary.css">
+
+<link rel="stylesheet" href="././css/eventsummary.css">
 </head>
 <body>
+<%@ include file="/include/header.jsp" %>
+
 <%
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
@@ -17,7 +20,6 @@
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 %>
 
-<%@ include file="../../include/header.jsp" %>
 
 	<div class="event_cwrap">
 		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
@@ -90,11 +92,8 @@
 				<%} %>
 			</ul>
 		<br class="clear">
-		<a href="./EventWrite.ae">이벤트 글쓰기</a><br>
-		<a href="./EventList.ae">이벤트 목록(관리자)</a>
-	</div>
-	
-	
-<%@ include file="../../include/footer.jsp" %>
+		
+
+<%@ include file="/include/footer.jsp" %>
 </body>
 </html>

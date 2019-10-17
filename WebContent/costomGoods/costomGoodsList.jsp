@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>WebCotnet/costomGoods/costomGoodsList.jsp</h1>
 
 <%@ include file="../include/header.jsp" %>
 

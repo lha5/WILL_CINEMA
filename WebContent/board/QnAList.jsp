@@ -13,9 +13,10 @@
 
 </head>
 <body>
-	<h1>관리자 전용 리스트</h1>
+	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../service/serviceMain.jsp" %>
 	<%
-		String id = (String)session.getAttribute("id");
+		// String id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");

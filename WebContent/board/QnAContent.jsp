@@ -8,7 +8,8 @@
 <title>WILL CINEMA</title>
 </head>
 <body>
-	
+	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		// 이전 페이지에서 전달해준 정보를 저장 -> 사용
 		QnADTO qadto = (QnADTO)request.getAttribute("qadto");
@@ -35,7 +36,7 @@
 			<td>카테고리</td><td colspan="3"><%=qadto.getCategory() %></td>
 		</tr>
 		<tr>
-			<td>첨부파일</td><td colspan="3"><img src="../upload/캡처4.PNG"></td>
+			<td>첨부파일</td><td colspan="3"><img src="./upload/<%=qadto.getImage()%>"></td>
 		</tr>
 		<tr>
 			<td>글 내용</td><td colspan="3"><%=qadto.getContent() %></td>
@@ -51,6 +52,6 @@
 		
 	</table>
 	
-	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

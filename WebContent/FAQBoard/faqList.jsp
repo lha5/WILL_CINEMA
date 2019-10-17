@@ -22,6 +22,7 @@
 	int pageBlock = (Integer) request.getAttribute("pageBlock");
 	int startPage = (Integer) request.getAttribute("startPage");
 	int endPage = (Integer) request.getAttribute("endPage");
+
 	System.out.println("FAQList :"+FAQList.toString());
 	
 	
@@ -87,7 +88,6 @@
 				}
 		}
 	%>
-
 
 </body>
 </html>

@@ -18,5 +18,4 @@ public interface CineDAO {
 	
 	// 등록된 영화관 지점 삭제
 	public void deleteCinema(int location_num);
-	
 }

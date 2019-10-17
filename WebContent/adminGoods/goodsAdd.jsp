@@ -41,7 +41,6 @@
 
 	<%@ include file="../include/header.jsp" %>
 
-<h1>WebContent/adminGoods/goodsAdd.jsp</h1>
 
 <h1> 상품 등록 </h1>
 

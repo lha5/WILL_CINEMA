@@ -33,21 +33,28 @@
 </tr>
 	<tr>	
 	<td>글쓴이</td><td><%=andto.getName() %></td>
+<<<<<<< HEAD
+	<td>작성일</td><td>%=andto.getDate() %></td>
+</tr>
+	<tr>
+	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
+=======
 	<td>작성일</td><td><%=andto.getDate() %></td>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 </tr>
 	<tr>
 	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
 	</tr>
 	
 	<tr>
-	<td>첨부파일</td>
+	<td>이미지</td>
 	<td colspan="3">
 	<a href="./upload/<%=andto.getImage() %>">
 	<%=andto.getImage() %>
 	
 	</a>
 	</td>
-</tr> 
+</tr>
 
 <tr>
 	<td>공지 내용</td><td colspan="3"><%=andto.getContent() %></td>

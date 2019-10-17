@@ -14,6 +14,7 @@ public class AdminNoticeDTO {
 	private String category;
 	private String image;
 	private int Readcount;
+
 	public int getNum() {
 		return num;
 	}
@@ -68,10 +69,5 @@ public class AdminNoticeDTO {
 	public void setReadcount(int readcount) {
 		Readcount = readcount;
 	}
-	
-	
-	
-	
-	
 	
 }

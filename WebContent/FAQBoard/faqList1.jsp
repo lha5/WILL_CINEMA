@@ -32,10 +32,10 @@
 }
 </style>
 </head>
-
-
 <body>
-<!--바디  -->
+	<%@ include file="../include/header.jsp" %>
+	
+	<jsp:include page="../service/serviceMain.jsp"/>
 
 	<%
 	int count = (Integer) request.getAttribute("count");
@@ -50,15 +50,13 @@
 		
 	%>
 	
-	<%@ include file="../include/header.jsp" %>
 	
-	<jsp:include page="../service/serviceMain.jsp"/>
 
-<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
+	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
 
 	<h3><a href="./FAQWrite.af">글쓰기</a></h3>
 
-<table >
+<table>
   <!--    <tr>
        <td>번호</td>
        <td>카테고리</td>
@@ -132,7 +130,3 @@ for (i = 0; i < acc.length; i++) {
 	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
-
-
-
-

@@ -240,10 +240,10 @@ public class AdminFAQDAOImpl implements AdminFAQDAO{
 		try {
 			con = getCon();
 		
-			sql="select * from faq";
+			sql="select * from faq limit ?,?";
 			pstmt = con.prepareStatement(sql);
-			//pstmt.setInt(1, startRow-1);
-			//pstmt.setInt(2, pageSize);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
 		
 			rs = pstmt.executeQuery();
 			
