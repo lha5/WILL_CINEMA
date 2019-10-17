@@ -14,7 +14,6 @@
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
-	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		// String id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);

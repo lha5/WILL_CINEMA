@@ -8,7 +8,6 @@
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
-	<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		// String id = (String)session.getAttribute("id");
 		if(id == null){

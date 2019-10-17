@@ -8,7 +8,6 @@
 </head>
 <body>	
 <%@ include file="../include/header.jsp" %>
-<%@ include file="../service/serviceMain.jsp" %>
 	<%
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");

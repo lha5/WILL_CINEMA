@@ -10,7 +10,6 @@
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
-	<%@ include file="../service/serviceMain.jsp" %>
 	<h1>유저 전용 리스트</h1>
 	<%
 		// String id = (String)session.getAttribute("id");
