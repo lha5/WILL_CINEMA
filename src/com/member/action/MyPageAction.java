@@ -1,5 +1,7 @@
 package com.member.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,10 +30,10 @@ public class MyPageAction implements Action {
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		
-		String name = mdao.forName(id);
+		List info = mdao.forNameNLevel(id);
 		
 		request.setAttribute("id", id);
-		request.setAttribute("name", name);
+		request.setAttribute("info", info);
 		
 		forward.setPath("./member/info.jsp");
 		forward.setRedirect(false);

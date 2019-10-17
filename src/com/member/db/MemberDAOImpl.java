@@ -317,12 +317,12 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	// 회원 마이 페이지 이름값 가져가기
 	@Override
-	public String forName(String id) {
-		String name = "";
+	public List forNameNLevel(String id) {
+		List info = new ArrayList();
 		try {
 			con = getCon();
 			
-			sql = "SELECT name FROM member WHERE id=?";
+			sql = "SELECT name, level FROM member WHERE id=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -331,14 +331,15 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				name = rs.getString("name");
+				info.add(0, rs.getString("name"));
+				info.add(1, rs.getInt("level"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		return name;
+		return info;
 	}
 
 	

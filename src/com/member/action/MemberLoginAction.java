@@ -1,6 +1,7 @@
 package com.member.action;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +31,7 @@ public class MemberLoginAction implements Action {
 		
 		// 아이디 비번 으로 체크하고 
 		int check = mdao.idCheck(id, pass);
-		String name = mdao.forName(id);
+		List<String> info = mdao.forNameNLevel(id);
 			
 		System.out.println("로그인 정보 출력 : " + check);
 		
@@ -71,7 +72,7 @@ public class MemberLoginAction implements Action {
 		// 세션값을 가지고 간다 .
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		session.setAttribute("name", name);
+		session.setAttribute("info", info);
 		
 		
 		ActionForward forward = new ActionForward();

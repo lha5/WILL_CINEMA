@@ -1,218 +1,54 @@
 @CHARSET "UTF-8";
 
-
-/* -------- 글씨체 -------- */
-/* -------- 글씨체 -------- */
-
-
-
-/* -------- 전체에 적용할 속성들 --------*/
-a {
-	text-decoration: none;
-}
-
-ul>li {
-	list-style: none;
-}
-body {
-	padding: 0;
-}
-
-#wrap {
-	border: 1px solid red;
-	width: 100%;
-	margin: 0;
-}
-/* -------- 전체에 적용할 속성들 --------*/
-
-
-
-/* ----------- header ----------- */
-header {
-	/* border: 1px dashed black; */
-	height: 300px;
-}
-
-#social {
-	border: 1px solid orange;
-	width: 350px;
-	height: 30px;
-	padding: 0;
-}
-
-#social>ul {
-	margin: auto 0;
-	padding: 2px 5px;
-}
-
-#social>ul>li {
-	border: 1px solid blue;
-	float: left;
-	width: 100px;
-	text-align: center;
-}
-
-#my {
-	border: 1px solid orange;
-	width: 550px;
-	height: 30px;
-	margin-top: -32px;
-	margin-right: 0;
-	float: right;
-}
-
-#my>ul {
-	/* border: 1px solid yellow; */
-	height: 30px;
-	margin: auto 0;
-	padding: 2px 0 2px 35px;
-}
-
-#my>ul>li {
-	border: 1px solid blue;
-	float: left;
-	width: 100px;
-	text-align: center;
-}
-
-
-#logo {
-	clear: both;
-	border: 1px solid green;
-	width: 200px;
-	height: 40px;
-	margin: 50px auto;
-	text-align: center;
-}
-
-nav {
-	/* border: 1px dotted lime; */
-	height: 70px;
-	padding: 10px auto;
-}
-
-nav>ul {
-	border: 1px solid pink;
+section {
+	width: 800px;
 	margin: 10px auto;
-	padding: auto 20px auto 50px;
-	width: 700px;
-	height: 70px;
-}
-
-nav>ul>li {
-	border: 1px solid skyblue;
-	float: left;
-	margin: 20px 20px 20px 40px;
-	padding: 3px;
-}
-/* ----------- header ----------- */
-
-
-
-/* ----------- 중앙부 내용 ----------- */
-.mc {
-	border: 1px solid yellow;
-	width: 750px;
-	height: 30px;
-	padding: 3px 0 3px 10px;
-	margin: 5px auto;
 }
 
 table {
 	border-collapse: collapse;
-	border: 1px solid #000000;
-	padding: 10px;
-	margin: 20px auto;
-	width: 750px;
+	border: 1px solid black;
+	width: 700px;
+	margin: 50px auto;
 }
 
 td {
-	border: 1px solid #000000;
-	padding: 10px;
-}
-
-td:NTH-CHILD(1) {
-	height: 45px;
-}
-
-#sec02>#my_menu>ul {
-	border: 1px solid pink;
-	width: 710px;
-	height: 60px;
-	margin: 10px auto;
-	padding: 5px 10px;
-	text-align: center;
-}
-
-#sec02>#my_menu>ul>li {
-	border: 1px solid skyblue;
-	float: left;
-	width: 120px;
-	height: 40px;
-	padding: 10px;
-}
-
-#ranking {
-	text-align: center;
-}
-
-#contents {
-	border: 3px solid gray;
-	width: 750px;
-	margin: 20px auto 50px auto;
-}
-/* ----------- 중앙부 내용 ----------- */
-
-
-
-/* ----------- footer ----------- */
-#sub_logo {
-	border: 1px solid purple;
-	float: left;
-	padding: 5px;
-}
-
-#family_site {
-	float: right;
-	margin-top: 10px;
-}
-
-#sub_menu {
-	border: 1px solid maroon;
-	clear: both;
-	hieght: 50px;
-}
-
-#sub_menu>ul {
 	border: 1px solid black;
-	width: 1000px;
-	height: 50px;
-	margin: 10px auto;
 }
 
-#sub_menu>ul>li {
-	float: left;
-	margin: 5px 10px;
+tr:NTH-CHILD(1)>td:NTH-CHILD(1) {
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	height: 45px;
+	letter-spacing: 5px;
 }
 
-#sub_info>ul {
+tr:NTH-CHILD(3)>td:NTH-CHILD(1) {
+	width: 60%;
+}
+
+tr:NTH-CHILD(3)>td:NTH-CHILD(2) {
+	text-align: center;
+	font-size: 14px;
+}
+
+#sec02 ul {
+	border: 1px solid pink;
 	width: 700px;
-	height: 70px;
-	margin: 5px auto;
+	height: 80px;
+	margin: 50px auto;
+	padding: 25px 0 0 75px;
 }
 
-#sub_info>ul>li {
+#sec02 ul>li {
+	border: 1px solid skyblue;
 	display: inline-block;
-	margin-right: 15px;
+	margin: 5px 22px 5px 20px;
+}
+
+#sec02>#contents {
+	width: 700px;
+	margin: 20px auto;
 	text-align: center;
 }
-
-#copy {
-	border: 1px dashed black;
-	width: 700px;
-	height: 50px;
-	margin: 10px auto;
-	padding: auto;
-	text-align: left;
-}
-/* ----------- footer ----------- */

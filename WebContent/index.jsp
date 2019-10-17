@@ -50,7 +50,13 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li><a href="./FAQList.af">고객센터</a></li>
+				<li>고객센터
+					<ul id="dropdown">
+						<li><a href="./FAQList.af">자주 하는 질문</a></li>
+						<li><a href="./QnAList.sq">1:1 문의</a></li>
+						<li><a href="./NoticeList.an">공지사항</a></li>
+					</ul>
+				</li>
 				<li>ENGLISH</li>
 			</ul>
 		</div>
