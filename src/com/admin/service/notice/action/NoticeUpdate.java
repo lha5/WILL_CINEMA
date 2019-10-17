@@ -36,7 +36,7 @@ public class NoticeUpdate implements Action{
 		
 		// 페이지 이동(./notice/NoticeUpdateForm.jsp)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./notice/NoticeUpdateForm.jsp");
+		forward.setPath("./service/noticeBoard/NoticeUpdateForm.jsp");
 		forward.setRedirect(false);	
 		return forward;
 		

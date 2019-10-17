@@ -8,7 +8,7 @@
 <title>WILL CINEMA</title>
 </head>
 <body>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../../include/header.jsp" %>
 	<%
 		QnADTO qadto = (QnADTO)request.getAttribute("qadto");
 		String pageNum = (String)request.getAttribute("pageNum");
@@ -35,6 +35,6 @@
 		<input type="submit" value="글 수정하기">
 		</form>
 	</fieldset>
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

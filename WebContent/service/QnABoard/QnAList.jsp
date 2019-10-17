@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 	<%
 		// String id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
@@ -100,7 +100,7 @@
 		<button type="submit">검색</button>
 	</form>
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 	
 </body>
 </html>

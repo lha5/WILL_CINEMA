@@ -27,7 +27,7 @@ public class ServiceQnAFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/QnAWrite.sq")){ //QnA 쓰기 
 			forward = new ActionForward();
-			forward.setPath("./board/QnAWrite.jsp");
+			forward.setPath("./service/QnABoard/QnAWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/QnAWriteAction.sq")){ //QnA 리스트 페이지
 			action = new QnAWriteAction();

@@ -78,7 +78,7 @@ public class NoticeListAction implements Action{
 
 		// 페이지 이동 (./notice/noticeList.jsp)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./notice/NoticeList.jsp");
+		forward.setPath("./service/noticeBoard/NoticeList.jsp");
 		forward.setRedirect(false);	
 
 		return forward;

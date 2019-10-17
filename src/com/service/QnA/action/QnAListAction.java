@@ -78,10 +78,10 @@ public class QnAListAction implements Action {
 		request.setAttribute("endPage", endPage);
 		
 		if(id.equals("admin")){
-		forward.setPath("./board/QnAList.jsp");
+		forward.setPath("./service/QnABoard/QnAList.jsp");
 		forward.setRedirect(false);
 		}else{
-		forward.setPath("./board/QnAUserList.jsp");
+		forward.setPath("./service/QnABoard/QnAUserList.jsp");
 		forward.setRedirect(false);
 		}
 		

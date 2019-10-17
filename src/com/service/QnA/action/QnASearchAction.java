@@ -74,7 +74,7 @@ public class QnASearchAction implements Action {
 		request.setAttribute("endPage", endPage);
 				
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/QnAList.jsp");
+		forward.setPath("./service/QnABoard/QnAList.jsp");
 		forward.setRedirect(false);
 				
 		return forward;

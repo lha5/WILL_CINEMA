@@ -37,7 +37,7 @@ public class  NoticeContentAction implements Action {
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./notice/noticeContent.jsp");
+		forward.setPath("./service/noticeBoard/noticeContent.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

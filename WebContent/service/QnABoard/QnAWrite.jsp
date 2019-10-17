@@ -7,7 +7,7 @@
 <title>WILL CINEMA</title>
 </head>
 <body>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../../include/header.jsp" %>
 	<%
 		// String id = (String)session.getAttribute("id");
 		if(id == null){
@@ -67,6 +67,6 @@
 
 		</form>
 	</fieldset>
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

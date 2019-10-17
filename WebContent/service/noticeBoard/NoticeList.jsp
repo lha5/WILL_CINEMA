@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 
 	<%
 		int count = (Integer) request.getAttribute("count");
@@ -79,6 +79,6 @@
 
 	
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>
