@@ -15,8 +15,6 @@
 </head>
 <body>
 
-
-
 	<%
 	String id = (String) session.getAttribute("id");
 	%>
@@ -43,9 +41,9 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li>고객센터
+				<li id="forcustomer">고객센터
 					<ul id="dropdown">
-						<li><a href="./FAQList.af">자주 하는 질문</a></li>
+						<li><a href="./FAQList.af">FAQ</a></li>
 						<li><a href="./QnAList.sq">1:1 문의</a></li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
@@ -59,8 +57,7 @@
 		<div class="top_space"><!-- 구역 분리를 위한 태그 --></div>
 		
 		<div id="logo">
-			<!-- <img alt="logo" src="img/logo.png" width="230"> -->
-			<a href="index.jsp"><i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span></a>
+			<a href="index.jsp" class="link-home"><i class="fas fa-film"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		

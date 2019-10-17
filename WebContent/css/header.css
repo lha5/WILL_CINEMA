@@ -69,6 +69,18 @@ header {
 	text-align: center;
 }
 
+#social>ul>li>.fa-mobile-alt {
+	color: gray;
+}
+
+#social>ul>li>.fa-facebook-square {
+	color: #0373cd;
+}
+
+#social>ul>li>.fa-youtube {
+	color: #d7282d;
+}
+
 #my {
 	/* border: 1px solid orange; */
 	width: 480px;
@@ -90,6 +102,8 @@ header {
 	float: left;
 	width: 85px;
 	text-align: center;
+	position: relative;
+	letter-spacing: 2px;
 }
 
 #my>ul>li:NTH-CHILD(1) {
@@ -104,24 +118,40 @@ header {
 	border-right: 2px solid #CCCCCC;
 }
 
+#dropdown {
+	display: none;
+	width: 100px;
+	margin: 1px auto;
+	position: absolute;
+	right: -7px;
+}
+
+#dropdown>li {
+	margin: 3px auto;
+}
+
+#forcustomer:HOVER #dropdown {
+	display: block;
+	/* transition: all 1s ease-out 1s; */
+}
+
 .top_space {
 	/* border: 1px solid green; */
 	height: 70px;
 }
 
+.link-home {
+	color: #d7282d;
+	font-size: 2.2em;
+	font-family: BinggreaB;
+}
 
 #logo {
 	clear: both;
 	/* border: 1px solid green; */
-	width: 300px;
+	width: 320px;
 	margin: 35px auto 15px auto;
 	text-align: center;
-}
-
-#logo>span {
-	/* border: 1px solid purple; */
-	font-size: 2em;
-	font-family: BinggreaB;
 }
 
 nav {

@@ -5,75 +5,53 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 공지사항</title>
 </head>
 <body>
-<h1>WebContent/notice/NoticeContent.jsp</h1>
 
-<%
+	<%@ include file="../../include/header.jsp" %>
 
-//이전페이지에서 전달해준 정보를 저장 -> 사용
-// 정보 저장 (글정보,pageNum)
-//		request.setAttribute("andto", andto);
-// 		request.setAttribute("pageNum", pageNum);
+	<%
 	AdminNoticeDTO andto = (AdminNoticeDTO) request.getAttribute("andto");
 	String pageNum = (String) request.getAttribute("pageNum");
+	%>
 
+	<table border="1">
+		<tr>
+			<td>번호</td>
+			<td><%=andto.getNum() %></td>
+			<td>조회수</td>
+			<td><%=andto.getReadcount() %></td>
+		</tr>
+		<tr>	
+		<td>글쓴이</td>
+		<td><%=andto.getName() %></td>
+		<td>작성일</td>
+		<td><%=andto.getDate() %></td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td colspan="3"><%=andto.getSubject() %></td>
+		</tr>	
+		<tr>
+			<td>이미지</td>
+			<td colspan="3">
+				<a href="./upload/<%=andto.getImage() %>"><%=andto.getImage() %></a>
+			</td>
+		</tr>
+		<tr>
+			<td>공지 내용</td><td colspan="3"><%=andto.getContent() %></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+		    	<input type="button" value="수정하기" onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
+		    	<input type="button" value="삭제하기" onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
+		    	<input type="button" value="목록보기" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
+		    </td>	  
+		</tr>
+	</table>
 	
-
-
-%>
-
-<h1>글 내용 보기</h1>
-<table border="1">
-
-	<tr>
-	<td>공지번호</td><td><%=andto.getNum() %></td>
-	<td>조회수</td><td><%=andto.getReadcount() %></td>
-</tr>
-	<tr>	
-	<td>글쓴이</td><td><%=andto.getName() %></td>
-<<<<<<< HEAD
-	<td>작성일</td><td>%=andto.getDate() %></td>
-</tr>
-	<tr>
-	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
-=======
-	<td>작성일</td><td><%=andto.getDate() %></td>
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
-</tr>
-	<tr>
-	<td>제목</td><td colspan="3"><%=andto.getSubject() %></td>
-	</tr>
+	<%@ include file="../../include/footer.jsp" %>
 	
-	<tr>
-	<td>이미지</td>
-	<td colspan="3">
-	<a href="./upload/<%=andto.getImage() %>">
-	<%=andto.getImage() %>
-	
-	</a>
-	</td>
-</tr>
-
-<tr>
-	<td>공지 내용</td><td colspan="3"><%=andto.getContent() %></td>
-</tr>
-<tr>
-	   <td colspan="4">
-	    <input type="button" value="수정하기"
-	           onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
-	    >
-	    <input type="button" value="삭제하기"
-	           onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'"
-	    		
-	    >
-	    <input type="button" value="목록보기" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
-	    </td>	  
-	  </tr>
-
-
-</table>
-
 </body>
 </html>
