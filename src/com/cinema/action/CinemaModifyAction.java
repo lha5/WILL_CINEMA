@@ -12,14 +12,14 @@ import com.cinema.db.CineDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class CinemaAddAction implements Action {
+public class CinemaModifyAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("CinemaModifyAction execute()-----------------------------------------------------");
 		
-		System.out.println("CinemaAddAction execute()---------------------------------------------------");
-		
-		
+		//한글 처리
+		request.setCharacterEncoding("UTF-8");
 		
 		// upload 생성 (영화관 관련 img폴더 생성?)
 		// ★ upload 폴더를 생성 후 서버를 clean할 경우 해당 파일이 삭제될 수 있음
@@ -55,27 +55,32 @@ public class CinemaAddAction implements Action {
 		
 		
 		cdto.setRegion(region);
+		cdto.setLocation_num(Integer.parseInt(multi.getParameter("location_num")));
 		cdto.setName(multi.getParameter("name"));
 		cdto.setAddr(multi.getParameter("addr"));
 		cdto.setTel(multi.getParameter("tel"));
 		cdto.setRoom(multi.getParameter("room"));
 		
-		String image = multi.getFilesystemName("image");//이미지 확인을 위해 분리
+		String image = multi.getFilesystemName("image");
+		//이미지에 아무것도 들어가지 않았을경우 이전 사진을 그대로 사용
+		if(image==null){
+			image = multi.getParameter("prev_image");
+		}
 		cdto.setImage(image);
-
-		System.out.println("image "+image);
+		
+		System.out.println("image :"+image);
 		
 		// CineDAO 객체 생성
 		// insertCinema(DTO)
 		CineDAO cdao = new CineDAOImpl();
-		cdao.insertCinema(cdto);
-
-		// 페이지 이동
+		cdao.updateCinema(cdto);
+		
+		// 페이지 이동(./CinemaDetail.ci)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./CinemaDetail.ci");
 		forward.setRedirect(true);
-		
+
 		return forward;
 	}
-
+	
 }

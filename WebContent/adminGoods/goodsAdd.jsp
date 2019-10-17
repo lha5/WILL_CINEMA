@@ -44,7 +44,7 @@
 <h1> 상품 등록 </h1>
 
 	<form action="./GoodsAddAction.al" method="post"
-		 name="goodsAddfr" enctype="multipart/form-data" 
+		 name="goodsAddfr" enctype="multipart/form-data"
 		 onsubmit="return goodsCheck()">
 	<table border="1">
 	<tr>

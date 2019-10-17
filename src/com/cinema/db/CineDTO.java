@@ -10,6 +10,8 @@ public class CineDTO {
 	private String image;
 	
 	
+	
+	
 	public String getImage() {
 		return image;
 	}
