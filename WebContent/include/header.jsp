@@ -50,7 +50,9 @@
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
 				</li>
-				<li>ENGLISH</li>
+				<li>
+					<input type="button" value="ENGLISH">
+				</li>
 			</ul>
 		</div>
 		

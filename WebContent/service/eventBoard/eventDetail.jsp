@@ -5,35 +5,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
+<title>WILL CINEMA - 이벤트</title>
 </head>
 <body>
 
-<%@ include file="../../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 
-<%
+	<%
 	AdminEventDTO aedto = (AdminEventDTO)request.getAttribute("aedto");
-%>
-<table border="1">
-	<tr>
-		<td>제목</td><td>이벤트 기간</td>
-	</tr>
-	<tr>
-		<td><%=aedto.getSubject() %></td>
-		<td><%=aedto.getF_date() %>~<%=aedto.getE_date() %></td>
-	</tr>
-</table>
-<%for(int i=1; i<aedto.getImage().split(",").length; i++){ 
-	String image=aedto.getImage().split(",")[i];
-	if(!image.equals("null")){
-%>
-<img src="./upload/<%=aedto.getImage().split(",")[i]%>">
-	<%}
-}%>
-<br>
-<a href="./EventContent.ae?item=<%=aedto.getCategory()%>">목록으로</a>
+	%>
+	
+	<table border="1">
+		<tr>
+			<td>제목</td>
+			<td>이벤트 기간</td>
+		</tr>
+		<tr>
+			<td><%=aedto.getSubject() %></td>
+			<td><%=aedto.getF_date() %>~<%=aedto.getE_date() %></td>
+		</tr>
+	</table>
+	
+	<%
+	for (int i=1; i<aedto.getImage().split(",").length; i++) { 
+		String image=aedto.getImage().split(",")[i];
+		if(!image.equals("null")) {
+	%>
+			<img src="./upload/<%=aedto.getImage().split(",")[i]%>">
+	<%
+		}
+	}
+	%>
+	<br>
+	<a href="./EventContent.ae?item=<%=aedto.getCategory()%>">목록으로</a>
 
-<%@ include file="../../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>
