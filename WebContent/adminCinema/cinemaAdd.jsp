@@ -11,12 +11,23 @@
 		<table border="1">
 			<tr>
 				<td>지역</td>
-				<td><input type="text" name="region"></td>
+				<td>
+					<select name="region">
+					 <option value="1">서울</option>
+					 <option value="2">경기/인천</option>
+					 <option value="3">충청/대전</option>
+					 <option value="4">전라/광주</option>
+					 <option value="5">경북/대구</option>
+					 <option value="6">경남/부산/울산</option>
+					 <option value="7">강원</option>
+					 <option value="8">제주</option>
+					</select>
+				</td>
 				<td>지점명</td>
 				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
-				<td>주소</td>
+				<td>주소</td> <!-- 다음 API ? -->
 				<td><input type="text" name="addr"></td>
 				<td>전화번호</td>
 				<td><input type="text" name="tel"></td>

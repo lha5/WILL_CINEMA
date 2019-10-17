@@ -35,27 +35,34 @@ public class CinemaFrontController extends HttpServlet{
 			forward.setPath("./adminCinema/cinemaAdd.jsp");
 			forward.setRedirect(false);
 		}else if (command.equals("/CinemaAddAction.ci")) { //영화관 등록 페이지(관리자)
-			action = new CinemaAddAction();			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+        action = new CinemaAddAction(); 
+		    try {
+				   forward = action.execute(request, response);
+			  } catch (Exception e) {
+				  e.printStackTrace();
+			  }
 		}else if (command.equals("CinemaDelete.ci")) { //영화관 삭제 페이지(관리자)
 			//action = new CinemaDeleteAction();
-			
+			action = new CinemaDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("CinemaModify.ci")) { //영화관 수정 페이지(관리자)
-			forward = new ActionForward();
-			forward.setPath("./adminCinema/cinemaModify.jsp");
-			forward.setRedirect(false);
-		}else if (command.equals("CinemaModifyAction.ci")) { //영화관 수정 페이지(관리자)
+		}else if (command.equals("/CinemaModify.ci")) { //영화관 수정 페이지(관리자)
+			//forward = new ActionForward();
+			//forward.setPath("./adminCinema/cinemaModify.jsp");
+			//forward.setRedirect(false);
+			// action = new CinemaModify();
+			action = new CinemaModify();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/CinemaModifyAction.ci")) { //영화관 수정 페이지(관리자)
 			//action = new CinemaModifyAction();
-			
+			action = new CinemaModifyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
