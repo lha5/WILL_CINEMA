@@ -27,7 +27,7 @@ public class QnAUpdate implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		forward.setPath("./board/QnAUpdateForm.jsp");
+		forward.setPath("./service/QnABoard/QnAUpdateForm.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

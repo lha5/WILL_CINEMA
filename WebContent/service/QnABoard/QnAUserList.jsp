@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 	<h1>유저 전용 리스트</h1>
 	<%
 		// String id = (String)session.getAttribute("id");
@@ -95,6 +95,6 @@
 		<button type="submit">검색</button>
 	</form>
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

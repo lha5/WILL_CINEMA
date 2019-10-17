@@ -7,7 +7,7 @@
 <title>WILL CINEMA</title>
 </head>
 <body>	
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../../include/header.jsp" %>
 	<%
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
@@ -21,6 +21,6 @@
 			<input type="submit" value="삭제하기">
 		</form>
 	</fieldset>
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

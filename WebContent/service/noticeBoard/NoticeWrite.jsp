@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 	
 	<%
 	if (id == null || !id.equals("admin")) {
@@ -27,6 +27,6 @@
 	</form>
 	</fieldset>
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

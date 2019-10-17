@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 <%
 AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
 String pageNum = (String) request.getAttribute("pageNum");
@@ -29,6 +29,6 @@ String pageNum = (String) request.getAttribute("pageNum");
 
 
 
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>
