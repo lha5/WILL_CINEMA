@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 이벤트</title>
 
 <link rel="stylesheet" href="././css/eventsummary.css">
 </head>

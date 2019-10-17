@@ -104,10 +104,6 @@ header {
 	border-right: 2px solid #CCCCCC;
 }
 
-#my>ul>li:NTH-CHILD(4) {
-	border-right: 2px solid #CCCCCC;
-}
-
 .top_space {
 	/* border: 1px solid green; */
 	height: 70px;
