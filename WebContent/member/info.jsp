@@ -49,7 +49,7 @@
 		<br><br>
 		<a href="./GoodsList.al">매점 관리(관리자 전용)</a>
 		<br><br>
-		<a href="#">영화관 지점 관리(관리자 전용)</a>
+		<a href="./CinemaAdd.ci">영화관 지점 관리(관리자 전용)</a>
 		<br><br>
 					
 	<%	
