@@ -11,8 +11,8 @@
 <body>
 <h1>영화 리스트 보기(현재 상영작/상영 예정작)</h1>
 
-<%
-		// String id = (String)session.getAttribute("id");
+	<%
+		String id = (String)session.getAttribute("id");
 		
 		int count = (Integer) request.getAttribute("count");
 		
@@ -51,6 +51,10 @@
 			</tr>
 		<%}%>
 	</table>
+	
+	<%if(id.equals("admin")){ %>
+	<h3><a href="./MovieAdd.am">글 쓰기</a></h3>
+	<%} %>
 
 </body>
 </html>
