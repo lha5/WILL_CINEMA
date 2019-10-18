@@ -33,7 +33,7 @@ public class FAQContentAction implements Action {
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./FAQBoard/faqContent.jsp");
+		forward.setPath("./service/FAQBoard/faqContent.jsp");
 		forward.setRedirect(false);
 		return forward;
 	

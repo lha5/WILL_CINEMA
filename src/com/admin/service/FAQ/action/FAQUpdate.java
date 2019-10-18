@@ -27,7 +27,7 @@ public class FAQUpdate implements Action {
 	 request.setAttribute("pageNum", pageNum);
 	 
 	 ActionForward forward = new ActionForward();
-	 forward.setPath("./FAQBoard/faqUpdate.jsp");
+	 forward.setPath("./service/FAQBoard/faqUpdate.jsp");
 	 forward.setRedirect(false);
 	 return forward;
 	}
