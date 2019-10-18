@@ -5,7 +5,7 @@ public class MovieDTO {
 	String name;
 	String genre;
 	String story;
-	int runing_num;
+	int running_time;
 	String director;
 	String actor;
 	String open_date;
@@ -14,6 +14,13 @@ public class MovieDTO {
 	String poster;
 	String image;
 	
+	
+	public int getRunning_time() {
+		return running_time;
+	}
+	public void setRunning_time(int running_time) {
+		this.running_time = running_time;
+	}
 	public int getMovie_num() {
 		return movie_num;
 	}
@@ -37,12 +44,6 @@ public class MovieDTO {
 	}
 	public void setStory(String story) {
 		this.story = story;
-	}
-	public int getRuning_num() {
-		return runing_num;
-	}
-	public void setRuning_num(int runing_num) {
-		this.runing_num = runing_num;
 	}
 	public String getDirector() {
 		return director;
