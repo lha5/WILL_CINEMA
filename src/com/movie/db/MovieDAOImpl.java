@@ -3,6 +3,8 @@ package com.movie.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -91,4 +93,66 @@ public class MovieDAOImpl implements MovieDAO{
 			closeDB();
 		}
 	}
+	
+	public int getBoardCount(){
+		int count = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "select count(*) from movie";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return count;
+	}
+	
+	public List<MovieDTO> getBoardList() {
+		List<MovieDTO> boardList = new ArrayList<MovieDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from movie";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieDTO mdto = new MovieDTO();
+				
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setName(rs.getString("name"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setCountry(rs.getString("country"));
+				
+				boardList.add(mdto);
+				
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return boardList;
+	}
+	
 }
