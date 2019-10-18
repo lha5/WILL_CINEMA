@@ -29,9 +29,9 @@
        <td>영화 제목</td>
        <td>장르</td>
        <td>감독</td>
-       <td>배우</td>
-       <td>사영시간</td>
+       <td>상영시간</td>
        <td>내용</td>
+        <td>배우</td>
      </tr>
      <%
      	for (int i=0;i<boardList.size();i++) {
@@ -45,9 +45,9 @@
 				</td>
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
-				<td><%=mdto.getActor() %></td>
 				<td><%=mdto.getRunning_time() %></td>
 				<td><%=mdto.getStory() %></td>
+				<td><%=mdto.getActor() %></td>
 			</tr>
 		<%}%>
 	</table>
