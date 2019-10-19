@@ -24,7 +24,15 @@ public class CinemaFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/CinemaDetail.ci")){ //영화관 메인 페이지(현재 상영작/상영 예정작 탭 이동)
 			//예매 - 상영시간표 - 영화관별 상영시간표와 같음
-			action = new CinemaDetailAction();
+			//action = new CinemaDetailAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/CinemaAdminDetail.ci")){ //영화관 관리 페이지(회원관리 관리자 페이지로 이동 가능)
+			// 데이터 등록/수정/삭제 확인 페이지
+			action = new CinemaAdminDetailAction();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

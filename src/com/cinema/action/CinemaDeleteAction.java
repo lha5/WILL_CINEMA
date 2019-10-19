@@ -31,7 +31,7 @@ public class CinemaDeleteAction implements Action{
 		
 		// 페이지 이동(./CinemaDetail.ci)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./CinemaDetail.ci");
+		forward.setPath("./CinemaAdminDetail.ci");
 		forward.setRedirect(true);	
 		
 		return forward;

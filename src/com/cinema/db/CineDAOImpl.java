@@ -70,8 +70,8 @@ public class CineDAOImpl implements CineDAO{
 				location_num = 1;
 			}
 			
-			sql = "INSERT INTO cinema(location_num, region, name, addr, room, tel, image)"
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO cinema(location_num, region, name, addr, room, tel, image, count_seat)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -82,6 +82,7 @@ public class CineDAOImpl implements CineDAO{
 			pstmt.setString(5, cdto.getRoom());
 			pstmt.setString(6, cdto.getTel());
 			pstmt.setString(7, cdto.getImage());
+			pstmt.setInt(8, cdto.getCount_seat());
 			
 			pstmt.executeUpdate();
 			
@@ -117,6 +118,7 @@ public class CineDAOImpl implements CineDAO{
 				cdto.setName(rs.getString("name"));
 				cdto.setAddr(rs.getString("addr"));
 				cdto.setTel(rs.getString("tel"));
+				cdto.setCount_seat(rs.getInt("count_seat"));
 				cdto.setRoom(rs.getString("room"));
 				cdto.setImage(rs.getString("image"));
 				
@@ -156,6 +158,7 @@ public class CineDAOImpl implements CineDAO{
 				cdto.setName(rs.getString("name"));
 				cdto.setAddr(rs.getString("addr"));
 				cdto.setTel(rs.getString("tel"));
+				cdto.setCount_seat(rs.getInt("count_seat"));
 				cdto.setRoom(rs.getString("room"));
 				cdto.setImage(rs.getString("image"));
 				
@@ -180,7 +183,7 @@ public class CineDAOImpl implements CineDAO{
 			con = getCon();
 			
 			sql = "update cinema "
-					+ "set region=?, name=?, addr=?, room=?, tel=?, image=? "
+					+ "set region=?, name=?, addr=?, room=?, tel=?, count_seat=?, image=? "
 					+ "where location_num=?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -191,8 +194,9 @@ public class CineDAOImpl implements CineDAO{
 			pstmt.setString(3, cdto.getAddr());
 			pstmt.setString(4, cdto.getRoom());
 			pstmt.setString(5, cdto.getTel());
-			pstmt.setString(6, cdto.getImage());
-			pstmt.setInt(7, cdto.getLocation_num());
+			pstmt.setInt(6, cdto.getCount_seat());
+			pstmt.setString(7, cdto.getImage());
+			pstmt.setInt(8, cdto.getLocation_num());
 			
 			pstmt.executeUpdate();
 			
