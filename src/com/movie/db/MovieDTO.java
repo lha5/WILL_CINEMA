@@ -1,9 +1,7 @@
 package com.movie.db;
 
 public class MovieDTO {
-
-	
-	private int movie_num;
+  private int movie_num;
 	private String name;
 	private String genre;
 	private String story;
@@ -15,6 +13,9 @@ public class MovieDTO {
 	private Double booking_ration;
 	private String poster;
 	private String image;
+
+  
+  
 	public int getMovie_num() {
 		return movie_num;
 	}
@@ -39,7 +40,7 @@ public class MovieDTO {
 	public void setStory(String story) {
 		this.story = story;
 	}
-	public int getRunning_time() {
+  public int getRunning_time() {
 		return running_time;
 	}
 	public void setRunning_time(int running_time) {
@@ -87,12 +88,4 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

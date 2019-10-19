@@ -23,7 +23,7 @@ public class MovieFrontController extends HttpServlet{
 		Action action=null;
 		//가상주소 비교
 		if (command.equals("/MovieList.mo")) { // 영화 메인 페이지(현재 상영작/상영 예정작 탭 이동)
-			//action = new MovieListAction();
+			action = new MovieListAction();
 			
 			try {
 				forward = action.execute(request, response);

@@ -3,10 +3,14 @@ package com.movie.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.service.QnA.db.QnADTO;
 
 //영화 DB
 public class MovieDAOImpl implements MovieDAO{
@@ -45,4 +49,110 @@ public class MovieDAOImpl implements MovieDAO{
 			e.printStackTrace();
 		}
 	}
+	
+	public void insertBoard(MovieDTO mdto) {
+		int movie_num = 0;
+		try {
+			con = getCon();
+			
+			sql = "select max(movie_num) from movie";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				movie_num = rs.getInt(1)+1;
+			}
+			System.out.println("movie_num : "+movie_num);
+			
+			sql = "insert into movie(movie_num,name,genre,story,running_time,director,actor,open_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?);";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
+			pstmt.setString(2, mdto.getName());
+			pstmt.setString(3, mdto.getGenre());
+			pstmt.setString(4, mdto.getStory());
+			pstmt.setInt(5, mdto.getRunning_time());
+			pstmt.setString(6, mdto.getDirector());
+			pstmt.setString(7, mdto.getActor());
+			pstmt.setString(8, mdto.getOpen_date());
+			pstmt.setString(9, mdto.getCountry());
+			pstmt.setDouble(10, mdto.getBooking_ration());
+			pstmt.setString(11, mdto.getPoster());
+			pstmt.setString(12, mdto.getImage());
+			
+			int value = pstmt.executeUpdate();
+			
+			System.out.println("글 저장 완료"+value+"개");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	
+	public int getBoardCount(){
+		int count = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "select count(*) from movie";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return count;
+	}
+	
+	public List<MovieDTO> getBoardList() {
+		List<MovieDTO> boardList = new ArrayList<MovieDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from movie";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieDTO mdto = new MovieDTO();
+				
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setName(rs.getString("name"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setCountry(rs.getString("country"));
+				
+				boardList.add(mdto);
+				
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return boardList;
+	}
+	
 }
