@@ -34,7 +34,7 @@
 </head>
 <body>
 
-	<%@ include file="../include/header.jsp" %>
+		<%@ include file="../../include/header.jsp" %>
 
 	<%
 		int count = (Integer) request.getAttribute("count");
@@ -85,18 +85,8 @@
   			}
   			%> --%>
 		</div>
-		<!-- 
-		<button class="accordion">Section 2</button>
-		<div class="panel">
-			<p>
-			</p>
-		</div>
+	
 
-		<button class="accordion">Section 3</button>
-		<div class="panel">
-		<p></p>
-		</div> 
-		-->
 		<%}%> 
 		
 		<!-- 자바스크립트 -->
@@ -117,7 +107,7 @@
 		</script>
 	</table>
 
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 	
 </body>
 </html>

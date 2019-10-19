@@ -1,26 +1,21 @@
 package com.movie.db;
 
 public class MovieDTO {
-	int movie_num;
-	String name;
-	String genre;
-	String story;
-	int running_time;
-	String director;
-	String actor;
-	String open_date;
-	String country;
-	double booking_ration;
-	String poster;
-	String image;
-	
-	
-	public int getRunning_time() {
-		return running_time;
-	}
-	public void setRunning_time(int running_time) {
-		this.running_time = running_time;
-	}
+  private int movie_num;
+	private String name;
+	private String genre;
+	private String story;
+	private int running_time;
+	private String director;
+	private String actor;
+	private String open_date;
+	private String country;
+	private Double booking_ration;
+	private String poster;
+	private String image;
+
+  
+  
 	public int getMovie_num() {
 		return movie_num;
 	}
@@ -44,6 +39,12 @@ public class MovieDTO {
 	}
 	public void setStory(String story) {
 		this.story = story;
+	}
+  public int getRunning_time() {
+		return running_time;
+	}
+	public void setRunning_time(int running_time) {
+		this.running_time = running_time;
 	}
 	public String getDirector() {
 		return director;
@@ -69,10 +70,10 @@ public class MovieDTO {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public double getBooking_ration() {
+	public Double getBooking_ration() {
 		return booking_ration;
 	}
-	public void setBooking_ration(double booking_ration) {
+	public void setBooking_ration(Double booking_ration) {
 		this.booking_ration = booking_ration;
 	}
 	public String getPoster() {
@@ -87,6 +88,4 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
 }
