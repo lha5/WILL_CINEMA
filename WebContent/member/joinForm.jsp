@@ -78,7 +78,7 @@ function sample6_execDaumPostcode() {
 	function goMain() {
 		var rslt = confirm("정말로 이 페이지를 나가시겠습니까?");
 		if (rslt) {
-			location.href="./Main.me";
+			history.back();
 		} else {
 			return false;
 		}

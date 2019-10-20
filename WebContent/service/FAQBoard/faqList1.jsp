@@ -37,10 +37,10 @@
 		<%@ include file="../../include/header.jsp" %>
 
 	<%
+		// String id = (String)request.getAttribute("id");
 		int count = (Integer) request.getAttribute("count");
 		List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>) request.getAttribute("FAQList");
 		String pageNum = (String) request.getAttribute("pageNum");
-		// String id = (String)request.getAttribute("id");
 		int pageCount = (Integer) request.getAttribute("pageCount");
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");

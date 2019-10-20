@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 /* -------- 글씨체 -------- */
 @font-face {
-	font-family: 'BinggreaB';
-	src: url('../font/Binggrae-Bold.otf') format('opentype');
+	font-family: 'Oduda';
+	src: url('../font/Oduda.otf') format('opentype');
 }
 /* -------- 글씨체 -------- */
 
@@ -136,19 +136,17 @@ header {
 }
 
 .top_space {
-	/* border: 1px solid green; */
 	height: 70px;
 }
 
 .link-home {
 	color: #d7282d;
 	font-size: 2.2em;
-	font-family: BinggreaB;
+	font-family: Oduda;
 }
 
 #logo {
 	clear: both;
-	/* border: 1px solid green; */
 	width: 320px;
 	margin: 35px auto 15px auto;
 	text-align: center;
@@ -206,16 +204,6 @@ nav>ul>li>ul>li {
 	font-size: 13px;
 	position: relative;
 }
-
-/* nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(1),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(2),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(3),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(4),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(5),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(6),
-nav>ul>li:NTH-CHILD(3) ul>li:NTH-CHILD(7){
-	border-right: 1px solid #CCCCCC;
-} */
 
 nav>ul>li:HOVER ul {
 	display: block;
