@@ -65,13 +65,13 @@ function acyncMovePage(url){
 			level = "관리자";
    		break;
 		case "1":
-			level = "MVP";
-   		break;
-		case "2":
 			level = "VVIP";
    		break;
-		case "3":
+		case "2":
 			level = "VIP";
+   		break;
+		case "3":
+			level = "우수";
    		break;
 		case "4":
 			level = "일반";
