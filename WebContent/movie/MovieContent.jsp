@@ -9,6 +9,9 @@
 </head>
 <body>
 
+<h1>WebContent/movie/MovieContent.jsp</h1>
+
+
 <%
 MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
 String pageNum = (String) request.getAttribute("pageNum");
@@ -16,8 +19,8 @@ String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
-				<td> 제목</td>
-				<td colspan="3"><%=mdto.getName() %></td>
+				<td>제목</td>
+				<td colspan="5"><%=mdto.getName() %></td>
 			</tr>
 		
 			<tr>
@@ -32,7 +35,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 			
 			<tr>	
 				<td>이미지</td>
-				<td colspan="3">
+				<td colspan="5">
 					<a href="./upload/<%=mdto.getImage() %>"><%=mdto.getImage() %></a>
 				
 				
@@ -40,12 +43,12 @@ String pageNum = (String) request.getAttribute("pageNum");
 			</tr>
 			<tr>
 				<td>줄거리 내용</td>
-				<td colspan="3"><%=mdto.getStory() %>
+				<td colspan="5"><%=mdto.getStory() %>
 				</td>	
 			</tr>
 			<tr>
 				<td>감독 및 출연</td>
-				<td colspan="3"><%=mdto.getDirector() %><%=mdto.getActor() %>
+				<td colspan="5"><%=mdto.getDirector() %><%=mdto.getActor() %>
 				</td>		
 			</tr>
 		

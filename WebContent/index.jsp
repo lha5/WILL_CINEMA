@@ -19,7 +19,7 @@
 	<%@ include file="include/header.jsp" %>
 
 	<div id="wrap">
-	
+	<!-- 수정완료 -->
 	<%
 	// String id = (String) session.getAttribute("id");
 	%>
