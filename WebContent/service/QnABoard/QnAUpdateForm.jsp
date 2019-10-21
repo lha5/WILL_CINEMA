@@ -5,36 +5,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA</title>
+<title>WILL CINEMA - 1:1 문의 하기</title>
 </head>
 <body>
-<%@ include file="../../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
+	
 	<%
-		QnADTO qadto = (QnADTO)request.getAttribute("qadto");
-		String pageNum = (String)request.getAttribute("pageNum");
+		QnADTO qadto = (QnADTO) request.getAttribute("qadto");
+		String pageNum = (String) request.getAttribute("pageNum");
 	%>
 	
 	<fieldset>
 		<legend>글 수정하기</legend>
 		
 		<form action="./QnAUpdateAction.sq?pageNum=<%=pageNum %>" method="post">
-		<input type="hidden" name="num" value="<%=qadto.getNum() %>">
-		글쓴이 : <input type="text" name="name" value="<%=qadto.getName() %>" readonly><br>
-		비밀번호 : <input type="password" name="pass"><br>
-		제목 : <input type="text" name="subject" value="<%=qadto.getSubject() %>"><br>
-		카테고리 : <select name="category">
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-						<option value="#">#</option>
-					</select><br>
-		내용 : <br><textarea rows="10" cols="20" name="content"><%=qadto.getContent() %></textarea><br>
-		첨부이미지 : <input type="file" name="image"><br>
-		<input type="submit" value="글 수정하기">
+			<table>
+				<tr>
+					<td>작성자</td>
+					<td>
+						<input type="text" name="name" value="<%=qadto.getName()%>" readonly>
+						<input type="hidden" name="pass" value="<%=qadto.getPass()%>">
+					</td>
+					<td>카테고리</td>
+					<td>
+						<select name="category">
+							<option value="영화예매" <%if (qadto.getCategory().equals("영화예매")) {%>selected<%}%>>영화 예매</option>
+							<option value="매점구매" <%if (qadto.getCategory().equals("매점구매")) {%>selected<%}%>>매점 구매</option>
+							<option value="이용안내" <%if (qadto.getCategory().equals("이용안내")) {%>selected<%}%>>사이트 이용 안내</option>
+							<option value="이벤트" <%if (qadto.getCategory().equals("이벤트")) {%>selected<%}%>>이벤트</option>
+							<option value="멤버십" <%if (qadto.getCategory().equals("멤버십")) {%>selected<%}%>>멤버십/포인트</option>
+							<option value="쿠폰" <%if (qadto.getCategory().equals("쿠폰")) {%>selected<%}%>>쿠폰</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td colspan="3">
+						<input type="text" name="subject" value="<%=qadto.getSubject()%>">
+					</td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td colspan="3">
+						<textarea name="content" row="10" cols="50">
+							<%=qadto.getContent()%>
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>첨부파일</td>
+					<td colspan="3">
+						<input type="file" name="image" value="<%=qadto.getImage()%>">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<input type="submit" value="수정 하기">
+					</td>
+				</tr>
+			</table>
 		</form>
 	</fieldset>
+	
 <%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

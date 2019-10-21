@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WILL CINEMA - 자주 묻는 질문</title>
+
 <style>
 .accordion {
   background-color: #eee;
