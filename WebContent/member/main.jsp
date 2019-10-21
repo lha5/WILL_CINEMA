@@ -39,16 +39,25 @@ function acyncMovePage(url){
 </head>
 <body>
 
+	<div id="wrap">
+
 	<%@ include file="../include/header.jsp" %>
 
 	<%
 	// String id = (String) session.getAttribute("id");
 	List info = (List) session.getAttribute("info");
+	// info.get(0) : 이름
+	// info.get(1) : 등급
+	// info.get(2) : 잔여 포인트
 
 	if (id == null) {
 		response.sendRedirect("./MemberLogin.me");
 	}
 	
+	// 포인트
+	int point = (int) info.get(2);
+	
+	// 회원 등급 처리
 	String level = "";
 	
 	switch (String.valueOf(info.get(1))) {
@@ -72,7 +81,6 @@ function acyncMovePage(url){
    		break;
 	}
 	%>
-	<div id="wrap">
 	
 	
 	<section id="sec01">
@@ -88,9 +96,21 @@ function acyncMovePage(url){
 			<tr>
 				<td>
 					<h3>W.POINT</h3>
-					<div id="availability">가능하면[사용가능]/불가하면[사용불가]</div>
-					<div id="left_point">잔여포인트량</div>
-					<ul>
+					<div id="left_point">잔여 포인트 : <%=point%></div>
+					<div id="availability">
+						<%
+						if (point >= 100) {
+						%>
+							사용 가능합니다.
+						<%
+						} else {
+						%>
+							사용 가능한 포인트량이 부족합니다.
+						<%
+						}
+						%>
+					</div>
+					<ul id="point_info">
 						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
 					</ul>
@@ -122,8 +142,9 @@ function acyncMovePage(url){
 		</div>
 	</section>
 
-	
 	<%@ include file="../include/footer.jsp" %>
+	
 	</div>
+	
 </body>
 </html>

@@ -6,14 +6,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 1:1 문의하기</title>
 </head>
 <body>
+
 	<%@ include file="../../include/header.jsp" %>
-	<h1>유저 전용 리스트</h1>
+	
 	<%
+		List info = (List) request.getAttribute("info");
+		String name = String.valueOf(info.get(0));
+		System.out.println("유저 이름 : " + name);
+	
 		// String id = (String)session.getAttribute("id");
-		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -28,23 +32,23 @@
    
    <table border="1">
      <tr>
-     	<td>번호</td>
-       <td>카테고리</td>
-       <td>제목</td>
-       <td>글쓴이</td>
-       <td>날짜</td>
-       <td>조회수</td>
+		<td>번호</td>
+		<td>카테고리</td>
+		<td>제목</td>
+		<td>글쓴이</td>
+		<td>날짜</td>
+		<td>조회수</td>
      </tr>
      
 		<%
      	for (int i=0;i<boardList.size();i++) {
     		QnADTO qadto = boardList.get(i);
-    		if(id.equals(qadto.getId())){
+    		
+    		if (id.equals(qadto.getId())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum()%></td>
 				<td><%=qadto.getCategory()%></td>
-				<td><%=qadto.getId() %></td>
 				<td>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
@@ -54,8 +58,10 @@
 				<td><%=qadto.getDate() %></td>
 				<td><%=qadto.getReadcount() %></td>
 			</tr>
-		<%}
-		}%>
+		<%
+			}
+		}
+		%>
 	</table>
 	
 	<div id="paging">
