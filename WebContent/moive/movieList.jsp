@@ -46,7 +46,7 @@
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
 				<td><%=mdto.getRunning_time() %></td>
-				<td><%=mdto.getStory() %></td>
+		 		<td><%=mdto.getStory() %></td>
 				<td><%=mdto.getActor() %></td>
 			</tr>
 		<%}%>
