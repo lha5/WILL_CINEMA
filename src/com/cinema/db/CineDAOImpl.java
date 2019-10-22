@@ -53,36 +53,43 @@ public class CineDAOImpl implements CineDAO{
 	// 영화관 등록
 	@Override
 	public void insertCinema(CineDTO cdto) {
-		int location_num = 0;
+		int cinema_num = 0;
 		
 		try {
 			con = getCon();
 			
-			sql = "SELECT MAX(location_num) FROM cinema";
+			sql = "SELECT MAX(cinema_num) FROM cinema";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				location_num = rs.getInt(1) + 1;
+				cinema_num = rs.getInt(1) + 1;
 			} else {
-				location_num = 1;
+				cinema_num = 1;
 			}
 			
-			sql = "INSERT INTO cinema(location_num, region, name, addr, room, tel, image, count_seat)"
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO cinema"
+					+ "(cinema_num, region, name, room, seat, addr, tel, "
+					+ "start_times, end_times, start_priod, end_priod, movie_num)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, location_num);
+			pstmt.setInt(1, cinema_num);
 			pstmt.setString(2, cdto.getRegion());
 			pstmt.setString(3, cdto.getName());
-			pstmt.setString(4, cdto.getAddr());
-			pstmt.setString(5, cdto.getRoom());
-			pstmt.setString(6, cdto.getTel());
-			pstmt.setString(7, cdto.getImage());
-			pstmt.setInt(8, cdto.getCount_seat());
+			pstmt.setString(4, cdto.getRoom());
+			pstmt.setString(5, cdto.getSeat());
+			pstmt.setString(6, cdto.getAddr());
+			pstmt.setString(7, cdto.getTel());
+			pstmt.setString(8, cdto.getStart_times());
+			pstmt.setString(9, cdto.getEnd_times());
+			pstmt.setString(10, cdto.getStart_priod());
+			pstmt.setString(11, cdto.getEnd_priod());
+			//
+			pstmt.setString(12, cdto.getMovie_num());
 			
 			pstmt.executeUpdate();
 			
@@ -113,14 +120,17 @@ public class CineDAOImpl implements CineDAO{
 			while (rs.next()) {
 				CineDTO cdto = new CineDTO();
 				
-				cdto.setLocation_num(rs.getInt("location_num"));
+				cdto.setCinema_num(rs.getInt("cinema_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
+				cdto.setRoom(rs.getString("room"));
+				cdto.setSeat(rs.getString("seat"));
 				cdto.setAddr(rs.getString("addr"));
 				cdto.setTel(rs.getString("tel"));
-				cdto.setCount_seat(rs.getInt("count_seat"));
-				cdto.setRoom(rs.getString("room"));
-				cdto.setImage(rs.getString("image"));
+				cdto.setStart_times(rs.getString("start_times"));
+				cdto.setEnd_times(rs.getString("end_times"));
+				cdto.setStart_priod(rs.getString("start_priod"));
+				cdto.setStart_priod(rs.getString("end_priod"));
 				
 				cineList.add(cdto);
 			}
@@ -139,28 +149,31 @@ public class CineDAOImpl implements CineDAO{
 	
 	//수정할 영화관 가져오기
 	@Override
-	public CineDTO getCinema(int location_num) {
+	public CineDTO getCinema(int cinema_num) {
 		CineDTO cdto = null;
 		
 		try {
 			con = getCon();
-			sql = "select * from cinema where location_num=?";
+			sql = "select * from cinema where cinema_num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, location_num);
+			pstmt.setInt(1, cinema_num);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				cdto = new CineDTO();
 				
-				cdto.setLocation_num(rs.getInt("location_num"));
+				cdto.setCinema_num(rs.getInt("cinema_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
+				cdto.setRoom(rs.getString("room"));
+				cdto.setSeat(rs.getString("seat"));
 				cdto.setAddr(rs.getString("addr"));
 				cdto.setTel(rs.getString("tel"));
-				cdto.setCount_seat(rs.getInt("count_seat"));
-				cdto.setRoom(rs.getString("room"));
-				cdto.setImage(rs.getString("image"));
+				cdto.setStart_times(rs.getString("start_times"));
+				cdto.setEnd_times(rs.getString("end_times"));
+				cdto.setStart_priod(rs.getString("start_priod"));
+				cdto.setStart_priod(rs.getString("end_priod"));
 				
 			}
 			
@@ -183,20 +196,13 @@ public class CineDAOImpl implements CineDAO{
 			con = getCon();
 			
 			sql = "update cinema "
-					+ "set region=?, name=?, addr=?, room=?, tel=?, count_seat=?, image=? "
-					+ "where location_num=?";
+					+ "set "
+					+ "where cinema_num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			
-			pstmt.setString(1, cdto.getRegion());
-			pstmt.setString(2, cdto.getName());
-			pstmt.setString(3, cdto.getAddr());
-			pstmt.setString(4, cdto.getRoom());
-			pstmt.setString(5, cdto.getTel());
-			pstmt.setInt(6, cdto.getCount_seat());
-			pstmt.setString(7, cdto.getImage());
-			pstmt.setInt(8, cdto.getLocation_num());
+			
 			
 			pstmt.executeUpdate();
 			
@@ -216,7 +222,7 @@ public class CineDAOImpl implements CineDAO{
 	public void deleteCinema(int location_num) {
 		try {
 			con = getCon();
-			sql = "delete from cinema where location_num=?";
+			sql = "delete from cinema where cinema_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, location_num);
 			

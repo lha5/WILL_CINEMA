@@ -26,27 +26,41 @@
  			<td>번호</td>
  			<td>지역</td>
 		 	<td>지점명</td>
-		 	<td>주소</td>
 		 	<td>관 수</td>
-		 	<td>좌석 수</td>
+		 	<td>주소</td>
 		 	<td>전화번호</td>
-		 	<td>사진</td>
+		 	<td>영화번호(영화로 변경)</td>
+		 	<td>관 번호</td>
+		 	<td>좌석 수</td>
+		 	<td>상영 시작 시간</td>
+		 	<td>상영 종료 시간</td>
+		 	<td>상영 시작 일</td>
+		 	<td>상영 종료 일</td>
 		 	<td>수정/삭제</td>
  		</tr>
 	<% for (int i = 0; i < cineList.size(); i++) {
+		
 		CineDTO cdto = cineList.get(i);
+		String room = cdto.getRoom();
+		int room_num = Integer.parseInt(room);
+		
 	%>
 		<tr>
-			<td><%=cdto.getLocation_num() %></td>
-			<td><%=cdto.getRegion() %></td>
-		 	<td><%=cdto.getName() %></td>
-		 	<td><%=cdto.getAddr() %></td>
-		 	<td><%=cdto.getRoom() %></td>
-		 	<td><%=cdto.getCount_seat() %></td>
-		 	<td><%=cdto.getTel() %></td>
-		 	<td><img src="./upload/<%=cdto.getImage() %>" width="50" height="50"></td>
-		 	<td><a href="./CinemaModify.ci?location_num=<%=cdto.getLocation_num() %>">수정</a>
-		 		/<a href="./CinemaDelete.ci?location_num=<%=cdto.getLocation_num() %>">삭제</a>
+			<td><%=cdto.getCinema_num() %>번호</td>
+			<td><%=cdto.getRegion() %>지역</td>
+		 	<td><%=cdto.getName() %>이름</td>
+		 	<td><%=room %>관</td>
+		 	<td><%=cdto.getAddr() %>주소</td>
+		 	<td><%=cdto.getTel() %>전화</td>
+		 	<td>영화번호</td>
+		 	<td>관 번호</td>
+		 	<td>좌석</td>
+		 	<td>상영 시작 시간</td>
+		 	<td>상영 종료 시간</td>
+		 	<td>상영 시작 일</td>
+		 	<td>상영 종료 일</td>
+		 	<td><a href="./CinemaModify.ci?location_num=<%=cdto.getCinema_num() %>">수정</a>
+		 		/<a href="./CinemaDelete.ci?location_num=<%=cdto.getCinema_num() %>">삭제</a>
 		 	</td>
 		</tr>
 	<%
