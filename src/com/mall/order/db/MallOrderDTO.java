@@ -10,8 +10,17 @@ public class MallOrderDTO {
 	private String payment;		//구매방법(카드?)
 	private int goods_amount;	//구매량
 	private Date order_date;	//구매날짜
+	private String goods_name;
 	
 	
+	
+	
+	public String getGoods_name() {
+		return goods_name;
+	}
+	public void setGoods_name(String goods_name) {
+		this.goods_name = goods_name;
+	}
 	public int getOrder_num() {
 		return order_num;
 	}
