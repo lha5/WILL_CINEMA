@@ -66,22 +66,23 @@ public class MovieDAOImpl implements MovieDAO{
 			}
 			System.out.println("movie_num : "+movie_num);
 			
-			sql = "insert into movie(movie_num,name,genre,story,running_time,director,actor,open_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?);";
+sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, movie_num);
-			pstmt.setString(2, mdto.getName());
+			pstmt.setString(1, mdto.getTitle());
+			pstmt.setInt(2, movie_num);
 			pstmt.setString(3, mdto.getGenre());
 			pstmt.setString(4, mdto.getStory());
 			pstmt.setInt(5, mdto.getRunning_time());
 			pstmt.setString(6, mdto.getDirector());
 			pstmt.setString(7, mdto.getActor());
-			pstmt.setString(8, mdto.getOpen_date());
-			pstmt.setString(9, mdto.getCountry());
-			pstmt.setDouble(10, mdto.getBooking_ration());
-			pstmt.setString(11, mdto.getPoster());
-			pstmt.setString(12, mdto.getImage());
+			pstmt.setDate(8, mdto.getOpen_date());
+			pstmt.setDate(9, mdto.getClose_date());
+			pstmt.setString(10, mdto.getCountry());
+			pstmt.setDouble(11, mdto.getBooking_ration());
+			pstmt.setString(12, mdto.getPoster());
+			pstmt.setString(13, mdto.getImage());
 			
 			int value = pstmt.executeUpdate();
 			
@@ -134,7 +135,7 @@ public class MovieDAOImpl implements MovieDAO{
 				MovieDTO mdto = new MovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setName(rs.getString("name"));
+				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
@@ -153,6 +154,52 @@ public class MovieDAOImpl implements MovieDAO{
 		}
 		
 		return boardList;
+	}
+
+	@Override
+	public MovieDTO getBoard(int num) {
+		MovieDTO mdto = null;
+
+		try {
+			con = getCon();
+
+			sql = "select * from movie where movie_num=?";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mdto = new MovieDTO();
+								
+				mdto.setTitle(rs.getString("title"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+				mdto.setCountry(rs.getString("country"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setImage(rs.getString("image"));
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setPoster(rs.getString("poster"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setOpen_date(rs.getDate("open_date"));
+				mdto.setClose_date(rs.getDate("close_date"));
+			
+			}
+			System.out.println("게시판 글 저장: "+mdto);
+	
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+	
+		System.out.println("게시판 글 저장: "+mdto);
+		return mdto;
 	}
 	
 }

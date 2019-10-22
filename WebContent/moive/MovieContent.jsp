@@ -17,7 +17,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 		<table border="1">
 			<tr>
 				<td> 제목</td>
-				<td colspan="3"><%=mdto.getName() %></td>
+				<td colspan="3"><%=mdto.getTitle() %></td>
 			</tr>
 		
 			<tr>

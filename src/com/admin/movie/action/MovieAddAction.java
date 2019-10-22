@@ -42,7 +42,7 @@ public class MovieAddAction implements Action {
 				
 			System.out.print("name : "+ name + " id : "+ id + " running_time : "+running_time);
 				
-			mdto.setName(name);
+			mdto.setTitle(name);
 			mdto.setGenre(genre);
 			mdto.setDirector(director);
 			mdto.setStory(story);
