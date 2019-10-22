@@ -8,10 +8,16 @@ public class CineDTO {
 	private String room;
 	private String tel;
 	private String image;
+	private int count_seat;
 	
 	
 	
-	
+	public int getCount_seat() {
+		return count_seat;
+	}
+	public void setCount_seat(int count_seat) {
+		this.count_seat = count_seat;
+	}
 	public String getImage() {
 		return image;
 	}

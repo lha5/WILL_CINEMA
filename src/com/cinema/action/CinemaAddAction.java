@@ -59,7 +59,7 @@ public class CinemaAddAction implements Action {
 		cdto.setAddr(multi.getParameter("addr"));
 		cdto.setTel(multi.getParameter("tel"));
 		cdto.setRoom(multi.getParameter("room"));
-		
+		cdto.setCount_seat(Integer.parseInt(multi.getParameter("count_seat")));
 		String image = multi.getFilesystemName("image");//이미지 확인을 위해 분리
 		cdto.setImage(image);
 
@@ -72,7 +72,7 @@ public class CinemaAddAction implements Action {
 
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./CinemaDetail.ci");
+		forward.setPath("./CinemaAdminDetail.ci");
 		forward.setRedirect(true);
 		
 		return forward;

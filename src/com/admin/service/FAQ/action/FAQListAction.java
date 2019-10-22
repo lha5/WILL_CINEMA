@@ -74,7 +74,7 @@ public class FAQListAction implements Action {
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./FAQBoard/faqList1.jsp");
+		forward.setPath("./service/FAQBoard/faqList1.jsp");
 		forward.setRedirect(false);		
 
 		return forward;

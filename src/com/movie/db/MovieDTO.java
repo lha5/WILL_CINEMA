@@ -1,20 +1,22 @@
 package com.movie.db;
 
-public class MovieDTO {
+import java.sql.Date;
 
-	
-	private int movie_num;
+public class MovieDTO {
+  private int movie_num;
 	private String name;
 	private String genre;
 	private String story;
 	private int running_time;
 	private String director;
 	private String actor;
-	private String open_date;
+	private Date open_date;
 	private String country;
 	private Double booking_ration;
 	private String poster;
 	private String image;
+	private String title;
+	private Date close_date;
 	public int getMovie_num() {
 		return movie_num;
 	}
@@ -57,10 +59,10 @@ public class MovieDTO {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public String getOpen_date() {
+	public Date getOpen_date() {
 		return open_date;
 	}
-	public void setOpen_date(String open_date) {
+	public void setOpen_date(Date open_date) {
 		this.open_date = open_date;
 	}
 	public String getCountry() {
@@ -87,12 +89,19 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
-	
-	
-	
-	
-	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public Date getClose_date() {
+		return close_date;
+	}
+	public void setClose_date(Date close_date) {
+		this.close_date = close_date;
+	} 
+  
+  
 	
 }

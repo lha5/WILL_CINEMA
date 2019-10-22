@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 /* -------- 글씨체 -------- */
 @font-face {
-	font-family: 'BinggreaB';
-	src: url('../font/Binggrae-Bold.otf') format('opentype');
+	font-family: 'Oduda';
+	src: url('../font/Oduda.otf') format('opentype');
 }
 /* -------- 글씨체 -------- */
 
@@ -95,7 +95,7 @@ body {
 #notice {
 	border: 1px solid red;
 	width: 1100px;
-	height: 300px;
+	height: 200px;
 	clear: both;
 	margin: 20px auto 10px auto;
 	padding: 10px auto;

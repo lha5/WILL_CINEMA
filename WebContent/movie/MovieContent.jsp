@@ -12,8 +12,7 @@
 <h1>WebContent/movie/MovieContent.jsp</h1>
 
 
-<%
-MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
+<%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
 String pageNum = (String) request.getAttribute("pageNum");
 
 %>

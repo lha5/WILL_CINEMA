@@ -19,24 +19,35 @@
 	%>
 
 	<table border="1">
+		<tr>
+			<td colspan="9"><a href="./CinemaAdd.ci">등록</a></td>
+		</tr>
  		<tr>
+ 			<td>번호</td>
  			<td>지역</td>
 		 	<td>지점명</td>
 		 	<td>주소</td>
 		 	<td>관 수</td>
+		 	<td>좌석 수</td>
 		 	<td>전화번호</td>
 		 	<td>사진</td>
+		 	<td>수정/삭제</td>
  		</tr>
 	<% for (int i = 0; i < cineList.size(); i++) {
 		CineDTO cdto = cineList.get(i);
 	%>
 		<tr>
+			<td><%=cdto.getLocation_num() %></td>
 			<td><%=cdto.getRegion() %></td>
 		 	<td><%=cdto.getName() %></td>
 		 	<td><%=cdto.getAddr() %></td>
 		 	<td><%=cdto.getRoom() %></td>
+		 	<td><%=cdto.getCount_seat() %></td>
 		 	<td><%=cdto.getTel() %></td>
 		 	<td><img src="./upload/<%=cdto.getImage() %>" width="50" height="50"></td>
+		 	<td><a href="./CinemaModify.ci?location_num=<%=cdto.getLocation_num() %>">수정</a>
+		 		/<a href="./CinemaDelete.ci?location_num=<%=cdto.getLocation_num() %>">삭제</a>
+		 	</td>
 		</tr>
 	<%
 	}

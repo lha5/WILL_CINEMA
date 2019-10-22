@@ -31,7 +31,7 @@ public class QnAContentAction implements Action {
 		request.setAttribute("pageNum", pageNum);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./board/QnAContent.jsp");
+		forward.setPath("./service/QnABoard/QnAContent.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
