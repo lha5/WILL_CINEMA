@@ -55,18 +55,19 @@ public class CinemaModifyAction implements Action{
 		
 		
 		cdto.setRegion(region);
-		cdto.setLocation_num(Integer.parseInt(multi.getParameter("location_num")));
+		
 		cdto.setName(multi.getParameter("name"));
 		cdto.setAddr(multi.getParameter("addr"));
 		cdto.setTel(multi.getParameter("tel"));
 		cdto.setRoom(multi.getParameter("room"));
+		
 		
 		String image = multi.getFilesystemName("image");
 		//이미지에 아무것도 들어가지 않았을경우 이전 사진을 그대로 사용
 		if(image==null){
 			image = multi.getParameter("prev_image");
 		}
-		cdto.setImage(image);
+		
 		
 		System.out.println("image :"+image);
 		
@@ -77,7 +78,7 @@ public class CinemaModifyAction implements Action{
 		
 		// 페이지 이동(./CinemaDetail.ci)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./CinemaDetail.ci");
+		forward.setPath("./CinemaAdminDetail.ci");
 		forward.setRedirect(true);
 
 		return forward;

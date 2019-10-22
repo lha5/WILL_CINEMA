@@ -7,7 +7,7 @@
 <title>WILL CINEMA - (관리자 전용 - 영화관 등록)</title>
 </head>
 <body>
-	<form action="./CinemaAddAction.ci" method="post" enctype="multipart/form-data">
+	<form action="./CinemaAddAction.ci" method="post">
 		<table border="1">
 			<tr>
 				<td>지역</td>
@@ -34,10 +34,49 @@
 			</tr>
 			<tr>
 				<td>상영관 수</td>
-				<td><input type="text" name="room"></td>
-				<td>사진</td>
-				<td><input type="file" name="image"></td>
+				<td colspan="3"><input type="text" name="room"></td>
 			</tr>
+			<!-- ajax -->
+			
+			<tr>
+				<td>1상영관 상영 영화</td>
+				<td><input type="text" name="movie1"></td>
+				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
+				<td><input type="text" name="seat_line1" size="5">,<input type="text" name="seat_row1" size="5"></td>
+			</tr>
+			<tr>
+				<td>상영 시작시간</td>
+				<td><input type="text" name="start_times1"></td>
+				<td>상영 종료시간</td>
+				<td><input type="text" name="end_times1"></td>
+			</tr>
+			<tr>
+				<td>상영 시작일</td>
+				<td><input type="text" name="start_priod1"></td>
+				<td>상영 종료일</td>
+				<td><input type="text" name="end_priod1"></td>
+			</tr>
+			
+			<tr>
+				<td>2상영관 상영 영화</td>
+				<td><input type="text" name="movie2"></td>
+				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
+				<td><input type="text" name="seat_line2" size="5">,<input type="text" name="seat_row2" size="5"></td>
+			</tr>
+			<tr>
+				<td>상영 시작시간</td>
+				<td><input type="text" name="start_times2"></td>
+				<td>상영 종료시간</td>
+				<td><input type="text" name="end_times2"></td>
+			</tr>
+			<tr>
+				<td>상영 시작일</td>
+				<td><input type="text" name="start_priod2"></td>
+				<td>상영 종료일</td>
+				<td><input type="text" name="end_priod2"></td>
+			</tr>
+			<!-- /ajax -->
+			
 			<tr>
 				<td colspan="4">
 					<input type="submit" value="지점 등록 하기">

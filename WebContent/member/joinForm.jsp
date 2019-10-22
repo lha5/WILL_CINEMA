@@ -7,7 +7,10 @@
 <title>WILL CINEMA - 회원 가입</title>
 
 <!-- jQuery -->
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
@@ -72,70 +75,19 @@ function sample6_execDaumPostcode() {
 	$('.input-group.date').datepicker({format: "yyyy.mm.dd"}); 
 </script>
 
-<!-- 뒤로 가기 버튼 및 가입 오류 방지 -->
+<!-- 뒤로 가기 버튼 -->
 <script type="text/javascript">
 	// 취소 버튼 클릭 시 메인 페이지로 이동
 	function goMain() {
 		var rslt = confirm("정말로 이 페이지를 나가시겠습니까?");
 		if (rslt) {
-			location.href="./Main.me";
+			history.back();
 		} else {
 			return false;
 		}
 	}
-
-
-	// 가입 오류 방지
-	function checkValue() {
-		var form = document.upForm;
-		
-		if (!form.id.value) {
-			alert("아이디를 입력하세요.");
-			document.upForm.id.focus();
-			return false;
-		}
-		if ((form.id.value < "0" || form.id.value > "9") && (form.id.value < "A" || form.id.value > "Z") && (form.id.value < "a" || form.id.value > "z")) {
-			alert("아이디는 영문자 및 숫자만 사용 가능합니다.");
-			document.form.id.focus();
-			return false;
-		}
-		if (!form.pass.value) {
-			alert("비밀번호를 입력하세요.");
-			document.upForm.pass.focus();
-			return false;
-		}
-		if (form.pass.value != form.pass2.value) {
-			alert("동일한 비밀번호를 입력하세요.");
-			document.upForm.pass2.focus();
-			return false;
-		}
-		if (!form.birthday.value) {
-			alert("생년월일을 입력하세요.");
-			document.upForm.nickname.focus();
-			return false;
-		}
-		if (!form.email.value) {
-			alert("이메일을 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.mobile.value) {
-			alert("전화번호를 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.addr.value) {
-			alert("주소를 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.receive.value) {
-			alert("이벤트 안내 메일 수신 여부를 체크해주세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-	}
 </script>
+
 </head>
 <body>
 
@@ -143,23 +95,27 @@ function sample6_execDaumPostcode() {
 
 	<fieldset>
 		<legend>회원 가입</legend>
-		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return checkValue();">
+		<form action="./MemberJoinAction.me" method="post" name="upForm">
 			<table border="1">
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="id"></td>
+					<td>
+						아이디
+						&nbsp;
+						<input type="button" value="중복 체크" class="dupCheck">
+					</td>
+					<td><input type="text" name="id" class="id"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pass"></td>
+					<td><input type="password" name="pass" class="pass"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 재입력</td>
-					<td><input type="password" name="pass2"></td>
+					<td><input type="password" name="pass2" class="pass2"></td>
 				</tr>
 				<tr>
 					<td>성명</td>
-					<td><input type="text" name="name"></td>
+					<td><input type="text" name="name" class="name"></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
@@ -228,6 +184,91 @@ function sample6_execDaumPostcode() {
 		</form>
 	</fieldset>
 	
+
+	<!-- 가입 오류 방지 -->
+	<script type="text/javascript">
+		// 아이디 입력 오류 체크 --------------------------------
+		const MIN_USER_ID_LENGTH = 4;
+		var inputId = document.querySelector('.id');
+	
+		function checkUserId(n) {
+			if (inputId.value.length < n) {
+				alert('아이디는 4자 이상 입력해주세요.');
+			}
+		
+			if ((inputId.value < '0' || inputId.value > '9') && (inputId.value < 'A' || inputId.value > 'Z') && (inputId.value < 'a' || inputId.value > 'z')) {
+				alert('아이디는 영문자 및 숫자만 가능합니다');
+			}
+		}
+		
+		
+		inputId.addEventListener('blur', function () {
+			// 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달한다.
+			checkUserId(MIN_USER_ID_LENGTH);
+		});
+		
+		
+		
+		// 비밀번호 입력 오류 체크 -------------------------------
+		var inputPass = document.querySelector('.pass');
+		var inputPass2 = document.querySelector('.pass2');
+		function checkUserPW(n) {
+			if (inputPass.value.length < n) {
+				alert('비밀번호는 4자 이상 입력해주세요.');
+			}
+		}
+		
+		inputPass.addEventListener('blur', function () {
+			 checkUserPW(MIN_USER_ID_LENGTH);
+		});
+		
+		inputPass2.addEventListener('blur', function() {
+			if (!(inputPass.value == inputPass2.value)) {
+				alert('동일한 비밀번호를 입력해주세요.');
+			}
+		});
+		
+		
+		
+		// 이름 미입력 오류 체크 ----------------------------------
+		const MIN_NAME_LENGTH = 2;
+		var inputName = document.querySelector('.name');
+		function checkUserName(n) {
+			if (inputName.value.length < n) {
+				alert('이름은 최소 2자 이상 입력해주세요.');
+			}
+		}
+	
+	/* function checkValue() {
+		var form = document.upForm;
+		
+		if (!form.birthday.value) {
+			alert("생년월일을 입력하세요.");
+			document.upForm.nickname.focus();
+			return false;
+		}
+		if (!form.email.value) {
+			alert("이메일을 입력하세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+		if (!form.mobile.value) {
+			alert("전화번호를 입력하세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+		if (!form.addr.value) {
+			alert("주소를 입력하세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+		if (!form.receive.value) {
+			alert("이벤트 안내 메일 수신 여부를 체크해주세요.");
+			document.upForm.email.focus();
+			return false;
+		}
+	} */
+	</script>
 	
 	<%@ include file="../include/footer.jsp" %>
 </body>

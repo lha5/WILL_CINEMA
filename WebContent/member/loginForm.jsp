@@ -8,6 +8,9 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
+
+<!-- Kakao SDK -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -30,6 +33,34 @@
 			</table>
 		</form>
 	</fieldset>
+	
+	<div id="kakao_login">
+		<!-- <img alt="kakao-login" src="./img/kakao_account_login_btn.png"> -->
+		<a id="kakao-login-btn"></a>
+    	<a href="http://developers.kakao.com/logout"></a>
+    	
+    	<script type='text/javascript'>
+      	//<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('28a0d30bd1293f762f5631e0fcb68f57');
+        
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+          container: '#kakao-login-btn',
+          	success: function(authObj) {
+          		console.log(authObj.access_token);
+          		console.log(res.id);
+            	/* alert(JSON.stringify(authObj)); */
+          	},
+          	fail: function(err) {
+             	alert(JSON.stringify(err));
+        	}
+        });
+        
+        Kakao.Auth.setAccessToken(accessTokenFromServer);
+		//]]>
+		</script>
+	</div>
 	
 	<div id="signup">
 		아직 회원이 아니신가요?

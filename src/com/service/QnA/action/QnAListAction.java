@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
+import com.service.QnA.db.QnADAO;
 import com.service.QnA.db.QnADAOImpl;
 import com.service.QnA.db.QnADTO;
 
@@ -18,7 +21,7 @@ public class QnAListAction implements Action {
 		
 		System.out.println("QnAListAction_execute()-------------------");
 		
-		QnADAOImpl qadaoImpl = new QnADAOImpl();
+		QnADAO qadaoImpl = new QnADAOImpl();
 		
 		int count = qadaoImpl.getBoardCount();
 		
@@ -27,7 +30,7 @@ public class QnAListAction implements Action {
 		System.out.println("pageNum - 1 : " + request.getParameter("pageNum"));
 		
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		
 		ActionForward forward = new ActionForward();
 		if(id == null){
@@ -38,7 +41,9 @@ public class QnAListAction implements Action {
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
+		
 		System.out.println("pageNum - 2 : "+pageNum);
+		
 		if (pageNum == null) {
 			pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
 		}
@@ -69,6 +74,10 @@ public class QnAListAction implements Action {
 			endPage = pageCount;
 		}
 		
+		// 회원 이름 가져가기
+		MemberDAO mdao = new MemberDAOImpl();
+		List info = mdao.forNameNLevel(id);
+		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("pageNum", pageNum);
@@ -76,13 +85,14 @@ public class QnAListAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("info", info);
 		
 		if(id.equals("admin")){
-		forward.setPath("./service/QnABoard/QnAList.jsp");
-		forward.setRedirect(false);
+			forward.setPath("./service/QnABoard/QnAList.jsp");
+			forward.setRedirect(false);
 		}else{
-		forward.setPath("./service/QnABoard/QnAUserList.jsp");
-		forward.setRedirect(false);
+			forward.setPath("./service/QnABoard/QnAUserList.jsp");
+			forward.setRedirect(false);
 		}
 		
 		return forward;
