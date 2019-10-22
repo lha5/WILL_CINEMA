@@ -73,9 +73,6 @@ public class MovieDAOImpl implements MovieDAO{
 
 			if (rs.next()) {
 				mdto = new MovieDTO();
-				
-			
-				
 				mdto.setTitle(rs.getString("title"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
@@ -84,7 +81,6 @@ public class MovieDAOImpl implements MovieDAO{
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setImage(rs.getString("image"));
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setName(rs.getString("name"));
 				mdto.setPoster(rs.getString("poster"));
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setStory(rs.getString("story"));
@@ -128,24 +124,23 @@ public class MovieDAOImpl implements MovieDAO{
 			}
 			System.out.println("movie_num : "+movie_num);
 			
-			sql = "insert into movie(title,movie_num,name,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, mdto.getTitle());
 			pstmt.setInt(2, movie_num);
-			pstmt.setString(3, mdto.getName());
-			pstmt.setString(4, mdto.getGenre());
-			pstmt.setString(5, mdto.getStory());
-			pstmt.setInt(6, mdto.getRunning_time());
-			pstmt.setString(7, mdto.getDirector());
-			pstmt.setString(8, mdto.getActor());
-			pstmt.setDate(9, mdto.getOpen_date());
-			pstmt.setDate(10, mdto.getClose_date());
-			pstmt.setString(11, mdto.getCountry());
-			pstmt.setDouble(12, mdto.getBooking_ration());
-			pstmt.setString(13, mdto.getPoster());
-			pstmt.setString(14, mdto.getImage());
+			pstmt.setString(3, mdto.getGenre());
+			pstmt.setString(4, mdto.getStory());
+			pstmt.setInt(5, mdto.getRunning_time());
+			pstmt.setString(6, mdto.getDirector());
+			pstmt.setString(7, mdto.getActor());
+			pstmt.setDate(8, mdto.getOpen_date());
+			pstmt.setDate(9, mdto.getClose_date());
+			pstmt.setString(10, mdto.getCountry());
+			pstmt.setDouble(11, mdto.getBooking_ration());
+			pstmt.setString(12, mdto.getPoster());
+			pstmt.setString(13, mdto.getImage());
 			
 			int value = pstmt.executeUpdate();
 			
@@ -198,7 +193,7 @@ public class MovieDAOImpl implements MovieDAO{
 				MovieDTO mdto = new MovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setName(rs.getString("name"));
+				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
