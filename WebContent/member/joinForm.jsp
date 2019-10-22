@@ -268,7 +268,7 @@ function sample6_execDaumPostcode() {
 			return false;
 		}
 	} */
-</script>
+	</script>
 	
 	<%@ include file="../include/footer.jsp" %>
 </body>
