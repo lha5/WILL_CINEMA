@@ -47,7 +47,7 @@
 	
 	
 	<fieldset>
-		<form action="" method="post">
+		<form action="./MallOrderProc.mor" method="post">
 			<input type="hidden" name="goods_name" value="<%=malldto.getName() %>">
 			<input type="hidden" name="goods_num" value="<%=malldto.getGoods_num()%>">
 			<input type="hidden" name="order_id" value="<%=id%>">
@@ -78,14 +78,14 @@
 	<script type="text/javascript">
 		var checked = document.querySelector('.pay');
 		function checkButton() {
-			if (checked.value != null) {
+			if (checked.value == '') {
+				alert('지불 방식을 선택해주세요.');
+			} else {
 				var openNewWin = window.open('', '윌시네마 - 결제창');
 				var f = document.form;
 				f.action = './MallOrderProc.mor';
 				f.target = '_blank';
 				f.submit();
-			} else {
-				alert('지불 방식을 선택해주세요.');
 			}
 		}
 		
@@ -107,8 +107,7 @@
 		    amount : <%=total%>,
 		    buyer_email : '<%=memdto.getEmail()%>',
 		    buyer_name : '<%=memdto.getName()%>',
-		    buyer_tel : '<%=memdto.getMobile()%>',
-		    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+		    buyer_tel : '<%=memdto.getMobile()%>'
 		}, function(rsp) {
 		    if ( rsp.success ) {
 		        var msg = '결제가 완료되었습니다.';

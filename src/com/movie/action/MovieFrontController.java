@@ -30,8 +30,9 @@ public class MovieFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("DetailView.mo")) {
+		} else if (command.equals("/DetailView.mo")) {
 			// 상세 보기(사진 클릭시 페이지 이동[평점,댓글, 예고편영상])
+			action = new  DetailViewAction();
 			//action = new DetailViewAction();
 			
 			try {

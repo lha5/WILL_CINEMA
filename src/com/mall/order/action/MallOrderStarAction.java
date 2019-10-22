@@ -36,14 +36,14 @@ public class MallOrderStarAction implements Action{
 		}
 		
 		// 정보 저장
-		//request값 저장
+		// request값 저장
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		int goods_num = Integer.parseInt(request.getParameter("goods_num"));
 		
-		//회원 상세
+		// 회원 상세
 		MemberDAO memdao = new MemberDAOImpl();
 		
-		// 현재 관리자의 내용만 가져옴
+		// 현재 사용자의 내용만 가져옴
 		MemberDTO memdto = memdao.getMember(id); 
 		
 		//주문 상품 상세
