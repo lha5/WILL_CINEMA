@@ -18,7 +18,7 @@ public class DetailViewAction implements Action{
 			//DB에서 글번호 해당하는 글 정보를 보여주는 페이지
 		
 			// 전달 정보를 저장(num,numpage)
-<<<<<<< HEAD
+
 			int num = Integer.parseInt(request.getParameter("num"));
 			String pageNum = request.getParameter("pageNum");
 		
@@ -26,30 +26,14 @@ public class DetailViewAction implements Action{
 		
 			//MovieDAO 객체 생성
 			MovieDAO mdao = new MovieDAOImpl(); 
-		
+		System.out.println("1");
 			// 글 번호에 해당하는 글 정보 가져오기
 			MovieDTO mdto = mdao.getBoard(num);
-		
+			System.out.println("2");
 			// 정보 저장
 			request.setAttribute("mdto", mdto);
 			request.setAttribute("pageNum", pageNum);
-=======
-			//int num = Integer.parseInt(request.getParameter("num"));
-			//String pageNum = request.getParameter("pageNum");
-		
-			//System.out.println("num : " + num + ", pageNum : " + pageNum);
-		
-			//MovieDAO 객체 생성
-			MovieDAO mdao = new MovieDAOImpl(); 
-		
-			// 글 번호에 해당하는 글 정보 가져오기
-			MovieDTO mdto = mdao.getBoard(1);
-		
-			// 정보 저장
-			request.setAttribute("mdto", mdto);
-			//request.setAttribute("pageNum", pageNum);
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
-			
+			System.out.println("3");
 			
 			// 페이지 이동
 			ActionForward forward = new ActionForward();

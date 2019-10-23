@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
+
+
 	<h1>WebContent/service/noticeBoard/NoticeDelete.jsp</h1>
 
 	<%
@@ -32,7 +32,6 @@
        </form>    
     </fieldset>	
 
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 
 </body>
 </html>
