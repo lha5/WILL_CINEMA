@@ -13,62 +13,30 @@
 AdminFAQDTO afdto =(AdminFAQDTO) request.getAttribute("afdto");
 String pageNum = (String) request.getAttribute("pageNum");	
 %>
+<%@ include file="../../include/header.jsp" %>
 
-<fieldset>
-<legend>FAQ 글 수정하기</legend>
-<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
-<<<<<<< HEAD
- 
+	<fieldset>
+		<legend>글 수정하기</legend>
 		
-			<table>
-				<tr>
-				<td>카테고리</td>
-					<td>
-						<select name="category">
-						<option value="영화예매">영화 예매</option>
-						<option value="매점구매">매점 구매</option>
-						<option value="이용안내">사이트 이용 안내</option>
-						<option value="이벤트">이벤트</option>
-						<option value="멤버십">멤버십/포인트</option>
-						<option value="쿠폰">쿠폰</option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td colspan="2">
-						<input type="text" name="subject">
-					</td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td colspan="2">
-						<textarea name="content" row="10" cols="50">내용입력</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td colspan="2">
-						<input type="file" name="image">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="8">
-						<input type="submit" value="FAQ쓰기">
-					</td>
-				</tr>
-			</table>
-	
-=======
- <input type="hidden" name="num" value="<%= afdto.getNum()%>">
-카테고리<input type="text" name ="category" value="<%=afdto.getCategory() %>">
-제목:<input type="text" name = "subject" value="<%=afdto.getSubject()%>"><br>
-내용:<textarea name="content" rows="10" cols="10"><%=afdto.getContent() %></textarea><br>
+		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
+		<input type="hidden" name="num" value="<%=afdto.getNum() %>">
+		글쓴이 : <input type="text" name="name" value="<%=afdto.getName() %>" readonly><br>
+		비밀번호 : <input type="password" name="pass"><br>
+		제목 : <input type="text" name="subject" value="<%=afdto.getSubject() %>"><br>
+		카테고리 : <select name="category">
+		<option value="영화예매">영화 예매</option>
+		<option value="매점구매">매점 구매</option>
+		<option value="이용안내">사이트 이용 안내</option>
+		<option value="이벤트">이벤트</option>
+		<option value="멤버십">멤버십/포인트</option>
+		<option value="쿠폰">쿠폰</option>	
+		</select><br>
+		내용 : <br><textarea rows="10" cols="20" name="content"><%=afdto.getContent() %></textarea><br>
+		첨부이미지 : <input type="file" name="image"><br>
+		<input type="submit" value="글 수정하기">
+		</form>
+	</fieldset>
 
-<input type="submit" value="FAQ 수정하기">
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
-</form>
-</fieldset>
-
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

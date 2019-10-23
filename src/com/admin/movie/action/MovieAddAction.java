@@ -33,16 +33,17 @@ public class MovieAddAction implements Action {
 			}
 			// QnADTO객체 생성
 			MovieDTO mdto = new MovieDTO();
-			String name = request.getParameter("name");
+			String title = request.getParameter("title");
 			String genre = request.getParameter("genre");
 			String director = request.getParameter("director");
 			String story = request.getParameter("story");
 			String actor = request.getParameter("actor");
 			int running_time = Integer.parseInt(request.getParameter("running_time"));
 				
-			System.out.print("name : "+ name + " id : "+ id + " running_time : "+running_time);
+			System.out.print("title : "+ title + " id : "+ id + " running_time : "+running_time);
 				
-			mdto.setTitle(name);
+
+			mdto.setTitle(title);
 			mdto.setGenre(genre);
 			mdto.setDirector(director);
 			mdto.setStory(story);

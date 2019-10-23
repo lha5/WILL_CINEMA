@@ -20,13 +20,19 @@
 	<%@ include file="include/header.jsp" %>
 
 	<div id="wrap">
-		
-		<section>
+
+	<!-- 수정완료 -->
+	<%
+	// String id = (String) session.getAttribute("id");
+	%>
+	
+
+
+			<section>
 			<div id="center">
 				<article id="list">
 					예매 순위
 				</article>
-		
 				<article id="image">
 					현재 상영작 이미지
 				</article>
