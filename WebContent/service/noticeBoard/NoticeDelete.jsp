@@ -9,7 +9,7 @@
 <body>
 <<<<<<< HEAD
 =======
-	<h1>WebContent/notice/NoticeDelete.jsp</h1>
+	<h1>WebContent/service/noticeBoard/NoticeDelete.jsp</h1>
 
 	<%
 	// 로그인 여부를 체크 하여, 비로그인시 삭제 불가 

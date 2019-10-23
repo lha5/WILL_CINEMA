@@ -20,6 +20,19 @@
 	<%@ include file="include/header.jsp" %>
 
 	<div id="wrap">
+<<<<<<< HEAD
+	<!-- 수정완료 -->
+	<%
+	// String id = (String) session.getAttribute("id");
+	%>
+	
+	<section>
+		<div id="center">
+			<article id="list">
+				예매 순위
+			</article>
+=======
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		
 		<section>
 			<div id="center">

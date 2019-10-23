@@ -21,7 +21,7 @@
 	%>
 	
 	
-<!-- 132456 -->
+
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
    
    <table border="1">
@@ -40,7 +40,7 @@
 			<tr>
 				<td>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
-					<%=mdto.getName() %>
+					<%=mdto.getTitle() %>
 					</a>
 				</td>
 				<td><%=mdto.getGenre() %></td>
