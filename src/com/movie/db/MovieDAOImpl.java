@@ -124,7 +124,11 @@ public class MovieDAOImpl implements MovieDAO{
 			}
 			System.out.println("movie_num : "+movie_num);
 			
+<<<<<<< HEAD
 			sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+=======
+sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -212,6 +216,52 @@ public class MovieDAOImpl implements MovieDAO{
 		}
 		
 		return boardList;
+	}
+
+	@Override
+	public MovieDTO getBoard(int num) {
+		MovieDTO mdto = null;
+
+		try {
+			con = getCon();
+
+			sql = "select * from movie where movie_num=?";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mdto = new MovieDTO();
+								
+				mdto.setTitle(rs.getString("title"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+				mdto.setCountry(rs.getString("country"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setImage(rs.getString("image"));
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setPoster(rs.getString("poster"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setOpen_date(rs.getDate("open_date"));
+				mdto.setClose_date(rs.getDate("close_date"));
+			
+			}
+			System.out.println("게시판 글 저장: "+mdto);
+	
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+	
+		System.out.println("게시판 글 저장: "+mdto);
+		return mdto;
 	}
 	
 

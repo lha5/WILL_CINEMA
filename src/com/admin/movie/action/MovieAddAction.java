@@ -42,7 +42,11 @@ public class MovieAddAction implements Action {
 				
 			System.out.print("title : "+ title + " id : "+ id + " running_time : "+running_time);
 				
+<<<<<<< HEAD
 			mdto.setTitle(title);
+=======
+			mdto.setTitle(name);
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			mdto.setGenre(genre);
 			mdto.setDirector(director);
 			mdto.setStory(story);

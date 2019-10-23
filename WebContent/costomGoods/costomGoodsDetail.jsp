@@ -26,15 +26,20 @@
 	<h1> 제품 상세 페이지</h1>
 	<form action="./MallOrderStar.mor" method="post">
 		<input type="hidden" name="goods_num" value="<%=mdto.getGoods_num()%>">
+		<%-- 
+		<input type="hidden" name="goods_name" value="<%=mdto.getName()%>">
+		<input type="hidden" name="goods_price" value="<%=mdto.getPrice()%>"> 
+		--%>
 		<table border="1">
 			<tr>
 				<td><img src="./goodsImageUpload/<%=mdto.getImage()%>" width="300" height="300"></td>
 				<td>
-					상품명 : <%=mdto.getName() %><br> 
-					판매가격 : <%=mdto.getPrice() %><br>
-					상품상세 : <%=mdto.getContent() %><br>
-					구매수량 : <input type="text" name="amount" value="1"><br>
-					
+					상품명 : <%=mdto.getName()%><br> 
+					판매가격 : <%=mdto.getPrice()%><br>
+					상품상세 : <%=mdto.getContent()%><br>
+					구매수량 : <input type="number" name="amount" value="1" min="1"><br>
+					<br>
+					<br>
 					<input type="submit" value="구매 하기"><br>
 					<input type="button" onclick="location.href='./GoodsList.ml'" value="상품 목록"><br>
 				</td>

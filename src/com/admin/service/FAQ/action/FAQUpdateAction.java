@@ -16,13 +16,16 @@ public class FAQUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
-	System.out.println("updateAction ~~~!!!");	
+	System.out.println("updateAction ~~~!!!나옵니다 ");	
 		
-	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");//한글
 		
-	String pageNum = request.getParameter("pageNum");
+	String pageNum = request.getParameter("pageNum");//전달정보
 	
 	AdminFAQDTO afdto = new AdminFAQDTO();
+	afdto.setNum(Integer.parseInt(request.getParameter("num")));
+	afdto.setName(request.getParameter("name"));
+	afdto.setPass(request.getParameter("pass"));
 	afdto.setSubject(request.getParameter("subject"));
 	afdto.setCategory(request.getParameter("category"));
 	afdto.setContent(request.getParameter("content"));

@@ -7,32 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-	<h1>WebContent/service/noticeBoard/NoticeDelete.jsp</h1>
-
+<%@ include file="../../include/header.jsp" %>
 	<%
-	// 로그인 여부를 체크 하여, 비로그인시 삭제 불가 
-		  // 로그인 페이지로 이동  
-/* 	String id = (String)session.getAttribute("id");
-	
-	  if(id == null){
-		  response.sendRedirect("./Main.me");
-	  } */
-	  int num = Integer.parseInt(request.getParameter("num"));
-	  String pageNum = request.getParameter("pageNum");
-	
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
 	%>
+
 <fieldset>
        <legend> 글 삭제 하기 </legend>
-       <form action="./NoticeDeleteAction.an?pageNum=<%=pageNum %>" method="post">
+       <form action="./FAQDeleteAction.af?pageNum=<%=pageNum %>" method="post">
          <input type="hidden" name="num" value="<%=num%>">      
                  비밀번호 : <input type="password" name="pass">         
          <input type="submit" value="삭제하기">       
        </form>    
     </fieldset>	
-
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+<%@ include file="../../include/footer.jsp" %>
 
 </body>
 </html>
