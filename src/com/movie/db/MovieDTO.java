@@ -3,47 +3,30 @@ package com.movie.db;
 import java.sql.Date;
 
 public class MovieDTO {
-  private int movie_num;
-<<<<<<< HEAD
-=======
+	private int movie_num;
 	private String Title;
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	private String genre;
 	private String story;
 	private int running_time;
 	private String director;
 	private String actor;
 	private Date open_date;
-<<<<<<< HEAD
-=======
 	private Date close_date;
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	private String country;
 	private Double booking_ration;
 	private String poster;
 	private String image;
-	private String title;
-<<<<<<< HEAD
-	private Date close_date;
-=======
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	public int getMovie_num() {
 		return movie_num;
 	}
 	public void setMovie_num(int movie_num) {
 		this.movie_num = movie_num;
-<<<<<<< HEAD
-=======
 	}
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 	public void setTitle(String title) {
-		this.title = title;
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+		Title = title;
 	}
 	public String getGenre() {
 		return genre;
@@ -81,6 +64,12 @@ public class MovieDTO {
 	public void setOpen_date(Date open_date) {
 		this.open_date = open_date;
 	}
+	public Date getClose_date() {
+		return close_date;
+	}
+	public void setClose_date(Date close_date) {
+		this.close_date = close_date;
+	}
 	public String getCountry() {
 		return country;
 	}
@@ -105,29 +94,11 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-<<<<<<< HEAD
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public Date getClose_date() {
-		return close_date;
-	}
-	public void setClose_date(Date close_date) {
-		this.close_date = close_date;
-	}
+
 	
-=======
-	public Date getClose_date() {
-		return close_date;
-	}
-	public void setClose_date(Date close_date) {
-		this.close_date = close_date;
-	} 
-  
-  
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+
+
+
+	
 	
 }
