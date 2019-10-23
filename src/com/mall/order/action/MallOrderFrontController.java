@@ -53,7 +53,12 @@ public class MallOrderFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}
+		} /*else if (command.equals("/MallOrderProc.mor")) {
+			forward = new ActionForward();
+			
+			forward.setPath("./goodsOrder/orderProc.jsp");
+			forward.setRedirect(false);
+		}*/
 		
 		
 		//가상주소를 가지고 이동

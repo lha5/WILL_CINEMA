@@ -11,6 +11,9 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
+<!-- 네이버 페이 -->
+<!-- <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script> -->
+
 </head>
 <body>
 	<div id="wrap">
@@ -46,12 +49,14 @@
 	
 	
 	<fieldset>
-		<form action="./MallOrderAddAction.mor" method="post">
+		<form>
 			<input type="hidden" name="order_id" value="<%=id%>">
 			<input type="hidden" name="goods_num" value="<%=malldto.getGoods_num()%>">
 			<input type="hidden" name="goods_name" value="<%=malldto.getName() %>">
 			<input type="hidden" name="goods_amount" value="<%=amount%>">
-			<input type="hidden" name="price" value="<%=total%>">	
+			<input type="hidden" name="price" value="<%=total%>">
+			<input type="hidden" name="email" value="<%=memdto.getEmail()%>">
+			<input type="hidden" name="tel" value="<%=memdto.getMobile()%>">
 			
 			<h3>결제 방법</h3>
 			
@@ -62,8 +67,18 @@
 				<tr>
 					<td>
 						<label>
-							<input type="radio" name="payment" value="Kakao" id="pay" checked>
-							<img alt="카카오페이" src="./img/payment.png">
+							<!-- <input type="radio" name="payment" value="Kakao" id="pay" checked> -->
+							<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"
+							    data-client-id="u86j4ripEt8LRfPGzQ8"
+							    data-mode="development"
+							    data-merchant-user-key="{#_merchantUserKey}"
+							    data-merchant-pay-key="{#_merchantPayKey}"
+							    data-product-name="<%=malldto.getGoods_num()%>"
+							    data-total-pay-amount="<%=total%>"
+							    data-tax-scope-amount="{#_taxScopeAmount}"
+							    data-tax-ex-scope-amount="{#_taxExScopeAmount}"
+							    data-return-url="{#_returnUrl}">
+							</script>
 						</label>
 					</td>
 				</tr>
@@ -75,52 +90,43 @@
 		</form>
 	</fieldset>
 	
-	<!-- 라디오버튼 미선택 방지 -->
+	<!-- 뒤로 가기 버튼 기능 추가 -->
 	<script type="text/javascript">
-		/* var checking = $('input[name=payment]:checked').val();
-		function checkButton() {
-			if (checking == false) {
-				alert('지불 방식을 선택해주세요.');
-				checked.focus();
-				event.preventDefault();
-			}
-		}
-		checking.addEventListener('submit', function() {
-			checkButton();
-		}); */
-		$(document).ready(function(){
-			$("form").submit(function() {
-				var IMP = window.IMP;
-				IMP.init('imp30527297');
-				
-				IMP.request_pay({
-				    pg : 'kakao',
-				    pay_method : 'card',
-				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : '윌시네마 상품 구매',
-				    amount : <%=total%>,
-				    buyer_email : '<%=memdto.getEmail()%>',
-				    buyer_name : '<%=memdto.getName()%>',
-				    buyer_tel : '<%=memdto.getMobile()%>'
-				}, function(rsp) {
-				    if ( rsp.success ) {
-				        var msg = '결제가 완료되었습니다.';
-				        msg += '고유ID : ' + rsp.imp_uid;
-				        msg += '상점 거래ID : ' + rsp.merchant_uid;
-				        msg += '결제 금액 : ' + rsp.paid_amount;
-				        msg += '카드 승인번호 : ' + rsp.apply_num;
-				        
-				        alert(msg);
-				        
-				    	location.href = './MallOrderAddAction.mor';
-				    } else {
-				        var msg = '결제에 실패하였습니다.';
-				        msg += '에러내용 : ' + rsp.error_msg;
-				    	alert(msg);
-				    }
-				});
-			});
+		$('#before').click(function() {
+			history.back();
 		});
+	</script>
+	
+	<script type="text/javascript">
+		<%-- var IMP = window.IMP;
+		IMP.init('imp30527297');
+		
+		IMP.request_pay({
+		    pg : 'kakao',
+		    pay_method : 'card',
+		    merchant_uid : 'merchant_' + new Date().getTime(),
+		    name : '윌시네마 상품 구매',
+		    amount : <%=total%>,
+		    buyer_email : '<%=memdto.getEmail()%>',
+		    buyer_name : '<%=memdto.getName()%>',
+		    buyer_tel : '<%=memdto.getMobile()%>'
+		}, function(rsp) {
+		    if ( rsp.success ) {
+		        var msg = '결제가 완료되었습니다.';
+		        msg += '고유ID : ' + rsp.imp_uid;
+		        msg += '상점 거래ID : ' + rsp.merchant_uid;
+		        msg += '결제 금액 : ' + rsp.paid_amount;
+		        msg += '카드 승인번호 : ' + rsp.apply_num;
+		        
+		        alert(msg);
+		        
+		    	location.href = './MallOrderAddAction.mor';
+		    } else {
+		        var msg = '결제에 실패하였습니다.';
+		        msg += '에러내용 : ' + rsp.error_msg;
+		    	alert(msg);
+		    }
+		}); --%>
 	</script>
 	
 	<%@ include file="../include/footer.jsp" %>

@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="../../include/header.jsp" %>
 <%
 			
-			AdminFAQDTO afdto = (AdminFAQDTO) request.getAttribute("afdto");
-			String pageNum = (String) request.getAttribute("pageNum");
+AdminFAQDTO afdto = (AdminFAQDTO) request.getAttribute("afdto");
+String pageNum = (String) request.getAttribute("pageNum");
 			
-		%>
+%>
 	
 
 	<h1>글 내용 보기</h1>
@@ -22,69 +22,43 @@
 	  <tr>
 	   <%-- <td>글번호</td><td><%=afdto.getNum() %></td> --%>
 	  </tr>
-	  
-<<<<<<< HEAD
+	  <tr>
+			<td>글번호</td><td><%=afdto.getNum() %></td>
+			<td>글쓴이</td><td><%=afdto.getName() %></td>
 	  <tr> 
 	     <td>글 제목</td><td colspan="3"><%=afdto.getSubject() %></td> 
 	  </tr>
 	  <tr> 
-	     <td>첨부파일</td>
-	     <td colspan="3">
-	     <a href="./upload/<%=afdto.getImage()%>">
-	       <%=afdto.getImage() %>
-	     </a>
-	     </td> 
+	    <td>이미지</td><td colspan="3"><img src="./upload/<%=afdto.getImage()%>"></td>
+	    
 	  </tr>
 	  <tr> 
-	     <td>글 내용</td><td colspan="3"><%=afdto.getContent() %></td> 
+	     <td>FAQ 내용</td><td colspan="3"><%=afdto.getContent() %></td> 
+	<td>카테고리</td><td colspan="3"><%=afdto.getCategory() %></td>	  
 	  </tr>
 	  <tr>
-				<td>카테고리</td>
-					<td>
-						<select name="category">
-						<option value="영화예매">영화 예매</option>
-						<option value="매점구매">매점 구매</option>
-						<option value="이용안내">사이트 이용 안내</option>
-						<option value="이벤트">이벤트</option>
-						<option value="멤버십">멤버십/포인트</option>
-						<option value="쿠폰">쿠폰</option>
-					</select>
-					</td>
-				</tr>
-=======
-	  <tr>
-	     <td>글 제목</td><td colspan="3"><%=afdto.getSubject() %></td> 
-	  </tr>
-	  <tr> 
-	     <td>첨부파일</td>
-	     <td colspan="3">
-	     <a href="./upload/<%=afdto.getImage()%>">
-	       <%=afdto.getImage() %>
-	     </a>
-	     </td> 
-	  </tr>
-	  <tr> 
-	     <td>글 내용</td><td colspan="3"><%=afdto.getContent() %></td> 
-	  </tr>
-	  
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
+
 	  <tr>
 	   <td colspan="4">
+	   
 	    <input type="button" value="수정하기"
-	           onclick="location.href='./FAQUpdate.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'"
-	    >
-	    <input type="button" value="삭제하기"
-	           onclick="location.href='./FAQDeleteAction.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'"
-	    >
+	           onclick="location.href='./FAQUpdate.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'" > 
 	    
-	    <input type="button" value="목록보기" onclick="location.href='./FAQList.af?pageNum=<%=pageNum%>'">
+	    
+	  
+	    <input type="button" value="삭제하기"
+	           onclick="location.href='./FAQDeleteAction.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'"> 
+	    
+	    
+	    
+	    <input type="button" value="목록보기" onclick="location.href='./FAQList.af?pageNum=<%=pageNum%>'">  
 	    </td>	  
 	  </tr>
 	  
 	
 	</table>
 	
-	      
+	      	<%@ include file="../../include/footer.jsp" %>
 
 
 

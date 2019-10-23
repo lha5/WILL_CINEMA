@@ -8,34 +8,32 @@ import com.action.ActionForward;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
+import com.service.QnA.db.QnADAOImpl;
+import com.service.QnA.db.QnADTO;
 
-public class FAQContentAction implements Action {
+public class FAQDelete implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("FAQContentACtion ~~!~!~");
+		System.out.println("FAQDelete_execute()------------------------------------");
 		
+		// num, pageNum
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
-		// AdminNoticeDAO 객체 생성
 		AdminFAQDAO afdao = new AdminFAQDAOImpl();
-		afdao.updateReadcount(num);
-		
-		// 글번호에 해당하는 글정보를 가져오기
 		AdminFAQDTO afdto = afdao.getFAQ(num);
-	
-		// 정보 저장 (글정보,pageNum)
-		request.setAttribute("afdto", afdto);
+		
+		request.setAttribute("afdto", afdto );
 		request.setAttribute("pageNum", pageNum);
 		
-		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./service/FAQBoard/faqContent.jsp");
+		
+		forward.setPath("./service/FAQBoard/faqDelete.jsp");
 		forward.setRedirect(false);
+		
 		return forward;
-	
 	}
 
 }

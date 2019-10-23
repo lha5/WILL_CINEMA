@@ -39,7 +39,7 @@ public class CreateBarcode {
 	// 이미지 타입[BASE64 - png(투명처리가능), jpeg & SAVE - png, jpeg , gif]
 	private static String TYPE_IMAGE = "png";
 	// 저장 전체 경로 + 파일명
-	private static String SAVE_FULL_PATH = "./upload";
+	private static String SAVE_FULL_PATH = "";
 	
 	
 	

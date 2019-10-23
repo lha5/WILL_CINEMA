@@ -14,6 +14,9 @@ public class FAQUpdate implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+	
+	request.setCharacterEncoding("UTF-8");//한글
+		
 	int  num= Integer.parseInt(request.getParameter("num"));	
 	String pageNum = request.getParameter("pageNum");
 			
