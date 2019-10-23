@@ -32,8 +32,8 @@
 %>
 
 <form action="./CinemaModifyAction.ci" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="location_num" value="<%=cdto.getLocation_num()%>">
-	<input type="hidden" name="prev_image" value="<%=cdto.getImage()%>">
+	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>">
+	<%-- <input type="hidden" name="prev_image" value="<%=cdto.getImage()%>"> --%>
 		<table border="1">
 			<tr>
 				<td>지역</td>
@@ -71,7 +71,7 @@
 				<td>상영관 수</td>
 				<td><input type="text" name="room" value="<%=cdto.getRoom() %>"></td>
 				<td>좌석 수</td>
-				<td><input type="text" name="count_seat" value="<%=cdto.getCount_seat() %>"></td>
+				<td><input type="text" name="count_seat" value="<%=cdto.getSeat() %>"></td>
 			</tr>
 			<tr>
 				<td>사진</td>

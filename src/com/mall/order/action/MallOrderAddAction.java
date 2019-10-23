@@ -1,7 +1,5 @@
 package com.mall.order.action;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +11,7 @@ import com.mall.order.db.MallOrderDAOImpl;
 import com.mall.order.db.MallOrderDTO;
 
 public class MallOrderAddAction implements Action {
-
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -40,11 +38,28 @@ public class MallOrderAddAction implements Action {
 		modto.setGoods_name(request.getParameter("goods_name"));
 		modto.setOrder_goods_num(Integer.parseInt(request.getParameter("goods_num")));
 		modto.setGoods_amount(Integer.parseInt(request.getParameter("goods_amount")));
+		modto.setPrice(Integer.parseInt(request.getParameter("price")));
 		modto.setPayment(request.getParameter("payment"));
 		
+		RandomNumberCreator rnc = new RandomNumberCreator();
+		rnc.setCertNumLength(6);
+		
+		final String code = rnc.excuteGenerate();
+		modto.setBarcode(code);
+		
+		System.out.println("바코드 번호 : " + code);
+		
+		CreateBarcode cb = new CreateBarcode();
+		String barcodeImgPath = cb.saveBarcodeImage(code, "E:/workspace_project/WillCinema/WebContent/upload", 1, 60);
+		modto.setBarcode_img(barcodeImgPath);
+		
+		System.out.println("바코드가 저장되는 경로 : " + barcodeImgPath);
+		
+		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
 		modao.addOrder(modto);
 		
+		// 페이지 이동
 		forward.setPath("./MallOrderList.mor");
 		forward.setRedirect(true);
 		
