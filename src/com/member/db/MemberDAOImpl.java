@@ -322,7 +322,7 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT name, level FROM member WHERE id=?";
+			sql = "SELECT name, level, point FROM member WHERE id=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -333,6 +333,7 @@ public class MemberDAOImpl implements MemberDAO{
 			if (rs.next()) {
 				info.add(0, rs.getString("name"));
 				info.add(1, rs.getInt("level"));
+				info.add(2, rs.getInt("point"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

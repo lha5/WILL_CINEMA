@@ -13,44 +13,42 @@
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
 </head>
 <body>
 
 	<%@ include file="include/header.jsp" %>
 
 	<div id="wrap">
+
+	<!-- 수정완료 -->
 	
-	<%
-	// String id = (String) session.getAttribute("id");
-	%>
-	
-	<section>
-		<div id="center">
-			<article id="list">
-				예매 순위
-			</article>
+		<section>
+
+			<div id="center">
+				<article id="list">
+					예매 순위
+				</article>
+				<article id="image">
+					현재 상영작 이미지
+				</article>
+			</div>
 		
-			<article id="image">
-				현재 상영작 이미지
-			</article>
-		</div>
+			<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
+			<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
 		
-		<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
-		<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
+			<div id="event">
+				이벤트
+			</div>
 		
-		<div id="event">
-			이벤트
-		</div>
-		
-		<div id="service">
-			멤버십이나 포인트 같은 서비스 모음
-		</div>
-		
-		<div id="notice">
-			공지사항
-		</div>
-		
-	</section>
+			<div id="service">
+				멤버십이나 포인트 같은 서비스 모음
+			</div>
+			
+			<div id="notice">
+				공지사항
+			</div>
+		</section>
 	
 	</div>
 	

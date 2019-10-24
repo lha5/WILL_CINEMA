@@ -25,7 +25,7 @@ public class AdminFAQFrontController extends HttpServlet{
 		//가상주소 비교
 		if(command.equals("/FAQWrite.af")){ //FAQ쓰기
 			forward = new ActionForward();
-			forward.setPath("./FAQBoard/faqWrite.jsp");
+			forward.setPath("./service/FAQBoard/faqWrite.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/FAQWriteAction.af")){ //FAQ쓰기 페이지
 			action = new FAQWriteAction();

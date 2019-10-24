@@ -2,8 +2,8 @@
 
 /* -------- 글씨체 -------- */
 @font-face {
-	font-family: 'BinggreaB';
-	src: url('../font/Binggrae-Bold.otf') format('opentype');
+	font-family: 'Oduda';
+	src: url('../font/Oduda.otf') format('opentype');
 }
 /* -------- 글씨체 -------- */
 
@@ -64,7 +64,7 @@ footer {
 }
 
 #sub_logo>span {
-	font-family: BinggreaB;
+	font-family: Oduda;
 	font-size: 1.7em;
 	margin-bottom: 7px;
 }
@@ -136,7 +136,7 @@ select {
 	width: 700px;
 	height: 30px;
 	margin: 10px auto 0 auto;
-	padding-top: 12px;
+	padding-top: 2px;
 	text-align: center;
 	font-size: 12px;
 }

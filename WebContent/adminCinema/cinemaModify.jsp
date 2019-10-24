@@ -35,6 +35,7 @@
 
 %>
 
+
 <form action="./CinemaModifyAction.ci" method="post">
 	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>">
 		<table border="1">
@@ -73,6 +74,7 @@
 			<tr>
 				<td>상영관 수</td>
 				<td><input type="text" name="room" value="<%=cdto.getRoom() %>"></td>
+
 				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
 			</tr>
 			<!-- ajax -->

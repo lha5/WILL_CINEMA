@@ -31,7 +31,7 @@ public class MemberLoginAction implements Action {
 		
 		// 아이디 비번 으로 체크하고 
 		int check = mdao.idCheck(id, pass);
-		List<String> info = mdao.forNameNLevel(id);
+		List info = mdao.forNameNLevel(id);
 			
 		System.out.println("로그인 정보 출력 : " + check);
 		

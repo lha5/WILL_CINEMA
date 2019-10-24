@@ -17,37 +17,36 @@
 	request.setCharacterEncoding("UTF-8");
 
 	//DTO 객체 저장
-	MallDTO mdto = (MallDTO)request.getAttribute("mdto");
+	MallDTO mdto = (MallDTO) request.getAttribute("mdto");
 	
 	//제품 상세 페이지 작성
 	%>
 
 
-<h1> 제품 상세 페이지</h1>
-<form action="./MallOrderStar.mor" method="post">
-	<input type="hidden" name="goods_num" value="<%=mdto.getGoods_num()%>">
-<table border="1">
-	<tr>
-		<td><img src="./goodsImageUpload/<%=mdto.getImage()%>" width="300" height="300"></td>
-		<td>
-			상품명 : <%=mdto.getName() %><br> 
-			판매가격 : <%=mdto.getPrice() %><br>
-			상품상세 : <%=mdto.getContent() %><br>
-			<!-- 구매수량 관련 db컬럼 생성 필요 -->
-			구매수량 : <input type="text" name="amount" value="1"><br>
-			
-				
-				<input type="submit" value="[구매하기]"><br>
-				<input type="button" onclick="location.href='./GoodsList.ml'" value="[상품 리스트]"><br>
-				<!-- <a href="./MallOrderStar.mor?">[구매하기]</a><br>
-				<a href="./GoodsList.ml">[상품 리스트]</a><br> -->
-		</td>
-	</tr>
-	
-</table>
-</form>
-
+	<h1> 제품 상세 페이지</h1>
+	<form action="./MallOrderStar.mor" method="post">
+		<input type="hidden" name="goods_num" value="<%=mdto.getGoods_num()%>">
+		<%-- 
+		<input type="hidden" name="goods_name" value="<%=mdto.getName()%>">
+		<input type="hidden" name="goods_price" value="<%=mdto.getPrice()%>"> 
+		--%>
+		<table border="1">
+			<tr>
+				<td><img src="./goodsImageUpload/<%=mdto.getImage()%>" width="300" height="300"></td>
+				<td>
+					상품명 : <%=mdto.getName()%><br> 
+					판매가격 : <%=mdto.getPrice()%><br>
+					상품상세 : <%=mdto.getContent()%><br>
+					구매수량 : <input type="number" name="amount" value="1" min="1"><br>
+					<br>
+					<br>
+					<input type="submit" value="구매 하기"><br>
+					<input type="button" onclick="location.href='./GoodsList.ml'" value="상품 목록"><br>
+				</td>
+			</tr>
+		</table>
 	</form>
+
 	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

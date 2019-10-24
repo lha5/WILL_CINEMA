@@ -23,15 +23,16 @@ public class MovieFrontController extends HttpServlet{
 		Action action=null;
 		//가상주소 비교
 		if (command.equals("/MovieList.mo")) { // 영화 메인 페이지(현재 상영작/상영 예정작 탭 이동)
-			//action = new MovieListAction();
+			action = new MovieListAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("DetailView.mo")) {
+		} else if (command.equals("/DetailView.mo")) {
 			// 상세 보기(사진 클릭시 페이지 이동[평점,댓글, 예고편영상])
+			action = new  DetailViewAction();
 			//action = new DetailViewAction();
 			
 			try {

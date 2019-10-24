@@ -12,7 +12,7 @@
 
 <h1>WebContent/FAQList.jsp</h1>
 
-
+<%@ include file="../../include/header.jsp" %>
 	<%
 	int count = (Integer) request.getAttribute("count");
 	List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>)request.getAttribute("FAQList");
@@ -52,10 +52,9 @@
 			<td><%=afdto.getNum()%></td>
 			<td><%=afdto.getCategory() %></td>
 			<td><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">
-           <%=afdto.getSubject() %>
-           </a></td>
+           <%=afdto.getSubject() %></a></td>
 			<td><%=afdto.getContent()%></td>
-			<td><%=afdto.getImage()%></td> 
+			 <td><img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br></td>
 			
 			
 		<%} %> 
@@ -89,5 +88,7 @@
 		}
 	%>
 
+
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

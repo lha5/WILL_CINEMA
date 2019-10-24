@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 공지사항</title>
 </head>
 <body>
 
@@ -28,6 +28,7 @@
 	<table border="1">
 		<tr>
 			<td>번호</td>
+			<td>카테고리</td>
 			<td>제목</td>
 			<td>날짜</td>	
 			<td>조회수</td>
@@ -37,10 +38,11 @@
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
-			System.out.println(andto.getReadcount());
+			System.out.println(andto.getReadcount());  
 		%>
 	  	<tr>
 			<td><%=andto.getNum()%></td>
+			<td><%=andto.getCategory()%></td>
 			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>"><%=andto.getSubject()%></a></td>
 			<td><%=andto.getDate()%></td>
 			<td><%=andto.getReadcount() %></td>
