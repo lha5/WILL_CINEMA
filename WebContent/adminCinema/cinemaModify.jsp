@@ -41,7 +41,7 @@
 		<!-- //1-서울, 2-경기/인천, 3-충청/대전, 4-전라/광주, 5-경북/대구, 6-경남/부산/울산, 7-강원, 8-제주 -->
 					<select name="region">
 					 <option value="1" <%if(regionCode==1){%>selected<%} %>>
-					  서울</option>
+					  서울</option>''
 					 <option value="2" <%if(regionCode==2){%>selected<%} %>>
 					  경기/인천</option>
 					 <option value="3" <%if(regionCode==3){%>selected<%} %>>
