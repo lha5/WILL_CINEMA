@@ -1,32 +1,32 @@
 package com.movie.db;
 
+import java.sql.Date;
+
 public class MovieDTO {
-  private int movie_num;
-	private String name;
+	private int movie_num;
+	private String Title;
 	private String genre;
 	private String story;
 	private int running_time;
 	private String director;
 	private String actor;
-	private String open_date;
+	private Date open_date;
+	private Date close_date;
 	private String country;
 	private Double booking_ration;
 	private String poster;
 	private String image;
-
-  
-  
 	public int getMovie_num() {
 		return movie_num;
 	}
 	public void setMovie_num(int movie_num) {
 		this.movie_num = movie_num;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return Title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		Title = title;
 	}
 	public String getGenre() {
 		return genre;
@@ -40,7 +40,7 @@ public class MovieDTO {
 	public void setStory(String story) {
 		this.story = story;
 	}
-  public int getRunning_time() {
+	public int getRunning_time() {
 		return running_time;
 	}
 	public void setRunning_time(int running_time) {
@@ -58,11 +58,17 @@ public class MovieDTO {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public String getOpen_date() {
+	public Date getOpen_date() {
 		return open_date;
 	}
-	public void setOpen_date(String open_date) {
+	public void setOpen_date(Date open_date) {
 		this.open_date = open_date;
+	}
+	public Date getClose_date() {
+		return close_date;
+	}
+	public void setClose_date(Date close_date) {
+		this.close_date = close_date;
 	}
 	public String getCountry() {
 		return country;
@@ -88,4 +94,11 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	
+
+
+
+	
+	
 }

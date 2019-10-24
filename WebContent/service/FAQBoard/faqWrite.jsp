@@ -7,71 +7,63 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../../include/header.jsp" %>
 <%
-/* String id= (String)request.getAttribute("id");
-if(!id.equals("admin")){
-} */
+//String id= (String)request.getAttribute("id");
+/* if(!id.equals("admin")){
+	response.sendRedirect("./MemberLogin.me");
+}  */
 %>
 
 
 <fieldset>
-		<legend>FAQ쓰기</legend>
-		<form action="./FAQWriteAction.af" method="post">
-		
-			<table>
-				<tr>
-				<td>카테고리</td>
-					<td>
-						<select name="category">
-						<option value="영화예매">영화 예매</option>
-						<option value="매점구매">매점 구매</option>
-						<option value="이용안내">사이트 이용 안내</option>
-						<option value="이벤트">이벤트</option>
-						<option value="멤버십">멤버십/포인트</option>
-						<option value="쿠폰">쿠폰</option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td colspan="2">
-						<input type="text" name="subject">
-					</td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td colspan="2">
-						<textarea name="content" row="10" cols="50">내용입력</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td colspan="2">
-						<input type="file" name="image">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="8">
-						<input type="submit" value="FAQ쓰기">
-					</td>
-				</tr>
-			</table>
-		</form>
-	</fieldset>
+<legend>FAQ쓰기</legend>
+<form action="./FAQWriteAction.af" method="post" enctype="multipart/form-data" >
+<table>
+<tr>
+<td>작성자
+<input type="text" name="name" value="<%=id%>">
+<input type="hidden" name="pass" value="">
+</td>
+<tr>
+<td>카테고리
+<select name="category">
+<option value="영화예매">영화 예매</option>
+<option value="매점구매">매점 구매</option>
+<option value="이용안내">사이트 이용 안내</option>
+<option value="이벤트">이벤트</option>
+<option value="멤버십">멤버십/포인트</option>
+<option value="쿠폰">쿠폰</option>
+</select>
+</td>
+</tr>
 
-<fieldset>
-<legend>FAQ 쓰기</legend>
-<form action="./FAQWriteAction.af" method="post">
+<tr>
+<td>제목</td>
+<td colspan="2">
+<input type="text" name="subject"></td>
+</tr>
 
-카테고리 <input type="text" name ="category"><br>
-제목  <input type="text" name = "subject" > <br>
-내용 <br>
-<textarea name="content" rows="10" cols="10"></textarea>
-이미지 <input type="file" name="image">
-<input type="submit" value="FAQ 쓰기"> 
+<tr>
+<td>FAQ내용</td>
+<td colspan="2">
+<textarea name="content" rows="10" cols="20">내용입력</textarea></td>
+</tr>
+
+<tr>
+<td>이미지</td>
+<td colspan="2">
+<input type="file" name="image"></td>
+</tr>
+				
+<tr><td colspan="5">
+<input type="submit" value="FAQ쓰기">
+</td>
+</tr>
+</table>
 </form>
-
 </fieldset>
+<%@ include file="../../include/footer.jsp" %>
 
 </body>
 </html>

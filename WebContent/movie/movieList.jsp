@@ -21,7 +21,7 @@
 	%>
 	
 	
-<!-- 132456 -->
+
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
    
    <table border="1">
@@ -46,7 +46,7 @@
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
 				<td><%=mdto.getRunning_time() %></td>
-		 		<td><%=mdto.getStory() %></td>
+				<td><%=mdto.getStory() %></td>
 				<td><%=mdto.getActor() %></td>
 			</tr>
 		<%}%>
