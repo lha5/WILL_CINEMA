@@ -86,7 +86,25 @@ function sample6_execDaumPostcode() {
 			return false;
 		}
 	}
+	 function idchk(){
+	        
+	        if(document.upForm.id.value == ""){
+	        	alert("ID를 입력하세요!");
+	        	document.upForm.id.focus();
+	        	return;
+	        }
+	        
+	        var idck = document.upForm.id.value;
+	        
+	        window.open("./member/joinIdCheck.jsp?userid="+idck,"","width=600,height=200");
+	        
+	        
+	    }
+	
+	
 </script>
+
+
 
 </head>
 <body>
@@ -95,27 +113,27 @@ function sample6_execDaumPostcode() {
 
 	<fieldset>
 		<legend>회원 가입</legend>
-		<form action="./MemberJoinAction.me" method="post" name="upForm">
+		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return willjoin6();">
 			<table border="1">
 				<tr>
 					<td>
 						아이디
 						&nbsp;
-						<input type="button" value="중복 체크" class="dupCheck">
+						<input type="button" value="중복 체크" class="dupCheck" onclick="idchk();" >
 					</td>
-					<td><input type="text" name="id" class="id"></td>
+					<td><input type="text" name="id" placeholder="2글자이상"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pass" class="pass"></td>
+					<td><input type="password" name="pass" class="pass" placeholder="4글자이상" ></td>
 				</tr>
 				<tr>
 					<td>비밀번호 재입력</td>
-					<td><input type="password" name="pass2" class="pass2"></td>
+					<td><input type="password" name="pass2" class="pass2" placeholder="비밀번호 확인"></td>
 				</tr>
 				<tr>
 					<td>성명</td>
-					<td><input type="text" name="name" class="name"></td>
+					<td><input type="text" name="name" class="name" placeholder="2글자이상"></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
@@ -130,11 +148,11 @@ function sample6_execDaumPostcode() {
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input type="text" name="mobile"></td>
+					<td><input type="text" name="mobile" placeholder="010-0000-0000" ></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" name="email" placeholder="itwill@co.kr"></td>
 				</tr>
 				<tr>
 					<td>
@@ -185,10 +203,62 @@ function sample6_execDaumPostcode() {
 	</fieldset>
 	
 
-	<!-- 가입 오류 방지 -->
+	<!-- 가입 유효성 방지 -->
 	<script type="text/javascript">
-		// 아이디 입력 오류 체크 --------------------------------
-		const MIN_USER_ID_LENGTH = 4;
+	function willjoin6(){
+    	if(document.upForm.id.value.length<=2){
+			  alert("아이디를 입력하시오");
+			  document.upForm.id.focus();
+			  return false;}
+    
+    	if( document.upForm.pass.value==""){
+			  alert("비밀번호를 입력하시오");
+			  document.upForm.pass.focus();
+			  return false;}
+		  //비밀번호
+		  if( document.upForm.pass.value != document.upForm.pass2.value){
+			  alert("비밀번호가 다릅니다. 다시 입력하시오");
+			  document.upForm.pass2.focus();
+			  return false;}
+		//이름
+		  if( document.upForm.name.value==""){
+			  alert("이름을 입력하시오");
+			  document.upForm.name.focus();
+			  return false;}
+		  //생년월일
+		  if( document.upForm.birthday.value.length<=2 || document.upForm.email.value.indexOf('.',0) == -1){
+			  alert("생년월일을 입력하시오");
+			  document.upForm.birthday.focus();
+			  return false;}
+		  //전화번호 
+		  if( document.upForm.mobile.value==""){
+			  alert("전화번호를 입력하시오");
+			  document.upForm.mobile.focus();
+			  return false; }
+		  //이메일
+		  if(document.upForm.email.value.length <=4 || document.upForm.email.value.indexOf('@',0) == -1 ||
+				  document.upForm.email.value.indexOf('.',0) == -1){
+				  alert("EX)itwill@co.kr"); return false;}
+		  //주소
+		  if( document.upForm.zipcode.value==""){
+			  alert("주소를 입력하시오");
+			  document.upForm.zipcode.focus();
+			  return false;}	
+		  // 수신
+		  if(document.upForm.receive[0].checked==false&&
+			document.upForm.receive[1].checked==false){
+			  alert("수신여부 체크");
+				return false;}
+		  //선호영화
+		  if(document.upForm.preference.value == '선택하세요'){
+		  alert('선호하는 영화를 선택해주세요');
+		 return false; }
+		 } 
+		
+		
+		
+		
+		/* 	const MIN_USER_ID_LENGTH = 4;
 		var inputId = document.querySelector('.id');
 	
 		function checkUserId(n) {
@@ -238,7 +308,7 @@ function sample6_execDaumPostcode() {
 				alert('이름은 최소 2자 이상 입력해주세요.');
 			}
 		}
-	
+	 */
 	/* function checkValue() {
 		var form = document.upForm;
 		

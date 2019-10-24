@@ -366,4 +366,36 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		System.out.println("비밀번호 변경 완료.");
 	}
+
+	@Override
+	public int JoinIdCheck(String id) {
+
+		int check=0;
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from member where id=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				// 아이디 중복
+				check = 1;
+			}else{
+				// 아이디 사용가능
+				check = 0;
+			}
+			
+			System.out.println("아이디 중복체크  : "+check);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
 }

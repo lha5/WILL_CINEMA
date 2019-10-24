@@ -18,7 +18,7 @@ public class MemberJoinAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println("MemberJoinAction execute()--------------------------------------------");
-		
+		response.setContentType("text/html; charset=UTF-8");
 		// 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
