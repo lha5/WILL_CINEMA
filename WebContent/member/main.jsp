@@ -131,7 +131,7 @@ function acyncMovePage(url){
 		<div id="my_menu">
 			<ul>
 				<li><a href="#">예매내역</a></li>
-				<li><a href="#">구매내역</a></li>
+				<li><a href="./MallOrderList.mor">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
 				<li><input type="button" value="내 정보 관리" onclick="acyncMovePage('./MyPage.me');"></li>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 주문 확인</title>
+<title>WILL CINEMA - 구매 확인</title>
 </head>
 <body>
 	

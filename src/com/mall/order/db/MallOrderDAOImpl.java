@@ -61,6 +61,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		
 		try {
 			con = getCon();
 			
@@ -74,9 +75,23 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 				order_no = rs.getInt(1) + 1;
 			}
 			
-			trans_no = order_no;
-			
 			System.out.println("order_num 값 : " + order_no);
+			
+			// ------------------------------------------
+			
+			sql = "SELECT trans_num FROM order_goods WHERE order_num="
+					+ "(SELECT MAX(order_num) FROM order_goods)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				trans_no = Integer.parseInt(rs.getString("trans_num").substring(9)) + 1;
+			}
+			// trans_no = order_no;
+			
+			// ------------------------------------------
 			
 			sql = "INSERT INTO order_goods(order_num, trans_num, order_id, order_goods_num, goods_name, goods_amount, price, payment, order_date, barcode, barcode_img)"
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?)";
@@ -110,10 +125,11 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 	@Override
 	public List<MallOrderDTO> getOrderList(String id) {
 		List<MallOrderDTO> orderList = new ArrayList<MallOrderDTO>();
+		
 		try {
 			con = getCon();
 			
-			sql = "SELECT trans_num, goods_name, goods_amount, price FROM order_goods WHERE order_id=?";
+			sql = "SELECT trans_num, goods_name, goods_amount, price, order_date FROM order_goods WHERE order_id=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -128,6 +144,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 				modto.setGoods_name(rs.getString("goods_name"));
 				modto.setTrans_num(rs.getString("trans_num"));
 				modto.setPrice(rs.getInt("price"));
+				modto.setOrder_date(rs.getDate("order_date"));
 				
 				orderList.add(modto);
 			}
@@ -145,31 +162,34 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 	
 	// 주문 상세 내역
 	@Override
-	public List orderDetail(int order_num) {
+	public List orderDetail(String trans_num) {
 		List orderDetailList = new ArrayList();
 		
 		try {
 			con = getCon();
 			
-			sql = "SELECT * FROM order_goods WHERE order_num=?";
+			sql = "SELECT * FROM order_goods WHERE trans_num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, order_num);
+			pstmt.setString(1, trans_num);
 			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				MallOrderDTO modto = new MallOrderDTO();
 				
+				modto.setTrans_num(rs.getString("trans_num"));
 				modto.setGoods_amount(rs.getInt("goods_amount"));
 				modto.setGoods_name(rs.getString("goods_name"));
 				modto.setOrder_date(rs.getDate("order_date"));
 				modto.setOrder_goods_num(rs.getInt("order_goods_num"));
 				modto.setOrder_id(rs.getString("order_id"));
-				modto.setTrans_num(rs.getString("trans_num"));
 				modto.setPayment(rs.getString("payment"));
 				modto.setPrice(rs.getInt("price"));
+				modto.setOrder_date(rs.getDate("order_date"));
+				modto.setBarcode(rs.getString("barcode"));
+				modto.setBarcode_img(rs.getString("barcode_img"));
 				
 				orderDetailList.add(modto);
 			}

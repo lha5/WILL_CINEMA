@@ -22,13 +22,9 @@
 	<div id="wrap">
 
 	<!-- 수정완료 -->
-	<%
-	// String id = (String) session.getAttribute("id");
-	%>
 	
+		<section>
 
-
-			<section>
 			<div id="center">
 				<article id="list">
 					예매 순위
