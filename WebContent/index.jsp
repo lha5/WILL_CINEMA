@@ -29,6 +29,7 @@
 		
 				<article id="image">
 					현재 상영작 이미지
+					<%@include file="moive/screening.jsp" %>
 				</article>
 			</div>
 		

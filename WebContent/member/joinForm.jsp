@@ -111,9 +111,6 @@ function sample6_execDaumPostcode() {
 
 	<%@ include file="../include/header.jsp" %>
 
-<%
-request.setCharacterEncoding("UTF-8");
-%>
 	<fieldset>
 		<legend>회원 가입</legend>
 		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return willjoin6();">
