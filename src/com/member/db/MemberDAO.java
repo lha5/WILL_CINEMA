@@ -9,9 +9,12 @@ public interface MemberDAO {
 	// 회원가입
 	public void insertMember(MemberDTO mdto);
 	
+	//중복체크
+	public int JoinIdCheck(String id);
+	
 	// 내 정보 가져오기
 	public MemberDTO getMember(String id);
-	
+			
 	// 내 정보 수정
 	public int updateMember(MemberDTO mdto);
 	
