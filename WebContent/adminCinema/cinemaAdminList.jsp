@@ -16,19 +16,59 @@
 
 	//저장된 request값 가져오기
 	List<CineDTO> cineList = (List<CineDTO>)request.getAttribute("cineList");
+	
+	
 	%>
 
 	<table border="1">
 		<tr>
-			<td colspan="9"><a href="./CinemaAdd.ci">등록</a></td>
+			<td colspan="7"><a href="./CinemaAdd.ci">등록</a></td>
 		</tr>
- 		<tr>
- 			<td>번호</td>
+ 		
+		
+ 		
+	<% //리스트 갯수 
+	for (int i = 0; i<cineList.size(); i++) {
+		
+		CineDTO cdto = cineList.get(i);
+		String room = cdto.getRoom();
+		int room_num = Integer.parseInt(room);
+		
+	%>	
+		<tr>
+ 			<td>지점 번호</td>
  			<td>지역</td>
 		 	<td>지점명</td>
 		 	<td>관 수</td>
 		 	<td>주소</td>
 		 	<td>전화번호</td>
+		 	<td>수정/삭제</td>
+		 </tr>
+		<tr>
+			<td><%=cdto.getCinema_num() %></td>
+			<td><%=cdto.getRegion() %></td>
+		 	<td><%=cdto.getName() %></td>
+		 	<td><%=room %></td>
+		 	<td><%=cdto.getAddr() %></td>
+		 	<td><%=cdto.getTel() %></td>
+		 	<td colspan="9">
+		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">관 추가 및 수정</a>
+		 		/<a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>&room=<%=room%>">지점,관 삭제</a>
+		 	</td>
+		 </tr>	
+		 
+		 
+		 <%//관 나누기
+			for(int j=0;j<room_num;j++){
+				int room_findnum = j+1; 
+				String movie_num = cdto.getMovie_num().split(",")[j];
+				String seat = cdto.getSeat().split(",")[j];
+				String start_times = cdto.getStart_times().split(",")[j];
+				String end_times = cdto.getEnd_times().split(",")[j];
+				String start_priod = cdto.getStart_priod().split(",")[j];
+				String end_priod = cdto.getEnd_priod().split(",")[j]; 
+		%>
+		 <tr>
 		 	<td>영화번호(영화로 변경)</td>
 		 	<td>관 번호</td>
 		 	<td>좌석 수</td>
@@ -36,32 +76,24 @@
 		 	<td>상영 종료 시간</td>
 		 	<td>상영 시작 일</td>
 		 	<td>상영 종료 일</td>
-		 	<td>수정/삭제</td>
- 		</tr>
-	<% for (int i = 0; i < cineList.size(); i++) {
+		 	
+ 		</tr>		
 		
-		CineDTO cdto = cineList.get(i);
-		String room = cdto.getRoom();
-		int room_num = Integer.parseInt(room);
-		
-	%>
+		 <tr>
+		 	<td><%=movie_num %></td>
+		 	<td><%=room_findnum %>관</td>
+		 	<td><%=seat %>좌석</td>
+		 	<td><%=start_times %></td>
+		 	<td><%=end_times %></td>
+		 	<td><%=start_priod %></td>
+		 	<td><%=end_priod %></td>
+		 	
+		</tr>
+	<%} %>
 		<tr>
-			<td><%=cdto.getCinema_num() %>번호</td>
-			<td><%=cdto.getRegion() %>지역</td>
-		 	<td><%=cdto.getName() %>이름</td>
-		 	<td><%=room %>관</td>
-		 	<td><%=cdto.getAddr() %>주소</td>
-		 	<td><%=cdto.getTel() %>전화</td>
-		 	<td>영화번호</td>
-		 	<td>관 번호</td>
-		 	<td>좌석</td>
-		 	<td>상영 시작 시간</td>
-		 	<td>상영 종료 시간</td>
-		 	<td>상영 시작 일</td>
-		 	<td>상영 종료 일</td>
-		 	<td><a href="./CinemaModify.ci?location_num=<%=cdto.getCinema_num() %>">수정</a>
-		 		/<a href="./CinemaDelete.ci?location_num=<%=cdto.getCinema_num() %>">삭제</a>
-		 	</td>
+			<td colspan="7">-----------------------------------------
+			---------------------------------------------------------
+			</td>
 		</tr>
 	<%
 	}

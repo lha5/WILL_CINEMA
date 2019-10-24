@@ -10,12 +10,12 @@ public interface CineDAO {
 	public List<CineDTO> getCineList();
 	
 	// 수정할 영화관 내용 가져오기
-	public CineDTO getCinema(int location_num);
+	public CineDTO getCinema(int cinema_num);
 	
 	
 	// 등록된 영화관 지점 수정
 	public void updateCinema(CineDTO cdto);
 	
 	// 등록된 영화관 지점 삭제
-	public void deleteCinema(int location_num);
+	public void deleteCinema(int cinema_num);
 }
