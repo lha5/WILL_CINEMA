@@ -50,6 +50,14 @@ public class CinemaFrontController extends HttpServlet{
 				  e.printStackTrace();
 			  }
 		}else if (command.equals("/CinemaDelete.ci")) { //영화관 삭제 페이지(관리자)
+			//action = new CinemaDelete();
+			action = new CinemaDelete();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/CinemaDeleteAction.ci")) { //영화관 삭제 처리(관리자)
 			//action = new CinemaDeleteAction();
 			action = new CinemaDeleteAction();
 			try {

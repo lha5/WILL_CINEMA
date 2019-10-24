@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - (관리자 전용 - 영화관 수정)</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <%
 
 	//request 정보 저장
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto");
+	int room = Integer.parseInt(cdto.getRoom());
 
 	String region = cdto.getRegion();
 	int regionCode = 0;
@@ -28,12 +30,13 @@
 	else if(region.equals("강원")){regionCode=7;}
 	else if(region.equals("제주")){regionCode=8;}
 	else{regionCode=1;}
+	
+	//
 
 %>
 
-<form action="./CinemaModifyAction.ci" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="location_num" value="<%=cdto.getLocation_num()%>">
-	<input type="hidden" name="prev_image" value="<%=cdto.getImage()%>">
+<form action="./CinemaModifyAction.ci" method="post">
+	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>">
 		<table border="1">
 			<tr>
 				<td>지역</td>
@@ -59,7 +62,7 @@
 					</select>
 				</td>
 				<td>지점명</td>
-				<td><input type="text" name="name" value="<%=cdto.getName()%>"></td>
+				<td><input type="text" name="name" value="<%=cdto.getName()%>"><input type="hidden" name="room_countnum" value=<%=room %>></td>
 			</tr>
 			<tr>
 				<td>주소</td> <!-- 다음 API ? -->
@@ -70,20 +73,115 @@
 			<tr>
 				<td>상영관 수</td>
 				<td><input type="text" name="room" value="<%=cdto.getRoom() %>"></td>
-				<td>좌석 수</td>
-				<td><input type="text" name="count_seat" value="<%=cdto.getCount_seat() %>"></td>
+				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
+			</tr>
+			<!-- ajax -->
+			<tbody>
+			<% 
+			
+				for(int i=0;i<room;i++){
+				int room_num = i+1;
+				String movie_num = cdto.getMovie_num().split(",")[i];
+				String seat = cdto.getSeat().split(",")[i];
+				String start_times = cdto.getStart_times().split(",")[i];
+				String end_times = cdto.getEnd_times().split(",")[i];
+				String start_priod = cdto.getStart_priod().split(",")[i];
+				String end_priod = cdto.getEnd_priod().split(",")[i]; 
+			%>
+			<tr>
+				<td><%=room_num %>상영관 상영 영화</td>
+				<td><input type="text" name="movie<%=room_num %>" value="<%=movie_num %>"></td>
+				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
+				<td><input type="text" name="seat_line<%=room_num %>" size="5" value="<%=seat.split(" ")[0] %>">
+					,<input type="text" name="seat_row<%=room_num %>" size="5" value="<%=seat.split(" ")[1] %>"></td>
 			</tr>
 			<tr>
-				<td>사진</td>
-				<td colspan="3"><input type="file" name="image"></td>
+				<td>상영 시작시간</td>
+				<td><input type="text" name="start_times<%=room_num%>" value="<%=start_times%>"></td>
+				<td>상영 종료시간</td>
+				<td><input type="text" name="end_times<%=room_num%>" value="<%=end_times%>"></td>
 			</tr>
+			<tr>
+				<td>상영 시작일</td>
+				<td><input type="text" name="start_priod<%=room_num%>" value="<%=start_priod%>"></td>
+				<td>상영 종료일</td>
+				<td><input type="text" name="end_priod<%=room_num%>" value="<%=end_priod%>"></td>
+			</tr>
+			<%}
+			
+			%>
+			</tbody>
+			<!-- /ajax -->
 			<tr>
 				<td colspan="4">
-					<input type="submit" value="지점 수정 하기">
+					<input type="submit" value="지점,영화 수정 및 추가 하기">
 					<input type="button" value="뒤로" onclick="history.back();">
 				</td>
 			</tr>
 		</table>	
 	</form>
+	
+	<script>
+    //상영관 번호 및 name태그에 붙일 번호 생성
+    var i = $('input[name=room_countnum]').val();
+    
+    var room = $('input[name=room]').val();
+    
+    //추가 버튼
+    $(document).ready(function(){
+    $('input[name=add_room]').click(function(){
+    	// 번호 상승
+        i++;
+    	
+    	room++;
+    	
+        if(i>8){
+    		alert("8관 이상 추가 안됩니다.");
+    		return;
+    	}
+        $('input[name=room]').val(room);
+        
+    	var addRoomText =
+    	'<tbody>'+  
+        '<tr>'+
+		'<td>'+i+'상영관 상영 영화</td>'+
+		'<td><input type="text" name="movie'+i+'">'+
+		'</td>'+
+		'<td>좌석 수(행,열)</td>'+
+		'<td><input type="text" name="seat_line'+i+'" size="5">,'+
+		'<input type="text" name="seat_row'+i+'" size="5"></td>'+
+	'</tr>'+
+	'<tr>'+
+		'<td>상영 시작시간</td>'+
+		'<td><input type="text" name="start_times'+i+'"></td>'+
+		'<td>상영 종료시간</td>'+
+		'<td><input type="text" name="end_times'+i+'"></td>'+
+	'</tr>'+
+	'<tr>'+
+		'<td>상영 시작일</td>'+
+		'<td><input type="text" name="start_priod'+i+'"></td>'+
+		'<td>상영 종료일</td>'+
+		'<td><input type="text" name="end_priod'+i+'"></td>'+
+	'</tr>'+
+	
+	'</tbody>'
+	;
+             
+        var trHtml = $( "tbody:last" ); //last를 사용하여 room_addbody라는 명을 가진 마지막 태그 호출
+         
+        trHtml.after(addRoomText); //마지막 room_addbody명 뒤에 붙인다.
+        
+        
+        
+    });
+     
+    
+    });
+    
+
+</script>	
+	
+	
+	
 </body>
 </html>
