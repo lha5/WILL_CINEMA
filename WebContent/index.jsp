@@ -24,6 +24,7 @@
 	<!-- 수정완료 -->
 	
 		<section>
+
 			<div id="center">
 				<article id="list">
 					예매 순위
