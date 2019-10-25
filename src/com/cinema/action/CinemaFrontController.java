@@ -30,6 +30,14 @@ public class CinemaFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		/*}else if(command.equals("/CinemaAdminList.ci")){ //영화관 관리 페이지(회원관리 관리자 페이지로 이동 가능)
+			// 데이터 등록/수정/삭제 확인 페이지
+			action = new CinemaAdminList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
 		}else if(command.equals("/CinemaAdminDetail.ci")){ //영화관 관리 페이지(회원관리 관리자 페이지로 이동 가능)
 			// 데이터 등록/수정/삭제 확인 페이지
 			action = new CinemaAdminDetailAction();

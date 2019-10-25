@@ -10,6 +10,8 @@
 
 </head>
 <body>
+
+<%@ include file="../include/header.jsp" %>
 <%
 
 	//request 정보 저장
@@ -163,6 +165,6 @@
     
   });
 </script>
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
