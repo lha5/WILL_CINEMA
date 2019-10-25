@@ -65,7 +65,7 @@
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;
-					location.href='./Main.me'
+					location.href='./index.jsp'
 				}
 			});
 		});
