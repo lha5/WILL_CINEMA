@@ -313,6 +313,7 @@ public class CineDAOImpl implements CineDAO{
 			
 			pstmt.executeUpdate();
 			
+			System.out.println("시네마 지점 삭제 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
