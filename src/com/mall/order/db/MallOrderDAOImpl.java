@@ -79,7 +79,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			
 			// ------------------------------------------
 			
-			sql = "SELECT trans_num FROM order_goods WHERE order_num="
+			sql = "SELECT trans_num, order_date FROM order_goods WHERE order_num="
 					+ "(SELECT MAX(order_num) FROM order_goods)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -87,7 +87,11 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				trans_no = Integer.parseInt(rs.getString("trans_num").substring(9)) + 1;
+				if (!rs.getDate("order_date").equals(sdf.format(cal.getTime()).toString())) {
+					trans_no = 1;
+				} else {
+					trans_no = Integer.parseInt(rs.getString("trans_num").substring(9)) + 1;
+				}
 			}
 			// trans_no = order_no;
 			

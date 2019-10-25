@@ -1,3 +1,8 @@
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
 <%@page import="com.member.db.MemberDAOImpl"%>
 <%@page import="com.member.db.MemberDAO"%>
@@ -78,9 +83,13 @@ function acyncMovePage(url){
    		break;
 		case "5":
 			level = "신규";
+		break;
+		default :
+			level = "신규";
    		break;
 	}
 	%>
+	
 	
 	
 	<section id="sec01">
