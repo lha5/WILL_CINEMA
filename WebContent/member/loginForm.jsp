@@ -1,3 +1,6 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.security.SecureRandom"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,6 +11,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
+
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -31,11 +35,35 @@
 		</form>
 	</fieldset>
 	
+	<%
+	    String clientId = "Mr5O2cXhrQAjllHFhU3X";//애플리케이션 클라이언트 아이디값";
+	    String redirectURI = URLEncoder.encode("YOUR_CALLBACK_URL", "UTF-8");
+	    SecureRandom random = new SecureRandom();
+	    String state = new BigInteger(130, random).toString();
+	    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+	    apiURL += "&client_id=" + clientId;
+	    apiURL += "&redirect_uri=" + redirectURI;
+	    apiURL += "&state=" + state;
+	    session.setAttribute("state", state);
+	%>
+	
+	<div id="socialLogin">
+		<a href="<%=apiURL%>"><img height="50px" alt="네이버로그인 버튼" src="./img/Naver_login_btn.PNG"/></a>
+	</div>
+	
 	<div id="signup">
 		아직 회원이 아니신가요?
 		<br><br>
-		<input type="button" value="회원 가입" onclick="location.href='./MemberJoin.me'">
+		<input type="button" value="회원 가입" id="signUpBtn">
 	</div>
+	
+	<script type="text/javascript">
+		const upBtn = document.querySelector('input[type=button]');
+		
+		upBtn.addEventListener('click', function() {
+			location.href='./MemberJoin.me';
+		});
+	</script>
 	
 	<%@ include file="../include/footer.jsp" %>
 </body>

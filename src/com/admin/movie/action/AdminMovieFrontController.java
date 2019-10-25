@@ -34,7 +34,7 @@ public class AdminMovieFrontController extends HttpServlet{
 			forward.setPath("./adminMovie/movieAdd.jsp");
 			forward.setRedirect(false);
 		} else if (command.equals("/MovieAddAction.am")) { // 영화 추가 페이지
-			//action = new MovieAddAction();
+			action = new MovieAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

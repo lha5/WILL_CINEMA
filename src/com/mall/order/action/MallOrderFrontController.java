@@ -24,20 +24,41 @@ public class MallOrderFrontController extends HttpServlet{
 		//가상주소 비교
 		
 		//결제 페이지 -> TicketingOrderAction()
-		if(command.equals("/MallOrderStar.mor")){ //주문 목록 저장
-
-			//action = new MallOrderStarAction();
+		if (command.equals("/MallOrderStar.mor")) { // 주문 목록 저장
 			action = new MallOrderStarAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MallOrderAddAction.mor")) { // 주문 
+			action = new MallOrderAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/MallOrderList.mor")) {
+			action = new MallOrderListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
-		}else if(command.equals("")){ //주문 
+		} else if (command.equals("/MallOrderDetail.mor")) {
+			action = new MallOrderDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		} /*else if (command.equals("/MallOrderProc.mor")) {
+			forward = new ActionForward();
 			
-			
-		}
+			forward.setPath("./goodsOrder/orderProc.jsp");
+			forward.setRedirect(false);
+		}*/
 		
 		
 		//가상주소를 가지고 이동

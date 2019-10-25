@@ -14,14 +14,13 @@ public class FAQContentAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		System.out.println("FAQContentACtion ~~!~!~");
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		
 		// AdminNoticeDAO 객체 생성
 		AdminFAQDAO afdao = new AdminFAQDAOImpl();
-	
-	
 		afdao.updateReadcount(num);
 		
 		// 글번호에 해당하는 글정보를 가져오기
@@ -33,7 +32,7 @@ public class FAQContentAction implements Action {
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./FAQBoard/faqContent.jsp");
+		forward.setPath("./service/FAQBoard/faqContent.jsp");
 		forward.setRedirect(false);
 		return forward;
 	
