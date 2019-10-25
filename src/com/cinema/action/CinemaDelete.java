@@ -18,7 +18,7 @@ public class CinemaDelete implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		int cinema_num = Integer.parseInt(request.getParameter("cinema_num"));
-		String room = request.getParameter("room");
+		//String room = request.getParameter("room");
 		System.out.println("영화관 번호 : "+cinema_num);
 		
 		// CineDAO 객체 생성
@@ -31,7 +31,7 @@ public class CinemaDelete implements Action{
 		request.setAttribute("cdto", cdto);
 		System.out.println(cdto.toString());
 		
-		request.setAttribute("room",room);
+		//request.setAttribute("room",room);
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();

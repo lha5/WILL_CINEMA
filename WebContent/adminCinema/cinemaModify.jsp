@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+	<%@ include file="../include/header.jsp" %>
 <%
 
 	//request 정보 저장
@@ -181,7 +182,7 @@
 
 </script>	
 	
-	
+<%@ include file="../include/footer.jsp" %>	
 	
 </body>
 </html>

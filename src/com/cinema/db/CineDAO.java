@@ -6,8 +6,12 @@ public interface CineDAO {
 	// 영화관 지점 등록
 	public void insertCinema(CineDTO cdto);
 	
+	// 영화관 개수 가져오기
+	public int getCount();
+	
 	// 영화관 보여주기
-	public List<CineDTO> getCineList();
+	//public List<CineDTO> getCineList();
+	public List<CineDTO> getCineList(int startRow,int pageSize);
 	
 	// 수정할 영화관 내용 가져오기
 	public CineDTO getCinema(int cinema_num);
