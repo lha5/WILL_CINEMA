@@ -11,8 +11,8 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
-<!-- 네이버 페이 -->
-<!-- <script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script> -->
+<!-- 아임포트 -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 </head>
 <body>
@@ -49,7 +49,7 @@
 	
 	
 	<fieldset>
-		<form action="./MallOrderAddAction.mor" method="post">
+		<form action="./MallOrderProc.mor" method="post">
 			<input type="hidden" name="order_id" value="<%=id%>">
 			<input type="hidden" name="goods_num" value="<%=malldto.getGoods_num()%>">
 			<input type="hidden" name="goods_name" value="<%=malldto.getName() %>">
@@ -60,31 +60,13 @@
 			
 			<h3>결제 방법</h3>
 			
-			<table border="1">
-				<tr>
-					<td>간편 결제</td>
-				</tr>
-				<tr>
-					<td>
-						<label>
-							<!-- <input type="radio" name="payment" value="Kakao" id="pay" checked> -->
-							<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"
-							    data-client-id="u86j4ripEt8LRfPGzQ8"
-							    data-mode="development"
-							    data-merchant-user-key="{#_merchantUserKey}"
-							    data-merchant-pay-key="{#_merchantPayKey}"
-							    data-product-name="<%=malldto.getGoods_num()%>"
-							    data-total-pay-amount="<%=total%>"
-							    data-tax-scope-amount="{#_taxScopeAmount}"
-							    data-tax-ex-scope-amount="{#_taxExScopeAmount}"
-							    data-return-url="{#_returnUrl}">
-							</script>
-						</label>
-					</td>
-				</tr>
-			</table>
+			<div id="kpay">
+				<img alt="카카오페이" src="./img/payment.png">
+			</div>
+				
 			
 			<input type="submit" value="결제하기">
+			<!-- <input type="button" value="카카오페이로 결제하기" class="goPay"> -->
 			&nbsp;&nbsp;
 			<input type="button" value="이전 단계" id="before">
 		</form>
@@ -97,35 +79,52 @@
 		});
 	</script>
 	
+	<!-- 결제 모듈 -->
 	<script type="text/javascript">
-		<%-- var IMP = window.IMP;
-		IMP.init('imp30527297');
-		
-		IMP.request_pay({
-		    pg : 'kakao',
-		    pay_method : 'card',
-		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : '윌시네마 상품 구매',
-		    amount : <%=total%>,
-		    buyer_email : '<%=memdto.getEmail()%>',
-		    buyer_name : '<%=memdto.getName()%>',
-		    buyer_tel : '<%=memdto.getMobile()%>'
-		}, function(rsp) {
-		    if ( rsp.success ) {
-		        var msg = '결제가 완료되었습니다.';
-		        msg += '고유ID : ' + rsp.imp_uid;
-		        msg += '상점 거래ID : ' + rsp.merchant_uid;
-		        msg += '결제 금액 : ' + rsp.paid_amount;
-		        msg += '카드 승인번호 : ' + rsp.apply_num;
-		        
-		        alert(msg);
-		        
-		    	location.href = './MallOrderAddAction.mor';
-		    } else {
-		        var msg = '결제에 실패하였습니다.';
-		        msg += '에러내용 : ' + rsp.error_msg;
-		    	alert(msg);
-		    }
+		<%-- $(function() {
+			IMP.init('imp30527297');
+			var msg;
+			
+			IMP.request_pay({
+				pg : 'Kakaopay',
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : '윌시네마 상품 구매 - 테스트',
+			    amount : <%=total%>,
+			    buyer_email : '<%=memdto.getEmail()%>',
+			    buyer_name : '<%=memdto.getName()%>',
+			    buyer_tel : '<%=memdto.getMobile()%>'
+			}, function(rsp) {
+				if (rsp.success) {
+					jQuery.ajax({
+						url: './MallOrderAddAction.mor',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							imp_uid : rsp.imp_uid
+						}
+					}).done(function(data) {
+						if (everythings_fine) {
+							msg = '결제가 완료되었습니다.';
+					        msg += '고유ID : ' + rsp.imp_uid;
+					        msg += '상점 거래ID : ' + rsp.merchant_uid;
+					        msg += '결제 금액 : ' + rsp.paid_amount;
+					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					        
+					        alert(msg);
+						} else {
+							msg = '결제가 정상적으로 처리되지 못하였습니다.';
+							
+							alert(msg);
+						}
+						location.href='./Main.me';
+					});
+				} else {
+					msg = '결제를 정상적으로 처리하지 못하였습니다.';
+					msg += '에러 내용 : ' + rsp.error_msg;
+					location.href='./Main.me'
+				}
+			});
 		}); --%>
 	</script>
 	
