@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- jQuery -->
+<script src="./js/jquery-3.4.1.min.js"></script>
+
 <style type="text/css">
 /* 예매 Content Ticket*/
 .cont_ticket {
@@ -36,6 +39,7 @@
 	}
 	function nextCal(){
 		today = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+		//calendar2(8);
 	}
 	function calendar(){
 		var nMonth = new Date(today.getFullYear(), today.getMonth(), 1);  // 이번 달의 첫째 날
@@ -43,6 +47,70 @@
 		var calArea= document.getElementsByClassName("month-picker-fieldset");
 		alert(calArea);
 	}
+	
+	$(function (){
+		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
+			'August', 'September', 'October', 'November', 'December'];
+		var dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+		var calendar=$('.calendar'); 
+		var showDate=8; //보여줄 날짜
+		var startDate=0;
+		
+		var monthData = today.getMonth()+1; //1자리수 0을 붙여줌 ex)08,09
+		monthData = monthData >= 10 ? monthData : '0' + monthData;
+		
+		$('.prev').click(function(){
+			calendar2(-8);
+		});
+		
+		$('.next').click(function(){
+			calendar2(8);
+		});
+		
+		calendar.find('fieldset').append('<span class="month" style="top:-47px; left:47px;"><em>'
+		+ monthData + '</em><span>' + today.getFullYear()
+		+ ' ' + monthNames[today.getMonth()] + '</span></span>');
+		function calendar2(data2,todayDate){
+			showDate=Number(showDate)+Number(data2);
+			startDate=Number(startDate)+Number(data2);
+			var html=''; //본문에 붙일 내용
+			calendar.find('.calendarArea').empty();
+			for(var i = startDate; i<showDate; i++){
+				var day = today.getDate(); //오늘 일
+				var d = new Date(); //오늘 날짜
+				d.setDate(day+i); //보여줄 일
+				var monData = d.getMonth()+1; //8,9,10월 형식
+				monData = monData >= 10 ? monData : '0' + monData; //1자리수 0을 붙여줌 ex)08,09월
+				var dayData = d.getDate();
+				dayData = dayData >= 10 ? dayData : '0' + dayData;
+				var playData=d.getFullYear()+'-'+monData+'-'+dayData; //ex)2019-10-25 형식
+	
+				//라디오
+				html = '<input type="radio" name="day" value="'
+				+ playData + '" id="' + monthNames[d.getMonth()] + dayData + '">';
+				
+				//라벨
+				html += '<label for="' + monthNames[d.getMonth()] + dayData 
+				+ '" class="month-picker-label" style="left:' + (i * 60) + 'px"><span>' 
+				+ dayNames[d.getDay()] + '</span><em>' + dayData + '</em></label>';
+				
+				calendar.find('.calendarArea').append(html);
+				
+				if(d.getFullYear()==todayDate.getFullYear()
+						&&monthNames[d.getMonth()] == monthNames[todayDate.getMonth()]
+						&&d.getDate()==todayDate.getDate()){
+					alert('today');
+				}
+				if(dayNames[d.getDay()]=='토'){
+					calendar.find('.calendarArea').find('label').eq(Number(i)-Number(startDate)).addClass('sat');
+				}else if(dayNames[d.getDay()]=='일'){
+					calendar.find('.calendarArea').find('label').eq(Number(i)-Number(startDate)).addClass('sun');
+				}
+			}
+		}
+
+		calendar2(0,today);
+	});
 
 
 </script>
@@ -54,11 +122,12 @@
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
   <div class="calendar"> <!-- 달력 -->
-		<a href="#">이전</a>
+		<a href="javascript:void(0);" class="month-picker-nav prev nodata">이전</a>
 		<fieldset class="month-picker-fieldset">
-			<div class="calendarArea"><a href="#" onclick="calendar()">달력</a></div>
+			<div class="calendarArea">
+			</div>
 		</fieldset>
-		<a href="#">다음</a>
+		<a href="javascript:void(0);" class='next'>다음</a>
   </div>
   <div class="ticket_inner">
    <div class="ticket_left">
