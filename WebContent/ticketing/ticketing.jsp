@@ -33,7 +33,7 @@
 </style>
 
 <script type="text/javascript">
-	var today = new Date(); 
+
 	function prevCal(){
 		today = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
 	}
@@ -55,6 +55,7 @@
 		var calendar=$('.calendar'); 
 		var showDate=8; //보여줄 날짜
 		var startDate=0;
+		var today = new Date(); //오늘 날짜
 		
 		var monthData = today.getMonth()+1; //1자리수 0을 붙여줌 ex)08,09
 		monthData = monthData >= 10 ? monthData : '0' + monthData;
@@ -77,7 +78,7 @@
 			calendar.find('.calendarArea').empty();
 			for(var i = startDate; i<showDate; i++){
 				var day = today.getDate(); //오늘 일
-				var d = new Date(); //오늘 날짜
+				var d = new Date(); //변경될 날짜
 				d.setDate(day+i); //보여줄 일
 				var monData = d.getMonth()+1; //8,9,10월 형식
 				monData = monData >= 10 ? monData : '0' + monData; //1자리수 0을 붙여줌 ex)08,09월
