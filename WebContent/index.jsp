@@ -30,8 +30,7 @@
 					예매 순위
 				</article>
 				<article id="image">
-					현재 상영작 이미지
-					<%@include file="moive/screening.jsp" %>
+					<%@include file="./movie/screening.jsp" %>
 				</article>
 			</div>
 		
