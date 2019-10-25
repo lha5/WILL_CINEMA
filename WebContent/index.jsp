@@ -20,13 +20,15 @@
 	<%@ include file="include/header.jsp" %>
 
 	<div id="wrap">
-		
+
+	<!-- 수정완료 -->
+	
 		<section>
+
 			<div id="center">
 				<article id="list">
 					예매 순위
 				</article>
-		
 				<article id="image">
 					현재 상영작 이미지
 					<%@include file="moive/screening.jsp" %>

@@ -19,18 +19,21 @@ public class CinemaModify implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		int location_num = Integer.parseInt(request.getParameter("location_num"));
-		System.out.println("영화관 번호 : "+location_num);
+		int cinema_num = Integer.parseInt(request.getParameter("cinema_num"));
+		//String room = request.getParameter("room");
+		//System.out.println("영화관 번호 : "+cinema_num);
 		
 		// CineDAO 객체 생성
 		CineDAO cdao = new CineDAOImpl();
 		
-		//getCinema(location_num);
-		CineDTO cdto = cdao.getCinema(location_num);
+		//getCinema(cinema_num);
+		CineDTO cdto = cdao.getCinema(cinema_num);
 		
 		// DB에서 가져온 정보를 저장
 		request.setAttribute("cdto", cdto);
 		System.out.println(cdto.toString());
+		
+		//request.setAttribute("room",room);
 		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();

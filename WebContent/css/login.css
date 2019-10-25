@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
 
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
 fieldset {
 	border-style: none;
 	width: 500px;
@@ -19,4 +21,9 @@ table {
 	margin: 50px auto;
 	width: 350px;
 	text-align: center;
+}
+
+#socialLogin {
+	width: 202px;
+	margin: 10px auto;
 }

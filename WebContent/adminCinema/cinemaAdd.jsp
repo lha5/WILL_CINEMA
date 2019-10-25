@@ -5,10 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - (관리자 전용 - 영화관 등록)</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
 	<form action="./CinemaAddAction.ci" method="post">
 		<table border="1">
+			
 			<tr>
 				<td>지역</td>
 				<td>
@@ -34,13 +37,15 @@
 			</tr>
 			<tr>
 				<td>상영관 수</td>
-				<td colspan="3"><input type="text" name="room"></td>
+				<td><input type="text" name="room"></td>
+				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
 			</tr>
 			<!-- ajax -->
 			
+			<tbody>
 			<tr>
 				<td>1상영관 상영 영화</td>
-				<td><input type="text" name="movie1"></td>
+				<td><input type="text" name="movie1"><input type="hidden" name="room_countnum" value=1></td>
 				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
 				<td><input type="text" name="seat_line1" size="5">,<input type="text" name="seat_row1" size="5"></td>
 			</tr>
@@ -57,25 +62,8 @@
 				<td><input type="text" name="end_priod1"></td>
 			</tr>
 			
-			<tr>
-				<td>2상영관 상영 영화</td>
-				<td><input type="text" name="movie2"></td>
-				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
-				<td><input type="text" name="seat_line2" size="5">,<input type="text" name="seat_row2" size="5"></td>
-			</tr>
-			<tr>
-				<td>상영 시작시간</td>
-				<td><input type="text" name="start_times2"></td>
-				<td>상영 종료시간</td>
-				<td><input type="text" name="end_times2"></td>
-			</tr>
-			<tr>
-				<td>상영 시작일</td>
-				<td><input type="text" name="start_priod2"></td>
-				<td>상영 종료일</td>
-				<td><input type="text" name="end_priod2"></td>
-			</tr>
-			<!-- /ajax -->
+			</tbody>
+			
 			
 			<tr>
 				<td colspan="4">
@@ -84,5 +72,79 @@
 			</tr>
 		</table>	
 	</form>
+	
+	 
+	<script>
+    //상영관 번호 및 name태그에 붙일 번호 생성
+    var i = $('input[name=room_countnum]').val();
+    
+    
+    
+    //추가 버튼
+    $(document).ready(function(){
+    $('input[name=add_room]').click(function(){
+    	// 번호 상승
+        i++;
+    	
+        if(i>8){
+    		alert("8관 이상 추가 안됩니다.");
+    		return;
+    	}
+        
+    	var addRoomText =
+    	'<tbody>'+  
+        '<tr>'+
+		'<td>'+i+'상영관 상영 영화</td>'+
+		'<td><input type="text" name="movie'+i+'">'+
+		'</td>'+
+		'<td>좌석 수(행,열)</td>'+
+		'<td><input type="text" name="seat_line'+i+'" size="5">,'+
+		'<input type="text" name="seat_row'+i+'" size="5"></td>'+
+	'</tr>'+
+	'<tr>'+
+		'<td>상영 시작시간</td>'+
+		'<td><input type="text" name="start_times'+i+'"></td>'+
+		'<td>상영 종료시간</td>'+
+		'<td><input type="text" name="end_times'+i+'"></td>'+
+	'</tr>'+
+	'<tr>'+
+		'<td>상영 시작일</td>'+
+		'<td><input type="text" name="start_priod'+i+'"></td>'+
+		'<td>상영 종료일</td>'+
+		'<td><input type="text" name="end_priod'+i+'"></td>'+
+	'</tr>'+
+	
+	'</tbody>'
+	;
+             
+        var trHtml = $( "tbody:last" ); //last를 사용하여 room_addbody라는 명을 가진 마지막 태그 호출
+         
+        trHtml.after(addRoomText); //마지막 room_addbody명 뒤에 붙인다.
+        
+        
+        
+    });
+     
+    //삭제 버튼 (현재 삭제후 번호 변경이 어려워 주석처리)
+    // 만약 사용시 밑의 구문을 addRoomText에 추가
+    /* '<tr>'+
+		'<td><input type="button" name="delRoom">'+
+		'<input type="hidden" name="deletenum" value='+i+'></td>'+
+	'</tr>'+ */
+    
+    
+    /* $(document).on("click","input[name=delRoom]",function(){
+         
+        var trHtml = $(this).parent().parent().parent();
+         
+        trHtml.remove(); //tr 테그 삭제
+   
+        
+    }); */
+    
+    });
+    
+
+</script>	
 </body>
 </html>

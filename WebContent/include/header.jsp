@@ -19,6 +19,7 @@
 	String id = (String) session.getAttribute("id");
 	%>
 
+
 	<header>
 		
 		<div id="social">
@@ -48,9 +49,7 @@
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
 				</li>
-				<li>
-					<input type="button" value="ENGLISH">
-				</li>
+				<li>ENGLISH</li>
 			</ul>
 		</div>
 		

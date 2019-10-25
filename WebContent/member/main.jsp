@@ -1,3 +1,8 @@
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
 <%@page import="com.member.db.MemberDAOImpl"%>
 <%@page import="com.member.db.MemberDAO"%>
@@ -78,9 +83,13 @@ function acyncMovePage(url){
    		break;
 		case "5":
 			level = "신규";
+		break;
+		default :
+			level = "신규";
    		break;
 	}
 	%>
+	
 	
 	
 	<section id="sec01">
@@ -131,7 +140,7 @@ function acyncMovePage(url){
 		<div id="my_menu">
 			<ul>
 				<li><a href="#">예매내역</a></li>
-				<li><a href="#">구매내역</a></li>
+				<li><a href="./MallOrderList.mor">구매내역</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
 				<li><input type="button" value="내 정보 관리" onclick="acyncMovePage('./MyPage.me');"></li>

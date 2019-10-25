@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 주문 확인</title>
+<title>WILL CINEMA - 구매 확인</title>
 </head>
 <body>
 	
@@ -33,7 +33,7 @@
 				MallOrderDTO modto = orderList.get(i);
 			%>
 				<tr>
-					<td><a href="./MallOrderDetail.mor?order_num=<%=modto.getOrder_num()%>"><%=modto.getOrder_num()%></a></td>
+					<td><a href="./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>"><%=modto.getTrans_num()%></a></td>
 					<td><%=modto.getGoods_name()%></td>
 					<td><%=modto.getGoods_amount()%></td>
 					<td><%=modto.getPrice() %>원</td>

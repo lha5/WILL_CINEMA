@@ -3,6 +3,7 @@ package com.cinema.action;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
@@ -19,11 +20,13 @@ public class CinemaAddAction implements Action {
 		
 		System.out.println("CinemaAddAction execute()---------------------------------------------------");
 		
-		//관리자 
+		request.setCharacterEncoding("UTF-8");
 		
+		//관리자 처리
+		HttpSession session = request.getSession();
 		
 		//상영관 번호에 따른 좌석번호,시작시간,끝시간,시작날짜,끝날짜 분배
-		// '|'로 구분    좌석번호는 사이에 '-' 포함
+		// ','로 구분    좌석번호는 사이에 '-' 포함
 		String room = request.getParameter("room");
 		int room_num = Integer.parseInt(room);
 		String seat = "";
@@ -39,13 +42,23 @@ public class CinemaAddAction implements Action {
 			//
 		String movie_num = ""; 
 		
+		//관 마다 들어가는 영화,시작끝시간,시작끝기간,좌석 을 넣는 for문
 		for(int i=1;i<=room_num;i++){
-			seat += request.getParameter("seat_line"+i)+"-"+request.getParameter("seat_row"+i)+"|";
-			start_times += request.getParameter("start_times"+i)+"|";
-			end_times += request.getParameter("end_times"+i)+"|";
-			start_priod += request.getParameter("end_priod"+i)+"|";
-			end_priod += request.getParameter("end_priod"+i)+"|";
-			movie_num += request.getParameter("movie"+i)+"|";
+			if(i==room_num){// 마지막에 들어가는 데이터에 나누는','를 넣지 않음
+				seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i);
+				start_times += request.getParameter("start_times"+i);
+				end_times += request.getParameter("end_times"+i);
+				start_priod += request.getParameter("end_priod"+i);
+				end_priod += request.getParameter("end_priod"+i);
+				movie_num += request.getParameter("movie"+i);
+			}else{// 데이터를 나누는 ','를 입력
+				seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i)+",";
+				start_times += request.getParameter("start_times"+i)+",";
+				end_times += request.getParameter("end_times"+i)+",";
+				start_priod += request.getParameter("end_priod"+i)+",";
+				end_priod += request.getParameter("end_priod"+i)+",";
+				movie_num += request.getParameter("movie"+i)+",";
+			}
 		}
 		
 		// CineDTO 객체 생성 >> 정보 저장(form 태그에서 넘겨 받은 데이터를 저장)
@@ -76,9 +89,9 @@ public class CinemaAddAction implements Action {
 		cdto.setEnd_times(end_times);
 		cdto.setStart_priod(start_priod);
 		cdto.setEnd_priod(end_priod);
+		cdto.setMovie_num(movie_num);
 		
-		
-		
+		//System.out.println(cdto.toString());
 		
 		// CineDAO 객체 생성
 		// insertCinema(DTO)
@@ -90,6 +103,7 @@ public class CinemaAddAction implements Action {
 		forward.setPath("./CinemaAdminDetail.ci");
 		forward.setRedirect(true);
 		
+		//return null;
 		return forward;
 	}
 

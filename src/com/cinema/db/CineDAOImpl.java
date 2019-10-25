@@ -130,11 +130,12 @@ public class CineDAOImpl implements CineDAO{
 				cdto.setStart_times(rs.getString("start_times"));
 				cdto.setEnd_times(rs.getString("end_times"));
 				cdto.setStart_priod(rs.getString("start_priod"));
-				cdto.setStart_priod(rs.getString("end_priod"));
+				cdto.setEnd_priod(rs.getString("end_priod"));
+				cdto.setMovie_num(rs.getString("movie_num"));
+				
 				
 				cineList.add(cdto);
 			}
-			
 			System.out.println("cineList 목록 저장 완료------------------------------");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -173,8 +174,8 @@ public class CineDAOImpl implements CineDAO{
 				cdto.setStart_times(rs.getString("start_times"));
 				cdto.setEnd_times(rs.getString("end_times"));
 				cdto.setStart_priod(rs.getString("start_priod"));
-				cdto.setStart_priod(rs.getString("end_priod"));
-				
+				cdto.setEnd_priod(rs.getString("end_priod"));
+				cdto.setMovie_num(rs.getString("movie_num"));
 			}
 			
 			
@@ -196,15 +197,29 @@ public class CineDAOImpl implements CineDAO{
 			con = getCon();
 			
 			sql = "update cinema "
-					+ "set "
+					+ "set region=?, name=?, room=?, seat=?, addr=?, tel=?, "
+					+ "start_times=?, end_times=?, start_priod=?, end_priod=?, movie_num=? "
 					+ "where cinema_num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			
-			
+			pstmt.setString(1, cdto.getRegion());
+			pstmt.setString(2, cdto.getName());
+			pstmt.setString(3, cdto.getRoom());
+			pstmt.setString(4, cdto.getSeat());
+			pstmt.setString(5, cdto.getAddr());
+			pstmt.setString(6, cdto.getTel());
+			pstmt.setString(7, cdto.getStart_times());
+			pstmt.setString(8, cdto.getEnd_times());
+			pstmt.setString(9, cdto.getStart_priod());
+			pstmt.setString(10, cdto.getEnd_priod());
+			pstmt.setString(11, cdto.getMovie_num());
+			pstmt.setInt(12, cdto.getCinema_num());
 			
 			pstmt.executeUpdate();
+			
+			
 			
 			System.out.println("관리자 영화관 지점 수정 완료");
 			
@@ -219,12 +234,12 @@ public class CineDAOImpl implements CineDAO{
 	
 	//영화관 지점 삭제
 	@Override
-	public void deleteCinema(int location_num) {
+	public void deleteCinema(int cinema_num) {
 		try {
 			con = getCon();
 			sql = "delete from cinema where cinema_num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, location_num);
+			pstmt.setInt(1, cinema_num);
 			
 			pstmt.executeUpdate();
 			

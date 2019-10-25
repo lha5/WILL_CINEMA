@@ -4,23 +4,18 @@
 	font-family: 'Oduda';
 	src: url('../font/Oduda.otf') format('opentype');
 }
-/* -------- 글씨체 -------- */
 
 
 
 /* -------- 전체에 적용할 속성들 --------*/
-a {
-	text-decoration: none;
+
+* {
+	margin: 0;
+	padding: 0;
 }
 
-a:VISITED {
+a, a:VISITED, a:HOVER, a:FOCUS {
 	text-decoration: none;
-}
-a:HOVER {
-	text-decoration: none;
-}
-a:FOCUS { 
-	text-decoration: none; 
 }
 
 ul>li {
@@ -38,14 +33,13 @@ body {
 	margin: 0;
 	padding: 0;
 }
-/* -------- 전체에 적용할 속성들 --------*/
 
 
 
-/* ----------- header ----------- */
+/* -------- header --------*/
 header {
 	/* border: 1px dashed black; */
-	width: 1100px;
+	width: 100%;
 	height: 300px;
 	margin: 10px auto;
 }
@@ -115,6 +109,10 @@ header {
 }
 
 #my>ul>li:NTH-CHILD(3) {
+	border-right: 2px solid #CCCCCC;
+}
+
+#my>ul>li:NTH-CHILD(4) {
 	border-right: 2px solid #CCCCCC;
 }
 
@@ -210,4 +208,3 @@ nav>ul>li:HOVER ul {
 	position: absolute;
 	padding-top: 10px;
 }
-/* ----------- header ----------- */

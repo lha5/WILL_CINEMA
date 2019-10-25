@@ -3,7 +3,7 @@ package com.movie.db;
 import java.sql.Date;
 
 public class MovieDTO {
-  private int movie_num;
+	private int movie_num;
 	private String Title;
 	private String genre;
 	private String story;
@@ -16,10 +16,6 @@ public class MovieDTO {
 	private Double booking_ration;
 	private String poster;
 	private String image;
-	private String title;
-	
-	
-	
 	public int getMovie_num() {
 		return movie_num;
 	}
@@ -27,10 +23,10 @@ public class MovieDTO {
 		this.movie_num = movie_num;
 	}
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 	public void setTitle(String title) {
-		this.title = title;
+		Title = title;
 	}
 	public String getGenre() {
 		return genre;
@@ -68,6 +64,12 @@ public class MovieDTO {
 	public void setOpen_date(Date open_date) {
 		this.open_date = open_date;
 	}
+	public Date getClose_date() {
+		return close_date;
+	}
+	public void setClose_date(Date close_date) {
+		this.close_date = close_date;
+	}
 	public String getCountry() {
 		return country;
 	}
@@ -92,13 +94,11 @@ public class MovieDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Date getClose_date() {
-		return close_date;
-	}
-	public void setClose_date(Date close_date) {
-		this.close_date = close_date;
-	} 
-  
-  
+
+	
+
+
+
+	
 	
 }

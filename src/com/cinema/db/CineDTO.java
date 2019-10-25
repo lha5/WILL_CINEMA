@@ -16,6 +16,14 @@ public class CineDTO {
 	
 	
 	
+	@Override
+	public String toString() {
+		
+		return "번호 :"+cinema_num+", 지역 :"+region+", 지점명:"+name+", 관수 :"+room+
+				", 좌석수 :"+seat+", 주소 :"+addr+", 전화번호 :"+tel+
+				", 시작시간 :"+start_times+", 종료시간 :"+end_times+
+				", 시작일 :"+start_priod+", 종료일 :"+end_priod+", 영화번호 :"+movie_num;
+	}
 	public int getCinema_num() {
 		return cinema_num;
 	}
