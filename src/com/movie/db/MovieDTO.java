@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MovieDTO {
 	private int movie_num;
-	private String Title;
+	private String name;
 	private String genre;
 	private String story;
 	private int running_time;
@@ -22,11 +22,11 @@ public class MovieDTO {
 	public void setMovie_num(int movie_num) {
 		this.movie_num = movie_num;
 	}
-	public String getTitle() {
-		return Title;
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		Title = title;
+	public void setName(String name) {
+		name = name;
 	}
 	public String getGenre() {
 		return genre;

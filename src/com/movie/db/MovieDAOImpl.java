@@ -73,7 +73,7 @@ public class MovieDAOImpl implements MovieDAO{
 
 			if (rs.next()) {
 				mdto = new MovieDTO();
-				mdto.setTitle(rs.getString("title"));
+				mdto.setName(rs.getString("title"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
 				mdto.setCountry(rs.getString("country"));
@@ -133,7 +133,7 @@ public class MovieDAOImpl implements MovieDAO{
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, mdto.getTitle());
+			pstmt.setString(1, mdto.getName());
 			pstmt.setInt(2, movie_num);
 			pstmt.setString(3, mdto.getGenre());
 			pstmt.setString(4, mdto.getStory());
@@ -198,7 +198,7 @@ public class MovieDAOImpl implements MovieDAO{
 				MovieDTO mdto = new MovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setTitle(rs.getString("title"));
+				mdto.setName(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
