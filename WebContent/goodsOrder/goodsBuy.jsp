@@ -49,7 +49,7 @@
 	
 	
 	<fieldset>
-		<form>
+		<form action="./MallOrderAddAction.mor" method="post">
 			<input type="hidden" name="order_id" value="<%=id%>">
 			<input type="hidden" name="goods_num" value="<%=malldto.getGoods_num()%>">
 			<input type="hidden" name="goods_name" value="<%=malldto.getName() %>">

@@ -47,7 +47,9 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/MemberJoin.me")){ //회원가입 페이지
+		} else if (command.equals("/MemberLoginWithNaver.me")) {
+			//action = new MemberLoginWithNaverAction();
+		} else if(command.equals("/MemberJoin.me")){ //회원가입 페이지
 			forward = new ActionForward();
 			
 			forward.setPath("./member/joinForm.jsp");
