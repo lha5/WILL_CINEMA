@@ -40,7 +40,7 @@
 			<tr>
 				<td>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
-					<%=mdto.getTitle() %>
+					<%=mdto.getName() %>
 					</a>
 				</td>
 				<td><%=mdto.getGenre() %></td>
