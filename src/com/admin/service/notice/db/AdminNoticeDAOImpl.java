@@ -135,8 +135,8 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 					
 					
 	// getBoardList(startRow,pageSize)
-	@Override
-	public List<AdminNoticeDTO> getBoardList(int startRow, int pageSize) {
+		@Override
+		public List<AdminNoticeDTO> getBoardList(int startRow, int pageSize) {
 		List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
 
 		try {
