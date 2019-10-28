@@ -39,7 +39,8 @@ public class Ticketing implements Action {
 		//List<CineDTO> todayCine = new ArrayList<CineDTO>(); //ajax
 		
 		//영화DB 정보 다 가져오기
-		List<MovieDTO> movieList=tdao.getMovieList();
+		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
+		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		
 		/*-----영화관 각 상영관의 모든 영화 상영 날짜 리스트----------*/
 		HashSet<String> allDate= new HashSet<>();
@@ -175,7 +176,8 @@ public class Ticketing implements Action {
 
 		//view 페이지로 값 전달
 		request.setAttribute("cineList", cineList);
-		request.setAttribute("movieList", movieList);
+		request.setAttribute("bookRatingList", bookRatingList);
+		request.setAttribute("totalRatingList", totalRatingList);
 		request.setAttribute("allRegion", allRegion);//전체 지역
 		request.setAttribute("allDay", allDay);
 		

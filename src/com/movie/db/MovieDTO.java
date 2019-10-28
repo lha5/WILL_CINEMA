@@ -5,6 +5,7 @@ import java.sql.Date;
 public class MovieDTO {
 	private int movie_num;
 	private String title;
+	private int grade;
 	private String genre;
 	private String story;
 	private int running_time;
@@ -28,6 +29,12 @@ public class MovieDTO {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 	public String getGenre() {
 		return genre;
