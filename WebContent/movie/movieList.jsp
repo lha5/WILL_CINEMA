@@ -19,6 +19,8 @@
 		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
 		
 		String pageNum = (String) request.getAttribute("pageNum");
+		
+		System.out.println("이동성공");
 	%>
 	
 	
