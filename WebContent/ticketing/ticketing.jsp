@@ -395,7 +395,10 @@
 	//List<String> allDay = (List)request.getAttribute("allDay");
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");
 	List<MovieDTO> movieList = (List)request.getAttribute("movieList");
-	
+	List allRegion = (List)request.getAttribute("allRegion");
+	String region=allRegion.get(0).toString().split(",")[0];
+	//System.out.println(cineList.size());
+
 %>
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
@@ -419,19 +422,59 @@
       <div class="tab_cont on">
        <ul class="cinema_zone">
        <!-- 지역 반복문 -->
-        <li<%--  class=지역번호 클래스"<%=%>" --%>>
+       <%
+       int[] cineCnt=new int[allRegion.size()];
+       for(int i=0; i<allRegion.size(); i++){ 
+    	   int cnt=0;
+    	   String temp=allRegion.get(i).toString().split(",")[0];
+    	   temp=temp.substring(1);
+    	   int num=Integer.parseInt(temp);
+    	   temp=allRegion.get(i).toString().split(",")[1];
+    	   temp=temp.split("]")[0];
+    	   String name=temp.substring(1);
+    	   for(int j=0; j<cineList.size(); j++){
+    		   CineDTO cdto=cineList.get(j);
+    		   if(cdto.getRegion().equals(name)){
+    			   cnt++;
+         		}
+    	   }
+    	   cineCnt[i]=cnt;
+       }
+       
+       for(int i=0; i<allRegion.size(); i++){ 
+    	   String temp=allRegion.get(i).toString().split(",")[0];
+    	   temp=temp.substring(1);
+    	   int num=Integer.parseInt(temp);
+    	   temp=allRegion.get(i).toString().split(",")[1];
+    	   temp=temp.split("]")[0];
+    	   String name=temp.substring(1);
+
+       %>
+        <li <%-- class=지역번호 클래스"<%=%>" --%>>
          <span class="area_zone">
-          <a href="javascript:void(0);"><h4>서울(<em>20</em>)</h4></a>
+          <a href="javascript:void(0);">
+          <h4><%=name%></h4>(<em><%=cineCnt[i]%></em>)
+          </a>
          </span>
          <div class="area_cont on">
           <ul>
           <!-- 지점명 반복문 -->
-           <li><a href="javascript:void(0);">가산디지털</a></li>
+          <% for(int j=0; j<cineList.size(); j++){
+        	  CineDTO cdto=cineList.get(j);
+        	  //System.out.println(cdto.getRegion()+", " + name);
+          		if(cdto.getRegion().equals(name)){
+          %>
+           <li><a href="javascript:void(0);"><%=cdto.getName() %></a></li>
+           <%
+          		}
+          	} %>
            <!-- 지점명 반복문 -->
           </ul>
          </div>
         </li>
         <!-- 지역 반복문 -->
+        <%
+       		} %>
        </ul>
       </div>
      </div>
@@ -449,12 +492,14 @@
      </ul>
      <div class="scroll_bar">
      	<ul class="movie_list">
+     	<!-- 영화 반복문 -->
      	 <li>
      	  <a href="javascript:void(0);">
      	   <span>15</span>
      	   <em>조커</em>
      	  </a>
      	 </li>
+     	 <!-- 영화 반복문 -->
      	</ul>
      </div>
     </div>
