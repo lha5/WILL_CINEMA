@@ -43,7 +43,7 @@ public class MovieListAction implements Action {
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
 		
-		forward.setPath("./moive/movieList.jsp");
+		forward.setPath("./movie/movieList.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
