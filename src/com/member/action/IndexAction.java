@@ -40,7 +40,7 @@ MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
 		System.out.println(count+""+boardList+"11");
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/moive/screening.jsp");
+		forward.setPath("/include/main.jsp");
 		forward.setRedirect(false);		
 
 		return forward;
