@@ -18,6 +18,9 @@
 		
 		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
 		
+		String pageNum = (String) request.getAttribute("pageNum");
+		
+		System.out.println("이동성공");
 	%>
 	
 	
@@ -26,6 +29,7 @@
    
    <table border="1">
      <tr>
+    	<td>영화 번호</td>
        <td>영화 제목</td>
        <td>장르</td>
        <td>감독</td>
@@ -38,6 +42,7 @@
     		MovieDTO mdto = boardList.get(i);
 		%>
 			<tr>
+				<td><%=mdto.getMovie_num() %></td>
 				<td>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
 					<%=mdto.getTitle() %>

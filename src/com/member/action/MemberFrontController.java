@@ -29,6 +29,7 @@ public class MemberFrontController extends HttpServlet{
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+			
 			}
 		}else if(command.equals("/Main.me")){ //메인 페이지
 			forward = new ActionForward();
@@ -88,6 +89,7 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
 		}else if(command.equals("/MemberDeleteAction.me")){ //회원 탈퇴 페이지
+			
 			action = new MemberDeleteAction();
 			try {
 				forward = action.execute(request, response);

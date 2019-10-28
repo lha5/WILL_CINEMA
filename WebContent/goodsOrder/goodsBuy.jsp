@@ -11,6 +11,9 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
+<!-- Bpopup -->
+<script src="js/plugins/bpopup/jquery.bpopup.min.js"></script>
+
 <!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -49,24 +52,29 @@
 	
 	
 	<fieldset>
-		<form action="./MallOrderProc.mor" method="post">
+		<form id="myForm">
+			<%-- 
 			<input type="hidden" name="order_id" value="<%=id%>">
 			<input type="hidden" name="goods_num" value="<%=malldto.getGoods_num()%>">
-			<input type="hidden" name="goods_name" value="<%=malldto.getName() %>">
+			<input type="hidden" name="goods_name" value="<%=malldto.getName()%>">
 			<input type="hidden" name="goods_amount" value="<%=amount%>">
 			<input type="hidden" name="price" value="<%=total%>">
 			<input type="hidden" name="email" value="<%=memdto.getEmail()%>">
 			<input type="hidden" name="tel" value="<%=memdto.getMobile()%>">
-			
+			 --%>
 			<h3>결제 방법</h3>
 			
 			<div id="kpay">
-				<img alt="카카오페이" src="./img/payment.png">
+				<label>
+					<input type="radio" value="Kakaopay" name="payment" checked>
+					&nbsp;
+					<img alt="카카오페이" src="./img/payment.png">
+				</label>
 			</div>
 				
 			
-			<input type="submit" value="결제하기">
-			<!-- <input type="button" value="카카오페이로 결제하기" class="goPay"> -->
+			<input type="button" value="결제하기" id="goPay">
+			<!-- <input type="submit" value="결제하기"> -->
 			&nbsp;&nbsp;
 			<input type="button" value="이전 단계" id="before">
 		</form>
@@ -79,54 +87,36 @@
 		});
 	</script>
 	
+	<!-- 비동기 처리 -->
+	<script>
+		function acyncMovePage(url) {
+		    var ajaxOption = {
+		            url : url,
+		            async : true,
+		            type : "POST",
+		            dataType : "html",
+		            cache : false
+		    };
+		    
+		    $.ajax(ajaxOption).done(function(data){
+		        // Contents 영역 삭제
+		        $('#paySection').children().remove();
+		        // Contents 영역 교체
+		        $('#paySection').html(data);
+		    });
+		}
+	</script>
+	
 	<!-- 결제 모듈 -->
 	<script type="text/javascript">
-		<%-- $(function() {
-			IMP.init('imp30527297');
-			var msg;
-			
-			IMP.request_pay({
-				pg : 'Kakaopay',
-				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),
-				name : '윌시네마 상품 구매 - 테스트',
-			    amount : <%=total%>,
-			    buyer_email : '<%=memdto.getEmail()%>',
-			    buyer_name : '<%=memdto.getName()%>',
-			    buyer_tel : '<%=memdto.getMobile()%>'
-			}, function(rsp) {
-				if (rsp.success) {
-					jQuery.ajax({
-						url: './MallOrderAddAction.mor',
-						type: 'POST',
-						dataType: 'json',
-						data: {
-							imp_uid : rsp.imp_uid
-						}
-					}).done(function(data) {
-						if (everythings_fine) {
-							msg = '결제가 완료되었습니다.';
-					        msg += '고유ID : ' + rsp.imp_uid;
-					        msg += '상점 거래ID : ' + rsp.merchant_uid;
-					        msg += '결제 금액 : ' + rsp.paid_amount;
-					        msg += '카드 승인번호 : ' + rsp.apply_num;
-					        
-					        alert(msg);
-						} else {
-							msg = '결제가 정상적으로 처리되지 못하였습니다.';
-							
-							alert(msg);
-						}
-						location.href='./Main.me';
-					});
-				} else {
-					msg = '결제를 정상적으로 처리하지 못하였습니다.';
-					msg += '에러 내용 : ' + rsp.error_msg;
-					location.href='./Main.me'
-				}
-			});
-		}); --%>
+		document.querySelector('#goPay').addEventListener('click', function() {
+			acyncMovePage('./MallOrderProc.mor?price=<%=total%>&goods_amount=<%=amount%>&goods_name=<%=malldto.getName()%>&goods_num=<%=malldto.getGoods_num()%>&email=<%=memdto.getEmail()%>&tel=<%=memdto.getMobile()%>&buyer_name=<%=memdto.getName()%>');
+		});
 	</script>
+	
+	<div id="paySection" style="display: none;">
+		
+	</div>
 	
 	<%@ include file="../include/footer.jsp" %>
 	

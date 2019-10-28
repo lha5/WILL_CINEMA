@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -38,11 +39,12 @@ public class Ticketing implements Action {
 		//List<CineDTO> todayCine = new ArrayList<CineDTO>(); //ajax
 		
 		//영화DB 정보 다 가져오기
-		List<MovieDTO> movieList=tdao.getMovieList();
+		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
+		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		
 		/*-----영화관 각 상영관의 모든 영화 상영 날짜 리스트----------*/
 		HashSet<String> allDate= new HashSet<>();
-		
+
 		for(int i =0; i<cineList.size(); i++){
 			CineDTO cdto=cineList.get(i);
 			//오늘 날짜부터 cdto.getEnd_priod()
@@ -98,15 +100,85 @@ public class Ticketing implements Action {
 			}
 		}
 
-		//오늘 날짜에 상영정보가 있는 상영관 리스트
+		//전체 지역 리스트
+		List allRegion=new ArrayList<>();
 		
+		List arr=new ArrayList();
+		arr.add("1"); arr.add("서울");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("2"); arr.add("경기/인천");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("3"); arr.add("충청/대전");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("4"); arr.add("전라/광주");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("5"); arr.add("경북/대구");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("6"); arr.add("경남/부산/울산");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("7"); arr.add("강원");
+		allRegion.add(arr);
+		arr=new ArrayList();
+		arr.add("8"); arr.add("제주");
+		allRegion.add(arr);
+
+		/*HashSet regionList= new HashSet();
+		for(int i=0; i<cineList.size(); i++){
+			allRegion = new ArrayList();
+			CineDTO cdto=cineList.get(i);
+			allRegion.add(cdto.getCinema_num());
+			allRegion.add(cdto.getRegion());
+			regionList.add(allRegion);
+		}
+		allRegion = new ArrayList(regionList);
+		
+		Comparator<List> com = new Comparator<List>() {
+			@Override
+			public int compare(List o1, List o2) {
+				
+				return o1.toString().compareTo(o2.toString());
+			}
+		};
+		Collections.sort(allRegion,com);
+*/
+		
+		/*//지역별 상영관 리스트
+		for(int i=0; i<arr.size(); i++){
+			CineDTO cdto=cineList.get(i);
+			ArrayList allCineList = new ArrayList();
+			for()
+			switch(cdto.getCinema_num()){
+				case 1:
+					
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+			}
+		}*/
+		System.out.println(allRegion.get(0).toString());
 		//영화관 상영 날짜순 정렬
-		List<String> allDay = new ArrayList<>(allDate);
+		List<String> allDay = new ArrayList(allDate);
 		Collections.sort(allDay);
 
 		//view 페이지로 값 전달
 		request.setAttribute("cineList", cineList);
-		request.setAttribute("movieList", movieList);
+		request.setAttribute("bookRatingList", bookRatingList);
+		request.setAttribute("totalRatingList", totalRatingList);
+		request.setAttribute("allRegion", allRegion);//전체 지역
 		request.setAttribute("allDay", allDay);
 		
 		ActionForward forward=new ActionForward();
