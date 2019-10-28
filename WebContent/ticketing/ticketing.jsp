@@ -212,6 +212,7 @@
 	cursor: default;
 }
 
+
 .movie_list {
   display: none;
 }
@@ -223,6 +224,7 @@
 .movie_list a.on{
 	font-weight: bold;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -395,6 +397,7 @@
 			return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
 
 		});
+
 		
 		openMovie(event,'book');
 		$('.movie_cont').find('a').eq(0).addClass(' active');
@@ -426,6 +429,7 @@
 		   <div class="txtName"><dl><dt>영화</dt><dd>영화를 선택하세요</dd></dl></div> */
 	}
 	
+
 </script>
 
 
@@ -433,12 +437,14 @@
 <body>
 <%
 	//List<String> allDay = (List)request.getAttribute("allDay");
+
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	List allRegion = (List)request.getAttribute("allRegion");//모든지역 
 	
 	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
 	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	//System.out.println(cineList.size());
+
 
 %>
 <div class="cont_ticket">
@@ -514,6 +520,7 @@
          </div>
         </li>
         <!-- 지역 반복문 -->
+
         <%
        		} %>
        </ul>

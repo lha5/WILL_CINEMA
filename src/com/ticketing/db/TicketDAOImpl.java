@@ -90,17 +90,22 @@ public class TicketDAOImpl implements TicketDAO{
 		}
 		return cineList;
 	}
+
 	 /*--------------------- 영화관 정보 --------------------*/
 
+  
+  
 	 /*--------------------- 영화 예매순 --------------------*/
 	@Override
 	public List<MovieDTO> bookRatingList() {
+
 		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
 		
 		try {
 			con = getCon();
 			
 			sql = "select * from movie order by booking_ration desc";
+
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -130,6 +135,7 @@ public class TicketDAOImpl implements TicketDAO{
 		
 		return movieList;
 	}
+
 	/*--------------------- 영화 예매순 --------------------*/
 	
 	/*--------------------- 영화 평점순 --------------------*/

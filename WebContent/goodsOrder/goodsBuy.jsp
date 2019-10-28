@@ -14,6 +14,7 @@
 <!-- Bpopup -->
 <script src="js/plugins/bpopup/jquery.bpopup.min.js"></script>
 
+
 <!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -52,6 +53,7 @@
 	
 	
 	<fieldset>
+
 		<form id="myForm">
 			<%-- 
 			<input type="hidden" name="order_id" value="<%=id%>">
@@ -65,6 +67,7 @@
 			<h3>결제 방법</h3>
 			
 			<div id="kpay">
+
 				<label>
 					<input type="radio" value="Kakaopay" name="payment" checked>
 					&nbsp;
@@ -86,7 +89,7 @@
 			history.back();
 		});
 	</script>
-	
+
 	<!-- 비동기 처리 -->
 	<script>
 		function acyncMovePage(url) {
@@ -112,6 +115,7 @@
 		document.querySelector('#goPay').addEventListener('click', function() {
 			acyncMovePage('./MallOrderProc.mor?price=<%=total%>&goods_amount=<%=amount%>&goods_name=<%=malldto.getName()%>&goods_num=<%=malldto.getGoods_num()%>&email=<%=memdto.getEmail()%>&tel=<%=memdto.getMobile()%>&buyer_name=<%=memdto.getName()%>');
 		});
+
 	</script>
 	
 	<div id="paySection" style="display: none;">

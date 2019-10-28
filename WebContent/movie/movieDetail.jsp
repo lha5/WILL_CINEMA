@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>영화 상세보기</h1>
+
 </body>
 </html>

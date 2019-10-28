@@ -16,6 +16,7 @@
 <body>
 	<h1>WebContent/goodsOrder/orderProc.jsp</h1>
 	<%
+
 	// 세션값(아이디값) 받아오기
 	String id = (String) request.getAttribute("id");
 	
@@ -27,6 +28,7 @@
 	int goods_num = Integer.parseInt(request.getParameter("goods_num"));
 	
 	String email = request.getParameter("email");
+
 	String tel = request.getParameter("tel");
 	%>
 	<!-- 결제 모듈 -->
@@ -42,6 +44,7 @@
 			var jsonData = JSON.stringify(obj); --%>
 		
 			// var IMP = window.IMP;
+
 			IMP.init('imp30527297');
 			var msg;
 			
@@ -80,17 +83,20 @@
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
 					        msg += '결제 금액 : ' + rsp.paid_amount;
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
-					        
+
 					        console.log(msg);
+
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
 							
 							alert(msg);
 						}
+
 					});
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;
+
 					console.log(msg);
 					location.href = './GoodsList.ml'
 				}
