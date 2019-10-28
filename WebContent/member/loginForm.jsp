@@ -9,15 +9,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 로그인</title>
 
+<!-- jQuery -->
+<script src="./js/jquery-3.4.1.min.js"></script>
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
 
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
-
+	
+	<%
+	if (id != null) {
+		response.sendRedirect("./Main.me");
+	}
+	%>
+	
 	<fieldset>
-		<legend> 로그인 </legend>
+		<legend>로그인</legend>
 		<form action="./MemberLoginAction.me" method="post">
 			<table>
 				<tr>
@@ -35,21 +43,13 @@
 		</form>
 	</fieldset>
 	
-	<%
-	    String clientId = "Mr5O2cXhrQAjllHFhU3X";//애플리케이션 클라이언트 아이디값";
-	    String redirectURI = URLEncoder.encode("YOUR_CALLBACK_URL", "UTF-8");
-	    SecureRandom random = new SecureRandom();
-	    String state = new BigInteger(130, random).toString();
-	    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-	    apiURL += "&client_id=" + clientId;
-	    apiURL += "&redirect_uri=" + redirectURI;
-	    apiURL += "&state=" + state;
-	    session.setAttribute("state", state);
-	%>
+	<!-- --------------------------------------------------------------------------- -->
 	
 	<div id="socialLogin">
-		<a href="<%=apiURL%>"><img height="50px" alt="네이버로그인 버튼" src="./img/Naver_login_btn.PNG"/></a>
+		
 	</div>
+	
+	<!-- --------------------------------------------------------------------------- -->
 	
 	<div id="signup">
 		아직 회원이 아니신가요?
@@ -57,13 +57,17 @@
 		<input type="button" value="회원 가입" id="signUpBtn">
 	</div>
 	
+	<!-- 회원 가입 버튼 연결 -->
 	<script type="text/javascript">
-		const upBtn = document.querySelector('input[type=button]');
+		const upBtn = document.querySelector('#signUpBtn');
 		
 		upBtn.addEventListener('click', function() {
 			location.href='./MemberJoin.me';
 		});
 	</script>
+	
+	<!-- --------------------------------------------------------------------------- -->
+	
 	
 	<%@ include file="../include/footer.jsp" %>
 </body>

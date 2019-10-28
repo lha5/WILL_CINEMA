@@ -118,8 +118,8 @@ $( function() {
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td><input type="text" name="fDate" id="from">
-				 ~ <input type="text" name="eDate" id="to">
+				<td><input type="text" name="fDate" id="from" readonly="readonly">
+				 ~ <input type="text" name="eDate" id="to" readonly="readonly">
 				 </td>
 			</tr><!-- 날짜 선택 드롭박스 -->
 			<tr>

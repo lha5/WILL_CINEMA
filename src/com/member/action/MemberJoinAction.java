@@ -21,7 +21,7 @@ public class MemberJoinAction implements Action {
 		response.setContentType("text/html; charset=UTF-8");
 		// 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
-		
+		response.setContentType("text/html; charset=UTF-8");
 		// 자바빈(DTO) 객체를 생성해서 여기에 받아온 정보를 저장
 		MemberDTO mdto = new MemberDTO();
 		
