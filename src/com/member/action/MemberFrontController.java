@@ -89,6 +89,7 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
 		}else if(command.equals("/MemberDeleteAction.me")){ //회원 탈퇴 페이지
+			
 			action = new MemberDeleteAction();
 			try {
 				forward = action.execute(request, response);
