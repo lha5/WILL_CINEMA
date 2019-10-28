@@ -30,6 +30,14 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/Index.me")){ //메인 페이지
+			action = new IndexAction(); 
+			
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/Main.me")){ //메인 페이지
 			forward = new ActionForward();
 			

@@ -1,11 +1,23 @@
+<%@page import="com.movie.db.MovieDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
-<head><!--  <title>롤링 배너 만들기 연습</title>  -->
-<meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
+<title>WILL CINEMA</title>
+
+<!-- jQuery 연결 -->
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<!-- CSS 연결 -->
+<link rel="stylesheet" href="css/main.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
 <style type="text/css">
 <!--
 	body {font-size:11pt; padding:0; margin:0; text-align: center;}
@@ -68,20 +80,69 @@
 
 </head>
 <body>
-	<div class="contents">
+<%
+		//String id = (String)session.getAttribute("id");
+		
+		int count = (Integer) request.getAttribute("count");
+		
+		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+		
+	%>
+
+
+
+	<%@ include file="../include/header.jsp" %>
+
+	<div id="wrap">
+
+	<!-- 수정완료 -->
+	
+		<section>
+
+			<div id="center">
+				<article id="list">
+					예매 순위
+				</article>
+				<article id="image">
+					<div class="contents">
 
 		<div class="banner">
+			
+		
 			<ul>
-				<li><img src="./img/screen/terminator.jpg" width="1100px" height="430px"></li>
-				<li><img src="./img/screen/sinhansu.jpg" width="1100px" height="430px"></li>
-				<li><img src="./img/screen/nomal.jpg" width="1100px" height="430px"></li>
-				<li><img src="./img/screen/marepi.jpg" width="1100px" height="430px"></li>
-				<li><img src="./img/screen/kimjiy.jpg" width="1100px" height="430px"></li>
-				<li><img src="./img/screen/joke.jpg" width="1100px" height="430px"></li>
-				<!--더 추가 하는곳   -->
-			</ul>
+				  <%
+     	for (int i=0;i<4;i++) {
+    		MovieDTO mdto = boardList.get(i);
+		%>
+		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
+					<%} %>
+					</ul>
+		
+		
 		</div>
 	</div>
-
+					
+				</article>
+			</div>
+		
+			<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
+			<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
+		
+			<div id="event">
+				이벤트
+			</div>
+		
+			<div id="service">
+				멤버십이나 포인트 같은 서비스 모음
+			</div>
+			
+			<div id="notice">
+				공지사항
+			</div>
+		</section>
+	
+	</div>
+	
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
