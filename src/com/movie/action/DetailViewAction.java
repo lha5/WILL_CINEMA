@@ -18,8 +18,10 @@ public class DetailViewAction implements Action{
 			//DB에서 글번호 해당하는 글 정보를 보여주는 페이지
 		
 			// 전달 정보를 저장(num,numpage)
+
 			//int num = Integer.parseInt(request.getParameter("num"));
 			int num = 1;
+
 			String pageNum = request.getParameter("pageNum");
 		
 			 //System.out.println("num : " + num + ", pageNum : " + pageNum);
