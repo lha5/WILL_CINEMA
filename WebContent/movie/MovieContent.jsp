@@ -51,6 +51,20 @@ String pageNum = (String) request.getAttribute("pageNum");
 				</td>		
 			</tr>
 		
+			<tr>
+				<td>상세보기
+			
+			
+			
+			
+			
+			
+			</tr>
+		
+		
+		
+		
+		
 		</table>
 
 
