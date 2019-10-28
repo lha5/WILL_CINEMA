@@ -73,7 +73,7 @@ public class MovieDAOImpl implements MovieDAO{
 
 			if (rs.next()) {
 				mdto = new MovieDTO();
-				mdto.setName(rs.getString("title"));
+				mdto.setTitle(rs.getString("title"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
 				mdto.setCountry(rs.getString("country"));
@@ -106,7 +106,7 @@ public class MovieDAOImpl implements MovieDAO{
 
 
 
-
+	//insert Board
 	
 	public void insertBoard(MovieDTO mdto) {
 		int movie_num = 0;
@@ -133,7 +133,7 @@ public class MovieDAOImpl implements MovieDAO{
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, mdto.getName());
+			pstmt.setString(1, mdto.getTitle());
 			pstmt.setInt(2, movie_num);
 			pstmt.setString(3, mdto.getGenre());
 			pstmt.setString(4, mdto.getStory());
@@ -182,8 +182,9 @@ public class MovieDAOImpl implements MovieDAO{
 		
 		return count;
 	}
+	// getBoardList
 	
-	public List<MovieDTO> getBoardList() {
+		public List<MovieDTO> getBoardList() {
 		List<MovieDTO> boardList = new ArrayList<MovieDTO>();
 		
 		try {
@@ -198,14 +199,13 @@ public class MovieDAOImpl implements MovieDAO{
 				MovieDTO mdto = new MovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setName(rs.getString("title"));
+				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				
 				boardList.add(mdto);
 				
 			}

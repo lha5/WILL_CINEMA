@@ -1,3 +1,6 @@
+<%@page import="com.movie.db.MovieDTO"%>
+<%@page import="com.cinema.db.CineDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,105 +33,379 @@
 	background: #f6f6ea
 }
 
+.calendar { 
+	position:relative; 
+	clear:both;
+	width:980px; 
+	padding:0 0 0 0;  
+	color:#231f20;
+}
+
+.calendar fieldset .month-picker-label {
+	/* position: absolute; */
+	width: 30px;
+	padding: 0 15px;
+	text-align: center;
+}
+
+.calendar .month-picker {
+	margin: 100px auto;
+	width: 600px;
+	text-align: center;
+}
+
+.calendar .month-picker-label span {
+	display: block;
+	font-size: 13px;
+	padding-bottom: 5px;
+}
+
+.calendar .month-picker-label em {
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.calendar .month-picker-fieldset {
+	overflow: hidden;
+	position: relative;
+	display: block;
+	width: 840px;
+	height: 49px;
+	padding: 47px 70px 0;
+}
+
+.calendar .month-picker-fieldset div.calendarArea {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.calendar .month-picker-fieldset div input {
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.calendar span.month {
+	position: absolute;
+	padding: 0 40px;
+	text-align: left;
+	font-weight: bold;
+	top: 0 !important;
+	color: #666;
+	font-size: 12px;
+}
+
+.calendar span.month em {
+	width: 13px;
+	font-size: 34px;
+	margin: 0 15px 0 0;
+	border-bottom: 2px solid #231f20;
+	font-family: 'Linux Libertine';
+	color: #231f20;
+	font-weight: bold;
+}
+
+.calendar span.month.noDate {
+	color: #806a42;
+}
+
+.calendar span.month.noDate em {
+	color: #806a42;
+	border-color: #806a42;
+}
+
+.calendar span.month span {
+	white-space: nowrap
+}
+
+.calendar .month-picker-fieldset>.month-picker-label.month em {
+	padding: 0;
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.calendar .month-picker-fieldset .month-picker-label.sun {
+	color: #cd190b
+}
+
+.calendar .month-picker-fieldset .month-picker-label.sat {
+	color: #407bbb
+}
+
+.calendar .month-picker-fieldset .month-picker-label.noDate {
+	color: #A7A2A2 !important;
+	cursor: default;
+}
+
+.calendar .month-picker-label, .month-picker-nav {
+	display: inline-block;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.calendar .month-picker-label.ckon em {
+	opacity: 1;
+	filter: alpha(opacity = 100);
+	opacity: 1.0;
+	-moz-opacity: 1.0;
+	background: url('./img/bg/bg_cal_check.png') no-repeat center
+		center !important;
+	color: #fff;
+}
+
+.calendar .month-picker-label.month.ckon em {
+	background: none;
+	color: #231f20
+}
+
+.calendar input:checked+.month-picker-label em {
+	opacity: 1;
+	filter: alpha(opacity = 100);
+	opacity: 1.0;
+	-moz-opacity: 1.0;
+	background: url('./img/bg/bg_cal_check.png') no-repeat center
+		center;
+	color: #fff;
+}
+
+.calendar input:checked+.month-picker-label.month em {
+	background: none;
+	color: #231f20
+}
+
+.calendar input:focus+.month-picker-label {
+	outline: 1px dotted #000;
+} /* 2016.05.04 포커스 추가*/
+.calendar .month-picker-nav {
+	position: absolute;
+	top: 41px;
+	z-index: 10;
+	width: 19px;
+	height: 50px;
+	font-size: 0;
+	text-align: center;
+}
+
+.calendar .month-picker-nav.next {
+	right: 0;
+	background: url('./img/btn/btn_m_next_on.png') no-repeat center
+		center;
+}
+
+.calendar .month-picker-nav.prev {
+	left: 0;
+	background: url('./img/btn/btn_m_prev_on.png') no-repeat center
+		center;
+}
+
+.calendar .month-picker-nav.nodata {
+	opacity: 0.3;
+	filter: alpha(opacity = 30);
+	opacity: 0.3;
+	-moz-opacity: 0.3;
+	cursor: default;
+}
 </style>
 
 <script type="text/javascript">
-
-	function prevCal(){
-		today = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
-	}
-	function nextCal(){
-		today = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
-		//calendar2(8);
-	}
-	function calendar(){
-		var nMonth = new Date(today.getFullYear(), today.getMonth(), 1);  // 이번 달의 첫째 날
-		var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0); // 이번 달의 마지막 날
-		var calArea= document.getElementsByClassName("month-picker-fieldset");
-		alert(calArea);
-	}
-	
 	$(function (){
 		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 			'August', 'September', 'October', 'November', 'December'];
 		var dayNames = ["일", "월", "화", "수", "목", "금", "토"];
 		var calendar=$('.calendar'); 
-		var showDate=8; //보여줄 날짜
+		var showDate=14; //보여줄 날짜
 		var startDate=0;
+		var clickDate=14;
 		var today = new Date(); //오늘 날짜
-		
-		var monthData = today.getMonth()+1; //1자리수 0을 붙여줌 ex)08,09
-		monthData = monthData >= 10 ? monthData : '0' + monthData;
-		
+		var changeDay= '#'+monthNames[today.getMonth()]+today.getDate();
+		var allDay = "${allDay}"; //controller에서 가져온 attribute
+		allDay=allDay.split('[')[1];
+		allDay=allDay.split(']')[0];
+		allDay=allDay.split(',');
+
+		function prev(){
 		$('.prev').click(function(){
-			calendar2(-8);
-		});
+			changeDay=$('.txtdate').find('dd').text().split('.');
+			changeDate=changeDay[2].toString().split('(');
+			changeDay='#'+monthNames[changeDay[1]*1-1]+changeDate[0];//선택된 radio의 id값 저장
+			calendar.find('fieldset').find('span').remove();
+			calendar2(-clickDate);
+		});}
 		
+		function next(){
 		$('.next').click(function(){
-			calendar2(8);
-		});
-		
-		calendar.find('fieldset').append('<span class="month" style="top:-47px; left:47px;"><em>'
-		+ monthData + '</em><span>' + today.getFullYear()
-		+ ' ' + monthNames[today.getMonth()] + '</span></span>');
-		function calendar2(data2,todayDate){
-			showDate=Number(showDate)+Number(data2);
-			startDate=Number(startDate)+Number(data2);
+			changeDay=$('.txtdate').find('dd').text().split('.');
+			changeDate=changeDay[2].toString().split('(');
+			changeDay='#'+monthNames[changeDay[1]*1-1]+changeDate[0]; //선택된 radio의 id값 저장
+			calendar.find('fieldset').find('span').remove();
+			calendar2(clickDate);
+		});}
+		prev();
+
+		function calendar2(data){
+			var cnt=0;
+			var cnt2=0;
+			var yearData = today.getFullYear(); // 시작 년도 ,날짜 비교용
+	        var monthData = today.getMonth(); // 시작달 ,날짜 비교용
 			var html=''; //본문에 붙일 내용
+			var spanMon = today.getMonth()+1; //보여줄 달, 1자리수 0을 붙여줌 ex)08,09
+	        spanMon = spanMon >= 10 ? spanMon : '0' + spanMon;
+			
+			//재 호출시 비움
 			calendar.find('.calendarArea').empty();
+
+			calendar.find('fieldset').append('<span class="month" style="top:-47px; left:47px;"><em>'
+					+ spanMon + '</em><span>' + today.getFullYear()
+					+ ' ' + monthNames[today.getMonth()] + '</span></span>');
+			
+			//이동할 날짜 범위
+			showDate=Number(showDate)+Number(data);
+			startDate=Number(startDate)+Number(data);
+			/* if(today.getHours()<=3){
+				showDate=
+			} */
 			for(var i = startDate; i<showDate; i++){
 				var day = today.getDate(); //오늘 일
 				var d = new Date(); //변경될 날짜
 				d.setDate(day+i); //보여줄 일
+				var yearData2 = d.getFullYear();
 				var monData = d.getMonth()+1; //8,9,10월 형식
 				monData = monData >= 10 ? monData : '0' + monData; //1자리수 0을 붙여줌 ex)08,09월
 				var dayData = d.getDate();
 				dayData = dayData >= 10 ? dayData : '0' + dayData;
 				var playData=d.getFullYear()+'-'+monData+'-'+dayData; //ex)2019-10-25 형식
-	
-				//라디오
-				html = '<input type="radio" name="day" value="'
-				+ playData + '" id="' + monthNames[d.getMonth()] + dayData + '">';
 				
-				//라벨
-				html += '<label for="' + monthNames[d.getMonth()] + dayData 
-				+ '" class="month-picker-label" style="left:' + (i * 60) + 'px"><span>' 
-				+ dayNames[d.getDay()] + '</span><em>' + dayData + '</em></label>';
+				//달이 완전히 바뀐 경우 이번달을 지움
+				if(d.getMonth()!=monthData && cnt==0){
+					calendar.find('fieldset').find('span').remove();
+				}
+	
+				if(allDay[showDate]&&i==startDate){
+					next();
+					calendar.find('.next').removeClass('nodata');
+				}else if(!allDay[showDate]&&i==showDate-1){
+					calendar.find('.next').off('click');
+					calendar.find('.next').addClass('nodata');
+				}
+	
+				if(allDay[i]){//영화가 있는 날
+					if(allDay[0]==playData){//첫날 이전은 보여주지 않게
+						calendar.find('.prev').off('click');
+						calendar.find('.prev').addClass('nodata');
+						//calendar.find('.next').addClass('nodata').siblings('a').removeClass('nodata');
+					}else if(allDay[0]!=playData&&cnt2==0){//오늘 날짜가 포함 안된 날짜들 일때
+						prev();
+						calendar.find('.prev').removeClass('nodata');
+					}
+					//라디오
+					html = '<input type="radio" name="day" value="'
+					+ playData + '" id="' + monthNames[d.getMonth()] + dayData + '">';
+					
+					//라벨
+					html += '<label for="' + monthNames[d.getMonth()] + dayData 
+					+ '" class="month-picker-label" style="left:' + (i * 60) + 'px"><span>' 
+					+ dayNames[d.getDay()] + '</span><em>' + d.getDate() + '</em></label>';
+					cnt2++;
+				}else{//영화가 없는 날
+					if(cnt2!=0){
+						calendar.find('.next').off('click');
+						calendar.find('.next').addClass('nodata');
+					}
+					//라디오
+					html = '<input type="radio" name="day" value="'
+					+ playData + '" id="' + monthNames[d.getMonth()] + dayData +'disabled="disabled"'+'">';
+					
+					//라벨
+					html += '<label for="' + monthNames[d.getMonth()] + dayData 
+					+ '" class="month-picker-label noDate" style="left:' + (i * 60) + 'px"><span>' 
+					+ dayNames[d.getDay()] + '</span><em>' + d.getDate() + '</em></label>';
+				}
+				
 				
 				calendar.find('.calendarArea').append(html);
 				
-				if(d.getFullYear()==todayDate.getFullYear()
-						&&monthNames[d.getMonth()] == monthNames[todayDate.getMonth()]
-						&&d.getDate()==todayDate.getDate()){
-					alert('today');
-				}
+				calendar.find('.calendarArea').find(changeDay).prop("checked", true);
+				/*
+				if(d.getFullYear()==today.getFullYear()
+						&&monthNames[d.getMonth()] == monthNames[today.getMonth()]
+						&&d.getDate()==today.getDate()&&changeDay==''){
+					//alert('today');
+					calendar.find('.calendarArea').find('input:radio').eq(Number(i)-Number(startDate)).prop("checked", true);
+				}else{
+					//$('input:radio[id="'+changeDay+'"])'.prop("checked", true);
+				}*/
 				if(dayNames[d.getDay()]=='토'){
 					calendar.find('.calendarArea').find('label').eq(Number(i)-Number(startDate)).addClass('sat');
 				}else if(dayNames[d.getDay()]=='일'){
 					calendar.find('.calendarArea').find('label').eq(Number(i)-Number(startDate)).addClass('sun');
 				}
+				 
+				if(d.getMonth()!=monthData){//달또는 년도가 바뀌었을 경우
+					monthData=d.getMonth();
+					yearData=yearData2;
+					var pos = calendar.find('.calendarArea').find('label').last().position();
+
+					calendar.find('fieldset').append('<span class="month" style="top:-47px; left:' + ((pos.left) + 47) + 'px"><em>' 
+					+ monData + '</em><span>' + yearData2 + ' ' + monthNames[d.getMonth()] + '</span></span>');
+				}
+				//cnt++;
+				//alert(d.getMonth() + ", " + monthData);
+				//alert("달 일치 : "+d.getMonth()!=monthData);
+				//alert(" 횟수 : " + cnt)
+				
+				cnt++;
 			}
 		}
+		
+		calendar2(0);//웹 시작시
+		
+		$(document).on('click','input:radio',function(){ //버튼 클릭시
+			$('.txtdate').find('dd').text(function(){// 상영일 날짜 바꿔줌
+				var date=$('input[name="day"]:checked').val().split("-");//radio체크된 날짜
+				var mon=Number(date[1])-1;
+				//체크된 날짜의 요일
+				var week=$('label[for="' +monthNames[mon]+date[2] +'"]').find('span').text();
+				return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
+			});
+		});
+		
+		$('.txtdate').find('dd').text(function(){//웹 시작시 상영일 날짜 바꿔줌
+			var date=$('input[name="day"]:checked').val().split("-"); //radio체크된 날짜
+			var mon=Number(date[1])-1;
+			//체크된 날짜의 요일
+			var week=$('label[for="' +monthNames[mon]+date[2] +'"]').find('span').text();
+			return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
 
-		calendar2(0,today);
+		});
 	});
-
+	
 
 </script>
 
 
 </head>
 <body>
-
+<%
+	//List<String> allDay = (List)request.getAttribute("allDay");
+	List<CineDTO> cineList = (List)request.getAttribute("cineList");
+	List<MovieDTO> movieList = (List)request.getAttribute("movieList");
+	
+%>
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
   <div class="calendar"> <!-- 달력 -->
-		<a href="javascript:void(0);" class="month-picker-nav prev nodata">이전</a>
+		<a href="javascript:void(0);" class="month-picker-nav prev">이전</a>
 		<fieldset class="month-picker-fieldset">
 			<div class="calendarArea">
 			</div>
 		</fieldset>
-		<a href="javascript:void(0);" class='next'>다음</a>
+		<a href="javascript:void(0);" class='month-picker-nav next'>다음</a>
   </div>
   <div class="ticket_inner">
    <div class="ticket_left">
@@ -141,16 +418,20 @@
      <div class="tab_scroll"> <!-- 영화관 목록 -->
       <div class="tab_cont on">
        <ul class="cinema_zone">
-        <li>
+       <!-- 지역 반복문 -->
+        <li<%--  class=지역번호 클래스"<%=%>" --%>>
          <span class="area_zone">
-          <a href="javascript:void(0);"><h4>서울(20)</h4></a>
+          <a href="javascript:void(0);"><h4>서울(<em>20</em>)</h4></a>
          </span>
          <div class="area_cont on">
           <ul>
+          <!-- 지점명 반복문 -->
            <li><a href="javascript:void(0);">가산디지털</a></li>
+           <!-- 지점명 반복문 -->
           </ul>
          </div>
         </li>
+        <!-- 지역 반복문 -->
        </ul>
       </div>
      </div>

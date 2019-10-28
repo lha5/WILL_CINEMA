@@ -31,6 +31,7 @@ public class MovieAddAction implements Action {
 				forward.setRedirect(true);
 				return forward;
 			}
+			
 			// QnADTO객체 생성
 			MovieDTO mdto = new MovieDTO();
 			String name = request.getParameter("name");
@@ -43,7 +44,7 @@ public class MovieAddAction implements Action {
 			System.out.print("name : "+ name + " id : "+ id + " running_time : "+running_time);
 				
 
-			mdto.setName(name);
+			mdto.setTitle(name);
 			mdto.setGenre(genre);
 			mdto.setDirector(director);
 			mdto.setStory(story);
