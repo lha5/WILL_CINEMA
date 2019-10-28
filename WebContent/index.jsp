@@ -4,18 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA</title>
-<!-- jQuery 연결 -->
-<script src="./js/jquery-3.4.1.min.js"></script>
-
-<!-- CSS 연결 -->
-<link rel="stylesheet" href="css/main.css">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
+<title>Insert title here</title>
 </head>
 <body>
+<%
+response.sendRedirect("Index.me");
+%>
 
 	<%@ include file="include/header.jsp" %>
 
@@ -53,5 +47,6 @@
 	</div>
 	
 	<%@ include file="include/footer.jsp" %>
+
 </body>
 </html>
