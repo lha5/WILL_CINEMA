@@ -16,15 +16,32 @@
 <body>
 	<h1>WebContent/goodsOrder/orderProc.jsp</h1>
 	<%
-	int price = Integer.parseInt(request.getParameter("price"));
-	String email = request.getParameter("email");
+	// 세션값(아이디값) 받아오기
 	String id = (String) request.getAttribute("id");
+	
+	String buyer_name = request.getParameter("buyer_name");
+	
+	int price = Integer.parseInt(request.getParameter("price"));
+	int goods_amount = Integer.parseInt(request.getParameter("goods_amount"));
+	String goods_name = request.getParameter("goods_name");
+	int goods_num = Integer.parseInt(request.getParameter("goods_num"));
+	
+	String email = request.getParameter("email");
 	String tel = request.getParameter("tel");
 	%>
 	<!-- 결제 모듈 -->
 	<script type="text/javascript">
-		$(function() {
-			var IMP = window.IMP;
+		$(document).ready(function() {
+			<%-- var obj = new Object();
+			obj.goods_num = <%=goods_num%>;
+			obj.goods_name = '<%=goods_name%>';
+			obj.price = <%=price%>;
+			obj.goods_amount = <%=goods_amount%>;
+			obj.payment = 'KakaoPay';
+			
+			var jsonData = JSON.stringify(obj); --%>
+		
+			// var IMP = window.IMP;
 			IMP.init('imp30527297');
 			var msg;
 			
@@ -34,38 +51,48 @@
 				merchant_uid : 'merchant_' + new Date().getTime(),
 				name : '윌시네마 상품 구매 - 테스트',
 			    amount : <%=price%>,
+			    buyer_name : '<%=buyer_name%>',
 			    buyer_email : '<%=email%>',
-			    buyer_name : '<%=id%>',
 			    buyer_tel : '<%=tel%>'
 			}, function(rsp) {
 				if (rsp.success) {
 					jQuery.ajax({
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
-						dataType: 'json',
+						dataType: 'html',
+						cache: false
+						<%-- async: false,
 						data: {
-							imp_uid : rsp.imp_uid
-						}
+							/* data : jsonData */					
+							imp_uid : rsp.imp_uid,
+							goods_num : <%=goods_num%>,
+							goods_name : <%=goods_name%>,
+							price : <%=price%>,
+							goods_amount : <%=goods_amount%>,
+							payment : 'KakaoPay'
+						} --%>
 					}).done(function(data) {
 						if (everythings_fine) {
+							console.log(jsonData);
+							
 							msg = '결제가 완료되었습니다.';
 					        msg += '고유ID : ' + rsp.imp_uid;
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
 					        msg += '결제 금액 : ' + rsp.paid_amount;
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
 					        
-					        alert(msg);
+					        console.log(msg);
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
 							
 							alert(msg);
 						}
-						location.href='./Main.me';
 					});
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;
-					location.href='./index.jsp'
+					console.log(msg);
+					location.href = './GoodsList.ml'
 				}
 			});
 		});

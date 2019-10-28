@@ -27,7 +27,7 @@ public class MallOrderAddAction implements Action {
 			forward.setRedirect(true);
 			return forward;
 		}
-		
+				
 		// OrderDTO 객체 생성
 		MallOrderDTO modto = new MallOrderDTO();
 		
@@ -35,11 +35,13 @@ public class MallOrderAddAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 		modto.setOrder_id(id);
+		
 		modto.setGoods_name(request.getParameter("goods_name"));
 		modto.setOrder_goods_num(Integer.parseInt(request.getParameter("goods_num")));
 		modto.setGoods_amount(Integer.parseInt(request.getParameter("goods_amount")));
 		modto.setPrice(Integer.parseInt(request.getParameter("price")));
 		modto.setPayment(request.getParameter("payment"));
+		
 		
 		RandomNumberCreator rnc = new RandomNumberCreator();
 		rnc.setCertNumLength(6);
