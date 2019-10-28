@@ -31,6 +31,7 @@ public class MovieAddAction implements Action {
 				forward.setRedirect(true);
 				return forward;
 			}
+			
 			// QnADTO객체 생성
 			MovieDTO mdto = new MovieDTO();
 			String name = request.getParameter("name");
