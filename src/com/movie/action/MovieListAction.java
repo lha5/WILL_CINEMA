@@ -22,6 +22,8 @@ public class MovieListAction implements Action {
 		
 		int count = mvdaoImpl.getBoardCount();
 		
+		System.out.println("count : " + count);
+		
 		int pageSize = 10;
 		
 		System.out.println("pageNum - 1 : " + request.getParameter("pageNum"));
@@ -30,11 +32,21 @@ public class MovieListAction implements Action {
 		String id = (String)session.getAttribute("id");
 		
 		ActionForward forward = new ActionForward();
+		
 		if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}List<MovieDTO> boardList = null;
+		
+		// 현 페이지가 몇페이지 인지를 가져오기
+		String pageNum = request.getParameter("pageNum");
+				
+		if (pageNum == null) {
+			pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
+		}
+		
+		System.out.println("pageNum - 2 : "+pageNum);
 		
 		if( count != 0 ){ 
 			  boardList = mvdaoImpl.getBoardList();
@@ -42,8 +54,11 @@ public class MovieListAction implements Action {
 		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("pageNum", pageNum);
 		
-		forward.setPath("./moive/movieList.jsp");
+		System.out.println("");
+		
+		forward.setPath("./movie/movieList.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
