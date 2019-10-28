@@ -101,11 +101,81 @@ public class CineDAOImpl implements CineDAO{
 			closeDB();
 		}
 	}
+	
+	//지점 개수 가져오기
+	public int getCount(){
 
+		int count = 0;
+		
+		try {
+			con = getCon();
+			
+			sql="select count(*) from cinema";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return count;
+		
+	}
 	
 	
 	// 등록된 지점 목록 보여주기
 	@Override
+	public List<CineDTO> getCineList(int startRow, int pageSize) {
+		List<CineDTO> cineList = new ArrayList<CineDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT * FROM cinema order by region limit ?,?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				CineDTO cdto = new CineDTO();
+				
+				cdto.setCinema_num(rs.getInt("cinema_num"));
+				cdto.setRegion(rs.getString("region"));
+				cdto.setName(rs.getString("name"));
+				cdto.setRoom(rs.getString("room"));
+				cdto.setSeat(rs.getString("seat"));
+				cdto.setAddr(rs.getString("addr"));
+				cdto.setTel(rs.getString("tel"));
+				cdto.setStart_times(rs.getString("start_times"));
+				cdto.setEnd_times(rs.getString("end_times"));
+				cdto.setStart_priod(rs.getString("start_priod"));
+				cdto.setEnd_priod(rs.getString("end_priod"));
+				cdto.setMovie_num(rs.getString("movie_num"));
+				
+				
+				cineList.add(cdto);
+			}
+			System.out.println("cineList 목록 저장 완료------------------------------");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cineList;
+
+	}
+	// 등록된 지점 목록 보여주기(페이징 처리 없음)
+	/*@Override
 	public List<CineDTO> getCineList() {
 		List<CineDTO> cineList = new ArrayList<CineDTO>();
 		try {
@@ -144,7 +214,7 @@ public class CineDAOImpl implements CineDAO{
 		}
 		return cineList;
 
-	}
+	}*/
 
 	
 	
@@ -243,6 +313,7 @@ public class CineDAOImpl implements CineDAO{
 			
 			pstmt.executeUpdate();
 			
+			System.out.println("시네마 지점 삭제 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -88,9 +88,9 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			
 			if (rs.next()) {
 				if (!rs.getDate("order_date").equals(sdf.format(cal.getTime()).toString())) {
-					trans_no = 1;
-				} else {
 					trans_no = Integer.parseInt(rs.getString("trans_num").substring(9)) + 1;
+				} else {
+					trans_no = 1;
 				}
 			}
 			// trans_no = order_no;

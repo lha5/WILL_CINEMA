@@ -9,6 +9,8 @@
 
 </head>
 <body>
+
+<%@ include file="../include/header.jsp" %>
 	<form action="./CinemaAddAction.ci" method="post">
 		<table border="1">
 			
@@ -146,5 +148,7 @@
     
 
 </script>	
+
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

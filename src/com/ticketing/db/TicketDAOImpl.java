@@ -50,7 +50,7 @@ public class TicketDAOImpl implements TicketDAO{
 			e.printStackTrace();
 		}
 	}
-
+    /*--------------------- 영화관 정보 --------------------*/
 	@Override
 	public List<CineDTO> getCinemaList() {
 		List<CineDTO> cineList = new ArrayList<CineDTO>();
@@ -76,7 +76,7 @@ public class TicketDAOImpl implements TicketDAO{
 				cdto.setStart_times(rs.getString("start_times"));
 				cdto.setEnd_times(rs.getString("end_times"));
 				cdto.setStart_priod(rs.getString("start_priod"));
-				cdto.setStart_priod(rs.getString("end_priod"));
+				cdto.setEnd_priod(rs.getString("end_priod"));
 				cdto.setMovie_num(rs.getString("movie_num"));
 				
 				cineList.add(cdto);
@@ -90,15 +90,17 @@ public class TicketDAOImpl implements TicketDAO{
 		}
 		return cineList;
 	}
+	 /*--------------------- 영화관 정보 --------------------*/
 
+	 /*--------------------- 영화 예매순 --------------------*/
 	@Override
-	public List<MovieDTO> getMovieList() {
+	public List<MovieDTO> bookRatingList() {
 		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
 		
 		try {
 			con = getCon();
 			
-			sql = "select * from movie";
+			sql = "select * from movie order by booking_ration desc";
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -107,7 +109,8 @@ public class TicketDAOImpl implements TicketDAO{
 				MovieDTO mdto = new MovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setName(rs.getString("name"));
+				mdto.setTitle(rs.getString("title"));
+				mdto.setGrade(rs.getInt("grade"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
@@ -127,4 +130,45 @@ public class TicketDAOImpl implements TicketDAO{
 		
 		return movieList;
 	}
+	/*--------------------- 영화 예매순 --------------------*/
+	
+	/*--------------------- 영화 평점순 --------------------*/
+	@Override
+	public List<MovieDTO> totalRatingList() {
+		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from movie order by total_rating desc";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieDTO mdto = new MovieDTO();
+				
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setTitle(rs.getString("title"));
+				mdto.setGrade(rs.getInt("grade"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setCountry(rs.getString("country"));
+				
+				movieList.add(mdto);
+				
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return movieList;
+	}
+	/*--------------------- 영화 평점순 --------------------*/
 }

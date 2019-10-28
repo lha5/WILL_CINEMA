@@ -309,35 +309,6 @@ function sample6_execDaumPostcode() {
 			}
 		}
 	 */
-	/* function checkValue() {
-		var form = document.upForm;
-		
-		if (!form.birthday.value) {
-			alert("생년월일을 입력하세요.");
-			document.upForm.nickname.focus();
-			return false;
-		}
-		if (!form.email.value) {
-			alert("이메일을 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.mobile.value) {
-			alert("전화번호를 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.addr.value) {
-			alert("주소를 입력하세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-		if (!form.receive.value) {
-			alert("이벤트 안내 메일 수신 여부를 체크해주세요.");
-			document.upForm.email.focus();
-			return false;
-		}
-	} */
 	</script>
 	
 	<%@ include file="../include/footer.jsp" %>

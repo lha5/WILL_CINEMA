@@ -7,22 +7,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화관 지점</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
+		request.setCharacterEncoding("UTF-8");
+	
 	//관리자 확인
 
+	
 	//저장된 request값 가져오기
 	List<CineDTO> cineList = (List<CineDTO>)request.getAttribute("cineList");
 	
-	
+	int count = (Integer) request.getAttribute("count");
+	String pageNum = (String)request.getAttribute("pageNum");
+	int pageCount = (Integer) request.getAttribute("pageCount");
+	int pageBlock = (Integer) request.getAttribute("pageBlock");
+	int startPage = (Integer) request.getAttribute("startPage");
+	int endPage = (Integer) request.getAttribute("endPage");
+	int pageSize = (Integer) request.getAttribute("pageSize");
 	%>
 
 	<table border="1">
 		<tr>
-			<td colspan="7"><a href="./CinemaAdd.ci">등록</a></td>
+			<td colspan="8"><a href="./CinemaAdd.ci">등록</a></td>
 		</tr>
  		
 		
@@ -43,6 +54,9 @@
 		 	<td>주소</td>
 		 	<td>전화번호</td>
 		 	<td>수정/삭제</td>
+		 	<td rowspan="2">
+		 		<input type="button" name="detail<%=i %>" value="상세보기" onclick="detail('<%=i%>')">
+		 	</td>
 		 </tr>
 		<tr>
 			<td><%=cdto.getCinema_num() %></td>
@@ -51,13 +65,17 @@
 		 	<td><%=room %></td>
 		 	<td><%=cdto.getAddr() %></td>
 		 	<td><%=cdto.getTel() %></td>
-		 	<td colspan="9">
-		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">관 추가 및 수정</a>
-		 		/<a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>&room=<%=room%>">지점,관 삭제</a>
+		 	<td>
+		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">
+		 		관 추가 및 수정</a>
+		 		/<a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>">지점,관 삭제</a>
 		 	</td>
+		 	
 		 </tr>	
 		 
-		 
+		<tr >
+		<td colspan="8">
+		<table border="1" id="detail_part<%=i %>" style="display:none">
 		 <%//관 나누기
 			for(int j=0;j<room_num;j++){
 				int room_findnum = j+1; 
@@ -68,6 +86,8 @@
 				String start_priod = cdto.getStart_priod().split(",")[j];
 				String end_priod = cdto.getEnd_priod().split(",")[j]; 
 		%>
+		 
+		 
 		 <tr>
 		 	<td>영화번호(영화로 변경)</td>
 		 	<td>관 번호</td>
@@ -89,17 +109,85 @@
 		 	<td><%=end_priod %></td>
 		 	
 		</tr>
+		
+		
 	<%} %>
-		<tr>
-			<td colspan="7">-----------------------------------------
-			---------------------------------------------------------
-			</td>
+		</table>
+		</td>
 		</tr>
+		<tr>
+			<td colspan="8">-----------------------------------------
+			---------------------------------------------------------
+			</td>		
+		</tr>	
+		
 	<%
 	}
+	%>	
+	
+		
+	</table>
+		
+	
+	<%
+		if(count != 0) {
+			// 이전
+			if (startPage > pageBlock) {
+			%>
+			<a href="./CinemaAdminDetail.ci?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+			<%
+			}
+
+			// 1...10  11..20  21...30
+			for (int i = startPage; i <= endPage; i++) {
+			%>
+			<a href="./CinemaAdminDetail.ci?pageNum=<%=i%>">[<%=i%>]
+			</a>
+			<%
+			}
+
+			// 다음
+			if (endPage < pageCount) {
+			%>
+			<a href="./CinemaAdminDetail.ci?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+			<%
+				}
+		}
 	%>
 
-	</table>
+<script>
+	
+	var list_num = $('input[name=list_num]').val();
+
+	var switch_num = 0;
+	
+	function detail(num){
+		switch_num = num;
+		
+		if($('#detail_part'+switch_num).is(":visible")){
+        	//alert("열림");
+            $('#detail_part'+switch_num).css("display","none");
+        }else{
+        	//alert("닫힘");
+            $('#detail_part'+switch_num).css("display","block");
+        }
+	}
+	
+	
+	$(document).ready(function(){
+		
+		
+	    //$("input[name=detail"+switch_num+"]").click(function(){
+	    	 
+	    	
+	        
+	    //});
+		
+		
+	});
+
+
+</script>
 
 	<%@ include file="../include/footer.jsp" %>
 	

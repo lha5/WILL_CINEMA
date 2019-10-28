@@ -28,11 +28,11 @@ public class CinemaDeleteAction implements Action{
 		// 0 - 전체 삭제
 		// 1 - 상영관 삭제
 		int check_del = Integer.parseInt(request.getParameter("check_del"));
-		
-		System.out.println(check_del);
-		
 		//영화관 번호 가져오기
 		int cinema_num = Integer.parseInt(request.getParameter("cinema_num"));
+		
+		
+		System.out.println("상영관 삭제 적용 코드 : "+check_del);
 		
 		ActionForward forward = new ActionForward();
 		
@@ -116,6 +116,7 @@ public class CinemaDeleteAction implements Action{
 			forward.setPath("./CinemaAdminDetail.ci");
 			forward.setRedirect(true);
 			
+			//return forward
 		}//상영관 삭제
 		//지점 전체 삭제
 		else if(check_del==0){
@@ -125,7 +126,7 @@ public class CinemaDeleteAction implements Action{
 		// CineDAO 객체 생성
 		CineDAO cdao = new CineDAOImpl();
 		// deleteCinema() 영화관 삭제 매서드
-		//cdao.deleteCinema(cinema_num);
+		cdao.deleteCinema(cinema_num);
 		
 		
 		// 페이지 이동(./CinemaDetail.ci)

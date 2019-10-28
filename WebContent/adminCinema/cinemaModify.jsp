@@ -1,3 +1,4 @@
+
 <%@page import="com.cinema.db.CineDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+	<%@ include file="../include/header.jsp" %>
 <%
 
 	//request 정보 저장
@@ -34,7 +36,6 @@
 	//
 
 %>
-
 
 <form action="./CinemaModifyAction.ci" method="post">
 	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>">
@@ -74,7 +75,6 @@
 			<tr>
 				<td>상영관 수</td>
 				<td><input type="text" name="room" value="<%=cdto.getRoom() %>"></td>
-
 				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
 			</tr>
 			<!-- ajax -->
@@ -183,7 +183,8 @@
 
 </script>	
 	
-	
+<%@ include file="../include/footer.jsp" %>	
 	
 </body>
+
 </html>

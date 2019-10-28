@@ -106,7 +106,7 @@ public class MovieDAOImpl implements MovieDAO{
 
 
 
-
+	//insert Board
 	
 	public void insertBoard(MovieDTO mdto) {
 		int movie_num = 0;
@@ -182,8 +182,9 @@ public class MovieDAOImpl implements MovieDAO{
 		
 		return count;
 	}
+	// getBoardList
 	
-	public List<MovieDTO> getBoardList() {
+		public List<MovieDTO> getBoardList() {
 		List<MovieDTO> boardList = new ArrayList<MovieDTO>();
 		
 		try {
@@ -205,7 +206,6 @@ public class MovieDAOImpl implements MovieDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				
 				boardList.add(mdto);
 				
 			}
