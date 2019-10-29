@@ -38,6 +38,8 @@ public class CinemaDelete implements Action{
 		forward.setPath("./adminCinema/cinemaDelete.jsp");
 		forward.setRedirect(false);	// 가상주소에서 실제 jsp로 가야하기 때문에 false(forwarding 방식)
 
+		
+		
 		return forward;
 		
 	}
