@@ -3,7 +3,6 @@ package com.cinema.db;
 public class CineDTO {
 	private int region_num;
 	private int cinema_num;
-	private int region_num;
 	private String region;
 	private String name;
 	private String room;
