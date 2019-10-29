@@ -56,7 +56,7 @@
 		<div class="top_space"><!-- 구역 분리를 위한 태그 --></div>
 		
 		<div id="logo">
-			<a href="index.jsp" class="link-home"><i class="fas fa-film"></i> <span>WILL CINEMA</span></a>
+			<a href="Index.me" class="link-home"><i class="fas fa-film"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
