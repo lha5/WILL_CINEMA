@@ -41,6 +41,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
+		// 수정
 		
 		//가상주소를 가지고 이동
 		if(forward !=null){
