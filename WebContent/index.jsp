@@ -21,7 +21,7 @@ response.sendRedirect("Index.me");
 
 			<div id="center">
 				<article id="list">
-					예매 순위
+					
 				</article>
 				<article id="image">
 					<%@include file="./movie/screening.jsp" %>

@@ -66,6 +66,7 @@ public class TicketDAOImpl implements TicketDAO{
 			while (rs.next()) {
 				CineDTO cdto = new CineDTO();
 				
+				cdto.setRegion_num(rs.getInt("region_num"));
 				cdto.setCinema_num(rs.getInt("cinema_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
