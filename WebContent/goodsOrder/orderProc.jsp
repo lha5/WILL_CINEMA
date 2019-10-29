@@ -73,16 +73,13 @@
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
 
 					        console.log(msg);
-					        
-					        location.href = './MallOrderList.mor';
 
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
-							
 							alert(msg);
 						}
-
 					});
+					location.href = './MallOrderList.mor';
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;

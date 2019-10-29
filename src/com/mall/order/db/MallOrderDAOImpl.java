@@ -141,7 +141,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT trans_num, goods_name, goods_amount, price, order_date FROM order_goods WHERE order_id=?";
+			sql = "SELECT trans_num, goods_name, goods_amount, price, order_date FROM order_goods WHERE order_id=? ORDER BY order_num DESC";
 			
 			pstmt = con.prepareStatement(sql);
 			
