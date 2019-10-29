@@ -7,14 +7,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 구매 확인</title>
+<!-- jQuery 연결 -->
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<!-- 비동기 처리 -->
+<script>
+function acyncMovePage(url){
+    // ajax option
+    var ajaxOption = {
+            url : url,
+            async : true,
+            type : "POST",
+            dataType : "html",
+            cache : false
+    };
+    
+    $.ajax(ajaxOption).done(function(data){
+        // body 영역 삭제
+        $('body').children().remove();
+        // body 영역 교체
+        $('body').html(data);
+    });
+}
+</script>
 </head>
 <body>
 	
 	<%
+	String id = (String) request.getAttribute("id");
+	
 	List<MallOrderDTO> orderList = (List<MallOrderDTO>) request.getAttribute("orderList");
 	%>
 
-	<%@ include file="../include/header.jsp" %>
+	<%-- <%@ include file="../include/header.jsp" %> --%>
 
 	<div id="wrap">
 	
@@ -33,7 +58,7 @@
 				MallOrderDTO modto = orderList.get(i);
 			%>
 				<tr>
-					<td><a href="./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>"><%=modto.getTrans_num()%></a></td>
+					<td><a href="javascript:acyncMovePage('./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>')"><%=modto.getTrans_num()%></a></td>
 					<td><%=modto.getGoods_name()%></td>
 					<td><%=modto.getGoods_amount()%></td>
 					<td><%=modto.getPrice() %>원</td>
@@ -46,6 +71,6 @@
 	
 	</div>
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%-- <%@ include file="../include/footer.jsp" %> --%>
 </body>
 </html>

@@ -1,5 +1,12 @@
 package com.mall.order.action;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,20 +34,28 @@ public class MallOrderAddAction implements Action {
 			forward.setRedirect(true);
 			return forward;
 		}
-		
+				
 		// OrderDTO 객체 생성
 		MallOrderDTO modto = new MallOrderDTO();
 		
 		// 한글 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
-		modto.setOrder_id(id);
-		modto.setGoods_name(request.getParameter("goods_name"));
-		modto.setOrder_goods_num(Integer.parseInt(request.getParameter("goods_num")));
-		modto.setGoods_amount(Integer.parseInt(request.getParameter("goods_amount")));
-		modto.setPrice(Integer.parseInt(request.getParameter("price")));
-		modto.setPayment(request.getParameter("payment"));
+		// RequestBody에서 데이터 받아오기
+		String data = URLDecoder.decode(getBody(request), "UTF-8");
+		// System.out.println("넘겨 받은 Request Body 값 : " + data);		
 		
+		// 받아온 데이터를 특정 문자를 기준으로 추출 >> 순서 : order_goods_num,goods_name,goods_amount,price,payment
+		String[] splitData = data.split(",");
+		
+		// modto에 값 저장하기
+		modto.setOrder_id(id);
+		modto.setOrder_goods_num(Integer.parseInt(splitData[0]));
+		modto.setGoods_name(splitData[1]);
+		modto.setGoods_amount(Integer.parseInt(splitData[2]));
+		modto.setPrice(Integer.parseInt(splitData[3]));
+		modto.setPayment(splitData[4]);
+	
 		RandomNumberCreator rnc = new RandomNumberCreator();
 		rnc.setCertNumLength(6);
 		
@@ -60,10 +75,47 @@ public class MallOrderAddAction implements Action {
 		modao.addOrder(modto);
 		
 		// 페이지 이동
-		forward.setPath("./MallOrderList.mor");
+		forward.setPath("./MallOrderDone.mor");
 		forward.setRedirect(true);
 		
 		return forward;
+	}
+	
+	
+	
+	public static String getBody(HttpServletRequest request) throws IOException {
+		
+		String body = null;
+		StringBuilder stringBuilder = new StringBuilder();
+		BufferedReader bufferdReader = null;
+		
+		try {
+			InputStream inputStream = request.getInputStream();
+			if (inputStream != null) {
+				bufferdReader = new BufferedReader(new InputStreamReader(inputStream));
+				char[] charBuffer = new char[128];
+				int bytesRead = -1;
+				while ((bytesRead = bufferdReader.read(charBuffer)) > 0) {
+					stringBuilder.append(charBuffer, 0, bytesRead);
+				}
+			} else {
+				stringBuilder.append("");
+			}
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (bufferdReader != null) {
+				try {
+					bufferdReader.close();
+				} catch (IOException ex) {
+					throw ex;
+				}
+			}
+		}
+		
+		body = stringBuilder.toString();
+		
+		return body;
 	}
 
 }

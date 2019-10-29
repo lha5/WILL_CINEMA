@@ -34,11 +34,6 @@
 		<%
 		for (int i = 0; i < mallOrderDetail.size(); i++) {
 			MallOrderDTO modto = (MallOrderDTO) mallOrderDetail.get(i);
-			
-			String payment = "";
-			if (modto.getPayment().equals("Kakao")) {
-				payment = "카카오페이";
-			}
 		%>
 		<tr>
 		
@@ -46,7 +41,7 @@
 			<td><%=modto.getOrder_date()%></td>
 			<td><%=modto.getGoods_name() %></td>
 			<td><%=modto.getGoods_amount()%></td>
-			<td><%=payment%></td>
+			<td>카카오페이</td>
 			<td><%=modto.getPrice()%>원</td>
 			<td>
 				<%=modto.getBarcode()%>

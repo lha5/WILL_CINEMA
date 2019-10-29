@@ -211,6 +211,20 @@
 	-moz-opacity: 0.3;
 	cursor: default;
 }
+
+
+.movie_list {
+  display: none;
+}
+
+.movie_cont a.active{
+	font-weight: bold;
+}
+
+.movie_list a.on{
+	font-weight: bold;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -383,7 +397,37 @@
 			return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
 
 		});
+
+		
+		openMovie(event,'book');
+		$('.movie_cont').find('a').eq(0).addClass(' active');
 	});
+	//예매순, 평점순 내용보여주기
+	function openMovie(event,rating){
+		var i, movie_list, ratingLink;
+		movie_list = document.getElementsByClassName("movie_list");
+		for(i=0;i<movie_list.length; i++){
+			movie_list[i].style.display="none";
+		}
+		ratingLink=document.getElementsByClassName("ratingLink");
+		for(i=0;i<ratingLink.length;i++){
+			ratingLink[i].className=ratingLink[i].className.replace(" active","");
+		}
+		document.getElementById(rating).style.display="block";
+		if(event!=null)
+		event.currentTarget.className+=" active";
+	}
+
+	function selectMov(event){
+		var movClass=event.currentTarget.className;
+		//alert($('.'+movClass).find('em').text());
+		$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
+		event.currentTarget.className+=" on";
+		
+		/* <div class="txtdate"><dl><dt>상영일</dt><dd>2019.10.22(화)</dd></dl></div>
+		   <div class="txtCin"><dl><dt>영화관</dt><dd>영화관을 선택하세요</dd></dl></div>
+		   <div class="txtName"><dl><dt>영화</dt><dd>영화를 선택하세요</dd></dl></div> */
+	}
 	
 
 </script>
@@ -393,9 +437,15 @@
 <body>
 <%
 	//List<String> allDay = (List)request.getAttribute("allDay");
-	List<CineDTO> cineList = (List)request.getAttribute("cineList");
-	List<MovieDTO> movieList = (List)request.getAttribute("movieList");
+
+	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
+	List allRegion = (List)request.getAttribute("allRegion");//모든지역 
 	
+	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	//System.out.println(cineList.size());
+
+
 %>
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
@@ -419,19 +469,60 @@
       <div class="tab_cont on">
        <ul class="cinema_zone">
        <!-- 지역 반복문 -->
-        <li<%--  class=지역번호 클래스"<%=%>" --%>>
+       <%
+       int[] cineCnt=new int[allRegion.size()];
+       for(int i=0; i<allRegion.size(); i++){ 
+    	   int cnt=0;
+    	   String temp=allRegion.get(i).toString().split(",")[0];
+    	   temp=temp.substring(1);
+    	   int num=Integer.parseInt(temp);
+    	   temp=allRegion.get(i).toString().split(",")[1];
+    	   temp=temp.split("]")[0];
+    	   String name=temp.substring(1);
+    	   for(int j=0; j<cineList.size(); j++){
+    		   CineDTO cdto=cineList.get(j);
+    		   if(cdto.getRegion().equals(name)){
+    			   cnt++;
+         		}
+    	   }
+    	   cineCnt[i]=cnt;
+       }
+       
+       for(int i=0; i<allRegion.size(); i++){ 
+    	   String temp=allRegion.get(i).toString().split(",")[0];
+    	   temp=temp.substring(1);
+    	   int num=Integer.parseInt(temp);
+    	   temp=allRegion.get(i).toString().split(",")[1];
+    	   temp=temp.split("]")[0];
+    	   String name=temp.substring(1);
+
+       %>
+        <li <%-- class=지역번호 클래스"<%=%>" --%>>
          <span class="area_zone">
-          <a href="javascript:void(0);"><h4>서울(<em>20</em>)</h4></a>
+          <a href="javascript:void(0);">
+          <h4><%=name%></h4>(<em><%=cineCnt[i]%></em>)
+          </a>
          </span>
          <div class="area_cont on">
           <ul>
           <!-- 지점명 반복문 -->
-           <li><a href="javascript:void(0);">가산디지털</a></li>
+          <% for(int j=0; j<cineList.size(); j++){
+        	  CineDTO cdto=cineList.get(j);
+        	  //System.out.println(cdto.getRegion()+", " + name);
+          		if(cdto.getRegion().equals(name)){
+          %>
+           <li><a href="javascript:void(0);"><%=cdto.getName() %></a></li>
+           <%
+          		}
+          	} %>
            <!-- 지점명 반복문 -->
           </ul>
          </div>
         </li>
         <!-- 지역 반복문 -->
+
+        <%
+       		} %>
        </ul>
       </div>
      </div>
@@ -444,17 +535,40 @@
     </dl>
     <div class="movie_cont">
      <ul>
-      <li>예매순</li>
-      <li>평점순</li>
+      <li><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a></li>
+      <li><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></li>
      </ul>
+     <!-- 예매순 -->
      <div class="scroll_bar">
-     	<ul class="movie_list">
+     	<ul id="book" class="movie_list">
+     	<!-- 영화 반복문 -->
+     	<%for(int i=0; i<bookRatingList.size(); i++){
+     		MovieDTO mdto=bookRatingList.get(i);
+     	%>
      	 <li>
-     	  <a href="javascript:void(0);">
-     	   <span>15</span>
-     	   <em>조커</em>
+     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
+     	  onclick='selectMov(event);'>
+     	   <span><%=mdto.getGrade() %></span>
+     	   <em><%=mdto.getTitle() %></em>
      	  </a>
      	 </li>
+     	 <%} %>
+     	 <!-- 영화 반복문 -->
+     	</ul>
+    	 <!-- 평점순 -->
+     	<ul id="total" class="movie_list">
+     	<!-- 영화 반복문 -->
+     	<%for(int i=0; i<totalRatingList.size(); i++){ 
+     		MovieDTO mdto=totalRatingList.get(i);
+     	%>
+     	 <li>
+     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
+     	   <span><%=mdto.getGrade() %></span>
+     	   <em><%=mdto.getTitle() %></em>
+     	  </a>
+     	 </li>
+     	 <%} %>
+     	 <!-- 영화 반복문 -->
      	</ul>
      </div>
     </div>

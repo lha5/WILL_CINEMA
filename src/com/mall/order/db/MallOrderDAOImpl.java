@@ -79,16 +79,24 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			
 			// ------------------------------------------
 			
-			sql = "SELECT trans_num, order_date FROM order_goods WHERE order_num="
-					+ "(SELECT MAX(order_num) FROM order_goods)";
+			sql = "SELECT trans_num, order_date FROM order_goods WHERE order_num=(SELECT MAX(order_num) FROM order_goods)";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
+			String last_trans_no = "";
+			int t_no = 0;
+			String tday = "";
 			if (rs.next()) {
-				if (!rs.getDate("order_date").equals(sdf.format(cal.getTime()).toString())) {
-					trans_no = Integer.parseInt(rs.getString("trans_num").substring(9)) + 1;
+				String[] strArr = new String[2];
+				strArr = rs.getString("trans_num").split("-");
+				
+				last_trans_no = strArr[0];
+				t_no = Integer.parseInt(strArr[1]);
+				tday = sdf.format(cal.getTime()).toString();
+				if (last_trans_no.equals(tday)) {
+					trans_no = t_no + 1;
 				} else {
 					trans_no = 1;
 				}
@@ -133,7 +141,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT trans_num, goods_name, goods_amount, price, order_date FROM order_goods WHERE order_id=?";
+			sql = "SELECT trans_num, goods_name, goods_amount, price, order_date FROM order_goods WHERE order_id=? ORDER BY order_num DESC";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -204,5 +212,46 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		}
 		
 		return orderDetailList;
+	}
+
+	
+	
+	// 구매 직후 확인 페이지
+	@Override
+	public List<MallOrderDTO> getOrderDone(String id) {
+		List<MallOrderDTO> orderDone = new ArrayList();
+		
+		try {
+			con = getCon();
+			
+			sql = "SELECT trans_num, goods_name, goods_amount, price, payment "
+					+ "FROM order_goods "
+					+ "WHERE order_num(SELECT MAX(order_num) FROM order_goods WHERE order_id = ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MallOrderDTO modto = new MallOrderDTO();
+				
+				modto.setTrans_num(rs.getString("trans_num"));
+				modto.setGoods_name(rs.getString("goods_name"));
+				modto.setGoods_amount(rs.getInt("goods_amount"));
+				modto.setPrice(rs.getInt("price"));
+				modto.setPayment(rs.getString("payment"));
+				
+				orderDone.add(modto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return orderDone;
 	}
 }
