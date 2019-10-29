@@ -42,9 +42,9 @@ public class MovieAddAction implements Action {
 			String story = request.getParameter("story");
 			String actor = request.getParameter("actor");
 			int running_time = Integer.parseInt(request.getParameter("running_time"));
-				
+
 			System.out.print("name : "+ title + " id : "+ id + " running_time : "+running_time);
-				
+
 
 			mdto.setTitle(title);
 			mdto.setGenre(genre);
