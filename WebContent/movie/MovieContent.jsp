@@ -52,7 +52,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 			</tr>
 			<tr>
 				<td colspan="6">
-					<input type="button" value="수정하기" onclick="location.href='./QnAUpdate.sq?num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+					<input type="button" value="수정하기" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 					<input type="button" value="삭제하기" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 				</td>
 			</tr>

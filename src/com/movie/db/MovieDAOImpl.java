@@ -140,7 +140,55 @@ public class MovieDAOImpl implements MovieDAO{
 		System.out.println("게시판 글 저장: "+mdto);
 		return mdto;
 	}
-
+	
+	@Override
+	public int updateBoard(MovieDTO mdto) {
+		int check = -1;
+		
+		try {
+			con = getCon();
+			
+			System.out.println("movie_num : "+mdto.getMovie_num());
+			
+			sql = "select title from movie where movie_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mdto.getMovie_num());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				sql = "update movie set title=? ,genre=?, country=?, running_time=?, director=?, story=?, actor=? where movie_num=?";
+					
+				pstmt = con.prepareStatement(sql);
+					
+				pstmt.setString(1, mdto.getTitle());
+				pstmt.setString(2, mdto.getGenre());
+				pstmt.setString(3, mdto.getCountry());
+				pstmt.setInt(4, mdto.getRunning_time());
+				pstmt.setString(5, mdto.getDirector());
+				pstmt.setString(6, mdto.getStory());
+				pstmt.setString(7, mdto.getActor());
+				pstmt.setInt(8, mdto.getMovie_num());
+				
+				check = pstmt.executeUpdate();
+				// check = 1;
+			}else{
+				check = -1;
+			}
+			
+			System.out.println("글 수정 동작 완료 : "+check);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return check;
+		
+	}
+	
 
 
 
