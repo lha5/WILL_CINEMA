@@ -19,6 +19,7 @@ public class DetailViewAction implements Action{
 		
 			// 전달 정보를 저장(num,numpage)
 
+<<<<<<< HEAD
 			//int num = Integer.parseInt(request.getParameter("num"));
 			int num=1;
 		
@@ -46,3 +47,31 @@ public class DetailViewAction implements Action{
 	}
 
 }
+=======
+			//int num = Integer.parseInt(request.getParameter("num"));
+			int num = 1;
+
+			String pageNum = request.getParameter("pageNum");
+		
+			 //System.out.println("num : " + num + ", pageNum : " + pageNum);
+		
+			//MovieDAO 객체 생성
+			MovieDAO mdao = new MovieDAOImpl(); 
+		
+			// 글 번호에 해당하는 글 정보 가져오기
+			MovieDTO mdto = mdao.getBoard(num);
+	
+			// 정보 저장
+			request.setAttribute("mdto", mdto);
+			request.setAttribute("pageNum", pageNum);
+		
+			
+			// 페이지 이동
+			ActionForward forward = new ActionForward();
+			forward.setPath("./movie/MovieContent.jsp");
+			forward.setRedirect(false);
+			return forward;
+	}
+
+}
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git

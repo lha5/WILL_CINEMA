@@ -1,3 +1,4 @@
+
 <%@page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -37,6 +38,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 				<td colspan="5">
 					<a href="./upload/<%=mdto.getImage() %>"><%=mdto.getImage() %></a>
 				
+				
 				</td>
 			</tr>
 			<tr>
@@ -49,21 +51,12 @@ String pageNum = (String) request.getAttribute("pageNum");
 				<td colspan="5"><%=mdto.getDirector() %><%=mdto.getActor() %>
 				</td>		
 			</tr>
-		
 			<tr>
-				<td>상세보기
-			
-			
-			
-			
-			
-			
+				<td colspan="6">
+					<input type="button" value="수정하기" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+					<input type="button" value="삭제하기" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+				</td>
 			</tr>
-		
-		
-		
-		
-		
 		</table>
 
 
@@ -76,4 +69,5 @@ String pageNum = (String) request.getAttribute("pageNum");
 
 
 </body>
+
 </html>
