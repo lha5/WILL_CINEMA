@@ -59,7 +59,7 @@
 		 	</td>
 		 </tr>
 		<tr>
-			<td><%=cdto.getCinema_num() %></td>
+			<td><%=cdto.getRegion_num()%>-<%=cdto.getCinema_num() %></td>
 			<td><%=cdto.getRegion() %></td>
 		 	<td><%=cdto.getName() %></td>
 		 	<td><%=room %></td>

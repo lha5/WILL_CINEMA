@@ -12,16 +12,17 @@
 
 	<%
 	List mallOrderDetail = (List) request.getAttribute("mallOrderDetail");
-	System.out.println("mallOrderDetail 작동 테스트" + mallOrderDetail.get(0));
+	// System.out.println("mallOrderDetail 작동 테스트" + mallOrderDetail.get(0));
 	%>
 
 	<%@ include file="../include/header.jsp" %>
 
 	<div id="wrap">
 	
-	<h2>구매 상세 내역</h2>
-	
 	<table border="1">
+		<tr>
+			<td colspan="7"><h2>구매 상세 내역</h2></td>
+		</tr>
 		<tr>
 			<td>구매 번호</td>
 			<td>구매 일자</td>
@@ -34,11 +35,6 @@
 		<%
 		for (int i = 0; i < mallOrderDetail.size(); i++) {
 			MallOrderDTO modto = (MallOrderDTO) mallOrderDetail.get(i);
-			
-			String payment = "";
-			if (modto.getPayment().equals("Kakao")) {
-				payment = "카카오페이";
-			}
 		%>
 		<tr>
 		
@@ -46,7 +42,7 @@
 			<td><%=modto.getOrder_date()%></td>
 			<td><%=modto.getGoods_name() %></td>
 			<td><%=modto.getGoods_amount()%></td>
-			<td><%=payment%></td>
+			<td>카카오페이</td>
 			<td><%=modto.getPrice()%>원</td>
 			<td>
 				<%=modto.getBarcode()%>

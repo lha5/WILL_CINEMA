@@ -15,16 +15,17 @@
 				<tr>
 					<td>영화 제목</td>
 					<td>
-						<input type="text" name="name" value="">
+						<input type="text" name="title">
 						<input type="hidden" value=""><!-- 비밀번호 저장 -->
 					</td>
 					<td>장르</td>
 					<td>
 						<select name="genre">
-						<option value="#">#</option>
-						<option value="$">$</option>
-						<option value="&">&</option>
-						<option value="*">*</option>
+						<option value="액션">액션</option>
+						<option value="SF">SF</option>
+						<option value="드라마">드라마</option>
+						<option value="멜로">멜로</option>
+						<option value="가족">가족</option>
 					</select>
 					</td>
 				</tr>

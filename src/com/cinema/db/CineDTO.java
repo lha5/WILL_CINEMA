@@ -3,6 +3,7 @@ package com.cinema.db;
 public class CineDTO {
 	private int region_num;
 	private int cinema_num;
+	private int region_num;
 	private String region;
 	private String name;
 	private String room;
@@ -17,25 +18,22 @@ public class CineDTO {
 	
 	
 	
+	
 	@Override
 	public String toString() {
 		
-		return "번호 :"+cinema_num+", 지역 :"+region+", 지점명:"+name+", 관수 :"+room+
+		return "번호 :"+cinema_num+", 지역번호 :"+region_num+", 지역 :"+region+", 지점명:"+name+", 관수 :"+room+
 				", 좌석수 :"+seat+", 주소 :"+addr+", 전화번호 :"+tel+
 				", 시작시간 :"+start_times+", 종료시간 :"+end_times+
 				", 시작일 :"+start_priod+", 종료일 :"+end_priod+", 영화번호 :"+movie_num;
 	}
-	
+
 	public int getRegion_num() {
 		return region_num;
 	}
-
-
 	public void setRegion_num(int region_num) {
 		this.region_num = region_num;
 	}
-
-
 	public int getCinema_num() {
 		return cinema_num;
 	}

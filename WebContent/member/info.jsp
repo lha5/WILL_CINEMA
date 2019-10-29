@@ -51,6 +51,8 @@
 		<br><br>
 		<a href="./CinemaAdminDetail.ci">영화관 지점 관리(관리자 전용)</a>
 		<br><br>
+		<a href="#">영화 등록 관리(관리자 전용)</a>
+		<br><br>
 					
 	<%	
 		}
