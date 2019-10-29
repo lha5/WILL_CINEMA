@@ -7,6 +7,8 @@ import com.movie.db.MovieDTO;
 
 public interface TicketDAO {
 	public List<CineDTO> getCinemaList();
+	
+	public CineDTO getSelectList(String cinema);
 
 	//영화 예매순
 	public List<MovieDTO> bookRatingList();
