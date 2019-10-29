@@ -53,17 +53,17 @@
 					jQuery.ajax({
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
-						dataType: 'json',
+						dataType: 'text',
 						contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: {				
-							// imp_uid : rsp.imp_uid,
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'					
+						<%-- {				
 							goods_num : <%=goods_num%>,
 							goods_name : '<%=goods_name%>',
 							price : <%=price%>,
 							goods_amount : <%=goods_amount%>,
 							payment : 'KakaoPay'
-						}
+						} --%>
 					}).done(function(data) {
 						if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';
@@ -79,7 +79,7 @@
 							alert(msg);
 						}
 					});
-					location.href = './MallOrderList.mor';
+					location.href = './MallOrderDone.mor';
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;

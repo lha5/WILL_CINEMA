@@ -45,45 +45,17 @@ public class MallOrderAddAction implements Action {
 		String data = URLDecoder.decode(getBody(request), "UTF-8");
 		// System.out.println("넘겨 받은 Request Body 값 : " + data);		
 		
-		// 받아온 데이터 특정 문자를 기준으로 추출
-		String[] splitData = data.split("&");
-		
-		String[] order_goods_num = new String[2];
-		order_goods_num = splitData[0].split("=");
-		System.out.println("order_goods_num : " + order_goods_num[1]);
-		
-		String[] goods_name = new String[2];
-		goods_name = splitData[1].split("=");
-		System.out.println("goods_name : " + goods_name[1]);
-		
-		String[] goods_amount = new String[2];
-		goods_amount = splitData[3].split("=");
-		System.out.println("goods_amount: " + goods_amount[1]);
-		
-		String[] price = new String[2];
-		price = splitData[2].split("=");
-		System.out.println("price : " + price[1]);
-		
-		String[] payment = new String[2];
-		payment = splitData[4].split("=");
-		System.out.println("payment : " + payment[1]);
+		// 받아온 데이터를 특정 문자를 기준으로 추출 >> 순서 : order_goods_num,goods_name,goods_amount,price,payment
+		String[] splitData = data.split(",");
 		
 		// modto에 값 저장하기
 		modto.setOrder_id(id);
-		modto.setGoods_name(goods_name[1]);
-		modto.setOrder_goods_num(Integer.parseInt(order_goods_num[1]));
-		modto.setGoods_amount(Integer.parseInt(goods_amount[1]));
-		modto.setPrice(Integer.parseInt(price[1]));
-		modto.setPayment(payment[1]);
-		
-		/*
-		modto.setGoods_name(request.getParameter("goods_name"));
-		modto.setOrder_goods_num(Integer.parseInt(request.getParameter("goods_num")));
-		modto.setGoods_amount(Integer.parseInt(request.getParameter("goods_amount")));
-		modto.setPrice(Integer.parseInt(request.getParameter("price")));
-		modto.setPayment(request.getParameter("payment"));
-		*/
-		
+		modto.setOrder_goods_num(Integer.parseInt(splitData[0]));
+		modto.setGoods_name(splitData[1]);
+		modto.setGoods_amount(Integer.parseInt(splitData[2]));
+		modto.setPrice(Integer.parseInt(splitData[3]));
+		modto.setPayment(splitData[4]);
+	
 		RandomNumberCreator rnc = new RandomNumberCreator();
 		rnc.setCertNumLength(6);
 		
@@ -103,7 +75,7 @@ public class MallOrderAddAction implements Action {
 		modao.addOrder(modto);
 		
 		// 페이지 이동
-		forward.setPath("./MallOrderList.mor");
+		forward.setPath("./MallOrderDone.mor");
 		forward.setRedirect(true);
 		
 		return forward;
