@@ -41,7 +41,7 @@ public class AdminMovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MovieDelete.am")) { // 영화 삭제 페이지
-			//action = new MovieDeleteAction();
+			action = new MovieDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

@@ -53,6 +53,46 @@ public class MovieDAOImpl implements MovieDAO{
 			
 		}
 	}
+	
+	@Override
+	public int deleteBoard(int movie_num) {
+		
+		int check = -1;
+		
+		try {
+			con = getCon();
+			
+			sql = "select title from movie where movie_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+					
+					sql = "delete from movie where movie_num=?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, movie_num);
+					
+					check = pstmt.executeUpdate();
+				
+			}else{
+				check = -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return check;
+		
+	}
 
 
 	// getBoard(num)
