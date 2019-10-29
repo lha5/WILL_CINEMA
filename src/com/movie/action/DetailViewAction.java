@@ -44,3 +44,4 @@ public class DetailViewAction implements Action{
 			forward.setRedirect(false);
 			return forward;
 	}
+}
