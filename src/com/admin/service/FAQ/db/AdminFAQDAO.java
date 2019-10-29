@@ -2,7 +2,6 @@ package com.admin.service.FAQ.db;
 
 import java.util.List;
 
-import com.admin.service.notice.db.AdminNoticeDTO;
 
 public interface AdminFAQDAO {
 
@@ -22,8 +21,10 @@ public interface AdminFAQDAO {
 	public int deleteFAQ(int num,String pass);
 	
 	
+	// 메인 뿌리기위해 만들것 
+	public int getBoardCount();
 	
-
+	public List<AdminFAQDTO> getBoardList();
 	
 	
 }
