@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -72,7 +73,11 @@ public class MallOrderAddAction implements Action {
 		
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
-		modao.addOrder(modto);
+		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
+		List<MallOrderDTO> doneCheck = modao.getOrderDone(id);	// 구매 직후 확인 페이지에 보여줄 내용 가져오는 메소드
+		System.out.println("getOrderDone(id) 메소드 실행 후 값 확인 : " + doneCheck);
+		
+		request.setAttribute("doneCheck", doneCheck);
 		
 		// 페이지 이동
 		forward.setPath("./MallOrderDone.mor");

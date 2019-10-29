@@ -1,8 +1,8 @@
 package com.cinema.db;
 
 public class CineDTO {
-	private int cinema_num;
 	private int region_num;
+	private int cinema_num;
 	private String region;
 	private String name;
 	private String room;
@@ -26,6 +26,7 @@ public class CineDTO {
 				", 시작시간 :"+start_times+", 종료시간 :"+end_times+
 				", 시작일 :"+start_priod+", 종료일 :"+end_priod+", 영화번호 :"+movie_num;
 	}
+
 	public int getRegion_num() {
 		return region_num;
 	}

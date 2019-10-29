@@ -56,14 +56,7 @@
 						dataType: 'text',
 						contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'					
-						<%-- {				
-							goods_num : <%=goods_num%>,
-							goods_name : '<%=goods_name%>',
-							price : <%=price%>,
-							goods_amount : <%=goods_amount%>,
-							payment : 'KakaoPay'
-						} --%>
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'
 					}).done(function(data) {
 						if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';

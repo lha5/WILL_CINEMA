@@ -225,6 +225,10 @@
 	font-weight: bold;
 }
 
+.area_list a.on{
+	font-weight: bold;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -398,19 +402,70 @@
 
 		});
 
-		
+		//openMovie(event,'book');
 		openMovie(event,'book');
 		$('.movie_cont').find('a').eq(0).addClass(' active');
+		
+		openArea(event,'area1');
+		//$('.movie_cont').find('a').eq(0).addClass(' active');
 	});
+	
+	//지역 선택
+	function openArea(event,areaNum){// 이벤트, 보여줄 지역의 지점명 목록
+		// 지점 ul 클래스, 선택지역 클래스명
+		var area_list, region;
+		area_list = document.getElementsByClassName("area_list");
+		for(var i=0;i<area_list.length; i++){
+			area_list[i].style.display="none";
+		}
+		region=document.getElementsByClassName("region");
+		for(var i=0;i<region.length;i++){
+			region[i].className=region[i].className.replace(" active","");
+		}
+		document.getElementById(areaNum).style.display="block";
+		if(event!=null)
+		event.currentTarget.className+=" active";
+	}
+
+	//지점명 선택
+	function selectArea(event){
+		var areaClass=event.currentTarget.className;
+		//alert($('.'+movClass).find('em').text());
+		
+		//alert($(event.currentTarget).attr('class'));
+		console.log($(event.currentTarget).parent());//.siblings().length);
+		/* //다른 지점 선택시
+		if($('.area_list').find('.on').length>=1){
+			$('.area_list').find('.on').removeClass("on");
+		} */
+		//alert($(event.currentTarget).attr('class')[2].toString());
+		//현재 선택된 지점을 다시 클릭할때 선택 해제
+		if($(event.currentTarget).hasClass('on')){
+			event.currentTarget.className=areaClass.replace(" on","");
+			$('.txtCin').find('dd').text('영화를 선택하세요');
+		}else{
+			event.currentTarget.className+=" on";
+			$('.txtCin').find('dd').text($(event.currentTarget).text());
+		}	
+		//console.log($('.movie_list').find('.on').length);
+		//event.currentTarget.className+=" on";
+		
+		/* <div class="txtdate"><dl><dt>상영일</dt><dd>2019.10.22(화)</dd></dl></div>
+		   <div class="txtCin"><dl><dt>영화관</dt><dd>영화관을 선택하세요</dd></dl></div>
+		   <div class="txtName"><dl><dt>영화</dt><dd>영화를 선택하세요</dd></dl></div> */
+	}
+	
+	
 	//예매순, 평점순 내용보여주기
-	function openMovie(event,rating){
-		var i, movie_list, ratingLink;
+	function openMovie(event,rating){//클릭한 이벤트, (예매,평점)클래스명
+		//영화 ul의 클래스 , (예매,평점)선택 클래스명
+		var movie_list, ratingLink;
 		movie_list = document.getElementsByClassName("movie_list");
-		for(i=0;i<movie_list.length; i++){
+		for(var i=0;i<movie_list.length; i++){
 			movie_list[i].style.display="none";
 		}
 		ratingLink=document.getElementsByClassName("ratingLink");
-		for(i=0;i<ratingLink.length;i++){
+		for(var i=0;i<ratingLink.length;i++){
 			ratingLink[i].className=ratingLink[i].className.replace(" active","");
 		}
 		document.getElementById(rating).style.display="block";
@@ -418,11 +473,29 @@
 		event.currentTarget.className+=" active";
 	}
 
+	//영화 선택
 	function selectMov(event){
 		var movClass=event.currentTarget.className;
 		//alert($('.'+movClass).find('em').text());
-		$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
-		event.currentTarget.className+=" on";
+		
+		//alert($(event.currentTarget).attr('class'));
+		
+		//다른 영화 선택시
+		if($('.movie_list').find('.on').length>=1){
+			$('.movie_list').find('.on').removeClass("on");
+		}
+		
+		//현재 선택된 영화를 다시 클릭할때 선택 해제
+		if($(event.currentTarget).is('.on')){
+			alert("있음");
+			movClass=movClass.replace(" on","");
+			$('.txtName').find('dd').text('영화를 선택하세요');
+		}else{
+			event.currentTarget.className+=" on";
+			$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
+		}	
+		//console.log($('.movie_list').find('.on').length);
+		//event.currentTarget.className+=" on";
 		
 		/* <div class="txtdate"><dl><dt>상영일</dt><dd>2019.10.22(화)</dd></dl></div>
 		   <div class="txtCin"><dl><dt>영화관</dt><dd>영화관을 선택하세요</dd></dl></div>
@@ -444,7 +517,7 @@
 	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
 	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	//System.out.println(cineList.size());
-
+	int[] cineCnt=(int[])request.getAttribute("cineCnt");
 
 %>
 <div class="cont_ticket">
@@ -466,52 +539,35 @@
     <div class="cinema_cont">
      <div class="cinema_top"><h4>전체영화관</h4></div>
      <div class="tab_scroll"> <!-- 영화관 목록 -->
-      <div class="tab_cont on">
+      <div class="tab_cont">
        <ul class="cinema_zone">
        <!-- 지역 반복문 -->
        <%
-       int[] cineCnt=new int[allRegion.size()];
-       for(int i=0; i<allRegion.size(); i++){ 
-    	   int cnt=0;
+  		for(int i=0; i<allRegion.size(); i++){ 
+    	 	//지역번호
     	   String temp=allRegion.get(i).toString().split(",")[0];
     	   temp=temp.substring(1);
     	   int num=Integer.parseInt(temp);
+    	 	//지역명
     	   temp=allRegion.get(i).toString().split(",")[1];
     	   temp=temp.split("]")[0];
     	   String name=temp.substring(1);
-    	   for(int j=0; j<cineList.size(); j++){
-    		   CineDTO cdto=cineList.get(j);
-    		   if(cdto.getRegion().equals(name)){
-    			   cnt++;
-         		}
-    	   }
-    	   cineCnt[i]=cnt;
-       }
-       
-       for(int i=0; i<allRegion.size(); i++){ 
-    	   String temp=allRegion.get(i).toString().split(",")[0];
-    	   temp=temp.substring(1);
-    	   int num=Integer.parseInt(temp);
-    	   temp=allRegion.get(i).toString().split(",")[1];
-    	   temp=temp.split("]")[0];
-    	   String name=temp.substring(1);
-
        %>
-        <li <%-- class=지역번호 클래스"<%=%>" --%>>
+        <li>
          <span class="area_zone">
-          <a href="javascript:void(0);">
+          <a href="javascript:void(0);" class="region" onclick="openArea(event,'area<%=num%>')">
           <h4><%=name%></h4>(<em><%=cineCnt[i]%></em>)
           </a>
          </span>
-         <div class="area_cont on">
-          <ul>
+         <div class="area_cont">
+          <ul class="area_list" id="area<%=num%>">
           <!-- 지점명 반복문 -->
           <% for(int j=0; j<cineList.size(); j++){
         	  CineDTO cdto=cineList.get(j);
         	  //System.out.println(cdto.getRegion()+", " + name);
           		if(cdto.getRegion().equals(name)){
           %>
-           <li><a href="javascript:void(0);"><%=cdto.getName() %></a></li>
+           <li><a href="javascript:void(0);" class=<%=cdto.getCinema_num() %> onclick='selectArea(event);'><%=cdto.getName() %></a></li>
            <%
           		}
           	} %>
@@ -520,9 +576,7 @@
          </div>
         </li>
         <!-- 지역 반복문 -->
-
-        <%
-       		} %>
+        <%} %>
        </ul>
       </div>
      </div>

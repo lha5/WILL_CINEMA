@@ -173,12 +173,31 @@ public class Ticketing implements Action {
 		//영화관 상영 날짜순 정렬
 		List<String> allDay = new ArrayList(allDate);
 		Collections.sort(allDay);
-
+		int[] cineCnt=new int[allRegion.size()];
+	    for(int i=0; i<allRegion.size(); i++){ 
+	    	int cnt=0;
+	    	//지역번호
+	    	String temp=allRegion.get(i).toString().split(",")[0];
+	    	temp=temp.substring(1);
+	    	int num=Integer.parseInt(temp);
+	    	//지역명
+	    	temp=allRegion.get(i).toString().split(",")[1];
+	    	temp=temp.split("]")[0];
+	    	String name=temp.substring(1);
+	    	for(int j=0; j<cineList.size(); j++){
+	    	CineDTO cdto=cineList.get(j);
+	    		if(cdto.getRegion().equals(name)){
+	    			cnt++;
+	    		}
+	    	}
+	    	   cineCnt[i]=cnt;
+	     }
 		//view 페이지로 값 전달
 		request.setAttribute("cineList", cineList);
 		request.setAttribute("bookRatingList", bookRatingList);
 		request.setAttribute("totalRatingList", totalRatingList);
 		request.setAttribute("allRegion", allRegion);//전체 지역
+		request.setAttribute("cineCnt", cineCnt);
 		request.setAttribute("allDay", allDay);
 		
 		ActionForward forward=new ActionForward();
