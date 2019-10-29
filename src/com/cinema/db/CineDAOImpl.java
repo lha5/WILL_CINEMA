@@ -71,25 +71,26 @@ public class CineDAOImpl implements CineDAO{
 			}
 			
 			sql = "INSERT INTO cinema"
-					+ "(cinema_num, region, name, room, seat, addr, tel, "
+					+ "(cinema_num, region_num, region, name, room, seat, addr, tel, "
 					+ "start_times, end_times, start_priod, end_priod, movie_num)"
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, cinema_num);
-			pstmt.setString(2, cdto.getRegion());
-			pstmt.setString(3, cdto.getName());
-			pstmt.setString(4, cdto.getRoom());
-			pstmt.setString(5, cdto.getSeat());
-			pstmt.setString(6, cdto.getAddr());
-			pstmt.setString(7, cdto.getTel());
-			pstmt.setString(8, cdto.getStart_times());
-			pstmt.setString(9, cdto.getEnd_times());
-			pstmt.setString(10, cdto.getStart_priod());
-			pstmt.setString(11, cdto.getEnd_priod());
+			pstmt.setInt(2, cdto.getRegion_num());
+			pstmt.setString(3, cdto.getRegion());
+			pstmt.setString(4, cdto.getName());
+			pstmt.setString(5, cdto.getRoom());
+			pstmt.setString(6, cdto.getSeat());
+			pstmt.setString(7, cdto.getAddr());
+			pstmt.setString(8, cdto.getTel());
+			pstmt.setString(9, cdto.getStart_times());
+			pstmt.setString(10, cdto.getEnd_times());
+			pstmt.setString(11, cdto.getStart_priod());
+			pstmt.setString(12, cdto.getEnd_priod());
 			//
-			pstmt.setString(12, cdto.getMovie_num());
+			pstmt.setString(13, cdto.getMovie_num());
 			
 			pstmt.executeUpdate();
 			
@@ -138,7 +139,7 @@ public class CineDAOImpl implements CineDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT * FROM cinema order by region limit ?,?";
+			sql = "SELECT * FROM cinema order by region_num,cinema_num limit ?,?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
@@ -150,6 +151,7 @@ public class CineDAOImpl implements CineDAO{
 				CineDTO cdto = new CineDTO();
 				
 				cdto.setCinema_num(rs.getInt("cinema_num"));
+				cdto.setRegion_num(rs.getInt("region_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
 				cdto.setRoom(rs.getString("room"));
@@ -191,6 +193,7 @@ public class CineDAOImpl implements CineDAO{
 				CineDTO cdto = new CineDTO();
 				
 				cdto.setCinema_num(rs.getInt("cinema_num"));
+				cdto.setRegion_num(rs.getInt("region_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
 				cdto.setRoom(rs.getString("room"));
@@ -235,6 +238,7 @@ public class CineDAOImpl implements CineDAO{
 				cdto = new CineDTO();
 				
 				cdto.setCinema_num(rs.getInt("cinema_num"));
+				cdto.setRegion_num(rs.getInt("region_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
 				cdto.setRoom(rs.getString("room"));
@@ -267,25 +271,26 @@ public class CineDAOImpl implements CineDAO{
 			con = getCon();
 			
 			sql = "update cinema "
-					+ "set region=?, name=?, room=?, seat=?, addr=?, tel=?, "
+					+ "set region_num=?, region=?, name=?, room=?, seat=?, addr=?, tel=?, "
 					+ "start_times=?, end_times=?, start_priod=?, end_priod=?, movie_num=? "
 					+ "where cinema_num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			
-			pstmt.setString(1, cdto.getRegion());
-			pstmt.setString(2, cdto.getName());
-			pstmt.setString(3, cdto.getRoom());
-			pstmt.setString(4, cdto.getSeat());
-			pstmt.setString(5, cdto.getAddr());
-			pstmt.setString(6, cdto.getTel());
-			pstmt.setString(7, cdto.getStart_times());
-			pstmt.setString(8, cdto.getEnd_times());
-			pstmt.setString(9, cdto.getStart_priod());
-			pstmt.setString(10, cdto.getEnd_priod());
-			pstmt.setString(11, cdto.getMovie_num());
-			pstmt.setInt(12, cdto.getCinema_num());
+			pstmt.setInt(1, cdto.getRegion_num());
+			pstmt.setString(2, cdto.getRegion());
+			pstmt.setString(3, cdto.getName());
+			pstmt.setString(4, cdto.getRoom());
+			pstmt.setString(5, cdto.getSeat());
+			pstmt.setString(6, cdto.getAddr());
+			pstmt.setString(7, cdto.getTel());
+			pstmt.setString(8, cdto.getStart_times());
+			pstmt.setString(9, cdto.getEnd_times());
+			pstmt.setString(10, cdto.getStart_priod());
+			pstmt.setString(11, cdto.getEnd_priod());
+			pstmt.setString(12, cdto.getMovie_num());
+			pstmt.setInt(13, cdto.getCinema_num());
 			
 			pstmt.executeUpdate();
 			

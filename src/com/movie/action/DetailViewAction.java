@@ -19,7 +19,6 @@ public class DetailViewAction implements Action{
 		
 			// 전달 정보를 저장(num,numpage)
 
-
 			//int num = Integer.parseInt(request.getParameter("num"));
 			int num=1;
 		
@@ -45,8 +44,4 @@ public class DetailViewAction implements Action{
 			forward.setRedirect(false);
 			return forward;
 	}
-
 }
-
-
-
