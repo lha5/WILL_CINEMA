@@ -100,27 +100,28 @@
 		<section>
 
 			<div id="center">
+			
 				<article id="list">
 					예매 순위
 				</article>
 				<article id="image">
 					<div class="contents">
 
-		<div class="banner">
-			
-		
-			<ul>
-				  <%
-     	for (int i=0;i<4;i++) {
-    		MovieDTO mdto = boardList.get(i);
-		%>
-		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
-					<%} %>
-					</ul>
-		
-		
-		</div>
-	</div>
+						<div class="banner">
+							
+						
+							<ul>
+								  <%
+				     	for (int i=0;i<4;i++) {
+				    		MovieDTO mdto = boardList.get(i);
+						%>
+						<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
+									<%} %>
+									</ul>
+						
+						
+						</div>
+					</div>
 					
 				</article>
 			</div>

@@ -41,7 +41,7 @@ public class AdminMovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MovieDelete.am")) { // 영화 삭제 페이지
-			//action = new MovieDeleteAction();
+			action = new MovieDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -52,7 +52,7 @@ public class AdminMovieFrontController extends HttpServlet{
 			forward.setPath("./adminMovie/movieModify.jsp");
 			forward.setRedirect(false);
 		}else if (command.equals("/MovieModifyAction.am")) { // 영화 수정 페이지
-			//action = new MovieModifyAction();
+			action = new MovieModifyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
