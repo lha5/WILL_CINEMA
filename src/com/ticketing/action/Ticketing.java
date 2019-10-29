@@ -147,28 +147,7 @@ public class Ticketing implements Action {
 		};
 		Collections.sort(allRegion,com);
 */
-		
-		/*//지역별 상영관 리스트
-		for(int i=0; i<arr.size(); i++){
-			CineDTO cdto=cineList.get(i);
-			ArrayList allCineList = new ArrayList();
-			for()
-			switch(cdto.getCinema_num()){
-				case 1:
-					
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					break;
-			}
-		}*/
+
 		System.out.println(allRegion.get(0).toString());
 		//영화관 상영 날짜순 정렬
 		List<String> allDay = new ArrayList(allDate);
