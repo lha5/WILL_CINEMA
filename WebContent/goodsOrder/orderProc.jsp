@@ -34,15 +34,6 @@
 	<!-- 결제 모듈 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			<%-- var obj = new Object();
-			obj.goods_num = <%=goods_num%>;
-			obj.goods_name = '<%=goods_name%>';
-			obj.price = <%=price%>;
-			obj.goods_amount = <%=goods_amount%>;
-			obj.payment = 'KakaoPay';
-			
-			var jsonData = JSON.stringify(obj); --%>
-		
 			// var IMP = window.IMP;
 
 			IMP.init('imp30527297');
@@ -62,22 +53,19 @@
 					jQuery.ajax({
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
-						dataType: 'html',
-						cache: false
-						<%-- async: false,
-						data: {
-							/* data : jsonData */					
-							imp_uid : rsp.imp_uid,
+						dataType: 'json',
+						contentType : "application/json; charset=UTF-8",
+						async: false,
+						data: {				
+							// imp_uid : rsp.imp_uid,
 							goods_num : <%=goods_num%>,
-							goods_name : <%=goods_name%>,
+							goods_name : '<%=goods_name%>',
 							price : <%=price%>,
 							goods_amount : <%=goods_amount%>,
 							payment : 'KakaoPay'
-						} --%>
+						}
 					}).done(function(data) {
-						if (everythings_fine) {
-							console.log(jsonData);
-							
+						if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';
 					        msg += '고유ID : ' + rsp.imp_uid;
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
@@ -85,6 +73,8 @@
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
 
 					        console.log(msg);
+					        
+					        location.href = './MallOrderList.mor';
 
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
