@@ -224,16 +224,16 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT trans_num, goods_name, goods_amount, price, payment "
+			sql = "SELECT trans_num, goods_name, goods_amount, price "
 					+ "FROM order_goods "
-					+ "WHERE order_num(SELECT MAX(order_num) FROM order_goods WHERE order_id = ?)";
-			
+					+ "WHERE order_num = (SELECT MAX(order_num) FROM order_goods WHERE order_id=?)";
+			System.out.println("sql 구문 체크");
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
-			
+			System.out.println("실행 결과 체크");
 			while (rs.next()) {
 				MallOrderDTO modto = new MallOrderDTO();
 				
@@ -241,7 +241,6 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 				modto.setGoods_name(rs.getString("goods_name"));
 				modto.setGoods_amount(rs.getInt("goods_amount"));
 				modto.setPrice(rs.getInt("price"));
-				modto.setPayment(rs.getString("payment"));
 				
 				orderDone.add(modto);
 			}
@@ -251,7 +250,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 		} finally {
 			closeDB();
 		}
-		
+		System.out.println("구매 확인 페이지로 가져갈 데이터 List에 저장 완료");
 		return orderDone;
 	}
 }

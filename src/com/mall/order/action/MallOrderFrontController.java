@@ -44,12 +44,10 @@ public class MallOrderFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MallOrderDone.mor")) {
-			action = new MallOrderDone();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			forward = new ActionForward();
+			
+			forward.setPath("./goodsOrder/goodsOrderDone.jsp");
+			forward.setRedirect(false);
 		} else if (command.equals("/MallOrderList.mor")) {
 			action = new MallOrderListAction();
 			try {

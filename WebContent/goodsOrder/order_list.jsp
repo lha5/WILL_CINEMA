@@ -23,10 +23,10 @@ function acyncMovePage(url){
     };
     
     $.ajax(ajaxOption).done(function(data){
-        // body 영역 삭제
-        $('body').children().remove();
-        // body 영역 교체
-        $('body').html(data);
+        // #wrap 영역 삭제
+        $('#wrap').children().remove();
+        // #wrap 영역 교체
+        $('#wrap').html(data);
     });
 }
 </script>
@@ -58,7 +58,7 @@ function acyncMovePage(url){
 				MallOrderDTO modto = orderList.get(i);
 			%>
 				<tr>
-					<td><a href="javascript:acyncMovePage('./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>')"><%=modto.getTrans_num()%></a></td>
+					<td><a href="./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>"><%=modto.getTrans_num()%></a></td>
 					<td><%=modto.getGoods_name()%></td>
 					<td><%=modto.getGoods_amount()%></td>
 					<td><%=modto.getPrice() %>원</td>
