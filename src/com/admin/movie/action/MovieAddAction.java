@@ -42,7 +42,6 @@ public class MovieAddAction implements Action {
 			int running_time = Integer.parseInt(request.getParameter("running_time"));
 				
 			System.out.print("name : "+ name + " id : "+ id + " running_time : "+running_time);
-				
 
 			mdto.setTitle(name);
 			mdto.setGenre(genre);
