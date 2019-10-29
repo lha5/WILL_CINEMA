@@ -76,7 +76,18 @@ public class CinemaDeleteAction implements Action{
 				
 			}
 			
-			System.out.println(seat);	
+			int regionCode = 0;					
+			String region = request.getParameter("region");
+			if(region.equals("경기/인천")){regionCode=2; }
+			else if(region.equals("충청/대전")){regionCode=3;}
+			else if(region.equals("전라/광주")){regionCode=4;}
+			else if(region.equals("경북/대구")){regionCode=5;}
+			else if(region.equals("경남/부산/울산")){regionCode=6;}
+			else if(region.equals("강원")){regionCode=7;}
+			else if(region.equals("제주")){regionCode=8;}
+			else{regionCode=1;}
+			
+			//System.out.println(seat);	
 				
 			// 마지막에 붙는 ','제거
 			seat = seat.substring(0, seat.length()-1);
@@ -91,7 +102,8 @@ public class CinemaDeleteAction implements Action{
 			CineDTO cdto = new CineDTO();
 			
 			cdto.setCinema_num(cinema_num);
-			cdto.setRegion(request.getParameter("region"));
+			cdto.setRegion_num(regionCode);
+			cdto.setRegion(region);
 			cdto.setName(request.getParameter("name"));
 			cdto.setRoom(change_room);
 			cdto.setSeat(seat);
