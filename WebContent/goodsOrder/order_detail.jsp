@@ -12,16 +12,17 @@
 
 	<%
 	List mallOrderDetail = (List) request.getAttribute("mallOrderDetail");
-	System.out.println("mallOrderDetail 작동 테스트" + mallOrderDetail.get(0));
+	// System.out.println("mallOrderDetail 작동 테스트" + mallOrderDetail.get(0));
 	%>
 
 	<%@ include file="../include/header.jsp" %>
 
 	<div id="wrap">
 	
-	<h2>구매 상세 내역</h2>
-	
 	<table border="1">
+		<tr>
+			<td colspan="7"><h2>구매 상세 내역</h2></td>
+		</tr>
 		<tr>
 			<td>구매 번호</td>
 			<td>구매 일자</td>
