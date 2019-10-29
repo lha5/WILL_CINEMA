@@ -37,7 +37,6 @@ String pageNum = (String) request.getAttribute("pageNum");
 				<td colspan="5">
 					<a href="./upload/<%=mdto.getImage() %>"><%=mdto.getImage() %></a>
 				
-				
 				</td>
 			</tr>
 			<tr>

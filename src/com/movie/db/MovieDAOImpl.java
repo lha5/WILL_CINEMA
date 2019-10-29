@@ -143,7 +143,7 @@ public class MovieDAOImpl implements MovieDAO{
 			pstmt.setDate(8, mdto.getOpen_date());
 			pstmt.setDate(9, mdto.getClose_date());
 			pstmt.setString(10, mdto.getCountry());
-			pstmt.setDouble(11, mdto.getBooking_ration());
+			pstmt.setDouble(11, 0);
 			pstmt.setString(12, mdto.getPoster());
 			pstmt.setString(13, mdto.getImage());
 			
