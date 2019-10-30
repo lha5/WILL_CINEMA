@@ -24,7 +24,7 @@
 
 
 	<header>
-		
+		<div id="top_line">
 		<div id="social">
 			<ul>
 				<li><i class="fas fa-mobile-alt"></i> 모바일 APP</li>
@@ -56,11 +56,11 @@
 				<li>ENGLISH</li>
 			</ul>
 		</div>
-		
+		</div>
 		<div class="top_space"><!-- 구역 분리를 위한 태그 --></div>
 		
 		<div id="logo">
-			<a href="Index.me" class="link-home"><i class="ri-clapperboard-fill ri-lg"></i> <span>WILL CINEMA</span></a>
+			<a href="Index.me" class="link-home"><i class="ri-film-line ri-lg"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
@@ -106,12 +106,13 @@
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
-			</ul>
-						
+			</ul>			
 		</nav>
 	</header>
 	
-	
+	<br>
+	<br>
+	<br>
 	
 </body>
 </html>
