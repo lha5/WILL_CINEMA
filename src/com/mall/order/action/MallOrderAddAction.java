@@ -17,6 +17,8 @@ import com.action.ActionForward;
 import com.mall.order.db.MallOrderDAO;
 import com.mall.order.db.MallOrderDAOImpl;
 import com.mall.order.db.MallOrderDTO;
+import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 
 public class MallOrderAddAction implements Action {
 	
@@ -77,11 +79,15 @@ public class MallOrderAddAction implements Action {
 		List<MallOrderDTO> doneCheck = modao.getOrderDone(id);	// 구매 직후 확인 페이지에 보여줄 내용 가져오는 메소드
 		System.out.println("getOrderDone(id) 메소드 실행 후 값 확인 : " + doneCheck);
 		
+		MemberDAO mdao = new MemberDAOImpl();
+		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);
+		mdao.addPoint(id, percentage);
+		
 		request.setAttribute("doneCheck", doneCheck);
 		
 		// 페이지 이동
 		forward.setPath("./MallOrderDone.mor");
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 		
 		return forward;
 	}

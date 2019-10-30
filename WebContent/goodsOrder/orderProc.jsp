@@ -54,7 +54,7 @@
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
 						dataType: 'text',
-						contentType : "application/json; charset=UTF-8",
+						// contentType : "application/json; charset=UTF-8",
 						async: false,
 						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'
 					}).done(function(data) {
