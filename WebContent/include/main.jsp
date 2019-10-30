@@ -76,7 +76,10 @@
   overflow: hidden;
 }
 
-
+.faqbut{
+font-size:20px;
+margin: 10px;
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -223,7 +226,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span><%=i+1 %></span>
+     	   <span>#1010<%=i+1 %>;</span>
      	   <span><%=mdto.getGrade() %>세</span>
      	   <span><%=mdto.getTitle() %></span>
      	  </a>
@@ -395,8 +398,8 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
  
  
   
-   <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+   <button class="faqbut" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="faqbut" onclick="plusDivs(1)">&#10095;</button>
   
 </div>
 		
