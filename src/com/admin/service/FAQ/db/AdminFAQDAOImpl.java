@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.admin.service.notice.db.AdminNoticeDTO;
+import com.movie.db.MovieDTO;
 
 //FAQ게시판 DB(관리자전용)
 public class AdminFAQDAOImpl implements AdminFAQDAO{
@@ -297,8 +298,72 @@ public class AdminFAQDAOImpl implements AdminFAQDAO{
 		return check;
 	}
 
+	@Override
+	public int getBoardCount() {
+int count = 0;
+		
+		try {
+			con = getCon();
+			
+			sql = "select count(*) from faq";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return count;
+	
+	}
+
+	@Override
+	public List<AdminFAQDTO> getBoardList() {
+	List<AdminFAQDTO> FAQList = new ArrayList<AdminFAQDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from faq";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				AdminFAQDTO afdto = new AdminFAQDTO();
+				
+				afdto.setContent(rs.getString("content"));
+				afdto.setImage(rs.getString("image"));
+				afdto.setSubject(rs.getString("subject"));
+				afdto.setName(rs.getString("name"));
+				FAQList.add(afdto);
+				System.out.println(afdto+"나오나");
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return FAQList;
+	}
+	
 	
 
+	
+	
+	
+	
+	
 }
 	
 	
