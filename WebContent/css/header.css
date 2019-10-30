@@ -6,12 +6,13 @@
 }
 
 @font-face {
-	font-family: 'Eoe_Zno_L';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_L.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
+	font-family: 'nanumSL';
+	src: url('../font/NanumSquareL.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'nanumSR';
+	src: url('../font/NanumSquareR.otf') format('opentype');
 }
 
 /* -------- 전체에 적용할 속성들 --------*/
@@ -31,6 +32,9 @@ body {
 	/* border: 1px solid red; */
 	padding: 0;
 	margin: 0;
+	font-family: nanumSL;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 #wrap {
@@ -47,14 +51,21 @@ header {
 	/* border: 1px dashed black; */
 	width: 100%;
 	height: 300px;
-	margin: 10px auto;
+	margin: 0 auto;
 }
+
+#top_line {
+	background-color: #ffe878;
+	padding-top: 7px;
+}
+
 #social {
 	/* border: 1px solid orange; */
 	width: 450px;
 	height: 30px;
+	margin-top: 5px;
 	padding: 0;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #social>ul {
@@ -91,7 +102,7 @@ header {
 	height: 30px;
 	margin-top: -30px;
 	float: right;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #my>ul {
@@ -102,7 +113,7 @@ header {
 }
 
 #my>ul>li:NTH-CHILD(1) {
-	border-right: 2px solid #CCCCCC;
+	/* border-right: 2px solid #CCCCCC; */
 	float: left;
 	width: 85px;
 	text-align: center;
@@ -111,7 +122,7 @@ header {
 }
 
 #my>ul>li:NTH-CHILD(2) {
-	border-right: 2px solid #CCCCCC;
+	/* border-right: 2px solid #CCCCCC; */
 	float: left;
 	width: 93px;
 	text-align: center;
@@ -120,7 +131,7 @@ header {
 }
 
 #my>ul>li:NTH-CHILD(3) {
-	border-right: 2px solid #CCCCCC;
+	/* border-right: 2px solid #CCCCCC; */
 	float: left;
 	width: 82px;
 	text-align: center;
@@ -129,7 +140,7 @@ header {
 }
 
 #my>ul>li:NTH-CHILD(4) {
-	border-right: 2px solid #CCCCCC;
+	/* border-right: 2px solid #CCCCCC; */
 	float: left;
 	width: 85px;
 	text-align: center;
@@ -174,28 +185,47 @@ header {
 }
 
 #logo {
+	/* border: 1px dotted blue; */
 	clear: both;
 	width: 320px;
+	height: 50px;
 	margin: 35px auto 15px auto;
+	padding: 9px auto;
 	text-align: center;
+	position: relative;
+}
+
+#logo>a>i {
+	/* border: 1px dashed lime; */
+	position: absolute;
+	left: 12px;
+	top: 10px;
 }
 
 #logo>a>span {
-	border: 1px solid skyblue;
-	margin-top: 0px;
-	margin-bottom: 30px;
-	padding-top: 0px;
+	/* border: 1px solid skyblue; */
+	width: 260px;
+	position: absolute;
+	right: 9px;
+	top: 2px;
+	letter-spacing: 2px;
+	font-size: 1.1em;
 }
 
 nav {
-	/* border: 1px dotted lime; */
-	height: 140px;
-	padding: 10px auto;
+	border-top: 2px solid #ffe878;
+	border-bottom: 1px solid #ffe878;
+	height: 90px;
+	padding: 0 auto 10px auto;
+	margin-top: 35px;
+	margin-bottom: 50px;
+	font-family: nanumSL;
+	font-size: 1.1em;
 }
 
 nav>ul {
 	/* border: 1px solid pink; */
-	margin: 30px auto;
+	margin: 10px auto 30px auto;
 	padding: auto;
 	width: 800px;
 	height: 70px;
@@ -213,23 +243,50 @@ nav>ul>li {
 
 nav>ul>li>ul {
 	/* border: 1px dashed pink; */
-	margin: 2px auto;
+	margin: 0 auto;
 	padding: 3px 10px 3px 0;
 	position: absolute;
+	
 }
 
 nav>ul>li:NTH-CHILD(3) ul {
-	width: 810px;
+	width: 680px;
 	position: absolute;
 	left: 50px;
 }
 
 nav>ul>li:NTH-CHILD(4) ul {
-	width: 500px;
+	width: 420px;
 }
 
 nav>ul>li>ul {
 	display: none;
+}
+
+nav>ul>li>ul:NTH-CHILD(1):after, nav>ul>li>ul:NTH-CHILD(2):after, nav>ul>li>ul:NTH-CHILD(4):after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 12px 19px;
+	border-color: #ffe878 transparent;
+	display: block;
+	width: 0;
+	z-index: -1;
+	top: -9px;
+	left: 10px;
+}
+
+nav>ul>li>ul:NTH-CHILD(3):after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 12px 19px;
+	border-color: #ffe878 transparent;
+	display: block;
+	width: 0;
+	z-index: -1;
+	top: -9px;
+	left: 65px;
 }
 
 nav>ul>li>ul>li {
@@ -242,6 +299,17 @@ nav>ul>li>ul>li {
 
 nav>ul>li:HOVER ul {
 	display: block;
+	width: inherit;
 	position: absolute;
-	padding-top: 10px;
+	margin-top: 7px;
+	padding: 2px 5px 2px 7px;
+	text-align: center;
+	background-color: #ffe878;
+	border-radius: 3px;
+}
+
+nav>ul>li:HOVER ul>li {
+	/* border: 1px solid red; */
+	margin: 1px 5px;
+	padding: 1px 2px 1px 4px;
 }
