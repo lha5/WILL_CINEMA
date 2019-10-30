@@ -76,7 +76,6 @@ public class NoticeListAction implements Action{
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-
 		// 페이지 이동 (./notice/noticeList.jsp)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./service/noticeBoard/NoticeList.jsp");

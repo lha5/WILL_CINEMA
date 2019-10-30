@@ -56,7 +56,7 @@ public class MovieDAOImpl implements MovieDAO{
 	
 	@Override
 	public int deleteBoard(int movie_num) {
-		
+		 
 		int check = -1;
 		
 		try {
@@ -111,6 +111,7 @@ public class MovieDAOImpl implements MovieDAO{
 
 			rs = pstmt.executeQuery();
 
+			
 			if (rs.next()) {
 				mdto = new MovieDTO();
 				mdto.setTitle(rs.getString("title"));
@@ -170,7 +171,6 @@ public class MovieDAOImpl implements MovieDAO{
 				pstmt.setString(6, mdto.getStory());
 				pstmt.setString(7, mdto.getActor());
 				pstmt.setInt(8, mdto.getMovie_num());
-				
 				check = pstmt.executeUpdate();
 				// check = 1;
 			}else{
@@ -189,10 +189,6 @@ public class MovieDAOImpl implements MovieDAO{
 		
 	}
 	
-
-
-
-
 
 	//insert Board
 	
@@ -304,7 +300,6 @@ public class MovieDAOImpl implements MovieDAO{
 		return boardList;
 	}
 
-	
 	
 
 }

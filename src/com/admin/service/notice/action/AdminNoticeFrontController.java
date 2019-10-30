@@ -42,6 +42,7 @@ public class AdminNoticeFrontController extends HttpServlet{
 		}else if(command.equals("/NoticeUpdate.an")){ //공지 수정 페이지
 			//NoticeUpdate() -> noticeUpdateForm -> NoticeUpdateAction()
 			//action = new NoticeUpdate();
+			action = new NoticeUpdate();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

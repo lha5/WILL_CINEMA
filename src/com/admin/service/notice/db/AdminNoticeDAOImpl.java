@@ -75,8 +75,8 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 			System.out.println("num = " + num);
 
 			sql = "insert into "
-					+ "notice(num,name,pass,subject,content,date,category,image) "
-					+ "values(?,?,?,?,?,now(),?,?)";
+					+ "notice(num,name,pass,subject,content,date,category,image,readcount) "
+					+ "values(?,?,?,?,?,now(),?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
 
@@ -87,7 +87,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 			pstmt.setString(5, andto.getContent());
 			pstmt.setString(6, andto.getCategory());
 			pstmt.setString(7, andto.getImage());
-
+			pstmt.setInt(8, 0);
 			int value = pstmt.executeUpdate();
 
 			System.out.println("게시판 글 저장 완료 " +value+"개");
@@ -162,7 +162,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 				andto.setCategory(rs.getString("category"));
 				andto.setDate(rs.getDate("date"));
 				andto.setImage(rs.getString("image"));
-
+				andto.setReadcount(rs.getInt("readcount"));
 				boardList.add(andto);
 			}
 		} catch (Exception e) {
@@ -181,6 +181,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	// updateReadcount(num)
 	@Override
 	public void updateReadcount(int num) {
+		
 		try {
 			con = getCon();
 
@@ -188,11 +189,11 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, num);
+			pstmt.setInt(1,num);
 
-			pstmt.executeUpdate();
+			int value = pstmt.executeUpdate();
 			
-			System.out.println("글 번호" + num + "의 조회수가 1 증가 됨");
+			System.out.println("조회수 1증가 글 개수  num : "+value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -200,6 +201,8 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		}
 	}
 	// updateReadcount(num)
+	
+	
 
 					
 					
@@ -231,6 +234,7 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 				andto.setNum(rs.getInt("num"));
 				andto.setPass(rs.getString("pass"));
 				andto.setSubject(rs.getString("subject"));
+				andto.setReadcount(rs.getInt("readcount"));
 			}
 			System.out.println("게시판 글 저장: "+andto);
 		} catch (Exception e) {
@@ -266,14 +270,15 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 
 			if(rs.next()){
 				if(andto.getPass().equals(rs.getString("pass"))){
-					sql = "update notice set name=?,subject=?,content=? where num=?";
+					sql = "update notice set name=?,subject=?,content=?,category=? where num=?";
 
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, andto.getName());
 					pstmt.setString(2, andto.getSubject());
 					pstmt.setString(3, andto.getContent());
-					pstmt.setInt(4, andto.getNum());
-
+					pstmt.setString(4, andto.getCategory());
+					pstmt.setInt(5, andto.getNum());
+					
 					check = pstmt.executeUpdate();
 					// check = -1;
 				}else{

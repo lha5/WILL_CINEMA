@@ -16,11 +16,12 @@
 	%>
 
 	<fieldset>
-	<form action="./NoticeWriteAction.an" method="post" enctype="multipart/form-data">
+	<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
 		글쓴이: <input type="text" name="name" value="<%=id%>"><br>
+		카테고리:<input type="text" name="category"><br> 
 		비밀번호 : <input type="password" name="pass"><br>
 		     제목 : <input type="text" name="subject"><br>
-		   이미지: <input type="file" name="image"><br>
+		    이미지: <input type="file" name="image" ><br> 
 		     내용 :<br> 
 		     <textarea name="content" rows="10" cols="20"></textarea><br>
 		   <input type="submit" value="글쓰기"> 	
