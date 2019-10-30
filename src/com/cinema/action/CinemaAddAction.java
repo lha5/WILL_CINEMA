@@ -80,6 +80,7 @@ public class CinemaAddAction implements Action {
 		
 		
 		cdto.setRegion(region);
+		cdto.setRegion_num(regionCode);
 		cdto.setName(request.getParameter("name"));
 		cdto.setRoom(room);
 		cdto.setSeat(seat);

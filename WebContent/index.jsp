@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-response.sendRedirect("Index.me");
-%>
+	<%
+	response.sendRedirect("Index.me");
+	%>
 
 
 </body>

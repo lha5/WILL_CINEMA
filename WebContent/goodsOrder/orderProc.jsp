@@ -16,6 +16,7 @@
 <body>
 	<h1>WebContent/goodsOrder/orderProc.jsp</h1>
 	<%
+
 	// 세션값(아이디값) 받아오기
 	String id = (String) request.getAttribute("id");
 	
@@ -27,21 +28,14 @@
 	int goods_num = Integer.parseInt(request.getParameter("goods_num"));
 	
 	String email = request.getParameter("email");
+
 	String tel = request.getParameter("tel");
 	%>
 	<!-- 결제 모듈 -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			<%-- var obj = new Object();
-			obj.goods_num = <%=goods_num%>;
-			obj.goods_name = '<%=goods_name%>';
-			obj.price = <%=price%>;
-			obj.goods_amount = <%=goods_amount%>;
-			obj.payment = 'KakaoPay';
-			
-			var jsonData = JSON.stringify(obj); --%>
-		
 			// var IMP = window.IMP;
+
 			IMP.init('imp30527297');
 			var msg;
 			
@@ -59,38 +53,30 @@
 					jQuery.ajax({
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
-						dataType: 'html',
-						cache: false
-						<%-- async: false,
-						data: {
-							/* data : jsonData */					
-							imp_uid : rsp.imp_uid,
-							goods_num : <%=goods_num%>,
-							goods_name : <%=goods_name%>,
-							price : <%=price%>,
-							goods_amount : <%=goods_amount%>,
-							payment : 'KakaoPay'
-						} --%>
+						dataType: 'text',
+						// contentType : "application/json; charset=UTF-8",
+						async: false,
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'
 					}).done(function(data) {
-						if (everythings_fine) {
-							console.log(jsonData);
-							
+						if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';
 					        msg += '고유ID : ' + rsp.imp_uid;
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
 					        msg += '결제 금액 : ' + rsp.paid_amount;
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
-					        
+
 					        console.log(msg);
+
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
-							
 							alert(msg);
 						}
 					});
+					location.href = './MallOrderDone.mor';
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;
+
 					console.log(msg);
 					location.href = './GoodsList.ml'
 				}

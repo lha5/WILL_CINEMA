@@ -141,6 +141,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		<section>
 
 			<div id="center">
+			
 				<article id="list">
 					예매 순위
 					<div class="movie_cont">
@@ -184,6 +185,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
     </div>
 				</article>
 				<article id="image">
+
 					
 					
 	<div class="contents">
@@ -202,6 +204,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		
 		</div>
 	</div>
+
 					
 				</article>
 			</div>

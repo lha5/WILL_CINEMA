@@ -7,14 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 구매 확인</title>
+<!-- jQuery 연결 -->
+<script src="./js/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
 	
 	<%
+	String id = (String) request.getAttribute("id");
+	
 	List<MallOrderDTO> orderList = (List<MallOrderDTO>) request.getAttribute("orderList");
 	%>
 
-	<%@ include file="../include/header.jsp" %>
+	<%-- <%@ include file="../include/header.jsp" %> --%>
 
 	<div id="wrap">
 	
@@ -46,6 +51,6 @@
 	
 	</div>
 	
-	<%@ include file="../include/footer.jsp" %>
+	<%-- <%@ include file="../include/footer.jsp" %> --%>
 </body>
 </html>

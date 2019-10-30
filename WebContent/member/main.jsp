@@ -59,9 +59,6 @@ function acyncMovePage(url){
 		response.sendRedirect("./MemberLogin.me");
 	}
 	
-	// 포인트
-	int point = (int) info.get(2);
-	
 	// 회원 등급 처리
 	String level = "";
 	
@@ -88,6 +85,9 @@ function acyncMovePage(url){
 			level = "신규";
    		break;
 	}
+	
+	// 포인트
+	int point = (int) info.get(2);	
 	%>
 	
 	
@@ -120,8 +120,8 @@ function acyncMovePage(url){
 						%>
 					</div>
 					<ul id="point_info">
-						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
+						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>>
 					</ul>
 				</td>
 				<td>
@@ -140,16 +140,32 @@ function acyncMovePage(url){
 		<div id="my_menu">
 			<ul>
 				<li><a href="#">예매내역</a></li>
-				<li><a href="./MallOrderList.mor">구매내역</a></li>
+				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">내가 본 영화</a></li>
-				<li><input type="button" value="내 정보 관리" onclick="acyncMovePage('./MyPage.me');"></li>
+				<li><input type="button" value="내 정보 관리" id="myInfoManagement"></li>
 			</ul>
 		</div>
+		
 		<div id="contents">
 			
 		</div>
+		
 	</section>
+	
+	<!-- 버튼을 클릭하면 아래에 페이지가 로드되게 하는 코드 -->
+	<script type="text/javascript">
+		
+		// 구매 내역
+		document.querySelector('#myMallOrderList').addEventListener('click', function() {
+			acyncMovePage('./MallOrderList.mor');
+		});
+		
+		// 내 정보 관리
+		document.querySelector('#myInfoManagement').addEventListener('click', function() {
+			acyncMovePage('./MyPage.me');
+		});
+	</script>
 
 	<%@ include file="../include/footer.jsp" %>
 	
