@@ -466,6 +466,7 @@
 			success:function(data){
 				$.each(data,function(index,jdata){
 					console.log(jdata);
+					
 				});
 				
 			},
@@ -630,7 +631,7 @@
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
      	   <span><%=mdto.getGrade() %></span>
-     	   <em><%=mdto.getTitle() %></em>
+     	   <em><%=mdto.getTitle() %> , <%=mdto.getTotal_rating() %></em>
      	  </a>
      	 </li>
      	 <%} %>
@@ -653,12 +654,12 @@
   	<h3 class="sub_tit02">상영시간</h3>
   	<div class="time_fr">
   	 <ul>
-  	  <li>영화관별 조회</li>
-  	  <li>영화별 조회</li>
+  	  <li><a href="javascript:void(0);">영화관별 조회</a></li>
+  	  <li><a href="javascript:void(0);">영화별 조회</a></li>
   	 </ul>
   	</div>
   </div>
- 
+  
  
  </div>
 </div>
