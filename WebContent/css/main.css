@@ -101,4 +101,15 @@ body {
 	padding: 10px auto;
 	text-align: center;
 }
+.maineven{
+	float:left;
+		margin: 18px;
+	padding-left:80px;
+list-style: none;
+
+}
+.eventlist{
+
+	
+}
 /* ----------- section ----------- */

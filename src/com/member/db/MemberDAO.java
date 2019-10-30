@@ -29,4 +29,7 @@ public interface MemberDAO {
 	
 	// 비밀번호 변경
 	public void updatePass(String id, String pass);
+	
+	// 포인트 적립
+	public void addPoint(String id, int percentage);
 }
