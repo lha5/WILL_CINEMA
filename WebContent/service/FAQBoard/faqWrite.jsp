@@ -23,8 +23,9 @@
 <tr>
 <td>작성자
 <input type="text" name="name" value="<%=id%>">
-<input type="hidden" name="pass" value="">
+<input type="password" name="pass" value="">
 </td>
+</tr>
 <tr>
 <td>카테고리
 <select name="category">

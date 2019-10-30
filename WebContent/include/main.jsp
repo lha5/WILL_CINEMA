@@ -29,17 +29,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <style type="text/css">
-<!--
+
 	body {font-size:11pt; padding:0; margin:0; text-align: center;}
 	h3 {color: #85144b; font-size: 14pt; margin:10 auto; padding: 10px;}
-	.contents {width: 1100px; height: 430px; background-color: #d6d6d6; margin: 0 auto;}
+	.contents {width: 900px; height: 500px; background-color: #d6d6d6; margin: 0 auto;}
 	
 	/* banner */
-	.banner {position: relative; width: 1100px; height: 430px;   margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 900px; height: 500px;   margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 1100px; height: 430px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 900px; height: 500px; margin:0; padding:0;}
 
-//-->
+.movie_list {
+  display: none;
+}
+
+.movie_cont a.active{
+	font-weight: bold;
+}
+
+.movie_list a.on{
+	font-weight: bold;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 20px;
+  margin-top : 20px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 1s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  /* padding: 0 18px; */
+   margin-top : 30px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -72,12 +110,12 @@
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $bannerLength + "px");
 			$banner.css("height", $bannerHeight + "px");
-			//alert(bannerHeight);
+		
 			//배너의 좌측 위치를 옮겨 준다.
 			$banner.animate({left: - $bannerWidth + "px"}, 4500, function() { //숫자는 롤링 진행되는 시간이다.
-				//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
+				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
+				
 				$(this).find("li:first").remove();
 				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
 				$(this).css("left", 0);
@@ -89,6 +127,7 @@
 </script>
 
 <script>
+//FAQ 옆으로 클릭하기
 var slideIndex = 1;
 showDivs(slideIndex);
 
@@ -106,7 +145,26 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
 }
+
+
+//예매순, 평점순 내용보여주기
+function openMovie(event,rating){
+	var i, movie_list, ratingLink;
+	movie_list = document.getElementsByClassName("movie_list");
+	for(i=0;i<movie_list.length; i++){
+		movie_list[i].style.display="none";
+	}
+	ratingLink=document.getElementsByClassName("ratingLink");
+	for(i=0;i<ratingLink.length;i++){
+		ratingLink[i].className=ratingLink[i].className.replace(" active","");
+	}
+	document.getElementById(rating).style.display="block";
+	if(event!=null)
+	event.currentTarget.className+=" active";
+}
+
 </script>
+
 
 </head>
 <body>
@@ -141,43 +199,62 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		<section>
 
 			<div id="center">
-			
 				<article id="list">
-					예매 순위
+					
+					
+					
+					
+					
 					<div class="movie_cont">
+     <div class = "entry">
      <ul>
-      <li><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a></li>
-      <li><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></li>
+      <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a>
+      <a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></h5></li>
      </ul>
+     </div>
      <!-- 예매순 -->
      <div class="scroll_bar">
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
-     	<%for(int i=0; i<bookRatingList.size(); i++){
+     	<%for(int i=0; i<8; i++){
      		MovieDTO mdto=bookRatingList.get(i);
      	%>
-     	 <li>
+     	 <li class="booking">
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
-     	   <span><%=mdto.getGrade() %></span>
-     	   <em><%=mdto.getTitle() %></em>
+     	   
+     	   <span><%=i+1 %></span>
+     	   <span><%=mdto.getGrade() %>세</span>
+     	   <span><%=mdto.getTitle() %></span>
      	  </a>
      	 </li>
+     	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
+     	  </li>
+     	  
      	 <%} %>
      	 <!-- 영화 반복문 -->
      	</ul>
     	 <!-- 평점순 -->
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
-     	<%for(int i=0; i<totalRatingList.size(); i++){ 
+     	<%for(int i=0; i<8; i++){ 
      		MovieDTO mdto=totalRatingList.get(i);
+     		
      	%>
-     	 <li>
+     	 <li class="booking">
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=mdto.getGrade() %></span>
-     	   <em><%=mdto.getTitle() %></em>
-     	  </a>
+     	   <span><%=i+1 %></span>
+     	   <span><%=mdto.getGrade() %>세</span>
+     	   <span><%=mdto.getTitle() %></span>
+     	 </a>
+     	 
+     	 </li>	
+     	 <li>
+     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
      	 </li>
+     	 
+     	 
+     	  
      	 <%} %>
      	 <!-- 영화 반복문 -->
      	</ul>
@@ -185,7 +262,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
     </div>
 				</article>
 				<article id="image">
-
 					
 					
 	<div class="contents">
@@ -204,7 +280,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		
 		</div>
 	</div>
-
 					
 				</article>
 			</div>
@@ -215,13 +290,11 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 			<div id="event">
 				이벤트
 				<br>
-			<div class="maineven">
-					<h2>영화</h2> 
-		</div>
+			<div>
 			<ul class="eventlist">
 				<%for(int i=0; i<eventMovieList.size(); i++){ //영화 카테고리 리스트
 					AdminEventDTO aedto=(AdminEventDTO)eventMovieList.get(i);
-					if(i>0){break;}//4줄까지만 보여주기
+					if(i>1){break;}//4줄까지만 보여주기
 				%>
 				<li>
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
@@ -231,13 +304,11 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				</il>
 				<%} %>
 			</ul>
-			<div class="maineven">
-				<h2>시사회/무대인사</h2>
-			</div>
+			
 			<ul class="eventlist">
 				<%for(int i=0; i<eventPreviewList.size(); i++){ //시사회 카테고리 리스트
 					AdminEventDTO aedto=(AdminEventDTO)eventPreviewList.get(i);
-					if(i>0){break;}
+					if(i>1){break;}
 				%>
 				<li>
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
@@ -248,13 +319,11 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				<%} %>
 			</ul>
 		
-			<div class="maineven">
-				<h2>윌시 NOW</h2>
-			</div>
+		
 			<ul class="eventlist">
 				<%for(int i=0; i<eventNeventList.size(); i++){ //윌시NOW 카테고리 리스트
 					AdminEventDTO aedto=(AdminEventDTO)eventNeventList.get(i);
-					if(i>0){break;}
+					if(i>1){break;}
 				%>
 				<li>
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
@@ -265,14 +334,12 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				<%} %>
 			</ul>
 		
-			<div class="maineven">
-				<h2>제휴 할인</h2> 
-			</div>
+		
 			<ul class="eventlist">
 				<%
 				for(int i=0; i<eventCollaboList.size(); i++){ //제휴할인 카테고리 리스트
 					AdminEventDTO aedto=(AdminEventDTO)eventCollaboList.get(i);
-					if(i>0){break;}
+					if(i>1){break;}
 				%>
 				<li>
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
@@ -282,17 +349,17 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				</il>
 				<%} %>
 			</ul>
-		<br class="clear">
-				
+				</div>
 			</div>
 		
 			<div id="service">
 				멤버십이나 포인트 같은 서비스 모음
 		
-		<div style="width:600px; margin:0 auto;">
-<a href="#"><img style="width:30%" src="./img/main/discount.gif" alt ="할인내역"></a>
-<a href="#"><img style="width:30%" src="./img/main/point.gif" alt="포인트내역"></a>
-<a href="#"><img style="width:30%" src="./img/main/VIP.gif" alt="VIP"></a>
+		<div style="width:700px; margin:0 auto;">
+<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
+<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
+<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
+<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
 </div>
 		
 			</div>
@@ -300,23 +367,37 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 			<div id="notice">
 			
 		<div class="w3-content w3-display-container">
+ 	
  	<ul>
 			
-			<li><h2>FAQ</h2></li>	  <%
+		<li><a href="./FAQList.af" style="color:blue" ><h2>FAQ</h2></a></li>	  <%
      	for (int i=0;i<FAQList.size();i++) {
-    		/* 	MovieDTO mdto = boardList.get(i); */
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
 		
 		<li class="mySlides">
-		<a href="./FAQList.af" style="color:blue;">
-		주요 질문 : <%=afdto.getSubject()%></a></li>
+		
+		<button class="accordion"> 주제 : <%=afdto.getSubject() %></button>
+		
+		<div class="panel">
+
+ 카테고리: <%=afdto.getCategory() %><br>
+ 제목:  <%=afdto.getSubject() %><br>
+ 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br>
+ 내용:<%=afdto.getContent()%><br>
+ 
+</div>
+
+		</li>
 					<%} %>
 					</ul>
+
  
  
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  
+   <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
   <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  
 </div>
 		
 			
@@ -326,6 +407,22 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		
 			</div>
 		</section>
+	<script>
+			var acc = document.getElementsByClassName("accordion");
+			
+			for (var i = 0; i < acc.length; i++) {
+ 				acc[i].addEventListener("click", function() {
+    				this.classList.toggle("active");
+    				var panel = this.nextElementSibling;
+    				if (panel.style.display === "block") {
+      					panel.style.display = "none";
+    				} else {
+      					panel.style.display = "block";
+    				}
+  				});
+			}
+		</script>	
+	
 	
 	
 	

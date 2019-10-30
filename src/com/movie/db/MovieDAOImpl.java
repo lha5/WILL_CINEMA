@@ -126,7 +126,7 @@ public class MovieDAOImpl implements MovieDAO{
 				mdto.setStory(rs.getString("story"));
 				mdto.setOpen_date(rs.getDate("open_date"));
 				mdto.setClose_date(rs.getDate("close_date"));
-			
+				mdto.setTotal_rating(rs.getDouble("total_rating"));
 			}
 			System.out.println("게시판 글 저장: "+mdto);
 	
@@ -213,8 +213,8 @@ public class MovieDAOImpl implements MovieDAO{
 			System.out.println("movie_num : "+movie_num);
 			
 
-			sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) "
-			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image,total_rating) "
+			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -231,7 +231,7 @@ public class MovieDAOImpl implements MovieDAO{
 			pstmt.setDouble(11, 0);
 			pstmt.setString(12, mdto.getPoster());
 			pstmt.setString(13, mdto.getImage());
-			
+			pstmt.setDouble(14, mdto.getTotal_rating());
 			int value = pstmt.executeUpdate();
 			
 			System.out.println("글 저장 완료"+value+"개");
@@ -291,6 +291,9 @@ public class MovieDAOImpl implements MovieDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
+				mdto.setTotal_rating(rs.getDouble("total_rating"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+				mdto.setPoster(rs.getString("poster"));
 				boardList.add(mdto);
 				
 			}
