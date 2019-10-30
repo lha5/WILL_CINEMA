@@ -59,9 +59,6 @@ function acyncMovePage(url){
 		response.sendRedirect("./MemberLogin.me");
 	}
 	
-	// 포인트
-	int point = (int) info.get(2);
-	
 	// 회원 등급 처리
 	String level = "";
 	
@@ -88,6 +85,9 @@ function acyncMovePage(url){
 			level = "신규";
    		break;
 	}
+	
+	// 포인트
+	int point = (int) info.get(2);	
 	%>
 	
 	
@@ -120,8 +120,8 @@ function acyncMovePage(url){
 						%>
 					</div>
 					<ul id="point_info">
-						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
+						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>>
 					</ul>
 				</td>
 				<td>

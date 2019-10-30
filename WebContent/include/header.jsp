@@ -12,6 +12,9 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
+<!-- Remix Icon -->
+<link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -29,6 +32,7 @@
 				<li><i class="fab fa-youtube"></i> 유튜브</li>
 			</ul>
 		</div>
+		
 		<div id="my">
 			<ul>
 				<%if (id != null) {%>
@@ -56,7 +60,7 @@
 		<div class="top_space"><!-- 구역 분리를 위한 태그 --></div>
 		
 		<div id="logo">
-			<a href="Index.me" class="link-home"><i class="fas fa-film"></i> <span>WILL CINEMA</span></a>
+			<a href="Index.me" class="link-home"><i class="ri-clapperboard-fill ri-lg"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
