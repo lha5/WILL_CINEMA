@@ -72,7 +72,9 @@
 							alert(msg);
 						}
 					});
-					location.href = './MallOrderDone.mor';
+					/* location.href = './MallOrderDone.mor'; */
+					/* location.href = './MallOrderList.mor'; */
+					location.href = './Main.me';
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;

@@ -406,14 +406,34 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			con = getCon();
 			
-			sql = "UPDATE member SET point=? WHERE id = ?";
+			sql = "SELECT point FROM member WHERE id = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, percentage);
-			pstmt.setString(2, id);
+			pstmt.setString(1, id);
 			
-			pstmt.execute();
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				sql = "UPDATE member SET point=? WHERE id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, rs.getInt("point") + percentage);
+				pstmt.setString(2, id);
+				
+				pstmt.executeUpdate();
+				
+			} else {
+				sql = "UPDATE member SET point=? WHERE id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, percentage);
+				pstmt.setString(2, id);
+				
+				pstmt.executeUpdate();
+			}
 			
 			System.out.println(id + "님 포인트 적립 완료");
 		} catch (Exception e) {

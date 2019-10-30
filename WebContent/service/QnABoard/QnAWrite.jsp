@@ -5,7 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA</title>
+<title>WILL CINEMA - 1:1 문의</title>
+
+<!-- include libraries(jQuery) -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+
+<!-- include summernote css/js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+
+<!-- include summernote-ko-KR -->
+<script src="./summernote/lang/summernote-ko-KR.js"></script>
+
 </head>
 <body>
 	
@@ -56,7 +67,20 @@
 				<tr>
 					<td>내용</td>
 					<td colspan="3">
-						<textarea name="content" row="10" cols="50">summernote넣기</textarea>
+						<textarea id="summernote" name="editordata"></textarea>
+						
+						<script type="text/javascript">
+							$(document).ready(function() {
+								$('#summernote').summernote({
+									placeholder: 'Hello stand alone ui',
+									height: 300,
+									minHeight: 100,
+									maxHeight: 700,
+									lang: 'ko-KR'
+								});
+							});
+						</script>
+						
 					</td>
 				</tr>
 				<tr>
