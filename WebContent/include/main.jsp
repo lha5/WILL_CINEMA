@@ -226,7 +226,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span>#1010<%=i+1 %>;</span>
+     	   <span><%=i+1 %></span>
      	   <span><%=mdto.getGrade() %>세</span>
      	   <span><%=mdto.getTitle() %></span>
      	  </a>
