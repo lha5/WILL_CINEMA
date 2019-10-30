@@ -38,7 +38,7 @@
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
-			System.out.println(andto.getReadcount());  
+			//System.out.println(andto.getReadcount(int) );  
 		%>
 	  	<tr>
 			<td><%=andto.getNum()%></td>

@@ -34,9 +34,9 @@ public class NoticeUpdateAction implements Action{
 			andto.setNum(Integer.parseInt(request.getParameter("num")));
 			andto.setName(request.getParameter("name"));
 			andto.setPass(request.getParameter("pass"));
+			andto.setCategory(request.getParameter("category"));
 			andto.setSubject(request.getParameter("subject"));
 			andto.setContent(request.getParameter("content"));
-		
 			
 			// BoardDAO 객체를 생성
 			// 수정 메서드(updateBoard(DTO))

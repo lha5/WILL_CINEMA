@@ -42,7 +42,7 @@ public class NoticeWriteAction implements Action {
 				andto.setPass(multi.getParameter("pass"));
 				andto.setSubject(multi.getParameter("subject"));
 				andto.setContent(multi.getParameter("content"));
-		
+				andto.setCategory(multi.getParameter("category"));
 		String image=multi.getFilesystemName("image");
 		andto.setImage(image);
 		
@@ -56,7 +56,7 @@ public class NoticeWriteAction implements Action {
 		// 페이지 이동
 		// 글목록 보여주는 페이지로 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./AdminNoticeWriteAction.an");
+		forward.setPath("./NoticeList.an");
 		forward.setRedirect(true);
 		
 		return forward;

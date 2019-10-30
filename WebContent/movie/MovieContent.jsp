@@ -14,8 +14,7 @@
 
 
 <%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
-String pageNum = (String) request.getAttribute("pageNum");
-
+ String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
@@ -47,10 +46,17 @@ String pageNum = (String) request.getAttribute("pageNum");
 				</td>	
 			</tr>
 			<tr>
-				<td>감독 및 출연</td>
-				<td colspan="5"><%=mdto.getDirector() %><%=mdto.getActor() %>
+				<td>감독</td>
+				<td colspan="5"><%=mdto.getDirector() %>
 				</td>		
 			</tr>
+			
+			<tr>
+				<td>출연진</td>
+			<td colspan="5"><%=mdto.getActor() %>
+			</td>
+			</tr>
+			
 			<tr>
 				<td colspan="6">
 					<input type="button" value="수정하기" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
