@@ -24,4 +24,6 @@ public interface AdminNoticeDAO {
 
 	// 번호에 해당하는 글 삭제
 	public int deleteNotice(int num, String pass);
+
+	
 }

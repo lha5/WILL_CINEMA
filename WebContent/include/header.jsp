@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,6 +12,9 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
+<!-- Remix Icon -->
+<link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -21,7 +24,7 @@
 
 
 	<header>
-		
+		<div id="top_line">
 		<div id="social">
 			<ul>
 				<li><i class="fas fa-mobile-alt"></i> 모바일 APP</li>
@@ -29,6 +32,7 @@
 				<li><i class="fab fa-youtube"></i> 유튜브</li>
 			</ul>
 		</div>
+		
 		<div id="my">
 			<ul>
 				<%if (id != null) {%>
@@ -52,11 +56,11 @@
 				<li>ENGLISH</li>
 			</ul>
 		</div>
-		
+		</div>
 		<div class="top_space"><!-- 구역 분리를 위한 태그 --></div>
 		
 		<div id="logo">
-			<a href="Index.me" class="link-home"><i class="fas fa-film"></i> <span>WILL CINEMA</span></a>
+			<a href="Index.me" class="link-home"><i class="ri-film-line ri-lg"></i> <span>WILL CINEMA</span></a>
 		</div>
 		
 		
@@ -102,12 +106,13 @@
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
-			</ul>
-						
+			</ul>			
 		</nav>
 	</header>
 	
-	
+	<br>
+	<br>
+	<br>
 	
 </body>
 </html>

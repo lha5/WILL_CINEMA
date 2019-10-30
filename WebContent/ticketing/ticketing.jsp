@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -423,36 +424,56 @@
 			region[i].className=region[i].className.replace(" active","");
 		}
 		document.getElementById(areaNum).style.display="block";
-		if(event!=null)
-		event.currentTarget.className+=" active";
+		if(event!=null)event.currentTarget.className+=" active";
 	}
 
 	//지점명 선택
 	function selectArea(event){
 		var areaClass=event.currentTarget.className;
-		//alert($('.'+movClass).find('em').text());
-		
-		//alert($(event.currentTarget).attr('class'));
-		console.log($(event.currentTarget).parent());//.siblings().length);
-		/* //다른 지점 선택시
-		if($('.area_list').find('.on').length>=1){
-			$('.area_list').find('.on').removeClass("on");
-		} */
-		//alert($(event.currentTarget).attr('class')[2].toString());
-		//현재 선택된 지점을 다시 클릭할때 선택 해제
+		//console.log($('.area_list').find('.on').not($(event.currentTarget)).length);
+
+		//다른 지점 선택시
+		if($('.area_list').find('.on').not($(event.currentTarget)).length>=1){
+			$('.area_list').find('.on').not($(event.currentTarget)).removeClass("on");
+		} 
+
 		if($(event.currentTarget).hasClass('on')){
 			event.currentTarget.className=areaClass.replace(" on","");
-			$('.txtCin').find('dd').text('영화를 선택하세요');
+			$('.txtCin').find('dd').text('영화관 선택하세요');
+			$('.txtCin').find('dd').removeClass('on');
 		}else{
 			event.currentTarget.className+=" on";
 			$('.txtCin').find('dd').text($(event.currentTarget).text());
-		}	
-		//console.log($('.movie_list').find('.on').length);
-		//event.currentTarget.className+=" on";
+			$('.txtCin').find('dd').addClass('on');
+		}
 		
-		/* <div class="txtdate"><dl><dt>상영일</dt><dd>2019.10.22(화)</dd></dl></div>
-		   <div class="txtCin"><dl><dt>영화관</dt><dd>영화관을 선택하세요</dd></dl></div>
-		   <div class="txtName"><dl><dt>영화</dt><dd>영화를 선택하세요</dd></dl></div> */
+		var cinema='';
+		var movie='';
+		var date=$('input[name="day"]:checked').val();
+		
+		if($('.txtCin').find('dd').is('.on')){
+			cinema=$('.txtCin').find('dd').text();
+		}
+		
+		if($('.txtName').find('dd').is('.on')){
+			movie=$('.txtName').find('dd').text();
+		}
+		$.ajax({
+			url:"./ShowTime.ti",
+			type:"post",
+			dataType:"JSON",
+			data:{cinema:cinema,movie:movie,date:date},
+			success:function(data){
+				$.each(data,function(index,jdata){
+					console.log(jdata);
+					
+				});
+				
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+               }
+		});
 	}
 	
 	
@@ -476,30 +497,22 @@
 	//영화 선택
 	function selectMov(event){
 		var movClass=event.currentTarget.className;
-		//alert($('.'+movClass).find('em').text());
-		
-		//alert($(event.currentTarget).attr('class'));
-		
+
 		//다른 영화 선택시
-		if($('.movie_list').find('.on').length>=1){
-			$('.movie_list').find('.on').removeClass("on");
+		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){
+			$('.movie_list').find('.on').not($(event.currentTarget)).removeClass("on");
 		}
 		
 		//현재 선택된 영화를 다시 클릭할때 선택 해제
 		if($(event.currentTarget).is('.on')){
-			alert("있음");
-			movClass=movClass.replace(" on","");
+			event.currentTarget.className=movClass.replace(" on","");
 			$('.txtName').find('dd').text('영화를 선택하세요');
+			$('.txtName').find('dd').removeClass('on');
 		}else{
 			event.currentTarget.className+=" on";
 			$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
+			$('.txtName').find('dd').addClass('on');
 		}	
-		//console.log($('.movie_list').find('.on').length);
-		//event.currentTarget.className+=" on";
-		
-		/* <div class="txtdate"><dl><dt>상영일</dt><dd>2019.10.22(화)</dd></dl></div>
-		   <div class="txtCin"><dl><dt>영화관</dt><dd>영화관을 선택하세요</dd></dl></div>
-		   <div class="txtName"><dl><dt>영화</dt><dd>영화를 선택하세요</dd></dl></div> */
 	}
 	
 
@@ -618,7 +631,7 @@
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
      	   <span><%=mdto.getGrade() %></span>
-     	   <em><%=mdto.getTitle() %></em>
+     	   <em><%=mdto.getTitle() %> , <%=mdto.getTotal_rating() %></em>
      	  </a>
      	 </li>
      	 <%} %>
@@ -641,12 +654,12 @@
   	<h3 class="sub_tit02">상영시간</h3>
   	<div class="time_fr">
   	 <ul>
-  	  <li>영화관별 조회</li>
-  	  <li>영화별 조회</li>
+  	  <li><a href="javascript:void(0);">영화관별 조회</a></li>
+  	  <li><a href="javascript:void(0);">영화별 조회</a></li>
   	 </ul>
   	</div>
   </div>
- 
+  
  
  </div>
 </div>

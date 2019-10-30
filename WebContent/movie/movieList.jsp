@@ -37,10 +37,10 @@
        <td>내용</td>
         <td>배우</td>
      </tr>
-     <%
+     <% 
      	for (int i=0;i<boardList.size();i++) {
     		MovieDTO mdto = boardList.get(i);
-		%>
+    		%>
 			<tr>
 				<td><%=mdto.getMovie_num() %></td>
 				<td>
