@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
@@ -76,20 +77,27 @@ public class MallOrderAddAction implements Action {
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
 		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
-		List<MallOrderDTO> doneCheck = modao.getOrderDone(id);	// 구매 직후 확인 페이지에 보여줄 내용 가져오는 메소드
-		System.out.println("getOrderDone(id) 메소드 실행 후 값 확인 : " + doneCheck);
+		// String trans_num = modao.getOrderDone(id);
 		
 		MemberDAO mdao = new MemberDAOImpl();
-		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);
+		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
-		request.setAttribute("doneCheck", doneCheck);
-		
 		// 페이지 이동
-		forward.setPath("./MallOrderDone.mor");
-		forward.setRedirect(false);
+//		forward.setPath("./MallOrderList.mor");
+//		forward.setRedirect(true);
+		response.setContentType("text/html; charset=UTF-8");
 		
-		return forward;
+		PrintWriter out = response.getWriter();
+		
+		out.println("<script> ");
+		out.println("alert('구매가 정상적으로 완료되었습니다.');");
+		out.println("location.href='./Main.me';");
+		out.println("</script>");
+		
+		out.close();
+		
+		return null;
 	}
 	
 	

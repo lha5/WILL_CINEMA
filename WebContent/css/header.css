@@ -21,8 +21,9 @@
 	padding: 0;
 }
 
-a, a:VISITED, a:HOVER, a:FOCUS {
+a, a:VISITED, a:FOCUS {
 	text-decoration: none;
+	color: #6b4219;/* #d7282d */
 }
 
 ul>li {
@@ -52,10 +53,11 @@ header {
 	width: 100%;
 	height: 300px;
 	margin: 0 auto;
+	color: #6b4219;
 }
 
 #top_line {
-	background-color: #ffe878;
+	background-color: #ffefa3;
 	padding-top: 7px;
 }
 
@@ -65,7 +67,7 @@ header {
 	height: 30px;
 	margin-top: 5px;
 	padding: 0;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 #social>ul {
@@ -102,7 +104,7 @@ header {
 	height: 30px;
 	margin-top: -30px;
 	float: right;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 #my>ul {
@@ -171,7 +173,9 @@ header {
 
 #forcustomer:HOVER #dropdown {
 	display: block;
-	/* transition: all 1s ease-out 1s; */
+	transition: all 1s ease-out 1s;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
 }
 
 .top_space {
@@ -213,8 +217,8 @@ header {
 }
 
 nav {
-	border-top: 2px solid #ffe878;
-	border-bottom: 1px solid #ffe878;
+	border-top: 2px solid #ffdf45;
+	border-bottom: 1px solid #ffdf45;
 	height: 90px;
 	padding: 0 auto 10px auto;
 	margin-top: 35px;
@@ -263,12 +267,12 @@ nav>ul>li>ul {
 	display: none;
 }
 
-nav>ul>li>ul:NTH-CHILD(1):after, nav>ul>li>ul:NTH-CHILD(2):after, nav>ul>li>ul:NTH-CHILD(4):after {
+nav>ul>li:NTH-CHILD(1)>ul:after, nav>ul>li:NTH-CHILD(2)>ul:after, nav>ul>li:NTH-CHILD(4)>ul:after {
 	content: '';
 	position: absolute;
 	border-style: solid;
 	border-width: 0 12px 19px;
-	border-color: #ffe878 transparent;
+	border-color: #ffefa3 transparent;
 	display: block;
 	width: 0;
 	z-index: -1;
@@ -276,17 +280,17 @@ nav>ul>li>ul:NTH-CHILD(1):after, nav>ul>li>ul:NTH-CHILD(2):after, nav>ul>li>ul:N
 	left: 10px;
 }
 
-nav>ul>li>ul:NTH-CHILD(3):after {
+nav>ul>li:NTH-CHILD(3)>ul:after {
 	content: '';
 	position: absolute;
 	border-style: solid;
 	border-width: 0 12px 19px;
-	border-color: #ffe878 transparent;
+	border-color: #ffefa3 transparent;
 	display: block;
 	width: 0;
 	z-index: -1;
 	top: -9px;
-	left: 65px;
+	left: 236px;
 }
 
 nav>ul>li>ul>li {
@@ -304,7 +308,7 @@ nav>ul>li:HOVER ul {
 	margin-top: 7px;
 	padding: 2px 5px 2px 7px;
 	text-align: center;
-	background-color: #ffe878;
+	background-color: #ffefa3;
 	border-radius: 3px;
 }
 

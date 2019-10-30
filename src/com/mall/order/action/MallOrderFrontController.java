@@ -44,6 +44,12 @@ public class MallOrderFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MallOrderDone.mor")) {
+//			action = new MallOrderDoneAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 			forward = new ActionForward();
 			
 			forward.setPath("./goodsOrder/goodsOrderDone.jsp");
