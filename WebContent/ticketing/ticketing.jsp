@@ -450,6 +450,7 @@
 		var cinema='';
 		var movie='';
 		var date=$('input[name="day"]:checked').val();
+		var html='';
 		
 		if($('.txtCin').find('dd').is('.on')){
 			cinema=$('.txtCin').find('dd').text();
@@ -464,9 +465,34 @@
 			dataType:"JSON",
 			data:{cinema:cinema,movie:movie,date:date},
 			success:function(data){
-				$.each(data,function(index,jdata){
-					console.log(jdata);
+				$.each(data,function(index,cdto){
+					console.log(cdto);
+					var runtimeS='';
+					var runtimeE='';
+					var cnt=1;
+					html="<h5 class='time_tit'>"+cdto.name+"</h5>";
+					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
+					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+"</dt>";
+					html+="<dd><ul class='theater_time list"+cdto.movie_num+"'>"
 					
+					$.each(cdto.runtimeS,function(index,sTime){
+						runtimeS+=sTime+",";
+					});
+					$.each(cdto.runtimeE,function(index,eTime){
+						runtimeE+=eTime=",";
+					});
+					runtimeS=runtimeS.substr(0, runtimeS.length-1);
+					runtimeS=runtimeS.split(",");
+					runtimeE=runtimeE.substr(0, runtimeE.length-1);
+					runtimeE=runtimeE.split(",");
+					for(var i=0; i<cdto.runtimeS.length; i++){
+						html+="<li><a href='javascript:void(0)'>"+"<span class='cineD2'><em>"+cnt+"관</em></span>";
+						html+="<span class='clock'>"+runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
+						"<span class='ppNum'>"+"남은좌석/"+cdto.seat+"</span><a></li>";
+					}
+					
+					html+="</ul>"
+					$('.time_inner').find('.time_list01').append(html);
 				});
 				
 			},
@@ -659,8 +685,8 @@
   	 </ul>
   	</div>
   </div>
-  
- 
+  <div class="time_list01"></div><!-- 영화관별 -->
+  <div class="time_list02"></div><!-- 영화 별 -->
  </div>
 </div>
 

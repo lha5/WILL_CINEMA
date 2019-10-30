@@ -101,10 +101,12 @@ public class ShowTimeAction implements Action {
 			  jsonObj.put("region",cdto.getRegion());
 			  jsonObj.put("name",cdto.getName());
 			  jsonObj.put("room",cdto.getRoom());
+			  //book DB의 자리수 빼기
 			  jsonObj.put("seat", Integer.parseInt(seat[i].split(" ")[0])
 					  *Integer.parseInt(seat[i].split(" ")[1]));
 			  jsonObj.put("movie_name", movieList.getTitle());
 			  jsonObj.put("movie_grade", movieList.getGrade());
+			  jsonObj.put("movie_num", movieList.getMovie_num());
 			  //todaydto.setMovie_num(cdto.getString("movie_num"));
 			  //cineList.add(cdto); 
 			  
