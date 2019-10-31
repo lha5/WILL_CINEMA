@@ -29,4 +29,8 @@ public interface MemberDAO {
 	
 	// 비밀번호 변경
 	public void updatePass(String id, String pass);
+
+	List<MemberDTO> searchId(MemberDTO mdto);
+
+	public List<MemberDTO> searchPass(MemberDTO mdto);
 }
