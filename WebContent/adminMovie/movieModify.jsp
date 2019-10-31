@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>영화 수정 페이지</h1>
-<%
+<%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
 %>

@@ -317,7 +317,7 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	// 회원 마이 페이지 기본 정보 가져가기
 	@Override
-	public List forNameNLevel(String id) {
+	public List forPointLevel(String id) {
 		List info = new ArrayList();
 		try {
 			con = getCon();
@@ -367,6 +367,8 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("비밀번호 변경 완료.");
 	}
 
+	
+	
 	@Override
 	public int JoinIdCheck(String id) {
 

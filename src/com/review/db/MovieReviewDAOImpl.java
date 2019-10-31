@@ -166,17 +166,88 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 
 	// 리뷰 수정
 	@Override
-	public int modifyComment(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int modifyComment(MovieReviewDTO mrdto) {
+		int check = -1;
+		
+		try {
+			con = getCon();
+			
+			System.out.println(mrdto.getNum());
+			
+			sql = "select movie_num from review where num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mrdto.getNum());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				sql = "update review set rating=?, content=? where num=?";
+					
+				pstmt = con.prepareStatement(sql);
+					
+				pstmt.setInt(1, mrdto.getRating());
+				pstmt.setString(2, mrdto.getContent());
+				pstmt.setInt(3, mrdto.getNum());
+					
+				check = pstmt.executeUpdate();
+				// check = 1;
+				
+			}else{
+				check = -1;
+			}
+			
+			System.out.println("글 수정 동작 완료 : "+check);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return check;
 	}
-
-
 
 	// 리뷰 삭제
 	@Override
-	public int deleteComment(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteComment(int num) {
+		
+		int check = -1;
+		
+		try {
+			con = getCon();
+			
+			sql = "select movie_num from review where num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+					
+					sql = "delete from review where num=?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, num);
+					
+					check = pstmt.executeUpdate();
+				
+			}else{
+				check = -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return check;
 	}
+
+
 }

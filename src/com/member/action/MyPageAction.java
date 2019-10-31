@@ -30,7 +30,7 @@ public class MyPageAction implements Action {
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		
-		List info = mdao.forNameNLevel(id);
+		List info = mdao.forPointLevel(id);
 		
 		request.setAttribute("id", id);
 		request.setAttribute("info", info);
