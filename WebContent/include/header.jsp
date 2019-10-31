@@ -46,7 +46,7 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li id="forcustomer">고객센터
+				<li id="forcustomer"><a href="./FAQList.af">고객센터</a>
 					<ul id="dropdown">
 						<li><a href="./FAQList.af">FAQ</a></li>
 						<li><a href="./QnAList.sq">1:1 문의</a></li>
@@ -67,21 +67,19 @@
 		
 		<nav>
 			<ul>
-				<li>
-					예매
+				<li>예매
 					<ul>
 						<li>예매하기</li>
 						<li>상영시간표</li>
 						<li>할인안내</li>
 					</ul>
 				</li>
-				<li>
-				영화
-				<ul>
-					<li>박스오피스</li>
-					<li>기획전</li>
-					<li>영화의전당</li>
-				</ul>
+				<li>영화
+					<ul>
+						<li>박스오피스</li>
+						<li>기획전</li>
+						<li>영화의전당</li>
+					</ul>
 				</li>
 				<li>영화관
 					<ul>
@@ -106,7 +104,10 @@
 				</li>
 				<li><a href="./GoodsList.ml">매점</a></li>
 				<li>VOD</li>
-			</ul>			
+			</ul>
+			<div id="sub_ul">
+				
+			</div>			
 		</nav>
 	</header>
 	
