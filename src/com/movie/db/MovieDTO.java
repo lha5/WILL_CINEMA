@@ -17,6 +17,7 @@ public class MovieDTO {
 	private double total_rating;
 	private String poster;
 	private String image;
+	private int grade;
 	
 	public double getTotal_rating() {
 		return total_rating;
@@ -104,6 +105,12 @@ public class MovieDTO {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
 }
