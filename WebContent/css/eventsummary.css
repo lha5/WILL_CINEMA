@@ -23,14 +23,17 @@
 	-webkit-box-sizing: border-box;
 }
 
-/* li {
-		float: left;
-		border: solid black 1px;
-		width: 228px;
-		height: 229px;
-		list-style: none;
-		margin: 0px 0px 30px 20px;
-	} */
+/*
+li {
+	float: left;
+	border: solid black 1px;
+	width: 228px;
+	height: 229px;
+	list-style: none;
+	margin: 0px 0px 30px 20px;
+} 
+*/
+
 li>p {
 	margin-top: 4px;
 	text-align: center;
@@ -108,6 +111,8 @@ nav>ul>li:NTH-CHILD(4) ul {
 	left: 330px;
 }
 
-nav>ul>li:NTH-CHILD(1):HOVER, nav>ul>li:NTH-CHILD(2):HOVER, nav>ul>li:NTH-CHILD(3):HOVER nav>ul>li:NTH-CHILD(4) ul {
+nav>ul>li:NTH-CHILD(1):HOVER nav>ul>li:NTH-CHILD(4)>ul,
+ nav>ul>li:NTH-CHILD(2):HOVER nav>ul>li:NTH-CHILD(4)>ul,
+  nav>ul>li:NTH-CHILD(3):HOVER nav>ul>li:NTH-CHILD(4)>ul {
 	display: none;
 }

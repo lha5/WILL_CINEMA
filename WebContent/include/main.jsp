@@ -12,11 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-.mySlides {display:none;}
-</style>
-
 <title>WILL CINEMA</title>
 
 <!-- jQuery 연결 -->
@@ -24,69 +19,11 @@
 
 <!-- CSS 연결 -->
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-<style type="text/css">
-
-	body {font-size:11pt; padding:0; margin:0; text-align: center;}
-	h3 {color: #85144b; font-size: 14pt; margin:10 auto; padding: 10px;}
-	.contents {width: 900px; height: 500px; background-color: #d6d6d6; margin: 0 auto;}
-	
-	/* banner */
-	.banner {position: relative; width: 900px; height: 500px;   margin:0 auto; padding:0; overflow: hidden;}
-	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 900px; height: 500px; margin:0; padding:0;}
-
-.movie_list {
-  display: none;
-}
-
-.movie_cont a.active{
-	font-weight: bold;
-}
-
-.movie_list a.on{
-	font-weight: bold;
-}
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 20px;
-  margin-top : 20px;
-  width: 100%;
-  border: none;
-  text-align: center;
-  outline: none;
-  font-size: 15px;
-  transition: 1s;
-}
-
-.active, .accordion:hover {
-  background-color: #ccc; 
-}
-
-.panel {
-  /* padding: 0 18px; */
-   margin-top : 30px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-
-.faqbut{
-font-size:20px;
-margin: 10px;
-}
-.faqmore>a:HOVER{
-color: blue;
-}
-.noticemore>a:HOVER {
-color: blue;
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script language="JavaScript">
@@ -135,73 +72,72 @@ color: blue;
 </script>
 
 <script>
-//FAQ 옆으로 클릭하기
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-
-
-//예매순, 평점순 내용보여주기
-function openMovie(event,rating){
-	var i, movie_list, ratingLink;
-	movie_list = document.getElementsByClassName("movie_list");
-	for(i=0;i<movie_list.length; i++){
-		movie_list[i].style.display="none";
+	//FAQ 옆으로 클릭하기
+	var slideIndex = 1;
+	showDivs(slideIndex);
+	
+	function plusDivs(n) {
+	  showDivs(slideIndex += n);
 	}
-	ratingLink=document.getElementsByClassName("ratingLink");
-	for(i=0;i<ratingLink.length;i++){
-		ratingLink[i].className=ratingLink[i].className.replace(" active","");
+	
+	function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  if (n > x.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = x.length}
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  x[slideIndex-1].style.display = "block";  
 	}
-	document.getElementById(rating).style.display="block";
-	if(event!=null)
-	event.currentTarget.className+=" active";
-}
 
+
+	//예매순, 평점순 내용보여주기
+	function openMovie(event,rating){
+		var i, movie_list, ratingLink;
+		movie_list = document.getElementsByClassName("movie_list");
+		for(i=0;i<movie_list.length; i++){
+			movie_list[i].style.display="none";
+		}
+		ratingLink=document.getElementsByClassName("ratingLink");
+		for(i=0;i<ratingLink.length;i++){
+			ratingLink[i].className=ratingLink[i].className.replace(" active","");
+		}
+		document.getElementById(rating).style.display="block";
+		if(event!=null)
+		event.currentTarget.className+=" active";
+	}
 
 </script>
-<script type="text/javascript">
-$(function (){
-	openMovie(event,'book');
-});
 
-$(function (){
-	plusDivs(1);
-});
+<script type="text/javascript">
+	$(function (){
+		openMovie(event,'book');
+	});
+	
+	$(function (){
+		plusDivs(1);
+	});
 </script>
 
 </head>
 <body>
-<%
-		//String id = (String)session.getAttribute("id");
+	<%
+	//String id = (String)session.getAttribute("id");
+			
+	int count = (Integer) request.getAttribute("count");
+	int faqcount =(Integer)request.getAttribute("faqcount");
+	List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
+	List eventMovieList = (List)request.getAttribute("eventMovieList");
+	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
+	List eventNeventList = (List)request.getAttribute("eventNeventList");
+	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
 		
-int count = (Integer) request.getAttribute("count");
-int faqcount =(Integer)request.getAttribute("faqcount");
-List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
-List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
-List eventMovieList = (List)request.getAttribute("eventMovieList");
-List eventPreviewList = (List)request.getAttribute("eventPreviewList");
-List eventNeventList = (List)request.getAttribute("eventNeventList");
-List eventCollaboList = (List)request.getAttribute("eventCollaboList");
+	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	
-List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
-
-List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
-
+	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 

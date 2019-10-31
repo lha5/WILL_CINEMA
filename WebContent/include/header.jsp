@@ -111,9 +111,5 @@
 		</nav>
 	</header>
 	
-	<br>
-	<br>
-	<br>
-	
 </body>
 </html>
