@@ -12,10 +12,12 @@
 </head>
 <body>
 	<br>
+	<br>
+	<hr>
 	<div id="bttm">
 	<footer>
 		<div id="sub_logo">
-			<i class="ri-film-line ri-lg"></i> <span>WILL CINEMA</span>
+			<i class="ri-film-line ri-xl"></i> <span>WILL CINEMA</span>
 		</div>
 		
 		<div id="family_site">
