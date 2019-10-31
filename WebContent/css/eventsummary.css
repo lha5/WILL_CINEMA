@@ -98,10 +98,6 @@ a {
 	padding: 3px;
 }
 
-nav>ul>li:NTH-CHILD(4) {
-	text-shadow: aqua;
-}
-
 nav>ul>li:NTH-CHILD(4) ul {
 	display: block;
 	position: absolute;
@@ -110,4 +106,8 @@ nav>ul>li:NTH-CHILD(4) ul {
 	text-align: center;
 	top: 39px;
 	left: 330px;
+}
+
+nav>ul>li:NTH-CHILD(1):HOVER, nav>ul>li:NTH-CHILD(2):HOVER, nav>ul>li:NTH-CHILD(3):HOVER nav>ul>li:NTH-CHILD(4) ul {
+	display: none;
 }

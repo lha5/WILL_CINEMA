@@ -205,9 +205,9 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 
-	<%@ include file="../include/header.jsp" %>
 
 	<div id="wrap">
+		<%@ include file="../include/header.jsp" %>
 
 	<!-- 수정완료 -->
 	
@@ -397,6 +397,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		</div> <!--공지사항  -->
 		
 		
+				<%@ include file="../include/footer.jsp" %>
 			</div><!--전체  -->
 		</section>
 	<script>
@@ -418,6 +419,5 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	
 	
-	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
