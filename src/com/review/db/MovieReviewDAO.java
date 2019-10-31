@@ -10,7 +10,7 @@ public interface MovieReviewDAO {
 	public List<MovieReviewDTO> commentList();
 	
 	// 리뷰 수정
-	public int modifyComment(String id, String pass);
+	int modifyComment(MovieReviewDTO mrdto);
 	
 	// 리뷰 삭제
 	public int deleteComment(int num);

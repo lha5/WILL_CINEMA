@@ -8,18 +8,20 @@
 </head>
 <body>
 	
-	<%	
+	<%
 		int num = Integer.parseInt(request.getParameter("num"));
+	
 		String id = (String)session.getAttribute("id");
 		System.out.println("id : "+id);
 		if(id == null){
 			response.sendRedirect("./MemberLogin.me");
 		}
+
 	%>
 	
 	<fieldset>
 		<legend>리뷰 수정</legend>
-		<form action="./MovieReviewUpdateAction.mr" method="post">
+		<form action="./MovieReviewUpadatAction.mr?num=<%=num %>" method="post">
 			<table>
 				<tr>
 					<td>평점</td>

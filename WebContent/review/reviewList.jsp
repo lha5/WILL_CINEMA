@@ -36,11 +36,13 @@
      </tr>
      <tr>
      	<td colspan="6">
-	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpadate.mr?num=<%=mrdto.getNum() %>">
+	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?num=<%=mrdto.getNum() %>'">
 			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?num=<%=mrdto.getNum() %>'">
      	</td>
      </tr>
      <%} %>
+     
+     <h3><a href="./MovieReviewWrite.mr">리뷰 쓰기</a></h3>
 
 </body>
 </html>
