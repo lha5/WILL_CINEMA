@@ -9,20 +9,98 @@ fieldset {
 
 legend {
 	text-align: center;
+	font-family: inherit;
+	font-size: 2em;
+	color: #804040;
 }
 
 table {
 	border-collapse: collapse;
-	border: 1px solid black;
+	border-top: 2px solid #804040;
 	margin: 50px auto;
-	width: 550px;
+	width: 600px;
+	padding: 10px;
 }
 
-table td {
+td {
+	height: 50px;
+	
+}
+
+tr:NTH-CHILD(1)>td {
+	padding-top: 10px;
+}
+
+tr:NTH-CHILD(1)>td:NTH-CHILD(1), tr:NTH-CHILD(2)>td:NTH-CHILD(1),
+tr:NTH-CHILD(3)>td:NTH-CHILD(1), tr:NTH-CHILD(4)>td:NTH-CHILD(1),
+tr:NTH-CHILD(5)>td:NTH-CHILD(1), tr:NTH-CHILD(6)>td:NTH-CHILD(1), 
+tr:NTH-CHILD(7)>td:NTH-CHILD(1), tr:NTH-CHILD(8)>td:NTH-CHILD(1),
+tr:NTH-CHILD(9)>td:NTH-CHILD(1), tr:NTH-CHILD(10)>td:NTH-CHILD(1) {
+	width: 29%;
+	padding-left: 20px;
+}
+
+tr:NTH-CHILD(1)>td:NTH-CHILD(2), tr:NTH-CHILD(2)>td:NTH-CHILD(2),
+tr:NTH-CHILD(3)>td:NTH-CHILD(2), tr:NTH-CHILD(4)>td:NTH-CHILD(2),
+tr:NTH-CHILD(5)>td:NTH-CHILD(2), tr:NTH-CHILD(6)>td:NTH-CHILD(2), 
+tr:NTH-CHILD(7)>td:NTH-CHILD(2), tr:NTH-CHILD(8)>td:NTH-CHILD(2) {
+	text-align: right;
+	padding-right: 20px;
+}
+
+tr:NTH-CHILD(9)>td:NTH-CHILD(2), tr:NTH-CHILD(10)>td:NTH-CHILD(2) {
+	padding-left: 230px;
+}
+
+tr:NTH-CHILD(11) {
+	border-top: 2px solid #804040;
+	margin-top: 10px;
+}
+
+tr:NTH-CHILD(11)>td {
+	height: 70px;
+	text-align: center;
+}
+
+input[type=text], input[type=password], input[type=email] {
+	width: 240px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #804040;
+	color: #804040;
+	font-size: 14px;
+}
+
+input[type=submit], #main {
+	width: 130px;
 	height: 40px;
-	padding-left: 5px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	/* border-radius: 2px; */
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 17px;
+	color: #ffffff;
+	letter-spacing: 2px;
 }
 
-input[type=text], input[type=password] {
-	margin: 3px auto;
+input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #804040;
+	background-color: #ffffff;
+	color: #804040;
+	font-family: inherit;
+	padding: 3px;
 }
