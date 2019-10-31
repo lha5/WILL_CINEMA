@@ -1,46 +1,4 @@
 @CHARSET "UTF-8";
-/* -------- 글씨체 -------- */
-@font-face {
-	font-family: 'Oduda';
-	src: url('../font/Oduda.otf') format('opentype');
-}
-/* -------- 글씨체 -------- */
-
-
-
-/* -------- 전체에 적용할 속성들 --------*/
-a {
-	text-decoration: none;
-}
-
-a:VISITED {
-	text-decoration: none;
-}
-a:HOVER {
-	text-decoration: none;
-}
-a:FOCUS { 
-	text-decoration: none; 
-}
-
-ul>li {
-	list-style: none;
-}
-body {
-	/* border: 1px solid red; */
-	padding: 0;
-	margin: 0;
-}
-
-#wrap {
-	/* border: 1px solid red; */
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-/* -------- 전체에 적용할 속성들 --------*/
-
-
 
 /* ----------- section ----------- */
 

@@ -77,27 +77,15 @@ public class MallOrderAddAction implements Action {
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
 		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
-		// String trans_num = modao.getOrderDone(id);
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
 		// 페이지 이동
-//		forward.setPath("./MallOrderList.mor");
-//		forward.setRedirect(true);
-		response.setContentType("text/html; charset=UTF-8");
-		
-		PrintWriter out = response.getWriter();
-		
-		out.println("<script> ");
-		out.println("alert('구매가 정상적으로 완료되었습니다.');");
-		out.println("location.href='./Main.me';");
-		out.println("</script>");
-		
-		out.close();
-		
-		return null;
+		forward.setPath("./MallOrderDone.mor");
+		forward.setRedirect(true);
+		return forward;
 	}
 	
 	
