@@ -206,8 +206,9 @@ header {
 	/* border: 1px solid skyblue; */
 	width: 270px;
 	position: absolute;
-	right: -1px;
+	right: 7px;
 	top: 9px;
+	text-align: center;
 	letter-spacing: 1px;
 	font-size: 0.9em;
 }

@@ -15,7 +15,7 @@
 	<div id="bttm">
 	<footer>
 		<div id="sub_logo">
-			<i class="fas fa-film fa-2x"></i> <span>WILL CINEMA</span>
+			<i class="ri-film-line ri-lg"></i> <span>WILL CINEMA</span>
 		</div>
 		
 		<div id="family_site">
