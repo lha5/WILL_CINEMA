@@ -327,6 +327,9 @@ public class MovieDAOImpl implements MovieDAO{
 				while (rs.next()){
 					MovieDTO mdto= new MovieDTO();
 				
+					
+					//ㅁㄴㅇ
+					
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
