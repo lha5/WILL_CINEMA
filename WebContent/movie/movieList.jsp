@@ -14,8 +14,7 @@
 	<%
 		String id = (String)session.getAttribute("id");
 		
-		int count = (Integer) request.getAttribute("count");
-		
+		int count = (Integer) request.getAttribute("count"); 
 		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
 		
 		String pageNum = (String) request.getAttribute("pageNum");
@@ -26,6 +25,20 @@
 	
 
 	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
+   
+ 		 
+  
+	<form action="./MovieSearchAction.mo" method="post">
+    <select name="searchType">
+        <option value="title">제목</option>
+        <option value="genre">장르</option>
+        <option value="director">감독</option>
+    	<option value="actor">배우</option>
+    </select>
+    <input type="text" name="searchText">
+    <input type="submit" class="btn">
+	</form>
+   
    
    <table border="1">
      <tr>
