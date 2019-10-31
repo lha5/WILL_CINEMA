@@ -80,7 +80,12 @@
 font-size:20px;
 margin: 10px;
 }
-
+.faqmore>a:HOVER{
+color: blue;
+}
+.noticemore>a:HOVER {
+color: blue;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -166,6 +171,15 @@ function openMovie(event,rating){
 	event.currentTarget.className+=" active";
 }
 
+
+
+
+</script>
+
+
+<script >
+
+document.getElementById('ratingLink').getAttribute('onclick')
 </script>
 
 
@@ -213,6 +227,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      <ul>
       <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a>
       <a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></h5></li>
+     
      </ul>
      </div>
      <!-- 예매순 -->
@@ -233,7 +248,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      	 </li>
      	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </li>
-     	  
+     	 
      	 <%} %>
      	 <!-- 영화 반복문 -->
      	</ul>
@@ -257,11 +272,16 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      	 </li>
      	 
      	 
-     	  
+     	 <!-- 영화 반복문 --> 
      	 <%} %>
-     	 <!-- 영화 반복문 -->
+     	 
+     	 
+     	 
+     	 
+     	 
      	</ul>
-     </div>
+     </div> <!--  스크롤바-->
+        
     </div>
 				</article>
 				<article id="image">
@@ -373,7 +393,9 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
  	
  	<ul>
 			
-		<li><a href="./FAQList.af" style="color:blue" ><h2>FAQ</h2></a></li>	  <%
+		<li><h2 class="noticemore"><a href="./NoticeList.an" >공지사항</a></h2>
+		<h6 class="faqmore"><a href="./FAQList.af" > MORE FAQ &#10140; </a></h6></li>
+			  <%
      	for (int i=0;i<FAQList.size();i++) {
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
@@ -384,11 +406,10 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		
 		<div class="panel">
 
- 카테고리: <%=afdto.getCategory() %><br>
- 제목:  <%=afdto.getSubject() %><br>
- 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br>
  내용:<%=afdto.getContent()%><br>
+ 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100">
  
+  
 </div>
 
 		</li>
