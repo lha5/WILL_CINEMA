@@ -171,12 +171,45 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		return 0;
 	}
 
-
-
 	// 리뷰 삭제
 	@Override
-	public int deleteComment(String id, String pass) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteComment(int num) {
+		
+		int check = -1;
+		
+		try {
+			con = getCon();
+			
+			sql = "select movie_num from review where num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+					
+					sql = "delete from review where num=?";
+					
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, num);
+					
+					check = pstmt.executeUpdate();
+				
+			}else{
+				check = -1;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return check;
 	}
+
+
 }

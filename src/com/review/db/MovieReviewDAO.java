@@ -13,7 +13,7 @@ public interface MovieReviewDAO {
 	public int modifyComment(String id, String pass);
 	
 	// 리뷰 삭제
-	public int deleteComment(String id, String pass);
+	public int deleteComment(int num);
 
 	int commentCount();
 

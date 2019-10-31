@@ -34,6 +34,12 @@
      <tr>
        <td>내용</td><td colspan="5"><%=mrdto.getContent() %></td>
      </tr>
+     <tr>
+     	<td colspan="6">
+	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpadate.mr?num=<%=mrdto.getNum() %>">
+			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?num=<%=mrdto.getNum() %>'">
+     	</td>
+     </tr>
      <%} %>
 
 </body>
