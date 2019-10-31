@@ -109,6 +109,7 @@ public class ShowTimeAction implements Action {
 					  *Integer.parseInt(seat[i].split(" ")[1]));
 			  jsonObj.put("movie_name", movieList.getTitle());
 			  jsonObj.put("movie_num", movieList.getMovie_num());
+			  jsonObj.put("movie_grade", movieList.getGrade());
 			  //todaydto.setMovie_num(cdto.getString("movie_num"));
 			  //cineList.add(cdto); 
 			  
@@ -149,7 +150,8 @@ public class ShowTimeAction implements Action {
 					else runtimeE.add(etime[0]+":"+etime[1]);
 					rtime=(int) (Math.ceil(rtime/10)*10)+10;//다음 상영시작시간 10분차
 				}
-				//사용된 좌석
+				
+				//사용된 좌석 0으로 초기화
 				int[] sSeat=new int[runtimeS.size()];
 				for(int k=0; k<runtimeS.size();k++){ sSeat[k]=0;}
 				//선택 날짜의 상영일이 같은 book정보 
@@ -158,38 +160,39 @@ public class ShowTimeAction implements Action {
 						TicketDTO tdto=ticketList.get(j);
 						JSONArray selectSeat=new JSONArray();
 						//book DB 예매영화와 상영 영화 일치하는지 && 상영관 일치
-						if(tdto.getMovie_num()==Integer.parseInt(cdto.getMovie_num().split(",")[i]) &&
-								tdto.getCinema_num()==cdto.getCinema_num()){
-							for(int z=0; z<runtimeS.size(); z++){
-							//System.out.println(movieList.getTitle()+":"+tdto.getRunnging_time()+"    "+runtimeS.get(z)+"~"+runtimeE.get(z));
-							//System.out.println("있음 "+tdto.getSeat().split(",").length +"  " +(int)selectSeat.get(z));
-								//예매 정보의 상영시간일치
-								if(tdto.getRunnging_time().equals(runtimeS.get(z)+"~"+runtimeE.get(z))){
-									sSeat[z]+=tdto.getSeat().split(",").length;
-									//sSeat=tdto.getSeat().split(",").length;
-									selectSeat.add(sSeat[z]); //있으면 자리 개수저장
-								}else{//없으면 상영관 자리 개수 0개 예매
-									sSeat[z]+=0;
-									selectSeat.add(sSeat[z]);
-								}
+					if(tdto.getMovie_num()==Integer.parseInt(cdto.getMovie_num().split(",")[i]) &&
+						tdto.getCinema_num()==cdto.getCinema_num()){
+						for(int z=0; z<runtimeS.size(); z++){
+							//예매 정보의 상영시간일치
+							if(tdto.getRunnging_time().equals(runtimeS.get(z)+"~"+runtimeE.get(z))){
+								sSeat[z]+=tdto.getSeat().split(",").length;
+								selectSeat.add(sSeat[z]); //있으면 자리 개수저장
+							}else{//없으면 상영관 자리 개수 0개 예매
+								sSeat[z]+=0;
+								selectSeat.add(sSeat[z]);
 							}
 						}
-						jsonObj.put("selectSeat", selectSeat);
-					}
-				}else{
-					System.out.println(movieList.getTitle());
-					JSONArray selectSeat=new JSONArray();
-					for(int z=0; z<runtimeS.size(); z++){
-						selectSeat.add(sSeat[z]);
+					}else{//예매된 상영관이 없을때 0으로 초기화
+						//System.out.println(movieList.getTitle());
+						for(int z=0; z<runtimeS.size(); z++){
+							selectSeat.add(sSeat[z]);
+						}
 					}
 					jsonObj.put("selectSeat", selectSeat);
 				}
+			}else{//예매된 상영관이 없을때 0으로 초기화
+				JSONArray selectSeat=new JSONArray();
+				for(int z=0; z<runtimeS.size(); z++){
+					selectSeat.add(sSeat[z]);
+				}
+				jsonObj.put("selectSeat", selectSeat);
+			}
 				
-				jsonObj.put("runtimeS", runtimeS);
-				jsonObj.put("runtimeE", runtimeE);
-				jsonObj.put("saleTime", saleTime);
-			  cineList.add(jsonObj);
-			}else if(todayCal.compareTo(startCal)!=-1
+			jsonObj.put("runtimeS", runtimeS);
+			jsonObj.put("runtimeE", runtimeE);
+			jsonObj.put("saleTime", saleTime);
+			cineList.add(jsonObj);
+			}else if(todayCal.compareTo(startCal)!=-1//오늘 날짜의 영화관의 선택된 영화 정보를 저장 CineDTO
 					  &&todayCal.compareTo(endCal)!=1 && movie!=""){
 			}
 

@@ -11,226 +11,7 @@
 <title>Insert title here</title>
 <!-- jQuery -->
 <script src="./js/jquery-3.4.1.min.js"></script>
-
-<style type="text/css">
-/* 예매 Content Ticket*/
-.cont_ticket {
-	width: 100%;
-	min-height: 100px;
-	background: #f9f6ec;
-}
-
-.cont_ticket_Area {
-	width: 980px;
-	min-height: 100px;
-	margin: 0 auto;
-	padding-top: 30px;
-}
-/* 예매 Content Ticket*/
-
-/* 0805 예매 */
-.ticket_wrap {
-	width: 100%;
-	background: #f6f6ea
-}
-
-.calendar { 
-	position:relative; 
-	clear:both;
-	width:980px; 
-	padding:0 0 0 0;  
-	color:#231f20;
-}
-
-.calendar fieldset .month-picker-label {
-	/* position: absolute; */
-	width: 30px;
-	padding: 0 15px;
-	text-align: center;
-}
-
-.calendar .month-picker {
-	margin: 100px auto;
-	width: 600px;
-	text-align: center;
-}
-
-.calendar .month-picker-label span {
-	display: block;
-	font-size: 13px;
-	padding-bottom: 5px;
-}
-
-.calendar .month-picker-label em {
-	display: inline-block;
-	width: 100%;
-	height: 30px;
-	line-height: 30px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.calendar .month-picker-fieldset {
-	overflow: hidden;
-	position: relative;
-	display: block;
-	width: 840px;
-	height: 49px;
-	padding: 47px 70px 0;
-}
-
-.calendar .month-picker-fieldset div.calendarArea {
-	position: relative;
-	display: inline-block;
-	overflow: hidden;
-	width: 100%;
-	height: 100%;
-}
-
-.calendar .month-picker-fieldset div input {
-	position: absolute;
-	clip: rect(1px, 1px, 1px, 1px);
-}
-
-.calendar span.month {
-	position: absolute;
-	padding: 0 40px;
-	text-align: left;
-	font-weight: bold;
-	top: 0 !important;
-	color: #666;
-	font-size: 12px;
-}
-
-.calendar span.month em {
-	width: 13px;
-	font-size: 34px;
-	margin: 0 15px 0 0;
-	border-bottom: 2px solid #231f20;
-	font-family: 'Linux Libertine';
-	color: #231f20;
-	font-weight: bold;
-}
-
-.calendar span.month.noDate {
-	color: #806a42;
-}
-
-.calendar span.month.noDate em {
-	color: #806a42;
-	border-color: #806a42;
-}
-
-.calendar span.month span {
-	white-space: nowrap
-}
-
-.calendar .month-picker-fieldset>.month-picker-label.month em {
-	padding: 0;
-	font-size: 30px;
-	line-height: 30px;
-}
-
-.calendar .month-picker-fieldset .month-picker-label.sun {
-	color: #cd190b
-}
-
-.calendar .month-picker-fieldset .month-picker-label.sat {
-	color: #407bbb
-}
-
-.calendar .month-picker-fieldset .month-picker-label.noDate {
-	color: #A7A2A2 !important;
-	cursor: default;
-}
-
-.calendar .month-picker-label, .month-picker-nav {
-	display: inline-block;
-	vertical-align: top;
-	cursor: pointer;
-}
-
-.calendar .month-picker-label.ckon em {
-	opacity: 1;
-	filter: alpha(opacity = 100);
-	opacity: 1.0;
-	-moz-opacity: 1.0;
-	background: url('./img/bg/bg_cal_check.png') no-repeat center
-		center !important;
-	color: #fff;
-}
-
-.calendar .month-picker-label.month.ckon em {
-	background: none;
-	color: #231f20
-}
-
-.calendar input:checked+.month-picker-label em {
-	opacity: 1;
-	filter: alpha(opacity = 100);
-	opacity: 1.0;
-	-moz-opacity: 1.0;
-	background: url('./img/bg/bg_cal_check.png') no-repeat center
-		center;
-	color: #fff;
-}
-
-.calendar input:checked+.month-picker-label.month em {
-	background: none;
-	color: #231f20
-}
-
-.calendar input:focus+.month-picker-label {
-	outline: 1px dotted #000;
-} /* 2016.05.04 포커스 추가*/
-.calendar .month-picker-nav {
-	position: absolute;
-	top: 41px;
-	z-index: 10;
-	width: 19px;
-	height: 50px;
-	font-size: 0;
-	text-align: center;
-}
-
-.calendar .month-picker-nav.next {
-	right: 0;
-	background: url('./img/btn/btn_m_next_on.png') no-repeat center
-		center;
-}
-
-.calendar .month-picker-nav.prev {
-	left: 0;
-	background: url('./img/btn/btn_m_prev_on.png') no-repeat center
-		center;
-}
-
-.calendar .month-picker-nav.nodata {
-	opacity: 0.3;
-	filter: alpha(opacity = 30);
-	opacity: 0.3;
-	-moz-opacity: 0.3;
-	cursor: default;
-}
-
-
-.movie_list {
-  display: none;
-}
-
-.movie_cont a.active{
-	font-weight: bold;
-}
-
-.movie_list a.on{
-	font-weight: bold;
-}
-
-.area_list a.on{
-	font-weight: bold;
-}
-
-</style>
+<link rel="stylesheet" href="./css/ticketing.css">
 
 <script type="text/javascript">
 	$(function (){
@@ -242,12 +23,13 @@
 		var startDate=0;
 		var clickDate=14;
 		var today = new Date(); //오늘 날짜
-		var changeDay= '#'+monthNames[today.getMonth()]+today.getDate();
+		if(today.getDate()<10) var changeDay= '#'+monthNames[today.getMonth()]+"0"+today.getDate();
+		else var changeDay= '#'+monthNames[today.getMonth()]+today.getDate();
 		var allDay = "${allDay}"; //controller에서 가져온 attribute
 		allDay=allDay.split('[')[1];
 		allDay=allDay.split(']')[0];
 		allDay=allDay.split(',');
-
+		
 		function prev(){
 		$('.prev').click(function(){
 			changeDay=$('.txtdate').find('dd').text().split('.');
@@ -408,7 +190,7 @@
 		$('.movie_cont').find('a').eq(0).addClass(' active');
 		
 		openArea(event,'area1');
-		//$('.movie_cont').find('a').eq(0).addClass(' active');
+		$('.area_zone').find('a').eq(0).addClass(' active');
 	});
 	
 	//지역 선택
@@ -471,6 +253,7 @@
 					var runtimeS='';
 					var runtimeE='';
 					var saleTime='';
+					var selectSeat='';
 					html="<h5 class='time_tit'>"+cdto.name+"</h5>";
 					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
 					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+"</dt>";
@@ -491,13 +274,20 @@
 					runtimeE=runtimeE.split(",");
 					saleTime=saleTime.substr(0, saleTime.length-1);
 					saleTime=saleTime.split(",");
+					
+					$.each(cdto.selectSeat,function(index,seat){
+						selectSeat+=seat+",";
+					});
+					selectSeat=selectSeat.substr(0,selectSeat.length-1);
+					selectSeat=selectSeat.split(",");
+					
 					for(var i=0; i<cdto.runtimeS.length; i++){
 						html+="<li><a href='javascript:void(0)'>"+"<span class='cineD2'><em>"+cnt+"관</em></span>";
 						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
 						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
 						if(saleTime[i]=="") html+="<span>";
 						html+=runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
-						"<span class='ppNum'>"+"남은좌석/"+cdto.allSeat+"</span></a></li>";
+						"<span class='ppNum'>"+(cdto.allSeat*1-selectSeat[i]*1)+"/"+cdto.allSeat+"</span></a></li>";
 						
 					}
 					html+="</ul>"
@@ -580,11 +370,13 @@
 		<a href="javascript:void(0);" class='month-picker-nav next'>다음</a>
   </div>
   <div class="ticket_inner">
+   <div class="ticket_step">
    <div class="ticket_left">
     <dl class="cinema_header">
      <dt>영화관</dt>
      <dd>최대 2개까지 선택가능</dd>
     </dl>
+    <dl class="ticket"></dl>
     <div class="cinema_cont">
      <div class="cinema_top"><h4>전체영화관</h4></div>
      <div class="tab_scroll"> <!-- 영화관 목록 -->
@@ -605,7 +397,7 @@
         <li>
          <span class="area_zone">
           <a href="javascript:void(0);" class="region" onclick="openArea(event,'area<%=num%>')">
-          <h4><%=name%></h4>(<em><%=cineCnt[i]%></em>)
+          <h4><%=name%>(<em><%=cineCnt[i]%></em>)</h4>
           </a>
          </span>
          <div class="area_cont">
@@ -675,6 +467,7 @@
      	</ul>
      </div>
     </div>
+   </div>
    </div>
   </div>
  </div>

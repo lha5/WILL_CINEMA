@@ -240,6 +240,7 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
+				mdto.setGrade(rs.getInt("grade"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setDirector(rs.getString("director"));
