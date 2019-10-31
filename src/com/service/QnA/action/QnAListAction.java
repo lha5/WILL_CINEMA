@@ -76,7 +76,7 @@ public class QnAListAction implements Action {
 		
 		// 회원 이름 가져가기
 		MemberDAO mdao = new MemberDAOImpl();
-		List info = mdao.forNameNLevel(id);
+		List info = mdao.forPointLevel(id);
 		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);

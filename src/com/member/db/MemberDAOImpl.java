@@ -315,9 +315,9 @@ public class MemberDAOImpl implements MemberDAO{
 
 	
 	
-	// 회원 마이 페이지 이름값 가져가기
+	// 회원 마이 페이지 기본 정보 가져가기
 	@Override
-	public List forNameNLevel(String id) {
+	public List forPointLevel(String id) {
 		List info = new ArrayList();
 		try {
 			con = getCon();
@@ -367,6 +367,8 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("비밀번호 변경 완료.");
 	}
 
+	
+	
 	@Override
 	public int JoinIdCheck(String id) {
 
@@ -396,5 +398,50 @@ public class MemberDAOImpl implements MemberDAO{
 			closeDB();
 		}
 		return check;
+	}
+
+	
+	
+	// 포인트 적립
+	@Override
+	public void addPoint(String id, int percentage) {
+		try {
+			con = getCon();
+			
+			sql = "SELECT point FROM member WHERE id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				sql = "UPDATE member SET point=? WHERE id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, rs.getInt("point") + percentage);
+				pstmt.setString(2, id);
+				
+				pstmt.executeUpdate();
+				
+			} else {
+				sql = "UPDATE member SET point=? WHERE id = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, percentage);
+				pstmt.setString(2, id);
+				
+				pstmt.executeUpdate();
+			}
+			
+			System.out.println(id + "님 포인트 적립 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 }

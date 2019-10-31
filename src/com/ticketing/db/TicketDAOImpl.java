@@ -66,6 +66,7 @@ public class TicketDAOImpl implements TicketDAO{
 			while (rs.next()) {
 				CineDTO cdto = new CineDTO();
 				
+				cdto.setRegion_num(rs.getInt("region_num"));
 				cdto.setCinema_num(rs.getInt("cinema_num"));
 				cdto.setRegion(rs.getString("region"));
 				cdto.setName(rs.getString("name"));
@@ -94,8 +95,46 @@ public class TicketDAOImpl implements TicketDAO{
 	 /*--------------------- 영화관 정보 --------------------*/
 
   
-  
-	 /*--------------------- 영화 예매순 --------------------*/
+	/*--------------------- 선택된 영화관 정보 --------------------*/
+	 @Override
+	public CineDTO getSelectList(String cinema) {
+		 CineDTO cdto=new CineDTO();
+		 try {
+				con = getCon();
+				
+				sql = "SELECT * FROM cinema";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					cdto.setRegion_num(rs.getInt("region_num"));
+					cdto.setCinema_num(rs.getInt("cinema_num"));
+					cdto.setRegion(rs.getString("region"));
+					cdto.setName(rs.getString("name"));
+					cdto.setRoom(rs.getString("room"));
+					cdto.setSeat(rs.getString("seat"));
+					cdto.setAddr(rs.getString("addr"));
+					cdto.setTel(rs.getString("tel"));
+					cdto.setStart_times(rs.getString("start_times"));
+					cdto.setEnd_times(rs.getString("end_times"));
+					cdto.setStart_priod(rs.getString("start_priod"));
+					cdto.setEnd_priod(rs.getString("end_priod"));
+					cdto.setMovie_num(rs.getString("movie_num"));
+				}
+				
+				System.out.println("cineList 목록 저장 완료------------------------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return cdto;
+	}
+	 /*--------------------- 영화관 정보 --------------------*/
+
+	/*--------------------- 영화 예매순 --------------------*/
 	@Override
 	public List<MovieDTO> bookRatingList() {
 
@@ -163,6 +202,7 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
+				mdto.setTotal_rating(rs.getDouble("total_rating"));
 				
 				movieList.add(mdto);
 				
@@ -177,4 +217,40 @@ public class TicketDAOImpl implements TicketDAO{
 		return movieList;
 	}
 	/*--------------------- 영화 평점순 --------------------*/
+
+	/*--------------------- 선택된 영화 정보 --------------------*/
+	@Override
+	public MovieDTO getMovie(int num) {
+		MovieDTO mdto = new MovieDTO();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from movie where movie_num=?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setTitle(rs.getString("title"));
+				mdto.setGrade(rs.getInt("grade"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setCountry(rs.getString("country"));			
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return mdto;
+	}
+	/*--------------------- 선택된 영화 정보 --------------------*/
 }

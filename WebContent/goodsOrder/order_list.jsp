@@ -10,26 +10,6 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
-<!-- 비동기 처리 -->
-<script>
-function acyncMovePage(url){
-    // ajax option
-    var ajaxOption = {
-            url : url,
-            async : true,
-            type : "POST",
-            dataType : "html",
-            cache : false
-    };
-    
-    $.ajax(ajaxOption).done(function(data){
-        // body 영역 삭제
-        $('body').children().remove();
-        // body 영역 교체
-        $('body').html(data);
-    });
-}
-</script>
 </head>
 <body>
 	
@@ -58,7 +38,7 @@ function acyncMovePage(url){
 				MallOrderDTO modto = orderList.get(i);
 			%>
 				<tr>
-					<td><a href="javascript:acyncMovePage('./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>')"><%=modto.getTrans_num()%></a></td>
+					<td><a href="./MallOrderDetail.mor?trans_num=<%=modto.getTrans_num()%>"><%=modto.getTrans_num()%></a></td>
 					<td><%=modto.getGoods_name()%></td>
 					<td><%=modto.getGoods_amount()%></td>
 					<td><%=modto.getPrice() %>원</td>

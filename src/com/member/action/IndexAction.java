@@ -17,7 +17,7 @@ public class IndexAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ACTIon indexAction  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
+		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
 		
 		int count = mvdaoImpl.getBoardCount();
 		

@@ -145,9 +145,6 @@ public class MemberFrontController extends HttpServlet{
 		
 		
 		
-		
-		
-		
 		//가상주소를 가지고 이동
 		if(forward !=null){
 			if(forward.isRedirect()){

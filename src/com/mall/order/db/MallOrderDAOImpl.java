@@ -218,15 +218,15 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 	
 	// 구매 직후 확인 페이지
 	@Override
-	public List<MallOrderDTO> getOrderDone(String id) {
-		List<MallOrderDTO> orderDone = new ArrayList();
+	public String getOrderDone(String id) {
+		String orderDone = "";
 		
 		try {
 			con = getCon();
 			
-			sql = "SELECT trans_num, goods_name, goods_amount, price, payment "
+			sql = "SELECT trans_num "
 					+ "FROM order_goods "
-					+ "WHERE order_num(SELECT MAX(order_num) FROM order_goods WHERE order_id = ?)";
+					+ "WHERE order_num = (SELECT MAX(order_num) FROM order_goods WHERE order_id=?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -234,24 +234,14 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
-				MallOrderDTO modto = new MallOrderDTO();
-				
-				modto.setTrans_num(rs.getString("trans_num"));
-				modto.setGoods_name(rs.getString("goods_name"));
-				modto.setGoods_amount(rs.getInt("goods_amount"));
-				modto.setPrice(rs.getInt("price"));
-				modto.setPayment(rs.getString("payment"));
-				
-				orderDone.add(modto);
-			}
+			orderDone += rs.getString("trans_num");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		
+		System.out.println("구매 확인 페이지로 가져갈 구매 번호 저장 완료");
 		return orderDone;
 	}
 }

@@ -20,6 +20,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 	      <input type="hidden" name="num" value="<%=andto.getNum()%>"> 
 		     글쓴이 : <input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
 		     비밀번호 : <input type="password" name="pass"><br>
+		   카테고리: <input type=text name="category" value="<%=andto.getCategory()%>"><br> 
 		     제목 : <input type="text" name="subject" value="<%=andto.getSubject()%>"><br>
 		     내용 :<br> 
 		     <textarea name="content" rows="10" cols="20"><%=andto.getContent() %></textarea><br>

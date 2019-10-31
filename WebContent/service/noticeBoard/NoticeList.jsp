@@ -34,11 +34,12 @@
 			<td>조회수</td>
 		</tr>
 	
+	
 		<% 
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
-			System.out.println(andto.getReadcount());  
+			//System.out.println(andto.getReadcount(int) );  
 		%>
 	  	<tr>
 			<td><%=andto.getNum()%></td>
@@ -51,6 +52,18 @@
 		} 
 		%> 	
 	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		<%
 		if(count != 0) {
@@ -78,6 +91,7 @@
 		}
 	%>
 
+	<input type="button" value="글쓰기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	
 	
 	<%@ include file="../../include/footer.jsp" %>

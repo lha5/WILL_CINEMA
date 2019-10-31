@@ -103,6 +103,7 @@ public class CinemaModifyAction implements Action{
 		else{region="서울";}
 		
 		cdto.setCinema_num(cinema_num);
+		cdto.setRegion_num(regionCode);
 		cdto.setRegion(region);
 		cdto.setName(request.getParameter("name"));
 		cdto.setRoom(room);
