@@ -444,7 +444,7 @@ public class MemberDAOImpl implements MemberDAO{
 		List<MemberDTO> passList = new ArrayList<MemberDTO>();		
 		try {
 			con = getCon();
-
+			
 			sql = "SELECT pass FROM member where id=?";
 
 			pstmt = con.prepareStatement(sql);
