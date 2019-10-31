@@ -105,7 +105,6 @@ public class ShowTimeAction implements Action {
 			  jsonObj.put("seat", Integer.parseInt(seat[i].split(" ")[0])
 					  *Integer.parseInt(seat[i].split(" ")[1]));
 			  jsonObj.put("movie_name", movieList.getTitle());
-			  jsonObj.put("movie_grade", movieList.getGrade());
 			  jsonObj.put("movie_num", movieList.getMovie_num());
 			  //todaydto.setMovie_num(cdto.getString("movie_num"));
 			  //cineList.add(cdto); 

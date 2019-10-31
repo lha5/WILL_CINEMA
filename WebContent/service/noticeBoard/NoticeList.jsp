@@ -1,3 +1,4 @@
+<%@page import="java.util.function.Function"%>
 <%@page import="com.admin.service.notice.db.AdminNoticeDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.admin.service.notice.db.AdminNoticeDAO"%>
@@ -12,6 +13,21 @@
 <body>
 
 	<%@ include file="../../include/header.jsp" %>
+
+
+
+
+
+	
+
+		
+		
+	
+	
+
+
+
+
 
 	<%
 		int count = (Integer) request.getAttribute("count");
@@ -55,7 +71,7 @@
 	
 	
 	
-	<!--   12345  -->
+	
 	
 	
 	
@@ -66,6 +82,12 @@
 	
 	
 		<%
+
+
+		
+		
+		
+		
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -87,14 +109,18 @@
 			%>
 			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 			<%
+			
 			}
 		}
+	
+	
 	%>
-
 	<input type="button" value="글쓰기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	
 	
 	<%@ include file="../../include/footer.jsp" %>
+	
+
 	
 </body>
 </html>
