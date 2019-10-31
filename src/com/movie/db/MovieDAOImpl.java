@@ -300,7 +300,60 @@ public class MovieDAOImpl implements MovieDAO{
 		return boardList;
 	}
 
-	
+		
+		public List<MovieDTO> getSearch(String searchType,String search,int startRow,int pageSize) {
+			List<MovieDTO> boardList = new ArrayList<MovieDTO>();
+			
+			try {
+				con = getCon();
+				if(searchType.equals("title")){
+					sql = "select * from movie where title like ?";	
+				}else if(searchType.equals("genre")){
+					sql = "select * from movie where genre like ?";	
+				}else if(searchType.equals("director")){
+					sql = "select * from movie where director like ?";
+				}else if(searchType.equals("actor")){
+					sql = "select * from movie where actor like ?";
+				}
+				
+				pstmt = con.prepareStatement(sql);
+				
+				System.out.println(search);
+			
+				pstmt.setString(1, "%"+search+"%");
+			
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()){
+					MovieDTO mdto= new MovieDTO();
+				
+				mdto.setMovie_num(rs.getInt("movie_num"));
+				mdto.setTitle(rs.getString("title"));
+				mdto.setGenre(rs.getString("genre"));
+				mdto.setStory(rs.getString("story"));
+				mdto.setRunning_time(rs.getInt("running_time"));
+				mdto.setDirector(rs.getString("director"));
+				mdto.setActor(rs.getString("actor"));
+				mdto.setOpen_date(rs.getDate("open_date"));
+				mdto.setClose_date(rs.getDate("close_date"));
+				mdto.setCountry(rs.getString("country"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+				mdto.setPoster(rs.getString("poster"));
+				mdto.setImage(rs.getString("image"));
+				
+				boardList.add(mdto);
+				
+				}
+			
+			
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}finally{
+				closeDB();
+			}
+			return boardList;
+		}
 
 }
 
