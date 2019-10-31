@@ -160,7 +160,8 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				
+				mdto.setTotal_rating(rs.getDouble("total_rating"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
 				movieList.add(mdto);
 				
 			}
@@ -200,7 +201,10 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				
+
+				mdto.setTotal_rating(rs.getDouble("total_rating"));
+				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+
 				movieList.add(mdto);
 				
 			}

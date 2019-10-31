@@ -28,8 +28,7 @@ public class IndexAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-	
-AdminEventDAO aedao = new AdminEventDAOImpl();
+		AdminEventDAO aedao = new AdminEventDAOImpl();
 		
 		// 카테고리별 리스트 가져오는 메서드 생성 getGoodsList(item);
 		List eventMovieList = aedao.getEventList("movie");
@@ -42,19 +41,17 @@ AdminEventDAO aedao = new AdminEventDAOImpl();
 		int faqcount = afdao.getBoardCount();
 		int faqpageSize =3;
 		List<AdminFAQDTO> FAQList = null;
-		
-			FAQList = afdao.getBoardList();
+		FAQList = afdao.getBoardList();
 		
 		////////////////////FAQ
 		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
-				int count = mvdaoImpl.getBoardCount();
-				int pageSize = 5;
+		int count = mvdaoImpl.getBoardCount();
+		int pageSize = 5;
 		System.out.println(" pageNum - 1 : " + request.getParameter("pageNum"));
 		
 		List<MovieDTO> boardList = null;
-	
 		if( count != 0 ){ 
-			  boardList = mvdaoImpl.getBoardList();
+			boardList = mvdaoImpl.getBoardList();
 		}
 		// movie List
 
@@ -62,11 +59,7 @@ AdminEventDAO aedao = new AdminEventDAOImpl();
 		List<CineDTO> cineList = tdao.getCinemaList();
 		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
 		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
-		
-		
 		//예매순 가지고 오기 
-		
-		
 		
 		// 정보 저장 
 		request.setAttribute("eventMovieList", eventMovieList);

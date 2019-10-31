@@ -17,20 +17,12 @@
 	height: 500px;
 	margin: 1px 0 10px 80px;
 	position: absolute;
-}
+	
 
-.entry {
-	width: 320px;
-	height: 200px;
-	background-image: url("../img/main/boxoffice.jpg");
-	margin-top: -10px;
 }
-
-.ratingLink {
-	text-shadow: 1px 1px 2px #666666;
-	color: white;
-	padding: 5px 10px;
-	text-align: center right;
+.entry {width : 320px; height : 200px; background-image : url("../img/main/boxoffice.jpg"); margin-top: -10px; }
+.ratingLink{text-shadow : 1px 1px 2px #666666; color : white;  padding: 5px 10px; 
+				text-align: center right; 	
 }
 
 #image {
@@ -38,7 +30,7 @@
 	float: right;
 	width: 900px;
 	height: 500px;
-	margin-right: 100px;
+	margin-right : 100px;
 	margin-top: 1px;
 	margin-bottom: 20px;
 }
@@ -68,30 +60,28 @@
 	width: 400px;
 	height: 450px;
 	clear: both;
-	margin: 20px auto 10px auto;
+	 margin: 20px auto 10px auto;
 	padding: 10px auto;
-	text-align: center;
+	 text-align: center;
 }
 
-.eventlist {
-	float: left;
-	margin: 18px;
-	padding-left: 80px;
-	list-style: none;
+.eventlist{
+	float:left;
+		margin: 18px;
+	padding-left:80px;
+list-style: none;
+	
 }
-
-.booking {
-	float: left;
-	margin-left: 30px;
-	font-weight: bold;
+.booking{
+float: left;
+margin-left: 30px;
+font-weight: bold;
 }
-
-.booking1 {
-	float: right;
-	margin-right: 40px;
-	font-weight: bold;
+.booking1{
+float: right;
+margin-right: 40px;
+font-weight: bold;
 }
-
 .booking>a:HOVER {
 	color: red;
 }
