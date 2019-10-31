@@ -13,9 +13,20 @@ public class MovieDTO {
 	private Date open_date;
 	private Date close_date;
 	private String country;
-	private Double booking_ration;
+	private double booking_ration;
+	private double total_rating;
 	private String poster;
 	private String image;
+	
+	public double getTotal_rating() {
+		return total_rating;
+	}
+	public void setTotal_rating(double total_rating) {
+		this.total_rating = total_rating;
+	}
+	public void setBooking_ration(double booking_ration) {
+		this.booking_ration = booking_ration;
+	}
 	public int getMovie_num() {
 		return movie_num;
 	}

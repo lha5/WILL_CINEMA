@@ -114,7 +114,7 @@ function sample6_execDaumPostcode() {
 	<fieldset>
 		<legend>회원 가입</legend>
 		<form action="./MemberJoinAction.me" method="post" name="upForm" onsubmit="return willjoin6();">
-			<table border="1">
+			<table>
 				<tr>
 					<td>
 						아이디
@@ -152,7 +152,7 @@ function sample6_execDaumPostcode() {
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="text" name="email" placeholder="itwill@co.kr"></td>
+					<td><input type="email" name="email" placeholder="example@example.com"></td>
 				</tr>
 				<tr>
 					<td>
@@ -195,7 +195,7 @@ function sample6_execDaumPostcode() {
 					<td colspan="2">
 						<input type="submit" value="가입 하기">
 						&nbsp;&nbsp;
-						<input type="button" value="뒤로 가기" onclick="goMain();">
+						<input type="button" value="뒤로 가기" id="main" onclick="goMain();">
 					</td>
 				</tr>
 			</table>

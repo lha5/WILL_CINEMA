@@ -44,21 +44,21 @@ input[type=text], input[type=password] {
 	-moz-appearance: none;
 	appearance: none;
 	border: 1px solid #804040;
-	border-radius: 2px;
+	/* border-radius: 2px; */
 	/* background-color: #ffefa3; */
 	color: #804040;
 	font-size: 16px;
 }
 
 input[type=submit] {
-	width: 150px;
-	height: 65px;
+	width: 130px;
+	height: 55px;
 	outline-style: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	border: 1px solid #d7282d;
-	border-radius: 2px;
+	/* border-radius: 2px; */
 	background-color: #d7282d;
 	font-family: inherit;
 	font-size: 19px;
@@ -80,10 +80,14 @@ input[type=button] {
 	width: 120px;
 	height: 50px;
 	border: 1px solid #804040;
-	border-radius: 2px;
-	background-color: #804040;
+	/* border-radius: 2px; */
+	background-color: #ffffff;
 	font-family: inherit;
 	font-size: 16px;
-	color: #ffffff;
+	color: #804040;
 	letter-spacing: 2px;
+}
+
+#forgot {
+	font-size: 14px;
 }
