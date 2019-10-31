@@ -37,7 +37,15 @@ public class TicketingFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/SeatSelectAction.ti")){ //좌석 선택 페이지
+		}else if(command.equals("/SeatSelect.ti")){ //좌석 선택 페이지 이동
+			//action = new SeatSelect(); 
+			action = new SeatSelect();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/SeatSelectAction.ti")){ //좌석 선택 페이지 처리
 			//action = new SeatSelectAction(); 
 			
 			try {

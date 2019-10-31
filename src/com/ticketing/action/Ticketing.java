@@ -101,8 +101,7 @@ public class Ticketing implements Action {
 		}
 
 		//전체 지역 리스트
-		List allRegion=new ArrayList<>();
-		
+		List allRegion=new ArrayList<>();		
 		List arr=new ArrayList();
 		arr.add("1"); arr.add("서울");
 		allRegion.add(arr);
@@ -127,7 +126,7 @@ public class Ticketing implements Action {
 		arr=new ArrayList();
 		arr.add("8"); arr.add("제주");
 		allRegion.add(arr);
-
+		
 		/*HashSet regionList= new HashSet();
 		for(int i=0; i<cineList.size(); i++){
 			allRegion = new ArrayList();
@@ -204,5 +203,7 @@ public class Ticketing implements Action {
 		forward.setPath("./ticketing/ticketing.jsp");
 		forward.setRedirect(false);
 		return forward;
+		
+		
 	}
 }
