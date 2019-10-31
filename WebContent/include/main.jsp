@@ -172,14 +172,6 @@ function openMovie(event,rating){
 }
 
 
-
-
-</script>
-
-
-<script >
-
-document.getElementById('ratingLink').getAttribute('onclick')
 </script>
 
 
@@ -205,8 +197,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 
-
-
 	<%@ include file="../include/header.jsp" %>
 
 	<div id="wrap">
@@ -217,10 +207,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 
 			<div id="center">
 				<article id="list">
-					
-					
-					
-					
 					
 					<div class="movie_cont">
      <div class = "entry">
@@ -275,10 +261,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
      	 <!-- 영화 반복문 --> 
      	 <%} %>
      	 
-     	 
-     	 
-     	 
-     	 
      	</ul>
      </div> <!--  스크롤바-->
         
@@ -286,11 +268,8 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				</article>
 				<article id="image">
 					
-					
 	<div class="contents">
 		<div class="banner">
-			
-		
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
@@ -299,8 +278,6 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
 					<%} %>
 					</ul>
-		
-		
 		</div>
 	</div>
 					
@@ -373,7 +350,7 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 				<%} %>
 			</ul>
 				</div>
-			</div>
+			</div><!--이벤트 불러오기  -->
 		
 			<div id="service">
 				멤버십이나 포인트 같은 서비스 모음
@@ -384,52 +361,35 @@ List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 <a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
 <a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
 </div>
-		
-			</div>
+			</div><!--서비스  -->
 			
 			<div id="notice">
-			
 		<div class="w3-content w3-display-container">
- 	
  	<ul>
-			
 		<li><h2 class="noticemore"><a href="./NoticeList.an" >공지사항</a></h2>
 		<h6 class="faqmore"><a href="./FAQList.af" > MORE FAQ &#10140; </a></h6></li>
 			  <%
      	for (int i=0;i<FAQList.size();i++) {
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
-		
 		<li class="mySlides">
-		
 		<button class="accordion"> 주제 : <%=afdto.getSubject() %></button>
-		
 		<div class="panel">
 
  내용:<%=afdto.getContent()%><br>
  이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100">
- 
-  
 </div>
-
 		</li>
 					<%} %>
 					</ul>
-
- 
- 
-  
    <button class="faqbut" onclick="plusDivs(-1)">&#10094;</button>
   <button class="faqbut" onclick="plusDivs(1)">&#10095;</button>
   
 </div>
-		
-			
-		
-		</div>
+		</div> <!--공지사항  -->
 		
 		
-			</div>
+			</div><!--전체  -->
 		</section>
 	<script>
 			var acc = document.getElementsByClassName("accordion");
