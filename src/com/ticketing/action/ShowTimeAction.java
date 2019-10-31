@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -20,6 +19,7 @@ import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
 import com.ticketing.db.TicketDAO;
 import com.ticketing.db.TicketDAOImpl;
+import com.ticketing.db.TicketDTO;
 
 public class ShowTimeAction implements Action {
 
@@ -47,7 +47,10 @@ public class ShowTimeAction implements Action {
 		// 영화DB 정보 다 가져오기
 		List<MovieDTO> bookRatingList = tdao.bookRatingList();// 예매순
 		List<MovieDTO> totalRatingList = tdao.totalRatingList();// 평점순
-
+		
+		//예매DB 정보 다 가져오기
+		List<TicketDTO> ticketList=tdao.getTicketList(date);
+		
 		//String[] mName=new String[Integer.parseInt(cdto.getRoom())];
 		//int[] mGrade=new int[Integer.parseInt(cdto.getRoom())];
 		for(int i=0; i<Integer.parseInt(cdto.getRoom()); i++){
@@ -77,7 +80,7 @@ public class ShowTimeAction implements Action {
 			// 각 상영관의 영화 마감일
 			endCal.set(Integer.parseInt(endDate.split("-")[0]), Integer.parseInt(endDate.split("-")[1]) - 1,
 					Integer.parseInt(endDate.split("-")[2]));
-			todayCal = Calendar.getInstance(); // 오늘 날짜
+			//todayCal = Calendar.getInstance(); // 오늘 날짜
 			 //System.out.println(Integer.parseInt(cdto.getSeat().split(" ")[1]));
 			if(movie==""){//영화 선택 안했을때 상영관의 모든 영화(상영시간) 보여주기
 				 System.out.println("없음"); 
@@ -102,7 +105,7 @@ public class ShowTimeAction implements Action {
 			  jsonObj.put("name",cdto.getName());
 			  jsonObj.put("room",cdto.getRoom());
 			  //book DB의 자리수 빼기
-			  jsonObj.put("seat", Integer.parseInt(seat[i].split(" ")[0])
+			  jsonObj.put("allSeat", Integer.parseInt(seat[i].split(" ")[0])
 					  *Integer.parseInt(seat[i].split(" ")[1]));
 			  jsonObj.put("movie_name", movieList.getTitle());
 			  jsonObj.put("movie_num", movieList.getMovie_num());
@@ -117,32 +120,74 @@ public class ShowTimeAction implements Action {
 			  //상영관의 하루 시작시간
 			  int sTime=Integer.parseInt(tStart[i].split(":")[0])*60
 					  +Integer.parseInt(tStart[i].split(":")[1]);
-			//상영관의 하루 마감시간
+			  //상영관의 하루 마감시간
 			  int eTime=Integer.parseInt(tEnd[i].split(":")[0])*60
 					  +Integer.parseInt(tEnd[i].split(":")[1]);
 			  int rtime=sTime;
 			  JSONArray runtimeS=new JSONArray();
 			  JSONArray runtimeE=new JSONArray();
+			  JSONArray saleTime=new JSONArray();
 				while(rtime<=eTime){
 					int[] stime=new int[2];
 					int[] etime=new int[2];
 					stime[0]=rtime/60;
 					stime[1]=rtime%60;
-					if(stime[1]<10) 
-						runtimeS.add(stime[0]+":0"+stime[1]);
-					else
-						runtimeS.add(stime[0]+":"+stime[1]);
+					if(stime[0]<10 && stime[1]<10) runtimeS.add("0"+stime[0]+":0"+stime[1]);
+					else if(stime[0]>=10 && stime[1]<10) runtimeS.add(stime[0]+":0"+stime[1]);
+					else if(stime[0]<10 && stime[1]>=10) runtimeS.add("0"+stime[0]+":"+stime[1]);
+					else runtimeS.add(stime[0]+":"+stime[1]);
+					
+					
+					if(stime[0]<=9 || (stime[0]==10 && stime[1]==0) ) saleTime.add("조조");
+					else if(stime[0]>=24) saleTime.add("심야");
+					else saleTime.add("");
 					rtime=rtime+mTime+10;//광고시간 10분
+					
 					etime[0]=rtime/60;
 					etime[1]=rtime%60;
-					if(etime[1]<10) 
-						runtimeE.add(etime[0]+":0"+etime[1]);
-					else
-						runtimeE.add(etime[0]+":"+etime[1]);
+					if(etime[1]<10) runtimeE.add(etime[0]+":0"+etime[1]);
+					else runtimeE.add(etime[0]+":"+etime[1]);
 					rtime=(int) (Math.ceil(rtime/10)*10)+10;//다음 상영시작시간 10분차
 				}
-			  jsonObj.put("runtimeS", runtimeS);
-			  jsonObj.put("runtimeE", runtimeE);
+				//사용된 좌석
+				int[] sSeat=new int[runtimeS.size()];
+				for(int k=0; k<runtimeS.size();k++){ sSeat[k]=0;}
+				//선택 날짜의 상영일이 같은 book정보 
+				if(ticketList.size()!=0){
+					for(int j=0; j<ticketList.size(); j++){//선택한 날짜에 예매 정보
+						TicketDTO tdto=ticketList.get(j);
+						JSONArray selectSeat=new JSONArray();
+						//book DB 예매영화와 상영 영화 일치하는지 && 상영관 일치
+						if(tdto.getMovie_num()==Integer.parseInt(cdto.getMovie_num().split(",")[i]) &&
+								tdto.getCinema_num()==cdto.getCinema_num()){
+							for(int z=0; z<runtimeS.size(); z++){
+							//System.out.println(movieList.getTitle()+":"+tdto.getRunnging_time()+"    "+runtimeS.get(z)+"~"+runtimeE.get(z));
+							//System.out.println("있음 "+tdto.getSeat().split(",").length +"  " +(int)selectSeat.get(z));
+								//예매 정보의 상영시간일치
+								if(tdto.getRunnging_time().equals(runtimeS.get(z)+"~"+runtimeE.get(z))){
+									sSeat[z]+=tdto.getSeat().split(",").length;
+									//sSeat=tdto.getSeat().split(",").length;
+									selectSeat.add(sSeat[z]); //있으면 자리 개수저장
+								}else{//없으면 상영관 자리 개수 0개 예매
+									sSeat[z]+=0;
+									selectSeat.add(sSeat[z]);
+								}
+							}
+						}
+						jsonObj.put("selectSeat", selectSeat);
+					}
+				}else{
+					System.out.println(movieList.getTitle());
+					JSONArray selectSeat=new JSONArray();
+					for(int z=0; z<runtimeS.size(); z++){
+						selectSeat.add(sSeat[z]);
+					}
+					jsonObj.put("selectSeat", selectSeat);
+				}
+				
+				jsonObj.put("runtimeS", runtimeS);
+				jsonObj.put("runtimeE", runtimeE);
+				jsonObj.put("saleTime", saleTime);
 			  cineList.add(jsonObj);
 			}else if(todayCal.compareTo(startCal)!=-1
 					  &&todayCal.compareTo(endCal)!=1 && movie!=""){
