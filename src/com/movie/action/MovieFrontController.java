@@ -39,8 +39,17 @@ public class MovieFrontController extends HttpServlet{
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+				}
+			}else if(command.equals("/MovieSearchAction.mo")){
+				action = new MovieSearchAction();
+				try{
+					forward = action.execute(request, response);
+					
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
-		}
+		
 		// 수정
 		
 		//가상주소를 가지고 이동
