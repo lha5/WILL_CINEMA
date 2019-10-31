@@ -154,7 +154,6 @@ public class TicketDAOImpl implements TicketDAO{
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
-				mdto.setGrade(rs.getInt("grade"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
@@ -196,15 +195,16 @@ public class TicketDAOImpl implements TicketDAO{
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
-				mdto.setGrade(rs.getInt("grade"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
+
 				mdto.setTotal_rating(rs.getDouble("total_rating"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
+
 				movieList.add(mdto);
 				
 			}
@@ -236,7 +236,6 @@ public class TicketDAOImpl implements TicketDAO{
 			while (rs.next()) {
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
-				mdto.setGrade(rs.getInt("grade"));
 				mdto.setGenre(rs.getString("genre"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));

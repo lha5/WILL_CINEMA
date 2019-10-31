@@ -5,7 +5,6 @@ import java.sql.Date;
 public class MovieDTO {
 	private int movie_num;
 	private String title;
-	private int grade;
 	private String genre;
 	private String story;
 	private int running_time;
@@ -17,31 +16,17 @@ public class MovieDTO {
 	private Double booking_ration;
 	private String poster;
 	private String image;
-	private Double total_rating;
-	public Double getTotal_rating() {
-		return total_rating;
-	}
-	public void setTotal_rating(Double total_rating) {
-		this.total_rating = total_rating;
-	}
 	public int getMovie_num() {
 		return movie_num;
 	}
 	public void setMovie_num(int movie_num) {
 		this.movie_num = movie_num;
 	}
-	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public int getGrade() {
-		return grade;
-	}
-	public void setGrade(int grade) {
-		this.grade = grade;
 	}
 	public String getGenre() {
 		return genre;
@@ -110,10 +95,4 @@ public class MovieDTO {
 		this.image = image;
 	}
 
-	
-
-
-
-	
-	
 }
