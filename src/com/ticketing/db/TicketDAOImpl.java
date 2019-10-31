@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 //예매 DB
 public class TicketDAOImpl implements TicketDAO{
@@ -253,4 +254,44 @@ public class TicketDAOImpl implements TicketDAO{
 		return mdto;
 	}
 	/*--------------------- 선택된 영화 정보 --------------------*/
+
+	/*------------------- 선택한 날짜의 예매 정보 --------------------*/
+	@Override
+	public List<TicketDTO> getTicketList(String date) {
+		List<TicketDTO> tlist=new ArrayList();
+		try {
+			con = getCon();
+			
+			sql = "select * from book where date=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, date);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TicketDTO tdto=new TicketDTO();
+				
+				tdto.setBook_num(rs.getInt("book_num"));
+				tdto.setId(rs.getString("id"));
+				tdto.setPass(rs.getString("pass"));
+				tdto.setMovie_num(rs.getInt("movie_num"));
+				tdto.setCinema_num(rs.getInt("cinema_num"));
+				tdto.setSeat(rs.getString("seat"));
+				tdto.setRoom(rs.getString("room"));
+				tdto.setDate(rs.getDate("date"));
+				tdto.setRunnging_time(rs.getString("running_time"));
+				tdto.setPayment(rs.getString("payment"));
+				tdto.setPrice(rs.getInt("price"));
+				tdto.setSell_date(rs.getDate("sell_date"));
+				System.out.println("저장 날짜"+tdto.getDate());
+				tlist.add(tdto);
+			}
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return tlist;
+	}
+	/*------------------- 선택한 날짜의 예매 정보 --------------------*/
 }

@@ -17,4 +17,6 @@ public interface TicketDAO {
 	//선택된 영화 정보
 	public MovieDTO getMovie(int num);
 
+	//선택한 날짜의 예매 정보
+	public List<TicketDTO> getTicketList(String date);
 }

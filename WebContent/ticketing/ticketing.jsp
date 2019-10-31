@@ -465,11 +465,12 @@
 			dataType:"JSON",
 			data:{cinema:cinema,movie:movie,date:date},
 			success:function(data){
+				var cnt=1;
 				$.each(data,function(index,cdto){
 					console.log(cdto);
 					var runtimeS='';
 					var runtimeE='';
-					var cnt=1;
+					var saleTime='';
 					html="<h5 class='time_tit'>"+cdto.name+"</h5>";
 					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
 					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+"</dt>";
@@ -479,20 +480,29 @@
 						runtimeS+=sTime+",";
 					});
 					$.each(cdto.runtimeE,function(index,eTime){
-						runtimeE+=eTime=",";
+						runtimeE+=eTime+",";
+					});
+					$.each(cdto.saleTime,function(index,sale){
+						saleTime+=sale+",";
 					});
 					runtimeS=runtimeS.substr(0, runtimeS.length-1);
 					runtimeS=runtimeS.split(",");
 					runtimeE=runtimeE.substr(0, runtimeE.length-1);
 					runtimeE=runtimeE.split(",");
+					saleTime=saleTime.substr(0, saleTime.length-1);
+					saleTime=saleTime.split(",");
 					for(var i=0; i<cdto.runtimeS.length; i++){
 						html+="<li><a href='javascript:void(0)'>"+"<span class='cineD2'><em>"+cnt+"관</em></span>";
-						html+="<span class='clock'>"+runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
-						"<span class='ppNum'>"+"남은좌석/"+cdto.seat+"</span><a></li>";
+						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
+						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
+						if(saleTime[i]=="") html+="<span>";
+						html+=runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
+						"<span class='ppNum'>"+"남은좌석/"+cdto.allSeat+"</span></a></li>";
+						
 					}
-					
 					html+="</ul>"
 					$('.time_inner').find('.time_list01').append(html);
+					cnt++;
 				});
 				
 			},
@@ -641,7 +651,7 @@
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
-     	   <span><%=mdto.getGrade() %></span>
+     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <em><%=mdto.getTitle() %></em>
      	  </a>
      	 </li>
@@ -656,7 +666,7 @@
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=mdto.getGrade() %></span>
+     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <em><%=mdto.getTitle() %> , <%=mdto.getTotal_rating() %></em>
      	  </a>
      	 </li>
