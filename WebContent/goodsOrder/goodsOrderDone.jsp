@@ -14,28 +14,17 @@
 
 		<%
 		// 주소줄에 있는 정보 받아오기
-		String trans_num = request.getParameter("trans_num");
+		// String trans_num = request.getParameter("trans_num");
 		%>
 		
 		<div>
-			<h3>구매가 완료되었습니다.</h3>
-			<h1>구매 번호 : <a href="./MallOrderDetail.mor?trans_num=<%=trans_num%>"><%=trans_num%></a></h1>
+			<h2>구매가 완료되었습니다.</h2>
+			<h2>저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</h2>
+			<h3><a href="./Main.me">마이시네마 페이지로 이동하기</a></h3>
+			<%-- <h2>구매 번호 : <a href="./MallOrderDetail.mor?trans_num=<%=trans_num%>"><%=trans_num%></a></h2> --%>
 		</div>
-	
-		<div>
-			<table border="1">
-				<tr>
-					<td>구매 상품명</td>
-					<td>구매 수량</td>
-					<td>총 금액</td>
-					<td>코드 번호</td>
-					<td>구매 일자</td>
-				</tr>
-			</table>
-		</div>
-	
-	
-	
+		
+		
 	
 
 		<%@ include file="../include/footer.jsp" %>

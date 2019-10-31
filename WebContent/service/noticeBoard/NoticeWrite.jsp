@@ -10,6 +10,9 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
+	String name = (String) request.getAttribute("name");
+	System.out.println("공지사항 글쓰기 접속 - 접속자 이름 : " + name);
+	
 	if (id == null || !id.equals("admin")) {
 		response.sendRedirect("./Main.me");
 	}
