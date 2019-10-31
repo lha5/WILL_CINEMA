@@ -23,9 +23,6 @@ public class DetailViewAction implements Action{
 			int num = Integer.parseInt(request.getParameter("movie_num"));
 
 
-			int num = Integer.parseInt(request.getParameter("movie_num"));
-
-
 			String pageNum = request.getParameter("pageNum");
 		
 			 //System.out.println("num : " + num + ", pageNum : " + pageNum);
