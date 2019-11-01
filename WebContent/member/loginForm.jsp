@@ -26,24 +26,29 @@
 	%>
 	
 	<fieldset>
-		<legend>로그인</legend>
+		<span id="inin">회원 로그인</span>
 		<form action="./MemberLoginAction.me" method="post">
 			<table>
 				<tr>
-					<td>아이디</td>
+					<td><label><i class="ri-user-line ri-1g"></i> 아이디</label></td>
 					<td><input type="text" name="id"></td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
+					<td><label><i class="ri-lock-password-fill ri-1g"></i> 비밀번호</label></td>
 					<td><input type="password" name="pass"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="로그인"></td>
 				</tr>
-			</table>
+			</table> 
 		</form>
-		
-		<input type="button" value="아이디/비밀번호 찾기" onclick="location.href='./MemberIdSearch.me'">
+		<div id="forgot">
+			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
+			<br>
+			<a href="#">아이디 찾기</a>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#">비밀번호 찾기</a>
+		</div>
 	</fieldset>
 	
 	<div id="socialLogin">

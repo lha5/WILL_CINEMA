@@ -2,13 +2,18 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 이벤트</title>
 
 <link rel="stylesheet" href="././css/eventsummary.css">
+
+<style type="text/css">
+nav>ul>li>ul {
+	display: none !important;}
+</style>
 </head>
 <body>
 <%@ include file="/include/header.jsp" %>

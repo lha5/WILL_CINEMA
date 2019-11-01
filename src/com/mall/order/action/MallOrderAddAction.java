@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,8 @@ import com.action.ActionForward;
 import com.mall.order.db.MallOrderDAO;
 import com.mall.order.db.MallOrderDAOImpl;
 import com.mall.order.db.MallOrderDTO;
+import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 
 public class MallOrderAddAction implements Action {
 	
@@ -72,12 +76,15 @@ public class MallOrderAddAction implements Action {
 		
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
-		modao.addOrder(modto);
+		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
+		
+		MemberDAO mdao = new MemberDAOImpl();
+		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
+		mdao.addPoint(id, percentage);
 		
 		// 페이지 이동
 		forward.setPath("./MallOrderDone.mor");
 		forward.setRedirect(true);
-		
 		return forward;
 	}
 	

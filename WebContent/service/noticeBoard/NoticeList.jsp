@@ -1,3 +1,4 @@
+<%@page import="java.util.function.Function"%>
 <%@page import="com.admin.service.notice.db.AdminNoticeDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.admin.service.notice.db.AdminNoticeDAO"%>
@@ -13,6 +14,8 @@
 
 	<%@ include file="../../include/header.jsp" %>
 
+
+
 	<%
 		int count = (Integer) request.getAttribute("count");
 		List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>) request.getAttribute("boardList");
@@ -22,6 +25,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		
 	%>
 
 
@@ -34,11 +38,12 @@
 			<td>조회수</td>
 		</tr>
 	
+	
 		<% 
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
-			System.out.println(andto.getReadcount());  
+			//System.out.println(andto.getReadcount(int) );  
 		%>
 	  	<tr>
 			<td><%=andto.getNum()%></td>
@@ -52,7 +57,25 @@
 		%> 	
 	</table>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		<%
+
+
+		
+		
+		
+		
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -74,13 +97,18 @@
 			%>
 			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">[다음]</a>
 			<%
+			
 			}
 		}
+	
+	
 	%>
-
+	<input type="button" value="글쓰기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	
 	
 	<%@ include file="../../include/footer.jsp" %>
+	
+
 	
 </body>
 </html>

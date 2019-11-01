@@ -12,16 +12,18 @@
 
 	<%
 	List mallOrderDetail = (List) request.getAttribute("mallOrderDetail");
-	System.out.println("mallOrderDetail 작동 테스트" + mallOrderDetail.get(0));
+	String imgSrc = "";
 	%>
 
-	<%@ include file="../include/header.jsp" %>
 
 	<div id="wrap">
 	
-	<h2>구매 상세 내역</h2>
+	<%@ include file="../include/header.jsp" %>
 	
 	<table border="1">
+		<tr>
+			<td colspan="7"><h2>구매 상세 내역</h2></td>
+		</tr>
 		<tr>
 			<td>구매 번호</td>
 			<td>구매 일자</td>
@@ -34,6 +36,7 @@
 		<%
 		for (int i = 0; i < mallOrderDetail.size(); i++) {
 			MallOrderDTO modto = (MallOrderDTO) mallOrderDetail.get(i);
+			imgSrc = modto.getBarcode_img().substring(42);	// 주소 필요한 만큼 잘라내기
 		%>
 		<tr>
 		
@@ -44,7 +47,9 @@
 			<td>카카오페이</td>
 			<td><%=modto.getPrice()%>원</td>
 			<td>
-				<%=modto.getBarcode()%>
+				<img alt="바코드 교환권" src=".<%=imgSrc%>">
+				<%-- <br>
+				<%=modto.getBarcode()%> --%>
 			</td>
 		</tr>
 		<%
@@ -52,8 +57,9 @@
 		%>
 	</table>
 	
+	<%@ include file="../include/footer.jsp" %>
+	
 	</div>
 	
-	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

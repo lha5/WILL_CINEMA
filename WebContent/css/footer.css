@@ -1,97 +1,60 @@
 @CHARSET "UTF-8";
 
-/* -------- 글씨체 -------- */
-@font-face {
-	font-family: 'Oduda';
-	src: url('../font/Oduda.otf') format('opentype');
-}
-/* -------- 글씨체 -------- */
-
-
-
-/* -------- 전체에 적용할 속성들 --------*/
-a {
-	text-decoration: none;
+hr {
+	border-color: #b87272;
 }
 
-a:VISITED {
-	text-decoration: none;
-}
-a:HOVER {
-	text-decoration: none;
-}
-a:FOCUS { 
-	text-decoration: none; 
-}
-
-ul>li {
-	list-style: none;
-}
-body {
-	/* border: 1px solid red; */
-	padding: 0;
-	margin: 0;
-}
-
-#wrap {
-	/* border: 1px solid red; */
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-/* -------- 전체에 적용할 속성들 --------*/
-
-
-
-/* ----------- footer ----------- */
 #bttm {
 	width: 100%;
 	margin: 0;
-	background-color: #CCCCCC;
-	padding-top: 25px;
+	/* background-color: #ffefa3; */
+	padding-top: 15px;
 }
 
 footer {
 	width: 1100px;
 	margin: 20px auto 0 auto;
 	padding: 20px auto 0 auto;
+	color: #804040;
 }
 
 #sub_logo {
 	/* border: 1px solid purple; */
 	float: left;
-	padding: 5px 7px;
+	padding: 7px;
+	color: #b87272;
 }
 
 #sub_logo>span {
-	font-family: Oduda;
-	font-size: 1.7em;
-	margin-bottom: 7px;
+	font-family: Jalnan;
+	font-size: 1.4em;
 }
 
 #family_site {
+	/* border: 1px solid purple; */
 	float: right;
-	margin-top: 10px;
-	padding-bottom: 10px;
 }
 
 select {
-  width: 200px;
+  width: 125px;
   padding: .8em .5em;
-  font-family: inherit; /* 수정 하기 */
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;  
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 97% 40%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid #999;
+  border: 1px solid #b87272;
   border-radius: 0px;
+  color: #804040;
 }
 
 #sub_menu {
 	/* border: 1px solid maroon; */
 	clear: both;
 	hieght: 50px;
-	font-size: 12px;
+	font-size: 14px;
+	margin-top: 25px;
+	padding-left: 53px;
 }
 
 #sub_menu>ul {
@@ -99,20 +62,21 @@ select {
 	width: inherit;
 	height: 50px;
 	margin: 10px auto;
-	padding: 17px;
+	padding: 12px 0 12px 20px;
 }
 
 #sub_menu>ul>li {
 	float: left;
-	margin: 5px 5px 5px 39px;
-	padding-right: 15px;
+	text-align: center;
+	margin: 5px 0 5px 18px;
+	padding-right: 17px;
 }
 
 #sub_menu>ul>li:NTH-CHILD(1), #sub_menu>ul>li:NTH-CHILD(2), 
 #sub_menu>ul>li:NTH-CHILD(3), #sub_menu>ul>li:NTH-CHILD(4), 
 #sub_menu>ul>li:NTH-CHILD(5), #sub_menu>ul>li:NTH-CHILD(6), 
 #sub_menu>ul>li:NTH-CHILD(7) {
-	border-right: 2px solid #CCCCCC;
+	border-right: 2px solid #b87272;
 }
 
 #sub_info>ul {
@@ -129,15 +93,15 @@ select {
 	display: block;
 	margin: 10px auto;
 	text-align: center;
+	margin: 5px 25px;
+	line-height: 17px;
 }
 
 #copy {
 	/* border: 1px dashed black; */
 	width: 700px;
 	height: 30px;
-	margin: 10px auto 0 auto;
-	padding-top: 2px;
+	margin: 2px auto 10px auto;
 	text-align: center;
 	font-size: 12px;
 }
-/* ----------- footer ----------- */

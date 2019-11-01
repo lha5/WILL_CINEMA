@@ -2,6 +2,7 @@ package com.service.QnA.action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,6 +20,12 @@ public class QnAUpdateAction implements Action {
 		
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
+		
+		ServletContext context = request.getServletContext();
+		String realPath = context.getRealPath("/upload");
+		System.out.println("realPath : "+realPath);
+		
+		int maxSize = 10 * 1024 * 1024; // 10MB
 				
 		// 전달정보를 저장(pageNum)
 		String pageNum = (String)request.getAttribute("pageNum");

@@ -1,39 +1,40 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA</title>
+<title>WILL CINEMA - 1:1 문의 작성</title>
+
+<!-- summernote 적용시키기 위한 준비 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<script src="./summernote/lang/summernote-ko-KR.js"></script>
+
 </head>
 <body>
-	
 
+	<div id="wrap">
 	<%@ include file="../../include/header.jsp" %>
-
+	
 	<%
-		String name = (String) session.getAttribute("name");
-		System.out.println("유저 이름 : " + name);	
+	if(id == null){
+		response.sendRedirect("./MemberLogin.me");
+	}
 	
-		// String id = (String) session.getAttribute("id");
-		if (id == null) {
-			response.sendRedirect("./MemberLogin.me");
-		} else if (id == "admin") {
-			response.sendRedirect("./QnAList.sq");
-		}
+	String name = (String) session.getAttribute("name");
 	%>
-	
+
 	<fieldset>
-		<legend>1:1 문의 하기</legend>
+		<legend>1:1 문의 작성</legend>
 		<form action="./QnAWriteAction.sq" method="post" enctype="multipart/form-data">
-		
 			<table>
 				<tr>
 					<td>작성자</td>
 					<td>
-						<input type="text" name="name" value="<%=name%>"><!-- readonly 설정 주기 -->
-						<input type="hidden" name="pass" value="<%=id%>"><!-- 비밀번호 저장 -->
+						<input type="text" name="name" value="<%=name%>" readonly>
+						<input type="hidden" name="pass" value="<%=id%>">
 					</td>
 					<td>카테고리</td>
 					<td>
@@ -49,32 +50,39 @@
 				</tr>
 				<tr>
 					<td>제목</td>
+					<td colspan="3"><input type="text" name="subject"></td>
+				</tr>
+				<tr>
+					<td>문의 내용</td>
 					<td colspan="3">
-						<input type="text" name="subject">
+						<textarea id="summernote" name="content"></textarea>
+						<script>
+					      $('#summernote').summernote({
+					        lang: 'ko-KR',
+					    	height: 300,
+					        minHeight: 100,
+					        maxHeight: 500
+					      });
+						</script>
 					</td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td colspan="3">
-						<textarea name="content" row="10" cols="50">summernote넣기</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td colspan="3">
-						<input type="file" name="image">
-					</td>
+					<td>첨부 파일</td>
+					<td colspan="3"><input type="file" name="image"></td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<input type="submit" value="글쓰기">
+						<input type="submit" value="문의하기">
 					</td>
 				</tr>
 			</table>
-
-		</form>
+		</form>		
 	</fieldset>
-	
+
+
 	<%@ include file="../../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>

@@ -67,7 +67,7 @@ public class AdminNoticeDTO {
 		return Readcount;
 	}
 	public void setReadcount(int readcount) {
-		Readcount = readcount;
+		this.Readcount = readcount;
 	}
 	
 }

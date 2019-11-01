@@ -54,18 +54,11 @@
 						url: './MallOrderAddAction.mor',
 						type: 'POST',
 						dataType: 'text',
-						contentType : "application/json; charset=UTF-8",
+						// contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'					
-						<%-- {				
-							goods_num : <%=goods_num%>,
-							goods_name : '<%=goods_name%>',
-							price : <%=price%>,
-							goods_amount : <%=goods_amount%>,
-							payment : 'KakaoPay'
-						} --%>
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'
 					}).done(function(data) {
-						if (everythings_fine) {							
+						/* if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';
 					        msg += '고유ID : ' + rsp.imp_uid;
 					        msg += '상점 거래ID : ' + rsp.merchant_uid;
@@ -73,19 +66,20 @@
 					        msg += '카드 승인번호 : ' + rsp.apply_num;
 
 					        console.log(msg);
-
+						
 						} else {
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
 							alert(msg);
-						}
+						} */
 					});
+					// 성공했을 시 이동할 페이지
 					location.href = './MallOrderDone.mor';
 				} else {
 					msg = '결제를 정상적으로 처리하지 못하였습니다.';
 					msg += '에러 내용 : ' + rsp.error_msg;
 
 					console.log(msg);
-					location.href = './GoodsList.ml'
+					location.href = './GoodsList.ml';
 				}
 			});
 		});

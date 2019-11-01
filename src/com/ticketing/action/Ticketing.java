@@ -101,8 +101,7 @@ public class Ticketing implements Action {
 		}
 
 		//전체 지역 리스트
-		List allRegion=new ArrayList<>();
-		
+		List allRegion=new ArrayList<>();		
 		List arr=new ArrayList();
 		arr.add("1"); arr.add("서울");
 		allRegion.add(arr);
@@ -127,7 +126,7 @@ public class Ticketing implements Action {
 		arr=new ArrayList();
 		arr.add("8"); arr.add("제주");
 		allRegion.add(arr);
-
+		
 		/*HashSet regionList= new HashSet();
 		for(int i=0; i<cineList.size(); i++){
 			allRegion = new ArrayList();
@@ -147,43 +146,43 @@ public class Ticketing implements Action {
 		};
 		Collections.sort(allRegion,com);
 */
-		
-		/*//지역별 상영관 리스트
-		for(int i=0; i<arr.size(); i++){
-			CineDTO cdto=cineList.get(i);
-			ArrayList allCineList = new ArrayList();
-			for()
-			switch(cdto.getCinema_num()){
-				case 1:
-					
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					break;
-			}
-		}*/
+
 		System.out.println(allRegion.get(0).toString());
 		//영화관 상영 날짜순 정렬
 		List<String> allDay = new ArrayList(allDate);
 		Collections.sort(allDay);
-
+		int[] cineCnt=new int[allRegion.size()];
+	    for(int i=0; i<allRegion.size(); i++){ 
+	    	int cnt=0;
+	    	//지역번호
+	    	String temp=allRegion.get(i).toString().split(",")[0];
+	    	temp=temp.substring(1);
+	    	int num=Integer.parseInt(temp);
+	    	//지역명
+	    	temp=allRegion.get(i).toString().split(",")[1];
+	    	temp=temp.split("]")[0];
+	    	String name=temp.substring(1);
+	    	for(int j=0; j<cineList.size(); j++){
+	    	CineDTO cdto=cineList.get(j);
+	    		if(cdto.getRegion().equals(name)){
+	    			cnt++;
+	    		}
+	    	}
+	    	   cineCnt[i]=cnt;
+	     }
 		//view 페이지로 값 전달
 		request.setAttribute("cineList", cineList);
 		request.setAttribute("bookRatingList", bookRatingList);
 		request.setAttribute("totalRatingList", totalRatingList);
 		request.setAttribute("allRegion", allRegion);//전체 지역
+		request.setAttribute("cineCnt", cineCnt);
 		request.setAttribute("allDay", allDay);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("./ticketing/ticketing.jsp");
 		forward.setRedirect(false);
 		return forward;
+		
+		
 	}
 }

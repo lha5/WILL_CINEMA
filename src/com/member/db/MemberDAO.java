@@ -25,12 +25,17 @@ public interface MemberDAO {
 	public List<MemberDTO> getMemberList();	
 
 	// 회원 마이 페이지 이름값 가져가기
-	public List forNameNLevel(String id);
+	public List forPointLevel(String id);
 	
 	// 비밀번호 변경
 	public void updatePass(String id, String pass);
+	
+	// 포인트 적립
+	public void addPoint(String id, int percentage);
 
+  // 아이디 찾기
 	List<MemberDTO> searchId(MemberDTO mdto);
 
+  // 비밀번호 
 	public List<MemberDTO> searchPass(MemberDTO mdto);
 }

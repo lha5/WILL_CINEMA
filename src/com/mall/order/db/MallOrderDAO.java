@@ -7,7 +7,7 @@ public interface MallOrderDAO {
 	public void addOrder(MallOrderDTO modto);
 	
 	// 구매 직후 확인
-	public List<MallOrderDTO> getOrderDone(String id);
+	public String getOrderDone(String id);
 	
 	// 내 구매 목록 가져오기
 	public List<MallOrderDTO> getOrderList(String id);

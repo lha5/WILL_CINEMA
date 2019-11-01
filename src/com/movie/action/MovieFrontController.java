@@ -24,7 +24,7 @@ public class MovieFrontController extends HttpServlet{
 		//가상주소 비교
 		if (command.equals("/MovieList.mo")) { // 영화 메인 페이지(현재 상영작/상영 예정작 탭 이동)
 			action = new MovieListAction();
-			
+			 
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -39,8 +39,17 @@ public class MovieFrontController extends HttpServlet{
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+				}
+			}else if(command.equals("/MovieSearchAction.mo")){
+				action = new MovieSearchAction();
+				try{
+					forward = action.execute(request, response);
+					
+				}catch (Exception e){
+					e.printStackTrace();
+				}
 			}
-		}
+		
 		// 수정
 		
 		//가상주소를 가지고 이동

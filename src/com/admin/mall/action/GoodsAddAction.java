@@ -27,7 +27,7 @@ public class GoodsAddAction implements Action{
 		
 		// 파일 위치(가상경로) 
 		ServletContext context = request.getServletContext();
-		String realPath = context.getRealPath("/upload");
+		String realPath = context.getRealPath("/upload/goods");
 		
 		System.out.println("realPath : "+realPath);
 		

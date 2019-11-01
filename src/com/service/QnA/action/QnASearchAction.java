@@ -34,7 +34,7 @@ public class QnASearchAction implements Action {
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
-		System.out.println("pageNum - 2 : "+pageNum);
+		
 		if (pageNum == null) {
 			pageNum = "1"; // pageNum의 값이 없을경우 무조건 1페이지
 		}

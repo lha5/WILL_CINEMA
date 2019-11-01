@@ -17,7 +17,9 @@ public class DetailViewAction implements Action{
 	
 			
 			//int num = Integer.parseInt(request.getParameter("num"));
+
 			int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+
 
 			String pageNum = request.getParameter("pageNum");
 		
@@ -40,5 +42,6 @@ public class DetailViewAction implements Action{
 			forward.setRedirect(false);
 			return forward;
 	}
-}
 
+
+}
