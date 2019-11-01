@@ -276,9 +276,32 @@
 		clickEvent();
 	}
 	
-	function seatSelect(cdto,running_date,running_time){
-		alert(cdto.movie_num+"   "+ running_data +"  "+ running_time);
-	}
+	//SeatSelect.ti로 이동
+	function seatSelect(movie_num,saleTime,roomNum,cinema_num,running_date,running_time){
+		var form = document.createElement("form");
+		var parm = new Array();
+		var input = new Array();
+		alert(movie_num+" "+saleTime+" "+roomNum+" "+name+" "+running_date+" "+running_time);
+        form.action = "./SeatSelect.ti";
+        form.method = "post";
+
+        parm.push( ['movie_num', movie_num] ); //영화번호
+        parm.push( ['saleTime', saleTime] ); //할인정보
+        parm.push( ['roomNum', roomNum] ); //관 이름
+        parm.push( ['cinema_num', cinema_num] ); //영화관 이름
+        parm.push( ['running_date', running_date] ); //날짜
+        parm.push( ['running_time', running_time] ); //상영시간
+
+        for (var i = 0; i < parm.length; i++) {
+            input[i] = document.createElement("input");
+            input[i].setAttribute("type", "hidden");
+            input[i].setAttribute('name', parm[i][0]);
+            input[i].setAttribute("value", parm[i][1]);
+            form.appendChild(input[i]);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
 	
 	/* 클릭 ajax */
 	function clickEvent(){
@@ -348,7 +371,8 @@
 					/*  ./SeatSelect.ti?cdto="+cdto+"&running_date="+selectDate+
 								"&running_time="+runtimeS[i]+"~"+runtimeE[i]+"*/
 					for(var i=0; i<cdto.runtimeS.length; i++){
-						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto+"','"+selectDate+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
+						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto.movie_num+"','"
+						+saleTime[i]+"','"+cnt+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
 						+"<span class='cineD2'><em>"+cnt+"관</em></span>";
 						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
 						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
