@@ -103,10 +103,10 @@ public class TicketDAOImpl implements TicketDAO{
 		 try {
 				con = getCon();
 				
-				sql = "SELECT * FROM cinema";
+				sql = "SELECT * FROM cinema where name=?";
 				
 				pstmt = con.prepareStatement(sql);
-				
+				pstmt.setString(1, cinema);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()) {

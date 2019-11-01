@@ -17,10 +17,8 @@ public class DetailViewAction implements Action{
 	
 			
 			//int num = Integer.parseInt(request.getParameter("num"));
-			// int num = 1;
 
-
-			int num = Integer.parseInt(request.getParameter("movie_num"));
+			int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 
 
 			String pageNum = request.getParameter("pageNum");
@@ -28,10 +26,10 @@ public class DetailViewAction implements Action{
 			 //System.out.println("num : " + num + ", pageNum : " + pageNum);
 		
 			//MovieDAO 객체 생성
-			MovieDAO mdao = new MovieDAOImpl(); 
+			MovieDAOImpl mdao = new MovieDAOImpl(); 
 		
 			// 글 번호에 해당하는 글 정보 가져오기
-			MovieDTO mdto = mdao.getBoard(num);
+			MovieDTO mdto = mdao.getBoard(movie_num);
 	
 			// 정보 저장
 			request.setAttribute("mdto", mdto);

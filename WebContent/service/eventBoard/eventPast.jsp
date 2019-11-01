@@ -9,7 +9,7 @@
 <title>WILL CINEMA - 이벤트</title>
 
 <script src="./js/jquery-3.4.1.min.js"></script>
-<style type="text/css">
+<!-- <style type="text/css">
 	.event_cwrap {
     	width: 980px;
     	margin: 0 auto;
@@ -104,8 +104,8 @@
     box-sizing: border-box;
     padding: 3px;
 	}
-</style>
-
+</style> -->
+<link rel="stylesheet" href="./css/eventPast.css">
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
@@ -178,7 +178,7 @@
 			<li><a href="./EventPast.ae?item=collabo">제휴 할인</a></li>
 		</ul>
 	</div>
-	<div>
+	<div class="eventheader">
 		<h2>
 		<%if(item.equals("movie") ){%>
 			영화

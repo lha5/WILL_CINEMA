@@ -400,9 +400,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return check;
 	}
 
-	
-	
-	// 포인트 적립
+  
+  
+  // 포인트 적립
 	@Override
 	public void addPoint(String id, int percentage) {
 		try {
@@ -438,10 +438,90 @@ public class MemberDAOImpl implements MemberDAO{
 			}
 			
 			System.out.println(id + "님 포인트 적립 완료");
+
+      
+	
+	@Override
+	public List<MemberDTO> searchId(MemberDTO mdto) {
+		List<MemberDTO> idList = new ArrayList<MemberDTO>();		
+		try {
+			con = getCon();
+
+			sql = "SELECT * FROM member where name=?";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mdto.getName());
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 회원 한 명의 정보를 해당 ArrayList 한 칸에 저장
+				sql = "SELECT * FROM member where birthday=?";
+
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, mdto.getBirthday());
+
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					mdto.setId(rs.getString("id"));
+	
+					idList.add(mdto);
+				}
+			}
+
+			System.out.println("아이디 목록 저장 완료");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
+
+		return idList;
 	}
+	
+	public List<MemberDTO> searchPass(MemberDTO mdto){
+		List<MemberDTO> passList = new ArrayList<MemberDTO>();		
+		try {
+			con = getCon();
+			
+			sql = "SELECT pass FROM member where id=?";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mdto.getId());
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 회원 한 명의 정보를 해당 ArrayList 한 칸에 저장
+				sql = "SELECT pass FROM member where name=?";
+
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, mdto.getName());
+
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					mdto.setPass(rs.getString("pass"));
+					System.out.println(rs.getString("pass"));
+	
+					passList.add(mdto);
+				}
+			}
+
+			System.out.println("비밀번호 목록 저장 완료");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return passList;
+	}
+	
 }

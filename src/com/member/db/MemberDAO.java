@@ -32,4 +32,10 @@ public interface MemberDAO {
 	
 	// 포인트 적립
 	public void addPoint(String id, int percentage);
+
+  // 아이디 찾기
+	List<MemberDTO> searchId(MemberDTO mdto);
+
+  // 비밀번호 
+	public List<MemberDTO> searchPass(MemberDTO mdto);
 }
