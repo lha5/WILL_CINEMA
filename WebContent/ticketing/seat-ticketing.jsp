@@ -25,6 +25,8 @@
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto");
 	String running_date = (String)request.getAttribute("running_date");
 	String running_time = (String)request.getAttribute("running_time");
+	String saleTime = (String)request.getAttribute("saleTime"); //조조,심야
+	int roomNum = (Integer)request.getAttribute("roomNum"); //상영관 번호
 	
 	String seat = cdto.getSeat().split(",")[0];
 	Integer seat_row = Integer.parseInt(seat.split(" ")[0]);
@@ -160,7 +162,8 @@
 				상영일 <input type="text" name="running_date" value="<%=running_date %>" readonly><br>
 				상영시간 <input type="text" name="running_time" value="<%=running_time %>" readonly><br>
 				<!-- 상영관의 경우 데이터 값 가져와서  -->
-				상영관 <input type="text" name="room_num" value="<%=cdto.getRoom() %>">
+
+				상영관 <input type="text" name="room_num" value="<%=roomNum %>" readonly> //roomNum 변경했습니다
 					 <input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>">
 				<br>
 				좌석 <input type="text" name="seat"><br>
