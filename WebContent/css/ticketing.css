@@ -232,7 +232,7 @@ a {text-decoration:none;color:#555;}
 /* 예매 Content Ticket*/
 ol, ul, li {list-style:none;}
 .ticket_inner {width:980px; margin:20px auto 0; height: 580px;}
-.ticket_step {min-height: 300px;background:#fff;border-top:2px solid #23333b;}
+.ticket_step {min-height: 580px;background:#fff;border-top:2px solid #23333b;}
 .ticket_left {float:left; width:600px;}
 .ticket_right {float:right; width:379px; border-left:1px solid #c0c0c0; box-sizing:border-box;}
 .ticket {overflow:hidden; height:50px; padding-left:20px; border-bottom:1px solid #dedede;}
@@ -248,12 +248,12 @@ ol, ul, li {list-style:none;}
 .cinema_list {overflow:hidden; padding-bottom:20px;}
 
 .tab_scroll {height:415px; padding-left:10px; overflow-y:auto;} 
-.tab_cont {display:block}
+.tab_cont {display:block; font-size:12px;}
 
 .cinema_zone {position:relative; }
 .cinema_zone li {margin-bottom:8px; }
 
-div, span, applet, object, iframe,
+.wrap >div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -291,6 +291,7 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 .movie_list li {padding:4px 0;}
 .movie_list li a {display:block;padding:9px 10px 9px 29px;border:1px solid #fff;color:#231f20;font-size:14px;line-height:22px;word-break:break-all;}
+.movie_list li a [class^=grade_] {float:left;}
 
 .movie_list li a.on {background:url('../img/bg/bg_ckth.png') no-repeat 10px center;border:1px solid #999;}
 .movie_list li a.disabled {color:#d1d1d1;background:#fff;cursor:default;}
@@ -305,7 +306,7 @@ table, caption, tbody, tfoot, thead, tr, th, td
 [class^=grade_] {display:inline-block;overflow:hidden;vertical-align:middle;width:20px;height:20px;margin-right:5px;text-indent:-99999em;} 
 
 /* 선택 정보 */
-.selectMv {width:980px; margin:0 auto; background:#dad2b4;}
+.selectMv {width:980px; margin:0 auto; background:#ffefa3;}
 
 .selectMv_Area {overflow:hidden; width:980px;padding:10px 10px 15px 20px; box-sizing:border-box;}
 .selectMv_Area div{float:left; overflow:hidden; font-size:16px; padding-left: 10px;}
@@ -332,7 +333,7 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 .time_line [class^=grade_] {margin-right:9px}
 .time_line {box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box}
-.time_line dt {padding:20px; margin-top:20px; background:#efebdb; font-size:20px; color:#231f20; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; font-weight:bold;}
+.time_line dt {padding:20px; margin-top:20px; background:#ffffe0; font-size:20px; color:#231f20; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; font-weight:bold;}
 .time_line dt .btn_detail {margin-left:5px;}
 .time_line dt * {}
 
@@ -359,6 +360,41 @@ table, caption, tbody, tfoot, thead, tr, th, td
 .time_line dd .theater_time li .ppNum {display:block; height:19px; line-height:19px; color:#666; font-size:12px;}
 .time_line dd .theater_time li .ppNum em {color:#231f20}
 .time_line dd .superstextcolor {color: #222;}
+
+
+.time_line dd .theater_time li.on {background:#231f20 !important;}
+.time_line dd .theater_time li.on a .cineD2 {color:#999; border-color:#373334;}
+.time_line dd .theater_time li.on a .cineD2 em {background:url('/LCHS/Image/bg/bg_line08_on.gif') no-repeat left 4px;}
+.time_line dd .theater_time li.on .clock {border-color:#373334; color:#fff !important;}
+.time_line dd .theater_time li.on .clock span {display:inline-block}
+.time_line dd .theater_time li.on .ppNum {color:#fff;}
+.time_line dd .theater_time li.on .ppNum em {color:#fff !important;}
+.time_line dd .theater_time li.on .seat {display:none}
+
+.time_line dd .theater_time li .seat {display:inline-block; width:23px; height:15px; font-size:10px; color:#fff; text-align:center; line-height:15px; vertical-align:middle; margin-right:3px;}
+.time_line dd .theater_time li .seat.iri {background:#be182f;} 
+/*.time_line dd .theater_time li .seat.ini {background:#535141;}*/
+.time_line dd .theater_time li .seat.ini {background:#be182f;}
+
+.time_line dd .theater_time li a:hover {background:#231f20;}
+.time_line dd .theater_time li a:hover .cineD2 {color:#999; border-color:#000;}
+.time_line dd .theater_time li a:hover .cineD2 em {background:url('/LCHS/Image/bg/bg_line08_on.gif') no-repeat left 4px;}
+.time_line dd .theater_time li a:hover .clock {border-color:#000; color:#fff;}
+/* .time_line dd .theater_time li:hover .clock span {display:inline-block} */
+.time_line dd .theater_time li a:hover .clock span {display:inline-block}
+.time_line dd .theater_time li a:hover .ppNum {color:#fff;}
+.time_line dd .theater_time li a:hover .ppNum em {color:#fff !important;}
+/* .time_line dd .theater_time li:hover .seat {display:none} */
+.time_line dd .theater_time li a:hover .seat {display:none}
+
+.time_tit {width:980px;padding:20px;background:#ffdfdf;font-size:20px;color:#231f20;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;font-weight:bold;}
+
+
+
+#time_noData {text-align:center; line-height:324px;}
+#time_noData .noData {display:inline-block; padding-left:27px; font-size:18px; color:#777}
+
+
 
 
 
