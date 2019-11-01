@@ -438,8 +438,12 @@ public class MemberDAOImpl implements MemberDAO{
 			}
 			
 			System.out.println(id + "님 포인트 적립 완료");
-
-      
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}  
 	
 	@Override
 	public List<MemberDTO> searchId(MemberDTO mdto) {
