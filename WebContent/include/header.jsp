@@ -9,9 +9,6 @@
 <!-- CSS -->
 <link rel="stylesheet" href="./css/header.css">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
 
@@ -27,9 +24,9 @@
 		<div id="top_line">
 		<div id="social">
 			<ul>
-				<li><i class="fas fa-mobile-alt"></i> 모바일 APP</li>
-				<li><i class="fab fa-facebook-square"></i> 페이스북</li>
-				<li><i class="fab fa-youtube"></i> 유튜브</li>
+				<li><i class="ri-smartphone-line"></i> 모바일 APP</li>
+				<li><i class="ri-facebook-box-fill"></i> 페이스북</li>
+				<li><i class="ri-youtube-fill"></i> 유튜브</li>
 			</ul>
 		</div>
 		
