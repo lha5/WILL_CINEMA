@@ -14,10 +14,8 @@
 	
 	<%
 		List info = (List) request.getAttribute("info");
-		String name = String.valueOf(info.get(0));
-		System.out.println("유저 이름 : " + name);
-	
-		// String id = (String)session.getAttribute("id");
+		String name = String.valueOf(info.get(0));		
+		session.setAttribute("name", name);
 		
 		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -44,7 +42,7 @@
      	for (int i=0;i<boardList.size();i++) {
     		QnADTO qadto = boardList.get(i);
     		
-    		if (id.equals(qadto.getId())) {
+    		if (id.equals(qadto.getPass())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum()%></td>

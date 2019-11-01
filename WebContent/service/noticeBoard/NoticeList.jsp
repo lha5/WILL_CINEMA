@@ -16,19 +16,6 @@
 
 
 
-
-
-	
-
-		
-		
-	
-	
-
-
-
-
-
 	<%
 		int count = (Integer) request.getAttribute("count");
 		List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>) request.getAttribute("boardList");
@@ -38,6 +25,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		
 	%>
 
 

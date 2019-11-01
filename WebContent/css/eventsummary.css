@@ -101,18 +101,26 @@ a {
 	padding: 3px;
 }
 
+
+nav>ul>li ul {display: none;}
+	
+
+nav>ul>li:NTH-CHILD(4):HOVER ul {
+	display: block;}	
+
 nav>ul>li:NTH-CHILD(4) ul {
-	display: block;
+	display: block !important;
 	position: absolute;
 	margin-top: 5px;
 	padding: 2px 5px 2px 7px;
 	text-align: center;
 	top: 39px;
 	left: 330px;
-}
-
+} 
+/* 
 nav>ul>li:NTH-CHILD(1):HOVER nav>ul>li:NTH-CHILD(4)>ul,
  nav>ul>li:NTH-CHILD(2):HOVER nav>ul>li:NTH-CHILD(4)>ul,
   nav>ul>li:NTH-CHILD(3):HOVER nav>ul>li:NTH-CHILD(4)>ul {
+	
 	display: none;
-}
+} */

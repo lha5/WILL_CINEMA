@@ -22,7 +22,7 @@ public class GoodsModifyAction implements Action{
 		
 		// 파일 위치(가상경로) 
 				ServletContext context = request.getServletContext();
-				String realPath = context.getRealPath("/goodsImageUpload");
+				String realPath = context.getRealPath("/upload/goods");
 				
 				System.out.println("realPath : "+realPath);
 				

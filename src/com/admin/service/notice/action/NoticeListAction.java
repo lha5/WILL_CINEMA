@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
 import com.admin.service.notice.db.AdminNoticeDAO;
 import com.admin.service.notice.db.AdminNoticeDAOImpl;
 import com.admin.service.notice.db.AdminNoticeDTO;
+import com.member.db.MemberDAO;
+import com.member.db.MemberDAOImpl;
 
 public class NoticeListAction implements Action{
 
@@ -17,6 +20,10 @@ public class NoticeListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		System.out.println("AdminNoticeListAction_execute()---------------------");
+		
+		// 세션값 가져가기 위한 작업
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
 
 		// DB 처리객체 생성
 		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
@@ -68,6 +75,10 @@ public class NoticeListAction implements Action{
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
+		
+		// 이름값 가져가기
+		MemberDAO mdao = new MemberDAOImpl();
+		List info = mdao.forPointLevel(id);
 
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
@@ -76,6 +87,8 @@ public class NoticeListAction implements Action{
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("info", info);
+		
 		// 페이지 이동 (./notice/noticeList.jsp)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./service/noticeBoard/NoticeList.jsp");
