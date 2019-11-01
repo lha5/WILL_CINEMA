@@ -47,7 +47,6 @@
 			calendar.find('fieldset').find('span').remove();
 			calendar2(clickDate);
 		});}
-		prev();
 
 		function calendar2(data){
 			var cnt=0;
@@ -163,7 +162,7 @@
 				cnt++;
 			}
 		}
-		
+		prev();
 		calendar2(0);//웹 시작시
 		
 		$(document).on('click','input:radio',function(){ //버튼 클릭시
@@ -174,6 +173,8 @@
 				var week=$('label[for="' +monthNames[mon]+date[2] +'"]').find('span').text();
 				return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
 			});
+			/* ajax관련 */
+			clickEvent();
 		});
 		
 		$('.txtdate').find('dd').text(function(){//웹 시작시 상영일 날짜 바꿔줌
@@ -229,77 +230,8 @@
 			$('.txtCin').find('dd').addClass('on');
 		}
 		
-		var cinema='';
-		var movie='';
-		var date=$('input[name="day"]:checked').val();
-		var html='';
-		
-		if($('.txtCin').find('dd').is('.on')){
-			cinema=$('.txtCin').find('dd').text();
-		}
-		
-		if($('.txtName').find('dd').is('.on')){
-			movie=$('.txtName').find('dd').text();
-		}
-		$.ajax({
-			url:"./ShowTime.ti",
-			type:"post",
-			dataType:"JSON",
-			data:{cinema:cinema,movie:movie,date:date},
-			success:function(data){
-				var cnt=1;
-				$.each(data,function(index,cdto){
-					console.log(cdto);
-					var runtimeS='';
-					var runtimeE='';
-					var saleTime='';
-					var selectSeat='';
-					html="<h5 class='time_tit'>"+cdto.name+"</h5>";
-					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
-					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+"</dt>";
-					html+="<dd><ul class='theater_time list"+cdto.movie_num+"'>"
-					
-					$.each(cdto.runtimeS,function(index,sTime){
-						runtimeS+=sTime+",";
-					});
-					$.each(cdto.runtimeE,function(index,eTime){
-						runtimeE+=eTime+",";
-					});
-					$.each(cdto.saleTime,function(index,sale){
-						saleTime+=sale+",";
-					});
-					runtimeS=runtimeS.substr(0, runtimeS.length-1);
-					runtimeS=runtimeS.split(",");
-					runtimeE=runtimeE.substr(0, runtimeE.length-1);
-					runtimeE=runtimeE.split(",");
-					saleTime=saleTime.substr(0, saleTime.length-1);
-					saleTime=saleTime.split(",");
-					
-					$.each(cdto.selectSeat,function(index,seat){
-						selectSeat+=seat+",";
-					});
-					selectSeat=selectSeat.substr(0,selectSeat.length-1);
-					selectSeat=selectSeat.split(",");
-					
-					for(var i=0; i<cdto.runtimeS.length; i++){
-						html+="<li><a href='javascript:void(0)'>"+"<span class='cineD2'><em>"+cnt+"관</em></span>";
-						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
-						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
-						if(saleTime[i]=="") html+="<span>";
-						html+=runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
-						"<span class='ppNum'>"+(cdto.allSeat*1-selectSeat[i]*1)+"/"+cdto.allSeat+"</span></a></li>";
-						
-					}
-					html+="</ul>"
-					$('.time_inner').find('.time_list01').append(html);
-					cnt++;
-				});
-				
-			},
-			error:function(request,status,error){
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-               }
-		});
+		/* ajax관련 */
+		clickEvent();
 	}
 	
 	
@@ -338,9 +270,103 @@
 			event.currentTarget.className+=" on";
 			$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
 			$('.txtName').find('dd').addClass('on');
-		}	
+		}
+		
+		/* ajax관련 */
+		clickEvent();
 	}
 	
+	function seatSelect(cdto,running_date,running_time){
+		alert(cdto.movie_num+"   "+ running_data +"  "+ running_time);
+	}
+	
+	/* 클릭 ajax */
+	function clickEvent(){
+		var cinema='';
+		var movie='';
+		var date=$('input[name="day"]:checked').val();
+		var selectDate=$('.txtdate').find('dd').text();
+		var html='';
+		
+		if($('.txtCin').find('dd').is('.on')){
+			cinema=$('.txtCin').find('dd').text();
+		}
+		
+		if($('.txtName').find('dd').is('.on')){
+			movie=$('.txtName').find('dd').text();
+		}
+		$.ajax({
+			url:"./ShowTime.ti",
+			type:"post",
+			dataType:"JSON",
+			data:{cinema:cinema,movie:movie,date:date},
+			success:function(data){
+				var cnt=1;
+				console.log(data.length);
+				//html초기화
+				$('.time_inner').find('.time_list01').empty();
+				if(data.length==0){
+					document.getElementById('time_noData').style.display="block";
+				}else {
+					document.getElementById('time_noData').style.display="none";
+				}
+				$.each(data,function(index,cdto){
+					console.log(cdto);
+					var runtimeS='';
+					var runtimeE='';
+					var saleTime='';
+					var selectSeat='';
+					html='';
+					if(cnt==1)html="<h5 class='time_tit'>"+cdto.name+"</h5>";
+					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
+					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+
+					"<a href='#' class='btn_detail'><img src='./img/btn/btn_time_view.png'></a></dt>";
+					html+="<dd><ul class='theater_time list"+cdto.movie_num+"'>"
+					
+					$.each(cdto.runtimeS,function(index,sTime){
+						runtimeS+=sTime+",";
+					});
+					$.each(cdto.runtimeE,function(index,eTime){
+						runtimeE+=eTime+",";
+					});
+					$.each(cdto.saleTime,function(index,sale){
+						saleTime+=sale+",";
+					});
+					runtimeS=runtimeS.substr(0, runtimeS.length-1);
+					runtimeS=runtimeS.split(",");
+					runtimeE=runtimeE.substr(0, runtimeE.length-1);
+					runtimeE=runtimeE.split(",");
+					saleTime=saleTime.substr(0, saleTime.length-1);
+					saleTime=saleTime.split(",");
+					
+					$.each(cdto.selectSeat,function(index,seat){
+						selectSeat+=seat+",";
+					});
+					selectSeat=selectSeat.substr(0,selectSeat.length-1);
+					selectSeat=selectSeat.split(",");
+					
+					/*  ./SeatSelect.ti?cdto="+cdto+"&running_date="+selectDate+
+								"&running_time="+runtimeS[i]+"~"+runtimeE[i]+"*/
+					for(var i=0; i<cdto.runtimeS.length; i++){
+						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto+"','"+selectDate+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
+						+"<span class='cineD2'><em>"+cnt+"관</em></span>";
+						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
+						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
+						if(saleTime[i]=="") html+="<span class='clock'>";
+						html+=runtimeS[i]+"<span> ~ "+runtimeE[i]+"</span></span>"+
+						"<span class='ppNum'>"+(cdto.allSeat*1-selectSeat[i]*1)+"/"+cdto.allSeat+"</span></a></li>";
+						
+					}
+					html+="</ul>"
+					$('.time_inner').find('.time_list01').append(html);
+					cnt++;
+				});
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+               }
+		});
+	}
 
 </script>
 
@@ -359,6 +385,9 @@
 	int[] cineCnt=(int[])request.getAttribute("cineCnt");
 
 %>
+<%@ include file="../../include/header.jsp" %>
+
+<div class="wrap">
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
   <div class="calendar"> <!-- 달력 -->
@@ -457,7 +486,8 @@
      		MovieDTO mdto=totalRatingList.get(i);
      	%>
      	 <li>
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
+     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>"
+     	  onclick='selectMov(event);'>
      	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <em><%=mdto.getTitle() %> , <%=mdto.getTotal_rating() %></em>
      	  </a>
@@ -481,17 +511,22 @@
  <div class="time_inner">
   <div class="time_stop">
   	<h3 class="sub_tit02">상영시간</h3>
-  	<div class="time_fr">
+  	<!-- <div class="time_fr">
   	 <ul>
   	  <li><a href="javascript:void(0);">영화관별 조회</a></li>
   	  <li><a href="javascript:void(0);">영화별 조회</a></li>
   	 </ul>
-  	</div>
+  	</div> -->
   </div>
   <div class="time_list01"></div><!-- 영화관별 -->
   <div class="time_list02"></div><!-- 영화 별 -->
+  <div id='time_noData'>
+	<span class='noData'>상영중인 정보가 없습니다.</span>
+  </div>
  </div>
 </div>
+</div>
 
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

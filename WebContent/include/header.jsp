@@ -67,9 +67,9 @@
 		
 		<nav>
 			<ul>
-				<li>예매
+				<li><a href="Ticketing.ti">예매</a>
 					<ul>
-						<li>예매하기</li>
+						<li><a href="Ticketing.ti">예매하기</a></li>
 						<li>상영시간표</li>
 						<li>할인안내</li>
 					</ul>
