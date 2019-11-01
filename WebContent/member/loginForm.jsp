@@ -13,8 +13,9 @@
 <script src="./js/jquery-3.4.1.min.js"></script>
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -52,9 +53,7 @@
 	</fieldset>
 	
 	<div id="socialLogin">
-		<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id={jwVWFxadZE05Vte8lDRq}&redirect_uri={http://localhost:8088/WillCinema/Main.me}&state={state}">
-	 		 네이버 아이디로 로그인
-		</a>
+		
 	</div>
 	
 	
