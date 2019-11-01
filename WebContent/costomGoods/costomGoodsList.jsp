@@ -7,8 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 매점</title>
+<!-- CSS -->
+<link rel="stylesheet" href="./css/goodsList.css">
+
+<style type="text/css">
+	
+</style>
+
 </head>
 <body>
+
+	<div id="wrap">
 
 	<%@ include file="../include/header.jsp" %>
 
@@ -17,15 +26,8 @@
 	// request.setAttribute("goodsList", goodsList);
 	List goodsList = (List)request.getAttribute("goodsList");
 	%>
-
-	<h1>상품 목록</h1>
 	
-	<table border="1">
-		<tr>
-			<td><a href="./GoodsList.ml">전체</a></td>
-			<td><a href="./GoodsList.ml?item=ticket">관람권</a></td>
-			<td><a href="./GoodsList.ml?item=snack">스낵/음료</a></td>
-		</tr>
+	<table>
 		<tr>
 		<%
 		for(int i=0;i<goodsList.size();i++){ 
@@ -36,11 +38,14 @@
 				<a href="./GoodsDetail.ml?num=<%=mdto.getGoods_num()%>"><%=mdto.getName() %></a><br>
 				<%=mdto.getPrice() %>원
 			</td>
-		<%} %>
+		<%
+		} 
+		%>
 		</tr>
-	  
 	</table>
 
 	<%@ include file="../include/footer.jsp" %>
+	
+	</div>
 </body>
 </html>
