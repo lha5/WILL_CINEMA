@@ -5,9 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 1:1 문의 하기</title>
+<title>WILL CINEMA - 1:1 문의 하기 수정</title>
+
+<!-- summernote 적용시키기 위한 준비 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<script src="./summernote/lang/summernote-ko-KR.js"></script>
+
 </head>
 <body>
+
+	<div id="wrap">
+
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
@@ -16,9 +26,8 @@
 	%>
 	
 	<fieldset>
-		<legend>글 수정하기</legend>
-		
-		<form action="./QnAUpdateAction.sq?pageNum=<%=pageNum %>" method="post">
+		<legend>1:1 문의 수정</legend>
+		<form action="./QnAUpdateAction.sq?pageNum=<%=pageNum%>" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>작성자</td>
@@ -40,23 +49,27 @@
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td colspan="3">
-						<input type="text" name="subject" value="<%=qadto.getSubject()%>">
-					</td>
+					<td colspan="3"><input type="text" name="subject" value="<%=qadto.getSubject()%>"></td>
 				</tr>
 				<tr>
-					<td>내용</td>
+					<td>문의 내용</td>
 					<td colspan="3">
-						<textarea name="content" row="10" cols="50">
+						<textarea id="summernote" name="content">
 							<%=qadto.getContent()%>
 						</textarea>
+						<script>
+					      $('#summernote').summernote({
+					        lang: 'ko-KR',
+					    	height: 300,
+					        minHeight: 100,
+					        maxHeight: 500
+					      });
+						</script>
 					</td>
 				</tr>
 				<tr>
-					<td>첨부파일</td>
-					<td colspan="3">
-						<input type="file" name="image" value="<%=qadto.getImage()%>">
-					</td>
+					<td>첨부 파일</td>
+					<td colspan="3"><input type="file" name="image" value="<%=qadto.getImage()%>"></td>
 				</tr>
 				<tr>
 					<td colspan="4">
@@ -64,9 +77,12 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+		</form>		
 	</fieldset>
 	
-<%@ include file="../../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>

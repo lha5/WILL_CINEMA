@@ -2,11 +2,14 @@ package com.service.QnA.action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.service.QnA.db.QnADAOImpl;
 import com.service.QnA.db.QnADTO;
 
@@ -19,19 +22,28 @@ public class QnAUpdateAction implements Action {
 		
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
+		
+		ServletContext context = request.getServletContext();
+		String realPath = context.getRealPath("/upload");
+		System.out.println("realPath : "+realPath);
+		
+		int maxSize = 10 * 1024 * 1024; // 10MB
 				
 		// 전달정보를 저장(pageNum)
 		String pageNum = (String)request.getAttribute("pageNum");
 		
 		QnADTO qadto = new QnADTO();
 		
+		
+		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		
 		qadto.setNum(Integer.parseInt(request.getParameter("num")));
-		qadto.setName(request.getParameter("name"));
-		qadto.setPass(request.getParameter("pass"));
-		qadto.setCategory(request.getParameter("category"));
-		qadto.setSubject(request.getParameter("subject"));
-		qadto.setContent(request.getParameter("content"));
-		qadto.setImage(request.getParameter("image"));
+		qadto.setName(multi.getParameter("name"));
+		qadto.setPass(multi.getParameter("pass"));
+		qadto.setCategory(multi.getParameter("category"));
+		qadto.setSubject(multi.getParameter("subject"));
+		qadto.setContent(multi.getParameter("content"));
+		qadto.setImage(multi.getFilesystemName("image"));
 
 		// 수정 메서드 (updateBoard(DTO))
 		QnADAOImpl qadaoImpl = new QnADAOImpl();
@@ -71,7 +83,7 @@ public class QnAUpdateAction implements Action {
 		PrintWriter out = response.getWriter();
 				
 		out.println("<script>");
-		out.println("alert('글 수정완료!');");
+		out.println("alert('문의 내용 수정이 완료되었습니다.');");
 		out.println("location.href='./QnAList.sq' ");
 		out.println("</script>");
 				

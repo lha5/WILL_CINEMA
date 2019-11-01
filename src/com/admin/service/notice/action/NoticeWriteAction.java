@@ -27,19 +27,19 @@ public class NoticeWriteAction implements Action {
 		System.out.println("AdminNoticeWriteAction_execute()------------------------");
 		
 		// 세션값 처리
-//		HttpSession session = request.getSession();
-//		String id = (String) session.getAttribute("id");
-//
-//		ActionForward forward = new ActionForward();
-//		if (id == null) {
-//			forward.setPath("./MemberLogin.me");
-//			forward.setRedirect(true);
-//			return forward;
-//		} else if (!id.equals("admin")) {
-//			forward.setPath("./Main.me");
-//			forward.setRedirect(true);
-//			return forward;
-//		}
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+
+		ActionForward forward = new ActionForward();
+		if (id == null) {
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		} else if (!id.equals("admin")) {
+			forward.setPath("./Main.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		// 한글 처리
 		request.setCharacterEncoding("UTF-8");
@@ -72,7 +72,7 @@ public class NoticeWriteAction implements Action {
 		// insertBoard(DTO)
 		andao.insertBoard(andto);
 				
-		ActionForward forward = new ActionForward();
+		
 		// 페이지 이동
 		// 글목록 보여주는 페이지로 이동
 		forward.setPath("./NoticeList.an");

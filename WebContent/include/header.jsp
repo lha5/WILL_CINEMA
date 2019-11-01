@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,9 +8,6 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/header.css">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
@@ -27,9 +24,9 @@
 		<div id="top_line">
 		<div id="social">
 			<ul>
-				<li><i class="fas fa-mobile-alt"></i> 모바일 APP</li>
-				<li><i class="fab fa-facebook-square"></i> 페이스북</li>
-				<li><i class="fab fa-youtube"></i> 유튜브</li>
+				<li><i class="ri-smartphone-line"></i> 모바일 APP</li>
+				<li><i class="ri-facebook-box-fill"></i> 페이스북</li>
+				<li><i class="ri-youtube-fill"></i> 유튜브</li>
 			</ul>
 		</div>
 		
@@ -67,9 +64,9 @@
 		
 		<nav>
 			<ul>
-				<li>예매
+				<li><a href="Ticketing.ti">예매</a>
 					<ul>
-						<li>예매하기</li>
+						<li><a href="Ticketing.ti">예매하기</a></li>
 						<li>상영시간표</li>
 						<li>할인안내</li>
 					</ul>

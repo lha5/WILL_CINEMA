@@ -70,7 +70,7 @@ public class QnADAOImpl implements QnADAO {
 			}
 			System.out.println("num : "+num);
 			
-			sql = "insert into qna(num,category,name,pass,subject,content,readcount,date,re_ref,re_lev,re_seq,image,id) values(?,?,?,?,?,?,?,now(),?,?,?,?,?);";
+			sql = "insert into qna(num,category,name,pass,subject,content,readcount,date,re_ref,re_lev,re_seq,image) values(?,?,?,?,?,?,?,now(),?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -85,7 +85,6 @@ public class QnADAOImpl implements QnADAO {
 			pstmt.setInt(9, qadto.getRe_lev());
 			pstmt.setInt(10, qadto.getRe_seq());
 			pstmt.setString(11, qadto.getImage());
-			pstmt.setString(12, qadto.getId());
 			
 			int value = pstmt.executeUpdate();
 			
@@ -159,7 +158,6 @@ public class QnADAOImpl implements QnADAO {
 				qadto.setRe_seq(rs.getInt("re_seq"));
 				qadto.setDate(rs.getDate("date"));
 				qadto.setImage(rs.getString("image"));
-				qadto.setId(rs.getString("id"));
 				
 				boardList.add(qadto);
 				
@@ -232,7 +230,6 @@ public class QnADAOImpl implements QnADAO {
 				qadto.setRe_seq(rs.getInt("re_seq"));
 				qadto.setReadcount(rs.getInt("readcount"));
 				qadto.setSubject(rs.getString("subject"));
-				qadto.setId(rs.getString("id"));
 			}
 			
 			System.out.println("게시판 글 저장 : "+qadto);
@@ -377,7 +374,6 @@ public class QnADAOImpl implements QnADAO {
 				qadto.setRe_seq(rs.getInt("re_seq"));
 				qadto.setDate(rs.getDate("date"));
 				qadto.setImage(rs.getString("image"));
-				qadto.setId(rs.getString("id"));
 				boardList.add(qadto);
 				
 			}

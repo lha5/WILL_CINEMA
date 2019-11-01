@@ -59,7 +59,7 @@ function acyncMovePage(url){
 		response.sendRedirect("./MemberLogin.me");
 	}
 	
-	/* // 회원 등급 처리
+	// 회원 등급 처리
 	String level = "";
 	
 	switch (String.valueOf(info.get(1))) {
@@ -84,15 +84,15 @@ function acyncMovePage(url){
 		default :
 			level = "신규";
    		break;
-	} */
+	}
 	
-	 // 포인트
-    //int point = (int) info.get(2);	
+	// 포인트
+    int point = (int) info.get(2);	
 	%>
 	
 	
 	
-	<%-- <section id="sec01">
+	<section id="sec01">
 		<table>
 			<tr>
 				<td colspan="2">마이시네마</td>
@@ -103,9 +103,9 @@ function acyncMovePage(url){
 				</td>
 			</tr>
 			<tr>
-				<td> --%>
+				<td>
 					<h3>W.POINT</h3>
-					<%-- <div id="left_point">잔여 포인트 : <%=point%></div>
+					<div id="left_point">잔여 포인트 : <%=point%></div>
 					<div id="availability">
 						<%
 						if (point >= 100) {
@@ -117,18 +117,18 @@ function acyncMovePage(url){
 							사용 가능한 포인트량이 부족합니다.
 						<%
 						}
-						%> --%>
-					</div> --%>
+						%>
+					</div>
 					<ul id="point_info">
 						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
-						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>>
+						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 					</ul>
 				</td>
-				<%-- <td>
+				<td>
 					<div id="ranking">
 						<h2><%=info.get(0)%>님의<br>현재 등급은 <%=level%>입니다.</h2>
 					</div>
-				</td> --%>
+				</td>
 			</tr>
 		</table>
 	</section>
@@ -141,7 +141,7 @@ function acyncMovePage(url){
 			<ul>
 				<li><a href="#">예매내역</a></li>
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
-				<li><a href="#">멤버십</a></li>
+				<li><input type="button" value="멤버십" id="myMembership"></li>
 				<li><a href="#">내가 본 영화</a></li>
 				<li><input type="button" value="내 정보 관리" id="myInfoManagement"></li>
 			</ul>
@@ -159,6 +159,11 @@ function acyncMovePage(url){
 		// 구매 내역
 		document.querySelector('#myMallOrderList').addEventListener('click', function() {
 			acyncMovePage('./MallOrderList.mor');
+		});
+		
+		// 멤버십
+		document.querySelector('#myMembership').addEventListener('click', function() {
+			acyncMovePage('./Membership.me');
 		});
 		
 		// 내 정보 관리

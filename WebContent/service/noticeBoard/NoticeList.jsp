@@ -16,19 +16,6 @@
 
 
 
-
-
-	
-
-		
-		
-	
-	
-
-
-
-
-
 	<%
 		int count = (Integer) request.getAttribute("count");
 		List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>) request.getAttribute("boardList");
@@ -38,6 +25,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		
 	%>
 
 
@@ -71,23 +59,8 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		<%
 
-
-		
-		
-		
-		
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -115,8 +88,16 @@
 	
 	
 	%>
-	<input type="button" value="글쓰기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+	%>
+			<input type="button" value="공지사항 작성하기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
+	<%
+	 }
+	}
+	%>
 	
 	<%@ include file="../../include/footer.jsp" %>
 	

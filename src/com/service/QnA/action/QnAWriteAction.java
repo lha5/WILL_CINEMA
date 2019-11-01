@@ -51,7 +51,6 @@ public class QnAWriteAction implements Action {
 		qadto.setCategory(multi.getParameter("category"));
 		qadto.setContent(multi.getParameter("content"));
 		qadto.setImage(multi.getFilesystemName("image"));
-		qadto.setId(id);
 		
 		// QnaDAOImpl객체 생성
 		// insertBoard()
