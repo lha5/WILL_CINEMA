@@ -9,10 +9,9 @@
 <body>
 <%@ include file="../../include/header.jsp" %>
 <%
-//String id= (String)request.getAttribute("id");
-/* if(!id.equals("admin")){
+ if(!id.equals("admin")){
 	response.sendRedirect("./MemberLogin.me");
-}  */
+}  
 %>
 
 
@@ -23,17 +22,17 @@
 <tr>
 <td>작성자
 <input type="text" name="name" value="<%=id%>">
-<input type="hidden" name="pass" value="">
+비밀번호 :<input type="text" name="pass" value="">
 </td>
 <tr>
 <td>카테고리
 <select name="category">
-<option value="영화예매">영화 예매</option>
-<option value="매점구매">매점 구매</option>
+<option value="영화관이용">영화관이용</option>
+<option value="회원">회원</option>
 <option value="이용안내">사이트 이용 안내</option>
 <option value="이벤트">이벤트</option>
-<option value="멤버십">멤버십/포인트</option>
-<option value="쿠폰">쿠폰</option>
+<option value="매점">매점</option>
+<option value="할인혜택">할인혜택</option>
 </select>
 </td>
 </tr>
