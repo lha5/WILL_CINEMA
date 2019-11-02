@@ -160,24 +160,23 @@
      
      </ul>
      </div>
-     <!-- 예매순 -->
+      <!-- 예매순 -->
      <div class="scroll_bar">
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){
      		MovieDTO mdto=bookRatingList.get(i);
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
+     	 <li>
+     	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span><%=i+1 %></span>
-     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <span><%=mdto.getTitle() %></span>
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span ><%=mdto.getTitle() %></span>
+     	  <span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </a>
      	 </li>
-     	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
-     	  </li>
+     	 
      	 
      	 <%} %>
      	 <!-- 영화 반복문 -->
@@ -189,17 +188,15 @@
      		MovieDTO mdto=totalRatingList.get(i);
      		
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=i+1 %></span>
-     	   <span><%=mdto.getGrade() %>세</span>
-     	   <span><%=mdto.getTitle() %></span>
+     	 <li>
+     	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span  ><%=mdto.getTitle() %></span>
+     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
      	 </a>
      	 
      	 </li>	
-     	 <li>
-     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
-     	 </li>
+     	 
      	 
      	 
      	 <!-- 영화 반복문 --> 
