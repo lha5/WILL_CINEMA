@@ -32,11 +32,20 @@ public class ShowTimeAction implements Action {
 		System.out.println("jsp에서 받은 값 : " + cinema + ", " + movie + ", " + date);
 		
 		// 선택된 날짜
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar todayCal = Calendar.getInstance();
 		Calendar endCal = Calendar.getInstance();
 		Calendar startCal = Calendar.getInstance();
-
+		Calendar currentTime=Calendar.getInstance();//오늘 시간
+		String currentH="";
+		String currentM="";
+				
+		if(currentTime.get(Calendar.HOUR_OF_DAY)<10)currentH="0"+currentTime.get(Calendar.HOUR_OF_DAY);
+		else currentH+=currentTime.get(Calendar.HOUR_OF_DAY);
+		if(currentTime.get(Calendar.MINUTE)<10)currentM="0"+currentTime.get(Calendar.MINUTE);
+		else currentM+=currentTime.get(Calendar.MINUTE);
+		currentH=currentH+":"+currentM;
+		
 		// 영화관DB 정보 다 가져오기
 		TicketDAO tdao = new TicketDAOImpl();
 		
@@ -70,15 +79,7 @@ public class ShowTimeAction implements Action {
 				// 각 상영관의 영화 마감일
 				endCal.set(Integer.parseInt(endDate.split("-")[0]), Integer.parseInt(endDate.split("-")[1]) - 1,
 						Integer.parseInt(endDate.split("-")[2]));
-				//todayCal = Calendar.getInstance(); // 오늘 날짜
-				 //System.out.println(Integer.parseInt(cdto.getSeat().split(" ")[1]));
-				if(movie==""){//영화 선택 안했을때 상영관의 모든 영화(상영시간) 보여주기
-					 System.out.println("없음"); 
-					 
-				}else{
-					  
-				}
-				
+
 				CineDTO todaydto = new CineDTO();
 				JSONObject jsonObj=new JSONObject();
 				  
@@ -88,8 +89,7 @@ public class ShowTimeAction implements Action {
 				
 				  //ajax사용할때 
 				if(todayCal.compareTo(startCal)!=-1
-				  &&todayCal.compareTo(endCal)!=1 && movie==""){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO
-				 
+				  &&todayCal.compareTo(endCal)!=1 && movie==""){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
 				  String[] tStart=cdto.getStart_times().split(",");
 				  String[] tEnd=cdto.getEnd_times().split(",");
 				  jsonObj.put("cinema_num",cdto.getCinema_num());
@@ -102,12 +102,7 @@ public class ShowTimeAction implements Action {
 				  jsonObj.put("movie_name", movieList.getTitle());
 				  jsonObj.put("movie_num", movieList.getMovie_num());
 				  jsonObj.put("movie_grade", movieList.getGrade());
-				  //todaydto.setMovie_num(cdto.getString("movie_num"));
-				  //cineList.add(cdto); 
-				  
-				  //한 상영관의 하루 런타임
-				  //runtimeList
-				  
+
 				  //영화의 런타임
 				  int mTime=movieList.getRunning_time();
 				  //상영관의 하루 시작시간
@@ -117,30 +112,52 @@ public class ShowTimeAction implements Action {
 				  int eTime=Integer.parseInt(tEnd[i].split(":")[0])*60
 						  +Integer.parseInt(tEnd[i].split(":")[1]);
 				  int rtime=sTime;
+				  int timeCnt=0;//마감된 시간 체크
+				  int allCnt=0;//전체 시간
 				  JSONArray runtimeS=new JSONArray();
 				  JSONArray runtimeE=new JSONArray();
 				  JSONArray saleTime=new JSONArray();
 					while(rtime<=eTime){
 						int[] stime=new int[2];
 						int[] etime=new int[2];
+						String startTime="";
+						String endTime="";
+						String saleTime2="";//할인 정보
 						stime[0]=rtime/60;
 						stime[1]=rtime%60;
-						if(stime[0]<10 && stime[1]<10) runtimeS.add("0"+stime[0]+":0"+stime[1]);
-						else if(stime[0]>=10 && stime[1]<10) runtimeS.add(stime[0]+":0"+stime[1]);
-						else if(stime[0]<10 && stime[1]>=10) runtimeS.add("0"+stime[0]+":"+stime[1]);
-						else runtimeS.add(stime[0]+":"+stime[1]);
 						
+						if(stime[0]<10 && stime[1]<10) startTime="0"+stime[0]+":0"+stime[1];
+						else if(stime[0]>=10 && stime[1]<10) startTime=stime[0]+":0"+stime[1];
+						else if(stime[0]<10 && stime[1]>=10) startTime="0"+stime[0]+":"+stime[1];
+						else startTime=stime[0]+":"+stime[1];
+							
+						if(stime[0]<=9 || (stime[0]==10 && stime[1]==0) ) saleTime2="조조";
+						else if(stime[0]>=24) saleTime2="심야";
+						else saleTime2="";
 						
-						if(stime[0]<=9 || (stime[0]==10 && stime[1]==0) ) saleTime.add("조조");
-						else if(stime[0]>=24) saleTime.add("심야");
-						else saleTime.add("");
 						rtime=rtime+mTime+10;//광고시간 10분
 						
 						etime[0]=rtime/60;
 						etime[1]=rtime%60;
-						if(etime[1]<10) runtimeE.add(etime[0]+":0"+etime[1]);
-						else runtimeE.add(etime[0]+":"+etime[1]);
+						if(etime[1]<10) endTime=etime[0]+":0"+etime[1];
+						else endTime=etime[0]+":"+etime[1];
+
+						//오늘날짜 현재 시간 이후 상영시간
+						if(todayCal.compareTo(currentTime)==0
+								&&currentH.compareTo(startTime)<=0){
+							runtimeS.add(startTime);
+							runtimeE.add(endTime);
+							saleTime.add(saleTime2);
+						}else if(todayCal.compareTo(currentTime)==0
+								&&currentH.compareTo(startTime)>0){
+							timeCnt++;//마감 된 횟수
+						}else if(todayCal.compareTo(currentTime)!=0){
+							runtimeS.add(startTime);
+							runtimeE.add(endTime);
+							saleTime.add(saleTime2);
+						}
 						rtime=(int) (Math.ceil(rtime/10)*10)+10;//다음 상영시작시간 10분차
+						allCnt++;
 					}
 					
 					//사용된 좌석 0으로 초기화
@@ -183,8 +200,9 @@ public class ShowTimeAction implements Action {
 				jsonObj.put("runtimeS", runtimeS);
 				jsonObj.put("runtimeE", runtimeE);
 				jsonObj.put("saleTime", saleTime);
-				cineList.add(jsonObj);
-				}else if(todayCal.compareTo(startCal)!=-1//오늘 날짜의 영화관의 선택된 영화 정보를 저장 CineDTO
+				//마감된 상영관은 안보여주기
+				if((allCnt-timeCnt)!=0){ cineList.add(jsonObj);}
+				}else if(todayCal.compareTo(startCal)!=-1//오늘 날짜의 영화관의 선택된 영화 정보를 저장 CineDTO(영화 선택시)
 						  &&todayCal.compareTo(endCal)!=1 && movie.equals(movieList.getTitle()) ){
 					System.out.println("선택된 영화 있음");
 					  String[] tStart=cdto.getStart_times().split(",");
@@ -199,12 +217,7 @@ public class ShowTimeAction implements Action {
 					  jsonObj.put("movie_name", movieList.getTitle());
 					  jsonObj.put("movie_num", movieList.getMovie_num());
 					  jsonObj.put("movie_grade", movieList.getGrade());
-					  //todaydto.setMovie_num(cdto.getString("movie_num"));
-					  //cineList.add(cdto); 
-					  
-					  //한 상영관의 하루 런타임
-					  //runtimeList
-					  
+
 					  //영화의 런타임
 					  int mTime=movieList.getRunning_time();
 					  //상영관의 하루 시작시간
@@ -214,30 +227,51 @@ public class ShowTimeAction implements Action {
 					  int eTime=Integer.parseInt(tEnd[i].split(":")[0])*60
 							  +Integer.parseInt(tEnd[i].split(":")[1]);
 					  int rtime=sTime;
+					  int timeCnt=0;//마감된 시간 체크
+					  int allCnt=0;//전체 시간
 					  JSONArray runtimeS=new JSONArray();
 					  JSONArray runtimeE=new JSONArray();
 					  JSONArray saleTime=new JSONArray();
 						while(rtime<=eTime){
 							int[] stime=new int[2];
 							int[] etime=new int[2];
+							String startTime="";
+							String endTime="";
+							String saleTime2="";//할인 정보
 							stime[0]=rtime/60;
 							stime[1]=rtime%60;
-							if(stime[0]<10 && stime[1]<10) runtimeS.add("0"+stime[0]+":0"+stime[1]);
-							else if(stime[0]>=10 && stime[1]<10) runtimeS.add(stime[0]+":0"+stime[1]);
-							else if(stime[0]<10 && stime[1]>=10) runtimeS.add("0"+stime[0]+":"+stime[1]);
-							else runtimeS.add(stime[0]+":"+stime[1]);
+							if(stime[0]<10 && stime[1]<10) startTime="0"+stime[0]+":0"+stime[1];
+							else if(stime[0]>=10 && stime[1]<10) startTime=stime[0]+":0"+stime[1];
+							else if(stime[0]<10 && stime[1]>=10) startTime="0"+stime[0]+":"+stime[1];
+							else startTime=stime[0]+":"+stime[1];
+								
+							if(stime[0]<=9 || (stime[0]==10 && stime[1]==0) ) saleTime2="조조";
+							else if(stime[0]>=24) saleTime2="심야";
+							else saleTime2="";
 							
-							
-							if(stime[0]<=9 || (stime[0]==10 && stime[1]==0) ) saleTime.add("조조");
-							else if(stime[0]>=24) saleTime.add("심야");
-							else saleTime.add("");
 							rtime=rtime+mTime+10;//광고시간 10분
 							
 							etime[0]=rtime/60;
 							etime[1]=rtime%60;
-							if(etime[1]<10) runtimeE.add(etime[0]+":0"+etime[1]);
-							else runtimeE.add(etime[0]+":"+etime[1]);
+							if(etime[1]<10) endTime=etime[0]+":0"+etime[1];
+							else endTime=etime[0]+":"+etime[1];
+
+							//오늘날짜 현재 시간 이후 상영시간
+							if(todayCal.compareTo(currentTime)==0
+									&&currentH.compareTo(startTime)<=0){
+								runtimeS.add(startTime);
+								runtimeE.add(endTime);
+								saleTime.add(saleTime2);
+							}else if(todayCal.compareTo(currentTime)==0
+									&&currentH.compareTo(startTime)>0){
+								timeCnt++;//마감 된 횟수
+							}else if(todayCal.compareTo(currentTime)!=0){
+								runtimeS.add(startTime);
+								runtimeE.add(endTime);
+								saleTime.add(saleTime2);
+							}
 							rtime=(int) (Math.ceil(rtime/10)*10)+10;//다음 상영시작시간 10분차
+							allCnt++;
 						}
 						
 						//사용된 좌석 0으로 초기화
