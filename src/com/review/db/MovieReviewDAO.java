@@ -7,7 +7,7 @@ public interface MovieReviewDAO {
 	public void writeComment(MovieReviewDTO mrdto);
 	
 	// 리뷰 목록
-	public List<MovieReviewDTO> commentList();
+	List<MovieReviewDTO> commentList(int movie_num);
 	
 	// 리뷰 수정
 	int modifyComment(MovieReviewDTO mrdto);

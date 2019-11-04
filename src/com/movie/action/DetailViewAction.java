@@ -1,5 +1,7 @@
 package com.movie.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +10,8 @@ import com.action.ActionForward;
 import com.movie.db.MovieDAO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
+import com.review.db.MovieReviewDAOImpl;
+import com.review.db.MovieReviewDTO;
 
 public class DetailViewAction implements Action{
 
@@ -27,13 +31,20 @@ public class DetailViewAction implements Action{
 		
 			//MovieDAO 객체 생성
 			MovieDAOImpl mdao = new MovieDAOImpl(); 
+			
+			MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl(); 
 		
 			// 글 번호에 해당하는 글 정보 가져오기
 			MovieDTO mdto = mdao.getBoard(movie_num);
+			
+			List<MovieReviewDTO> boardList = null;
+			
+			boardList = mrdaoImpl.commentList(movie_num);
 	
 			// 정보 저장
 			request.setAttribute("mdto", mdto);
 			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("boardList", boardList);
 		
 			
 			// 페이지 이동
