@@ -24,6 +24,7 @@ public class MovieReviewUpadatAction implements Action {
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+		System.out.println(" movie_num(update) : "+movie_num);
 		
 		MovieReviewDTO mrdto = new MovieReviewDTO();
 		System.out.println("rating : "+request.getParameter("rating"));
@@ -38,9 +39,11 @@ public class MovieReviewUpadatAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		request.setAttribute("movie_num", movie_num);
+		request.setAttribute("movie_num2", movie_num);
 		
-		forward.setPath("./DetailView.mo");
+		System.out.println("Attribute movie_num(update) : "+request.getAttribute("movie_num2"));
+		
+		forward.setPath("./DetailView.mo?movie_num="+movie_num);
 		forward.setRedirect(true);
 		return forward;
 	}

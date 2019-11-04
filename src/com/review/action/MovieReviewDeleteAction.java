@@ -22,6 +22,7 @@ public class MovieReviewDeleteAction implements Action {
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+		System.out.println(" movie_num(delete) : "+movie_num);
 		
 		MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl();
 		
@@ -31,9 +32,11 @@ public class MovieReviewDeleteAction implements Action {
 			System.out.println("삭제성공");
 		}
 		
-		request.setAttribute("movie_num", movie_num);
+		request.setAttribute("movie_num2", movie_num);
 		
-		forward.setPath("./DetailView.mo");
+		System.out.println("Attribute movie_num(delete) : "+request.getAttribute("movie_num2"));
+		
+		forward.setPath("./DetailView.mo?movie_num="+movie_num);
 		forward.setRedirect(true);
 		return forward;
 	}
