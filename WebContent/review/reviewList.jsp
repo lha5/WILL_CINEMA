@@ -12,6 +12,7 @@
 	
 	
 	<%
+		int movie_num = (int) request.getAttribute("movie_num");
 		/* String id = (String)session.getAttribute("id"); */
 		int count = (Integer) request.getAttribute("count");
 		List<MovieReviewDTO> boardList = (List<MovieReviewDTO>) request.getAttribute("boardList");
@@ -33,8 +34,8 @@
      </tr>
      <tr>
      	<td colspan="6">
-	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=mrdto.getMovie_num() %>&num=<%=mrdto.getNum() %>'">
-			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=mrdto.getMovie_num() %>&num=<%=mrdto.getNum() %>'">
+	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
      	</td>
      </tr>
      <%} %>

@@ -49,7 +49,7 @@
 			<br>
 			<a href="./MemberIdSearch.me">아이디 찾기</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">비밀번호 찾기</a>
+			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
 	

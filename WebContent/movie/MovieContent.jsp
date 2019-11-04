@@ -12,8 +12,16 @@
 	
 	<%@ include file="../include/header.jsp" %>
 
-<%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
- String pageNum = (String) request.getAttribute("pageNum");
+<h1>WebContent/movie/MovieContent.jsp</h1>
+<%@ include file="../include/header.jsp" %>
+
+<%
+int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+request.setAttribute("movie_num", movie_num);
+System.out.println("Attribute : "+request.getAttribute("movie_num"));
+MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
+String pageNum = (String) request.getAttribute("pageNum");
+
 %>
 		<table border="1">
 			<tr>

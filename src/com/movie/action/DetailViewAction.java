@@ -24,16 +24,20 @@ public class DetailViewAction implements Action{
 			//int num = Integer.parseInt(request.getParameter("num"));
 			
 			int movie_num = 0;
-
-			if(request.getParameter("movie_num").equals(null)){
-				movie_num = (int) request.getAttribute("movie_num");
-				System.out.println("Attribute movie_num : "+movie_num);
-			}else{
+			System.out.println("Attribute movie_num2 : "+request.getAttribute("movie_num2"));
+			System.out.println("parameter movie_num : "+request.getParameter("movie_num"));
+			if(!request.getParameter("movie_num").equals(null)){
+				
 				movie_num = Integer.parseInt(request.getParameter("movie_num"));
 				System.out.println("Parameter movie_num : "+movie_num);
+				
+			}else{
+				
+				movie_num = (int) request.getAttribute("movie_num2");
+				System.out.println("Attribute movie_num : "+movie_num);
+				
 			}
 			
-			System.out.println("Attribute movie_num : "+request.getAttribute("movie_num"));
 			String pageNum = request.getParameter("pageNum");
 		
 			 //System.out.println("num : " + num + ", pageNum : " + pageNum);
