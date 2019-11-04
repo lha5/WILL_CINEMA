@@ -61,8 +61,8 @@ public class IndexAction implements Action {
 
 		TicketDAO tdao=new TicketDAOImpl();
 		List<CineDTO> cineList = tdao.getCinemaList();
-		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
-		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
+		List<AdminMovieDTO> bookRatingList=tdao.bookRatingList();//예매순
+		List<AdminMovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		//예매순 가지고 오기 
 		
 		// 정보 저장 
