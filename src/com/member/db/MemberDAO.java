@@ -38,4 +38,13 @@ public interface MemberDAO {
 
   // 비밀번호 
 	public List<MemberDTO> searchPass(MemberDTO mdto);
+	
+	//SNS회원 확인
+	public String checkSNSMember(String id);
+	
+	//SNS회원 아이디 추가 번호
+	public int SNSMemberinsertNum();
+	
+	//SNS회원 등록
+	public void insertSNSMember(MemberDTO mdto);
 }
