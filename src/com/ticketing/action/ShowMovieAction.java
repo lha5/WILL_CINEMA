@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
 import com.ticketing.db.TicketDAO;
@@ -49,8 +50,8 @@ public class ShowMovieAction implements Action {
 		
 
 		// 영화DB 정보 다 가져오기
-		List<MovieDTO> bookRatingList = tdao.bookRatingList();// 예매순
-		List<MovieDTO> totalRatingList = tdao.totalRatingList();// 평점순
+		List<AdminMovieDTO> bookRatingList = tdao.bookRatingList();// 예매순
+		List<AdminMovieDTO> totalRatingList = tdao.totalRatingList();// 평점순
 		
 		int[] movieArray=new int[bookRatingList.size()];
 		for(int i=0; i<bookRatingList.size(); i++)
@@ -83,7 +84,7 @@ public class ShowMovieAction implements Action {
 				JSONObject jsonObj=new JSONObject();
 				  
 				//상영관의 영화 정보
-				MovieDTO movieList
+				AdminMovieDTO movieList
 					=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[i]));
 
 				if(todayCal.compareTo(startCal)!=-1

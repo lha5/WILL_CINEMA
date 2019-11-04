@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
+import com.admin.movie.db.AdminMovieDTO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
 
@@ -20,6 +23,7 @@ public class MovieSearchAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		MovieDAOImpl movieDAOImpl = new MovieDAOImpl();
+		AdminMovieDAO amdao = new AdminMovieDAOImpl();
 		
 		// movieList에서 검색결과 받아옴
 		String search = request.getParameter("searchText");
@@ -29,7 +33,7 @@ public class MovieSearchAction implements Action{
 		
 		System.out.println("검색어 : "+search);
 		
-		int count = movieDAOImpl.getBoardCount();
+		int count = amdao.getBoardCount();
 		// 10개까지만 글 화면에 출력됨
 		int pageSize = 10;
 		
@@ -49,7 +53,7 @@ public class MovieSearchAction implements Action{
 		//끝행 구하기
 		int endRow = currentPage * pageSize;
 		
-		List<MovieDTO> boardList = null;
+		List<AdminMovieDTO> boardList = null;
 		
 		if( count !=0 ){
 			boardList = movieDAOImpl.getSearch(searchType ,search, startRow, pageSize);

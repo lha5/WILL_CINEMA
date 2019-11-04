@@ -6,16 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상세보기</title>
+<title>WILL CINEMA - 영화 상세 보기</title>
 </head>
 <body>
+	
+	<%@ include file="../include/header.jsp" %>
 
-<h1>WebContent/movie/MovieContent.jsp</h1>
-<%@ include file="../include/header.jsp" %>
-
-<%
-MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
-String pageNum = (String) request.getAttribute("pageNum");
+<%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
+ String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
@@ -70,7 +68,8 @@ String pageNum = (String) request.getAttribute("pageNum");
 
 <jsp:include page="../review/reviewWrite.jsp"/>
 
-<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../include/footer.jsp" %>
+
 
 
 
