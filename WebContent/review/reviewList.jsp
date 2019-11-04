@@ -9,17 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	
 	<%
-		String id = (String)session.getAttribute("id");
+		/* String id = (String)session.getAttribute("id"); */
 		int count = (Integer) request.getAttribute("count");
 		List<MovieReviewDTO> boardList = (List<MovieReviewDTO>) request.getAttribute("boardList");
-		String pageNum = (String)request.getAttribute("pageNum");
-	
-		int pageCount = (Integer) request.getAttribute("pageCount");
-		int pageBlock = (Integer) request.getAttribute("pageBlock");
-		int startPage = (Integer) request.getAttribute("startPage");
-		int endPage = (Integer) request.getAttribute("endPage");
+		/* String pageNum = (String)request.getAttribute("pageNum"); */
+		System.out.println("boardList : "+boardList);
 	%>
 	
 	 <table border="1">
@@ -41,8 +38,6 @@
      	</td>
      </tr>
      <%} %>
-     
-     <h3><a href="./MovieReviewWrite.mr">리뷰 쓰기</a></h3>
 
 </body>
 </html>
