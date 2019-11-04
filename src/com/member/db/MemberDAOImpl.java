@@ -461,11 +461,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 			while (rs.next()) {
 				// 회원 한 명의 정보를 해당 ArrayList 한 칸에 저장
-				sql = "SELECT * FROM member where birthday=?";
+				sql = "SELECT * FROM member where email=?";
 
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, mdto.getBirthday());
+				pstmt.setString(1, mdto.getEmail());
 
 				rs = pstmt.executeQuery();
 				

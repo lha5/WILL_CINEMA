@@ -7,25 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 	<fieldset>
-		<legend>아이디 찾기</legend>
-		<form action="./MemberIdSearchAction.me" method="post">
+		<legend>비밀번호 찾기</legend>
+		<form action="./MemberPassSearchAction.me" method="post">
 			<table>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id"></td>
+				</tr>
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="email" placeholder="example@example.com"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="아이디 찾기"></td>
+					<td><input type="submit" value="비밀번호 찾기"></td>
 				</tr>
 			</table>
 		</form>
 		
 	</fieldset>
+	
 </body>
 </html>

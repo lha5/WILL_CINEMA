@@ -46,9 +46,9 @@
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
 			<br>
-			<a href="#">아이디 찾기</a>
+			<a href="./MemberIdSearch.me">아이디 찾기</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">비밀번호 찾기</a>
+			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
 	
