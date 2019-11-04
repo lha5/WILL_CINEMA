@@ -40,6 +40,7 @@ a {text-decoration:none;color:#555;}
 
 /* 0805 예매 */
 .ticket_wrap {
+	border: 1px solid red;
 	width: 100%;
 	background: #f6f6ea
 }
@@ -405,5 +406,6 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 
 
-
-
+nav>ul>li:NTH-CHILD(1)>ul {
+	display: block;
+}

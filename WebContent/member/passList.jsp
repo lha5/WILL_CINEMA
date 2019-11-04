@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>WebContent/member/passList.jsp</h1>
+	<%@ include file="../include/header.jsp" %>
 
 <%
 	// request.setAttribute("mdto", mdto);
@@ -34,5 +34,7 @@
 	
 	<input type="button" value="로그인" onclick="location.href='./MemberLogin.me'">
 
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>
