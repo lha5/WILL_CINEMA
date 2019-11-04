@@ -6,6 +6,7 @@ import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDTO;
 
 public interface TicketDAO {
+	//전체 영화관 정보
 	public List<CineDTO> getCinemaList();
 	
 	public CineDTO getSelectList(String cinema);

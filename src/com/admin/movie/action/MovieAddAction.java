@@ -22,6 +22,7 @@ public class MovieAddAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			
+
 		System.out.println("MovieAddAction execute()----------------------------------------------------");
 
 		// 한글처리 

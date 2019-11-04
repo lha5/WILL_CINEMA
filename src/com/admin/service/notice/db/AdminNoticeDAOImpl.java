@@ -252,7 +252,6 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 					
 					
 	// updateBoard(andto)
-	@Override
 	public int updateBoard(AdminNoticeDTO andto){
 		int check = -1;
 

@@ -23,6 +23,7 @@ public class EventPastAction implements Action {
 		if (keyward == null) {
 			keyward = "";
 		}
+		System.out.println("jsp 키워드 : "+keyward);
 		String item = request.getParameter("item");
 		if(item==null){
 			item="movie";
