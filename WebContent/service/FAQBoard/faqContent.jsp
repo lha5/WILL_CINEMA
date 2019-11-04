@@ -47,7 +47,7 @@ String pageNum = (String) request.getAttribute("pageNum");
 	    
 	  
 	    <input type="button" value="삭제하기"
-	           onclick="location.href='./FAQDeleteAction.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'"> 
+	           onclick="location.href='./FAQDelete.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum %>'"> 
 	    
 	    
 	    

@@ -23,7 +23,7 @@ public class EventDetailAction implements Action {
 		// 이벤트 번호에 해당하는 이벤트 정보를 가져오는 메서드
 		// getEvent(num); -> DTO 리턴
 		AdminEventDTO aedto = aedao.getEvent(eventId);
-
+		System.out.println("이벤트 번호"+eventId+"이미지 : "+aedto.getImage());
 		// DTO 객체 저장
 		request.setAttribute("aedto", aedto);
 

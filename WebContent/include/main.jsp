@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@page import="com.admin.service.FAQ.action.FAQListAction"%>
@@ -18,7 +19,8 @@
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <!-- CSS 연결 -->
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
 <!-- Font Awesome -->
@@ -127,7 +129,7 @@
 			
 	int count = (Integer) request.getAttribute("count");
 	int faqcount =(Integer)request.getAttribute("faqcount");
-	List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
@@ -136,8 +138,8 @@
 		
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 
@@ -160,24 +162,25 @@
      
      </ul>
      </div>
-     <!-- 예매순 -->
-     <%-- <div class="scroll_bar">
+
+      <!-- 예매순 -->
+     <div class="scroll_bar">
+
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
+     	 <li>
+     	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span><%=i+1 %></span>
-     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <span><%=mdto.getTitle() %></span>
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span ><%=mdto.getTitle() %></span>
+     	  <span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </a>
      	 </li>
-     	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
-     	  </li>
+     	 
      	 
      	 <%} %>
      	 <!-- 영화 반복문 -->
@@ -186,20 +189,18 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      		
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=i+1 %></span>
-     	   <span><%=mdto.getGrade() %>세</span>
-     	   <span><%=mdto.getTitle() %></span>
+     	 <li>
+     	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span  ><%=mdto.getTitle() %></span>
+     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
      	 </a>
      	 
      	 </li>	
-     	 <li>
-     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
-     	 </li>
+     	 
      	 
      	 
      	 <!-- 영화 반복문 --> 
@@ -217,7 +218,7 @@
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
 					<%} %>
@@ -297,14 +298,21 @@
 			</div><!--이벤트 불러오기  -->
 		
 			<div id="service">
-				멤버십이나 포인트 같은 서비스 모음
-		
-		<div style="width:700px; margin:0 auto;">
-<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
-<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
-<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
-<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
-</div>
+				<ul>
+					<li><a href="#"><i class="ri-coupon-3-line ri-4x"></i><br>쿠폰 및 할인</a></li>
+					<li><a href="#"><i class="ri-copper-coin-line ri-4x"></i><br>포인트</a></li>
+					<li><a href="#"><i class="ri-user-star-line ri-4x"></i><br>멤버십</a></li>
+					<li><a href="#"><i class="ri-user-5-line ri-4x"></i><br>청소년</a></li>
+					<li><a href="#"><i class="ri-parent-line ri-4x"></i><br>패밀리</a></li>
+				</ul>
+				<!-- 
+				<div style="width:700px; margin:0 auto;">
+					<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
+					<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
+					<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
+					<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
+				</div> 
+				-->
 			</div><!--서비스  -->
 			
 			<div id="notice">

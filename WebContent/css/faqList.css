@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+#faq_contents {
+	width: 50%;
+	margin: 10px auto;
+}
+
+#paging {
+	/* border: 1px solid red; */
+	width: 90%;
+	margin: 20px auto;
+	text-align: center;
+}

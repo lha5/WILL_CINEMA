@@ -9,103 +9,8 @@
 <title>WILL CINEMA - 이벤트</title>
 
 <script src="./js/jquery-3.4.1.min.js"></script>
-<!-- <style type="text/css">
-	.event_cwrap {
-    	width: 980px;
-    	margin: 0 auto;
-   		padding: 55px 0 50px;
-	}
-	.event_list {
-    	margin-left: -60px;
-    	width: 1000px;
-	}
-	
-	.event_list li{
-		position: relative;
-	    float: left;
-	    width: 230px;
-	    height: 234px;
-	    margin: 0 0 30px 20px;
-	    border: 1px solid #dedede;
-	    background: #fff;
-	    box-sizing: border-box;
-	    -webkit-box-sizing: border-box;
-	}
-	
-	li {
-		float: left;
-		/* border: solid black 1px; */
-		width: 228px;
-		height: 229px;
-		list-style: none;
-		margin: 0px 0px 30px 20px;
-	}
-	li>p {
-		margin-top: 4px;
-		text-align: center;
-		font-size: 0.8em;
-	}
-	
-	li>img {
-		width: 228px;
-		height: 129px;
-	}
-	
-	.btn_view a{
-		clear: both;
-		display: block;
-		width: 100%;
-		height: 40px;
-		padding: 8px 0;
-		background: #efefef;
-		border: 1px solid #dedede;
-		text-align: center;
-		font-size: 14px;
-		color: #231f20;
-		font-weight: bold;
-		box-sizing: border-box; /* -webkit-box-sizing:border-box; */
-		-moz-box-sizing: border-box;
-	}
-	
-	.btn_view span {
-    	padding-bottom: 6px;
-	}
-	
-	a {
-    	text-decoration: none;
-    	color: #555;
-	}
-	
-	.clear{
-		clear: both;
-	}
-	.last_event {
-    overflow: hidden;
-    margin-bottom: 30px;
-	}
-	.last_event li>a {
-    display: block;
-    height: 44px;
-    line-height: 44px;
-    color: #6f6247;
-    border: 1px solid #efebdb;
-	}
-	
-	.last_event>li {
-    display: inline-block;
-    width: 192px;
-    height:52px;
-    float: left;
-    margin-right: 5px;
-    background-color: #efebdb;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    box-sizing: border-box;
-    padding: 3px;
-	}
-</style> -->
 <link rel="stylesheet" href="./css/eventPast.css">
+
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
@@ -152,7 +57,7 @@
 	String item=request.getParameter("item");
 	String keyward=(String)request.getAttribute("keyward");
 	int viewList=3;//보여줄 이벤트 개수-1
-	
+	System.out.println("키워드:"+keyward);
 	if(keyward==null){
 		keyward="";
 	}
@@ -190,7 +95,7 @@
 			제휴할인
 		<%} %>
 		</h2>
-		<form action="./EventPast.ae?item=<%=item %>&keyward=<%=keyward%>" method="post">
+		<form action="./EventPast.ae?item=<%=item %>" method="post">
 		<input type="text" name="keyward" value="<%=keyward%>">
 		<input type="submit" value="검색">
 		</form>

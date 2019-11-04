@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
 import com.mysql.fabric.xmlrpc.base.Array;
@@ -176,9 +177,9 @@ public class TicketDAOImpl implements TicketDAO{
 
 	/*--------------------- 영화 예매순 --------------------*/
 	@Override
-	public List<MovieDTO> bookRatingList() {
+	public List<AdminMovieDTO> bookRatingList() {
 
-		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
+		List<AdminMovieDTO> movieList = new ArrayList<AdminMovieDTO>();
 		
 		try {
 			con = getCon();
@@ -190,7 +191,7 @@ public class TicketDAOImpl implements TicketDAO{
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				MovieDTO mdto = new MovieDTO();
+				AdminMovieDTO mdto = new AdminMovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
@@ -220,8 +221,8 @@ public class TicketDAOImpl implements TicketDAO{
 	
 	/*--------------------- 영화 평점순 --------------------*/
 	@Override
-	public List<MovieDTO> totalRatingList() {
-		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
+	public List<AdminMovieDTO> totalRatingList() {
+		List<AdminMovieDTO> movieList = new ArrayList<AdminMovieDTO>();
 		
 		try {
 			con = getCon();
@@ -232,7 +233,7 @@ public class TicketDAOImpl implements TicketDAO{
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				MovieDTO mdto = new MovieDTO();
+				AdminMovieDTO mdto = new AdminMovieDTO();
 				
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
@@ -263,8 +264,8 @@ public class TicketDAOImpl implements TicketDAO{
 
 	/*--------------------- 선택된 영화 정보 --------------------*/
 	@Override
-	public MovieDTO getMovie(int num) {
-		MovieDTO mdto = new MovieDTO();
+	public AdminMovieDTO getMovie(int num) {
+		AdminMovieDTO mdto = new AdminMovieDTO();
 		
 		try {
 			con = getCon();

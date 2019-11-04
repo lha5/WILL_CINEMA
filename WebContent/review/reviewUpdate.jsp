@@ -10,7 +10,7 @@
 	
 	<%
 		int num = Integer.parseInt(request.getParameter("num"));
-	
+		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 		String id = (String)session.getAttribute("id");
 		System.out.println("id : "+id);
 		if(id == null){
@@ -21,7 +21,7 @@
 	
 	<fieldset>
 		<legend>리뷰 수정</legend>
-		<form action="./MovieReviewUpadatAction.mr?num=<%=num %>" method="post">
+		<form action="./MovieReviewUpadatAction.mr?movie_num=<%=movie_num %>&num=<%=num %>" method="post">
 			<table>
 				<tr>
 					<td>평점</td>

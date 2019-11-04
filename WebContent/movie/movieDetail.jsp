@@ -4,20 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>WILL CINEMA - </title>
 </head>
 <body>
-<h1>영화 상세보기</h1>
 
-
-
-
-</form>
-
-
-
-
-
+	<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../include/footer.jsp" %>
 
 </body>
 </html>

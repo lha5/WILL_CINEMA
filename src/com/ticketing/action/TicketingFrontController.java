@@ -29,8 +29,16 @@ public class TicketingFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/ShowTime.ti")){ //좌석 선택 페이지
+		}else if(command.equals("/ShowTime.ti")){ //영화관 영화 선택시 상영 시간(ajax)
 			action = new ShowTimeAction(); 
+			
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/ShowMovie.ti")){ //영화관 영화 선택시 활성/비활성(ajax)
+			action = new ShowMovieAction(); 
 			
 			try {
 				forward=action.execute(request, response);

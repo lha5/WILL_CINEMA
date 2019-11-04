@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
+import com.admin.movie.db.AdminMovieDTO;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
@@ -44,12 +47,13 @@ public class IndexAction implements Action {
 		FAQList = afdao.getBoardList();
 		
 		////////////////////FAQ
-		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
-		int count = mvdaoImpl.getBoardCount();
+		MovieDAO mvdaoImpl  = new MovieDAOImpl();
+		AdminMovieDAO amdao  = new AdminMovieDAOImpl();
+		int count = amdao.getBoardCount();
 		int pageSize = 5;
 		System.out.println(" pageNum - 1 : " + request.getParameter("pageNum"));
 		
-		List<MovieDTO> boardList = null;
+		List<AdminMovieDTO> boardList = null;
 		if( count != 0 ){ 
 			boardList = mvdaoImpl.getBoardList();
 		}
@@ -57,8 +61,8 @@ public class IndexAction implements Action {
 
 		TicketDAO tdao=new TicketDAOImpl();
 		List<CineDTO> cineList = tdao.getCinemaList();
-		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
-		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
+		List<AdminMovieDTO> bookRatingList=tdao.bookRatingList();//예매순
+		List<AdminMovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		//예매순 가지고 오기 
 		
 		// 정보 저장 

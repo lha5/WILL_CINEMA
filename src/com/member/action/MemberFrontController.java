@@ -158,8 +158,30 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MemberPassSearch.me")){
+			forward = new ActionForward();
+			
+			forward.setPath("./member/passSearch.jsp");
+			forward.setRedirect(false);
 		}else if (command.equals("/MemberPassSearchAction.me")){
 			action = new MemberPassSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberNaverLogin.me")){
+			//네이버 로그인 callback.jsp 이동
+			// 후에 수정하실 분 callback.jsp에 내용 
+			// java파일로 옮겨도 사용가능할 것으로 보이니 참고 바람
+			
+			forward = new ActionForward();
+			
+			forward.setPath("./member/callback.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/MemberNaverLoginAction.me")){
+			action = new MemberNaverLoginAction();
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

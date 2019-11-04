@@ -11,11 +11,12 @@
 
 <!-- jQuery -->
 <script src="./js/jquery-3.4.1.min.js"></script>
+
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -24,6 +25,18 @@
 	if (id != null) {
 		response.sendRedirect("./Main.me");
 	}
+	
+	String clientId = "zbWDmpR7Dt9oKkuZ8yzZ";//애플리케이션 클라이언트 아이디값"; // 후에 수정시 자신이 발급밭은 아이디로 변경
+	// 후에 서버에 올라갈시 URL 변경 필요
+    String redirectURI = URLEncoder.encode("http://localhost:8088/WillCinema/MemberNaverLogin.me", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+	
 	%>
 	
 	<fieldset>
@@ -39,16 +52,28 @@
 					<td><input type="password" name="pass"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="로그인"></td>
+					<td colspan="2">
+						<input type="submit" value="로그인">
+			<!-- 네이버 아이디 로그인 -->
+			<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+			<!-- /네이버 아이디 로그인 -->
+			<!-- 카카오톡 로그인 -->
+			<a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+			</a>
+			<!-- /카카오톡 로그인 -->		
+					</td>
 				</tr>
 			</table> 
 		</form>
+		
+		
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
 			<br>
-			<a href="#">아이디 찾기</a>
+			<a href="./MemberIdSearch.me">아이디 찾기</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">비밀번호 찾기</a>
+			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
 	
@@ -77,6 +102,25 @@
 	
 	<!-- --------------------------------------------------------------------------- -->
 	
+	<!-- 카카오톡 로그인 스크립트 -->
+	<script type='text/javascript'>
+		//<![CDATA[
+		   // 사용할 앱의 JavaScript 키를 설정해 주세요.
+		   Kakao.init('cd3590b07e55c69b37d015bdadb57b99');
+		   function loginWithKakao() {
+		     // 로그인 창을 띄웁니다.
+		     Kakao.Auth.login({
+		       success: function(authObj) {
+		         alert(JSON.stringify(authObj));
+		       },
+		       fail: function(err) {
+		         alert(JSON.stringify(err));
+		       }
+		     });
+		   };
+		// ]]>
+	</script>
+	<!-- /카카오톡 로그인 스크립트 -->
 	
 	<%@ include file="../include/footer.jsp" %>
 </body>
