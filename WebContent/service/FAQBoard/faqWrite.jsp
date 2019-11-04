@@ -14,72 +14,68 @@
 
 </head>
 <body>
-<%@ include file="../../include/header.jsp" %>
-<%
-//String id= (String)request.getAttribute("id");
-/* if(!id.equals("admin")){
-	response.sendRedirect("./MemberLogin.me");
-}  */
-%>
 
+	<%@ include file="../../include/header.jsp" %>
 
-<fieldset>
-<legend>FAQ쓰기</legend>
-<form action="./FAQWriteAction.af" method="post" enctype="multipart/form-data" >
-<table>
-<tr>
-<td>작성자
-<input type="text" name="name" value="<%=id%>">
-<input type="hidden" name="pass" value="">
-</td>
-<tr>
-<td>카테고리
-<select name="category">
-<option value="영화예매">영화 예매</option>
-<option value="매점구매">매점 구매</option>
-<option value="이용안내">사이트 이용 안내</option>
-<option value="이벤트">이벤트</option>
-<option value="멤버십">멤버십/포인트</option>
-<option value="쿠폰">쿠폰</option>
-</select>
-</td>
-</tr>
+	<fieldset>
+		<legend>FAQ쓰기</legend>
+		<form action="./FAQWriteAction.af" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>작성자
+						<input type="text" name="name" value="<%=id%>">
+						<input type="hidden" name="pass" value="<%=id%>">
+					</td>
+				</tr>
+				<tr>
+					<td>카테고리
+						<select name="category">
+							<option value="영화예매">영화 예매</option>
+							<option value="매점구매">매점 구매</option>
+							<option value="이용안내">사이트 이용 안내</option>
+							<option value="이벤트">이벤트</option>
+							<option value="멤버십">멤버십/포인트</option>
+							<option value="쿠폰">쿠폰</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+						<td colspan="2">
+							<input type="text" name="subject">
+						</td>
+				</tr>
+			
+			<tr>
+			<td>FAQ내용</td>
+			<td colspan="2">
+				<textarea id="summernote" name="content"></textarea>
+				<script>
+					$('#summernote').summernote({
+						lang: 'ko-KR',
+						height: 300,
+						minHeight: 100,
+						maxHeight: 500
+					 });
+				</script>
+			</td>
+			</tr>
+			
+			<tr>
+			<td>이미지</td>
+			<td colspan="2">
+			<input type="file" name="image"></td>
+			</tr>
+							
+			<tr><td colspan="5">
+			<input type="submit" value="FAQ쓰기">
+			</td>
+			</tr>
+			</table>
+		</form>
+	</fieldset>
 
-<tr>
-<td>제목</td>
-<td colspan="2">
-<input type="text" name="subject"></td>
-</tr>
-
-<tr>
-<td>FAQ내용</td>
-<td colspan="2">
-	<textarea id="summernote" name="content"></textarea>
-	<script>
-		$('#summernote').summernote({
-			lang: 'ko-KR',
-			height: 300,
-			minHeight: 100,
-			maxHeight: 500
-		 });
-	</script>
-</td>
-</tr>
-
-<tr>
-<td>이미지</td>
-<td colspan="2">
-<input type="file" name="image"></td>
-</tr>
-				
-<tr><td colspan="5">
-<input type="submit" value="FAQ쓰기">
-</td>
-</tr>
-</table>
-</form>
-</fieldset>
-<%@ include file="../../include/footer.jsp" %>
+	<%@ include file="../../include/footer.jsp" %>
 
 </body>
 </html>

@@ -11,14 +11,15 @@
 <link rel="stylesheet" href="./css/goodsList.css">
 
 <style type="text/css">
-	
+	nav>ul>li:NTH-CHILD(5)>ul {
+	display: block;
+	}
 </style>
 
 </head>
 <body>
 
-	<div id="wrap">
-
+	
 	<%@ include file="../include/header.jsp" %>
 
 	<%
@@ -46,6 +47,6 @@
 
 	<%@ include file="../include/footer.jsp" %>
 	
-	</div>
+	
 </body>
 </html>

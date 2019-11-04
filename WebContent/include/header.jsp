@@ -71,7 +71,7 @@
 						<li>할인안내</li>
 					</ul>
 				</li>
-				<li>영화
+				<li><a href="./MovieList.mo">영화</a>
 					<ul>
 						<li>박스오피스</li>
 						<li>기획전</li>
