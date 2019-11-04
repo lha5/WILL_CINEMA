@@ -4,7 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 자주 묻는 질문</title>
+
+<!-- summernote 적용시키기 위한 준비 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<script src="./summernote/lang/summernote-ko-KR.js"></script>
+
 </head>
 <body>
 <%@ include file="../../include/header.jsp" %>
@@ -47,7 +54,16 @@
 <tr>
 <td>FAQ내용</td>
 <td colspan="2">
-<textarea name="content" rows="10" cols="20">내용입력</textarea></td>
+	<textarea id="summernote" name="content"></textarea>
+	<script>
+		$('#summernote').summernote({
+			lang: 'ko-KR',
+			height: 300,
+			minHeight: 100,
+			maxHeight: 500
+		 });
+	</script>
+</td>
 </tr>
 
 <tr>

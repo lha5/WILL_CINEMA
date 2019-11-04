@@ -11,8 +11,6 @@
 
 </head>
 <body>
-	<br>
-	<br>
 	<hr>
 	<div id="bttm">
 	<footer>

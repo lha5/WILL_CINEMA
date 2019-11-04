@@ -81,3 +81,7 @@ nav>ul>li:NTH-CHILD(4) ul {
 	top: 39px;
 	left: 330px;
 }
+
+nav>ul>li:NTH-CHILD(4)>ul {
+	display: block;
+}

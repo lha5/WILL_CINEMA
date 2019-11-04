@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h1>WebContent/member/idList.jsp</h1>
+	<%@ include file="../include/header.jsp" %>
 
 <%
 	// request.setAttribute("mdto", mdto);
@@ -34,6 +34,8 @@
 	</table>
 	
 	<input type="button" value="비밀번호 찾기" onclick="location.href='./MemberIdSearch.me'">
-
+	
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>
