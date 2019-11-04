@@ -47,7 +47,7 @@ public class IndexAction implements Action {
 		FAQList = afdao.getBoardList();
 		
 		////////////////////FAQ
-		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
+		MovieDAO mvdaoImpl  = new MovieDAOImpl();
 		AdminMovieDAO amdao  = new AdminMovieDAOImpl();
 		int count = amdao.getBoardCount();
 		int pageSize = 5;
