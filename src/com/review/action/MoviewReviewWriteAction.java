@@ -35,8 +35,10 @@ public class MoviewReviewWriteAction implements Action {
 		
 		mrdaoImpl.writeComment(mrdto);
 		
+		request.setAttribute("movie_num", movie_num);
+		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MovieReviewList.mr");
+		forward.setPath("./DetailView.mo");
 		forward.setRedirect(true);
 		return forward;
 	}
