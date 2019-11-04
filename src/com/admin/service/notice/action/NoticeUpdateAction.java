@@ -92,7 +92,7 @@ public class NoticeUpdateAction implements Action{
 			response.setContentType("text/html charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println(" alert('공지사항 수정 완료 ');");
+			//out.println(" alert('공지사항 수정 완료 ');");
 			out.println(" location.href='./NoticeList.an?pageNum="+pageNum+"' ");
 			out.println("</script>");
 			

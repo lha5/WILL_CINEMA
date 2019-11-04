@@ -17,6 +17,7 @@
 
 	<%@ include file="../../include/header.jsp" %>
 
+
 	<fieldset>
 		<legend>FAQ쓰기</legend>
 		<form action="./FAQWriteAction.af" method="post" enctype="multipart/form-data">
@@ -76,6 +77,7 @@
 	</fieldset>
 
 	<%@ include file="../../include/footer.jsp" %>
+
 
 </body>
 </html>

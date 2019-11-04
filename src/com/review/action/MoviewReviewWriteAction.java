@@ -22,8 +22,11 @@ public class MoviewReviewWriteAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
+		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+		
 		MovieReviewDTO mrdto = new MovieReviewDTO();
-		System.out.println("rating : "+request.getParameter("rating"));
+		System.out.println("rating : "+request.getParameter("rating")+" movie_num : "+movie_num);
+		mrdto.setMovie_num(movie_num);
 		mrdto.setId(id);
 		mrdto.setRating(Integer.parseInt(request.getParameter("rating")));
 		mrdto.setContent(request.getParameter("content"));
@@ -32,8 +35,10 @@ public class MoviewReviewWriteAction implements Action {
 		
 		mrdaoImpl.writeComment(mrdto);
 		
+		request.setAttribute("movie_num", movie_num);
+		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MovieReviewList.mr");
+		forward.setPath("./DetailView.mo");
 		forward.setRedirect(true);
 		return forward;
 	}

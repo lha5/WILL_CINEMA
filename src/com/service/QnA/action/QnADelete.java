@@ -27,7 +27,7 @@ public class QnADelete implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		forward.setPath("./board/QnADelete.jsp");
+		forward.setPath("./service/QnABoard/QnADelete.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

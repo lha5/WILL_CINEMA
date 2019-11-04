@@ -67,7 +67,7 @@ response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println(" alert('회원정보 탈퇴 성공'); ");
-		out.println(" location.href='./Main.me' ");
+		out.println(" location.href='./Index.me' ");
 		out.println("</script>");
 		
 		out.close();	

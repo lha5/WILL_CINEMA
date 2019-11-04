@@ -58,10 +58,11 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 	public void writeComment(MovieReviewDTO mrdto) {
 		
 		int num = 0;
+		
 		try {
 			con = getCon();
 			
-			sql = "select max(num) from qna";
+			sql = "select max(num) from review";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -125,20 +126,20 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 
 	// 리뷰 목록
 	@Override
-	public List<MovieReviewDTO> commentList() {
+	public List<MovieReviewDTO> commentList(int movie_num) {
 		
 		List<MovieReviewDTO> boardList = new ArrayList<MovieReviewDTO>();
-		
 		try {
 			con = getCon();
 			
-			sql = "select * from review";
+			sql = "select * from review where movie_num=?";
 			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
 			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				
 				MovieReviewDTO mrdto = new MovieReviewDTO();
 				System.out.println("num : "+rs.getInt("num"));
 				mrdto.setNum(rs.getInt("num"));
@@ -157,7 +158,6 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		}finally{
 			closeDB();
 		}
-		
 		return boardList;
 		
 	}

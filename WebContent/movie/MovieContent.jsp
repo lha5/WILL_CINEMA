@@ -9,7 +9,6 @@
 <title>WILL CINEMA - 영화 상세 보기</title>
 </head>
 <body>
-
 	
 	<%@ include file="../include/header.jsp" %>
 
@@ -65,12 +64,12 @@
 			</tr>
 		</table>
 
+<jsp:include page="../review/reviewList.jsp"/>
 
-
-
-
+<jsp:include page="../review/reviewWrite.jsp"/>
 
 	<%@ include file="../include/footer.jsp" %>
+
 
 
 
