@@ -12,14 +12,15 @@
 
 </head>
 <body>
-<%@ include file="/include/header.jsp" %>
+	
+	<%@ include file="/include/header.jsp" %>
 
-<%
+	<%
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
 	List eventNeventList = (List)request.getAttribute("eventNeventList");
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
-%>
+	%>
 
 
 	<div class="event_cwrap">
@@ -95,6 +96,6 @@
 		<br class="clear">
 		</div>
 
-<%@ include file="/include/footer.jsp" %>
+	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>

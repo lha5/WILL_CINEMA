@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,7 +16,7 @@
 		// String id = (String)session.getAttribute("id");
 		
 		int count = (Integer) request.getAttribute("count"); 
-		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+		List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 		
 		String pageNum = (String) request.getAttribute("pageNum");
 		
@@ -52,7 +53,7 @@
      </tr>
      <% 
      	for (int i=0;i<boardList.size();i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
     		%>
 			<tr>
 				<td><%=mdto.getMovie_num() %></td>

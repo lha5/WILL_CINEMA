@@ -64,8 +64,8 @@
 						</td>
 						<td>개봉일~마감일</td>
 						<td>
-							<input type="date" name="open_date"> ~
-							<input type="date" name="close_date">
+							<input type="text" name="open_date" placeholder="yyyyMMdd"> ~
+							<input type="text" name="close_date" placeholder="yyyyMMdd">
 						</td>
 					</tr>
 					<tr>

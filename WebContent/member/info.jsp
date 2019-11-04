@@ -49,7 +49,7 @@
 		<br><br>
 		<a href="./CinemaAdminDetail.ci">영화관 지점 관리(관리자 전용)</a>
 		<br><br>
-		<a href="./MovieAdd.am">영화 등록 관리(관리자 전용)</a>
+		<a href="./MovieList.mo">영화 등록 관리(관리자 전용)</a>
 		<br><br>
 					
 	<%	

@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,7 +22,7 @@
 		request.setAttribute("cdto", cdto);
 		request.setAttribute("running_date", running_date);
 		request.setAttribute("running_time", running_time); */
-	MovieDTO mdto = (MovieDTO)request.getAttribute("mdto");
+	AdminMovieDTO mdto = (AdminMovieDTO)request.getAttribute("mdto");
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto");
 	String running_date = (String)request.getAttribute("running_date");
 	String running_time = (String)request.getAttribute("running_time");
