@@ -21,6 +21,8 @@ public class MovieReviewDeleteAction implements Action {
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("num"));
 		
+		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+		
 		MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl();
 		
 		int check = mrdaoImpl.deleteComment(num);
@@ -29,7 +31,9 @@ public class MovieReviewDeleteAction implements Action {
 			System.out.println("삭제성공");
 		}
 		
-		forward.setPath("./MovieReviewList.mr");
+		request.setAttribute("movie_num", movie_num);
+		
+		forward.setPath("./DetailView.mo");
 		forward.setRedirect(true);
 		return forward;
 	}

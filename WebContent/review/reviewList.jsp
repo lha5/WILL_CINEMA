@@ -33,8 +33,8 @@
      </tr>
      <tr>
      	<td colspan="6">
-	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?num=<%=mrdto.getNum() %>'">
-			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?num=<%=mrdto.getNum() %>'">
+	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=mrdto.getMovie_num() %>&num=<%=mrdto.getNum() %>'">
+			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=mrdto.getMovie_num() %>&num=<%=mrdto.getNum() %>'">
      	</td>
      </tr>
      <%} %>
