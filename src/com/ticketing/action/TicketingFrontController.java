@@ -78,6 +78,15 @@ public class TicketingFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/TestSendEmailAction.ti")){ //이메일 발송 페이지
+				//action = new ActionSendMessageAction
+				
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+			
 		}
 		
 		//가상주소를 가지고 이동
@@ -90,6 +99,8 @@ public class TicketingFrontController extends HttpServlet{
 			}
 		}
 	}
+	
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
