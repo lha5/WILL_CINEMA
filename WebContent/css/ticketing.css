@@ -289,6 +289,10 @@ table, caption, tbody, tfoot, thead, tr, th, td
 .area_list li a {overflow:hidden; display:table-cell; vertical-align:middle; width:129px; height:40px; border:1px solid #efefef; background:#efefef; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; line-height:16px; font-size:12px; color:#666; text-align:center; letter-spacing:-1px;}
 .area_list li a.on {padding:0 25px; border:1px solid #999; color:#231f20; font-weight:bold; background:#fff url('../img/bg/bg_ckth.png') no-repeat 10px 50%;}
 
+.area_list li a.disabled {color:#d1d1d1; background:#fafafa; border:none; cursor:default; border:1px solid #fafafa;}/* 1105 추가 */
+.area_list li a.disabled.on {color:#d1d1d1; background:#fafafa url('../img/bg/bg_ckth.png') no-repeat 10px 50%; border:1px solid #999; cursor:default;}
+
+
 .movie_cont>ul{overflow:hidden; padding-right:10px; text-align:right; border-bottom:1px solid #dedede;}
 .movie_cont>ul>li{display:inline-block; font-size:14px; padding-left:2px; background: url('../img/bg/bg_tkMTab.gif') no-repeat left center;}
 .movie_cont>ul>li:first-child {background:none;padding-left:0;}

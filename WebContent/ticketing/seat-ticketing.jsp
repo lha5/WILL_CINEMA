@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="./css/seat-ticketing.css">
 </head>
 <body>
 <h1>WebContent/ticketing/seat-tiketing.jsp</h1>
@@ -15,12 +16,6 @@
 	//세션 처리
 	//회원 확인
 
-	//데이터 저장
-	//*후에 합칠때 변경 필요
-	/* request.setAttribute("mdto", mdto);
-		request.setAttribute("cdto", cdto);
-		request.setAttribute("running_date", running_date);
-		request.setAttribute("running_time", running_time); */
 	MovieDTO mdto = (MovieDTO)request.getAttribute("mdto");
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto");
 	String running_date = (String)request.getAttribute("running_date");
@@ -91,19 +86,10 @@
 	 for문으로 배열해 둠
 	 후에 수정하실분은 유의할 것
 	 -->
-	 <table>
+	 
+	 <table class="seat">
 	 <tr>
-	 	<td>
-	 	</td>
-	 	<td>
-	 		<!-- 행 번호 -->
-	 		<% for(int j=1;j<=seat_line;j++){%>
-	 			<a><%=j %></a>
-	 		<%} %>
-	 	</td>
-	 </tr>
-	 <tr>
-	 	<td>
+	 	<td class="rowNum">
 	 		<!-- 열 번호 -->
 	 		<!-- 좌석열에 대등해서 아스키코드 A=65값 부터 늘려서 뿌려줌 -->
 	 		<% 
@@ -113,7 +99,7 @@
 	 		%>
 	 			<a><%=alpStr %></a><br>
 	 		<% alpChar++;
-	 			} 
+	 		} 
 	 		%>
 	 	</td>
 		<td><!-- 좌석 배치 칸 -->
@@ -128,11 +114,10 @@
 		<!-- 버튼으로 해두었으나 나중에 태그변경 할 수도 있음 
 			태그 변경시 jquery에서 받는 값도 수정 필요 
 		-->
-		 <input class="seat_on" type="button" name="seat<%=alpStr %><%=j %>" value="<%=alpStr %><%=j %>">
-		  <%-- <%=alpStr %><%=j %>
-		 </button> --%><br>
+		 <input class="seat_on" type="button" name="seat<%=alpStr %><%=j %>" value="<%=j %>">
+		 <br>
 		<%}else{ %>
-		 <input class="seat_on" type="button" name="seat<%=alpStr %><%=j %>" value="<%=alpStr %><%=j %>">
+		 <input class="seat_on" type="button" name="seat<%=alpStr %><%=j %>" value="<%=j %>">
 		  <%-- <%=alpStr %><%=j %>
 		 </a> --%>
 	<%}
@@ -141,6 +126,8 @@
 			</td>
 		</tr>
 	</table>
+	
+	
 	<!-- /좌석선택 -->
 	<hr>
 	<input type="submit" value="결제하기">
@@ -185,11 +172,6 @@
 
 <!-- 스크립트 -->
 	<script>			
-			
-	
-	
-	
-	
 	//인원 수 선택
 		var seat_count = 0;//선택한 인원 총수
 		$('input[name=seating]').attr('disabled',true);
