@@ -22,6 +22,12 @@ public class SeatSelectAction implements Action{
 		//시간 데이터
 		
 		//좌석 데이터
+		//나이에 따른 인원수  
+		String adult = request.getParameter("adult");
+		String teenager = request.getParameter("teenager");
+		String senior = request.getParameter("senior");
+		
+		System.out.println("인원수 가져오기 : "+adult+","+teenager+","+senior);
 		
 		
 		

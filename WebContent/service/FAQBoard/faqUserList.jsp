@@ -8,38 +8,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WILL CINEMA - 자주 묻는 질문</title>
 
-<style>
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
+<!-- jQuery -->
+<script src="./js/jquery-3.4.1.min.js"></script>
 
-.active, .accordion:hover {
-  background-color: #ccc; 
-}
+<!-- CSS -->
+<link rel="stylesheet" href="././css/faqList.css">
 
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-</style>
 </head>
 <body>
 
+	<div id="wrap">
+
 		<%@ include file="../../include/header.jsp" %>
 
-	<%
-		// String id = (String)request.getAttribute("id");
+		<%
 		int count = (Integer) request.getAttribute("count");
 		List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>) request.getAttribute("FAQList");
 		String pageNum = (String)request.getAttribute("pageNum");
@@ -47,32 +29,10 @@
 		int pageBlock = (Integer)request.getAttribute("pageBlock");
 		int startPage = (Integer)request.getAttribute("startPage");
 		int endPage = (Integer)request.getAttribute("endPage");
-		
+				
 		System.out.println("FAQList :" + FAQList.toString());
-	%>
-
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-
-	<%-- <%
-		if (id.equals("admin")) {
-	%>
-			<a href="./FAQWrite.af">글쓰기</a>
-	<%
-		}
-	%> --%>
-	<h6>FAQ</h6>
-  		
-		<% 
-		 for(int i=0;i<FAQList.size();i++){
-			 AdminFAQDTO afdto = FAQList.get(i);
 		%>
-	  	
-			
-			
-			<%-- <td><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>"></a></td> 
-			 --%>
-<button class="accordion"><%=afdto.getSubject() %></button>
-<div class="panel">
+
 
  카테고리: <%=afdto.getCategory() %><br>
  제목: <%=afdto.getSubject() %><br>
@@ -87,6 +47,85 @@
 </div>
 <%}%>
 	<!-- 자바스크립트 -->
+
+	
+		
+		<div id="faq_contents">
+			<span id="subj">FAQ</span>
+			<% 
+			for(int i=0;i<FAQList.size();i++){
+				AdminFAQDTO afdto = FAQList.get(i);
+			%>
+		  
+				<button class="accordion"><%=afdto.getSubject() %></button>
+				<div class="panel">
+		
+					<%
+					if (afdto.getImage() != null) {
+					%>
+						<img src="./upload/<%=afdto.getImage()%>">
+						<br>
+					<%
+					}
+					%>
+					<p>
+					<%=afdto.getContent()%>
+					</p>
+					<%
+					if (id != null) {
+						if (id.equals("admin")) {
+					%>
+						<a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정</a>	
+					<%
+						}
+					}
+					%>
+				</div>
+			<%
+			}
+			%>
+			
+			<%
+			if (id != null) {
+			  	if (id.equals("admin")) {
+			%>
+			  		<h6><a href="./FAQWrite.af">FAQ 글쓰기</a></h6>
+			<%
+			  	}
+			}
+		  	%>
+	
+	
+			<!-- 페이징 처리 -->
+			<div id="paging">
+			<%
+			if(count != 0) {
+				// 이전
+				if (startPage > pageBlock) {
+			%>
+				<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+			<%
+				}
+				// 1...10  11..20  21...30
+				for (int i = startPage; i <= endPage; i++) {
+			%>
+				<a href="./FAQList.af?pageNum=<%=i%>"><%=i%></a>
+			<%
+				}
+	
+				// 다음
+				if (endPage < pageCount) {
+			%>
+				<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+			<%
+				}
+			}
+			%>
+			</div>
+		</div>
+		
+		<!-- 자바스크립트 -->
+
 		<script>
 			var acc = document.getElementsByClassName("accordion");
 			
@@ -102,49 +141,10 @@
   				});
 			}
 		</script>	
-		
-		
-		
-	 <%-- <%
-  			if (id.equals("admin")) {
-  			%>
-  				<a href="./FAQContent.af?num=<%=afdto.getNum() %>">글수정</a>
-  				<h6><a href="./FAQWrite.af">글 쓰기</a></h6>
-  			<%
-  			}
-  			%>  --%>
 
-
-<%
-		if(count != 0) {
-			// 이전
-			if (startPage > pageBlock) {
-		%>
-			<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-		<%
-			}
-
-			// 1...10  11..20  21...30
-			for (int i = startPage; i <= endPage; i++) {
-			%>
-			<a href="./FAQList.af?pageNum=<%=i%>">[<%=i%>]
-			</a>
-			<%
-			}
-
-			// 다음
-			if (endPage < pageCount) {
-			%>
-			<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-			<%
-			}
-		}
-	%>
-
-
-
-
-	<%@ include file="../../include/footer.jsp" %>
+		<%@ include file="../../include/footer.jsp" %>
+	
+	</div>
 	
 </body>
 </html>

@@ -64,7 +64,7 @@ public class CinemaModifyAction implements Action{
 				}*/
 				for(int i=1;i<=room_num;i++){
 					
-						System.out.println("동작");
+						//System.out.println("동작");
 					seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i)+",";
 					start_times += request.getParameter("start_times"+i)+",";
 					end_times += request.getParameter("end_times"+i)+",";

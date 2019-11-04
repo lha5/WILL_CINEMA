@@ -78,7 +78,9 @@
 						<li>영화의전당</li>
 					</ul>
 				</li>
+
 				<li><a href="./CinemaUserView.ci?cinema_num=1">영화관</a>
+
 					<ul>
 						<li>서울</li>
 						<li>경기/인천</li>
@@ -99,7 +101,14 @@
 						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
 					</ul>
 				</li>
-				<li><a href="./GoodsList.ml">매점</a></li>
+				<li>
+					<a href="./GoodsList.ml">매점</a>
+					<ul>
+						<li><a href="./GoodsList.ml">전체</a></li>
+						<li><a href="./GoodsList.ml?item=ticket">관람권</a></li>
+						<li><a href="./GoodsList.ml?item=snack">스낵/음료</a></li>
+					</ul>
+				</li>
 				<li>VOD</li>
 			</ul>
 			<div id="sub_ul">

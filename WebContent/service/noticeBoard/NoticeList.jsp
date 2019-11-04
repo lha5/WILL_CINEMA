@@ -59,23 +59,8 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		<%
 
-
-		
-		
-		
-		
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -103,8 +88,16 @@
 	
 	
 	%>
-	<input type="button" value="글쓰기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+	%>
+			<input type="button" value="공지사항 작성하기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
+	<%
+	 }
+	}
+	%>
 	
 	<%@ include file="../../include/footer.jsp" %>
 	
