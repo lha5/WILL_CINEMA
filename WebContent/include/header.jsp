@@ -71,7 +71,7 @@
 						<li>할인안내</li>
 					</ul>
 				</li>
-				<li>영화
+				<li><a href="./MovieList.mo">영화</a>
 					<ul>
 						<li>박스오피스</li>
 						<li>기획전</li>
@@ -99,7 +99,14 @@
 						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
 					</ul>
 				</li>
-				<li><a href="./GoodsList.ml">매점</a></li>
+				<li>
+					<a href="./GoodsList.ml">매점</a>
+					<ul>
+						<li><a href="./GoodsList.ml">전체</a></li>
+						<li><a href="./GoodsList.ml?item=ticket">관람권</a></li>
+						<li><a href="./GoodsList.ml?item=snack">스낵/음료</a></li>
+					</ul>
+				</li>
 				<li>VOD</li>
 			</ul>
 			<div id="sub_ul">

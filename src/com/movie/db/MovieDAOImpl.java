@@ -11,7 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.service.QnA.db.QnADTO;
-
+import com.admin.movie.db.AdminMovieDTO;
 import com.admin.service.notice.db.AdminNoticeDTO;
 
 //영화 DB
@@ -47,58 +47,103 @@ public class MovieDAOImpl implements MovieDAO{
 				con.close();
 			}
 		}catch(Exception e){
-			e.printStackTrace();
-			
-			
-			
+			e.printStackTrace();	
 		}
 	}
 	
+	// getBoardList
 	@Override
-	public int deleteBoard(int movie_num) {
-		 
-		int check = -1;
-		
+	public List<AdminMovieDTO> getBoardList() {
+		List<AdminMovieDTO> boardList = new ArrayList<AdminMovieDTO>();
 		try {
 			con = getCon();
-			
-			sql = "select title from movie where movie_num=?";
-			
+
+			sql = "select * from movie";
 			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, movie_num);
-			
+
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-					
-					sql = "delete from movie where movie_num=?";
-					
-					pstmt = con.prepareStatement(sql);
-					
-					pstmt.setInt(1, movie_num);
-					
-					check = pstmt.executeUpdate();
-				
-			}else{
-				check = -1;
+
+			while (rs.next()) {
+				AdminMovieDTO amdto = new AdminMovieDTO();
+
+				amdto.setMovie_num(rs.getInt("movie_num"));
+				amdto.setTitle(rs.getString("title"));
+				amdto.setGenre(rs.getString("genre"));
+				amdto.setStory(rs.getString("story"));
+				amdto.setRunning_time(rs.getInt("running_time"));
+				amdto.setDirector(rs.getString("director"));
+				amdto.setActor(rs.getString("actor"));
+				amdto.setCountry(rs.getString("country"));
+
+				boardList.add(amdto);
 			}
-			
-		} catch (Exception e) {
+
+		} catch (Exception e) { 	
 			e.printStackTrace();
-		}finally {
+		} finally {
 			closeDB();
 		}
-		
-		return check;
-		
+		return boardList;
 	}
 
 
+
+	@Override
+	public List<AdminMovieDTO> getSearch(String searchType, String search, int startRow, int pageSize) {
+		List<AdminMovieDTO> boardList = new ArrayList<AdminMovieDTO>();
+		try {
+			con = getCon();
+			if(searchType.equals("title")){
+				sql = "select * from movie where title like ?";	
+			}else if(searchType.equals("genre")){
+				sql = "select * from movie where genre like ?";	
+			}else if(searchType.equals("director")){
+				sql = "select * from movie where director like ?";
+			}else if(searchType.equals("actor")){
+				sql = "select * from movie where actor like ?";
+			}
+
+			pstmt = con.prepareStatement(sql);
+
+			System.out.println("영화 검색 실행, 검색 범주 : " + searchType + ", 키워드 : " + search);
+
+			pstmt.setString(1, "%"+search+"%");
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()){
+				AdminMovieDTO amdto= new AdminMovieDTO();
+
+				amdto.setMovie_num(rs.getInt("movie_num"));
+				amdto.setTitle(rs.getString("title"));
+				amdto.setGenre(rs.getString("genre"));
+				amdto.setStory(rs.getString("story"));
+				amdto.setRunning_time(rs.getInt("running_time"));
+				amdto.setDirector(rs.getString("director"));
+				amdto.setActor(rs.getString("actor"));
+				amdto.setOpen_date(rs.getDate("open_date"));
+				amdto.setClose_date(rs.getDate("close_date"));
+				amdto.setCountry(rs.getString("country"));
+				amdto.setBooking_ration(rs.getDouble("booking_ration"));
+				amdto.setPoster(rs.getString("poster"));
+				amdto.setImage(rs.getString("image"));
+
+				boardList.add(amdto);
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return boardList;
+	}
+	
+	
 	// getBoard(num)
 	@Override
-	public MovieDTO getBoard(int num) {
-		MovieDTO mdto = null;
+	public AdminMovieDTO getBoard(int num) {
+		AdminMovieDTO amdto = null;
 
 		try {
 			con = getCon();
@@ -113,256 +158,29 @@ public class MovieDAOImpl implements MovieDAO{
 
 			
 			if (rs.next()) {
-				mdto = new MovieDTO();
-				mdto.setTitle(rs.getString("title"));
-				mdto.setActor(rs.getString("actor"));
-				mdto.setBooking_ration(rs.getDouble("booking_ration"));
-				mdto.setCountry(rs.getString("country"));
-				mdto.setDirector(rs.getString("director"));
-				mdto.setGenre(rs.getString("genre"));
-				mdto.setImage(rs.getString("image"));
-				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setPoster(rs.getString("poster"));
-				mdto.setRunning_time(rs.getInt("running_time"));
-				mdto.setStory(rs.getString("story"));
-				mdto.setOpen_date(rs.getDate("open_date"));
-				mdto.setClose_date(rs.getDate("close_date"));
-			
-			}
-			System.out.println("게시판 글 저장: "+mdto);
-	
+				amdto = new AdminMovieDTO();
+				
+				amdto.setTitle(rs.getString("title"));
+				amdto.setActor(rs.getString("actor"));
+				amdto.setBooking_ration(rs.getDouble("booking_ration"));
+				amdto.setCountry(rs.getString("country"));
+				amdto.setDirector(rs.getString("director"));
+				amdto.setGenre(rs.getString("genre"));
+				amdto.setImage(rs.getString("image"));
+				amdto.setMovie_num(rs.getInt("movie_num"));
+				amdto.setPoster(rs.getString("poster"));
+				amdto.setRunning_time(rs.getInt("running_time"));
+				amdto.setStory(rs.getString("story"));
+				amdto.setOpen_date(rs.getDate("open_date"));
+				amdto.setClose_date(rs.getDate("close_date"));
+			}	
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}finally{
 			closeDB();
 		}
-	
-		System.out.println("게시판 글 저장: "+mdto);
-		return mdto;
+		System.out.println("게시판 글 저장: " + amdto);
+		return amdto;
 	}
-	
-	@Override
-	public int updateBoard(MovieDTO mdto) {
-		int check = -1;
-		
-		try {
-			con = getCon();
-			
-			System.out.println("movie_num : "+mdto.getMovie_num());
-			
-			sql = "select title from movie where movie_num=?";
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, mdto.getMovie_num());
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				sql = "update movie set title=? ,genre=?, country=?, running_time=?, director=?, story=?, actor=? where movie_num=?";
-					
-				pstmt = con.prepareStatement(sql);
-					
-				pstmt.setString(1, mdto.getTitle());
-				pstmt.setString(2, mdto.getGenre());
-				pstmt.setString(3, mdto.getCountry());
-				pstmt.setInt(4, mdto.getRunning_time());
-				pstmt.setString(5, mdto.getDirector());
-				pstmt.setString(6, mdto.getStory());
-				pstmt.setString(7, mdto.getActor());
-				pstmt.setInt(8, mdto.getMovie_num());
-				check = pstmt.executeUpdate();
-				// check = 1;
-			}else{
-				check = -1;
-			}
-			
-			System.out.println("글 수정 동작 완료 : "+check);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			closeDB();
-		}
-		
-		return check;
-		
-	}
-	
-
-	//insert Board
-	
-	public void insertBoard(MovieDTO mdto) {
-		int movie_num = 0;
-		try {
-			con = getCon();
-			
-			sql = "select max(movie_num) from movie";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				movie_num = rs.getInt(1)+1;
-			}
-			System.out.println("movie_num : "+movie_num);
-			
-
-			sql = "insert into movie(title,movie_num,genre,story,running_time,director,actor,open_date,close_date,country,booking_ration,poster,image) "
-			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, mdto.getTitle());
-			pstmt.setInt(2, movie_num);
-			pstmt.setString(3, mdto.getGenre());
-			pstmt.setString(4, mdto.getStory());
-			pstmt.setInt(5, mdto.getRunning_time());
-			pstmt.setString(6, mdto.getDirector());
-			pstmt.setString(7, mdto.getActor());
-			pstmt.setDate(8, mdto.getOpen_date());
-			pstmt.setDate(9, mdto.getClose_date());
-			pstmt.setString(10, mdto.getCountry());
-			pstmt.setDouble(11, 0);
-			pstmt.setString(12, mdto.getPoster());
-			pstmt.setString(13, mdto.getImage());
-			
-			int value = pstmt.executeUpdate();
-			
-			System.out.println("글 저장 완료"+value+"개");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-	}
-	
-	public int getBoardCount(){
-		int count = 0;
-		
-		try {
-			con = getCon();
-			
-			sql = "select count(*) from movie";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				count = rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		
-		return count;
-	}
-	// getBoardList
-	
-		public List<MovieDTO> getBoardList() {
-		List<MovieDTO> boardList = new ArrayList<MovieDTO>();
-		
-		try {
-			con = getCon();
-			
-			sql = "select * from movie";
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				MovieDTO mdto = new MovieDTO();
-				
-				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setTitle(rs.getString("title"));
-				mdto.setGenre(rs.getString("genre"));
-				mdto.setStory(rs.getString("story"));
-				mdto.setRunning_time(rs.getInt("running_time"));
-				mdto.setDirector(rs.getString("director"));
-				mdto.setActor(rs.getString("actor"));
-				mdto.setCountry(rs.getString("country"));
-				boardList.add(mdto);
-				
-			}
-			
-		} catch (Exception e) { 	
-			e.printStackTrace();
-		}finally{
-			closeDB();
-		}
-		
-		return boardList;
-	}
-
-		
-		public List<MovieDTO> getSearch(String searchType,String search,int startRow,int pageSize) {
-			List<MovieDTO> boardList = new ArrayList<MovieDTO>();
-			
-			try {
-				con = getCon();
-				if(searchType.equals("title")){
-					sql = "select * from movie where title like ?";	
-				}else if(searchType.equals("genre")){
-					sql = "select * from movie where genre like ?";	
-				}else if(searchType.equals("director")){
-					sql = "select * from movie where director like ?";
-				}else if(searchType.equals("actor")){
-					sql = "select * from movie where actor like ?";
-				}
-				
-				pstmt = con.prepareStatement(sql);
-				
-				System.out.println(search);
-			
-				pstmt.setString(1, "%"+search+"%");
-			
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()){
-					MovieDTO mdto= new MovieDTO();
-				
-					
-					//ㅁㄴㅇ
-					
-				mdto.setMovie_num(rs.getInt("movie_num"));
-				mdto.setTitle(rs.getString("title"));
-				mdto.setGenre(rs.getString("genre"));
-				mdto.setStory(rs.getString("story"));
-				mdto.setRunning_time(rs.getInt("running_time"));
-				mdto.setDirector(rs.getString("director"));
-				mdto.setActor(rs.getString("actor"));
-				mdto.setOpen_date(rs.getDate("open_date"));
-				mdto.setClose_date(rs.getDate("close_date"));
-				mdto.setCountry(rs.getString("country"));
-				mdto.setBooking_ration(rs.getDouble("booking_ration"));
-				mdto.setPoster(rs.getString("poster"));
-				mdto.setImage(rs.getString("image"));
-				
-				boardList.add(mdto);
-				
-				}
-			
-			
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}finally{
-				closeDB();
-			}
-			return boardList;
-		}
-
 }
-
-
-
-
-
-
-

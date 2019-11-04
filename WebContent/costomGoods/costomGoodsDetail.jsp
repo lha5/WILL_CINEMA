@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 매점</title>
+
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(5)>ul {
+	display: block;
+	}
+</style>
+
 </head>
 <body>
 

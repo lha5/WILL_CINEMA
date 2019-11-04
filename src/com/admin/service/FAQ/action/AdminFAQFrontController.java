@@ -57,7 +57,7 @@ public class AdminFAQFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/FAQDelete.af")){ //FAQ삭제 페이지
-			//action = new FAQDeleteAction();
+			action = new FAQDelete();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

@@ -12,6 +12,8 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
+
+<!-- JavaScript -->
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
@@ -51,6 +53,7 @@
 		});
 	}
 </script>
+
 </head>
 <%	
 	//request.setCharacterEncoding("UTF-8");

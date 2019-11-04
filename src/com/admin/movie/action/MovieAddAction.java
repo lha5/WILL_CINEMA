@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDTO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -34,29 +35,35 @@ public class MovieAddAction implements Action {
 				return forward;
 			}
 			
+			ServletContext context = request.getServletContext();
+			String realPath = context.getRealPath("/upload");
+			
+			System.out.println("realPath : "+realPath);
+			
+			int maxSize = 10 * 1024 * 1024;
+			
+			MultipartRequest multi = new MultipartRequest(request,realPath,maxSize,"UTF-8", new DefaultFileRenamePolicy());
+			
 			// QnADTO객체 생성
-			MovieDTO mdto = new MovieDTO();
-			String title = request.getParameter("title");
-			String genre = request.getParameter("genre");
-			String director = request.getParameter("director");
-			String story = request.getParameter("story");
-			String actor = request.getParameter("actor");
-			int running_time = Integer.parseInt(request.getParameter("running_time"));
-
-			System.out.print("name : "+ title + " id : "+ id + " running_time : "+running_time);
-
-
-			mdto.setTitle(title);
-			mdto.setGenre(genre);
-			mdto.setDirector(director);
-			mdto.setStory(story);
-			mdto.setActor(actor);
-			mdto.setRunning_time(running_time);
+			AdminMovieDTO amdto = new AdminMovieDTO();
+			
+			amdto.setTitle(multi.getParameter("title"));
+			amdto.setStory(multi.getParameter("story"));
+			amdto.setCountry(multi.getParameter("country"));
+			amdto.setGenre(multi.getParameter("genre"));
+			//amdto.setOpen_date(multi.getParameter("open_date"));
+			//amdto.setClose_date(multi.getParameter("close_date"));
+			amdto.setDirector(multi.getParameter("director"));
+			amdto.setActor(multi.getParameter("actor"));
+			amdto.setRunning_time(Integer.parseInt(multi.getParameter("running_time")));
+			amdto.setPoster(multi.getFilesystemName("poster"));
+			amdto.setImage(multi.getFilesystemName("image"));
 				
 			// QnaDAOImpl객체 생성
-			MovieDAOImpl mvdaoImpl = new MovieDAOImpl();
+			MovieDAOImpl amdao = new MovieDAOImpl();
+			
 			// insertBoard()
-			mvdaoImpl.insertBoard(mdto);
+			
 				
 			forward.setPath("./MovieList.mo");
 			forward.setRedirect(true);

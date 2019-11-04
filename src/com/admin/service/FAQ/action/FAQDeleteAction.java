@@ -31,10 +31,10 @@ public class FAQDeleteAction implements Action {
 					PrintWriter out=response.getWriter();
 					out.print("<script>");
 					out.print("alert('faq 삭제 완료!');");
-					out.print("history.back();");
+					out.print(" location.href='./FAQList.af'");
 					out.print("</script>");
 					out.close();
-					
+
 					return null;
 				}else if(chk == -1){
 					PrintWriter out = response.getWriter();

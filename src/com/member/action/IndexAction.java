@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
+import com.admin.movie.db.AdminMovieDTO;
 import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
@@ -45,11 +48,12 @@ public class IndexAction implements Action {
 		
 		////////////////////FAQ
 		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
-		int count = mvdaoImpl.getBoardCount();
+		AdminMovieDAO amdao  = new AdminMovieDAOImpl();
+		int count = amdao.getBoardCount();
 		int pageSize = 5;
 		System.out.println(" pageNum - 1 : " + request.getParameter("pageNum"));
 		
-		List<MovieDTO> boardList = null;
+		List<AdminMovieDTO> boardList = null;
 		if( count != 0 ){ 
 			boardList = mvdaoImpl.getBoardList();
 		}
