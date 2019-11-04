@@ -1,5 +1,11 @@
 @CHARSET "UTF-8";
 
+.grade_18 {float:left; margin-left:10px; background:url('../img/bg/bg_grade_18.png') } 
+.grade_15 {float:left; margin-left:10px; background:url('../img/bg/bg_grade_15.png')  }
+.grade_12 {float:left; margin-left:10px; background:url('../img/bg/bg_grade_12.png')  }
+.grade_all {float:left; margin-left:10px; background:url('../img/bg/bg_grade_all.png') } 
+
+[class^=grade_] {display:inline-block;overflow:hidden;vertical-align:middle;width:20px;height:20px;margin-right:5px;text-indent:-99999em;}
 #center {
 	/* border: 1px solid olive; */
 	text-align: center;
@@ -116,15 +122,9 @@
 list-style: none;
 	
 }
-.booking{
-float: left;
-margin-left: 30px;
-font-weight: bold;
-}
 .booking1{
 float: right;
 margin-right: 40px;
-font-weight: bold;
 }
 .booking>a:HOVER {
 	color: red;

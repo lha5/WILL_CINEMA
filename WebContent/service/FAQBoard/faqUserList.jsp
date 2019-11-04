@@ -33,6 +33,21 @@
 		System.out.println("FAQList :" + FAQList.toString());
 		%>
 
+
+ 카테고리: <%=afdto.getCategory() %><br>
+ 제목: <%=afdto.getSubject() %><br>
+<%if(afdto.getImage()!= null){%>
+ 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br>
+<%} %>
+ 내용:<%=afdto.getContent()%><br>
+<%if(id.equals("admin")){ %>
+<h4><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정(관리자)</a></h4>
+<h4><a href="./FAQWrite.af">글 쓰기(관리자)</a></h4>
+<%} %>
+</div>
+<%}%>
+	<!-- 자바스크립트 -->
+
 	
 		
 		<div id="faq_contents">
@@ -44,10 +59,7 @@
 		  
 				<button class="accordion"><%=afdto.getSubject() %></button>
 				<div class="panel">
-					<%--
-					카테고리: <%=afdto.getCategory() %><br>
-					제목: <%=afdto.getSubject() %><br> 
-					--%>
+		
 					<%
 					if (afdto.getImage() != null) {
 					%>
@@ -113,6 +125,7 @@
 		</div>
 		
 		<!-- 자바스크립트 -->
+
 		<script>
 			var acc = document.getElementsByClassName("accordion");
 			
