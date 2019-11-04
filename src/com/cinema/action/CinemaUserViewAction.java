@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDAO;
 import com.cinema.db.CineDAOImpl;
 import com.cinema.db.CineDTO;
+import com.movie.db.MovieDAO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
 
@@ -31,22 +35,24 @@ public class CinemaUserViewAction implements Action {
 	
 		/////////////// 시네마 정보 
 		
-		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
-		int count = mvdaoImpl.getBoardCount();
+		AdminMovieDAO amdao  = new AdminMovieDAOImpl();
+		int count = amdao.getBoardCount();
 		int pageSize = 5;
-System.out.println(" pageNum - 1 : " + request.getParameter("pageNum"));
-
-List<MovieDTO> boardList = null;
-
-if( count != 0 ){ 
-	  boardList = mvdaoImpl.getBoardList();
-}
-// movie List
+		System.out.println(" pageNum - 1 : " + request.getParameter("pageNum"));
 		
-// 정보 저장 
-request.setAttribute("cineList", cineList);
-request.setAttribute("count", count);
-request.setAttribute("boardList", boardList);
+		List<AdminMovieDTO> boardList = null;
+		
+		MovieDAO mvdao = new MovieDAOImpl();
+		if( count != 0 ){ 
+			  boardList = mvdao.getBoardList();
+		}
+		// movie List
+		
+		// 정보 저장 
+		request.setAttribute("cineList", cineList);
+		request.setAttribute("count", count);
+		request.setAttribute("boardList", boardList);
+		
 		//넘기기
 		ActionForward forward= new ActionForward();
 		forward.setPath("./userCinema/cinemaView.jsp");
@@ -54,5 +60,4 @@ request.setAttribute("boardList", boardList);
 		
 		return forward;
 	}
-
 }

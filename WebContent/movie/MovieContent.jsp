@@ -70,9 +70,9 @@ String pageNum = (String) request.getAttribute("pageNum");
 			</tr>
 		</table>
 
-<jsp:include page="../review/reviewList.jsp"/>
+	<jsp:include page="../review/reviewList.jsp"/>
 
-<jsp:include page="../review/reviewWrite.jsp"/>
+	<jsp:include page="../review/reviewWrite.jsp"/>
 
 	<%@ include file="../include/footer.jsp" %>
 

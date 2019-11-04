@@ -97,6 +97,7 @@ window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
 
 </head>
 <body>
+
 <%@ include file="../include/header.jsp" %>
 <%
 CineDTO cdto = (CineDTO)request.getAttribute("cineList");
@@ -116,41 +117,41 @@ List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boar
 		<li><img src ="./upload/<%=mdto.getImage()%>"></li>
 					<%} %>
 					</ul>
+
 		</div>
+	
+	<div id="cinemaname">
+	
+	<table border="1">
+	<%
+	
+	
+		 %>
+		<tr>
+		<td>영화관 넘버 :<%=cdto.getCinema_num() %></td>
+		<td><h2>영화관 이름 :<%=cdto.getName() %></h2></td>
+		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
+		</tr>
+		<tr>
+		<td>상영관 :<%=cdto.getRoom() %></td>
+		<td>영화관 전화번호 :<%=cdto.getTel() %></td>
+		<td>영화관주소 :<%=cdto.getAddr() %></td>
+		<td><input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+		
+		
+		
+	
+		</tr>
+		
+	
+	
+	</table>
+	
 	</div>
-
-<div id="cinemaname">
-
-<table border="1">
-<%
-
-
-	 %>
-	<tr>
-	<td>영화관 넘버 :<%=cdto.getCinema_num() %></td>
-	<td><h2>영화관 이름 :<%=cdto.getName() %></h2></td>
-	<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
-	</tr>
-	<tr>
-	<td>상영관 :<%=cdto.getRoom() %></td>
-	<td>영화관 전화번호 :<%=cdto.getTel() %></td>
-	<td>영화관주소 :<%=cdto.getAddr() %></td>
-	<td><input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+	
+	</div>
 	
 	
-	
-
-	</tr>
-	
-
-
-</table>
-
-</div>
-
-</div>
-
-
-<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>
