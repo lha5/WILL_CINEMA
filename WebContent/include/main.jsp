@@ -160,24 +160,25 @@
      
      </ul>
      </div>
-     <!-- 예매순 -->
-     <%-- <div class="scroll_bar">
+
+      <!-- 예매순 -->
+     <div class="scroll_bar">
+
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){
      		MovieDTO mdto=bookRatingList.get(i);
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
+     	 <li>
+     	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span><%=i+1 %></span>
-     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <span><%=mdto.getTitle() %></span>
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span ><%=mdto.getTitle() %></span>
+     	  <span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </a>
      	 </li>
-     	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
-     	  </li>
+     	 
      	 
      	 <%} %>
      	 <!-- 영화 반복문 -->
@@ -189,17 +190,15 @@
      		MovieDTO mdto=totalRatingList.get(i);
      		
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=i+1 %></span>
-     	   <span><%=mdto.getGrade() %>세</span>
-     	   <span><%=mdto.getTitle() %></span>
+     	 <li>
+     	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span  ><%=mdto.getTitle() %></span>
+     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
      	 </a>
      	 
      	 </li>	
-     	 <li>
-     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
-     	 </li>
+     	 
      	 
      	 
      	 <!-- 영화 반복문 --> 
@@ -297,14 +296,21 @@
 			</div><!--이벤트 불러오기  -->
 		
 			<div id="service">
-				멤버십이나 포인트 같은 서비스 모음
-		
-		<div style="width:700px; margin:0 auto;">
-<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
-<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
-<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
-<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
-</div>
+				<ul>
+					<li><a href="#"><i class="ri-coupon-3-line ri-4x"></i><br>쿠폰 및 할인</a></li>
+					<li><a href="#"><i class="ri-copper-coin-line ri-4x"></i><br>포인트</a></li>
+					<li><a href="#"><i class="ri-user-star-line ri-4x"></i><br>멤버십</a></li>
+					<li><a href="#"><i class="ri-user-5-line ri-4x"></i><br>청소년</a></li>
+					<li><a href="#"><i class="ri-parent-line ri-4x"></i><br>패밀리</a></li>
+				</ul>
+				<!-- 
+				<div style="width:700px; margin:0 auto;">
+					<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
+					<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
+					<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
+					<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
+				</div> 
+				-->
 			</div><!--서비스  -->
 			
 			<div id="notice">

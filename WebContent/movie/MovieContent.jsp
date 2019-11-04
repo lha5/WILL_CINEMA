@@ -11,10 +11,11 @@
 <body>
 
 <h1>WebContent/movie/MovieContent.jsp</h1>
+<%@ include file="../include/header.jsp" %>
 
-
-<%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
- String pageNum = (String) request.getAttribute("pageNum");
+<%
+MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
+String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
@@ -66,11 +67,11 @@
 		</table>
 
 
+<jsp:include page="../review/reviewWrite.jsp"/>
 
+<jsp:include page="../review/reviewList.jsp"/>
 
-
-
-
+<%@ include file="../include/footer.jsp" %>
 
 
 

@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+#goodsL {
+	border: 1px solid blue;
+	width: 55%;
+	margin: 20px auto;
+}
+
+#goodsL>li {
+	float: left;
+	border: 1px solid red;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 40%;
+	margin: 10px auto;
+}
+

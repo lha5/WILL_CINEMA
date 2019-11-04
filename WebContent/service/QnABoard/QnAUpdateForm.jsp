@@ -27,7 +27,7 @@
 	
 	<fieldset>
 		<legend>1:1 문의 수정</legend>
-		<form action="./QnAUpdateAction.sq?pageNum=<%=pageNum%>" method="post" enctype="multipart/form-data">
+		<form action="./QnAUpdateAction.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>작성자</td>

@@ -14,7 +14,7 @@
 	%>
 
 <fieldset>
-       <legend> 글 삭제 하기 </legend>
+       <legend> FAQ 삭제 하기 </legend>
        <form action="./FAQDeleteAction.af?pageNum=<%=pageNum %>" method="post">
          <input type="hidden" name="num" value="<%=num%>">      
                  비밀번호 : <input type="password" name="pass">         
