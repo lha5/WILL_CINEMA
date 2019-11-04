@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
@@ -100,7 +101,7 @@ window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
 <%
 CineDTO cdto = (CineDTO)request.getAttribute("cineList");
 int count = (Integer) request.getAttribute("count");
-List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 %>
 
 <div id= wrap>
@@ -109,7 +110,7 @@ List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		
 		<li><img src ="./upload/<%=mdto.getImage()%>"></li>

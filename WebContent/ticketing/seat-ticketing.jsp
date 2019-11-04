@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,7 +17,15 @@
 	//세션 처리
 	//회원 확인
 
-	MovieDTO mdto = (MovieDTO)request.getAttribute("mdto");
+
+	//데이터 저장
+	//*후에 합칠때 변경 필요
+	/* request.setAttribute("mdto", mdto);
+		request.setAttribute("cdto", cdto);
+		request.setAttribute("running_date", running_date);
+		request.setAttribute("running_time", running_time); */
+	AdminMovieDTO mdto = (AdminMovieDTO)request.getAttribute("mdto");
+
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto");
 	String running_date = (String)request.getAttribute("running_date");
 	String running_time = (String)request.getAttribute("running_time");

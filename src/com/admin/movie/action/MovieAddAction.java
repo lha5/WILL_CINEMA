@@ -51,6 +51,7 @@ public class MovieAddAction implements Action {
 			amdto.setStory(multi.getParameter("story"));
 			amdto.setCountry(multi.getParameter("country"));
 			amdto.setGenre(multi.getParameter("genre"));
+			System.out.println("opendate 값 : " + multi.getParameter("open_date") + ", " + "closedate 값 : " + multi.getParameter("close_date"));
 			//amdto.setOpen_date(multi.getParameter("open_date"));
 			//amdto.setClose_date(multi.getParameter("close_date"));
 			amdto.setDirector(multi.getParameter("director"));

@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@page import="com.admin.service.FAQ.action.FAQListAction"%>
@@ -128,7 +129,7 @@
 			
 	int count = (Integer) request.getAttribute("count");
 	int faqcount =(Integer)request.getAttribute("faqcount");
-	List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
@@ -137,8 +138,8 @@
 		
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 
@@ -168,7 +169,7 @@
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
      	 <li>
      	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
@@ -188,7 +189,7 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      		
      	%>
      	 <li>
@@ -217,7 +218,7 @@
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
 					<%} %>

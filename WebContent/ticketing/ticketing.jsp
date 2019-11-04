@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="java.util.List"%>
@@ -457,8 +458,8 @@
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	List allRegion = (List)request.getAttribute("allRegion");//모든지역 
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	//System.out.println(cineList.size());
 	int[] cineCnt=(int[])request.getAttribute("cineCnt");
 
@@ -545,7 +546,7 @@
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<bookRatingList.size(); i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
@@ -561,7 +562,7 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<totalRatingList.size(); i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>"
