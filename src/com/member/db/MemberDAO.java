@@ -38,4 +38,6 @@ public interface MemberDAO {
 
   // 비밀번호 
 	public List<MemberDTO> searchPass(MemberDTO mdto);
+
+	int emailCheck(String name, String email);
 }

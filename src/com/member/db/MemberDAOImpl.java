@@ -3,6 +3,7 @@ package com.member.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +107,57 @@ public class MemberDAOImpl implements MemberDAO{
 				} else {
 					check = 0;
 				}
+			} else {
+				check = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	// 비회원전용 로그인
+	@Override
+	public int emailCheck(String name, String email) {
+		
+		int check = 1;
+		
+		System.out.println(" name(login) : "+name+" email(login) : "+email);
+		
+		try {
+			con = getCon();
+			System.out.println(" con : "+con);
+
+			sql = "select email from non_member where name = ?";
+
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				
+				System.out.println("rs1 : " + rs);
+				
+				sql = "SELECT email_checked FROM non_member WHERE email=?";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, email);
+
+				rs = pstmt.executeQuery();
+				
+				if (rs.getInt("email_checked") == 1) {
+					
+					System.out.println("rs2 : " + rs);
+					
+					check = 1;
+				} else {
+					check = 0;
+				}
+				
 			} else {
 				check = -1;
 			}
@@ -528,4 +580,58 @@ public class MemberDAOImpl implements MemberDAO{
 		return passList;
 	}
 	
+	public String getUserEmail(String id) {
+
+		String SQL = "SELECT email FROM member WHERE id = ?";
+
+			try {
+				con = getCon();
+				
+				PreparedStatement pstmt = con.prepareStatement(SQL);
+
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+
+					return rs.getString(1); // 이메일 주소 반환
+
+				}
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+
+		return null; // 데이터베이스 오류
+		
+	}
+	
+	public boolean setUserEmailChecked(String id) {
+
+		String SQL = "UPDATE member SET userEmailChecked = true WHERE id = ?";
+
+		try {
+			con = getCon();
+			
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+
+			pstmt.setString(1, id);
+
+			pstmt.executeUpdate();
+
+			return true; // 이메일 등록 설정 성공
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return false; // 이메일 등록 설정 실패
+
+	}
+
 }
