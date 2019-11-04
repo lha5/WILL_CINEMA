@@ -20,6 +20,7 @@ public interface AdminEventDAO {
 	public List<AdminEventDTO> getPastList(String item, int startCnt, int viewCnt);
 	
 	public AdminEventDTO getEvent(int eventId);
+	//public AdminEventDTO getPastEvent(int eventId);//지난 이벤트 
 	
 	public int updateEvent(AdminEventDTO aedto);
 	public int deleteEvent(int num);

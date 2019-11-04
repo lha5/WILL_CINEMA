@@ -233,43 +233,7 @@
 		/* ajax관련 */
 		clickEvent();
 
-		var cinema='';
-		var movie='';
-		var date=$('input[name="day"]:checked').val();
-		var selectDate=$('.txtdate').find('dd').text();
-		var html='';
-		
-		if($('.txtCin').find('dd').is('.on')){
-			cinema=$('.txtCin').find('dd').text();
-		}
-		
-		if($('.txtName').find('dd').is('.on')){
-			movie=$('.txtName').find('dd').text();
-		}
-		$('.movie_list').find('a').removeClass('disabled');
-		$.ajax({
-			url:"./ShowMovie.ti",
-			type:"post",
-			dataType:"JSON",
-			data:{cinema:cinema,movie:movie,date:date},
-			success:function(data){
-				
-				var movieNum=data.movieList;
-				movieNum=movieNum.toString();
-				movieNum=movieNum.split(',');
-				/* $.each(data,function(index,data2){
-					//movieNum=data2.split(",");
-					alert(data2.movieList);
-				}); */
-				//alert($('.movie_list').find('a').find("'.mov"+movieNum+"'"));
-				for(var i=0; i<movieNum.length; i++){
-					$(".mov"+movieNum[i]).addClass('disabled');
-				}
-			},
-			error:function(request,status,error){
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-               }
-		});
+		selectShow();
 	}
 	
 	
@@ -313,6 +277,7 @@
 		
 		/* ajax관련 */
 		clickEvent();
+		selectShow();
 	}
 	
 	//SeatSelect.ti로 이동
@@ -435,6 +400,49 @@
 			error:function(request,status,error){
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
                }
+		});
+	}
+	/* 있는 목록 활성화 ajax */
+	function selectShow(){
+		var cinema='';
+		var movie='';
+		var date=$('input[name="day"]:checked').val();
+		var selectDate=$('.txtdate').find('dd').text();
+		var html='';
+		
+		if($('.txtCin').find('dd').is('.on')){
+			cinema=$('.txtCin').find('dd').text();
+		}
+		
+		if($('.txtName').find('dd').is('.on')){
+			movie=$('.txtName').find('dd').text();
+		}
+		$('.movie_list').find('a').removeClass('disabled');
+		$('.cinema_zone').find('a').removeClass('disabled');
+		$.ajax({
+			url:"./ShowMovie.ti",
+			type:"post",
+			dataType:"JSON",
+			data:{cinema:cinema,movie:movie,date:date},
+			success:function(data){
+				if(data.movieList!=""){
+					var movieNum=data.movieList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<movieNum.length; i++){
+						$(".mov"+movieNum[i]).addClass('disabled');
+					}
+				}else if(data.regionList!=null){
+					//alert(data.regionList);
+					var regionNum=data.regionList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<regionNum.length; i++){
+						$('.cinema_zone').find('.'+regionNum[i]).addClass('disabled');
+					}
+				}
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+            }
 		});
 	}
 
