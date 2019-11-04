@@ -329,6 +329,9 @@ nav>ul>li:NTH-CHILD(3):HOVER ul {
 nav>ul>li:NTH-CHILD(4):HOVER ul {
 	left: 330px;
 }
+.cinema100{
+	text-align: inherit;
+}
 
 #sub_ul {
 	width: 100%;
