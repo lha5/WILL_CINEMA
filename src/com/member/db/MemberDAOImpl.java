@@ -91,6 +91,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public int idCheck(String id, String pass) {
 		int check = -1;
 		try {
+			System.out.println("try문 성공");
 			con = getCon();
 
 			sql = "SELECT pass FROM member WHERE id=?";
@@ -111,6 +112,7 @@ public class MemberDAOImpl implements MemberDAO{
 				check = -1;
 			}
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -121,12 +123,16 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int emailCheck(String name, String email) {
 		
-		int check = 1;
+		int check = -1;
 		
 		System.out.println(" name(login) : "+name+" email(login) : "+email);
+		System.out.println("try문 실행");
 		
 		try {
+			System.out.println("try문 성공");
+			
 			con = getCon();
+			
 			System.out.println(" con : "+con);
 
 			sql = "select email from non_member where name = ?";
@@ -149,19 +155,24 @@ public class MemberDAOImpl implements MemberDAO{
 
 				rs = pstmt.executeQuery();
 				
-				if (rs.getInt("email_checked") == 1) {
+				if(rs.next()){
 					
-					System.out.println("rs2 : " + rs);
+					if (rs.getInt("email_checked") == 1) {
+						
+						System.out.println("rs2 : " + rs);
+						
+						check = 1;
+					} else {
+						check = 0;
+					}
 					
-					check = 1;
-				} else {
-					check = 0;
 				}
 				
 			} else {
 				check = -1;
 			}
 		} catch (Exception e) {
+			System.out.println("try문 예외발생");
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -386,6 +397,10 @@ public class MemberDAOImpl implements MemberDAO{
 				info.add(0, rs.getString("name"));
 				info.add(1, rs.getInt("level"));
 				info.add(2, rs.getInt("point"));
+			}else {
+				info.add(0, "");
+				info.add(1, -1);
+				info.add(2, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
