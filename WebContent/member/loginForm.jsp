@@ -14,11 +14,16 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
+
+<!-- 네이버 아이디로 로그인 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 </head>
 <body>
+
+	<div id="wrap">
+
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
@@ -38,6 +43,8 @@
     session.setAttribute("state", state);
 	
 	%>
+	
+	<br>
 	
 	<fieldset>
 		<span id="inin">회원 로그인</span>
@@ -59,8 +66,15 @@
 			</table> 
 		</form>
 		
-		<input type="button" value="비회원" onclick="location.href='./non_member/non_memberlogin.jsp'">
+		<input type="button" value="비회원 로그인" id="non_member">
 		
+		<script type="text/javascript">
+			document.querySelector('#non_member').addEventLisener('click', function() {
+				location.href='./non_member/non_memberlogin.jsp';
+			});
+		</script>		
+		
+		<br><br>
 		
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
@@ -71,17 +85,14 @@
 		</div>
 	</fieldset>
 	
-	<%-- <div id="socialLogin">
+	<br><br>
+	
+	<div id="socialLogin">
 		<!-- 네이버 아이디 로그인 -->
-		<a href="<%=apiURL%>"><img height="50" src="./img/Naver_login_btn.PNG" width="300"/></a>
-		<!-- /네이버 아이디 로그인 -->
-		<br><br>
-		<!-- 카카오톡 로그인 -->
-		<a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-		</a>
-		<!-- /카카오톡 로그인 -->
-	</div> --%>
+		<p>간편하게</p>
+		<br>
+		<a href="<%=apiURL%>"><img src="./img/Naver_login_btn.PNG" width="250px"/></a>
+	</div>
 	
 	
 	
@@ -104,26 +115,9 @@
 	
 	<!-- --------------------------------------------------------------------------- -->
 	
-	<!-- 카카오톡 로그인 스크립트 -->
-	<script type='text/javascript'>
-		//<![CDATA[
-		   // 사용할 앱의 JavaScript 키를 설정해 주세요.
-		   Kakao.init('cd3590b07e55c69b37d015bdadb57b99');
-		   function loginWithKakao() {
-		     // 로그인 창을 띄웁니다.
-		     Kakao.Auth.login({
-		       success: function(authObj) {
-		         alert(JSON.stringify(authObj));
-		       },
-		       fail: function(err) {
-		         alert(JSON.stringify(err));
-		       }
-		     });
-		   };
-		// ]]>
-	</script>
-	<!-- /카카오톡 로그인 스크립트 -->
-	
 	<%@ include file="../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>
