@@ -180,8 +180,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return check;
 	}
-
-
+	
 	@Override
 	public MemberDTO getMember(String id){
 		MemberDTO mdto = null;
