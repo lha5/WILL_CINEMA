@@ -7,6 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - FAQ</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="././css/faqList.css">
+
 </head>
 <body>
 

@@ -35,3 +35,18 @@
 	margin: 20px auto;
 	text-align: center;
 }
+
+#faqList {
+	width: 900px;
+	margin: 10px auto;
+}
+
+#contentsWrap {
+	/* border: 1px solid red; */
+	width: 900px;
+	margin: 50px auto;
+}
+
+#pagingNumber {
+	text-align: center;
+}
