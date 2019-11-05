@@ -87,7 +87,7 @@ public class TicketingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/TestSendEmailAction.ti")){ //이메일 발송 페이지
-				//action = new ActionSendMessageAction
+				action = new TestSendEmailAction();
 				
 			try {
 				forward=action.execute(request, response);
@@ -96,6 +96,7 @@ public class TicketingFrontController extends HttpServlet{
 			}
 			
 		}
+		
 		
 		//가상주소를 가지고 이동
 		if(forward !=null){
