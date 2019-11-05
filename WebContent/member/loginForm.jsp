@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>WILL CINEMA - 로그인</title>
 
 <!-- jQuery -->
@@ -18,7 +19,7 @@
 <!-- 네이버 아이디로 로그인 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-
+  
 </head>
 <body>
 
@@ -28,7 +29,7 @@
 	
 	<%
 	if (id != null) {
-		response.sendRedirect("./Main.me");
+		response.sendRedirect("./Index.me");
 	}
 	
 	String clientId = "zbWDmpR7Dt9oKkuZ8yzZ";//애플리케이션 클라이언트 아이디값"; // 후에 수정시 자신이 발급밭은 아이디로 변경
@@ -60,7 +61,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="로그인">		
+						<input type="submit" value="로그인">
 					</td>
 				</tr>
 			</table> 
