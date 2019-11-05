@@ -53,15 +53,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="로그인">
-			<!-- 네이버 아이디 로그인 -->
-			<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-			<!-- /네이버 아이디 로그인 -->
-			<!-- 카카오톡 로그인 -->
-			<a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-			</a>
-			<!-- /카카오톡 로그인 -->		
+						<input type="submit" value="로그인">		
 					</td>
 				</tr>
 			</table> 
@@ -77,9 +69,17 @@
 		</div>
 	</fieldset>
 	
-	<div id="socialLogin">
-		
-	</div>
+	<%-- <div id="socialLogin">
+		<!-- 네이버 아이디 로그인 -->
+		<a href="<%=apiURL%>"><img height="50" src="./img/Naver_login_btn.PNG" width="300"/></a>
+		<!-- /네이버 아이디 로그인 -->
+		<br><br>
+		<!-- 카카오톡 로그인 -->
+		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+		</a>
+		<!-- /카카오톡 로그인 -->
+	</div> --%>
 	
 	
 	
