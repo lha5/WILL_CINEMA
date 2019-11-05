@@ -67,6 +67,8 @@
 			</table> 
 		</form>
 		
+		<input type="button" value="비회원 로그인" onclick="location.href='./non_member/non_memberlogin.jsp'">
+		
 		
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
