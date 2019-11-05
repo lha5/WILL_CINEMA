@@ -169,6 +169,7 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			System.out.println("글 수정 동작 완료 : "+check);
 			
 		} catch (Exception e) {
+			System.out.println("글 수정 예외 발생 : "+check);
 			e.printStackTrace();
 		}finally{
 			closeDB();
