@@ -66,11 +66,11 @@
 			</table> 
 		</form>
 		
-		<input type="button" value="비회원 로그인" id="non_member">
+		<input type="button" value="비회원 로그인" id="nonmember">
 		
 		<script type="text/javascript">
-			document.querySelector('#non_member').addEventLisener('click', function() {
-				location.href='./non_member/non_memberlogin.jsp';
+			document.querySelector('#nonmember').addEventLisener('click', function() {
+				location.href = './NonMemberLogin.me';
 			});
 		</script>		
 		
