@@ -166,14 +166,23 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberNaverLogin.me")){
-			//네이버 로그인 callback.jsp 이동
-			// 후에 수정하실 분 callback.jsp에 내용 
-			// java파일로 옮겨도 사용가능할 것으로 보이니 참고 바람
+			// 네이버 로그인 callback.jsp 이동
+			//	현재 callback.jsp의 내용을 MemberNaverLogin으로 이동하였음
+			// 후에 jsp만으로 구현하실 분은 수정가능 합니다.
 			
-			forward = new ActionForward();
+			/*forward = new ActionForward();
 			
 			forward.setPath("./member/callback.jsp");
-			forward.setRedirect(false);
+			forward.setRedirect(false);*/
+			action = new MemberNaverLogin();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
 		}else if(command.equals("/MemberNaverLoginAction.me")){
 			action = new MemberNaverLoginAction();
 			
