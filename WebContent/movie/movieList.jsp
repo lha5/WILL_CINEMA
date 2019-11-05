@@ -19,7 +19,6 @@
 </head>
 <body>
 		<%@ include file="../include/header.jsp" %>	
-
 		<%
 			// String id = (String)session.getAttribute("id");
 			
@@ -72,7 +71,7 @@
 					</a>
 				</td>
 				<td>
-					<img src="./upload/<%=mdto.getPoster()%>"></td>
+					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
 				</td>
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
