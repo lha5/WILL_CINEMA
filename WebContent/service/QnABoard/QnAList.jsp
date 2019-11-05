@@ -39,11 +39,11 @@
    <table border="1">
      <tr>
        <td>번호</td>
-       <td>카테고리</td>
        <td>제목</td>
        <td>카테고리</td>
        <td>글쓴이</td>
        <td>날짜</td>
+       <td>죄회수</td>
      </tr>
      <%
      	for (int i=0;i<boardList.size();i++) {

@@ -7,28 +7,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 이벤트</title>
-
+<!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
 
-<style type="text/css">
-nav>ul>li>ul {
-	display: none !important;}
-</style>
 </head>
 <body>
-<%@ include file="/include/header.jsp" %>
+	
+	<%@ include file="/include/header.jsp" %>
 
-<%
+	<%
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
 	List eventNeventList = (List)request.getAttribute("eventNeventList");
 	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
-%>
+	%>
 
 
 	<div class="event_cwrap">
 		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
-		<div class="clear">
+		<div class="more">
 			<h2>영화</h2> <a href="./EventContent.ae?item=movie">더보기</a>
 		</div>
 			<ul class="event_list">
@@ -97,8 +94,8 @@ nav>ul>li>ul {
 				<%} %>
 			</ul>
 		<br class="clear">
-		
+		</div>
 
-<%@ include file="/include/footer.jsp" %>
+	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>

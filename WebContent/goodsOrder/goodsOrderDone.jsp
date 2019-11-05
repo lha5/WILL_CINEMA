@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 	<div id="wrap">
 		<%@ include file="../include/header.jsp" %>
 
@@ -23,10 +22,6 @@
 			<h3><a href="./Main.me">마이시네마 페이지로 이동하기</a></h3>
 			<%-- <h2>구매 번호 : <a href="./MallOrderDetail.mor?trans_num=<%=trans_num%>"><%=trans_num%></a></h2> --%>
 		</div>
-		
-		
-	
-
 		<%@ include file="../include/footer.jsp" %>
 	</div>
 	

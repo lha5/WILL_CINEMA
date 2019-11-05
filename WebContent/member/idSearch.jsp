@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 아이디 찾기</title>
 </head>
 <body>
+
+	<%@ include file="../include/header.jsp" %>
 
 	<fieldset>
 		<legend>아이디 찾기</legend>
@@ -17,15 +19,8 @@
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>생년월일</td>
-					<td>
-						<div class="input-group date" data-date-format="yyyy.mm.dd">
-							<input type="text" class="form-control" placeholder="예) 2019.01.01" name="birthday">
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-th"></span>
-							</div>
-						</div>
-					</td>
+					<td>이메일</td>
+					<td><input type="email" name="email" placeholder="example@example.com"></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="아이디 찾기"></td>
@@ -34,26 +29,9 @@
 		</form>
 		
 	</fieldset>
-	
-	<fieldset>
-		<legend>비밀번호 찾기</legend>
-		<form action="./MemberPassSearchAction.me" method="post">
-			<table>
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="id"></td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="name"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="비밀번호 찾기"></td>
-				</tr>
-			</table>
-		</form>
-		
-	</fieldset>
 
+
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>

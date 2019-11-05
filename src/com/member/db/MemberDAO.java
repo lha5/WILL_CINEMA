@@ -38,6 +38,10 @@ public interface MemberDAO {
 
   // 비밀번호 
 	public List<MemberDTO> searchPass(MemberDTO mdto);
+
+
+	public int emailCheck(String name, String email);
+
 	
 	//SNS회원 확인
 	public String checkSNSMember(String id);

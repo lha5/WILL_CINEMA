@@ -54,6 +54,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
+<%-- <<<<<<< HEAD
 						<input type="submit" value="로그인">
 			<!-- 네이버 아이디 로그인 -->
 			<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
@@ -64,24 +65,37 @@
 			<input type="hidden" name="kakaoValue" value="">
 			</a> -->
 			<!-- /카카오톡 로그인 -->		
+=======
+						<input type="submit" value="로그인">		
+>>>>>>> branch '박찬일' of https://github.com/lha5/WILL_CINEMA.git --%>
 					</td>
 				</tr>
 			</table> 
 		</form>
 		
+		<input type="button" value="비회원" onclick="location.href='./non_member/non_memberlogin.jsp'">
+		
 		
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
 			<br>
-			<a href="#">아이디 찾기</a>
+			<a href="./MemberIdSearch.me">아이디 찾기</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a href="#">비밀번호 찾기</a>
+			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
 	
-	<div id="socialLogin">
-		
-	</div>
+	<%-- <div id="socialLogin">
+		<!-- 네이버 아이디 로그인 -->
+		<a href="<%=apiURL%>"><img height="50" src="./img/Naver_login_btn.PNG" width="300"/></a>
+		<!-- /네이버 아이디 로그인 -->
+		<br><br>
+		<!-- 카카오톡 로그인 -->
+		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+		</a>
+		<!-- /카카오톡 로그인 -->
+	</div> --%>
 	
 	
 	

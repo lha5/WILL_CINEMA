@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="java.util.List"%>
@@ -233,43 +234,7 @@
 		/* ajax관련 */
 		clickEvent();
 
-		var cinema='';
-		var movie='';
-		var date=$('input[name="day"]:checked').val();
-		var selectDate=$('.txtdate').find('dd').text();
-		var html='';
-		
-		if($('.txtCin').find('dd').is('.on')){
-			cinema=$('.txtCin').find('dd').text();
-		}
-		
-		if($('.txtName').find('dd').is('.on')){
-			movie=$('.txtName').find('dd').text();
-		}
-		$('.movie_list').find('a').removeClass('disabled');
-		$.ajax({
-			url:"./ShowMovie.ti",
-			type:"post",
-			dataType:"JSON",
-			data:{cinema:cinema,movie:movie,date:date},
-			success:function(data){
-				
-				var movieNum=data.movieList;
-				movieNum=movieNum.toString();
-				movieNum=movieNum.split(',');
-				/* $.each(data,function(index,data2){
-					//movieNum=data2.split(",");
-					alert(data2.movieList);
-				}); */
-				//alert($('.movie_list').find('a').find("'.mov"+movieNum+"'"));
-				for(var i=0; i<movieNum.length; i++){
-					$(".mov"+movieNum[i]).addClass('disabled');
-				}
-			},
-			error:function(request,status,error){
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-               }
-		});
+		selectShow();
 	}
 	
 	
@@ -313,6 +278,7 @@
 		
 		/* ajax관련 */
 		clickEvent();
+		selectShow();
 	}
 	
 	//SeatSelect.ti로 이동
@@ -437,6 +403,49 @@
                }
 		});
 	}
+	/* 있는 목록 활성화 ajax */
+	function selectShow(){
+		var cinema='';
+		var movie='';
+		var date=$('input[name="day"]:checked').val();
+		var selectDate=$('.txtdate').find('dd').text();
+		var html='';
+		
+		if($('.txtCin').find('dd').is('.on')){
+			cinema=$('.txtCin').find('dd').text();
+		}
+		
+		if($('.txtName').find('dd').is('.on')){
+			movie=$('.txtName').find('dd').text();
+		}
+		$('.movie_list').find('a').removeClass('disabled');
+		$('.cinema_zone').find('a').removeClass('disabled');
+		$.ajax({
+			url:"./ShowMovie.ti",
+			type:"post",
+			dataType:"JSON",
+			data:{cinema:cinema,movie:movie,date:date},
+			success:function(data){
+				if(data.movieList!=""){
+					var movieNum=data.movieList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<movieNum.length; i++){
+						$(".mov"+movieNum[i]).addClass('disabled');
+					}
+				}else if(data.regionList!=null){
+					//alert(data.regionList);
+					var regionNum=data.regionList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<regionNum.length; i++){
+						$('.cinema_zone').find('.'+regionNum[i]).addClass('disabled');
+					}
+				}
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+            }
+		});
+	}
 
 </script>
 
@@ -449,8 +458,8 @@
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	List allRegion = (List)request.getAttribute("allRegion");//모든지역 
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	//System.out.println(cineList.size());
 	int[] cineCnt=(int[])request.getAttribute("cineCnt");
 
@@ -537,7 +546,7 @@
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<bookRatingList.size(); i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
@@ -553,7 +562,7 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<totalRatingList.size(); i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>"

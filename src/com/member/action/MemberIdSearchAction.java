@@ -25,10 +25,10 @@ public class MemberIdSearchAction implements Action {
 		// 자바빈(DTO) 객체를 생성해서 여기에 받아온 정보를 저장
 		MemberDTO mdto = new MemberDTO();
 		
-		System.out.println("name : "+request.getParameter("name")+"birthday : "+request.getParameter("birthday"));
+		System.out.println("name : "+request.getParameter("name")+" email : "+request.getParameter("email"));
 		
 		mdto.setName(request.getParameter("name"));
-		mdto.setBirthday(request.getParameter("birthday"));
+		mdto.setEmail(request.getParameter("email"));
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDAOImpl;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDAOImpl;
@@ -33,7 +34,7 @@ public class SeatSelect implements Action{
 		// 시험중이기에 데이터베이스에서 바로 가져옴 
 		// 후에 합칠때 예매페이지에서 데이터 받아와야함
 		TicketDAO tdao = new TicketDAOImpl();
-		MovieDTO mdto = tdao.getMovie(movie_num);
+		AdminMovieDTO mdto = tdao.getMovie(movie_num);
 		
 		
 		//영화관 데이터

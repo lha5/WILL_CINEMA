@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@page import="com.admin.service.FAQ.action.FAQListAction"%>
@@ -18,7 +19,8 @@
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <!-- CSS 연결 -->
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
 <!-- Font Awesome -->
@@ -127,7 +129,7 @@
 			
 	int count = (Integer) request.getAttribute("count");
 	int faqcount =(Integer)request.getAttribute("faqcount");
-	List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
 	List eventMovieList = (List)request.getAttribute("eventMovieList");
 	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
@@ -136,8 +138,8 @@
 		
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	
 	%>
 
@@ -160,24 +162,25 @@
      
      </ul>
      </div>
-     <!-- 예매순 -->
+
+      <!-- 예매순 -->
      <div class="scroll_bar">
+
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
+     	 <li>
+     	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
      	   
-     	   <span><%=i+1 %></span>
-     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <span><%=mdto.getTitle() %></span>
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span ><%=mdto.getTitle() %></span>
+     	  <span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </a>
      	 </li>
-     	  <li><span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
-     	  </li>
+     	 
      	 
      	 <%} %>
      	 <!-- 영화 반복문 -->
@@ -186,24 +189,22 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<8; i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      		
      	%>
-     	 <li class="booking">
-     	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>">
-     	   <span><%=i+1 %></span>
-     	   <span><%=mdto.getGrade() %>세</span>
-     	   <span><%=mdto.getTitle() %></span>
+     	 <li>
+     	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
+     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span  ><%=mdto.getTitle() %></span>
+     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
      	 </a>
      	 
      	 </li>	
-     	 <li>
-     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
-     	 </li>
+     	 
      	 
      	 
      	 <!-- 영화 반복문 --> 
-     	 <%} %>
+     	 <%} %> --%>
      	 
      	</ul>
      </div> <!--  스크롤바-->
@@ -217,7 +218,7 @@
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
 					<%} %>

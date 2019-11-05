@@ -56,9 +56,10 @@ body {
 header {
 	/* border: 1px dashed black; */
 	width: 100%;
-	height: 300px;
+	height: 275px;
 	margin: 0 auto;
 	color: #804040;
+	padding-bottom: 0;
 }
 
 #top_line {
@@ -214,8 +215,8 @@ header {
 }
 
 nav {
-	border-top: 2px solid #ffdf45;
-	border-bottom: 1px solid #ffdf45;
+	border-top: 2px solid #804040;
+	border-bottom: 1px solid #804040;
 	height: 55px;
 	padding: 0 auto 10px auto;
 	margin-top: 35px;
@@ -257,44 +258,6 @@ nav>ul>li:NTH-CHILD(1), nav>ul>li:NTH-CHILD(2), nav>ul>li:NTH-CHILD(3), nav>ul>l
 	border-right: 1px solid #b87272;
 }
 
-/* --- 말풍선 꼬리 ---
-nav>ul>li:NTH-CHILD(1)>ul:after, nav>ul>li:NTH-CHILD(2)>ul:after, nav>ul>li:NTH-CHILD(4)>ul:after {
-	content: '';
-	position: absolute;
-	border-style: solid;
-	border-width: 0 12px 19px;
-	border-color: #ffefa3 transparent;
-	display: block;
-	width: 0;
-	z-index: -1;
-	top: -9px;
-	left: 10px;
-}
-
-nav>ul>li:NTH-CHILD(3)>ul:after {
-	content: '';
-	position: absolute;
-	border-style: solid;
-	border-width: 0 12px 19px;
-	border-color: #ffefa3 transparent;
-	display: block;
-	width: 0;
-	z-index: -1;
-	top: -9px;
-	left: 252px;
-} 
-*/
-
-nav>ul>li>ul {
-	display: none;
-	margin: 0 auto;
-	padding: 3px 10px 3px 0;
-	width: 100%;
-	height: 40px;
-	position: relative;
-	text-align: center;
-}
-
 nav>ul>li>ul>li {
 /* 	border: 1px solid red; */
 	float: left;
@@ -305,34 +268,43 @@ nav>ul>li>ul>li {
 	text-align: center;
 }
 
-nav>ul>li:HOVER ul {
-	display: block;
+nav>ul>li>ul {
+	display: none;
 	position: absolute;
 	margin-top: 5px;
 	padding: 2px 5px 2px 7px;
 	text-align: center;
-	top: 39px;
+	top: 37px;
 }
 
-nav>ul>li:NTH-CHILD(1):HOVER ul {
-	left: -5px;
+nav>ul>li:NTH-CHILD(1) ul {
+	left: 290px;
 }
 
-nav>ul>li:NTH-CHILD(2):HOVER ul {
-	left: 95px;
+nav>ul>li:NTH-CHILD(2) ul {
+	left: 285px;
 }
 
-nav>ul>li:NTH-CHILD(3):HOVER ul {
-	left: 105px;
+nav>ul>li:NTH-CHILD(3) ul {
+	left: 115px;
 }
 
-nav>ul>li:NTH-CHILD(4):HOVER ul {
-	left: 330px;
+nav>ul>li:NTH-CHILD(4) ul {
+	left: 250px;
+}
+
+nav>ul>li:NTH-CHILD(5) ul {
+	left: 320px;
+}
+
+.cinema100{
+	text-align: inherit;
 }
 
 #sub_ul {
 	width: 100%;
 	height: 32px;
-	background-color: #ffefa3;
+	/* background-color: #ffefa3; */
 	margin-top: 0;
 }
+

@@ -1,3 +1,4 @@
+<%@page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,16 +10,17 @@
 <body>
 	
 	<%
-		String id = (String)session.getAttribute("id");
+		/* String id = (String)session.getAttribute("id");
 		System.out.println("id : "+id);
 		if(id == null){
 			response.sendRedirect("./MemberLogin.me");
-		}
+		} */
+		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	%>
 	
 	<fieldset>
 		<legend>리뷰 작성</legend>
-		<form action="./MovieReviewWriteAction.mr" method="post">
+		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
 			<table>
 				<tr>
 					<td>평점</td>

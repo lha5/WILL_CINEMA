@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
 import com.ticketing.db.TicketDAO;
@@ -39,8 +40,8 @@ public class Ticketing implements Action {
 		//List<CineDTO> todayCine = new ArrayList<CineDTO>(); //ajax
 		
 		//영화DB 정보 다 가져오기
-		List<MovieDTO> bookRatingList=tdao.bookRatingList();//예매순
-		List<MovieDTO> totalRatingList=tdao.totalRatingList();//평점순
+		List<AdminMovieDTO> bookRatingList=tdao.bookRatingList();//예매순
+		List<AdminMovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		
 		/*-----영화관 각 상영관의 모든 영화 상영 날짜 리스트----------*/
 		HashSet<String> allDate= new HashSet<>();

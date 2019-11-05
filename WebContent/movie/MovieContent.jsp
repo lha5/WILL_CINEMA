@@ -1,4 +1,5 @@
 
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@ page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,15 +7,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상세보기</title>
+<title>WILL CINEMA - 영화 상세 보기</title>
 </head>
 <body>
+	
+	<%@ include file="../include/header.jsp" %>
 
-<h1>WebContent/movie/MovieContent.jsp</h1>
+<%
+int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+request.setAttribute("movie_num", movie_num);
+System.out.println("Attribute : "+request.getAttribute("movie_num"));
+AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
+String pageNum = (String) request.getAttribute("pageNum");
 
-
-<%MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
- String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
@@ -65,11 +70,11 @@
 			</tr>
 		</table>
 
+	<jsp:include page="../review/reviewList.jsp"/>
 
+	<jsp:include page="../review/reviewWrite.jsp"/>
 
-
-
-
+	<%@ include file="../include/footer.jsp" %>
 
 
 

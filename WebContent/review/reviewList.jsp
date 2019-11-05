@@ -9,17 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%
-		String id = (String)session.getAttribute("id");
+	
+	
+	<%	
+		String id = (String) session.getAttribute("id");
+		int movie_num = (int) request.getAttribute("movie_num");
+		/* String id = (String)session.getAttribute("id"); */
 		int count = (Integer) request.getAttribute("count");
 		List<MovieReviewDTO> boardList = (List<MovieReviewDTO>) request.getAttribute("boardList");
-		String pageNum = (String)request.getAttribute("pageNum");
-	
-		int pageCount = (Integer) request.getAttribute("pageCount");
-		int pageBlock = (Integer) request.getAttribute("pageBlock");
-		int startPage = (Integer) request.getAttribute("startPage");
-		int endPage = (Integer) request.getAttribute("endPage");
+		/* String pageNum = (String)request.getAttribute("pageNum"); */
+		System.out.println("boardList : "+boardList+" id : "+id);
 	%>
 	
 	 <table border="1">
@@ -30,19 +29,20 @@
        <td>번호</td><td><%=mrdto.getNum() %></td>
        <td>평점</td><td><%=mrdto.getRating() %></td>
        <td>작성일</td><td><%=mrdto.getDate() %></td>
+       <td>작성자</td><td><%=mrdto.getId() %></td>
      </tr>
      <tr>
        <td>내용</td><td colspan="5"><%=mrdto.getContent() %></td>
      </tr>
-     <tr>
-     	<td colspan="6">
-	     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?num=<%=mrdto.getNum() %>'">
-			<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?num=<%=mrdto.getNum() %>'">
-     	</td>
-     </tr>
+	     <%if(id.equals(mrdto.getId())){ %>
+	     <tr>
+	     	<td colspan="6">
+		     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+				<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	</td>
+	     </tr>
+	     <%} %>
      <%} %>
-     
-     <h3><a href="./MovieReviewWrite.mr">리뷰 쓰기</a></h3>
 
 </body>
 </html>
