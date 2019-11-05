@@ -68,11 +68,11 @@ public class MallOrderAddAction implements Action {
 		
 		System.out.println("바코드 번호 : " + code);
 		
-		CreateBarcode cb = new CreateBarcode();
-		String barcodeImgPath = cb.saveBarcodeImage(code, "E:/workspace_project/WillCinema/WebContent/upload", 1, 60);
-		modto.setBarcode_img(barcodeImgPath);
+		//CreateBarcode cb = new CreateBarcode();
+		//String barcodeImgPath = cb.saveBarcodeImage(code, "E:/workspace_project/WillCinema/WebContent/upload", 1, 60);
+		//modto.setBarcode_img(barcodeImgPath);
 		
-		System.out.println("바코드가 저장되는 경로 : " + barcodeImgPath);
+		//System.out.println("바코드가 저장되는 경로 : " + barcodeImgPath);
 		
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
@@ -81,6 +81,7 @@ public class MallOrderAddAction implements Action {
 		MemberDAO mdao = new MemberDAOImpl();
 		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
+		
 		
 		// 페이지 이동
 		forward.setPath("./MallOrderDone.mor");

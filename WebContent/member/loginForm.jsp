@@ -66,8 +66,9 @@
 			</a> -->
 			<!-- /카카오톡 로그인 -->		
 =======
-						<input type="submit" value="로그인">		
 >>>>>>> branch '박찬일' of https://github.com/lha5/WILL_CINEMA.git --%>
+						<input type="submit" value="로그인">		
+
 					</td>
 				</tr>
 			</table> 

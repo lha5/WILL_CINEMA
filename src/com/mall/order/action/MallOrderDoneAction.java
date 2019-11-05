@@ -19,6 +19,9 @@ public class MallOrderDoneAction implements Action {
 		
 		System.out.println("MallOrderDoneAction execute()---------------------------------------------------");
 		
+		
+		
+		
 		// 세션값 처리
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
