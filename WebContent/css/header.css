@@ -298,8 +298,17 @@ nav>ul>li:NTH-CHILD(5) ul {
 }
 
 #sub_ul {
+	border: 1px solid blue;
 	width: 100%;
 	height: 32px;
-	/* background-color: #ffefa3; */
 	margin-top: 0;
+	position: relative;
+}
+
+#sub_ul2 {
+	width: 100%;
+	height: 45px;
+	border: 1px solid red;
+	position: absolute;
+	top: 32px;
 }
