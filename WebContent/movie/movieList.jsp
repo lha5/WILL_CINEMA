@@ -53,6 +53,7 @@
      <tr>
     	<td>영화 번호</td>
        <td>영화 제목</td>
+       <td>포스터</td>
        <td>장르</td>
        <td>감독</td>
        <td>상영시간</td>
@@ -69,6 +70,9 @@
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
 					<%=mdto.getTitle() %>
 					</a>
+				</td>
+				<td>
+					<img src="./upload/<%=mdto.getPoster()%>"></td>
 				</td>
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
