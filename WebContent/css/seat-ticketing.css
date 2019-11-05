@@ -36,3 +36,13 @@
 	-moz-box-sizing: border-box;
 	margin-bottom: 3px;
 }
+
+.seatTable td .sweet{
+	border: 2px solid red;
+}
+
+.seatTable td .disabled{
+	background:url('../img/bg/bg_disabled.gif') no-repeat 50% 50% !important;
+	border:0 !important;
+	font-size:0;
+}

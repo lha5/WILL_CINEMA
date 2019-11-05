@@ -56,6 +56,8 @@
 				alert('클릭');
 				//클래스의 속성을 변경으로 바꾸기
 				$(this).css('background-color', 'black');
+				$('input[type=button]').unbind('mouseover').unbind('mouseleave');
+				pNum--;
 			}
 		});
 		
@@ -93,7 +95,7 @@
 	String seat = cdto.getSeat().split(",")[roomNum-1]; //좌석
 	//Integer row = Integer.parseInt(seat.split(" ")[0]); //행
 	//Integer col = Integer.parseInt(seat.split(" ")[1]); //열
-	int row=14;
+	int row=16;
 	int col=18;
 	
 	System.out.println("좌석 행 :"+row+", 좌석 열 :"+col);
@@ -167,9 +169,12 @@
 		<!-- 아스키코드 초기화후 i증가에 따라 증가 -->
 	<%
 	Character alpChar = 65;
+	int cnt=1;
 	for(int i=1;i<=row;i++){
 		String alpStr = String.valueOf(alpChar); 
 			for(int j=0;j<=col;j++){
+				int grNum=3;
+				
 				if(j==0){//행 알파벳 보여줌
 	%>			
 				<input class="seatbg" type="button" name="seat<%=alpStr %>" value="<%=alpStr %>" disabled="disabled">
@@ -178,52 +183,245 @@
 					//행:12 열:18 좌우 3개
 					if(col==18){
 						if(j<=3){
+							grNum=grNum*(i-1)+1;
 						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum %>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
-						}else if(j>=15){
+						}else if(j>=16){
+							grNum=grNum*(i-1)+3;
 						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
 						}else{
-						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
-						<%	
+							grNum=grNum*(i-1)+2;
+							if(cnt==12*i-11){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}
+							}else if(cnt==12*i){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}
+							}else{
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}
+							}
+							cnt++;
 						}
 					}else if(col==20){//행:14 열:20 좌우 4개
 						if(j<=4){
+							grNum=grNum*(i-1)+1;
 						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
 						}else if(j>=17){
+							grNum=grNum*(i-1)+3;
 						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
 						}else{
-						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
-						<%
+							grNum=grNum*(i-1)+2;
+							if(cnt==12*i-11){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}
+							}else if(cnt==12*i){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}
+							}else{
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}
+							}
+							cnt++;
 						}	
 					}else if(col==22){//행:16 열:22 좌우 5개
 						if(j<=5){
+							grNum=grNum*(i-1)+1;
 						%>
-						<input class="grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
 						}else if(j>=18){
+							grNum=grNum*(i-1)+3;
 						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
+						<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
 						<%
 						}else{
-						%>
-						<input class="seat grNum<%=j %>" type="button" name="seat<%=i %><%=j %>" value="<%=j %>">
-						<%
+							grNum=grNum*(i-1)+2;
+							if(cnt==12*i-11){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-left: 15px;">
+									<%
+								}
+							}else if(cnt==12*i){
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" 
+									value="<%=j %>" style="margin-right: 15px;">
+									<%
+								}
+							}else{
+								if(row==12 && i>=row-4&&i<=row-1){//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==14 && i>=row-6&&i<=row-2){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else if(row==16 && i>=row-7&&i<=row-3){
+									%>
+									<input class="seat grNum<%=grNum%> sweet" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}else{//sweetpot지정
+									%>
+									<input class="seat grNum<%=grNum%>" type="button" name="seat<%=alpStr%><%=j %>" value="<%=j %>">
+									<%
+								}
+							}
+							cnt++;
 						}	
 					}
-	
 				}
+
 			}%>
 	<br>
 	<%
+		
 		alpChar++;
 	} %>
 			</td>
