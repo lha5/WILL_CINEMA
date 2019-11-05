@@ -121,7 +121,7 @@ public class ShowMovieAction implements Action {
 					if(todayCal.compareTo(startCal)!=-1
 					  &&todayCal.compareTo(endCal)!=1){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
 						//상영관의 영화 정보
-						MovieDTO movieList
+						AdminMovieDTO movieList
 							=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[j]));
 							
 						//선택된 영화가 상영되는 영화관이 있으면

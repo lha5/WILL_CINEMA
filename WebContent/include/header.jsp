@@ -12,6 +12,7 @@
 
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
+
 <script type="text/javascript">
         function showHide(id) {
             var obj = document.getElementById(id);
@@ -21,6 +22,7 @@
                 obj.style.display = 'none';
         }
 </script>
+
 </head>
 <body>
 
@@ -88,46 +90,46 @@
 						<li>영화의전당</li>
 					</ul>
 				</li>
-				<li><a href=javascript:;>영화관</a>
+				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>
 						
-					<ul >
+					<ul>
 						<li><a onclick="showHide('cinema100')" onfocus="this.blur()" title="서울">서울</a>
-						<div id=cinema100 style="display:none">
+						<div id="cinema100" style="display:none">
 						<ul >
 						<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포 </a>
 						<a href="./CinemaUserView.ci?cinema_num=1002">가산디지털</a></li>
 						</ul></div></li>
 						
 						<li><a onclick="showHide('cinema200')" onfocus="this.blur()" title="경기/인천">경기/인천</a>
-						<div id=cinema200 style="display:none">
+						<div id="cinema200" style="display:none">
 						<ul >
 						<li><a href="./CinemaUserView.ci?cinema_num=2001">안산 </a>
 						<a href="./CinemaUserView.ci?cinema_num=2002">부천역</a></li>
 						</ul></div></li>
 						
 						<li><a onclick="showHide('cinema300')" onfocus="this.blur()" title="충청/대전">충청/대전</a>
-						<div id=cinema300 style="display:none">
+						<div id="cinema300" style="display:none">
 						<ul >
 						<li><a href="./CinemaUserView.ci?cinema_num=3001">서산</a>
 						<a href="./CinemaUserView.ci?cinema_num=3002">대전(백화점)</a></li>
 						</ul></div></li>
 						
 						<li><a onclick="showHide('cinema400')" onfocus="this.blur()" title="전라/광주">전라/광주</a>
-						<div id=cinema400 style="display:none">
+						<div id="cinema400" style="display:none">
 						<ul>
 						<li><a href="./CinemaUserView.ci?cinema_num=4001">수완(아울렛)</a>
 						<a href="./CinemaUserView.ci?cinema_num=4002">광주(백화점)</a></li>
 						</ul></div></li>
 						
 						<li><a onclick="showHide('cinema500')" onfocus="this.blur()" title="경북/대구">경북/대구</a>
-						<div id=cinema500 style="display:none">
+						<div id="cinema500" style="display:none">
 						<ul>
 						<li><a href="./CinemaUserView.ci?cinema_num=5001">경주</a>
 						<a href="./CinemaUserView.ci?cinema_num=5002">포항</a></li>
 						</ul></div></li>
 						
 						<li><a onclick="showHide('cinema600')" onfocus="this.blur()" title="경남/부산/울산">경남/부산/울산</a>
-						<div id=cinema600 style="display:none">
+						<div id="cinema600" style="display:none">
 						<ul >
 						<li><a href="./CinemaUserView.ci?cinema_num=6001">서면(전포동)</a>
 						<a href="./CinemaUserView.ci?cinema_num=6002">창원</a></li>
@@ -136,6 +138,7 @@
 						<li>제주(오픈준비중)</li>
 					
 					</ul>
+					
 					</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
