@@ -1,6 +1,7 @@
 package com.ticketing.action;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -63,8 +64,12 @@ public class ShowMovieAction implements Action {
 		//System.out.println("선택 날짜 : " + sdf.format(todayCal.getTime()));
 		
 		JSONArray cineList=new JSONArray(); //하나의 상영관의 정보
-		int[] runningMovie={0};
+		int[] runningMovie=null;
+		//선택된 영화가 있는 영화관
+		List<Integer> curRegion=null;
+		List<CineDTO> allCineList=tdao.getCinemaList();
 		if(cinema!=""){ //선택한 영화관이 있으면
+			System.out.println("1--------");
 			CineDTO cdto = tdao.getSelectList(cinema);
 			runningMovie=new int[Integer.parseInt(cdto.getRoom())];
 			// 영화관의 상영개수만큼
@@ -80,58 +85,86 @@ public class ShowMovieAction implements Action {
 				// 각 상영관의 영화 마감일
 				endCal.set(Integer.parseInt(endDate.split("-")[0]), Integer.parseInt(endDate.split("-")[1]) - 1,
 						Integer.parseInt(endDate.split("-")[2]));
-
-				JSONObject jsonObj=new JSONObject();
 				  
 				//상영관의 영화 정보
 				AdminMovieDTO movieList
 					=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[i]));
 
 				if(todayCal.compareTo(startCal)!=-1
-				  &&todayCal.compareTo(endCal)!=1 && movie==""){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
-
+				  &&todayCal.compareTo(endCal)!=1/* && movie==""*/){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
 					runningMovie[i]=movieList.getMovie_num();
 
-				}else if(todayCal.compareTo(startCal)!=-1//오늘 날짜의 영화관의 선택된 영화 정보를 저장 CineDTO(영화 선택시)
+				}/*else if(todayCal.compareTo(startCal)!=-1//오늘 날짜의 영화관의 선택된 영화 정보를 저장 CineDTO(영화 선택시)
 						  &&todayCal.compareTo(endCal)!=1 && movie.equals(movieList.getTitle()) ){
 					System.out.println("선택된 영화 있음");
 					String[] tStart=cdto.getStart_times().split(",");
 					String[] tEnd=cdto.getEnd_times().split(",");
-					jsonObj.put("cinema_num",cdto.getCinema_num());
-					jsonObj.put("region",cdto.getRegion());
-					jsonObj.put("name",cdto.getName());
-					jsonObj.put("room",cdto.getRoom());
-					//book DB의 자리수 빼기
-					jsonObj.put("allSeat", Integer.parseInt(seat[i].split(" ")[0])
-						 *Integer.parseInt(seat[i].split(" ")[1]));
-					jsonObj.put("movie_name", movieList.getTitle());
-					jsonObj.put("movie_num", movieList.getMovie_num());
-					jsonObj.put("movie_grade", movieList.getGrade());
-				
-					cineList.add(jsonObj);
+				}*/
+			}
+		}else if(cinema=="" && movie!=""){//선택한 영화관이 없으면
+			System.out.println("2--------");
+			curRegion=new ArrayList<Integer>();
+			for (int i = 0; i < allCineList.size(); i++) {
+				CineDTO cdto=allCineList.get(i);
+				for(int j=0; j<Integer.parseInt(cdto.getRoom()); j++){
+					String endDate = cdto.getEnd_priod().split(",")[j];
+					String startDate = cdto.getStart_priod().split(",")[j];
+					String curMovie="";
+					// 각 상영관의 영화 시작일
+					startCal.set(Integer.parseInt(startDate.split("-")[0]), Integer.parseInt(startDate.split("-")[1]) - 1,
+							Integer.parseInt(startDate.split("-")[2]));
+		
+					// 각 상영관의 영화 마감일
+					endCal.set(Integer.parseInt(endDate.split("-")[0]), Integer.parseInt(endDate.split("-")[1]) - 1,
+							Integer.parseInt(endDate.split("-")[2]));
+	
+					if(todayCal.compareTo(startCal)!=-1
+					  &&todayCal.compareTo(endCal)!=1){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
+						//상영관의 영화 정보
+						MovieDTO movieList
+							=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[j]));
+							
+						//선택된 영화가 상영되는 영화관이 있으면
+						if(movie.equals(movieList.getTitle())){
+							curRegion.add(cdto.getCinema_num());
+						}
+					}
 				}
 			}
-		}/*else{//선택한 영화관이 없으면
-			
-		}*/
+		}
 		//movieArray, runningMovie
 		/*for(int i=0; i<movieArray.length; i++)
 			System.out.println(movieArray[i]);
 		*/
-		for(int i=0; i<runningMovie.length; i++)
-			System.out.print(runningMovie[i]+"  ");
 		
-		HashSet<Integer> map = new HashSet<Integer>();
-		for(int i:movieArray){
-			map.add(i);
-		}
-		for(int i:runningMovie){
-			if(map.contains(i)){
-				map.remove(i);
+		JSONObject jsonObj=new JSONObject();
+		
+		HashSet<Integer> movieList = new HashSet<Integer>();
+		if(runningMovie!=null){
+			for(int i:movieArray){
+				movieList.add(i);
+			}
+			for(int i:runningMovie){
+				if(movieList.contains(i)){
+					movieList.remove(i);
+				}
 			}
 		}
-		JSONObject jsonObj=new JSONObject();
-		jsonObj.put("movieList", map);
+		
+		HashSet<Integer> cinemaList = new HashSet<Integer>();
+		if(curRegion!=null){
+			for(CineDTO i:allCineList){
+				cinemaList.add(i.getCinema_num());
+			}
+			for(int i:curRegion){
+				if(cinemaList.contains(i)){
+					cinemaList.remove(i);
+				}
+			}
+		}		
+		
+		jsonObj.put("regionList", cinemaList);
+		jsonObj.put("movieList", movieList);
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		

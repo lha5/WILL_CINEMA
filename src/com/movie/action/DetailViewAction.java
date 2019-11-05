@@ -44,9 +44,13 @@ public class DetailViewAction implements Action{
 		
 			//MovieDAO 객체 생성
 			MovieDAO mdao = new MovieDAOImpl(); 
-		
+			MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl();
+			
 			// 글 번호에 해당하는 글 정보 가져오기
 			AdminMovieDTO amdto = mdao.getBoard(movie_num);
+			List<MovieReviewDTO> boardList = null;
+			
+			boardList = mrdaoImpl.commentList(movie_num);
 
 	
 			// 정보 저장

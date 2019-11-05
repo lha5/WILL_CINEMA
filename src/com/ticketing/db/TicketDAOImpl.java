@@ -337,4 +337,7 @@ public class TicketDAOImpl implements TicketDAO{
 		return tlist;
 	}
 	/*------------------- 선택한 날짜의 예매 정보 --------------------*/
+
+
+
 }

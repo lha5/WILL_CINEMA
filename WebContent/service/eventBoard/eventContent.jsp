@@ -65,7 +65,7 @@
 	String item=request.getParameter("item");
 	String keyward=(String)request.getAttribute("keyward");
 	int viewList=3;//보여줄 이벤트 개수-1
-	
+
 	if(keyward==null){
 		keyward="";
 	}

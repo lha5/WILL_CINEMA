@@ -34,8 +34,10 @@
 			   		<td>글쓴이</td>
 			   		<td>
 			   			<input type="hidden" name="num" value="<%=andto.getNum()%>">
-			   			<input type="text" name="name" value="<%=andto.getName()%>" readonly>
-			   			<input type="hidden" name="pass" value="<%=andto.getPass()%>">
+			   			<input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
+			   		</td>
+			   		<td>
+			   		비밀번호 :<input type="password" name="pass"> 
 			   		</td>
 			   		<td>카테고리</td>
 			   		<td>
@@ -51,6 +53,7 @@
 			   				<option value="제주" <%if (andto.getCategory().equals("제주")) {%>selected<%}%>>제주</option>
 			   			</select>
 			   		</td>
+				
 				</tr>
 				<tr>
 			   		<td>제목</td>
@@ -62,13 +65,13 @@
 			   			<textarea id="summernote" name="content">
 			   				<%=andto.getContent()%>
 			   				<br>
-			   				<%
+			   				<%-- <%
 			   				if (image != null) {
-			   				%>
+			   				 %>
 			   					<img alt="image" src="./upload/<%=image%>">
 			   				<%
 			   				}
-			   				%>
+			   				%>  --%>
 			   			</textarea>
 						<script>
 					      $('#summernote').summernote({
@@ -82,9 +85,13 @@
 				</tr>
 				<tr>
 			   		<td>파일</td>
-			   		<td colspan="3"><input type="file" name="image" value="<%=andto.getImage()%>"></td>
+			   		<td colspan="1"><input type="file" name="image" value="<%=andto.getImage()%>"></td>
 				</tr>
 				<tr>
+			   		
+			   		
+			   		
+			   		
 			   		<td>
 			   			<input type="submit" value="공지사항 수정하기">
 			   		</td>

@@ -19,7 +19,8 @@
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <!-- CSS 연결 -->
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
 <!-- Font Awesome -->

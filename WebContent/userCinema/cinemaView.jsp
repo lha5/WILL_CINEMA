@@ -98,27 +98,26 @@ window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
 </head>
 <body>
 
-	<%@ include file="../include/header.jsp" %>
-	
-	<%
-	CineDTO cdto = (CineDTO)request.getAttribute("cineList");
-	int count = (Integer) request.getAttribute("count");
-	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-	%>
+<%@ include file="../include/header.jsp" %>
+<%
+CineDTO cdto = (CineDTO)request.getAttribute("cineList");
+int count = (Integer) request.getAttribute("count");
+List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+%>
 
-	<div id= wrap>
-	<div class="contents">
-			<div class="banner">
-				<ul>
-					  <%
-	     	for (int i=0;i<3;i++) {
-	     		AdminMovieDTO mdto = boardList.get(i);
-			%>
-			
-			<li><img src ="./upload/<%=mdto.getImage()%>"></li>
-						<%} %>
-						</ul>
-			</div>
+<div id= wrap>
+<div class="contents">
+		<div class="banner">
+			<ul>
+				  <%
+     	for (int i=0;i<3;i++) {
+     		AdminMovieDTO mdto = boardList.get(i);
+		%>
+		
+		<li><img src ="./upload/<%=mdto.getImage()%>"></li>
+					<%} %>
+					</ul>
+
 		</div>
 	
 	<div id="cinemaname">
