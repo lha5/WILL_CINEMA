@@ -83,6 +83,12 @@
 	//회원 확인
 
 
+	//AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto"); //선택한 영화 정보
+	//CineDTO cdto = (CineDTO)request.getAttribute("cdto"); //선택한 영화관 정보
+	//String running_date = (String)request.getAttribute("running_date"); //상영일
+	//String running_time = (String)request.getAttribute("running_time"); //상영시간
+
+
 	AdminMovieDTO mdto = (AdminMovieDTO)request.getAttribute("mdto"); //선택한 영화 정보
 
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto"); //선택한 영화관 정보
