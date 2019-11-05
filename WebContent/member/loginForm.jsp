@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>WILL CINEMA - 로그인</title>
 
 <!-- jQuery -->
@@ -16,14 +17,14 @@
 <link rel="stylesheet" href="./css/login.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
 	if (id != null) {
-		response.sendRedirect("./Main.me");
+		response.sendRedirect("./Index.me");
 	}
 	
 	String clientId = "zbWDmpR7Dt9oKkuZ8yzZ";//애플리케이션 클라이언트 아이디값"; // 후에 수정시 자신이 발급밭은 아이디로 변경
@@ -53,7 +54,20 @@
 				</tr>
 				<tr>
 					<td colspan="2">
+<%-- <<<<<<< HEAD
+						<input type="submit" value="로그인">
+			<!-- 네이버 아이디 로그인 -->
+			<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+			<!-- /네이버 아이디 로그인 -->
+			<!-- 카카오톡 로그인 -->
+			<!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+			<input type="hidden" name="kakaoValue" value="">
+			</a> -->
+			<!-- /카카오톡 로그인 -->		
+=======
 						<input type="submit" value="로그인">		
+>>>>>>> branch '박찬일' of https://github.com/lha5/WILL_CINEMA.git --%>
 					</td>
 				</tr>
 			</table> 
@@ -104,24 +118,27 @@
 	
 	<!-- --------------------------------------------------------------------------- -->
 	
-	<!-- 카카오톡 로그인 스크립트 -->
-	<script type='text/javascript'>
+	<!-- 카카오톡 로그인 스크립트 
+		https://developers.kakao.com/docs/js/kakaologin
+	-->
+	<!-- <script type='text/javascript'>
 		//<![CDATA[
 		   // 사용할 앱의 JavaScript 키를 설정해 주세요.
 		   Kakao.init('cd3590b07e55c69b37d015bdadb57b99');
 		   function loginWithKakao() {
 		     // 로그인 창을 띄웁니다.
 		     Kakao.Auth.login({
-		       success: function(authObj) {
-		         alert(JSON.stringify(authObj));
+		       success: function(authObj) {		    	   
+		         //alert(JSON.stringify(authObj));
 		       },
 		       fail: function(err) {
-		         alert(JSON.stringify(err));
+		    	 alert("카카오톡 로그인이 실패하였습니다.");
+		         //alert(JSON.stringify(err));
 		       }
 		     });
 		   };
-		// ]]>
-	</script>
+		// ]]> 
+	</script> -->
 	<!-- /카카오톡 로그인 스크립트 -->
 	
 	<%@ include file="../include/footer.jsp" %>
