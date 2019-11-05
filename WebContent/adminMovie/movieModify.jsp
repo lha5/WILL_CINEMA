@@ -1,3 +1,5 @@
+<%@page import="com.movie.db.MovieDAOImpl"%>
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,6 +14,8 @@
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
+	MovieDAOImpl mdao = new MovieDAOImpl();
+	AdminMovieDTO mdto = mdao.getBoard(movie_num);
 %>
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
 	<fieldset>
@@ -20,7 +24,7 @@
 					<tr>
 						<td>영화 제목</td>
 						<td>
-							<input type="text" name="title">
+							<input type="text" name="title" value="<%=mdto.getTitle()%>">
 						</td>
 						<td>장르</td>
 						<td>
@@ -39,7 +43,7 @@
 					<tr>
 						<td>제작 국가</td>
 						<td>
-							<input type="text" name="country">
+							<input type="text" name="country" value="<%=mdto.getCountry()%>">
 						</td>
 						<td>등급</td>
 						<td>
@@ -55,18 +59,18 @@
 					<tr>
 						<td>상영 시간</td>
 						<td>
-							<input type="text" name="running_time">
+							<input type="text" name="running_time" value="<%=mdto.getRunning_time()%>">
 						</td>
 						<td>개봉일~마감일</td>
 						<td>
-							<input type="text" name="open_date" placeholder="yyyyMMdd"> ~
-							<input type="text" name="close_date" placeholder="yyyyMMdd">
+							<input type="text" name="open_date" placeholder="yyyyMMdd" value="<%=mdto.getOpen_date()%>"> ~
+							<input type="text" name="close_date" placeholder="yyyyMMdd" value="<%=mdto.getClose_date()%>">
 						</td>
 					</tr>
 					<tr>
 						<td>스토리</td>
 						<td colspan="3">
-							<textarea id="summernote" name="story"></textarea>
+							<textarea id="summernote" name="story"><%=mdto.getStory()%></textarea>
 							<script>
 								$('#summernote').summernote({
 									lang: 'ko-KR',
@@ -80,23 +84,23 @@
 					<tr>
 						<td>감독</td>
 						<td>
-							<input type="text" name="director">
+							<input type="text" name="director" value="<%=mdto.getDirector()%>">
 						</td>
 						<td>배우</td>
 						<td>
-							<input type="text" name="actor">
+							<input type="text" name="actor" value="<%=mdto.getActor()%>">
 						</td>
 					</tr>
 					<tr>
 						<td>포스터</td>
 						<td colspan="3">
-							<input type="file" name="poster">
+							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
 					<tr>
-						<td>스틸컷</td>
+						<td>이미지</td>
 						<td colspan="3">
-							<input type="file" name="image">
+							<input type="file" name="image" value="<%=mdto.getImage()%>">
 						</td>
 					</tr>
 					<tr>
