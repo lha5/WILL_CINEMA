@@ -6,6 +6,7 @@
 .grade_all {float:left; margin-left:10px; background:url('../img/bg/bg_grade_all.png') } 
 
 [class^=grade_] {display:inline-block;overflow:hidden;vertical-align:middle;width:20px;height:20px;margin-right:5px;text-indent:-99999em;}
+
 #center {
 	/* border: 1px solid olive; */
 	text-align: center;
@@ -24,9 +25,8 @@
 	height: 500px;
 	margin: 1px 0 10px 80px;
 	position: absolute;
-	
-
 }
+
 .entry {
 	box-sizing: border-box;
 	width: 100%;
@@ -117,15 +117,16 @@
 
 .eventlist{
 	float:left;
-		margin: 18px;
+	margin: 18px;
 	padding-left:80px;
-list-style: none;
-	
+	list-style: none;	
 }
+
 .booking1{
-float: right;
-margin-right: 40px;
+	float: right;
+	margin-right: 40px;
 }
+
 .booking>a:HOVER {
 	color: red;
 }
