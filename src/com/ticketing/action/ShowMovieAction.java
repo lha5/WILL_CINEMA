@@ -138,7 +138,7 @@ public class ShowMovieAction implements Action {
 		*/
 		
 		JSONObject jsonObj=new JSONObject();
-		
+		//전체 영화 리스트에서 상영중인 영화를 제외
 		HashSet<Integer> movieList = new HashSet<Integer>();
 		if(runningMovie!=null){
 			for(int i:movieArray){
@@ -150,7 +150,7 @@ public class ShowMovieAction implements Action {
 				}
 			}
 		}
-		
+		//전체 영화관 리스트에서 선택한 영화를 상영중인 영화관을 제외
 		HashSet<Integer> cinemaList = new HashSet<Integer>();
 		if(curRegion!=null){
 			for(CineDTO i:allCineList){

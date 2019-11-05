@@ -383,8 +383,8 @@
 					//하루 일정
 					for(var i=0; i<cdto.runtimeS.length; i++){
 						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto.movie_num+"','"
-						+saleTime[i]+"','"+cnt+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
-						+"<span class='cineD2'><em>"+cnt+"관</em></span>";
+						+saleTime[i]+"','"+cdto.roomNum+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
+						+"<span class='cineD2'><em>"+cdto.roomNum+"관</em></span>";
 						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
 						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
 						if(saleTime[i]=="") html+="<span class='clock'>";
