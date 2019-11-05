@@ -1,4 +1,5 @@
 
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@ page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,16 +7,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상세보기</title>
+<title>WILL CINEMA - 영화 상세 보기</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(2)>ul {
+		display: block;
+	}
+</style>
+
 </head>
 <body>
-
-<h1>WebContent/movie/MovieContent.jsp</h1>
-<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../include/header.jsp" %>
 
 <%
-MovieDTO mdto = (MovieDTO) request.getAttribute("mdto");
+int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+request.setAttribute("movie_num", movie_num);
+System.out.println("Attribute : "+request.getAttribute("movie_num"));
+AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 String pageNum = (String) request.getAttribute("pageNum");
+
 %>
 		<table border="1">
 			<tr>
@@ -66,12 +78,12 @@ String pageNum = (String) request.getAttribute("pageNum");
 			</tr>
 		</table>
 
+	<jsp:include page="../review/reviewList.jsp"/>
 
-<jsp:include page="../review/reviewWrite.jsp"/>
+	<jsp:include page="../review/reviewWrite.jsp"/>
 
-<jsp:include page="../review/reviewList.jsp"/>
+	<%@ include file="../include/footer.jsp" %>
 
-<%@ include file="../include/footer.jsp" %>
 
 
 

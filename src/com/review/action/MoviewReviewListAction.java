@@ -30,9 +30,9 @@ public class MoviewReviewListAction implements Action {
 		List<MovieReviewDTO> boardList = null;
 		
 		boardList = mrdaoImpl.commentList(mrdto.getMovie_num());
-			  
+		
 		request.setAttribute("boardList", boardList);
-		forward.setPath("./review/reviewList.jsp");
+		forward.setPath("./DetailView.mo");
 		forward.setRedirect(false);
 		
 		return forward;

@@ -23,6 +23,9 @@ public class MovieReviewUpadatAction implements Action {
 		String id = (String)session.getAttribute("id");
 		int num = Integer.parseInt(request.getParameter("num"));
 		
+		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+		System.out.println(" movie_num(update) : "+movie_num);
+		
 		MovieReviewDTO mrdto = new MovieReviewDTO();
 		System.out.println("rating : "+request.getParameter("rating"));
 		mrdto.setNum(num);
@@ -35,7 +38,12 @@ public class MovieReviewUpadatAction implements Action {
 		mrdaoImpl.modifyComment(mrdto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MovieReviewList.mr");
+		
+		request.setAttribute("movie_num2", movie_num);
+		
+		System.out.println("Attribute movie_num(update) : "+request.getAttribute("movie_num2"));
+		
+		forward.setPath("./DetailView.mo?movie_num="+movie_num);
 		forward.setRedirect(true);
 		return forward;
 	}

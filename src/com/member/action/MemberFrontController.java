@@ -158,8 +158,53 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MemberPassSearch.me")){
+			forward = new ActionForward();
+			
+			forward.setPath("./member/passSearch.jsp");
+			forward.setRedirect(false);
 		}else if (command.equals("/MemberPassSearchAction.me")){
 			action = new MemberPassSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}else if (command.equals("/NonMemberLogin.me")) {
+			forward = new ActionForward();
+			
+			forward.setPath("./non_member/non_memberlogin.jsp");
+			forward.setRedirect(false);
+		} else if (command.equals("/NonMemberLoginAction.me")){
+			action = new NonMemberLoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberNaverLogin.me")){
+			// 네이버 로그인 callback.jsp 이동
+			//	현재 callback.jsp의 내용을 MemberNaverLogin으로 이동하였음
+			// 후에 jsp만으로 구현하실 분은 수정가능 합니다.
+			
+			/*forward = new ActionForward();
+			
+			forward.setPath("./member/callback.jsp");
+			forward.setRedirect(false);*/
+			action = new MemberNaverLogin();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(command.equals("/MemberNaverLoginAction.me")){
+			action = new MemberNaverLoginAction();
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

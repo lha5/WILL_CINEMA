@@ -110,6 +110,12 @@ function sample6_execDaumPostcode() {
 <body>
 
 	<%@ include file="../include/header.jsp" %>
+	
+	<%
+	if (id != null) {
+		response.sendRedirect("./Main.me");
+	}
+	%>
 
 	<fieldset>
 		<legend>회원 가입</legend>

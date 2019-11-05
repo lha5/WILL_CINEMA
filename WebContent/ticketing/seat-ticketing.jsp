@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -78,10 +79,26 @@
 <%
 	//세션 처리
 	//회원 확인
+
 	MovieDTO mdto = (MovieDTO)request.getAttribute("mdto"); //선택한 영화 정보
 	CineDTO cdto = (CineDTO)request.getAttribute("cdto"); //선택한 영화관 정보
 	String running_date = (String)request.getAttribute("running_date"); //상영일
 	String running_time = (String)request.getAttribute("running_time"); //상영시간
+
+
+
+	//데이터 저장
+	//*후에 합칠때 변경 필요
+	/* request.setAttribute("mdto", mdto);
+	//	request.setAttribute("cdto", cdto);
+	//	request.setAttribute("running_date", running_date);
+	//	request.setAttribute("running_time", running_time); */
+	//AdminMovieDTO mdto = (AdminMovieDTO)request.getAttribute("mdto");
+
+	//CineDTO cdto = (CineDTO)request.getAttribute("cdto");
+	//String running_date = (String)request.getAttribute("running_date");
+	//String running_time = (String)request.getAttribute("running_time");
+
 	String saleTime = (String)request.getAttribute("saleTime"); //조조,심야
 	int roomNum = (Integer)request.getAttribute("roomNum"); //상영관 번호
 	

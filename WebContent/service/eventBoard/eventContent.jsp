@@ -12,6 +12,8 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
+
+<!-- JavaScript -->
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
@@ -51,8 +53,13 @@
 		});
 	}
 </script>
+
 </head>
-<%	
+<body>
+	
+	<%@ include file="../../include/header.jsp" %>
+	
+	<%	
 	//request.setCharacterEncoding("UTF-8");
 	List eventList = (List)request.getAttribute("eventList");
 	String item=request.getParameter("item");
@@ -62,10 +69,8 @@
 	if(keyward==null){
 		keyward="";
 	}
-%>
-<body>
+	%>
 
-<%@ include file="../../include/header.jsp" %>
 	<!-- 
 		CSS li줄바꿈 처리
 		li{float:left;width:100px;height:100px;background:#000;color:#fff;}
@@ -75,54 +80,57 @@
 	 <input type="hidden" id="viewCnt" value="4">
 	 <input type="hidden" id="item" value="<%=item%>">
 	<div class="event_cwrap">
-	<div>
-		<h2>
-		<%if(item.equals("movie") ){%>
-			영화
-		<%}else if(item.equals("preview") ){%>
-			시사회/무대인사
-		<%}else if(item.equals("nevnet") ){%>
-			윌시 NOW
-		<%}else if(item.equals("collabo") ){%>
-			제휴할인
-		<%} %>
-		</h2>
-		<form action="./EventContent.ae?item=<%=item %>" method="post">
-		<input type="text" name="keyward" value="<%=keyward%>">
-		<input type="submit" value="검색">
-		</form>
-	</div>
-	<%
-		if(eventList.size()!=0){
-	%>
-	<ul class="event_list">
-	<%
-			for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
-				if(i>viewList){break;}
-				AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
-	%>
 	
-		<li>
-			<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
-				<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
-			</a>
-			<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-		</il>
-	<% }%>
-	</ul>
-		<%if(eventList.size()>4){//남아있는 이벤트가 있으면 %>
-		<div class="btn_view">
-			<a href="javascript:void(0);" onclick="moreRead();"><span>더보기</span></a>
+		<div>
+			<h2>
+			<%if(item.equals("movie") ){%>
+				영화
+			<%}else if(item.equals("preview") ){%>
+				시사회/무대인사
+			<%}else if(item.equals("nevnet") ){%>
+				윌시 NOW
+			<%}else if(item.equals("collabo") ){%>
+				제휴할인
+			<%} %>
+			</h2>
+			<form action="./EventContent.ae?item=<%=item %>" method="post">
+			<input type="text" name="keyward" value="<%=keyward%>">
+			<input type="submit" value="검색">
+			</form>
 		</div>
+		<%
+			if(eventList.size()!=0){
+		%>
+		<ul class="event_list">
+		<%
+				for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
+					if(i>viewList){break;}
+					AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
+		%>
+		
+			<li>
+				<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
+					<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
+				</a>
+				<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
+			</il>
+		<% }%>
+		</ul>
+			<%if(eventList.size()>4){//남아있는 이벤트가 있으면 %>
+			<div class="btn_view">
+				<a href="javascript:void(0);" onclick="moreRead();"><span>더보기</span></a>
+			</div>
 		<%}
 		}else{%>
 			진행되는 이벤트가 없습니다.
 		<%}%>
 		<br class="clear">
 		<a href="./EventSummary.ae">이벤트 목록</a>
+		
 	</div>
 	
 	
 	<%@ include file="../../include/footer.jsp" %>
+	
 </body>
 </html>

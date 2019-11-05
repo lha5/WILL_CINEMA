@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,21 +7,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 영화/상영작</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(2)>ul {
+		display: block;
+	}
+</style>
+
 </head>
 <body>
-<h1>영화 리스트 보기(현재 상영작/상영 예정작)</h1>
+		<%@ include file="../include/header.jsp" %>	
 
-	<%
-		String id = (String)session.getAttribute("id");
-		
-		int count = (Integer) request.getAttribute("count"); 
-		List<MovieDTO> boardList = (List<MovieDTO>) request.getAttribute("boardList");
-		
-		String pageNum = (String) request.getAttribute("pageNum");
-		
-		System.out.println("이동성공");
-	%>
+		<%
+			// String id = (String)session.getAttribute("id");
+			
+			int count = (Integer) request.getAttribute("count"); 
+			List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+			
+			String pageNum = (String) request.getAttribute("pageNum");
+			
+			System.out.println("이동성공");
+		%>
 	
 	
 
@@ -52,7 +61,7 @@
      </tr>
      <% 
      	for (int i=0;i<boardList.size();i++) {
-    		MovieDTO mdto = boardList.get(i);
+     		AdminMovieDTO mdto = boardList.get(i);
     		%>
 			<tr>
 				<td><%=mdto.getMovie_num() %></td>
@@ -70,9 +79,16 @@
 		<%}%>
 	</table>
 	
-	<%if(id.equals("admin")){ %>
-	<h3><a href="./MovieAdd.am">글 쓰기</a></h3>
-	<%} %>
-
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+	%>
+		<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
+	<%
+		}
+	}
+	%>
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>

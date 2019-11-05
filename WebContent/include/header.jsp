@@ -8,9 +8,20 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
+
+<!-- <script type="text/javascript">
+        function showHide(id) {
+            var obj = document.getElementById(id);
+            if (obj.style.display == 'none')
+                obj.style.display = 'block';
+            else
+                obj.style.display = 'none';
+        }
+</script> -->
 
 </head>
 <body>
@@ -18,6 +29,7 @@
 	<%
 	String id = (String) session.getAttribute("id");
 	%>
+
 
 
 	<header>
@@ -64,28 +76,28 @@
 		
 		<nav>
 			<ul>
-				<li><a href="Ticketing.ti">예매</a>
+				<li><a href="./Ticketing.ti">예매</a>
 					<ul>
-						<li><a href="Ticketing.ti">예매하기</a></li>
+						<li><a href="./Ticketing.ti">예매하기</a></li>
 						<li>상영시간표</li>
 						<li>할인안내</li>
 					</ul>
 				</li>
-				<li>영화
+				<li><a href="./MovieList.mo">영화</a>
 					<ul>
-						<li>박스오피스</li>
+						<li><a href="./MovieList.mo">박스오피스</a></li>
 						<li>기획전</li>
 						<li>영화의전당</li>
 					</ul>
 				</li>
-				<li><a href="#">영화관</a>
+				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
 					<ul>
-						<li>서울</li>
-						<li>경기/인천</li>
-						<li>충청/대전</li>
-						<li>전라/광주</li>
-						<li>경북/대구</li>
-						<li>경남/부산/울산</li>
+						<li><a href="./CinemaUserView.ci?cinema_num=1001">서울</a></li>						
+						<li><a href="./CinemaUserView.ci?cinema_num=2001">경기/인천</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=3001">충청/대전</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=4001">전라/광주</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=5001">경북/대구</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=6001">경남/부산/울산</a></li>
 						<li>강원</li>
 						<li>제주</li>
 					</ul>

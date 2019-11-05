@@ -15,6 +15,7 @@ import org.json.simple.JSONObject;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDTO;
 import com.ticketing.db.TicketDAO;
@@ -50,8 +51,8 @@ public class ShowMovieAction implements Action {
 		
 
 		// 영화DB 정보 다 가져오기
-		List<MovieDTO> bookRatingList = tdao.bookRatingList();// 예매순
-		List<MovieDTO> totalRatingList = tdao.totalRatingList();// 평점순
+		List<AdminMovieDTO> bookRatingList = tdao.bookRatingList();// 예매순
+		List<AdminMovieDTO> totalRatingList = tdao.totalRatingList();// 평점순
 		
 		int[] movieArray=new int[bookRatingList.size()];
 		for(int i=0; i<bookRatingList.size(); i++)
@@ -86,7 +87,7 @@ public class ShowMovieAction implements Action {
 						Integer.parseInt(endDate.split("-")[2]));
 				  
 				//상영관의 영화 정보
-				MovieDTO movieList
+				AdminMovieDTO movieList
 					=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[i]));
 
 				if(todayCal.compareTo(startCal)!=-1
@@ -120,7 +121,7 @@ public class ShowMovieAction implements Action {
 					if(todayCal.compareTo(startCal)!=-1
 					  &&todayCal.compareTo(endCal)!=1){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
 						//상영관의 영화 정보
-						MovieDTO movieList
+						AdminMovieDTO movieList
 							=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[j]));
 							
 						//선택된 영화가 상영되는 영화관이 있으면

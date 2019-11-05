@@ -3,6 +3,8 @@ package com.member.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,6 +92,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public int idCheck(String id, String pass) {
 		int check = -1;
 		try {
+			System.out.println("try문 성공");
 			con = getCon();
 
 			sql = "SELECT pass FROM member WHERE id=?";
@@ -110,14 +113,74 @@ public class MemberDAOImpl implements MemberDAO{
 				check = -1;
 			}
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
 		return check;
 	}
+	// 비회원전용 로그인
+	@Override
+	public int emailCheck(String name, String email) {
+		
+		int check = -1;
+		
+		System.out.println(" name(login) : "+name+" email(login) : "+email);
+		System.out.println("try문 실행");
+		
+		try {
+			System.out.println("try문 성공");
+			
+			con = getCon();
+			
+			System.out.println(" con : "+con);
 
+			sql = "select email from non_member where name = ?";
 
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				
+				System.out.println("rs1 : " + rs);
+				
+				sql = "SELECT email_checked FROM non_member WHERE email=?";
+
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, email);
+
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					
+					if (rs.getInt("email_checked") == 1) {
+						
+						System.out.println("rs2 : " + rs);
+						
+						check = 1;
+					} else {
+						check = 0;
+					}
+					
+				}
+				
+			} else {
+				check = -1;
+			}
+		} catch (Exception e) {
+			System.out.println("try문 예외발생");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
 	@Override
 	public MemberDTO getMember(String id){
 		MemberDTO mdto = null;
@@ -334,6 +397,10 @@ public class MemberDAOImpl implements MemberDAO{
 				info.add(0, rs.getString("name"));
 				info.add(1, rs.getInt("level"));
 				info.add(2, rs.getInt("point"));
+			}else {
+				info.add(0, "");
+				info.add(1, -1);
+				info.add(2, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -461,11 +528,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 			while (rs.next()) {
 				// 회원 한 명의 정보를 해당 ArrayList 한 칸에 저장
-				sql = "SELECT * FROM member where birthday=?";
+				sql = "SELECT * FROM member where email=?";
 
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, mdto.getBirthday());
+				pstmt.setString(1, mdto.getEmail());
 
 				rs = pstmt.executeQuery();
 				
@@ -527,5 +594,154 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return passList;
 	}
+
 	
+	public String getUserEmail(String id) {
+
+		String SQL = "SELECT email FROM member WHERE id = ?";
+
+			try {
+				con = getCon();
+				
+				PreparedStatement pstmt = con.prepareStatement(SQL);
+
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+
+					return rs.getString(1); // 이메일 주소 반환
+
+				}
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+
+		return null; // 데이터베이스 오류
+		
+	}
+	
+	public boolean setUserEmailChecked(String id) {
+
+		String SQL = "UPDATE member SET userEmailChecked = true WHERE id = ?";
+
+		try {
+			con = getCon();
+			
+			PreparedStatement pstmt = con.prepareStatement(SQL);
+
+			pstmt.setString(1, id);
+
+			pstmt.executeUpdate();
+
+			return true; // 이메일 등록 설정 성공
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return false; // 이메일 등록 설정 실패
+
+	}
+
+	
+	//SNS 회원 가져오기 메소드
+	@Override
+	public String checkSNSMember(String id) {
+		String SNSMember = "";
+		try {
+			con = getCon();
+			
+			System.out.println("String id : "+id);
+			sql = "select id from member where sns_login=1 and pass=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				SNSMember = rs.getString(1);
+			}else{
+				SNSMember = "fail";
+			}
+
+			System.out.println("회원 아이디 가져오기");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return SNSMember;
+	}
+	
+	// 네이버아이디 추가번호
+	@Override
+	public int SNSMemberinsertNum(){
+		int num = 0;
+		try {
+			con = getCon();
+
+			sql = "select count(*) from member where sns_login=1 and reg_date > curdate()";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				num = rs.getInt(1)+1;
+			}else{
+				num = 1;
+			}
+
+			System.out.println("아이디 추가번호 가져오기 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
+	// insertSNSMember() - SNS 회원 가입 메소드
+		@Override
+		public void insertSNSMember(MemberDTO mdto) {
+			try {
+				con = getCon();
+				
+				sql = "INSERT INTO member(id, pass, name, birthday, email,"
+						+ " reg_date, receive, sns_login)"
+						+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, mdto.getId());
+				pstmt.setString(2, mdto.getPass());
+				pstmt.setString(3, mdto.getName());
+				pstmt.setString(4, mdto.getBirthday());
+				pstmt.setString(5, mdto.getEmail());
+				pstmt.setTimestamp(6, mdto.getReg_date());
+				pstmt.setString(7, "no");
+				pstmt.setInt(8, 1);
+
+				pstmt.executeUpdate();
+
+				System.out.println("SNS 회원 등록 완료");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+
+		
 }

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
+import com.admin.movie.db.AdminMovieDTO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
 import com.service.QnA.db.QnADAOImpl;
@@ -18,9 +21,10 @@ public class MovieListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		AdminMovieDAO amdao  = new AdminMovieDAOImpl();
 		MovieDAOImpl mvdaoImpl  = new MovieDAOImpl();
 		
-		int count = mvdaoImpl.getBoardCount();
+		int count = amdao.getBoardCount();
 		
 		System.out.println("count : " + count);
 		
@@ -31,13 +35,7 @@ public class MovieListAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
-		ActionForward forward = new ActionForward();
-		
-		if(id == null){
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}List<MovieDTO> boardList = null;
+		List<AdminMovieDTO> boardList = null;
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
@@ -58,6 +56,8 @@ public class MovieListAction implements Action {
 		
 		System.out.println("");
 		
+		
+		ActionForward forward = new ActionForward();
 		forward.setPath("./movie/movieList.jsp");
 		forward.setRedirect(false);
 		
