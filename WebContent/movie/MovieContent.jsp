@@ -40,8 +40,14 @@ String pageNum = (String) request.getAttribute("pageNum");
 			<tr>	
 				<td>이미지</td>
 				<td colspan="5">
-					<a href="./upload/<%=mdto.getImage() %>"><%=mdto.getImage() %></a>
+					<img src="./upload/<%=mdto.getImage()%>"></td>
 				
+				</td>
+			</tr>
+			<tr>	
+				<td>포스터</td>
+				<td colspan="5">
+					<img src="./upload/<%=mdto.getPoster()%>"></td>
 				
 				</td>
 			</tr>

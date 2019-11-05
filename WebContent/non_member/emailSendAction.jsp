@@ -61,7 +61,7 @@
 
 	String to = nonMemberDAO.getUserEmail(name);
 
-	String subject = "강의평가를 위한 이메일 확인 메일입니다.";
+	String subject = "will cienma 이메일 인증.";
 
 	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
 
