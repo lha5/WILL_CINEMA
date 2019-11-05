@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 아이디 찾기</title>
 </head>
 <body>
+
+	<%@ include file="../include/header.jsp" %>
 
 	<fieldset>
 		<legend>아이디 찾기</legend>
@@ -27,5 +29,9 @@
 		</form>
 		
 	</fieldset>
+
+
+	<%@ include file="../include/footer.jsp" %>
+	
 </body>
 </html>

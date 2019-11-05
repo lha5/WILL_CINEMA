@@ -1,3 +1,4 @@
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@page import="com.cinema.db.CineDTO"%>
 <%@page import="java.util.List"%>
@@ -232,6 +233,8 @@
 		
 		/* ajax관련 */
 		clickEvent();
+
+		selectShow();
 	}
 	
 	
@@ -255,25 +258,27 @@
 	//영화 선택
 	function selectMov(event){
 		var movClass=event.currentTarget.className;
-
 		//다른 영화 선택시
-		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){
+		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){ //자신 이외에 on class가 있는지
 			$('.movie_list').find('.on').not($(event.currentTarget)).removeClass("on");
 		}
 		
 		//현재 선택된 영화를 다시 클릭할때 선택 해제
 		if($(event.currentTarget).is('.on')){
-			event.currentTarget.className=movClass.replace(" on","");
+			//event.currentTarget.className=movClass.replace(" on","");
+			$(event.currentTarget).removeClass('on');//영화 목록 비활성
 			$('.txtName').find('dd').text('영화를 선택하세요');
 			$('.txtName').find('dd').removeClass('on');
 		}else{
 			event.currentTarget.className+=" on";
-			$('.txtName').find('dd').text($('.'+movClass).eq(0).find('em').text());
+			$('.txtName').find('dd').text($(event.currentTarget).find('em').text());
+			$(event.currentTarget).addClass('on');//영화 목록 비활성
 			$('.txtName').find('dd').addClass('on');
 		}
 		
 		/* ajax관련 */
 		clickEvent();
+		selectShow();
 	}
 	
 	//SeatSelect.ti로 이동
@@ -318,6 +323,7 @@
 		if($('.txtName').find('dd').is('.on')){
 			movie=$('.txtName').find('dd').text();
 		}
+		
 		$.ajax({
 			url:"./ShowTime.ti",
 			type:"post",
@@ -328,23 +334,30 @@
 				console.log(data.length);
 				//html초기화
 				$('.time_inner').find('.time_list01').empty();
+				document.getElementById('time_noData').style.display="none";
+
 				if(data.length==0){
 					document.getElementById('time_noData').style.display="block";
-				}else {
-					document.getElementById('time_noData').style.display="none";
 				}
-				$.each(data,function(index,cdto){
+				
+				
+				$.each(data,function(index,cdto){//영화관의 상영 영화 정보
 					console.log(cdto);
 					var runtimeS='';
 					var runtimeE='';
 					var saleTime='';
 					var selectSeat='';
 					html='';
-					if(cnt==1)html="<h5 class='time_tit'>"+cdto.name+"</h5>";
+					//처음 반복에만 영화관 이름 보여줌
+					if(cnt==1 && cdto.runtimeS.length>=1) html="<h5 class='time_tit'>"+cdto.name+"</h5>";
+					if(cdto.runtimeS.length>=1){
 					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
 					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+
 					"<a href='#' class='btn_detail'><img src='./img/btn/btn_time_view.png'></a></dt>";
 					html+="<dd><ul class='theater_time list"+cdto.movie_num+"'>"
+					}else{
+						document.getElementById('time_noData').style.display="block";
+					}
 					
 					$.each(cdto.runtimeS,function(index,sTime){
 						runtimeS+=sTime+",";
@@ -368,8 +381,7 @@
 					selectSeat=selectSeat.substr(0,selectSeat.length-1);
 					selectSeat=selectSeat.split(",");
 					
-					/*  ./SeatSelect.ti?cdto="+cdto+"&running_date="+selectDate+
-								"&running_time="+runtimeS[i]+"~"+runtimeE[i]+"*/
+					//하루 일정
 					for(var i=0; i<cdto.runtimeS.length; i++){
 						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto.movie_num+"','"
 						+saleTime[i]+"','"+cnt+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
@@ -391,6 +403,49 @@
                }
 		});
 	}
+	/* 있는 목록 활성화 ajax */
+	function selectShow(){
+		var cinema='';
+		var movie='';
+		var date=$('input[name="day"]:checked').val();
+		var selectDate=$('.txtdate').find('dd').text();
+		var html='';
+		
+		if($('.txtCin').find('dd').is('.on')){
+			cinema=$('.txtCin').find('dd').text();
+		}
+		
+		if($('.txtName').find('dd').is('.on')){
+			movie=$('.txtName').find('dd').text();
+		}
+		$('.movie_list').find('a').removeClass('disabled');
+		$('.cinema_zone').find('a').removeClass('disabled');
+		$.ajax({
+			url:"./ShowMovie.ti",
+			type:"post",
+			dataType:"JSON",
+			data:{cinema:cinema,movie:movie,date:date},
+			success:function(data){
+				if(data.movieList!=""){
+					var movieNum=data.movieList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<movieNum.length; i++){
+						$(".mov"+movieNum[i]).addClass('disabled');
+					}
+				}else if(data.regionList!=null){
+					//alert(data.regionList);
+					var regionNum=data.regionList;
+					//movieNum=movieNum.split(',');
+					for(var i=0; i<regionNum.length; i++){
+						$('.cinema_zone').find('.'+regionNum[i]).addClass('disabled');
+					}
+				}
+			},
+			error:function(request,status,error){
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+            }
+		});
+	}
 
 </script>
 
@@ -403,8 +458,8 @@
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
 	List allRegion = (List)request.getAttribute("allRegion");//모든지역 
 	
-	List<MovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<MovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
 	//System.out.println(cineList.size());
 	int[] cineCnt=(int[])request.getAttribute("cineCnt");
 
@@ -491,7 +546,7 @@
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<bookRatingList.size(); i++){
-     		MovieDTO mdto=bookRatingList.get(i);
+     		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>" 
@@ -507,7 +562,7 @@
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
      	<%for(int i=0; i<totalRatingList.size(); i++){ 
-     		MovieDTO mdto=totalRatingList.get(i);
+     		AdminMovieDTO mdto=totalRatingList.get(i);
      	%>
      	 <li>
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>"

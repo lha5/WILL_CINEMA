@@ -8,16 +8,26 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
-
+<script type="text/javascript">
+        function showHide(id) {
+            var obj = document.getElementById(id);
+            if (obj.style.display == 'none')
+                obj.style.display = 'block';
+            else
+                obj.style.display = 'none';
+        }
+</script>
 </head>
 <body>
 
 	<%
 	String id = (String) session.getAttribute("id");
 	%>
+
 
 
 	<header>
@@ -71,25 +81,62 @@
 						<li>할인안내</li>
 					</ul>
 				</li>
-				<li>영화
+				<li><a href="./MovieList.mo">영화</a>
 					<ul>
-						<li>박스오피스</li>
+						<li><a href="./MovieList.mo">박스오피스</a></li>
 						<li>기획전</li>
 						<li>영화의전당</li>
 					</ul>
 				</li>
-				<li><a href="#">영화관</a>
-					<ul>
-						<li>서울</li>
-						<li>경기/인천</li>
-						<li>충청/대전</li>
-						<li>전라/광주</li>
-						<li>경북/대구</li>
-						<li>경남/부산/울산</li>
-						<li>강원</li>
-						<li>제주</li>
+				<li><a href=javascript:;>영화관</a>
+						
+					<ul >
+						<li><a onclick="showHide('cinema100')" onfocus="this.blur()" title="서울">서울</a>
+						<div id=cinema100 style="display:none">
+						<ul >
+						<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포 </a>
+						<a href="./CinemaUserView.ci?cinema_num=1002">가산디지털</a></li>
+						</ul></div></li>
+						
+						<li><a onclick="showHide('cinema200')" onfocus="this.blur()" title="경기/인천">경기/인천</a>
+						<div id=cinema200 style="display:none">
+						<ul >
+						<li><a href="./CinemaUserView.ci?cinema_num=2001">안산 </a>
+						<a href="./CinemaUserView.ci?cinema_num=2002">부천역</a></li>
+						</ul></div></li>
+						
+						<li><a onclick="showHide('cinema300')" onfocus="this.blur()" title="충청/대전">충청/대전</a>
+						<div id=cinema300 style="display:none">
+						<ul >
+						<li><a href="./CinemaUserView.ci?cinema_num=3001">서산</a>
+						<a href="./CinemaUserView.ci?cinema_num=3002">대전(백화점)</a></li>
+						</ul></div></li>
+						
+						<li><a onclick="showHide('cinema400')" onfocus="this.blur()" title="전라/광주">전라/광주</a>
+						<div id=cinema400 style="display:none">
+						<ul>
+						<li><a href="./CinemaUserView.ci?cinema_num=4001">수완(아울렛)</a>
+						<a href="./CinemaUserView.ci?cinema_num=4002">광주(백화점)</a></li>
+						</ul></div></li>
+						
+						<li><a onclick="showHide('cinema500')" onfocus="this.blur()" title="경북/대구">경북/대구</a>
+						<div id=cinema500 style="display:none">
+						<ul>
+						<li><a href="./CinemaUserView.ci?cinema_num=5001">경주</a>
+						<a href="./CinemaUserView.ci?cinema_num=5002">포항</a></li>
+						</ul></div></li>
+						
+						<li><a onclick="showHide('cinema600')" onfocus="this.blur()" title="경남/부산/울산">경남/부산/울산</a>
+						<div id=cinema600 style="display:none">
+						<ul >
+						<li><a href="./CinemaUserView.ci?cinema_num=6001">서면(전포동)</a>
+						<a href="./CinemaUserView.ci?cinema_num=6002">창원</a></li>
+						</ul></div></li>
+						<li>강원(오픈준비중)</li>
+						<li>제주(오픈준비중)</li>
+					
 					</ul>
-				</li>
+					</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
 					<ul>
@@ -99,7 +146,14 @@
 						<li><a href="./EventContent.ae?item=collabo">제휴할인</a></li>
 					</ul>
 				</li>
-				<li><a href="./GoodsList.ml">매점</a></li>
+				<li>
+					<a href="./GoodsList.ml">매점</a>
+					<ul>
+						<li><a href="./GoodsList.ml">전체</a></li>
+						<li><a href="./GoodsList.ml?item=ticket">관람권</a></li>
+						<li><a href="./GoodsList.ml?item=snack">스낵/음료</a></li>
+					</ul>
+				</li>
 				<li>VOD</li>
 			</ul>
 			<div id="sub_ul">

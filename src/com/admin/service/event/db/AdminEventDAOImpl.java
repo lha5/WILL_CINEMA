@@ -364,7 +364,7 @@ public class AdminEventDAOImpl implements AdminEventDAO {
 		AdminEventDTO aedto = new AdminEventDTO();
 		try {
 			con = getCon();
-			sql = "select * from event where num=? and curdate()<=e_date";
+			sql = "select * from event where num=?";// and curdate()<=e_date
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, eventId);
 			rs = pstmt.executeQuery();

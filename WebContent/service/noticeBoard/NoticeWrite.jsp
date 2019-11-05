@@ -32,6 +32,10 @@
 			   	<tr>
 			   		<td>글쓴이</td>
 			   		<td><input type="text" name="name" value="<%=id%>"></td>
+			   		<td>
+			   		비밀번호 :<input type="password" name="pass"> 
+			   		</td>
+			   		
 			   		<td>카테고리</td>
 			   		<td>
 			   			<select name="category">

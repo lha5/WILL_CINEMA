@@ -92,6 +92,14 @@ public class CinemaFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if (command.equals("/CinemaUserView.ci")) { //영화관 보여지는 페이지 
+			
+			action = new CinemaUserViewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//가상주소를 가지고 이동

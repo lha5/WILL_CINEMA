@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -594,6 +595,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return passList;
 	}
+
 	
 	public String getUserEmail(String id) {
 
@@ -649,4 +651,98 @@ public class MemberDAOImpl implements MemberDAO{
 
 	}
 
+	
+	//SNS 회원 가져오기 메소드
+	@Override
+	public String checkSNSMember(String id) {
+		String SNSMember = "";
+		try {
+			con = getCon();
+			
+			System.out.println("String id : "+id);
+			sql = "select id from member where sns_login=1 and pass=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				SNSMember = rs.getString(1);
+			}else{
+				SNSMember = "fail";
+			}
+
+			System.out.println("회원 아이디 가져오기");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return SNSMember;
+	}
+	
+	// 네이버아이디 추가번호
+	@Override
+	public int SNSMemberinsertNum(){
+		int num = 0;
+		try {
+			con = getCon();
+
+			sql = "select count(*) from member where sns_login=1 and reg_date > curdate()";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				num = rs.getInt(1)+1;
+			}else{
+				num = 1;
+			}
+
+			System.out.println("아이디 추가번호 가져오기 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return num;
+	}
+	
+	// insertSNSMember() - SNS 회원 가입 메소드
+		@Override
+		public void insertSNSMember(MemberDTO mdto) {
+			try {
+				con = getCon();
+				
+				sql = "INSERT INTO member(id, pass, name, birthday, email,"
+						+ " reg_date, receive, sns_login)"
+						+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, mdto.getId());
+				pstmt.setString(2, mdto.getPass());
+				pstmt.setString(3, mdto.getName());
+				pstmt.setString(4, mdto.getBirthday());
+				pstmt.setString(5, mdto.getEmail());
+				pstmt.setTimestamp(6, mdto.getReg_date());
+				pstmt.setString(7, "no");
+				pstmt.setInt(8, 1);
+
+				pstmt.executeUpdate();
+
+				System.out.println("SNS 회원 등록 완료");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+
+		
 }

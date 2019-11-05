@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+.seat td .seat_on{
+	border: none;
+	width: 25px;
+	height: 25px;
+	background: #848484;
+	text-align: center;
+	color: #fff;
+	font-size: 11px;
+	line-height: 23px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin-bottom: 3px;
+}
+.seat td .seat_on:focus { outline:none; }
+
+.seat .rowNum{
+	margin-left: 30px;
+	width: 30px;
+	height: 300px;
+}
+
+.seat td .seatbg{
+	background: #fff;
+	color: #000000;
+	border: none;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	font-size: 11px;
+	line-height: 23px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin-bottom: 3px;
+}

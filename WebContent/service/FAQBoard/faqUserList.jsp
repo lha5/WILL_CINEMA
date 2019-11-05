@@ -39,7 +39,7 @@
 		<%@ include file="../../include/header.jsp" %>
 
 	<%
-		// String id = (String)request.getAttribute("id");
+		 //String id1 = (String)request.getAttribute("id");
 		int count = (Integer) request.getAttribute("count");
 		List<AdminFAQDTO> FAQList = (List<AdminFAQDTO>) request.getAttribute("FAQList");
 		String pageNum = (String)request.getAttribute("pageNum");
@@ -73,13 +73,20 @@
 			 --%>
 <button class="accordion"><%=afdto.getSubject() %></button>
 <div class="panel">
-
  카테고리: <%=afdto.getCategory() %><br>
  제목: <%=afdto.getSubject() %><br>
+
+<%if(afdto.getImage()!= null){%>
  이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br>
+<%} %>
  내용:<%=afdto.getContent()%><br>
-수정: <h4><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정</a></h4>
-</div>
+
+
+<%if(id==null){}else if(id.equals("admin")){ %>
+<h4><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정(관리자)</a></h4>
+<h4><a href="./FAQWrite.af">글 쓰기(관리자)</a></h4>
+<%}%> 
+</div> 
 <%}%>
 	<!-- 자바스크립트 -->
 		<script>
@@ -100,14 +107,6 @@
 		
 		<h5><a href="./FAQWrite.af">임시 글 쓰기</a></h5>
 		
-	 <%-- <%
-  			if (id.equals("admin")) {
-  			%>
-  				<a href="./FAQContent.af?num=<%=afdto.getNum() %>">글수정</a>
-  				<h6><a href="./FAQWrite.af">글 쓰기</a></h6>
-  			<%
-  			}
-  			%>  --%>
 
 
 <%
