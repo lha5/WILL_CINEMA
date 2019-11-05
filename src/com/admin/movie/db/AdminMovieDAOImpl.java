@@ -144,18 +144,22 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {// check = 1;
-				sql = "update movie set title=? ,genre=?, country=?, running_time=?, director=?, story=?, actor=? where movie_num=?";
+				sql = "update movie set title=? , genre=?, story=?, running_time=?, director=?, actor=?, open_date=?, close_date=?, country=?, poster=?, image=? where movie_num = ?";
 					
 				pstmt = con.prepareStatement(sql);
-					
+				
 				pstmt.setString(1, mdto.getTitle());
 				pstmt.setString(2, mdto.getGenre());
-				pstmt.setString(3, mdto.getCountry());
+				pstmt.setString(3, mdto.getStory());
 				pstmt.setInt(4, mdto.getRunning_time());
 				pstmt.setString(5, mdto.getDirector());
-				pstmt.setString(6, mdto.getStory());
-				pstmt.setString(7, mdto.getActor());
-				pstmt.setInt(8, mdto.getMovie_num());
+				pstmt.setString(6, mdto.getActor());
+				pstmt.setDate(7, mdto.getOpen_date());
+				pstmt.setDate(8, mdto.getClose_date());
+				pstmt.setString(9, mdto.getCountry());
+				pstmt.setString(10, mdto.getPoster());
+				pstmt.setString(11, mdto.getImage());
+				pstmt.setInt(12, mdto.getMovie_num());
 				
 				check = pstmt.executeUpdate();
 			}else{
@@ -165,6 +169,7 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			System.out.println("글 수정 동작 완료 : "+check);
 			
 		} catch (Exception e) {
+			System.out.println("글 수정 예외 발생 : "+check);
 			e.printStackTrace();
 		}finally{
 			closeDB();
