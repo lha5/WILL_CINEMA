@@ -92,7 +92,13 @@
 				</li>
 				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
 					<ul>
-						<li><a href="./CinemaUserView.ci?cinema_num=1001">서울</a></li>						
+						<li>
+							<a href="./CinemaUserView.ci?cinema_num=1001">서울</a>
+							<ul>
+								<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
+								<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털단지</a></li>
+							</ul>
+						</li>						
 						<li><a href="./CinemaUserView.ci?cinema_num=2001">경기/인천</a></li>
 						<li><a href="./CinemaUserView.ci?cinema_num=3001">충청/대전</a></li>
 						<li><a href="./CinemaUserView.ci?cinema_num=4001">전라/광주</a></li>
@@ -122,8 +128,8 @@
 				<li>VOD</li>
 			</ul>
 			<div id="sub_ul">
-				
-			</div>			
+				<div id="sub_ul2"></div>
+			</div>		
 		</nav>
 	</header>
 	
