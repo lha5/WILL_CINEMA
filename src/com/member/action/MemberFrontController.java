@@ -170,6 +170,15 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
+		}else if (command.equals("/NonMemberLoginAction.me")){
+			action = new NonMemberLoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/MemberNaverLogin.me")){
 			//네이버 로그인 callback.jsp 이동
 			// 후에 수정하실 분 callback.jsp에 내용 

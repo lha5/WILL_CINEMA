@@ -104,4 +104,8 @@ public class MemberDTO {
 	public void setPreference(String preference) {
 		this.preference = preference;
 	}
+	public String getEmail_hash() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

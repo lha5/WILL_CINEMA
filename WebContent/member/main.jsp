@@ -50,6 +50,7 @@ function acyncMovePage(url){
 
 	<%
 	// String id = (String) session.getAttribute("id");
+	System.out.println(" info : "+session.getAttribute("info"));
 	List info = (List) session.getAttribute("info");
 	// info.get(0) : 이름
 	// info.get(1) : 등급
@@ -62,35 +63,40 @@ function acyncMovePage(url){
 	// 회원 등급 처리
 	String level = "";
 	
-	switch (String.valueOf(info.get(1))) {
-		case "0":
-			level = "관리자";
-   		break;
-		case "1":
-			level = "VVIP";
-   		break;
-		case "2":
-			level = "VIP";
-   		break;
-		case "3":
-			level = "우수";
-   		break;
-		case "4":
-			level = "일반";
-   		break;
-		case "5":
-			level = "신규";
-		break;
-		default :
-			level = "신규";
-   		break;
-	}
+	if(!info.get(0).equals("")){
 	
-	// 포인트
-    int point = (int) info.get(2);	
+		switch (String.valueOf(info.get(1))) {
+			case "0":
+				level = "관리자";
+	   		break;
+			case "1":
+				level = "VVIP";
+	   		break;
+			case "2":
+				level = "VIP";
+	   		break;
+			case "3":
+				level = "우수";
+	   		break;
+			case "4":
+				level = "일반";
+	   		break;
+			case "5":
+				level = "신규";
+			break;
+			default :
+				level = "신규";
+	   		break;
+		}
+	
+	}
 	%>
 	
-	
+	<%
+	if(!info.get(0).equals("")){
+		// 포인트
+	    int point = (int) info.get(2);	
+	%>
 	
 	<section id="sec01">
 		<table>
@@ -133,7 +139,9 @@ function acyncMovePage(url){
 		</table>
 	</section>
 	
-	
+	<%
+	}
+	%>
 	
 	<!-- 각 메뉴를 클릭하면 페이지가 달라지게 Ajax로 구현하기 -->
 	<section id="sec02">
