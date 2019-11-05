@@ -102,6 +102,7 @@ public class ShowTimeAction implements Action {
 				  jsonObj.put("movie_name", movieList.getTitle());
 				  jsonObj.put("movie_num", movieList.getMovie_num());
 				  jsonObj.put("movie_grade", movieList.getGrade());
+				  jsonObj.put("roomNum", i+1);
 
 				  //영화의 런타임
 				  int mTime=movieList.getRunning_time();
@@ -217,7 +218,7 @@ public class ShowTimeAction implements Action {
 					  jsonObj.put("movie_name", movieList.getTitle());
 					  jsonObj.put("movie_num", movieList.getMovie_num());
 					  jsonObj.put("movie_grade", movieList.getGrade());
-
+					  jsonObj.put("roomNum", i+1);
 					  //영화의 런타임
 					  int mTime=movieList.getRunning_time();
 					  //상영관의 하루 시작시간
