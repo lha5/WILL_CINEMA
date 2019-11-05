@@ -325,11 +325,10 @@
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
 		<li class="mySlides">
-		<button class="accordion"> 주제 : <%=afdto.getSubject() %></button>
+		<button class="accordion">  <%=afdto.getSubject() %></button>
 		<div class="panel">
 
- 내용:<%=afdto.getContent()%><br>
- 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100">
+ <%=afdto.getContent()%><br>
 </div>
 		</li>
 					<%} %>
