@@ -59,7 +59,7 @@
 			</table> 
 		</form>
 		
-		<input type="button" value="비회원 로그인" onclick="location.href='./non_member/non_memberlogin.jsp'">
+		<input type="button" value="비회원" onclick="location.href='./non_member/non_memberlogin.jsp'">
 		
 		
 		<div id="forgot">
