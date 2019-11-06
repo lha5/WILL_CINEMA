@@ -76,6 +76,7 @@ public class MovieDAOImpl implements MovieDAO{
 				amdto.setCountry(rs.getString("country"));
 				amdto.setPoster(rs.getString("poster"));
 				amdto.setImage(rs.getString("image"));
+
 				boardList.add(amdto);
 			}
 

@@ -50,7 +50,6 @@
    
    <table border="1">
      <tr>
-    	<td>영화 번호</td>
        <td>영화 제목</td>
        <td>포스터</td>
        <td>장르</td>
@@ -62,9 +61,9 @@
      <% 
      	for (int i=0;i<boardList.size();i++) {
      		AdminMovieDTO mdto = boardList.get(i);
+     		System.out.println(" 포스터 : "+mdto.getPoster());
     		%>
 			<tr>
-				<td><%=mdto.getMovie_num() %></td>
 				<td>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
 					<%=mdto.getTitle() %>
@@ -81,7 +80,6 @@
 			</tr>
 		<%}%>
 	</table>
-	
 	<%
 	if (id != null) {
 		if (id.equals("admin")) {
