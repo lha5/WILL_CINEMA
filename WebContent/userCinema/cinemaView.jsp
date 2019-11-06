@@ -17,6 +17,7 @@
 /* style="width:10000px; height:420px;
  background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
  no-repeat;display:table-cell;vertical-align:middle" */
+
  
 	/* 하위 메뉴 고정 */
 	nav>ul>li:NTH-CHILD(3)>ul {
@@ -89,7 +90,7 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 6000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 10000);//다음 이미지로 롤링 애니메이션 할 시간차
 
 		//마우스 오버시 롤링을 멈춘다.
 		banner.mouseover(function(){
@@ -99,7 +100,7 @@
 		});
 		//마우스 아웃되면 다시 시작
 		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 4500);
+			rollingId = setInterval(function() { rollingStart(); }, 10000);
 			$(this).css("cursor", "default");
 		});
 		
@@ -108,7 +109,7 @@
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 4500, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 10000, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				

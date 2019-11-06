@@ -22,7 +22,6 @@
                 obj.style.display = 'none';
         }
 </script> -->
-
 </head>
 <body>
 
@@ -128,7 +127,7 @@
 				<li>VOD</li>
 			</ul>
 			<div id="sub_ul">
-				<div id="sub_ul2"></div>
+			<!-- 	<div id="sub_ul2"></div> -->
 			</div>		
 		</nav>
 	</header>
