@@ -45,7 +45,7 @@
 	
 	%>
 	
-	<br>
+	
 	
 	<fieldset class="loginField">
 		<span id="inin">회원 로그인</span>
@@ -86,9 +86,7 @@
 			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
-	
-	<br><br>
-	
+		
 	<div id="socialLogin">
 		<!-- 네이버 아이디 로그인 -->
 		<p>간편하게</p>

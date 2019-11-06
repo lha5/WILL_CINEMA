@@ -13,15 +13,6 @@
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
 
-<!-- <script type="text/javascript">
-        function showHide(id) {
-            var obj = document.getElementById(id);
-            if (obj.style.display == 'none')
-                obj.style.display = 'block';
-            else
-                obj.style.display = 'none';
-        }
-</script> -->
 </head>
 <body>
 
@@ -36,8 +27,8 @@
 		<div id="social">
 			<ul>
 				<li><i class="ri-smartphone-line ri-lg"></i> 모바일 APP</li>
-				<li><i class="ri-facebook-box-fill ri-lg"></i> 페이스북</li>
-				<li><i class="ri-youtube-fill ri-lg"></i> 유튜브</li>
+				<li><i class="ri-facebook-box-fill ri-lg"></i>페이스북</li>
+				<li><i class="ri-youtube-fill ri-lg"></i>유튜브</li>
 			</ul>
 		</div>
 		
