@@ -42,7 +42,7 @@
 				<%} %>
 			</ul>
 			<br>
-			<div class="clear">
+			<div class="more">
 				<h2>시사회/무대인사</h2> <a href="./EventContent.ae?item=preview">더보기</a>
 			</div>
 			<ul class="event_list">
@@ -59,7 +59,7 @@
 				<%} %>
 			</ul>
 			<br>
-			<div class="clear">
+			<div class="more">
 				<h2>윌시 NOW</h2> <a href="./EventContent.ae?item=nevent">더보기</a>
 			</div>
 			<ul class="event_list">
@@ -76,7 +76,7 @@
 				<%} %>
 			</ul>
 			<br>
-			<div class="clear">
+			<div class="more">
 				<h2>제휴 할인</h2> <a href="./EventContent.ae?item=collabo">더보기</a>
 			</div>
 			<ul class="event_list">
@@ -93,7 +93,7 @@
 				</il>
 				<%} %>
 			</ul>
-		<br class="clear">
+		<br class="more">
 		</div>
 
 	<%@ include file="/include/footer.jsp" %>
