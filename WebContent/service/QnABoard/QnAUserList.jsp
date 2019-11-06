@@ -39,10 +39,10 @@
      </tr>
      
 		<%
-     	for (int i=0;i<boardList.size();i++) {
+     	for (int i=boardList.size()-1;i>-1;i--) {
     		QnADTO qadto = boardList.get(i);
     		
-    		if (id.equals(qadto.getPass())) {
+    		if (id.equals(qadto.getId())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum()%></td>

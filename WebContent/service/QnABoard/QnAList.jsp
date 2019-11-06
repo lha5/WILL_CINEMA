@@ -46,7 +46,7 @@
        <td>죄회수</td>
      </tr>
      <%
-     	for (int i=0;i<boardList.size();i++) {
+     	for (int i=boardList.size()-1;i>-1;i--) {
     		QnADTO qadto = boardList.get(i);
 		%>
 			<tr>
