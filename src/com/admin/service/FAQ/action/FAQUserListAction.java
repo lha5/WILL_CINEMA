@@ -12,7 +12,7 @@ import com.admin.service.FAQ.db.AdminFAQDAO;
 import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
 
-public class FAQListAction implements Action {
+public class FAQUserListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -21,10 +21,6 @@ public class FAQListAction implements Action {
 		AdminFAQDAO afdao = new AdminFAQDAOImpl();
 		int count = afdao.getFAQCount();
 		int pageSize = 5;// 페이지에서 보여줄 글의 개수 설정
-		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-		// 아이디 없을때 보내려면 
 		
 		
 		String pageNum = request.getParameter("pageNum");
@@ -66,8 +62,9 @@ public class FAQListAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		
-		forward.setPath("./service/FAQBoard/faqList.jsp");
-		forward.setRedirect(false);	
+		forward.setPath("./service/FAQBoard/faqUserList.jsp");
+		forward.setRedirect(false);
+				
 
 		return forward;
 	}

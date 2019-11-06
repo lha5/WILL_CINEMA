@@ -174,7 +174,7 @@ public class MemberFrontController extends HttpServlet{
 		}else if (command.equals("/NonMemberLogin.me")) {
 			forward = new ActionForward();
 			
-			forward.setPath("./non_member/non_memberlogin.jsp");
+			forward.setPath("./non_member/nonMemberLogin.jsp");
 			forward.setRedirect(false);
 		} else if (command.equals("/NonMemberLoginAction.me")){
 			action = new NonMemberLoginAction();
