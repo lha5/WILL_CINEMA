@@ -31,7 +31,9 @@
 
 	String tel = request.getParameter("tel");
 	%>
-	<!-- 결제 모듈 -->
+	<!-- 결제 모듈 
+		https://smujihoon.tistory.com/m/103
+	-->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			// var IMP = window.IMP;
@@ -56,7 +58,7 @@
 						dataType: 'text',
 						// contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'+',<%=tel %>'
 					}).done(function(data) {
 						/* if (everythings_fine) {							
 							msg = '결제가 완료되었습니다.';
@@ -71,6 +73,7 @@
 							msg = '결제가 정상적으로 처리되지 못하였습니다.';
 							alert(msg);
 						} */
+						
 					});
 					// 성공했을 시 이동할 페이지
 					location.href = './MallOrderDone.mor';
