@@ -34,8 +34,10 @@
 	
 	
 
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-   
+	<div id="faqList"><center>질문 목록</center></div> 
+	
+	<div id="contentsWrap">	
+   	<center>
    <table border="1">
      <tr>
        <td>번호</td>
@@ -63,8 +65,8 @@
 			</tr>
 		<%}%>
 	</table>
-	
-	<div id="paging">
+	</center>
+	<div id="pagingNumber">
 	<%
 		// 페이징 처리
 		if(count != 0) {
@@ -91,7 +93,8 @@
 				}
 		}
 	%>
-	</div>
+		</div>
+	</div>	
 	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
 	
 

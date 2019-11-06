@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-.accordion {
+.fqaccordion {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -13,23 +13,36 @@
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
+.fqactive, .fqaccordion:hover {
   background-color: #ccc; 
 }
 
-.panel {
+.fqpanel {
   padding: 0 18px;
   display: none;
   background-color: white;
   overflow: hidden;
 }
 
-#faq_contents {
+.fqaccordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.fqactive:after {
+  content: "\2212";
+}
+
+
+#fq_contents {
 	width: 50%;
 	margin: 10px auto;
 }
 
-#paging {
+#fqpaging {
 	/* border: 1px solid red; */
 	width: 90%;
 	margin: 20px auto;
@@ -41,12 +54,12 @@
 	margin: 10px auto;
 }
 
-#contentsWrap {
+#faqWrap {
 	/* border: 1px solid red; */
 	width: 900px;
 	margin: 50px auto;
 }
 
-#pagingNumber {
+#fqpagingNumber {
 	text-align: center;
 }

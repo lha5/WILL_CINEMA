@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 .seatTable td .seat{
+	display:inline-block;
 	border: none;
 	width: 25px;
 	height: 25px;
@@ -29,20 +30,39 @@
 	width: 25px;
 	height: 25px;
 	text-align: center;
-	font-size: 11px;
+	font-size: 14px;
 	line-height: 23px;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	margin-bottom: 3px;
+	display:inline-block;
 }
 
 .seatTable td .sweet{
 	border: 2px solid red;
 }
 
+.seatTable td .on{
+	background:black;
+}
+
+.seatTable td .over{
+	background:black;
+}
+
+.seatTable td .reserve{
+	display:inline-block;
+	background:url('../img/bg/bg_seat03.gif') no-repeat 50% 50% !important;
+	border:0 !important;
+	color:#b7b7b7 !important;
+	pointer-events: none;
+}
+
 .seatTable td .disabled{
+	display:inline-block;
 	background:url('../img/bg/bg_disabled.gif') no-repeat 50% 50% !important;
 	border:0 !important;
-	font-size:0;
+	color: rgba(0, 0, 0, 0);
+	pointer-events: none;
 }

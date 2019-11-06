@@ -338,6 +338,79 @@ public class TicketDAOImpl implements TicketDAO{
 	}
 	/*------------------- 선택한 날짜의 예매 정보 --------------------*/
 
+	/*------------------- 영화 예약된 좌석 --------------------*/
+	@Override
+	public String getSeatNum(int cinema_num, int movie_num, int roomNum, String running_date, String running_time) {
+		String seat="";
+		try {
+			con = getCon();
+			
+			sql = "select * from book where cinema_num=? and movie_num=? and "
+					+ "room=? and date=? and running_time=?";
 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cinema_num);
+			pstmt.setInt(2, movie_num);
+			pstmt.setInt(3, roomNum);
+			pstmt.setString(4, running_date);
+			pstmt.setString(5, running_time);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				seat=rs.getString("seat");	
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return seat;
+	}
+	/*------------------- 영화 예약된 좌석 --------------------*/
+
+	/*------------------- 티켓예매 정보 저장 --------------------*/
+	@Override
+	public void setTicket(TicketDTO tdto) {
+		int num = 0;
+		try {
+			con = getCon();
+
+			sql = "select max(num) from book";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt(1) + 1;
+			} else {
+				num = 1;
+			}
+
+			sql = "insert into book(num,id,pass,movie_num,cinema_num,seat,room,date,day,running_time,"
+					+ "person_num,payment,price,now()) " + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, tdto.getId());
+			pstmt.setString(3, tdto.getPass());
+			pstmt.setInt(4, tdto.getMovie_num());
+			pstmt.setInt(5, tdto.getCinema_num());
+			pstmt.setString(6, tdto.getSeat());
+			pstmt.setString(7, tdto.getRoom());
+			pstmt.setDate(8, tdto.getDate());
+			pstmt.setString(9, tdto.getDay());
+			pstmt.setString(10, tdto.getRunnging_time());
+			pstmt.setString(11, tdto.getPerson_num());
+			pstmt.setString(12, tdto.getPayment());
+			pstmt.setInt(13, tdto.getPrice());
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/*------------------- 티켓예매 정보 저장 --------------------*/
 
 }

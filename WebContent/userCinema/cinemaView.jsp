@@ -10,7 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화관 지점</title>
-
+<!--CSS  -->
+<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
 /*롯데 영화관   */
@@ -39,7 +41,7 @@
 		position: relative;
 		border: 1px solid red;
 		/* width: 10000px; */
-		width: 100%;
+		width: auto;
 		height: 420px;
 		margin: 0 auto;
 		padding: 0;
@@ -56,7 +58,7 @@
 	.banner ul li {
 		float: left;
 		/* width: 10000px; */
-		width: 100%;
+		width: auto;
 		height: 420px;
 		margin: 0;
 		padding: 0;
@@ -90,26 +92,15 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 10000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 7000);//다음 이미지로 롤링 애니메이션 할 시간차
 
-		//마우스 오버시 롤링을 멈춘다.
-		banner.mouseover(function(){
-			//중지
-			clearInterval(rollingId);
-			$(this).css("cursor", "pointer");
-		});
-		//마우스 아웃되면 다시 시작
-		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 10000);
-			$(this).css("cursor", "default");
-		});
 		
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $bannerLength + "px");
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 10000, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 7000, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				
@@ -129,6 +120,16 @@
 			 
 		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
 	}
+	
+	 function movieing(){
+	        	        	        
+	        var movieck = $('#moving').val();
+	        
+	        window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","width=600,height=400");
+	        
+	        
+	    }
+	
 </script>
 
 </head>
@@ -145,20 +146,27 @@
 	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	%>
 	
-	<div class="contents">
-		<div class="banner">
+	
+<div class="banner">
 			<ul>
 				  <%
-     	for (int i=0;i<3;i++) {
+     	for (int i=0;i<4;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
-		
-		<li><img src ="./upload/<%=mdto.getImage()%>"></li>
+						
+		<li><a href="javascript:void(0);"><img src ="./upload/<%=mdto.getImage()%>"   onclick="movieing()">
+					<input type="hidden" id="moving" value="<%=mdto.getImage()%>"></li></a>
+					
 					<%} %>
+					
 					</ul>
 
 		</div>
 	
+	
+	<div class="contents">
+		
+		
 	<div id="cinemaname">
 	
 	<table border="1">

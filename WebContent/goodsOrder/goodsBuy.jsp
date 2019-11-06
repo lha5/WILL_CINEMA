@@ -14,6 +14,74 @@
 <!-- 아임포트 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
+<!-- CSS -->
+<style type="text/css">
+#bill {
+	/* border: 1px solid lime; */
+	width: 700px;
+	margin: 50px auto;
+}
+
+#billInfo {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#billInfo td {
+	border-top: 2px solid #1c1c1c;
+	border-bottom: 2px solid #1c1c1c;
+	height: 70px;
+}
+
+#ttl {
+	width: 700px;
+	margin: 50px auto 0 auto;
+}
+
+#howToPay {
+	width: 700px;
+	margin: 20px auto;
+	line-height: 2.3em;
+	text-align: center;
+	height: 175px;
+	padding-top: 30px;
+}
+
+#goPay {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin-top: 20px;
+}
+
+#before {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #240e04;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 16px;
+	color: #240e04;
+	letter-spacing: 2px;
+	margin-top: 20px;
+}
+</style>
+
 </head>
 <body>
 	<div id="wrap">
@@ -27,46 +95,38 @@
 		int amount = (int) request.getAttribute("amount");
 		int total = malldto.getPrice() * amount;
 		%>
-	
-		<h1>주문 내역</h1>
-		<table border="1">
+		<div id="bill">
+		<h1>구매할 상품 정보</h1>
+		<table id="billInfo">
 			<tr>
 				<td>상품명</td>
-				<td>사진</td>
+				<td>상품 가격</td>
 				<td>수량</td>
-				<td>가격</td>
+				<td>합계</td>
 			</tr>
 			<tr>
-				<td><%=malldto.getName() %></td>
-				<td><img src="./upload/<%=malldto.getImage() %>" witdh="50" height="50"></td>
+				<td><img src="./upload/<%=malldto.getImage() %>" witdh="50" height="50"><%=malldto.getName() %></td>
+				<td><%=malldto.getPrice()%>원</td>
 				<td><%=amount%></td>
 				<td><%=total%>원</td>
 			</tr>
 		</table>
-	
-		<br>
-		<br>
-		<br>
+		</div>
 		
 		
-		<fieldset>
-	
-				<h3>결제 방법</h3>
 				
-				<div id="kpay">
-	
-					<label>
-						<input type="radio" value="Kakaopay" name="payment" checked>
-						&nbsp;
-						<img alt="카카오페이" src="./img/payment.png">
-					</label>
-				</div>
-					
-				
-				<input type="button" value="결제하기" id="goPay">
-				&nbsp;&nbsp;
-				<input type="button" value="이전 단계" id="before">
-
+		<h1 id="ttl">결제 방법</h1>
+		<fieldset id="howToPay">
+			<div id="kpay">
+				<label>
+					<input type="radio" value="Kakaopay" name="payment" checked>
+					&nbsp;
+					<img alt="카카오페이" src="./img/payment.png">
+				</label>
+			</div>
+			<input type="button" value="결제하기" id="goPay">
+			&nbsp;&nbsp;
+			<input type="button" value="이전 단계" id="before">
 		</fieldset>
 		
 		<!-- 뒤로 가기 버튼 기능 추가 -->

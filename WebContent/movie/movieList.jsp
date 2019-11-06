@@ -11,9 +11,62 @@
 
 <!-- 하위 메뉴 고정 -->
 <style type="text/css">
-	nav>ul>li:NTH-CHILD(2)>ul {
-		display: block;
-	}
+nav>ul>li:NTH-CHILD(2)>ul {
+	display: block;
+}
+
+#contents {
+	/* border: 1px solid red; */
+	width: 1000px;
+	height: 1900px;
+	margin: 50px auto;
+}
+
+#contents li {
+	border: 1px solid #e6e6e6;
+	float: left;
+	margin: 10px 20px 10px 53px;
+	padding: 7px;
+	text-align: center;
+}
+
+#clear {
+	clear: both;
+}
+
+#searching {
+	margin: 20px 0 10px 500px;
+}
+
+input[type=text] {
+	width: 200px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #240e04;
+	color: #240e04;
+	font-size: 13px;
+}
+
+input[type=submit] {
+	width: 75px;
+	height: 37px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 19px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
 </style>
 
 </head>
@@ -30,67 +83,48 @@
 			System.out.println("이동성공");
 		%>
 	
-	
-
-	<h1> 게시판 글 목록 [ 전체 글 개수 : <%=count %> 개] </h1>
-   
- 		 
-  
-	<form action="./MovieSearchAction.mo" method="post">
-    <select name="searchType">
-        <option value="title">제목</option>
-        <option value="genre">장르</option>
-        <option value="director">감독</option>
-    	<option value="actor">배우</option>
-    </select>
-    <input type="text" name="searchText">
-    <input type="submit" class="btn">
-	</form>
-   
-   
-   <table border="1">
-     <tr>
-    	<td>영화 번호</td>
-       <td>영화 제목</td>
-       <td>포스터</td>
-       <td>장르</td>
-       <td>감독</td>
-       <td>상영시간</td>
-       <td>내용</td>
-        <td>배우</td>
-     </tr>
-     <% 
-     	for (int i=0;i<boardList.size();i++) {
-     		AdminMovieDTO mdto = boardList.get(i);
-    		%>
-			<tr>
-				<td><%=mdto.getMovie_num() %></td>
-				<td>
+	<div id="contents">
+		<form action="./MovieSearchAction.mo" method="post" id="searching">
+		    <select name="searchType">
+		        <option value="title">제목</option>
+		        <option value="genre">장르</option>
+		        <option value="director">감독</option>
+		    	<option value="actor">배우</option>
+		    </select>
+		    <input type="text" name="searchText">
+		    <input type="submit" value="검색" class="btn">
+		</form>
+		
+		<ul>
+			<%
+			for (int i = 0; i < boardList.size(); i++) {
+	     		AdminMovieDTO mdto = boardList.get(i);
+			%>
+				<li>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
-					<%=mdto.getTitle() %>
+					<img src="./upload/<%=mdto.getPoster()%>" width="228px" height="334px">
+					<br><br>
+					<h4><%=mdto.getTitle() %></h4>
+					예매율 <%=mdto.getBooking_ration() %> | 장르 <%=mdto.getGenre() %>
 					</a>
-				</td>
-				<td>
-					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
-				</td>
-				<td><%=mdto.getGenre() %></td>
-				<td><%=mdto.getDirector()%></td>
-				<td><%=mdto.getRunning_time() %></td>
-				<td><%=mdto.getStory() %></td>
-				<td><%=mdto.getActor() %></td>
-			</tr>
-		<%}%>
-	</table>
-	
-	<%
-	if (id != null) {
-		if (id.equals("admin")) {
-	%>
-		<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
-	<%
+				</li>			
+			<%
+			}
+			%>
+		</ul>
+		<%
+		if (id != null) {
+			if (id.equals("admin")) {
+		%>
+			<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
+		<%
+			}
 		}
-	}
-	%>
+		%>
+	</div>
+	
+	<div id="clear"></div>
+	   	
 	<%@ include file="../include/footer.jsp" %>
 	
 </body>

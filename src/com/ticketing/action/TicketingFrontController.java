@@ -54,7 +54,6 @@ public class TicketingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/SeatSelect.ti")){ //좌석 선택 페이지 이동
-			//action = new SeatSelect(); 
 			action = new SeatSelect();
 			try {
 				forward=action.execute(request, response);
@@ -71,21 +70,31 @@ public class TicketingFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/TicketOrderAction.ti")){ //티켓 결제 페이지
 			//결제 내역은 마이페이지-구매내역 확인
-			//action = new TicketOrderAction(); 
+			action = new TicketOrderAction(); 
 			
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
-			//action = new MovieScheAction(); 
+		}else if (command.equals("/TicketOrderProc.ti")) {//티켓 결제 확인 페이지
+			forward = new ActionForward();
+			
+			forward.setPath("./ticketing/ticketOrderProc.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/TicketOrderAddAction.ti")){//티켓 결제 진행 페이지
+			action = new TicketOrderAddAction(); 
 			
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/TicketOrderDone.ti")){ //티켓 결제 완료 페이지
+			forward = new ActionForward();
+			
+			forward.setPath("./ticketing/ticketOrderDone.jsp");
+			forward.setRedirect(false);
 		}else if(command.equals("/TestSendEmailAction.ti")){ //이메일 발송 페이지
 				action = new TestSendEmailAction();
 				
@@ -95,6 +104,14 @@ public class TicketingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
+			//action = new MovieScheAction(); 
+			
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
