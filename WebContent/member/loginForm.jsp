@@ -23,7 +23,7 @@
 </head>
 <body>
 
-	<div id="wrap">
+	<div>
 
 	<%@ include file="../include/header.jsp" %>
 	
@@ -47,9 +47,9 @@
 	
 	<br>
 	
-	<fieldset>
+	<fieldset class="loginField">
 		<span id="inin">회원 로그인</span>
-		<form action="./MemberLoginAction.me" method="post">
+		<form action="./MemberLoginAction.me" method="post" class="Loginfr">
 			<table>
 				<tr>
 					<td><label><i class="ri-user-line ri-1g"></i> 아이디</label></td>
