@@ -35,9 +35,9 @@
 		<div id="top_line">
 		<div id="social">
 			<ul>
-				<li><i class="ri-smartphone-line"></i> 모바일 APP</li>
-				<li><i class="ri-facebook-box-fill"></i> 페이스북</li>
-				<li><i class="ri-youtube-fill"></i> 유튜브</li>
+				<li><i class="ri-smartphone-line ri-lg"></i> 모바일 APP</li>
+				<li><i class="ri-facebook-box-fill ri-lg"></i> 페이스북</li>
+				<li><i class="ri-youtube-fill ri-lg"></i> 유튜브</li>
 			</ul>
 		</div>
 		
