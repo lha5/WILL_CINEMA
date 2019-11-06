@@ -456,7 +456,7 @@
 </style>
 
 </head>
-<body>
+<body class="ticketBody">
 <%
 	//List<String> allDay = (List)request.getAttribute("allDay");
 
@@ -471,7 +471,7 @@
 %>
 <%@ include file="../../include/header.jsp" %>
 
-<div class="wrap">
+<div class="ticketWrap">
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
   <div class="calendar"> <!-- 달력 -->
