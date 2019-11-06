@@ -13,15 +13,6 @@
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
 
-<!-- <script type="text/javascript">
-        function showHide(id) {
-            var obj = document.getElementById(id);
-            if (obj.style.display == 'none')
-                obj.style.display = 'block';
-            else
-                obj.style.display = 'none';
-        }
-</script> -->
 </head>
 <body>
 
@@ -35,9 +26,9 @@
 		<div id="top_line">
 		<div id="social">
 			<ul>
-				<li><i class="ri-smartphone-line"></i> 모바일 APP</li>
-				<li><i class="ri-facebook-box-fill"></i> 페이스북</li>
-				<li><i class="ri-youtube-fill"></i> 유튜브</li>
+				<li><i class="ri-smartphone-line ri-lg"></i> 모바일 APP</li>
+				<li><i class="ri-facebook-box-fill ri-lg"></i>페이스북</li>
+				<li><i class="ri-youtube-fill ri-lg"></i>유튜브</li>
 			</ul>
 		</div>
 		
@@ -54,9 +45,9 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li id="forcustomer"><a href="./FAQList.af">고객센터</a>
+				<li id="forcustomer"><a href="./FAQUserList.af">고객센터</a>
 					<ul id="dropdown">
-						<li><a href="./FAQList.af">FAQ</a></li>
+						<li><a href="./FAQUserList.af">FAQ</a></li>
 						<li><a href="./QnAList.sq">1:1 문의</a></li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
@@ -91,9 +82,9 @@
 				</li>
 				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
 					<ul>
-						<li>
+						<li class="region">
 							<a href="./CinemaUserView.ci?cinema_num=1001">서울</a>
-							<ul>
+							<ul class="cine">
 								<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
 								<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털단지</a></li>
 							</ul>

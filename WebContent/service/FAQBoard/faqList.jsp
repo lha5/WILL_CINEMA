@@ -29,67 +29,84 @@
 	int endPage = (Integer) request.getAttribute("endPage");
 
 	System.out.println("FAQList :"+FAQList.toString());
-	%>
-	
-	
-	<table border="1">
-		<tr>
-			<td>번호</td>
-			<td>카테고리</td>
-			<td>제목</td>
-			<td>내용</td>
-			<td>이미지</td>
-		</tr>
-		<% 
-		 for(int i=0;i<FAQList.size();i++){
-			 AdminFAQDTO afdto = FAQList.get(i);
-		%>
+	///관리자만 볼수 있는것임 연결된곳이 없음
+  %>
+
+	  	
+	<div id="faqList">자주 묻는 질문</div>
+		
+  	<div id="contentsWrap">	
+		
+		<table>
+			<tr>
+				<td>번호</td>
+				<td>카테고리</td>
+				<td>제목</td>
+			</tr>
+			<% 
+			 for (int i = 0; i < FAQList.size(); i++) {
+				 AdminFAQDTO afdto = FAQList.get(i);
+			%>
+
 		  	<tr>
 				<td><%=afdto.getNum()%></td>
 				<td><%=afdto.getCategory() %></td>
 				<td>
-					<a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>"><%=afdto.getSubject() %></a>
-		          	</td>
-				<td><%=afdto.getContent()%></td>
-				<td><img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br></td>
+
+					<a href="./FAQContent.af?num=<%=afdto.getNum()%>&pageNum=<%=pageNum%>"><%=afdto.getSubject()%></a>
+		        </td>
+
 			</tr>	
-		<%} %> 
-	</table>
- 	<%
+			<%
+			} 
+			%> 
+		</table>
+				<% if (id != null) {
+					if(id.equals("admin")){
+				%>
+					<%-- <a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">(관리자) 내용 수정하기</a> --%>
+					<a href="./FAQWrite.af">(관리자) 자주 묻는 질문 내용 쓰기</a>
+				<%
+					}
+				}
+				%> 
+			</div>
+			
+
+		<br>
+		<br>		
+
+		<div id="pagingNumber">
+		<%
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
-			%>
-				<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">[이전]</a>
-			<%
+		%>
+			<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">이전</a>
+			&nbsp;&nbsp;
+		<%
 			}
 
 			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
-				<a href="./FAQList.af?pageNum=<%=i%>"><%=i%></a>
+			<a href="./FAQList.af?pageNum=<%=i%>"><%=i%></a>
+			&nbsp;&nbsp;
 			<%
 			}
 
 			// 다음
 			if (endPage < pageCount) {
 			%>
-				<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+				&nbsp;&nbsp;
+				<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">다음</a>
 			<%
-				}
+			}
 		}
-	%>
-
-	<%
-	if (id != null) {
-		if (id.equals("admin")) {
-	%>
-			<a href="./FAQWrite.af">FAQ 작성하기</a>
-	<%
-		}
-	}
-	%>
-
+		%>
+		</div>
+	</div>
+	
 	<%@ include file="../../include/footer.jsp" %>
 	
 	</div>

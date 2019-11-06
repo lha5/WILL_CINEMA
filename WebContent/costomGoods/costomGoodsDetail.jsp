@@ -39,7 +39,7 @@
 		--%>
 		<table border="1">
 			<tr>
-				<td><img src="./goodsImageUpload/<%=mdto.getImage()%>" width="300" height="300"></td>
+				<td><img src="./upload/<%=mdto.getImage()%>" width="300" height="300"></td>
 				<td>
 					상품명 : <%=mdto.getName()%><br> 
 					판매가격 : <%=mdto.getPrice()%><br>

@@ -23,7 +23,7 @@
 </head>
 <body>
 
-	<div id="wrap">
+	<div>
 
 	<%@ include file="../include/header.jsp" %>
 	
@@ -45,11 +45,11 @@
 	
 	%>
 	
-	<br>
 	
-	<fieldset>
+	
+	<fieldset class="loginField">
 		<span id="inin">회원 로그인</span>
-		<form action="./MemberLoginAction.me" method="post">
+		<form action="./MemberLoginAction.me" method="post" class="Loginfr">
 			<table>
 				<tr>
 					<td><label><i class="ri-user-line ri-1g"></i> 아이디</label></td>
@@ -71,7 +71,7 @@
 		<input type="button" value="비회원 로그인" id="nonmember">
 		
 		<script type="text/javascript">
-			document.querySelector('#nonmember').addEventLisener('click', function() {
+			document.querySelector('#nonmember').addEventListener('click', function() {
 				location.href = './NonMemberLogin.me';
 			});
 		</script>		
@@ -86,9 +86,7 @@
 			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
-	
-	<br><br>
-	
+		
 	<div id="socialLogin">
 		<!-- 네이버 아이디 로그인 -->
 		<p>간편하게</p>
