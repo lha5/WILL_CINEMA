@@ -338,6 +338,38 @@ public class TicketDAOImpl implements TicketDAO{
 	}
 	/*------------------- 선택한 날짜의 예매 정보 --------------------*/
 
+	/*------------------- 영화 예약된 좌석 --------------------*/
+	@Override
+	public String getSeatNum(int cinema_num, int movie_num, int roomNum, String running_date, String running_time) {
+		String seat="";
+		try {
+			con = getCon();
+			
+			sql = "select * from book where cinema_num=? and movie_num=? and "
+					+ "room=? and date=? and running_time=?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cinema_num);
+			pstmt.setInt(2, movie_num);
+			pstmt.setInt(3, roomNum);
+			pstmt.setString(4, running_date);
+			pstmt.setString(5, running_time);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				seat=rs.getString("seat");	
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return seat;
+	}
+	/*------------------- 영화 예약된 좌석 --------------------*/
 
 
 }
