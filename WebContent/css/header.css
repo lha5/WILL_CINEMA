@@ -28,7 +28,7 @@
 
 a {
 	text-decoration: none;
-	color: #804040;/* #d7282d */
+	color: #240e04;
 }
 
 ul>li {
@@ -58,12 +58,12 @@ header {
 	width: 100%;
 	height: 275px;
 	margin: 0 auto;
-	color: #804040;
+	color: #240e04;
 	padding-bottom: 0;
 }
 
 #top_line {
-	background-color: #ffefa3;
+	background-color: #e6e6e6;
 	padding-top: 7px;
 }
 
@@ -84,6 +84,7 @@ header {
 	float: left;
 	width: 100px;
 	text-align: center;
+	position: relative;	
 }
 
 #social>ul>li:HOVER {
@@ -94,12 +95,33 @@ header {
 	margin-left: -10px;
 }
 
+.ri-smartphone-line {
+	position: absolute;
+	top: 2px;
+	left: 1px;
+	magin: 0;
+	padding: 0;
+	background-color: #ffffff;
+}
+
 #social>ul>li>.ri-facebook-box-fill {
 	color: #0373cd;
+	position: absolute;
+	top: 2px;
+	left: 4px;
+	magin: 0;
+	padding: 0;
+	background-color: #ffffff;
 }
 
 #social>ul>li>.ri-youtube-fill {
 	color: #d7282d;
+	position: absolute;
+	top: 2px;
+	left: 11px;
+	magin: 0;
+	padding: 0;
+	background-color: #ffffff;
 }
 
 #my {
@@ -215,8 +237,8 @@ header {
 }
 
 nav {
-	border-top: 2px solid #804040;
-	border-bottom: 1px solid #804040;
+	border-top: 2px solid #240e04;
+	border-bottom: 1px solid #240e04;
 	height: 55px;
 	padding: 0 auto 10px auto;
 	margin-top: 35px;
