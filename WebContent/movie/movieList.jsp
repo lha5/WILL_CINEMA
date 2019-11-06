@@ -80,7 +80,6 @@
 			</tr>
 		<%}%>
 	</table>
-	
 	<%
 	if (id != null) {
 		if (id.equals("admin")) {
