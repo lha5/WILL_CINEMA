@@ -7,8 +7,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항</title>
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeWrite.css">
 </head>
 <body>
 
@@ -29,38 +32,46 @@
 	%>
 
 
-	<table border="1">
-		<tr>
-			<td>번호</td>
-			<td>카테고리</td>
-			<td>제목</td>
-			<td>날짜</td>	
-			<td>조회수</td>
-		</tr>
-	
-	
+
+	<div id="notiList">공지사항</div>
+		<div id="notiWrap">
+		
 		<% 
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
-			//System.out.println(andto.getReadcount(int) );  
 		%>
-	  	<tr>
-			<td><%=andto.getNum()%></td>
-			<td><%=andto.getCategory()%></td>
-			<td><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>"><%=andto.getSubject()%></a></td>
-			<td><%=andto.getDate()%></td>
-			<td><%=andto.getReadcount() %></td>
-		</tr>
+	  	
+	  	<button class="notiaccordion">[<%=andto.getCategory() %>] <%=andto.getSubject() %> 조회수 :<%=andto.getReadcount() %> </button>
+	  	<div class ="notipanel">
+	  	
+	  	
+	  	<a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>"><%=andto.getSubject()%>(자세히보기 클릭)</a>
+	  	
+	  	<%=andto.getContent() %>
+	  	</div><!--공지사항 내용  -->
+	  	
 		<%
-		} 
+		}/* 반복문 */ 
 		%> 	
-	</table>
+	<script>
+			var acc = document.getElementsByClassName("notiaccordion");
+			
+			for (var i = 0; i < acc.length; i++) {
+	 			acc[i].addEventListener("click", function() {
+	    			this.classList.toggle("notiactive");
+	    			var panel = this.nextElementSibling;
+	    			if (panel.style.display === "block") {
+	     					panel.style.display = "none";
+	    			} else {
+	     					panel.style.display = "block";
+	    			}
+	  			});
+			}
+		</script>	
 	
-	
-	
+	<div id="notipagingNumber">
 		<%
-
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
@@ -88,7 +99,8 @@
 	
 	
 	%>
-	
+	</div>
+	</div>
 	<%
 	if (id != null) {
 		if (id.equals("admin")) {
