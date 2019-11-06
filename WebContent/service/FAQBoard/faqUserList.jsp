@@ -80,7 +80,7 @@
 			// 이전
 			if (startPage > pageBlock) {
 		%>
-			<a href="./FAQList.af?pageNum=<%=startPage - pageBlock%>">이전</a>
+			<a href="./FAQUserList.af?pageNum=<%=startPage - pageBlock%>">이전</a>
 			&nbsp;&nbsp;
 		<%
 			}
@@ -88,7 +88,7 @@
 			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
-			<a href="./FAQList.af?pageNum=<%=i%>"><%=i%></a>
+			<a href="./FAQUserList.af?pageNum=<%=i%>"><%=i%></a>
 			&nbsp;&nbsp;
 			<%
 			}
@@ -97,7 +97,7 @@
 			if (endPage < pageCount) {
 			%>
 				&nbsp;&nbsp;
-				<a href="./FAQList.af?pageNum=<%=startPage + pageBlock%>">다음</a>
+				<a href="./FAQUserList.af?pageNum=<%=startPage + pageBlock%>">다음</a>
 			<%
 			}
 		}
