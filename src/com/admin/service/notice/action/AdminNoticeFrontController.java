@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.service.QnA.action.QnASearchAction;
 
 public class AdminNoticeFrontController extends HttpServlet{
 
@@ -74,7 +75,18 @@ public class AdminNoticeFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/NoticeSearchAction.an")){
+			action = new NoticeSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
+		
+		
 
 		//가상주소를 가지고 이동
 		if(forward !=null){

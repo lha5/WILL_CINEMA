@@ -33,10 +33,18 @@
 
 
 
-	<div id="notiList">공지사항</div>
-		<div id="notiWrap">
+		<div id="notiList">공지사항		
+		<form action="./NoticeSearchAction.an" method="post">
+		<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력">
+		<input type="submit" value="검색" />
+		</form>
 		
-		<% 
+		</div>
+		
+		
+		
+		<div id="notiWrap">
+				<% 
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);
 		 
