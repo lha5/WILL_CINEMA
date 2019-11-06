@@ -31,15 +31,15 @@
   	
 	<div id="faqList">자주 묻는 질문</div>
 		
-  	<div id="contentsWrap">	
+  	<div id="faqWrap">	
 		
 		<% 
 		 for (int i = 0; i < FAQList.size(); i++) {
 			 AdminFAQDTO afdto = FAQList.get(i);
 		%>
 		 	<%-- <td><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>"></a></td> --%>
-			<button class="accordion">[<%=afdto.getCategory()%>] <%=afdto.getSubject() %></button>
-			<div class="panel">
+			<button class="fqaccordion">[<%=afdto.getCategory()%>] <%=afdto.getSubject() %></button>
+			<div class="fqpanel">
 				<br>
 				<p>
 					
@@ -50,17 +50,17 @@
 				<h4><a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>">글수정(관리자)</a></h4>
 				<h4><a href="./FAQWrite.af">글 쓰기(관리자)</a></h4>
 				<%}%> 
-			</div> 
+			</div> <!--내용   -->
 		<%
-		}
+		}/*반복문  */
 		%>
 		<!-- 자바스크립트 -->
 		<script>
-			var acc = document.getElementsByClassName("accordion");
+			var acc = document.getElementsByClassName("fqaccordion");
 			
 			for (var i = 0; i < acc.length; i++) {
 	 			acc[i].addEventListener("click", function() {
-	    			this.classList.toggle("active");
+	    			this.classList.toggle("fqactive");
 	    			var panel = this.nextElementSibling;
 	    			if (panel.style.display === "block") {
 	     					panel.style.display = "none";
@@ -74,7 +74,7 @@
 		<br>
 		<br>		
 
-		<div id="pagingNumber">
+		<div id="fqpagingNumber">
 		<%
 		if(count != 0) {
 			// 이전

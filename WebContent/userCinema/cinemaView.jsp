@@ -131,6 +131,16 @@
 			 
 		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
 	}
+	
+	 function movieing(){
+	        	        	        
+	        var movieck = $('#moving').val();
+	        
+	        window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","width=600,height=400");
+	        
+	        
+	    }
+	
 </script>
 
 </head>
@@ -154,8 +164,9 @@
      	for (int i=0;i<3;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
-		
-		<li><img src ="./upload/<%=mdto.getImage()%>"></li>
+						
+		<li><img src ="./upload/<%=mdto.getImage()%>"  class="movieing" onclick="movieing()"></li>
+					<li><input type="hidden" id="moving" value="<%=mdto.getImage()%>"><li>
 					<%} %>
 					</ul>
 
