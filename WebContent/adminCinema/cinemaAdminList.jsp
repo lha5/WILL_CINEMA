@@ -31,7 +31,7 @@
 	int pageSize = (Integer) request.getAttribute("pageSize");
 	%>
 
-	<table border="1">
+	<table >
 		<tr>
 			<td colspan="8"><a href="./CinemaAdd.ci">등록</a></td>
 		</tr>
@@ -115,11 +115,11 @@
 		</table>
 		</td>
 		</tr>
-		<tr>
+		<!-- <tr>
 			<td colspan="8">-----------------------------------------
 			---------------------------------------------------------
 			</td>		
-		</tr>	
+		</tr>	 -->
 		
 	<%
 	}
