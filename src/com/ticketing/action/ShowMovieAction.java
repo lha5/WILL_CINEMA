@@ -121,7 +121,7 @@ public class ShowMovieAction implements Action {
 					if(todayCal.compareTo(startCal)!=-1
 					  &&todayCal.compareTo(endCal)!=1){//오늘 날짜의 영화관의 모든 정보를 저장 CineDTO(영화관 선택시)
 						//상영관의 영화 정보
-						MovieDTO movieList
+						AdminMovieDTO movieList
 							=tdao.getMovie(Integer.parseInt(cdto.getMovie_num().split(",")[j]));
 							
 						//선택된 영화가 상영되는 영화관이 있으면
@@ -138,7 +138,7 @@ public class ShowMovieAction implements Action {
 		*/
 		
 		JSONObject jsonObj=new JSONObject();
-		
+		//전체 영화 리스트에서 상영중인 영화를 제외
 		HashSet<Integer> movieList = new HashSet<Integer>();
 		if(runningMovie!=null){
 			for(int i:movieArray){
@@ -150,7 +150,7 @@ public class ShowMovieAction implements Action {
 				}
 			}
 		}
-		
+		//전체 영화관 리스트에서 선택한 영화를 상영중인 영화관을 제외
 		HashSet<Integer> cinemaList = new HashSet<Integer>();
 		if(curRegion!=null){
 			for(CineDTO i:allCineList){

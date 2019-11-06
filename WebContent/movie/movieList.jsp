@@ -8,20 +8,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화/상영작</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(2)>ul {
+		display: block;
+	}
+</style>
+
 </head>
 <body>
 		<%@ include file="../include/header.jsp" %>	
-
-	<%
-		// String id = (String)session.getAttribute("id");
-		
-		int count = (Integer) request.getAttribute("count"); 
-		List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-		
-		String pageNum = (String) request.getAttribute("pageNum");
-		
-		System.out.println("이동성공");
-	%>
+		<%
+			// String id = (String)session.getAttribute("id");
+			
+			int count = (Integer) request.getAttribute("count"); 
+			List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+			
+			String pageNum = (String) request.getAttribute("pageNum");
+			
+			System.out.println("이동성공");
+		%>
 	
 	
 
@@ -43,7 +50,6 @@
    
    <table border="1">
      <tr>
-    	<td>영화 번호</td>
        <td>영화 제목</td>
        <td>포스터</td>
        <td>장르</td>
@@ -58,14 +64,13 @@
      		System.out.println(" 포스터 : "+mdto.getPoster());
     		%>
 			<tr>
-				<td><%=mdto.getMovie_num() %></td>
 				<td>
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
 					<%=mdto.getTitle() %>
 					</a>
 				</td>
 				<td>
-					<img src="./upload/<%=mdto.getPoster()%>"></td>
+					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
 				</td>
 				<td><%=mdto.getGenre() %></td>
 				<td><%=mdto.getDirector()%></td>
@@ -76,10 +81,15 @@
 		<%}%>
 	</table>
 	
-	<%if(id.equals("admin")){ %>
-	<h3><a href="./MovieAdd.am">글 쓰기</a></h3>
-	<%} %>
-
+	<%
+	if (id != null) {
+		if (id.equals("admin")) {
+	%>
+		<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
+	<%
+		}
+	}
+	%>
 	<%@ include file="../include/footer.jsp" %>
 	
 </body>

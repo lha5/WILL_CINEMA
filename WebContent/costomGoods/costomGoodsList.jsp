@@ -11,9 +11,38 @@
 <link rel="stylesheet" href="./css/goodsList.css">
 
 <style type="text/css">
-	nav>ul>li:NTH-CHILD(5)>ul {
+nav>ul>li:NTH-CHILD(5)>ul {
 	display: block;
-	}
+}
+
+#container {
+	/* border: 1px solid red; */
+	width: 900px;
+	height: 900px;
+	margin: 50px auto;
+	padding: 0px auto 50px auto;
+}
+
+#goods {
+	text-align: center;
+}
+
+#goods>li {
+	float: left;
+	/* border: 1px solid blue; */
+	width: 190px;
+	height: 220px;
+	margin: 20px 0px 55px 78px;
+	padding-top: 10px;
+}
+
+a>#goodsName {
+	font-size: 1.2em;
+}
+
+#clear {
+	clear: both;
+}
 </style>
 
 </head>
@@ -28,25 +57,30 @@
 	List goodsList = (List)request.getAttribute("goodsList");
 	%>
 	
-	<table>
-		<tr>
+	<div id="container">
+	<ul id="goods">
 		<%
-		for(int i=0;i<goodsList.size();i++){ 
-			MallDTO mdto = (MallDTO)goodsList.get(i);	
+		for (int i = 0; i < goodsList.size(); i++) { 
+			MallDTO mdto = (MallDTO) goodsList.get(i);	
 		%>
-			<td>
-				<img src="./goodsImageUpload/<%=mdto.getImage() %>"	width="130" height="130"><br>
-				<a href="./GoodsDetail.ml?num=<%=mdto.getGoods_num()%>"><%=mdto.getName() %></a><br>
+			<li>
+				<a href="./GoodsDetail.ml?num=<%=mdto.getGoods_num()%>">
+					<img src="./upload/<%=mdto.getImage()%>" width="150" height="150">
+					<br>
+					<span id="goodsName"><%=mdto.getName()%></span>
+				</a>
+				<br><br>
 				<%=mdto.getPrice() %>원
-			</td>
+			</li>
 		<%
 		} 
 		%>
-		</tr>
-	</table>
-
+	</ul>
+	</div>
+	
+	<div id="clear"></div>
+	
 	<%@ include file="../include/footer.jsp" %>
-	
-	
+		
 </body>
 </html>

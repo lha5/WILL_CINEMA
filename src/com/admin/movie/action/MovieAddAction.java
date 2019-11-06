@@ -46,11 +46,7 @@ public class MovieAddAction implements Action {
 		int maxSize = 10 * 1024 * 1024;
 
 		MultipartRequest multi = new MultipartRequest(request,realPath,maxSize,"UTF-8", new DefaultFileRenamePolicy());
-		
-		int running_time = Integer.parseInt(multi.getParameter("running_time"));
-		
-		System.out.println(" running_time : "+running_time);
-		
+
 		AdminMovieDTO amdto = new AdminMovieDTO();
 
 		amdto.setTitle(multi.getParameter("title"));
@@ -61,14 +57,14 @@ public class MovieAddAction implements Action {
 		amdto.setClose_date(transformDate(multi.getParameter("close_date")));
 		amdto.setDirector(multi.getParameter("director"));
 		amdto.setActor(multi.getParameter("actor"));
-		amdto.setRunning_time(running_time);
+		amdto.setRunning_time(Integer.parseInt(multi.getParameter("running_time")));
 		amdto.setPoster(multi.getFilesystemName("poster"));
 		amdto.setImage(multi.getFilesystemName("image"));
 
 		AdminMovieDAO amdao = new AdminMovieDAOImpl();
-
-		amdao.insertBoard(amdto);
 		
+		amdao.insertBoard(amdto);
+
 		forward.setPath("./MovieList.mo");
 		forward.setRedirect(true);
 		return forward;

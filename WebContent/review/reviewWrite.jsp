@@ -14,30 +14,18 @@
 	%>
 	
 	<fieldset>
-		<legend>리뷰 작성</legend>
 		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
 			<table>
 				<tr>
-					<td>평점</td>
+					<td>리뷰</td>
 					<td>
-						<select name="rating">
-							<option value=1>1</option>
-							<option value=2>2</option>
-							<option value=3>3</option>
-							<option value=4>4</option>
-							<option value=5>5</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td colspan="3">
-						<textarea name="content" row="10" cols="50">summernote넣기</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<input type="submit" value="글쓰기">
+						<textarea name="content" row="10" cols="50">summernote넣기</textarea>		<select name="rating">
+																									<option value=1>1</option>
+																									<option value=2>2</option>
+																									<option value=3>3</option>
+																									<option value=4>4</option>
+																									<option value=5>5</option>
+																								</select>  <input type="submit"  value="글쓰기">
 					</td>
 				</tr>
 			</table>

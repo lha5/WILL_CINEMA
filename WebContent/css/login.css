@@ -1,36 +1,43 @@
 @CHARSET "UTF-8";
 
-fieldset {
+.loginField {
 	border-style: none;
 	width: 500px;
-	margin: 100px auto;
+	margin: 50px auto;
 	text-align: center;
 }
 
 #inin {
 	letter-spacing: 2px;
-	color: #804040;
-	font-family: inherit;
+	color: #240e04;
+	font-family: NanumGothic;
 	font-size: 2em;
 }
 
-table {
+.Loginfr table {
 	border-collapse: collapse;
-	border-top: 2px solid #804040;
-	border-bottom: 2px solid #804040;
-	margin: 50px auto;
+	border-top: 2px solid #240e04;
+	border-bottom: 2px solid #240e04;
+	margin: 50px auto 25px auto;
 	width: 400px;
 	height: 310px;
+	color: #240e04;
 }
 
-tr:NTH-CHILD(1)>td:NTH-CHILD(1), tr:NTH-CHILD(2)>td:NTH-CHILD(1) {
+.Loginfr tr:NTH-CHILD(1)>td:NTH-CHILD(1), tr:NTH-CHILD(2)>td:NTH-CHILD(1) {
 	font-size: 16px;
 	text-align: left;
 	padding-left: 25px;
 }
 
-lable {
-	vertical-align: center;	
+td {
+	position: relative;
+}
+
+.ri-1g {
+	position: absolute;
+	top: 41px;
+	left: 6px;
 }
 
 input[type=text], input[type=password] {
@@ -43,10 +50,10 @@ input[type=text], input[type=password] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #804040;
+	border: 1px solid #240e04;
 	/* border-radius: 2px; */
 	/* background-color: #ffefa3; */
-	color: #804040;
+	color: #240e04;
 	font-size: 16px;
 }
 
@@ -58,7 +65,6 @@ input[type=submit] {
 	-moz-appearance: none;
 	appearance: none;
 	border: 1px solid #d7282d;
-	/* border-radius: 2px; */
 	background-color: #d7282d;
 	font-family: inherit;
 	font-size: 19px;
@@ -79,15 +85,21 @@ input[type=button] {
 	appearance: none;
 	width: 120px;
 	height: 50px;
-	border: 1px solid #804040;
+	border: 1px solid #240e04;
 	/* border-radius: 2px; */
 	background-color: #ffffff;
 	font-family: inherit;
 	font-size: 16px;
-	color: #804040;
+	color: #240e04;
 	letter-spacing: 2px;
 }
 
 #forgot {
 	font-size: 14px;
+}
+
+#socialLogin {
+	margin: 50px auto;
+	width: 350px;
+	text-align: center;
 }

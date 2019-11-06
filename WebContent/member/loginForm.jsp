@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>WILL CINEMA - 로그인</title>
 
 <!-- jQuery -->
@@ -14,16 +15,21 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/login.css">
+
+<!-- 네이버 아이디로 로그인 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
 </head>
 <body>
+
+	<div>
+
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
 	if (id != null) {
-		response.sendRedirect("./Main.me");
+		response.sendRedirect("./Index.me");
 	}
 	
 	String clientId = "zbWDmpR7Dt9oKkuZ8yzZ";//애플리케이션 클라이언트 아이디값"; // 후에 수정시 자신이 발급밭은 아이디로 변경
@@ -39,9 +45,11 @@
 	
 	%>
 	
-	<fieldset>
+	
+	
+	<fieldset class="loginField">
 		<span id="inin">회원 로그인</span>
-		<form action="./MemberLoginAction.me" method="post">
+		<form action="./MemberLoginAction.me" method="post" class="Loginfr">
 			<table>
 				<tr>
 					<td><label><i class="ri-user-line ri-1g"></i> 아이디</label></td>
@@ -54,21 +62,21 @@
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="로그인">
-			<!-- 네이버 아이디 로그인 -->
-			<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-			<!-- /네이버 아이디 로그인 -->
-			<!-- 카카오톡 로그인 -->
-			<a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-			</a>
-			<!-- /카카오톡 로그인 -->		
+						
 					</td>
 				</tr>
 			</table> 
 		</form>
 		
-		<input type="button" value="비회원 로그인" onclick="location.href='./non_member/non_memberlogin.jsp'">
+		<input type="button" value="비회원 로그인" id="nonmember">
 		
+		<script type="text/javascript">
+			document.querySelector('#nonmember').addEventListener('click', function() {
+				location.href = './NonMemberLogin.me';
+			});
+		</script>		
+		
+		<br><br>
 		
 		<div id="forgot">
 			<p>계정 아이디 또는 비밀번호를 잊으셨나요?</p>
@@ -78,9 +86,12 @@
 			<a href="./MemberPassSearch.me">비밀번호 찾기</a>
 		</div>
 	</fieldset>
-	
-	<div id="socialLogin">
 		
+	<div id="socialLogin">
+		<!-- 네이버 아이디 로그인 -->
+		<p>간편하게</p>
+		<br>
+		<a href="<%=apiURL%>"><img src="./img/Naver_login_btn.PNG" width="250px"/></a>
 	</div>
 	
 	
@@ -104,26 +115,9 @@
 	
 	<!-- --------------------------------------------------------------------------- -->
 	
-	<!-- 카카오톡 로그인 스크립트 -->
-	<script type='text/javascript'>
-		//<![CDATA[
-		   // 사용할 앱의 JavaScript 키를 설정해 주세요.
-		   Kakao.init('cd3590b07e55c69b37d015bdadb57b99');
-		   function loginWithKakao() {
-		     // 로그인 창을 띄웁니다.
-		     Kakao.Auth.login({
-		       success: function(authObj) {
-		         alert(JSON.stringify(authObj));
-		       },
-		       fail: function(err) {
-		         alert(JSON.stringify(err));
-		       }
-		     });
-		   };
-		// ]]>
-	</script>
-	<!-- /카카오톡 로그인 스크립트 -->
-	
 	<%@ include file="../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>

@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td><%=malldto.getName() %></td>
-				<td><img src="./goodsImageUpload/<%=malldto.getImage() %>" witdh="50" height="50"></td>
+				<td><img src="./upload/<%=malldto.getImage() %>" witdh="50" height="50"></td>
 				<td><%=amount%></td>
 				<td><%=total%>원</td>
 			</tr>

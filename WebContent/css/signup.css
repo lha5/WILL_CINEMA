@@ -3,7 +3,7 @@
 fieldset {
 	width: 700px;
 	height: auto;
-	margin: 100px auto;
+	margin: 50px auto;
 	border-style: none;
 }
 
@@ -11,12 +11,12 @@ legend {
 	text-align: center;
 	font-family: inherit;
 	font-size: 2em;
-	color: #804040;
+	color: #240e04;
 }
 
 table {
 	border-collapse: collapse;
-	border-top: 2px solid #804040;
+	border-top: 2px solid #240e04;
 	margin: 50px auto;
 	width: 600px;
 	padding: 10px;
@@ -53,7 +53,7 @@ tr:NTH-CHILD(9)>td:NTH-CHILD(2), tr:NTH-CHILD(10)>td:NTH-CHILD(2) {
 }
 
 tr:NTH-CHILD(11) {
-	border-top: 2px solid #804040;
+	border-top: 2px solid #240e04;
 	margin-top: 10px;
 }
 
@@ -72,8 +72,8 @@ input[type=text], input[type=password], input[type=email] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #804040;
-	color: #804040;
+	border: 1px solid #240e04;
+	color: #240e04;
 	font-size: 14px;
 }
 
@@ -98,9 +98,9 @@ input[type=button] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #804040;
+	border: 1px solid #240e04;
 	background-color: #ffffff;
-	color: #804040;
+	color: #240e04;
 	font-family: inherit;
 	padding: 3px;
 }

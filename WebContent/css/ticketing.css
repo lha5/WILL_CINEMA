@@ -263,21 +263,26 @@ ol, ul, li {list-style:none;}
 .cinema_zone {position:relative; }
 .cinema_zone li {margin-bottom:8px; }
 
-.wrap >div, span, applet, object, iframe,
+.ticketBody>.ticketWrap >div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td
-{
+label, caption,  tfoot, thead{
 	margin: 0;
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
 }
+.month-picker-fieldset{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
  em {font-weight:normal;font-style:normal;}
 .area_cont {position:absolute;left:131px;top:0;}
 
@@ -407,9 +412,3 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 #time_noData {text-align:center; line-height:324px;}
 #time_noData .noData {display:inline-block; padding-left:27px; font-size:18px; color:#777}
-
-
-
-nav>ul>li:NTH-CHILD(1)>ul {
-	display: block;
-}

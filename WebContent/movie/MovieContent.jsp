@@ -8,9 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화 상세 보기</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(2)>ul {
+		display: block;
+	}
+</style>
+
 </head>
 <body>
-	
+
 	<%@ include file="../include/header.jsp" %>
 
 <%
@@ -38,19 +46,17 @@
 				<td><%=mdto.getGenre() %></td>
 			</tr>
 			
-			<tr>	
+			<%-- <tr>	
 				<td>이미지</td>
 				<td colspan="5">
-					<img src="./upload/<%=mdto.getImage()%>"></td>
+					<img src="./upload/<%=mdto.getImage()%>" height="50px" width="50px"></td>
 				
-				</td>
-			</tr>
+			</tr> --%>
 			<tr>	
 				<td>포스터</td>
 				<td colspan="5">
-					<img src="./upload/<%=mdto.getPoster()%>"></td>
+					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
 				
-				</td>
 			</tr>
 			<tr>
 				<td>줄거리 내용</td>

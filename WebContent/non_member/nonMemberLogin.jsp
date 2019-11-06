@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 비밀번호 찾기</title>
+<title>WILL CINEMA - 비회원 정보 조회</title>
 
 <!-- CSS -->
 <style type="text/css">
-@font-face {
-	font-family: 'NanumGothic';
-	src: url('../font/NanumGothic.ttf') format('truetype');
-}
-
 #inin {
 	letter-spacing: 2px;
 	color: #240e04;
@@ -25,7 +20,6 @@ fieldset {
 	width: 500px;
 	margin: 50px auto;
 	text-align: center;
-	color: #240e04;
 }
 
 table {
@@ -49,7 +43,7 @@ td {
 	position: relative;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=password] {
 	width: 240px;
 	height: auto;
 	line-height: normal;
@@ -85,33 +79,33 @@ input[type=submit] {
 </head>
 <body>
 
-	<div>
+	<div id="wrap">
 
 	<%@ include file="../include/header.jsp" %>
-	
+
 	<fieldset>
-		<span id="inin">비밀번호 찾기</span>
-		<form action="./MemberPassSearchAction.me" method="post">
+		<span id="inin">비회원 로그인</span>
+		<form method="post" action="../NonMemberLoginAction.me">
 			<table>
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="id"></td>
-				</tr>
-				<tr>
-					<td>이름</td>
+					<td>성함</td>
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="비밀번호 찾기"></td>
+					<td>이메일</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="비회원 로그인">
+					</td>
 				</tr>
 			</table>
 		</form>
-		
 	</fieldset>
-	
 	<%@ include file="../include/footer.jsp" %>
 	
 	</div>
-	
+
 </body>
 </html>

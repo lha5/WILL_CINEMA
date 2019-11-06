@@ -9,32 +9,73 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 영화관 지점</title>
+
 <style type="text/css">
 
 /*롯데 영화관   */
-
 /* style="width:10000px; height:420px;
  background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
  no-repeat;display:table-cell;vertical-align:middle" */
-.contents {width: 10000px; height: 420px; background-color: #d6d6d6; margin: 0 auto;no-repeat;display:table-cell;vertical-align:middle}
+
+ 
+	/* 하위 메뉴 고정 */
+	nav>ul>li:NTH-CHILD(3)>ul {
+		display: block;
+	}
+ 	 
+	.contents {
+		border: 1px solid purple;
+		width: inherit;
+		height: 420px;
+		/* background-color: #d6d6d6; */
+		margin: 0 auto;
+		display: table-cell;
+		vertical-align: middle
+	}
 	
 	/* banner */
-	.banner {position: relative; width: 10000px; height: 420px;   margin:0 auto; padding:0; overflow: hidden;}
-	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 10000px; height: 420px; margin:0; padding:0;}
-
-#cinemaname{
-border: 1px solid blue;
-	width: 600px;
-	height: 200px;
-	clear: both;
-	margin: 10px auto 10px 25em;
-	text-align: center;
-}
-
-
+	.banner {
+		position: relative;
+		border: 1px solid red;
+		/* width: 10000px; */
+		width: 100%;
+		height: 420px;
+		margin: 0 auto;
+		padding: 0;
+		overflow: hidden;
+	}
+	
+	.banner ul {
+		position: absolute;
+		margin: 0px;
+		padding: 0;
+		list-style: none;
+	}
+	
+	.banner ul li {
+		float: left;
+		/* width: 10000px; */
+		width: 100%;
+		height: 420px;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#cinemaname {
+		border: 1px solid blue;
+		width: 600px;
+		height: 200px;
+		clear: both;
+		margin: 10px auto 10px 25em;
+		text-align: center;
+	}
+	
+	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
+		display: block;
+	}
 </style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script language="JavaScript">
@@ -49,7 +90,7 @@ border: 1px solid blue;
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 6000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 10000);//다음 이미지로 롤링 애니메이션 할 시간차
 
 		//마우스 오버시 롤링을 멈춘다.
 		banner.mouseover(function(){
@@ -59,7 +100,7 @@ border: 1px solid blue;
 		});
 		//마우스 아웃되면 다시 시작
 		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 4500);
+			rollingId = setInterval(function() { rollingStart(); }, 10000);
 			$(this).css("cursor", "default");
 		});
 		
@@ -68,7 +109,7 @@ border: 1px solid blue;
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 4500, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 10000, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				
@@ -83,30 +124,28 @@ border: 1px solid blue;
 	
 	
 	
-	 function moviechk(){
-	        	        	        
-	     var ciadd = $('#cilocal').val();
-		 
-window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
-		,"width=600,height=400");
-	        
-	        
-	    }
-	 
+	function moviechk() { 	        	        
+		var ciadd = $('#cilocal').val();
+			 
+		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
+	}
 </script>
 
 </head>
 <body>
 
-<%@ include file="../include/header.jsp" %>
-<%
-CineDTO cdto = (CineDTO)request.getAttribute("cineList");
-int count = (Integer) request.getAttribute("count");
-List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-%>
 
-<div id= wrap>
-<div class="contents">
+	<div id= wrap>
+
+	<%@ include file="../include/header.jsp" %>
+
+	<%
+	CineDTO cdto = (CineDTO)request.getAttribute("cineList");
+	int count = (Integer) request.getAttribute("count");
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+	%>
+	
+	<div class="contents">
 		<div class="banner">
 			<ul>
 				  <%
@@ -153,5 +192,8 @@ List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boar
 	
 	
 	<%@ include file="../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>

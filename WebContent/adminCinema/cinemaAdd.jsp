@@ -49,7 +49,22 @@
 				<td>1상영관 상영 영화</td>
 				<td><input type="text" name="movie1"><input type="hidden" name="room_countnum" value=1></td>
 				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
-				<td><input type="text" name="seat_line1" size="5">,<input type="text" name="seat_row1" size="5"></td>
+				
+				<td>
+				<select name="seat_line1">
+				<option value="">좌석 행을 입력하시오</option>
+				<option value="12">12</option>
+				<option value="14">14</option>
+				<option value="16">16</option>
+				</select>
+				,
+				<select name="seat_row1">
+				<option value="">좌석 열을 입력하시오</option>
+				<option value="18">18</option>
+				<option value="20">20</option>
+				<option value="22">22</option>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>상영 시작시간</td>
@@ -100,8 +115,21 @@
 		'<td><input type="text" name="movie'+i+'">'+
 		'</td>'+
 		'<td>좌석 수(행,열)</td>'+
-		'<td><input type="text" name="seat_line'+i+'" size="5">,'+
-		'<input type="text" name="seat_row'+i+'" size="5"></td>'+
+		'<td>'+
+		'<select name="seat_line"'+i+'>'+
+		'<option value="">좌석 행을 입력하시오</option>'+
+		'<option value="12">12</option>'+
+		'<option value="14">14</option>'+
+		'<option value="16">16</option>'+
+		'</select>'+
+		','+
+		'<select name="seat_row"'+i+'>'+
+		'<option value="">좌석 열을 입력하시오</option>'+
+		'<option value="18">18</option>'+
+		'<option value="20">20</option>'+
+		'<option value="22">22</option>'+
+		'</select>'+
+		'</td>'+
 	'</tr>'+
 	'<tr>'+
 		'<td>상영 시작시간</td>'+

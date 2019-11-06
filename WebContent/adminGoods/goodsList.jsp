@@ -42,7 +42,7 @@
 	    <td><%=amdto.getGoods_num() %></td>
 	    <td><%=amdto.getCategory() %></td>
 	    <td><%=amdto.getName() %></td>
-	    <td><img src="./goodsImageUpload/<%=amdto.getImage() %>"></td>
+	    <td><img src="./upload/<%=amdto.getImage()%>"></td>
 	    <td><%=amdto.getPrice() %> 원</td>
 	    <td> <a href="./GoodsModify.al?num=<%=amdto.getGoods_num()%>">수정</a>
 	      / 

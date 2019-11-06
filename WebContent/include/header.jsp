@@ -12,15 +12,7 @@
 
 <!-- Remix Icon -->
 <link href="https://cdn.remixicon.com/releases/v2.0.0/remixicon.css" rel="stylesheet">
-<script type="text/javascript">
-        function showHide(id) {
-            var obj = document.getElementById(id);
-            if (obj.style.display == 'none')
-                obj.style.display = 'block';
-            else
-                obj.style.display = 'none';
-        }
-</script>
+
 </head>
 <body>
 
@@ -34,9 +26,9 @@
 		<div id="top_line">
 		<div id="social">
 			<ul>
-				<li><i class="ri-smartphone-line"></i> 모바일 APP</li>
-				<li><i class="ri-facebook-box-fill"></i> 페이스북</li>
-				<li><i class="ri-youtube-fill"></i> 유튜브</li>
+				<li><i class="ri-smartphone-line ri-lg"></i> 모바일 APP</li>
+				<li><i class="ri-facebook-box-fill ri-lg"></i>페이스북</li>
+				<li><i class="ri-youtube-fill ri-lg"></i>유튜브</li>
 			</ul>
 		</div>
 		
@@ -53,9 +45,9 @@
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
 				<li>멤버십</li>
-				<li id="forcustomer"><a href="./FAQList.af">고객센터</a>
+				<li id="forcustomer"><a href="./FAQUserList.af">고객센터</a>
 					<ul id="dropdown">
-						<li><a href="./FAQList.af">FAQ</a></li>
+						<li><a href="./FAQUserList.af">FAQ</a></li>
 						<li><a href="./QnAList.sq">1:1 문의</a></li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
@@ -74,9 +66,9 @@
 		
 		<nav>
 			<ul>
-				<li><a href="Ticketing.ti">예매</a>
+				<li><a href="./Ticketing.ti">예매</a>
 					<ul>
-						<li><a href="Ticketing.ti">예매하기</a></li>
+						<li><a href="./Ticketing.ti">예매하기</a></li>
 						<li>상영시간표</li>
 						<li>할인안내</li>
 					</ul>
@@ -88,55 +80,24 @@
 						<li>영화의전당</li>
 					</ul>
 				</li>
-				<li><a href=javascript:;>영화관</a>
-						
-					<ul >
-						<li><a onclick="showHide('cinema100')" onfocus="this.blur()" title="서울">서울</a>
-						<div id=cinema100 style="display:none">
-						<ul >
-						<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포 </a>
-						<a href="./CinemaUserView.ci?cinema_num=1002">가산디지털</a></li>
-						</ul></div></li>
-						
-						<li><a onclick="showHide('cinema200')" onfocus="this.blur()" title="경기/인천">경기/인천</a>
-						<div id=cinema200 style="display:none">
-						<ul >
-						<li><a href="./CinemaUserView.ci?cinema_num=2001">안산 </a>
-						<a href="./CinemaUserView.ci?cinema_num=2002">부천역</a></li>
-						</ul></div></li>
-						
-						<li><a onclick="showHide('cinema300')" onfocus="this.blur()" title="충청/대전">충청/대전</a>
-						<div id=cinema300 style="display:none">
-						<ul >
-						<li><a href="./CinemaUserView.ci?cinema_num=3001">서산</a>
-						<a href="./CinemaUserView.ci?cinema_num=3002">대전(백화점)</a></li>
-						</ul></div></li>
-						
-						<li><a onclick="showHide('cinema400')" onfocus="this.blur()" title="전라/광주">전라/광주</a>
-						<div id=cinema400 style="display:none">
-						<ul>
-						<li><a href="./CinemaUserView.ci?cinema_num=4001">수완(아울렛)</a>
-						<a href="./CinemaUserView.ci?cinema_num=4002">광주(백화점)</a></li>
-						</ul></div></li>
-						
-						<li><a onclick="showHide('cinema500')" onfocus="this.blur()" title="경북/대구">경북/대구</a>
-						<div id=cinema500 style="display:none">
-						<ul>
-						<li><a href="./CinemaUserView.ci?cinema_num=5001">경주</a>
-						<a href="./CinemaUserView.ci?cinema_num=5002">포항</a></li>
-						</ul></div></li>
-						
-						<li><a onclick="showHide('cinema600')" onfocus="this.blur()" title="경남/부산/울산">경남/부산/울산</a>
-						<div id=cinema600 style="display:none">
-						<ul >
-						<li><a href="./CinemaUserView.ci?cinema_num=6001">서면(전포동)</a>
-						<a href="./CinemaUserView.ci?cinema_num=6002">창원</a></li>
-						</ul></div></li>
-						<li>강원(오픈준비중)</li>
-						<li>제주(오픈준비중)</li>
-					
+				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
+					<ul>
+						<li class="region">
+							<a href="./CinemaUserView.ci?cinema_num=1001">서울</a>
+							<ul class="cine">
+								<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
+								<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털단지</a></li>
+							</ul>
+						</li>						
+						<li><a href="./CinemaUserView.ci?cinema_num=2001">경기/인천</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=3001">충청/대전</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=4001">전라/광주</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=5001">경북/대구</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=6001">경남/부산/울산</a></li>
+						<li>강원</li>
+						<li>제주</li>
 					</ul>
-					</li>
+				</li>
 				<li>
 					<a href="./EventSummary.ae">이벤트</a>
 					<ul>
@@ -156,9 +117,9 @@
 				</li>
 				<li>VOD</li>
 			</ul>
-			<div id="sub_ul">
-				
-			</div>			
+			<!-- <div id="sub_ul">
+				<div id="sub_ul2"></div>
+			</div>	 -->	
 		</nav>
 	</header>
 	
