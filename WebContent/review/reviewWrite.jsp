@@ -10,11 +10,6 @@
 <body>
 	
 	<%
-		/* String id = (String)session.getAttribute("id");
-		System.out.println("id : "+id);
-		if(id == null){
-			response.sendRedirect("./MemberLogin.me");
-		} */
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	%>
 	
