@@ -55,6 +55,7 @@
      <% 
      	for (int i=0;i<boardList.size();i++) {
      		AdminMovieDTO mdto = boardList.get(i);
+     		System.out.println(" 포스터 : "+mdto.getPoster());
     		%>
 			<tr>
 				<td><%=mdto.getMovie_num() %></td>
