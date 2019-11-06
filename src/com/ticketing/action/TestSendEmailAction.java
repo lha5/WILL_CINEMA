@@ -38,7 +38,8 @@ public class TestSendEmailAction implements Action {
 		}	*/	
 		
 		MemberDTO mdto = new MemberDTO();
-			
+	
+		
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		
@@ -48,16 +49,16 @@ public class TestSendEmailAction implements Action {
 		
 		//
 		String sResult = "OK";
-		String imsinum = "결제완료되었습니다";
+		String imsinum = "결제완료되었습니다 예매해주셔서 감사합니다";
 		
 		// 받는이 이메일 가져오기
 		 String to =mdao.getMember(id).getEmail();
 		
 		try{
 			String st = to;	// 받는 사람 
-			String sbj = "이메일 인증번호입니다."; 
+			String sbj = "예매가 완료 되었습니다"; 
 			String sf = user; // 보내는 사람(인증 정보와 동일한 email 주소여야 함!!) 
-			String sMsg = "["+imsinum+"] - 결제가 완료되었습니다";
+			String sMsg = "["+imsinum+"] ";
 			
 		Properties p = new Properties(); // 정보를 담을 객체 
 		p.put("mail.smtp.host","smtp.naver.com"); // 네이버 SMTP
