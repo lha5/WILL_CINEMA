@@ -94,8 +94,21 @@
 				<td><%=room_num %>상영관 상영 영화</td>
 				<td><input type="text" name="movie<%=room_num %>" value="<%=movie_num %>"></td>
 				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
-				<td><input type="text" name="seat_line<%=room_num %>" size="5" value="<%=seat.split(" ")[0] %>">
-					,<input type="text" name="seat_row<%=room_num %>" size="5" value="<%=seat.split(" ")[1] %>"></td>
+				<td>
+				<% String seat_row_split0 = seat.split(" ")[0]; %>
+				<select name="seat_line<%=room_num %>">
+					<option value="12" <%if(seat_row_split0.equals("12")){%>selected<%} %>>12</option>
+					<option value="14" <%if(seat_row_split0.equals("14")){%>selected<%} %>>14</option>
+					<option value="16" <%if(seat_row_split0.equals("16")){%>selected<%} %>>16</option>
+				</select>
+					,
+				<select name="seat_row<%=room_num %>">
+					<% String seat_row_split1 = seat.split(" ")[1]; %>
+					<option value="18" <%if(seat_row_split1.equals("18")){%>selected<%} %>>18</option>
+					<option value="20" <%if(seat_row_split1.equals("20")){%>selected<%} %>>20</option>
+					<option value="22" <%if(seat_row_split1.equals("22")){%>selected<%} %>>22</option>
+				</select>
+					
 			</tr>
 			<tr>
 				<td>상영 시작시간</td>
@@ -150,8 +163,21 @@
 		'<td><input type="text" name="movie'+i+'">'+
 		'</td>'+
 		'<td>좌석 수(행,열)</td>'+
-		'<td><input type="text" name="seat_line'+i+'" size="5">,'+
-		'<input type="text" name="seat_row'+i+'" size="5"></td>'+
+		'<td>'+
+		'<select name="seat_line"'+i+'>'+
+		'<option value="">좌석 행을 입력하시오</option>'+
+		'<option value="12">12</option>'+
+		'<option value="14">14</option>'+
+		'<option value="16">16</option>'+
+		'</select>'+
+		','+
+		'<select name="seat_row"'+i+'>'+
+		'<option value="">좌석 열을 입력하시오</option>'+
+		'<option value="18">18</option>'+
+		'<option value="20">20</option>'+
+		'<option value="22">22</option>'+
+		'</select>'+
+		'</td>'+
 	'</tr>'+
 	'<tr>'+
 		'<td>상영 시작시간</td>'+
