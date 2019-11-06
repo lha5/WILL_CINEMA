@@ -92,26 +92,15 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 10000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 7000);//다음 이미지로 롤링 애니메이션 할 시간차
 
-		//마우스 오버시 롤링을 멈춘다.
-		banner.mouseover(function(){
-			//중지
-			clearInterval(rollingId);
-			$(this).css("cursor", "pointer");
-		});
-		//마우스 아웃되면 다시 시작
-		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 10000);
-			$(this).css("cursor", "default");
-		});
 		
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $bannerLength + "px");
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 10000, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 7000, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				
@@ -161,13 +150,15 @@
 <div class="banner">
 			<ul>
 				  <%
-     	for (int i=0;i<3;i++) {
+     	for (int i=0;i<4;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
 						
-		<li><img src ="./upload/<%=mdto.getImage()%>"  class="movieing" onclick="movieing()"></li>
-					<li><input type="hidden" id="moving" value="<%=mdto.getImage()%>"><li>
+		<li><a href="javascript:void(0);"><img src ="./upload/<%=mdto.getImage()%>"   onclick="movieing()">
+					<input type="hidden" id="moving" value="<%=mdto.getImage()%>"></li></a>
+					
 					<%} %>
+					
 					</ul>
 
 		</div>
