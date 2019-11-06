@@ -65,8 +65,7 @@ public class MovieAddAction implements Action {
 		
 		amdao.insertBoard(amdto);
 
-		amdao.insertBoard(amdto);
-		
+
 		forward.setPath("./MovieList.mo");
 		forward.setRedirect(true);
 		return forward;

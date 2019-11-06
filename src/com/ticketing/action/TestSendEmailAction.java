@@ -49,7 +49,7 @@ public class TestSendEmailAction implements Action {
 		
 		//
 		String sResult = "OK";
-		String imsinum = "결제완료되었습니다 예매해주셔서 감사합니다";
+		String imsinum = "결제완료되었습니다------------- 예매해주셔서 감사합니다";
 		
 		// 받는이 이메일 가져오기
 		 String to =mdao.getMember(id).getEmail();

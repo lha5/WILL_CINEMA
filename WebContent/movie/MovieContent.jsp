@@ -27,7 +27,7 @@
 	System.out.println("Attribute : "+request.getAttribute("movie_num"));
 	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 	String pageNum = (String) request.getAttribute("pageNum");
-	System.out.println(" id : "+session.getAttribute("id"));
+	//System.out.println(" id : "+session.getAttribute("id"));
 
 %>
 		<table border="1">
@@ -75,7 +75,8 @@
 			</td>
 			</tr>
 			<%
-			if(session.getAttribute("id").equals("admin")){
+			if (id != null) {
+				if (id.equals("admin")) {
 			%>
 			<tr>
 				<td colspan="6">
@@ -84,6 +85,7 @@
 				</td>
 			</tr>
 			<%
+				}
 			}
 			%>
 		</table>
