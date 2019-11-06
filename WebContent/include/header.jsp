@@ -117,9 +117,9 @@
 				</li>
 				<li>VOD</li>
 			</ul>
-			<div id="sub_ul">
-			<!-- 	<div id="sub_ul2"></div> -->
-			</div>		
+			<!-- <div id="sub_ul">
+				<div id="sub_ul2"></div>
+			</div>	 -->	
 		</nav>
 	</header>
 	
