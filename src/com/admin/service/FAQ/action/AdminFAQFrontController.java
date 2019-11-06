@@ -41,7 +41,14 @@ public class AdminFAQFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/FAQUpdate.af")){ //FAQ수정 페이지
+		} else if (command.equals("/FAQUserList.af")) {
+			action = new FAQUserListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/FAQUpdate.af")){ //FAQ수정 페이지
 			//FAQUpdate() -> FAQUpdateForm -> FAQUpdateAction()
 			action = new FAQUpdate();
 			try {

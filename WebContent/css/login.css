@@ -34,10 +34,6 @@ td {
 	position: relative;
 }
 
-lable {
-	vertical-align: center;
-}
-
 .ri-1g {
 	position: absolute;
 	top: 41px;
@@ -68,8 +64,8 @@ input[type=submit] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #240e04;
-	background-color: #240e04;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
 	font-family: inherit;
 	font-size: 19px;
 	color: #ffffff;
