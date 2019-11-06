@@ -286,17 +286,20 @@
 		var form = document.createElement("form");
 		var parm = new Array();
 		var input = new Array();
-		alert(movie_num+" "+saleTime+" "+roomNum+" "+name+" "+running_date+" "+running_time);
+		var week=$('.txtdate').find('dd').text();
+		
+		alert(movie_num+" "+saleTime+" "+roomNum+" "
+				+name+" "+running_date+" "+running_time+" 요일:"+week);
         form.action = "./SeatSelect.ti";
         form.method = "post";
-
+        
         parm.push( ['movie_num', movie_num] ); //영화번호
         parm.push( ['saleTime', saleTime] ); //할인정보
         parm.push( ['roomNum', roomNum] ); //관 이름
         parm.push( ['cinema_num', cinema_num] ); //영화관 이름
         parm.push( ['running_date', running_date] ); //날짜
         parm.push( ['running_time', running_time] ); //상영시간
-
+        parm.push( ['week', week] ); //요일
         for (var i = 0; i < parm.length; i++) {
             input[i] = document.createElement("input");
             input[i].setAttribute("type", "hidden");
@@ -459,6 +462,7 @@
 </head>
 <body class="ticketBody">
 <%
+	response.setCharacterEncoding("UTF-8");
 	//List<String> allDay = (List)request.getAttribute("allDay");
 
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보

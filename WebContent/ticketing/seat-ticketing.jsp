@@ -14,9 +14,12 @@
 
 <script type="text/javascript">
 	$(function(){
+		var regexp = /\B(?=(\d{3})+(?!\d))/g; //정규식
 		var selectSeat='';
-		var row= $('#row').val();
-		var col= $('#col').val();
+		var row= $('#row').val();//총 행 개수
+		var col= $('#col').val();//총 열 개수
+		var price=0;
+		var person_num='';
 		var seatRow=new Array();
 		var seatCol=new Array();
 		if($('input[name=seatRow]').length!=0){
@@ -45,8 +48,12 @@
 		
 		//인원 선택
 		$('select').bind('change', function(){
+			//좌석 초기화
+			$('input[name=seat]').val("");
 			pNum=$('select[name=adult]').val()*1+
 			$('select[name=teenager]').val()*1+$('select[name=senior]').val()*1;
+			$('input[name=price]').val("");//가격초기화
+			
 			//셀렉트를 변경하면 초기화
 			$('.seatTable').find('input[type=button].disabled').removeClass('disabled');
 			$('.seatTable').find('input[type=button].on').removeClass('on');
@@ -172,7 +179,14 @@
 					selectSeat=$(this).attr('name');
 					selectSeat=selectSeat.substr(4);
 					alert(selectSeat);
-					$('input[name=seat]').val(selectSeat);
+					$('input[name=seat]').val(selectSeat);//좌석에 적기
+					//가격 설정   조조:7000, 6000,5000
+					/* price=$('select[name=adult]').val()*10000+
+						$('select[name=teenager]').val()*8000+$('select[name=senior]').val()*5000
+					$('input[name=price]').val(price.toString().replace(regexp,','));
+					 */
+					
+					
 				}
 
 			}else if(pNum==2){
@@ -200,6 +214,29 @@
 			}else{
 				
 			}
+			person_num="";
+
+			if($('select[name=adult]').val()>=1){
+				person_num='성인'+$('select[name=adult]').val();
+			}
+			if($('select[name=teenager]').val()>=1){
+				if(person_num!="")
+					person_num+=',청소년'+$('select[name=teenager]').val();
+				else
+					person_num+='청소년'+$('select[name=teenager]').val();
+			}
+			if($('select[name=senior]').val()>=1){
+				if(person_num!="")
+					person_num+=',시니어'+$('select[name=senior]').val();
+				else
+					person_num+='시니어'+$('select[name=senior]').val();
+			}
+			$('input[name=person_num]').val(person_num);
+			price=$('select[name=adult]').val()*10000+
+				$('select[name=teenager]').val()*8000+$('select[name=senior]').val()*5000
+			$('input[name=payment]').val(price);
+			$('input[name=price]').val(price.toString().replace(regexp,','));
+			$('input[name=person_num]').val(person_num);
 		});
 		
 		//인원이 1명일때 버튼 변경
@@ -238,6 +275,8 @@
 
 	String saleTime = (String)request.getAttribute("saleTime"); //조조,심야
 	int roomNum = (Integer)request.getAttribute("roomNum"); //상영관 번호
+	String week=(String)request.getAttribute("week"); //요일
+	
 	
 	List seatRow=(List)request.getAttribute("seatRow");
 	List seatCol=(List)request.getAttribute("seatCol");
@@ -257,11 +296,11 @@
 <fieldset>
 	<legend>좌석 선택</legend>
 	<!-- form action -->
-	<form action="SeatSelectAction.ti" method="post">
+	<form action="TicketOrderAction.ti" method="post">
 	<input type="hidden" id="row" value=<%=row %>>
 	<input type="hidden" id="col" value=<%=col %>>
-	
-	
+	<input type="hidden" name="payment">
+	<input type="hidden" name="person_num">
 	<%
 	if(seatRow.size()!=0){
 	for(int i=0; i<seatRow.size(); i++){ %>
@@ -601,26 +640,27 @@
 		<tr>
 			<td>
 				영화<br>
-				<%-- <img src="/upload/<%=mdto.getPoster() %>"> --%>
+				<img src="/upload/<%=mdto.getPoster() %>">
 				<input type="text" name="movie_title" value="<%=mdto.getTitle() %>">
-				<input type="hidden" name="movie_num" value="<%=mdto.getTitle() %>">
+				<input type="hidden" name="movie_num" value="<%=mdto.getMovie_num() %>">
 				
 			</td>
 			<td>
 				예매정보<br>
-				상영일 <input type="text" name="running_date" value="<%=running_date %>" readonly><br>
+				상영일 <input type="text" name="running_date" value="<%=running_date %>(<%=week %>)" readonly><br>
 				상영시간 <input type="text" name="running_time" value="<%=running_time %>" readonly><br>
 				<!-- 상영관의 경우 데이터 값 가져와서  -->
 
-				상영관 <input type="text" name="room_num" value="<%=roomNum %>" readonly>
+				상영관 <input type="text" name="room_num" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
 					 <input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>"  readonly>
+					 <input type="hidden" name="roomNum" value="<%=roomNum %>"  readonly>
 				<br>
 				좌석 <input type="text" name="seat" readonly><br>
 			</td>
 			<td>
 				총 결제 금액
 				<!-- 좌석 선택후 가격 결정  -->
-				영화예매 \<input type="text" name="price" value="0">
+				영화예매 <input type="text" name="price"> 원
 						
 			</td>
 		</tr>

@@ -25,4 +25,7 @@ public interface TicketDAO {
 	
 	//영화 예약된 좌석
 	public String getSeatNum(int cinema_num,int movie_num,int roomNum,String running_date,String running_time);
+	
+	//티켓예매 정보 저장
+	public void setTicket(TicketDTO tdto);
 }
