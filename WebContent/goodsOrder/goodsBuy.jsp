@@ -37,19 +37,48 @@
 
 #ttl {
 	width: 700px;
-	margin: 50px auto;
+	margin: 50px auto 0 auto;
 }
 
 #howToPay {
 	width: 700px;
-	margin: 50px auto;
+	margin: 20px auto;
 	line-height: 2.3em;
+	text-align: center;
+	height: 175px;
+	padding-top: 30px;
 }
 
-#line {
-	border-top: 2px solid #e6e6e6;
-	width: 700px;
-	margin: 10px auto;
+#goPay {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin-top: 20px;
+}
+
+#before {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #240e04;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 16px;
+	color: #240e04;
+	letter-spacing: 2px;
+	margin-top: 20px;
 }
 </style>
 
@@ -84,7 +113,7 @@
 		</table>
 		</div>
 		
-		<div id="line"></div>
+		
 				
 		<h1 id="ttl">결제 방법</h1>
 		<fieldset id="howToPay">
