@@ -256,6 +256,7 @@
 
 	//영화 선택
 	function selectMov(event){
+		console.log(event);
 		var movClass=event.currentTarget.className;
 		//다른 영화 선택시
 		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){ //자신 이외에 on class가 있는지
@@ -573,7 +574,7 @@
      	  <a href="javascript:void(0);" class="mov<%=mdto.getMovie_num() %>"
      	  onclick='selectMov(event);'>
      	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <em><%=mdto.getTitle() %> , <%=mdto.getTotal_rating() %></em>
+     	   <em><%=mdto.getTitle() %></em>
      	  </a>
      	 </li>
      	 <%} %>

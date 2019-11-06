@@ -82,7 +82,6 @@ input[type=submit] {
 			
 			System.out.println("이동성공");
 		%>
-		
 	
 	<div id="contents">
 		<form action="./MovieSearchAction.mo" method="post" id="searching">
