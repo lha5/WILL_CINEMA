@@ -19,7 +19,7 @@
 
 
 	<fieldset>
-		<legend>FAQ쓰기</legend>
+		<legend>자주 묻는 질문 내용 작성하기</legend>
 		<form action="./FAQWriteAction.af" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
