@@ -10,7 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화관 지점</title>
-
+<!--CSS  -->
+<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
 /*롯데 영화관   */
@@ -39,7 +41,7 @@
 		position: relative;
 		border: 1px solid red;
 		/* width: 10000px; */
-		width: 100%;
+		width: auto;
 		height: 420px;
 		margin: 0 auto;
 		padding: 0;
@@ -56,7 +58,7 @@
 	.banner ul li {
 		float: left;
 		/* width: 10000px; */
-		width: 100%;
+		width: auto;
 		height: 420px;
 		margin: 0;
 		padding: 0;
@@ -145,8 +147,8 @@
 	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	%>
 	
-	<div class="contents">
-		<div class="banner">
+	
+<div class="banner">
 			<ul>
 				  <%
      	for (int i=0;i<3;i++) {
@@ -159,6 +161,10 @@
 
 		</div>
 	
+	
+	<div class="contents">
+		
+		
 	<div id="cinemaname">
 	
 	<table border="1">
