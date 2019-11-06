@@ -42,10 +42,7 @@
 			<div class="panel">
 				<br>
 				<p>
-					<%if(afdto.getImage()!= null){%>
-					<img src="./upload/<%=afdto.getImage()%>" width="100" height="100">
-					<br>
-					<%}%>
+					
 					<%=afdto.getContent()%>
 				</p>
 				<br>

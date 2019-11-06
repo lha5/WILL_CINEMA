@@ -17,7 +17,7 @@
 	%>
 	
 
-	<table border="1">
+
 		<tr>
 			<td>번호</td><td><%=afdto.getNum() %></td>
 			<td>카테고리</td>
@@ -25,9 +25,7 @@
 		<tr> 
 	     <td>제목</td><td colspan="3"><%=afdto.getSubject() %></td> 
 		</tr>
-		<tr> 
-	    	<td>이미지</td><td colspan="3"><img src="./upload/<%=afdto.getImage()%>"></td>
-		</tr>
+	
 		<tr> 
 			<td>FAQ 내용</td>
 			<td colspan="3"><%=afdto.getContent() %></td>   
@@ -40,6 +38,7 @@
 		    	<input type="button" value="목록보기" onclick="location.href='./FAQList.af?pageNum=<%=pageNum%>'">  
 	    	</td>	  
 		</tr>
+
 	</table>
 	
 	<%@ include file="../../include/footer.jsp" %>

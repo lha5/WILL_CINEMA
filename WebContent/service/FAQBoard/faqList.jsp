@@ -29,7 +29,9 @@
 	int endPage = (Integer) request.getAttribute("endPage");
 
 	System.out.println("FAQList :"+FAQList.toString());
-	%>
+	///관리자만 볼수 있는것임 연결된곳이 없음
+  %>
+
 	  	
 	<div id="faqList">자주 묻는 질문</div>
 		
@@ -45,12 +47,15 @@
 			 for (int i = 0; i < FAQList.size(); i++) {
 				 AdminFAQDTO afdto = FAQList.get(i);
 			%>
+
 		  	<tr>
 				<td><%=afdto.getNum()%></td>
 				<td><%=afdto.getCategory() %></td>
 				<td>
+
 					<a href="./FAQContent.af?num=<%=afdto.getNum()%>&pageNum=<%=pageNum%>"><%=afdto.getSubject()%></a>
 		        </td>
+
 			</tr>	
 			<%
 			} 
