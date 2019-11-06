@@ -6,6 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 내 정보 관리</title>
+
+<!-- CSS -->
+<style type="text/css">
+input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 30px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 14px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin-right: 5px;
+}
+</style>
 </head>
 <body>
 <%
@@ -23,7 +42,9 @@
 	<input type="button" value="비밀번호 변경" onclick="location.href='./MemberPassCheck.me'">&nbsp;&nbsp;
 	<input type="button" value="회원 계정 삭제" onclick="location.href='./MemberDelete.me'">
 
-
+	<br>
+	<br>
+	<br>
 	<!-- 관리자전용 -->
 	<%
 	if (id != null) {
