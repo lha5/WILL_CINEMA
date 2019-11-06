@@ -2,6 +2,8 @@ package com.admin.service.notice.db;
 
 import java.util.List;
 
+import com.service.QnA.db.QnADTO;
+
 
 public interface AdminNoticeDAO {
 	// 공지사항 글쓰기
@@ -25,5 +27,6 @@ public interface AdminNoticeDAO {
 	// 번호에 해당하는 글 삭제
 	public int deleteNotice(int num, String pass);
 
-	
+	// 글 찾기
+	public List<AdminNoticeDTO> getSearch(String search,int startRow,int pageSize);
 }
