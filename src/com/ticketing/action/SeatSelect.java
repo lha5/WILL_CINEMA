@@ -1,5 +1,8 @@
 package com.ticketing.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,8 +38,23 @@ public class SeatSelect implements Action{
 		// 후에 합칠때 예매페이지에서 데이터 받아와야함
 		TicketDAO tdao = new TicketDAOImpl();
 		AdminMovieDTO mdto = tdao.getMovie(movie_num);
-		
-		
+		//영화관,영화번호,상영관,상영일,상영시간
+		String seatNum=tdao.getSeatNum(cinema_num,movie_num,roomNum,running_date,running_time);
+		List<String> seatRow=new ArrayList<String>();
+		List<String> seatCol=new ArrayList<String>();
+		if(seatNum==""){
+			System.out.println("좌석 번호 없음");
+		}else{
+			System.out.println("좌석 번호"+seatNum);
+
+			String[] reserSeat=seatNum.split(",");
+
+			for(int i=0; i<reserSeat.length;i++){
+				seatRow.add(reserSeat[i].split(" ")[0]);
+				seatCol.add(reserSeat[i].split(" ")[1]);
+				//System.out.println("좌석 행 :"+seatRow[i]+", 좌석 열 :"+seatCol[i]);
+			}
+		}
 		//영화관 데이터
 		//CineDTO cdto = request.getAttribute("cdto");
 		
@@ -64,7 +82,8 @@ public class SeatSelect implements Action{
 		request.setAttribute("running_time", running_time);
 		request.setAttribute("saleTime", saleTime);
 		request.setAttribute("roomNum", roomNum);
-		
+		request.setAttribute("seatRow", seatRow);//좌석번호
+		request.setAttribute("seatCol", seatCol);
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./ticketing/seat-ticketing.jsp");
