@@ -26,7 +26,17 @@ public class TestSendEmailAction implements Action {
 	
 		
 		System.out.println("TestSendEmailAction execute()--------------------------------------------");
-	 
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		/*ActionForward forward = new ActionForward();
+		if(id == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}	*/	
+		
 		MemberDTO mdto = new MemberDTO();
 	
 		
@@ -42,7 +52,7 @@ public class TestSendEmailAction implements Action {
 		String imsinum = "결제완료되었습니다 예매해주셔서 감사합니다";
 		
 		// 받는이 이메일 가져오기
-		 String to =mdao.getMember("test100").getEmail();
+		 String to =mdao.getMember(id).getEmail();
 		
 		try{
 			String st = to;	// 받는 사람 

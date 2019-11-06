@@ -4,7 +4,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -384,8 +383,8 @@
 					//하루 일정
 					for(var i=0; i<cdto.runtimeS.length; i++){
 						html+="<li><a href='javascript:void(0)' onclick=seatSelect('"+cdto.movie_num+"','"
-						+saleTime[i]+"','"+cnt+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
-						+"<span class='cineD2'><em>"+cnt+"관</em></span>";
+						+saleTime[i]+"','"+cdto.roomNum+"','"+cdto.cinema_num+"','"+date+"','"+runtimeS[i]+"~"+runtimeE[i]+"');>"
+						+"<span class='cineD2'><em>"+cdto.roomNum+"관</em></span>";
 						if(saleTime[i]=="조조") html+="<span class='clock'><em class='seat iri'>조조</em>";
 						if(saleTime[i]=="심야") html+="<span class='clock'><em class='seat ini'>심야</em>";
 						if(saleTime[i]=="") html+="<span class='clock'>";
@@ -449,9 +448,15 @@
 
 </script>
 
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(1)>ul {
+		display: block;
+	}
+</style>
 
 </head>
-<body>
+<body class="ticketBody">
 <%
 	//List<String> allDay = (List)request.getAttribute("allDay");
 
@@ -466,7 +471,7 @@
 %>
 <%@ include file="../../include/header.jsp" %>
 
-<div class="wrap">
+<div class="ticketWrap">
 <div class="cont_ticket">
  <div class="cont_ticket_Area">
   <div class="calendar"> <!-- 달력 -->

@@ -35,7 +35,7 @@
 			MallDTO mdto = (MallDTO)goodsList.get(i);	
 		%>
 			<td>
-				<img src="./goodsImageUpload/<%=mdto.getImage() %>"	width="130" height="130"><br>
+				<img src="./upload/<%=mdto.getImage()%>"	width="130" height="130"><br>
 				<a href="./GoodsDetail.ml?num=<%=mdto.getGoods_num()%>"><%=mdto.getName() %></a><br>
 				<%=mdto.getPrice() %>원
 			</td>

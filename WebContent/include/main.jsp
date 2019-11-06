@@ -3,7 +3,6 @@
 <%@page import="com.admin.service.event.db.AdminEventDTO"%>
 <%@page import="com.admin.service.FAQ.action.FAQListAction"%>
 <%@page import="com.admin.service.FAQ.db.AdminFAQDTO"%>
-<%@page import="com.movie.db.MovieDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,8 +19,6 @@
 
 <!-- CSS 연결 -->
 <link rel="stylesheet" href="./css/main.css">
-<link rel="stylesheet" href="./css/ticketing.css">
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -30,46 +27,50 @@
 
 <script language="JavaScript">
 
-	$(document).ready(function() {
-		//사용할 배너
-		var $banner = $(".banner").find("ul");
+$(document).ready(function() {
+	//사용할 배너
+	var $banner = $(".banner").find("ul");
 
-		var $bannerWidth = $banner.children().outerWidth();//배너 이미지의 폭
-		var $bannerHeight = $banner.children().outerHeight(); // 높이
-		var $bannerLength = $banner.children().length;//배너 이미지의 갯수
-		var rollingId;
+	var $bannerWidth = $banner.children().outerWidth();//배너 이미지의 폭
+	var $bannerHeight = $banner.children().outerHeight(); // 높이
+	var $bannerLength = $banner.children().length;//배너 이미지의 갯수
+	var rollingId;
 
-		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 6000);//다음 이미지로 롤링 애니메이션 할 시간차
+	//정해진 초마다 함수 실행
+	rollingId = setInterval(function() { rollingStart(); }, 4000);//다음 이미지로 롤링 애니메이션 할 시간차
 
-		//마우스 오버시 롤링을 멈춘다.
-		banner.mouseover(function(){
-			//중지
-			clearInterval(rollingId);
-			$(this).css("cursor", "pointer");
+
+	
+	function rollingStart() {
+		$banner.css("width", $bannerWidth * $bannerLength + "px");
+		$banner.css("height", $bannerHeight + "px");
+		//alert(bannerHeight);
+		//배너의 좌측 위치를 옮겨 준다.
+		$banner.animate({left: - $bannerWidth + "px"}, 8000, function() { //숫자는 롤링 진행되는 시간이다.
+			//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
+			$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
+			//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
+			$(this).find("li:first").remove();
+			//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
+			$(this).css("left", 0);
+			//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
 		});
-		//마우스 아웃되면 다시 시작
-		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 4500);
-			$(this).css("cursor", "default");
-		});
-		
-		function rollingStart() {
-			$banner.css("width", $bannerWidth * $bannerLength + "px");
-			$banner.css("height", $bannerHeight + "px");
-		
-			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 4500, function() { //숫자는 롤링 진행되는 시간이다.
-				
-				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-				
-				$(this).find("li:first").remove();
-				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
-				$(this).css("left", 0);
-				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
-			});
-		}
-	}); 
+	}
+
+	//마우스 오버시 롤링을 멈춘다.
+	banner.mouseover(function(){
+		//중지
+		clearInterval(rollingId);
+		$(this).css("cursor", "pointer");
+	});
+	//마우스 아웃되면 다시 시작
+	banner.mouseout(function(){
+		rollingId = setInterval(function() { rollingStart(); }, 6000);
+		$(this).css("cursor", "default");
+	});
+	
+
+}); 
 
 </script>
 
@@ -125,21 +126,17 @@
 </head>
 <body>
 	<%
-	//String id = (String)session.getAttribute("id");
-			
 	int count = (Integer) request.getAttribute("count");
-	int faqcount =(Integer)request.getAttribute("faqcount");
-	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList");		
-	List eventMovieList = (List)request.getAttribute("eventMovieList");
-	List eventPreviewList = (List)request.getAttribute("eventPreviewList");
-	List eventNeventList = (List)request.getAttribute("eventNeventList");
-	List eventCollaboList = (List)request.getAttribute("eventCollaboList");
-		
+	int faqcount =(Integer)request.getAttribute("faqcount"); 
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList"); // 영화관
+	List<AdminFAQDTO> FAQList =(List<AdminFAQDTO>)request.getAttribute("FAQList"); //FAQ		
+	List eventMovieList = (List)request.getAttribute("eventMovieList");// 이벤트1
+	List eventPreviewList = (List)request.getAttribute("eventPreviewList");//이벤트2
+	List eventNeventList = (List)request.getAttribute("eventNeventList");//이벤트3
+	List eventCollaboList = (List)request.getAttribute("eventCollaboList");// 이벤트4
 	List<CineDTO> cineList = (List)request.getAttribute("cineList");//모든 영화관 정보
-	
-	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList");
-	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList");
+	List<AdminMovieDTO> bookRatingList= (List)request.getAttribute("bookRatingList"); //예매율
+	List<AdminMovieDTO> totalRatingList= (List)request.getAttribute("totalRatingList"); // 평점
 	
 	%>
 
@@ -163,12 +160,11 @@
      </ul>
      </div>
 
-      <!-- 예매순 -->
+       <!-- 예매순 -->
      <div class="scroll_bar">
-
      	<ul id="book" class="movie_list">
      	<!-- 영화 반복문 -->
-     	<%for(int i=0; i<8; i++){
+     	<%for(int i=0; i<7; i++){
      		AdminMovieDTO mdto=bookRatingList.get(i);
      	%>
      	 <li>
@@ -177,7 +173,7 @@
      	   
      	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <span ><%=mdto.getTitle() %></span>
-     	  <span class="booking1">예매율 : <%=mdto.getBooking_ration() %></span>
+     	  <span class="booking">예매율 : <%=mdto.getBooking_ration() %></span>
      	  </a>
      	 </li>
      	 
@@ -188,7 +184,7 @@
     	 <!-- 평점순 -->
      	<ul id="total" class="movie_list">
      	<!-- 영화 반복문 -->
-     	<%for(int i=0; i<8; i++){ 
+     	<%for(int i=0; i<7; i++){ 
      		AdminMovieDTO mdto=totalRatingList.get(i);
      		
      	%>
@@ -196,7 +192,7 @@
      	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
      	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <span  ><%=mdto.getTitle() %></span>
-     	 <span class="booking1">평점 : <%=mdto.getTotal_rating() %></span>
+     	 <span class="booking">평점 : <%=mdto.getTotal_rating() %></span>
      	 </a>
      	 
      	 </li>	
@@ -204,11 +200,10 @@
      	 
      	 
      	 <!-- 영화 반복문 --> 
-     	 <%} %> --%>
+     	 <%} %>
      	 
      	</ul>
      </div> <!--  스크롤바-->
-        
     </div>
 				</article>
 				<article id="image">
@@ -217,10 +212,10 @@
 		<div class="banner">
 			<ul>
 				  <%
-     	for (int i=0;i<3;i++) {
+     	for (int i=0;i<7;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
-		<li><img src ="./upload/<%=mdto.getPoster()%>"></li>
+		<li><img src ="./upload/<%=mdto.getPoster() %>"></li>
 					<%} %>
 					</ul>
 		</div>
@@ -305,38 +300,31 @@
 					<li><a href="#"><i class="ri-user-5-line ri-4x"></i><br>청소년</a></li>
 					<li><a href="#"><i class="ri-parent-line ri-4x"></i><br>패밀리</a></li>
 				</ul>
-				<!-- 
-				<div style="width:700px; margin:0 auto;">
-					<a href="#"><img style="width:24%" src="./img/main/discount.gif" alt ="할인내역"></a>
-					<a href="#"><img style="width:24%" src="./img/main/point.gif" alt="포인트내역"></a>
-					<a href="#"><img style="width:24%" src="./img/main/VIP.gif" alt="VIP"></a>
-					<a href="#"><img style="width:24%" src="./img/main/tintin.gif" alt="어린이"></a>
-				</div> 
-				-->
+			
 			</div><!--서비스  -->
 			
 			<div id="notice">
 		<div class="w3-content w3-display-container">
  	<ul>
-		<li><h2 class="noticemore"><a href="./NoticeList.an" >공지사항</a></h2>
-		<h6 class="faqmore"><a href="./FAQList.af" > MORE FAQ &#10140; </a></h6></li>
+		<li ><h2 class="noticemore" ><a href="./NoticeList.an" >공지사항 </a></h2></li>
+			  
+			   
 			  <%
      	for (int i=0;i<FAQList.size();i++) {
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
 		<li class="mySlides">
-		<button class="accordion"> 주제 : <%=afdto.getSubject() %></button>
+		 <h3><a href="./FAQList.af" ><button class="accordion"><%=afdto.getSubject() %></button></a><button class="faqbut" onclick="plusDivs(-1)">&#10094;</button><button class="faqbut" onclick="plusDivs(1)">&#10095;</button></h3>
+  
 		<div class="panel">
 
- 내용:<%=afdto.getContent()%><br>
- 이미지: <img src="./upload/<%=afdto.getImage()%>" width="100" height="100">
+ <%=afdto.getContent()%><br>
 </div>
 		</li>
 					<%} %>
 					</ul>
-   <button class="faqbut" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="faqbut" onclick="plusDivs(1)">&#10095;</button>
   
+ 
 </div>
 		</div> <!--공지사항  -->
 		

@@ -35,13 +35,6 @@ public class MovieListAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
-		ActionForward forward = new ActionForward();
-		
-		if(id == null){
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;
-		}
 		List<AdminMovieDTO> boardList = null;
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
@@ -63,6 +56,8 @@ public class MovieListAction implements Action {
 		
 		System.out.println("");
 		
+		
+		ActionForward forward = new ActionForward();
 		forward.setPath("./movie/movieList.jsp");
 		forward.setRedirect(false);
 		

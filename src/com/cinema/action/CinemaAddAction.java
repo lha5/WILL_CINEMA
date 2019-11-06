@@ -43,7 +43,7 @@ public class CinemaAddAction implements Action {
 		String movie_num = ""; 
 		
 		//관 마다 들어가는 영화,시작끝시간,시작끝기간,좌석 을 넣는 for문
-		for(int i=1;i<=room_num;i++){
+		/*for(int i=1;i<=room_num;i++){
 			if(i==room_num){// 마지막에 들어가는 데이터에 나누는','를 넣지 않음
 				seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i);
 				start_times += request.getParameter("start_times"+i);
@@ -59,7 +59,31 @@ public class CinemaAddAction implements Action {
 				end_priod += request.getParameter("end_priod"+i)+",";
 				movie_num += request.getParameter("movie"+i)+",";
 			}
+		}*/
+		
+		for(int i=1;i<=room_num;i++){
+			
+			//System.out.println("동작");
+		seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i)+",";
+		start_times += request.getParameter("start_times"+i)+",";
+		end_times += request.getParameter("end_times"+i)+",";
+		start_priod += request.getParameter("end_priod"+i)+",";
+		end_priod += request.getParameter("end_priod"+i)+",";
+		movie_num += request.getParameter("movie"+i)+",";
 		}
+	
+		System.out.println(seat);
+		
+		// 마지막에 붙는 ','제거
+		seat = seat.substring(0, seat.length()-1);
+		start_times = start_times.substring(0,start_times.length()-1);
+		end_times = end_times.substring(0,end_times.length()-1);
+		start_priod = start_priod.substring(0,start_priod.length()-1);
+		end_priod = end_priod.substring(0,end_priod.length()-1);
+		movie_num = movie_num.substring(0,movie_num.length()-1);
+		
+		
+		
 		
 		// CineDTO 객체 생성 >> 정보 저장(form 태그에서 넘겨 받은 데이터를 저장)
 		CineDTO cdto = new CineDTO();

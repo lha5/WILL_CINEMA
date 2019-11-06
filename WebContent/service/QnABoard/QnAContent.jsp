@@ -44,7 +44,7 @@
 		<tr>
 			<td colspan="4">
 				<input type="button" value="수정하기" onclick="location.href='./QnAUpdate.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
-				<input type="button" value="삭제하기" onclick="location.href='./QnADelete.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
+				<input type="button" value="삭제하기" onclick="location.href='./QnADeleteAction.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
 				<input type="button" value="목록보기" onclick="location.href='./QnAList.sq?pageNum=<%=pageNum%>'">
 			</td>
 		</tr>

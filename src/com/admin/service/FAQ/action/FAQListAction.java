@@ -42,30 +42,37 @@ public class FAQListAction implements Action {
 				
 		//if( count != 0 )
 		FAQList = afdao.getFAQList(startRow,pageSize);
-						// 전체 페이지수 계산
-						int pageCount = count/pageSize+(count % pageSize == 0? 0:1); 
-									
-						int pageBlock = 2;
-									
-						// 시작페이지
-						int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
-						// 끝페이지
-						int endPage = startPage+pageBlock-1;
-						if(endPage > pageCount){
-							endPage = pageCount;
-						}
-						
-						request.setAttribute("count", count);
-						request.setAttribute("FAQList", FAQList);
-						request.setAttribute("pageNum", pageNum);
-						request.setAttribute("pageCount", pageCount);
-						request.setAttribute("pageBlock", pageBlock);
-						request.setAttribute("startPage", startPage);
-						request.setAttribute("endPage", endPage);
-		
+		// 전체 페이지수 계산
+		int pageCount = count/pageSize+(count % pageSize == 0? 0:1); 
+
+		int pageBlock = 2;
+
+		// 시작페이지
+		int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
+		// 끝페이지
+		int endPage = startPage+pageBlock-1;
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+
+		request.setAttribute("count", count);
+		request.setAttribute("FAQList", FAQList);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+
 		ActionForward forward = new ActionForward();
-		forward.setPath("./service/FAQBoard/faqUserList.jsp");
-		forward.setRedirect(false);		
+		
+		
+		if (id.equals("admin")) {
+			forward.setPath("./service/FAQBoard/faqList.jsp");
+			forward.setRedirect(false);
+		} else {
+			forward.setPath("./service/FAQBoard/faqUserList.jsp");
+			forward.setRedirect(false);
+		}		
 
 		return forward;
 	}

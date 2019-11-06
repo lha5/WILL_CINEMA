@@ -37,9 +37,11 @@ public class QnAUpdateAction implements Action {
 		
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		
+		System.out.println(" id : "+multi.getParameter("id"));
+		
 		qadto.setNum(Integer.parseInt(request.getParameter("num")));
 		qadto.setName(multi.getParameter("name"));
-		qadto.setPass(multi.getParameter("pass"));
+		qadto.setId(multi.getParameter("id"));
 		qadto.setCategory(multi.getParameter("category"));
 		qadto.setSubject(multi.getParameter("subject"));
 		qadto.setContent(multi.getParameter("content"));

@@ -46,7 +46,7 @@ public class QnAWriteAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		qadto.setName(multi.getParameter("name"));
-		qadto.setPass(multi.getParameter("pass"));
+		qadto.setId(multi.getParameter("pass"));
 		qadto.setSubject(multi.getParameter("subject"));
 		qadto.setCategory(multi.getParameter("category"));
 		qadto.setContent(multi.getParameter("content"));
