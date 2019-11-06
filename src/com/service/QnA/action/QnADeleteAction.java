@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
@@ -17,16 +18,18 @@ public class QnADeleteAction implements Action {
 		System.out.println("QnADeleteAction_execute()--------------------------------");
 		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
 		
 		// pageNum 저장(get)
 		String pageNum = request.getParameter("pageNum");
 				
 		// pass, num 저장(post)
-		String pass = request.getParameter("pass");
+		String id = (String) session.getAttribute("id");
+		System.out.println(" 삭제할 글의 아이디 : "+id);
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		QnADAOImpl qadaoImpl = new QnADAOImpl();
-		int check = qadaoImpl.deleteBoard(num,pass);
+		int check = qadaoImpl.deleteBoard(num,id);
 		
 		// check 0, 1, -1
 		response.setContentType("text/html; charset=UTF-8");

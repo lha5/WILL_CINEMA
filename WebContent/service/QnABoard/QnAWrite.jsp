@@ -34,7 +34,7 @@
 					<td>작성자</td>
 					<td>
 						<input type="text" name="name" value="<%=name%>" readonly>
-						<input type="hidden" name="pass" value="<%=id%>">
+						<input type="hidden" name="id" value="<%=id%>">
 					</td>
 					<td>카테고리</td>
 					<td>

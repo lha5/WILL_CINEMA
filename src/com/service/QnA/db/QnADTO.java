@@ -6,7 +6,7 @@ public class QnADTO {
 	private int num;
 	private String category;
 	private String name;
-	private String pass;
+	private String id;
 	private String subject;
 	private String content;
 	private int readcount;
@@ -35,11 +35,11 @@ public class QnADTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPass() {
-		return pass;
+	public String getId() {
+		return id;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getSubject() {
 		return subject;
