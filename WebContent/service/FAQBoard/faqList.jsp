@@ -38,7 +38,7 @@
 			<td>카테고리</td>
 			<td>제목</td>
 			<td>내용</td>
-			<td>이미지</td>
+			
 		</tr>
 		<% 
 		 for(int i=0;i<FAQList.size();i++){
@@ -51,7 +51,6 @@
 					<a href="./FAQContent.af?num=<%=afdto.getNum() %>&pageNum=<%=pageNum%>"><%=afdto.getSubject() %></a>
 		          	</td>
 				<td><%=afdto.getContent()%></td>
-				<td><img src="./upload/<%=afdto.getImage()%>" width="100" height="100"><br></td>
 			</tr>	
 		<%} %> 
 	</table>

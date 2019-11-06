@@ -61,13 +61,7 @@
 				</script>
 			</td>
 			</tr>
-			
-			<tr>
-			<td>이미지</td>
-			<td colspan="2">
-			<input type="file" name="image"></td>
-			</tr>
-							
+												
 			<tr><td colspan="5">
 			<input type="submit" value="FAQ쓰기">
 			</td>
