@@ -14,6 +14,18 @@
 	float: left;
 text-align: left;
 }
+
+.booking{
+	float: right;
+}
+.movie_list li {
+	line-height:40px;
+	font-size:13px;
+    height: 40px;
+width: 320px;
+}
+
+
 #center {
 	/* border: 1px solid olive; */
 	text-align: center;
@@ -137,9 +149,6 @@ text-align: left;
 	padding-left:20px;
 	list-style: none;	
 }
-.booking{
-text-align: right;
 
-}
 
 
