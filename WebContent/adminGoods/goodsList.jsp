@@ -12,8 +12,6 @@
 <body>
 
 	<%@ include file="../include/header.jsp" %>
-
-	<h1>WebContent/adminGoods/goodsList.jsp</h1>
 	
 	<%
 	// DB에서 가져온 정보 저장

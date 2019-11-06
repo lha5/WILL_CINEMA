@@ -11,7 +11,6 @@
 
 	<%@ include file="../include/header.jsp" %>
 
-<h1>WebCotent/adminGoods/goodsModify.jsp</h1>
 <%
 	//상품의 정보를 저장(request)
 	//request.setAttribute("amdto", amdto);
