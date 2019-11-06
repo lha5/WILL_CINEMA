@@ -23,6 +23,10 @@
         #useBtn{
              visibility:hidden;
         }
+        
+        #idcheck{
+        	visibility:hidden;
+        }
  
    </style>
 	<script type="text/javascript">
@@ -45,26 +49,9 @@
 		// 1 중복된 아이디가 있음 -> 아이디 변경 유도
 		// 각각의 동작을 페이지에 출력
 		
-		if(check == 1){
-			%>
-			<script type="text/javascript">
-			alert(" 가입 불가능 아이디 입니다.");
-		</script>
-			
-		<% 
-		}else{ // check == 0
-		%>	
-		<script type="text/javascript">
-		alert(" 가입 가능 아이디 입니다. ");
-		</script>
-		     
-		   
-		   
-		   <%
 		
-		}
-		
-		// 아이디 입력 선택 
+		//if(check == 1){
+	
 	%>
   <hr>
 <div id="wrap">
@@ -75,14 +62,41 @@
     <div id="chk">
          <form action="joinIdCheck.jsp" name="willfr" method="post">
       <input type="text" name="userid" value="<%=id%>"> 
-      <input type="submit" value="중복확인">
+       <input type="submit" value="중복확인">
     </form>
-         <input type="button" value="아이디 사용하기" onclick="result();">
+    	<input id="idcheck" type="button" value="아이디 사용하기" onclick="result();">
     	<input type="button" value="취소" onclick="window.close()">
     </div>
 </div>    
 
+<% if(check == 1){ %>
 
+			<script type="text/javascript">
+			alert(" 가입 불가능 아이디 입니다.");
+			console.dir(document.getElementById('idcheck'));
+			document.getElementById('idcheck').style.visibility = "hidden";
+			</script>
+			
+	<% 
+		}else{ // check == 0
+		
+		
+		
+	%>	
+		<script type="text/javascript">
+		alert(" 가입 가능 아이디 입니다. ");	
+		document.getElementById('idcheck').style.visibility = "visible";
+		</script>  	   
+		   
+	<%
+		
+		 
+
+		}
+		
+	
+	 %>
+ 
 
 
 
