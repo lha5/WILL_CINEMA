@@ -407,9 +407,3 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 #time_noData {text-align:center; line-height:324px;}
 #time_noData .noData {display:inline-block; padding-left:27px; font-size:18px; color:#777}
-
-
-
-nav>ul>li:NTH-CHILD(1)>ul {
-	display: block;
-}

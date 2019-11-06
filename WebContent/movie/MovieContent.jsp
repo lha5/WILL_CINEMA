@@ -8,6 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화 상세 보기</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(2)>ul {
+		display: block;
+	}
+</style>
+
 </head>
 <body>
 	
@@ -40,8 +48,14 @@ String pageNum = (String) request.getAttribute("pageNum");
 			<tr>	
 				<td>이미지</td>
 				<td colspan="5">
-					<a href="./upload/<%=mdto.getImage() %>"><%=mdto.getImage() %></a>
+					<img src="./upload/<%=mdto.getImage()%>"></td>
 				
+				</td>
+			</tr>
+			<tr>	
+				<td>포스터</td>
+				<td colspan="5">
+					<img src="./upload/<%=mdto.getPoster()%>"></td>
 				
 				</td>
 			</tr>

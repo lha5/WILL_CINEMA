@@ -20,7 +20,7 @@ public class MemberDAOImpl implements MemberDAO{
 	String sql="";
 	
 	//DB연결
-	private Connection getCon() throws Exception{
+		private Connection getCon() throws Exception{
 		//Context 객체 생성
 		Context init=new InitialContext();
 		//DB연동 이름으로 DB 호출 -> DataSource저장

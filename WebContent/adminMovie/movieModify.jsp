@@ -1,3 +1,5 @@
+<%@page import="com.movie.db.MovieDAOImpl"%>
+<%@page import="com.admin.movie.db.AdminMovieDTO"%>
 <%@page import="com.movie.db.MovieDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,67 +14,107 @@
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
+	MovieDAOImpl mdao = new MovieDAOImpl();
+	AdminMovieDTO mdto = mdao.getBoard(movie_num);
 %>
-<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post">
+<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
 	<fieldset>
-		<legend>영화 수정</legend>
-			<input type="hidden" value="<%=movie_num%>">
-			<table>
-				<tr>
-					<td>영화 제목</td>
-					<td>
-						<input type="text" name="name" value="">
-						<input type="hidden" value=""><!-- 비밀번호 저장 -->
-					</td>
-					<td>장르</td>
-					<td>
-						<select name="genre">
-						<option value="#">#</option>
-						<option value="$">$</option>
-						<option value="&">&</option>
-						<option value="*">*</option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td>상영 국가</td>
-					<td>
-						<input type="text" name="country" value="">
-					</td>
-				</tr>
-				<tr>
-					<td>상영 시간</td>
-					<td>
-						<input type="text" name="running_time" value="">
-					</td>
-				</tr>
-				<tr>
-					<td>감독</td>
-					<td colspan="3">
-						<input type="text" name="director">
-					</td>
-				</tr>
-				<tr>
-					<td>스토리</td>
-					<td colspan="3">
-						<textarea name="story" row="10" cols="50">summernote넣기</textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>배우</td>
-					<td>
-						<input type="text" name="actor">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<input type="submit" value="영화 수정">
-					</td>
-				</tr>
-			</table>
-
-	</fieldset>
-</form>
+			<legend>영화 추가</legend>
+				<table>
+					<tr>
+						<td>영화 제목</td>
+						<td>
+							<input type="text" name="title" value="<%=mdto.getTitle()%>">
+						</td>
+						<td>장르</td>
+						<td>
+							<select name="genre">
+								<option value="액션">액션</option>
+								<option value="SF">SF</option>
+								<option value="드라마">드라마</option>
+								<option value="멜로">멜로</option>
+								<option value="가족">가족</option>
+								<option value="스릴러">스릴러</option>
+								<option value="판타지">판타지</option>
+								<option value="모험">모험</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td>제작 국가</td>
+						<td>
+							<input type="text" name="country" value="<%=mdto.getCountry()%>">
+						</td>
+						<td>등급</td>
+						<td>
+							<select nane="grade">
+								<option value="all">전체관람가</option>
+								<option value="12">12세관람가</option>
+								<option value="15">15세관람가</option>
+								<option value="19">청소년관람불가</option>
+								<option value="limited">제한상영가(제한관람가)</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>상영 시간</td>
+						<td>
+							<input type="text" name="running_time" value="<%=mdto.getRunning_time()%>">
+						</td>
+						<td>개봉일~마감일</td>
+						<td>
+							<input type="text" name="open_date" placeholder="yyyyMMdd" value="<%=mdto.getOpen_date()%>"> ~
+							<input type="text" name="close_date" placeholder="yyyyMMdd" value="<%=mdto.getClose_date()%>">
+						</td>
+					</tr>
+					<tr>
+						<td>스토리</td>
+						<td colspan="3">
+							<textarea id="summernote" name="story"><%=mdto.getStory()%></textarea>
+							<script>
+								$('#summernote').summernote({
+									lang: 'ko-KR',
+									height: 300,
+									minHeight: 100,
+									maxHeight: 500
+								 });
+							</script>
+						</td>
+					</tr>
+					<tr>
+						<td>감독</td>
+						<td>
+							<input type="text" name="director" value="<%=mdto.getDirector()%>">
+						</td>
+						<td>배우</td>
+						<td>
+							<input type="text" name="actor" value="<%=mdto.getActor()%>">
+						</td>
+					</tr>
+					<tr>
+						<td>포스터</td>
+						<td colspan="3">
+							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
+						</td>
+					</tr>
+					<tr>
+						<td>이미지</td>
+						<td colspan="3">
+							<input type="file" name="image" value="<%=mdto.getImage()%>">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<input type="submit" value="영화 수정">
+						</td>
+					</tr>
+				</table>
+	
+		</fieldset>
+		
+	</form>
+	
+	<%@ include file="../include/footer.jsp" %>
 
 </body>
 </html>

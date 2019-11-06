@@ -9,7 +9,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 영화관 지점</title>
+
+<!-- 하위 메뉴 고정 -->
+<style type="text/css">
+	nav>ul>li:NTH-CHILD(3)>ul {
+		display: block;
+	}
+</style>
+
 <style type="text/css">
 
 /*롯데 영화관   */
@@ -35,6 +43,7 @@ border: 1px solid blue;
 
 
 </style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script language="JavaScript">
@@ -87,12 +96,11 @@ border: 1px solid blue;
 	        	        	        
 	     var ciadd = $('#cilocal').val();
 		 
-window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
+		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
 		,"width=600,height=400");
 	        
 	        
 	    }
-	 
 </script>
 
 </head>

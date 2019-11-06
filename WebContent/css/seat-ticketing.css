@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-.seat td .seat_on{
+.seatTable td .seat{
 	border: none;
 	width: 25px;
 	height: 25px;
@@ -14,15 +14,15 @@
 	-moz-box-sizing: border-box;
 	margin-bottom: 3px;
 }
-.seat td .seat_on:focus { outline:none; }
+.seatTable td .seat:focus { outline:none; }
 
-.seat .rowNum{
+.seatTable .rowNum{
 	margin-left: 30px;
 	width: 30px;
 	height: 300px;
 }
 
-.seat td .seatbg{
+.seatTable td .seatbg{
 	background: #fff;
 	color: #000000;
 	border: none;
@@ -35,4 +35,14 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	margin-bottom: 3px;
+}
+
+.seatTable td .sweet{
+	border: 2px solid red;
+}
+
+.seatTable td .disabled{
+	background:url('../img/bg/bg_disabled.gif') no-repeat 50% 50% !important;
+	border:0 !important;
+	font-size:0;
 }

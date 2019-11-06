@@ -51,4 +51,7 @@ public interface MemberDAO {
 	
 	//SNS회원 등록
 	public void insertSNSMember(MemberDTO mdto);
+
+	
+
 }
