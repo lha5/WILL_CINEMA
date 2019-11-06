@@ -92,9 +92,9 @@
 				</li>
 				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
 					<ul>
-						<li>
+						<li class="region">
 							<a href="./CinemaUserView.ci?cinema_num=1001">서울</a>
-							<ul>
+							<ul class="cine">
 								<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
 								<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털단지</a></li>
 							</ul>

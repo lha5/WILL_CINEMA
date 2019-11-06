@@ -70,7 +70,7 @@
 		<input type="button" value="비회원 로그인" id="nonmember">
 		
 		<script type="text/javascript">
-			document.querySelector('#nonmember').addEventLisener('click', function() {
+			document.querySelector('#nonmember').addEventListener('click', function() {
 				location.href = './NonMemberLogin.me';
 			});
 		</script>		

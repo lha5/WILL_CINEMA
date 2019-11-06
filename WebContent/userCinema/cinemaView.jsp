@@ -11,37 +11,68 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 영화관 지점</title>
 
-<!-- 하위 메뉴 고정 -->
-<style type="text/css">
-	nav>ul>li:NTH-CHILD(3)>ul {
-		display: block;
-	}
-</style>
-
 <style type="text/css">
 
 /*롯데 영화관   */
-
 /* style="width:10000px; height:420px;
  background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
  no-repeat;display:table-cell;vertical-align:middle" */
-.contents {width: 10000px; height: 420px; background-color: #d6d6d6; margin: 0 auto;no-repeat;display:table-cell;vertical-align:middle}
+ 
+	/* 하위 메뉴 고정 */
+	nav>ul>li:NTH-CHILD(3)>ul {
+		display: block;
+	}
+ 	 
+	.contents {
+		border: 1px solid purple;
+		width: inherit;
+		height: 420px;
+		/* background-color: #d6d6d6; */
+		margin: 0 auto;
+		display: table-cell;
+		vertical-align: middle
+	}
 	
 	/* banner */
-	.banner {position: relative; width: 10000px; height: 420px;   margin:0 auto; padding:0; overflow: hidden;}
-	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 10000px; height: 420px; margin:0; padding:0;}
-
-#cinemaname{
-border: 1px solid blue;
-	width: 600px;
-	height: 200px;
-	clear: both;
-	margin: 10px auto 10px 25em;
-	text-align: center;
-}
-
-
+	.banner {
+		position: relative;
+		border: 1px solid red;
+		/* width: 10000px; */
+		width: 100%;
+		height: 420px;
+		margin: 0 auto;
+		padding: 0;
+		overflow: hidden;
+	}
+	
+	.banner ul {
+		position: absolute;
+		margin: 0px;
+		padding: 0;
+		list-style: none;
+	}
+	
+	.banner ul li {
+		float: left;
+		/* width: 10000px; */
+		width: 100%;
+		height: 420px;
+		margin: 0;
+		padding: 0;
+	}
+	
+	#cinemaname {
+		border: 1px solid blue;
+		width: 600px;
+		height: 200px;
+		clear: both;
+		margin: 10px auto 10px 25em;
+		text-align: center;
+	}
+	
+	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
+		display: block;
+	}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -92,29 +123,28 @@ border: 1px solid blue;
 	
 	
 	
-	 function moviechk(){
-	        	        	        
-	     var ciadd = $('#cilocal').val();
-		 
-		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,""
-		,"width=600,height=400");
-	        
-	        
-	    }
+	function moviechk() { 	        	        
+		var ciadd = $('#cilocal').val();
+			 
+		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
+	}
 </script>
 
 </head>
 <body>
 
-<%@ include file="../include/header.jsp" %>
-<%
-CineDTO cdto = (CineDTO)request.getAttribute("cineList");
-int count = (Integer) request.getAttribute("count");
-List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-%>
 
-<div id= wrap>
-<div class="contents">
+	<div id= wrap>
+
+	<%@ include file="../include/header.jsp" %>
+
+	<%
+	CineDTO cdto = (CineDTO)request.getAttribute("cineList");
+	int count = (Integer) request.getAttribute("count");
+	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+	%>
+	
+	<div class="contents">
 		<div class="banner">
 			<ul>
 				  <%
@@ -161,5 +191,8 @@ List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boar
 	
 	
 	<%@ include file="../include/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>
