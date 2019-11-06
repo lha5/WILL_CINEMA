@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	
+
 	<%@ include file="../include/header.jsp" %>
 
 <%
@@ -45,19 +45,17 @@ String pageNum = (String) request.getAttribute("pageNum");
 				<td><%=mdto.getGenre() %></td>
 			</tr>
 			
-			<tr>	
+			<%-- <tr>	
 				<td>이미지</td>
 				<td colspan="5">
-					<img src="./upload/<%=mdto.getImage()%>"></td>
+					<img src="./upload/<%=mdto.getImage()%>" height="50px" width="50px"></td>
 				
-				</td>
-			</tr>
+			</tr> --%>
 			<tr>	
 				<td>포스터</td>
 				<td colspan="5">
-					<img src="./upload/<%=mdto.getPoster()%>"></td>
+					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
 				
-				</td>
 			</tr>
 			<tr>
 				<td>줄거리 내용</td>

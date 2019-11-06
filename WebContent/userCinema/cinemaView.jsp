@@ -17,7 +17,6 @@
 		display: block;
 	}
 </style>
-
 <style type="text/css">
 
 /*롯데 영화관   */
@@ -25,16 +24,16 @@
 /* style="width:10000px; height:420px;
  background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
  no-repeat;display:table-cell;vertical-align:middle" */
-.contents {width: 10000px; height: 420px; background-color: #d6d6d6; margin: 0 auto;no-repeat;display:table-cell;vertical-align:middle}
+.contents {width: 1905px; height: 420px;  margin: 10px auto;no-repeat;display:table-cell;vertical-align:middle}
 	
 	/* banner */
-	.banner {position: relative; width: 10000px; height: 420px;   margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 1905px; height: 420px;   margin:10px auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 10000px; height: 420px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 1905px; height: 420px; margin:0; padding:0;}
 
 #cinemaname{
 border: 1px solid blue;
-	width: 600px;
+	width: 800px;
 	height: 200px;
 	clear: both;
 	margin: 10px auto 10px 25em;
@@ -58,7 +57,7 @@ border: 1px solid blue;
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 6000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 10000);//다음 이미지로 롤링 애니메이션 할 시간차
 
 		//마우스 오버시 롤링을 멈춘다.
 		banner.mouseover(function(){
@@ -68,7 +67,7 @@ border: 1px solid blue;
 		});
 		//마우스 아웃되면 다시 시작
 		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 4500);
+			rollingId = setInterval(function() { rollingStart(); }, 10000);
 			$(this).css("cursor", "default");
 		});
 		
@@ -77,7 +76,7 @@ border: 1px solid blue;
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 4500, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 10000, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				

@@ -29,14 +29,16 @@
 						<td>장르</td>
 						<td>
 							<select name="genre">
-								<option value="액션">액션</option>
-								<option value="SF">SF</option>
-								<option value="드라마">드라마</option>
-								<option value="멜로">멜로</option>
-								<option value="가족">가족</option>
-								<option value="스릴러">스릴러</option>
-								<option value="판타지">판타지</option>
-								<option value="모험">모험</option>
+							<%if(mdto.getGenre().equals("액션")){%>
+								<option value="액션" selected="selected" >액션</option>
+								<%}else if(mdto.getGenre().equals("SF")){ %>
+								<option value="SF" selected="selected">SF</option><%}else if(mdto.getGenre().equals("드라마")){ %>
+								<option value="드라마" selected="selected">드라마</option><%}else if(mdto.getGenre().equals("멜로")){ %>
+								<option value="멜로" selected="selected">멜로</option><%}else if(mdto.getGenre().equals("가족")){ %>
+								<option value="가족" selected="selected">가족</option><%}else if(mdto.getGenre().equals("스릴러")){ %>
+								<option value="스릴러" selected="selected">스릴러</option><%}else if(mdto.getGenre().equals("판타지")){ %>
+								<option value="판타지" selected="selected">판타지</option><%}else if(mdto.getGenre().equals("모험")){ %>
+								<option value="모험" selected="selected">모험</option><%} %>
 						</select>
 						</td>
 					</tr>
@@ -49,9 +51,9 @@
 						<td>
 							<select nane="grade">
 								<option value="all">전체관람가</option>
-								<option value="12">12세관람가</option>
-								<option value="15">15세관람가</option>
-								<option value="19">청소년관람불가</option>
+								<option value="12">12</option>
+								<option value="15">15</option>
+								<option value="18">18</option>
 								<option value="limited">제한상영가(제한관람가)</option>
 							</select>
 						</td>
@@ -97,13 +99,14 @@
 							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
-					<tr>
-						<td>이미지</td>
+					 <tr>
+						<td>이미지( 구하기 힘든 사진이라서 뷰페이지에 다 주석처리중 )</td>
 						<td colspan="3">
 							<input type="file" name="image" value="<%=mdto.getImage()%>">
 						</td>
 					</tr>
-					<tr>
+									 
+					 <tr>
 						<td colspan="4">
 							<input type="submit" value="영화 수정">
 						</td>
