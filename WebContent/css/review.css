@@ -30,6 +30,11 @@
   content: "\2212";
 }
 
+#img{
+	position: top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+}
 
 #contents {
 	width: 50%;

@@ -34,8 +34,7 @@
 		
 		<table border="1" class="accordion">
 			<tr>
-				<td colspan="5"><img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
-				<td><%=mdto.getTitle() %></td>
+				<td colspan="6"><img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px" id="img"></td>
 			</tr>
 		
 			<tr>
