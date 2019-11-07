@@ -33,7 +33,7 @@ public class NoticeListAction implements Action{
 		
 		/*********************************************************/
 		// 페이지에서 보여줄 글의 개수 설정
-		int pageSize = 10;
+		int pageSize = 5;
 
 		// 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
@@ -66,7 +66,7 @@ public class NoticeListAction implements Action{
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 
 		// 한화면에 보여줄 페이지 번호 계산
-		int pageBlock = 2;
+		int pageBlock = 1;
 		// 시작페이지
 		// 1~10 =>1 11~20 => 11 21~30 => 21
 		int startPage = ((currentPage - 1) / pageBlock) * pageBlock + 1;

@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.service.QnA.db.QnADTO;
+
 public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	
 	Connection con = null;
@@ -346,5 +348,55 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 		return check;		
 	}
 	// deleteNotice(num,pass)
-					
+
+	@Override
+	public List<AdminNoticeDTO> getSearch(String search, int startRow, int pageSize) {
+
+List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from notice where subject like ?";
+			pstmt = con.prepareStatement(sql);
+			
+			System.out.println(search);
+			
+			pstmt.setString(1, "%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				AdminNoticeDTO andto = new AdminNoticeDTO();
+				
+
+				andto.setCategory(rs.getString("category"));
+				andto.setContent(rs.getString("content"));
+				andto.setDate(rs.getDate("date"));
+				andto.setImage(rs.getString("image"));
+				andto.setName(rs.getString("name"));
+				andto.setNum(rs.getInt("num"));
+				andto.setPass(rs.getString("pass"));
+				andto.setReadcount(rs.getInt("readcount"));
+				andto.setSubject(rs.getString("subject"));
+				boardList.add(andto);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return boardList;
+	}
+		
+		
+		
+	
+
+	
+	
+	
 }

@@ -25,6 +25,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
+
+
+
 <script language="JavaScript">
 
 $(document).ready(function() {
@@ -170,11 +174,11 @@ $(document).ready(function() {
      	 <li>
      	  <a href="Ticketing.ti" id="booking" class="mov<%=mdto.getMovie_num() %>" 
      	  onclick='selectMov(event);'>
-     	   
      	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <span ><%=mdto.getTitle() %></span>
-     	  <span class="booking">예매율 : <%=mdto.getBooking_ration() %></span>
+     	  	 
      	  </a>
+      <span class="booking">예매율 : <%=mdto.getBooking_ration() %></span> 
      	 </li>
      	 
      	 
@@ -192,9 +196,9 @@ $(document).ready(function() {
      	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
      	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <span  ><%=mdto.getTitle() %></span>
-     	 <span class="booking">평점 : <%=mdto.getTotal_rating() %></span>
-     	 </a>
      	 
+     	 </a>
+     	 <span class="booking">평점 : <%=mdto.getTotal_rating() %></span>
      	 </li>	
      	 
      	 

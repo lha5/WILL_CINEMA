@@ -110,7 +110,7 @@ function acyncMovePage(url){
 			</tr>
 			<tr>
 				<td>
-					<h3>W.POINT</h3>
+					<h3>W.POINT</h3><br>
 					<div id="left_point">잔여 포인트 : <%=point%></div>
 					<div id="availability">
 						<%
@@ -126,13 +126,13 @@ function acyncMovePage(url){
 						%>
 					</div>
 					<ul id="point_info">
-						<li>본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
-						<li>남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
+						<li>※ 본인 카드에 한하여 등록 및 포인트 조회가 가능합니다.</li>
+						<li>※ 남은 W.POINT가 100P 이상이면 즉시 사용할 수 있습니다.</li>
 					</ul>
 				</td>
 				<td>
 					<div id="ranking">
-						<h2><%=info.get(0)%>님의<br>현재 등급은 <%=level%>입니다.</h2>
+						<h2><%=info.get(0)%>님의 현재 등급은<br><%=level%>입니다.</h2>
 					</div>
 				</td>
 			</tr>
@@ -147,10 +147,10 @@ function acyncMovePage(url){
 	<section id="sec02">
 		<div id="my_menu">
 			<ul>
-				<li><a href="#">예매내역</a></li>
+				<li><input type="button" value="예매내역" id="bookingList"></li>
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><input type="button" value="멤버십" id="myMembership"></li>
-				<li><a href="#">내가 본 영화</a></li>
+				<li><input type="button" value="내가본영화" id="myMovies"></li>
 				<li><input type="button" value="내 정보 관리" id="myInfoManagement"></li>
 			</ul>
 		</div>

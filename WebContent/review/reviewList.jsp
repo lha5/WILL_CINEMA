@@ -29,9 +29,7 @@
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
      <tr>
-       <td>번호</td><td><%=mrdto.getNum() %></td>
        <td>평점</td><td><%=mrdto.getRating() %></td>
-       <td>작성일</td><td><%=mrdto.getDate() %></td>
        <td>작성자</td><td><%=mrdto.getId() %></td>
      </tr>
      <tr>

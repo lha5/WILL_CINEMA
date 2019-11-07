@@ -1,5 +1,6 @@
 package com.ticketing.db;
 
+import java.security.Timestamp;
 import java.sql.Date;
 
 public class TicketDTO{
@@ -12,9 +13,24 @@ public class TicketDTO{
 	private String room;
 	private Date date;
 	private String runnging_time;
-	private String payment;
+	private String payment; 
 	private int price;
 	private Date sell_date;
+	private String person_num;
+	private String day;
+	
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getPerson_num() {
+		return person_num;
+	}
+	public void setPerson_num(String person_num) {
+		this.person_num = person_num;
+	}
 	public int getBook_num() {
 		return book_num;
 	}
@@ -81,6 +97,8 @@ public class TicketDTO{
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	
 	public Date getSell_date() {
 		return sell_date;
 	}

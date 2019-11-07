@@ -62,9 +62,9 @@ public class MovieAddAction implements Action {
 		amdto.setImage(multi.getFilesystemName("image"));
 
 		AdminMovieDAO amdao = new AdminMovieDAOImpl();
-
-		amdao.insertBoard(amdto);
 		
+		amdao.insertBoard(amdto);
+    
 		forward.setPath("./MovieList.mo");
 		forward.setRedirect(true);
 		return forward;

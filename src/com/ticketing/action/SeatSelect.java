@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
@@ -23,6 +24,20 @@ public class SeatSelect implements Action{
 		System.out.println("SeatSelect execute()---------------------------------------------------");
 		
 		//세션 처리
+		request.setCharacterEncoding("UTF-8");
+		/*
+		// 세션값 체크
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		System.out.println("현제 세션 아이디 값 : " + id);
+		
+		ActionForward forward = new ActionForward();
+		if (id == null) {
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}*/
 		
 		//ticketing.jsp에서 전달받은 데이터
 		int movie_num=Integer.parseInt(request.getParameter("movie_num")); //영화번호
@@ -33,7 +48,11 @@ public class SeatSelect implements Action{
 		String running_date=(String)request.getParameter("running_date");//상영일
 		String running_time=(String)request.getParameter("running_time");//상영시간
 		int roomNum=Integer.parseInt(request.getParameter("roomNum"));//관 이름
-		System.out.println(movie_num+" "+saleTime+" "+roomNum+" "+cinema_num+" "+running_date+" "+running_time);
+		String week=request.getParameter("week").substring(11, 12); //요일
+		
+		
+		System.out.println(movie_num+" "+saleTime+" "+roomNum+" "
+		+cinema_num+" "+running_date+" "+running_time+" "+week);
 		// 시험중이기에 데이터베이스에서 바로 가져옴 
 		// 후에 합칠때 예매페이지에서 데이터 받아와야함
 		TicketDAO tdao = new TicketDAOImpl();
@@ -84,6 +103,8 @@ public class SeatSelect implements Action{
 		request.setAttribute("roomNum", roomNum);
 		request.setAttribute("seatRow", seatRow);//좌석번호
 		request.setAttribute("seatCol", seatCol);
+		request.setAttribute("week", week);
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./ticketing/seat-ticketing.jsp");

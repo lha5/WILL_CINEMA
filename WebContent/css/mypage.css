@@ -14,6 +14,17 @@ table {
 
 td {
 	border: 1px solid black;
+	height: 45px;
+	padding: 5px 10px;
+}
+
+tr:NTH-CHILD(1)>td {
+	background-color: #1c1c1c;
+	color: #ffffff;
+}
+
+tr:NTH-CHILD(3)>td {
+	height: 150px;
 }
 
 tr:NTH-CHILD(1)>td:NTH-CHILD(1) {
@@ -34,21 +45,47 @@ tr:NTH-CHILD(3)>td:NTH-CHILD(2) {
 }
 
 #sec02 ul {
-	border: 1px solid pink;
+	/* border: 1px solid pink; */
 	width: 700px;
-	height: 80px;
+	height: 60px;
 	margin: 50px auto;
-	padding: 25px 0 0 75px;
+	padding: 15px 0 10px 20px;
 }
 
 #sec02 ul>li {
-	border: 1px solid skyblue;
+	/* border: 1px solid skyblue; */
 	display: inline-block;
-	margin: 5px 22px 5px 20px;
+	margin: 5px 2px 5px 5px;
+}
+#sec02 ul>li>input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 45px;
+	border: 1px solid #240e04;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 14px;
+	color: #240e04;
+	letter-spacing: 2px;
+	margin-right: 5px;
 }
 
 #sec02>#contents {
 	width: 700px;
 	margin: 20px auto;
 	text-align: center;
+}
+
+#point_info {
+	margin-top: 20px;
+	line-height: 2em;
+	font-size: 14px;
+	color: #1c1c1c;
+}
+
+#left_point {
+	margin-bottom: 5px;
 }

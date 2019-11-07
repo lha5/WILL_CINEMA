@@ -22,12 +22,11 @@
 	<%@ include file="../include/header.jsp" %>
 
 <%
-int movie_num = Integer.parseInt(request.getParameter("movie_num"));
-request.setAttribute("movie_num", movie_num);
-System.out.println("Attribute : "+request.getAttribute("movie_num"));
-AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
-String pageNum = (String) request.getAttribute("pageNum");
-
+	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+	request.setAttribute("movie_num", movie_num);
+	System.out.println("Attribute : "+request.getAttribute("movie_num"));
+	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
+	String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<table border="1">
 			<tr>
@@ -73,13 +72,20 @@ String pageNum = (String) request.getAttribute("pageNum");
 			<td colspan="5"><%=mdto.getActor() %>
 			</td>
 			</tr>
-			
+			<%
+			if (id != null) {
+				if (id.equals("admin")) {
+			%>
 			<tr>
 				<td colspan="6">
 					<input type="button" value="수정하기" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 					<input type="button" value="삭제하기" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 				</td>
 			</tr>
+			<%
+				}
+			}
+			%>
 		</table>
 
 	<jsp:include page="../review/reviewList.jsp"/>
