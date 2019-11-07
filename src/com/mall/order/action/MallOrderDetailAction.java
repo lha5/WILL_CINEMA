@@ -36,11 +36,11 @@ public class MallOrderDetailAction implements Action {
 		// OrderDAO 객체 생성 및 orderDetail(trade_no) 메소드 사용
 		MallOrderDAO modao = new MallOrderDAOImpl();
 		List mallOrderDetail = modao.orderDetail(trans_num);
-		
+				
 		// 주문 상세 페이지 정보를 저장
 		request.setAttribute("mallOrderDetail", mallOrderDetail);
 		
-		// 페이지 이동(./goods_order/order_detail.jsp)
+		// 페이지 이동
 		forward.setPath("./goodsOrder/order_detail.jsp");
 		forward.setRedirect(false);
 		

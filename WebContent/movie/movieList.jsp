@@ -105,7 +105,7 @@ input[type=submit] {
 					<img src="./upload/<%=mdto.getPoster()%>" width="228px" height="334px">
 					<br><br>
 					<h4><%=mdto.getTitle() %></h4>
-					예매율 <%=mdto.getBooking_ration() %> | 장르 <%=mdto.getGenre() %>
+					예매율 <%=mdto.getBooking_ration() %>% | <%=mdto.getGenre() %>
 					</a>
 				</li>			
 			<%

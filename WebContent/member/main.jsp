@@ -17,8 +17,99 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
-<!-- CSS 연결 -->
-<link rel="stylesheet" href="./css/mypage.css">
+<!-- CSS -->
+<style type="text/css">
+section {
+	width: 800px;
+	margin: 10px auto;
+}
+
+#mypage {
+	border-collapse: collapse;
+	border: 1px solid #1c1c1c;
+	width: 700px;
+	margin: 50px auto;
+}
+
+td {
+	border: 1px solid black;
+	height: 45px;
+	padding: 5px 10px;
+}
+
+tr:NTH-CHILD(1)>td {
+	background-color: #1c1c1c;
+	color: #ffffff;
+	text-align: center;
+}
+
+#mypage>tr:NTH-CHILD(3)>td {
+	height: 150px;
+}
+
+#mypage>tr:NTH-CHILD(1)>td:NTH-CHILD(1) {
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	height: 45px;
+	letter-spacing: 5px;
+}
+
+#mypage>tr:NTH-CHILD(3)>td:NTH-CHILD(1) {
+	width: 60%;
+}
+
+#mypage>tr:NTH-CHILD(3)>td:NTH-CHILD(2) {
+	text-align: center;
+	font-size: 14px;
+}
+
+#sec02 ul {
+	/* border: 1px solid pink; */
+	width: 700px;
+	height: 60px;
+	margin: 50px auto;
+	padding: 15px 0 10px 20px;
+}
+
+#sec02 ul>li {
+	/* border: 1px solid skyblue; */
+	display: inline-block;
+	margin: 5px 2px 5px 5px;
+}
+#sec02 ul>li>input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 45px;
+	border: 1px solid #240e04;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 14px;
+	color: #240e04;
+	letter-spacing: 2px;
+	margin-right: 5px;
+}
+
+#sec02>#contents {
+	width: 700px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+#point_info {
+	margin-top: 20px;
+	line-height: 2em;
+	font-size: 14px;
+	color: #1c1c1c;
+}
+
+#left_point {
+	margin-bottom: 5px;
+}
+</style>
 
 <!-- 비동기 처리 -->
 <script>
@@ -99,7 +190,7 @@ function acyncMovePage(url){
 	%>
 	
 	<section id="sec01">
-		<table>
+		<table id="mypage">
 			<tr>
 				<td colspan="2">마이시네마</td>
 			</tr>

@@ -16,5 +16,10 @@ public interface MovieReviewDAO {
 	public int deleteComment(int num);
 
 	int commentCount();
+	
+	//리뷰 가져오기
+	public MovieReviewDTO getReview(String id,int movie_num);
 
+	
+	
 }

@@ -136,5 +136,33 @@ public class MallDAOImpl implements MallDAO{
 		return mdto;
 	}
 	//getGoods(num)
+
+	
+	
+	@Override
+	public String getGoodsImage(int goods_num) {
+		String img = "";
+		try {
+			con = getCon();
+			
+			sql = "SELECT image FROM goods WHERE goods_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, goods_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				img = rs.getString("image");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("image 저장 완료");
+		return img;
+	}
 	
 }
