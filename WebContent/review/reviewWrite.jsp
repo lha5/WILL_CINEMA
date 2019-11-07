@@ -15,28 +15,32 @@
 	%>
 	
 	<div id="Wrap">
-
+	
 	<fieldset class="accordion">
 		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
-			<div class="table">
+			<div ><!-- class="table" -->
 			<table>
 				<tr>
-					<td id="font">리뷰</td>
+					<td id="font"> 리뷰</td>
 					<td>
-						<textarea name="content" row="10" cols="70" id="right"></textarea>	
+						<textarea id="right" name="content" row="10" cols="70" ></textarea>	
 					</td>
 				</tr>
-			</table>
-
-			</div>
-			<div class="rightloat">
-				<select name="rating">
+				<tr>
+					<td><select name="rating">
 						<option value=1>1</option>
 						<option value=2>2</option>
 						<option value=3>3</option>
 						<option value=4>4</option>
 						<option value=5>5</option>
-				</select>  <input type="submit"  value="글쓰기" id="button2">
+
+				</select>  <input type="submit"  value="글쓰기" id="button2"></td>
+				</tr>
+			</table>
+
+ 
+
+
 			</div>
 		</form>
 	</fieldset>

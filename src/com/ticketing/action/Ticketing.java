@@ -29,7 +29,6 @@ public class Ticketing implements Action {
 		//오늘 날짜
 		Date now = new Date();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		String today=sdf.format(now);
 		Calendar todayCal=null;
 		Calendar endCal = Calendar.getInstance();
 		Calendar startCal = Calendar.getInstance();
@@ -66,36 +65,11 @@ public class Ticketing implements Action {
 						, Integer.parseInt(endDate.split("-")[1])-1, Integer.parseInt(endDate.split("-")[2]));
 				todayCal = Calendar.getInstance(); //오늘 날짜
 				
-				/*
-				   //ajax사용할때
-				 * if(todayCal.compareTo(startCal)!=-1
-						&&todayCal.compareTo(endCal)!=1){//오늘 날짜의 영화관 정보를 저장
-					CineDTO todaydto = new CineDTO();
-					
-					todaydto.setCinema_num(cdto.getCinema_num());
-					todaydto.setRegion(cdto.getRegion().sp);
-					todaydto.setName(rs.getString("name"));
-					todaydto.setRoom(rs.getString("room"));
-					todaydto.setSeat(rs.getString("seat"));
-					todaydto.setAddr(rs.getString("addr"));
-					todaydto.setTel(rs.getString("tel"));
-					todaydto.setStart_times(rs.getString("start_times"));
-					todaydto.setEnd_times(rs.getString("end_times"));
-					todaydto.setStart_priod(rs.getString("start_priod"));
-					todaydto.setEnd_priod(rs.getString("end_priod"));
-					todaydto.setMovie_num(rs.getString("movie_num"));
-					
-					cineList.add(cdto);
-				}
-				*/
 				while(todayCal.compareTo(startCal)!=-1
 						&&todayCal.compareTo(endCal)!=1){//상영관의 영화 종료일이 오늘날짜와 같거나 클때
 					//오늘부터 종료일까지 날짜를 저장
 					allDate.add(sdf.format(todayCal.getTime()));
 					todayCal.add(Calendar.DATE, 1);
-					
-					/*System.out.println(sdf.format(todayCal.getTime()) +", "+
-							sdf.format(endCal.getTime()));*/
 				}
 				//System.out.println("=========================");
 			}
