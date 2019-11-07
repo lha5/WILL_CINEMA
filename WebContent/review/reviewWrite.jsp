@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet" href="././css/review.css">
-
 </head>
 <body>
 	
@@ -16,33 +13,25 @@
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	%>
 	
-	<div id="Wrap">
-	
-	<fieldset class="accordion">
+	<fieldset>
 		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
-			<div class="table">
 			<table>
 				<tr>
-					<td id="font">리뷰</td>
+					<td>리뷰</td>
 					<td>
-						<textarea name="content" row="10" cols="70" id="right"></textarea>	
+						<textarea name="content" row="10" cols="50">summernote넣기</textarea>		<select name="rating">
+																									<option value=1>1</option>
+																									<option value=2>2</option>
+																									<option value=3>3</option>
+																									<option value=4>4</option>
+																									<option value=5>5</option>
+																								</select>  <input type="submit"  value="글쓰기">
 					</td>
 				</tr>
 			</table>
-			</div>
-			<div class="rightloat">
-				<select name="rating">
-						<option value=1>1</option>
-						<option value=2>2</option>
-						<option value=3>3</option>
-						<option value=4>4</option>
-						<option value=5>5</option>
-				</select>  <input type="submit"  value="글쓰기" id="button2">
-			</div>
+
 		</form>
 	</fieldset>
-	
-	</div>
 
 </body>
 </html>
