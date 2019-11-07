@@ -158,7 +158,7 @@ $(document).ready(function() {
 					<div class="movie_cont">
      <div class = "entry">
      <ul>
-      <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a>
+      <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a> | 
       <a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></h5></li>
      
      </ul>
@@ -178,7 +178,7 @@ $(document).ready(function() {
      	   <span ><%=mdto.getTitle() %></span>
      	  	 
      	  </a>
-      <span class="booking">예매율 : <%=mdto.getBooking_ration() %></span> 
+      <span class="booking">예매율 <%=mdto.getBooking_ration() %>%</span> 
      	 </li>
      	 
      	 
@@ -193,20 +193,21 @@ $(document).ready(function() {
      		
      	%>
      	 <li>
+     	 	<%=i+1 %>.
      	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
-     	   <span  class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
-     	   <span  ><%=mdto.getTitle() %></span>
+     	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
+     	   <span><%=mdto.getTitle() %></span>
      	 
      	 </a>
-     	 <span class="booking">평점 : <%=mdto.getTotal_rating() %></span>
+     	 <span class="booking">평점 <%=mdto.getTotal_rating() %>점</span>
      	 </li>	
      	 
      	 
      	 
      	 <!-- 영화 반복문 --> 
      	 <%} %>
-     	 
      	</ul>
+     	<div id="goBook"><a href="./Ticketing.ti">예매하기</a></div>
      </div> <!--  스크롤바-->
     </div>
 				</article>
@@ -224,6 +225,9 @@ $(document).ready(function() {
 					</ul>
 		</div>
 	</div>
+	
+			<br>
+			<br>
 					
 				</article>
 			</div>
@@ -232,7 +236,7 @@ $(document).ready(function() {
 			<div id="clear"><!-- 구역 분리를 위한 태그 --></div>
 		
 			<div id="event">
-				이벤트
+				<h3>EVENT</h3>
 				<br>
 			<div>
 			<ul class="eventlist">
@@ -244,8 +248,8 @@ $(document).ready(function() {
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 					</a>
-					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-				</il>
+					<%-- <p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p> --%>
+				</li>
 				<%} %>
 			</ul>
 			
@@ -258,8 +262,8 @@ $(document).ready(function() {
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 					</a>
-					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-				</il>
+					<%-- <p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p> --%>
+				</li>
 				<%} %>
 			</ul>
 		
@@ -273,8 +277,8 @@ $(document).ready(function() {
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 					</a>
-					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-				</il>
+					<%-- <p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p> --%>
+				</li>
 				<%} %>
 			</ul>
 		
@@ -289,8 +293,8 @@ $(document).ready(function() {
 					<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 						<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 					</a>
-					<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
-				</il>
+					<%-- <p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p> --%>
+				</li>
 				<%} %>
 			</ul>
 				</div>
@@ -307,10 +311,12 @@ $(document).ready(function() {
 			
 			</div><!--서비스  -->
 			
+			<!-- ---------------------------------- -->
+			
 			<div id="notice">
 		<div class="w3-content w3-display-container">
  	<ul>
-		<li ><h2 class="noticemore" ><a href="./NoticeList.an" >공지사항 </a></h2></li>
+		<li><h2 class="noticemore" ><a href="./NoticeList.an" >공지사항 </a></h2></li>
 			  
 			   
 			  <%
@@ -318,7 +324,7 @@ $(document).ready(function() {
 			AdminFAQDTO afdto = FAQList.get(i);
 		%>
 		<li class="mySlides">
-		 <h3><a href="./FAQList.af" ><button class="accordion"><%=afdto.getSubject() %></button></a><button class="faqbut" onclick="plusDivs(-1)">&#10094;</button><button class="faqbut" onclick="plusDivs(1)">&#10095;</button></h3>
+		 <h3><a href="./FAQUserList.af" ><button class="accordion"><%=afdto.getSubject() %></button></a><button class="faqbut" onclick="plusDivs(-1)">&#10094;</button><button class="faqbut" onclick="plusDivs(1)">&#10095;</button></h3>
   
 		<div class="panel">
 
