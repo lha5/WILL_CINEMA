@@ -9,7 +9,6 @@
 <title>WILL CINEMA</title>
 
 <!-- CSS -->
-<link rel="stylesheet" href="../css/qnalist.css">
 <link rel="stylesheet" href="././css/qnalist2.css">
 
 </head>
