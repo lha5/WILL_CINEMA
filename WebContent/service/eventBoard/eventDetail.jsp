@@ -10,8 +10,7 @@
 <!-- CSS -->
 <style type="text/css">
 #container {
-	/* border: 1px solid red; */
-	width: 1000px;
+	width: 890px;
 	margin: 50px auto;
 }
 
@@ -19,19 +18,22 @@
 	width: 100%;
 	margin: 10px auto;
 	border-collapse: collapse;
+	background-color: #ffffff;
 }
 
 tr:NTH-CHILD(1)>td, tr:NTH-CHILD(2)>td {
-	border: 1px solid #1c1c1c;
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
 	height: 50px;
+	letter-spacing: 2px;
 }
 
 tr:NTH-CHILD(3)>td {
-	padding: 20px 0 20px 40px;
+	padding: 20px 0 20px 5px;
 }
 
 tr:NTH-CHILD(1)>td:NTH-CHILD(1), tr:NTH-CHILD(2)>td:NTH-CHILD(1) {
-	width: 15%;
+	width: 12%;
 	text-align: center;
 }
 
@@ -41,23 +43,25 @@ tr:NTH-CHILD(1)>td:NTH-CHILD(2), tr:NTH-CHILD(2)>td:NTH-CHILD(2) {
 
 tr:NTH-CHILD(4)>td {
 	text-align: center;
-	background-color: #d7282d;
 	padding: 20px;
+	border-top: 1px solid #e6e6e6;
 }
 
 td>a {
+	background-color: #d7282d;
 	color: #ffffff;
 	font-size: 16px;
 	letter-spacing: 2px;
 	font-family: inherit;
 	font-weight: 500;
+	padding: 10px 20px;
 }
 
 </style>
 
 </head>
 <body>
-
+	<div id="bodyWrap">
 	<%@ include file="../../include/header.jsp" %>
 	<div id="container">
 	<%
@@ -71,7 +75,7 @@ td>a {
 		</tr>
 		<tr>
 			<td>이벤트 기간</td>
-			<td><%=aedto.getF_date() %>~<%=aedto.getE_date() %></td>
+			<td><%=aedto.getF_date() %> ~ <%=aedto.getE_date() %></td>
 		</tr>
 		<tr>
 			<%
@@ -90,6 +94,7 @@ td>a {
 		</tr>
 	</table>
 	
+	</div>
 	</div>
 	<%@ include file="../../include/footer.jsp" %>
 </body>
