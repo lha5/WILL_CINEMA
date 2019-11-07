@@ -255,7 +255,6 @@
 </script>
 </head>
 <body>
-<h1>WebContent/ticketing/seat-tiketing.jsp</h1>
 <%
 	//세션 처리
 	//회원 확인
@@ -292,10 +291,11 @@
 
 %>
 <%@ include file="../../include/header.jsp" %>
-
-<fieldset>
+<div class="bgColor">
+<fieldset class="loginField">
+	<div>
 	<!-- form action -->
-	<form action="TicketOrderAction.ti" method="post">
+	<form action="TicketOrderAction.ti" class="seatForm" method="post">
 	<input type="hidden" id="row" value=<%=row %>>
 	<input type="hidden" id="col" value=<%=col %>>
 	<input type="hidden" name="payment">
@@ -310,49 +310,68 @@
 	<%} 
 	}%>
 	</div>
+	<div class="selectPeopleNum">
+	<div>
+	<span>성인 </span>
+		
+			<select name="adult">
+				<option value="0" selected="selected">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+		</div>
+		<div>
+		<span>청소년  </span> 
+		
+			<select name="teenager">
+				<option value="0" selected="selected">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+		</div>
+		<div>
+		<span>시니어 </span> 
 	
-	성인 : <select name="adult">
-			<option value="0" selected="selected">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-		</select>
-
-	청소년 : <select name="teenager">
-			<option value="0" selected="selected">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-		</select>
-		
-	시니어 : <select name="senior">
-			<option value="0" selected="selected">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-		</select>
-		
-	최대 8자리
+			<select name="senior">
+				<option value="0" selected="selected">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+		</div>
+	<em>* 최대 8자리</em>
+	</div>
 	<hr>	
 	<!-- 시간 부족시 삭제? -->
-	좌석 붙임 설정 <input type="radio" id="one" name="seating" value="1">1자리
-				<input type="radio" id="two" name="seating" value="2">2자리
-				<input type="radio" id="four" name="seating" value="4">4자리
+	<div class="selectPeopleNum2">
+	<div>좌석 붙임 설정 </div>
+		<div>
+			<input type="radio" id="one" name="seating" value="1"><span>1자리</span>
+		</div>
+		<div>
+			<input type="radio" id="two" name="seating" value="2"><span>2자리</span>
+		</div>
+		<div>
+			<input type="radio" id="four" name="seating" value="4"><span>4자리</span>
+		</div>
+	</div>
 	<hr>
 	
 	<!-- 좌석선택 -->
@@ -633,43 +652,88 @@
 	
 	<!-- /좌석선택 -->
 	<hr>
-	<input type="submit" value="결제하기">
+	<input type="submit" class="payButton" value="결제하기">
 	<hr>
 	
 	<!-- 예약 정보 -->
 	<!-- 테이블 형식은 후에 css중 변경 가능 -->
-	<table border="1">
+	<table class="seatTable2">
 		<tr>
 			<td>
-				영화<br>
-				<img src="/upload/<%=mdto.getPoster() %>">
-				<input type="text" name="movie_title" value="<%=mdto.getTitle() %>">
-				<input type="hidden" name="movie_num" value="<%=mdto.getMovie_num() %>">
-				
+				<table class="innerTable">
+				<tr>
+					<th colspan="2"><span>영화</span></th>
+				</tr>
+				<tr>
+					<td class="tdSpan" rowspan="4"><img src="/upload/<%=mdto.getPoster() %>" ></td>
+					<td><input type="text" name="movie_title" value="<%=mdto.getTitle() %>" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td><%=mdto.getGenre() %></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="movie_num" value="<%=mdto.getMovie_num() %>"></td>
+				</tr>
+				<tr>
+					<td><%=mdto.getGrade() %></td>
+				</tr>
+				</table>
 			</td>
 			<td>
-				예매정보<br>
-				상영일 <input type="text" name="running_date" value="<%=running_date %>(<%=week %>)" readonly><br>
-				상영시간 <input type="text" name="running_time" value="<%=running_time %>" readonly><br>
-				<!-- 상영관의 경우 데이터 값 가져와서  -->
-
-				상영관 <input type="text" name="room_num" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
-					 <input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>"  readonly>
-					 <input type="hidden" name="roomNum" value="<%=roomNum %>"  readonly>
-				<br>
-				좌석 <input type="text" name="seat" readonly><br>
+				<table class="innerTable">
+					<tr>
+						<th colspan="2"><span>예매정보</span></th>
+					</tr>
+					<tr>
+						<td>상영일</td>
+						<td><input type="text" name="running_date" value="<%=running_date %>(<%=week %>)" readonly></td>
+					</tr>
+					<tr>
+						<td>상영시간</td>
+						<td><input type="text" name="running_time" value="<%=running_time %>" readonly></td>
+					</tr>
+					<tr>
+						<td>상영관</td>
+						<td>
+							<input type="text" name="room_num" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
+							<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>"  readonly>
+							<input type="hidden" name="roomNum" value="<%=roomNum %>"  readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>좌석</td>
+						<td><input type="text" name="seat" readonly></td>
+					</tr>
+				</table>
 			</td>
 			<td>
-				총 결제 금액
-				<!-- 좌석 선택후 가격 결정  -->
-				영화예매 <input type="text" name="price"> 원
-						
+				<table class="innerTable">
+					<tr>
+						<th colspan="2"><span>총 결제 금액</span></th>
+					</tr>
+					<tr>
+						<td>영화예매</td>
+						<td><input type="text" name="price"> 원</td>
+					</tr>
+					<tr>
+						<td></td><td></td>
+					</tr>
+					<tr>
+						<td></td><td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="text" name="price"> 원</td>
+					</tr>
+				</table>
 			</td>
 		</tr>
 	</table>
 	
 	</form>
+	</div>
 </fieldset>
+</div>
 <%@ include file="../../include/footer.jsp" %>
 </body>
 </html>
