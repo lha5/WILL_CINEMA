@@ -29,10 +29,7 @@
 	.contents {
 		border: 1px solid purple;
 		width: inherit;
-		height: 420px;
-		/* background-color: #d6d6d6; */
 		margin: 0 auto;
-		display: table-cell;
 		vertical-align: middle
 	}
 	
@@ -64,18 +61,22 @@
 		padding: 0;
 	}
 	
-	#cinemaname {
-		border: 1px solid blue;
-		width: 800px;
-		height: 400px;
-		clear: both;
-		text-align: center;
-		margin-left:25em; 
-	}
-	
+	#cinemaname { 
+	position:relative; 
+	clear:both;
+	width:980px; 
+	padding:0 0 0 0;  
+	color:#231f20;
+	margin: 0 auto;
+}
 	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 		display: block;
 	}
+	.moviechk{
+	padding: 5px;
+	margin-left: 30px;
+	}
+	
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -251,7 +252,7 @@
 			//체크된 날짜의 요일
 			week=$('label[for="' +monthNames[mon]+date2[2] +'"]').find('span').text();
 			week= date2[0]+"."+date2[1]+"."+date2[2]+"("+week+")";
-			alert("클릭체크 : "+week);
+			/* alert("클릭체크 : "+week); */
 			
 			$.ajax({
 				url:"./ShowTime.ti",
@@ -454,20 +455,19 @@
 		
 	<div id="cinemaname">
 	
-	<table border="1">
+	<table >
 	<%
 	
 	
 		 %>
 		<tr>
-		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2> <input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
+		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2><input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
 		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
 		</tr>
 		<tr>
-		<td>상영관 :<%=cdto.getRoom() %></td>
-		<td>영화관 전화번호 :<%=cdto.getTel() %></td>
-
-		<td>영화관주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+		<td>총 상영관수:<%=cdto.getRoom() %>관</td>
+		<td></td>
+		<td>주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
 		
 		
 
