@@ -26,7 +26,7 @@
 	
 	<div id="Wrap">	
 	
-	 <table border="1" class="accordion">
+	 <table class="accordion">
 	 <%for(int i=0;i<boardList.size();i++){ 
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
@@ -39,8 +39,10 @@
 	     <%if(id.equals(mrdto.getId())){ %>
 	     <tr>
 	     	<td colspan="8">
-		     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-				<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	<div class="rightloat">
+		     	<input type="button" id="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+				<input type="button" id="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	</div>
 	     	</td>
 	     </tr>
 	     <%} %>
