@@ -7,12 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+
+<link rel="stylesheet" href="././css/review.css">
+
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <title> 리뷰 페이지 </title>
+
 </head>
 <body>
-	
 	
 	<%	
 		String id = (String) session.getAttribute("id");
@@ -24,29 +27,36 @@
 		System.out.println("boardList : "+boardList+" id : "+id);
 	%>
 	
-	 <table border="1">
+	<div id="Wrap">	
+	
+	
+	 <table class="accordion">
 	 <%for(int i=0;i<boardList.size();i++){ 
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
      <tr>
-       <td>평점</td><td><%=mrdto.getRating() %></td>
-       <td>작성자</td><td><%=mrdto.getId() %></td>
+       <td>평점</td><td colspan="7"><%=mrdto.getRating() %></td>
      </tr>
      <tr>
-       <td>내용</td><td colspan="5"><%=mrdto.getContent() %></td>
+       <td colspan="6"><%=mrdto.getContent() %></td><td colspan="1"><%=mrdto.getId() %></td>
      </tr>
 	 <%
 	  if(id != null){
 	     if(id.equals(id)){ %>
 	     <tr>
-	     	<td colspan="6">
-		     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-				<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	<td colspan="8">
+	     	<div class="rightloat">
+		     	<input type="button" id="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+				<input type="button" id="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	</div>
 	     	</td>
 	     </tr>
 	 <%}
 	     }%>
      <%} %>
-
+	</table>
+	
+	</div>	
+	
 </body>
 </html>
