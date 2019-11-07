@@ -105,13 +105,15 @@ input[type=submit] {
 					<img src="./upload/<%=mdto.getPoster()%>" width="228px" height="334px">
 					<br><br>
 					<h4><%=mdto.getTitle() %></h4>
-					예매율 <%=mdto.getBooking_ration() %>% | <%=mdto.getGenre() %>
 					</a>
+					예매율 <%=mdto.getBooking_ration() %>% | <%=mdto.getGenre() %>
+						<% System.out.println("예매율"+mdto.getBooking_ration());%>	
 				</li>			
 			<%
 			}
 			%>
 		</ul>
+		
 		<%
 		if (id != null) {
 			if (id.equals("admin")) {
