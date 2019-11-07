@@ -16,8 +16,6 @@
 	}
 </style>
 
-<link rel="stylesheet" href="././css/review.css">
-
 </head>
 <body>
 
@@ -30,10 +28,14 @@
 	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 	String pageNum = (String) request.getAttribute("pageNum");
 %>
-		<div id="Wrap">
-		<img src="./upload/<%=mdto.getPoster()%>" width="500px" height="600px" id="img">
-		<table border="1" class="accordion">
+		<table border="1">
 			<tr>
+				<td>제목</td>
+				<td colspan="5"><%=mdto.getTitle() %></td>
+			</tr>
+		
+			<tr>
+				
 				<td>예매순위</td>
 				<td><%=mdto.getBooking_ration() %></td>
 				<td>개봉일</td>
@@ -48,10 +50,15 @@
 					<img src="./upload/<%=mdto.getImage()%>" height="50px" width="50px"></td>
 				
 			</tr> --%>
-			<tr>
+			<tr>	
+				<td>포스터</td>
+				<td colspan="5">
+					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
+				
 			</tr>
 			<tr>
-				<td colspan="6"><%=mdto.getStory() %>
+				<td>줄거리 내용</td>
+				<td colspan="5"><%=mdto.getStory() %>
 				</td>	
 			</tr>
 			<tr>
@@ -71,10 +78,8 @@
 			%>
 			<tr>
 				<td colspan="6">
-				<div class="rightloat">
-					<input type="button" value="수정하기" id="button" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-					<input type="button" value="삭제하기" id="button" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-				<div class="rightloat">
+					<input type="button" value="수정하기" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+					<input type="button" value="삭제하기" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 				</td>
 			</tr>
 			<%
@@ -82,8 +87,6 @@
 			}
 			%>
 		</table>
-		
-		</div>
 
 	<jsp:include page="../review/reviewList.jsp"/>
 
