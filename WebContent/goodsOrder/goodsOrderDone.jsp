@@ -5,22 +5,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 구매 완료</title>
+
+<!-- CSS -->
+<style type="text/css">
+@font-face {
+	font-family: 'NanumGothic';
+	src: url('../font/NanumGothic.ttf') format('truetype');
+}
+
+.ri-checkbox-circle-line {
+	color: #2ae853;
+}
+
+#done {
+	width: 700px;
+	margin: 50px auto;
+	text-align: center;
+	font-family: NanumGothic;
+	color: #1c1c1c;
+}
+
+span {
+	font-size: 1.2em;
+}
+
+#thanks {
+	font-size: 18px;
+}
+</style>
+
 </head>
 <body>
 
 	<div id="wrap">
 		<%@ include file="../include/header.jsp" %>
-
-		<%
-		// 주소줄에 있는 정보 받아오기
-		// String trans_num = request.getParameter("trans_num");
-		%>
 		
-		<div>
+		<div id="done">
+			<i class="ri-checkbox-circle-line ri-5x"></i>
+			<br>
+			<br>
 			<h2>구매가 완료되었습니다.</h2>
-			<h2>저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</h2>
-			<h3><a href="./Main.me">마이시네마 페이지로 이동하기</a></h3>
-			<%-- <h2>구매 번호 : <a href="./MallOrderDetail.mor?trans_num=<%=trans_num%>"><%=trans_num%></a></h2> --%>
+			<br>
+			<div id="thanks">저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</div>
+			<br><br>
+			<span><a href="./Main.me">마이시네마 페이지로 이동하기</a></span>
 		</div>
 		<%@ include file="../include/footer.jsp" %>
 	</div>
