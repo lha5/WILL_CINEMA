@@ -85,3 +85,37 @@ nav>ul>li:NTH-CHILD(4) ul {
 nav>ul>li:NTH-CHILD(4)>ul {
 	display: block;
 }
+
+form {
+	border: 1px solid lime;
+}
+
+input[type=text] {
+	width: 240px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	color: #1c1c1c;
+	font-size: 14px;
+}
+
+input[type=submit] {
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 14px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
