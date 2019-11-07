@@ -31,7 +31,9 @@
      <tr>
        <td colspan="3"><%=mrdto.getContent() %></td>
      </tr>
-	     <%if(id.equals(mrdto.getId())){ %>
+	     <%
+	     if (id != null) {
+	     	if(id.equals(mrdto.getId())){ %>
 	     <tr>
 	     	<td colspan="8">
 	     	<div class="rightloat">
@@ -40,7 +42,8 @@
 	     	</div>
 	     	</td>
 	     </tr>
-	    <%} %>
+	    <%}
+	     }%>
      <%} %>
 	</table>
 	
