@@ -26,6 +26,7 @@
 	
 	<div id="Wrap">	
 	
+	
 	 <table class="accordion">
 	 <%for(int i=0;i<boardList.size();i++){ 
 	 	MovieReviewDTO mrdto = boardList.get(i);
