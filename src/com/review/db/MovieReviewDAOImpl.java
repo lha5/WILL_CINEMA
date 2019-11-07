@@ -161,8 +161,43 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		return boardList;
 		
 	}
-
-
+	
+	// 리뷰 목록
+	@Override
+	public MovieReviewDTO getReview(String id,int movie_num) {
+		
+		MovieReviewDTO mrdto = new MovieReviewDTO();
+		try {
+			con = getCon();
+			
+			sql = "select * from review where id=? and  movie_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			pstmt.setInt(2, movie_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				//System.out.println("num : "+rs.getInt("num"));
+				mrdto.setNum(rs.getInt("num"));
+				mrdto.setId(rs.getString("id"));
+				mrdto.setPass(rs.getString("pass"));
+				mrdto.setRating(rs.getInt("rating"));
+				mrdto.setContent(rs.getString("content"));
+				mrdto.setDate(rs.getTimestamp("date"));
+				
+			}
+			
+		} catch (Exception e) { 	
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return mrdto;
+		
+	}
 
 	// 리뷰 수정
 	@Override
