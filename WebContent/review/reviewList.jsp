@@ -15,10 +15,8 @@
 	<%	
 		String id = (String) session.getAttribute("id");
 		int movie_num = (int) request.getAttribute("movie_num");
-		/* String id = (String)session.getAttribute("id"); */
 		int count = (Integer) request.getAttribute("count");
 		List<MovieReviewDTO> boardList = (List<MovieReviewDTO>) request.getAttribute("boardList");
-		/* String pageNum = (String)request.getAttribute("pageNum"); */
 		System.out.println("boardList : "+boardList+" id : "+id);
 	%>
 
@@ -42,7 +40,7 @@
 	     	</div>
 	     	</td>
 	     </tr>
-	     <%} %>
+	    <%} %>
      <%} %>
 	</table>
 	

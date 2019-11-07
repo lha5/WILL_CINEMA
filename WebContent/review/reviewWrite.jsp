@@ -18,24 +18,16 @@
 
 	<fieldset class="accordion">
 		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
-			<div class="table">
-			<table>
-				<tr>
-					<td id="font">리뷰</td>
-					<td>
-						<textarea name="content" row="10" cols="70" id="right"></textarea>	
-					</td>
-				</tr>
-				<tr>
-					<td><select name="rating">
-						<option value=1>1</option>
-						<option value=2>2</option>
-						<option value=3>3</option>
-						<option value=4>4</option>
-						<option value=5>5</option>
-				</select>  <input type="submit"  value="글쓰기" id="button2"></td>
-				</tr>
-			</table>
+			<textarea name="content" row="50" cols="70" id="textBox"></textarea>
+			<div id="right">
+			<select name="rating">
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
+			</select>  
+			<input type="submit"  value="글쓰기" id="button2">
 			</div>
 		</form>
 	</fieldset>

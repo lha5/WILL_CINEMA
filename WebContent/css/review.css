@@ -49,12 +49,7 @@
 	text-align: center;
 }
 #right {
-	height: 17px;
-  width: 580px;
-  padding: .8em .5em;
-  border: 1px solid;
-  position: relative;
-	bottom: 7px;
+	float: right;
 }
 #button {
   background-color: silver;
@@ -72,4 +67,11 @@
 	bottom: 8px;
 	right: 10px;
 	color: red;
+}
+
+#textBox {
+	width: 600px;
+	height: 100px;
+	position: relative;
+	left: 10px;
 }
