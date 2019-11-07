@@ -10,10 +10,10 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="../css/qnalist.css">
+<link rel="stylesheet" href="././css/qnalist2.css">
 
 </head>
 <body>
-
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
@@ -33,12 +33,12 @@
 	%>
 	
 	
-
 	<div id="faqList"><center>질문 목록</center></div> 
-	
+
 	<div id="contentsWrap">	
    	<center>
    <table border="1">
+   <table border="1" class="accordion">
      <tr>
        <td>번호</td>
        <td>제목</td>
@@ -76,7 +76,6 @@
 			<a href="./QnAList.sq?pageNum=<%=startPage - pageBlock%>">[이전]</a>
 			<%
 			}
-
 			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
@@ -84,7 +83,6 @@
 			</a>
 			<%
 			}
-
 			// 다음
 			if (endPage < pageCount) {
 			%>
@@ -93,17 +91,19 @@
 				}
 		}
 	%>
-		</div>
-	</div>	
+		</div>	
 	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
-	
+
+
 
 	<form action="./QnASearchAction.sq" method="post">
 		<input type="text" name="search">
 		<button type="submit">검색</button>
 	</form>
-	
+	</form>	
+
+	</div>
 	<%@ include file="../../include/footer.jsp" %>
-	
+
 </body>
 </html>
