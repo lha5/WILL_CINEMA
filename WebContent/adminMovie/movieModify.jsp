@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="././css/modify.css">
+
 </head>
 <body>
 
@@ -22,7 +25,10 @@
 	
 %>
 
-<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" >
+
+<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
+			<legend>영화 수정</legend>
+
 	<fieldset>
 			<legend>영화 추가</legend>
 				<table>
@@ -100,12 +106,13 @@
 					</tr>
 					<tr>
 						<td>포스터</td>
-						<td colspan="3">
-							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
+						<td colspan="3" class="filebox" >
+							<label for="ex_file">파일추가 </label>
+							<input type="file" name="poster" id="ex_file" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
 					 <tr>
-						<td>이미지( 구하기 힘든 사진이라서 뷰페이지에 다 주석처리중 )</td>
+						<td>이미지</td>
 						<td colspan="3">
 							<input type="file" name="image" value="<%=mdto.getImage()%>">
 						</td>
@@ -113,7 +120,7 @@
 									 
 					 <tr>
 						<td colspan="4">
-							<input type="submit" value="영화 수정">
+							<input type="submit" value="영화 수정" class="modify" >
 						</td>
 					</tr>
 				</table>

@@ -15,10 +15,6 @@
 <link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
-/*롯데 영화관   */
-/* style="width:10000px; height:420px;
- background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
- no-repeat;display:table-cell;vertical-align:middle" */
 
  
 	/* 하위 메뉴 고정 */
@@ -27,19 +23,16 @@
 	}
  	 
 	.contents {
-		border: 1px solid purple;
+		/* border: 1px solid purple; */
 		width: inherit;
-		height: 420px;
-		/* background-color: #d6d6d6; */
 		margin: 0 auto;
-		display: table-cell;
 		vertical-align: middle
 	}
 	
 	/* banner */
 	.banner {
 		position: relative;
-		border: 1px solid red;
+		/* border: 1px solid red; */
 		/* width: 10000px; */
 		width: auto;
 		height: 420px;
@@ -64,18 +57,24 @@
 		padding: 0;
 	}
 	
-	#cinemaname {
-		border: 1px solid blue;
-		width: 800px;
-		height: 400px;
-		clear: both;
-		text-align: center;
-		margin-left:25em; 
-	}
-	
+
+	#cinemaname { 
+	position:relative; 
+	clear:both;
+	width:980px; 
+	padding:0 0 0 0;  
+	color:#231f20;
+	margin: 0 auto;
+}
+
 	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 		display: block;
 	}
+	.moviechk{
+	padding: 5px;
+	margin-left: 30px;
+	}
+	
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -398,7 +397,7 @@
         form.submit();
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
-	
+	/*  영화관 위치 / 영화재생   */
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
@@ -453,20 +452,21 @@
 		
 	<div id="cinemaname">
 	
-	<table border="1">
+	<table >
 	<%
 	
 	
 		 %>
 		<tr>
-		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2> <input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
+
+		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2><input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
 		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
 		</tr>
 		<tr>
-		<td>상영관 :<%=cdto.getRoom() %></td>
-		<td>영화관 전화번호 :<%=cdto.getTel() %></td>
+		<td>총 상영관수:<%=cdto.getRoom() %>관</td>
+		<td></td>
+		<td>주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
 
-		<td>영화관주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
 		
 		
 

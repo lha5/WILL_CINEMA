@@ -9,6 +9,15 @@
 <title>WILL CINEMA - 이벤트</title>
 <!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
+<style type="text/css">
+.ctgr {
+	padding: 5px;
+	padding-left: 3px;
+	letter-spacing: 2px;
+	font-size: 1.3em;
+	font-weight: 500;
+}
+</style>
 
 </head>
 <body>
@@ -23,10 +32,9 @@
 	%>
 
 
-	<div class="event_cwrap">
-		<input type="button" value="지난 이벤트" onclick="location.href='./EventPast.ae'"> 
+	<div class="event_cwrap"> 
 		<div class="more">
-			<h2>영화</h2> <a href="./EventContent.ae?item=movie">더보기</a>
+			<span class="ctgr">영화</span><span><a href="./EventContent.ae?item=movie">더보기</a></span>
 		</div>
 			<ul class="event_list">
 				<%for(int i=0; i<eventMovieList.size(); i++){ //영화 카테고리 리스트
@@ -42,8 +50,10 @@
 				<%} %>
 			</ul>
 			<br>
+			<br>
+			<br>
 			<div class="more">
-				<h2>시사회/무대인사</h2> <a href="./EventContent.ae?item=preview">더보기</a>
+				<span class="ctgr">시사회/무대인사</span><span><a href="./EventContent.ae?item=preview">더보기</a></span>
 			</div>
 			<ul class="event_list">
 				<%for(int i=0; i<eventPreviewList.size(); i++){ //시사회 카테고리 리스트
@@ -59,8 +69,10 @@
 				<%} %>
 			</ul>
 			<br>
+			<br>
+			<br>
 			<div class="more">
-				<h2>윌시 NOW</h2> <a href="./EventContent.ae?item=nevent">더보기</a>
+				<span class="ctgr">윌시 NOW</span><span><a href="./EventContent.ae?item=nevent">더보기</a></span>
 			</div>
 			<ul class="event_list">
 				<%for(int i=0; i<eventNeventList.size(); i++){ //윌시NOW 카테고리 리스트
@@ -76,8 +88,10 @@
 				<%} %>
 			</ul>
 			<br>
+			<br>
+			<br>
 			<div class="more">
-				<h2>제휴 할인</h2> <a href="./EventContent.ae?item=collabo">더보기</a>
+				<span class="ctgr">제휴 할인</span><span><a href="./EventContent.ae?item=collabo">더보기</a></span>
 			</div>
 			<ul class="event_list">
 				<%
@@ -93,9 +107,14 @@
 				</il>
 				<%} %>
 			</ul>
-		<br class="more">
+		<br>
+		<br>
+		<br>
+			<input type="button" value="지난 이벤트" id="old" onclick="location.href='./EventPast.ae'">
 		</div>
-
+		
+		<div id="clear"></div>
+		
 	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>

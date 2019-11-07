@@ -30,10 +30,12 @@ public class MovieReviewUpadate implements Action{
 		
 		String id = request.getParameter("id");
 		
+		System.out.println(num+","+ movie_num);
+		
 		//리뷰 전체 가져오기
 		MovieReviewDAO mrdao = new MovieReviewDAOImpl(); 
 		
-		MovieReviewDTO mrdto = mrdao.getReview(id, movie_num);
+		MovieReviewDTO mrdto = mrdao.getReview(id, movie_num, num);
 		
 		request.setAttribute("movie_num", movie_num);
 		request.setAttribute("num", num);
