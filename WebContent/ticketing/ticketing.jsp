@@ -160,6 +160,7 @@
 				//alert(" 횟수 : " + cnt)
 				
 				cnt++;
+				
 			}
 		}
 		prev();
@@ -175,6 +176,7 @@
 			});
 			/* ajax관련 */
 			clickEvent();
+			selectShow();
 		});
 		
 		$('.txtdate').find('dd').text(function(){//웹 시작시 상영일 날짜 바꿔줌

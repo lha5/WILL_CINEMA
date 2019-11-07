@@ -17,11 +17,13 @@ public class NoticeSearchAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		
-		// 한글처리 
+				// 한글처리 
 				request.setCharacterEncoding("UTF-8");
 						
-				AdminNoticeDAO andao  = new AdminNoticeDAOImpl();
+				AdminNoticeDAOImpl adminNoticeDAOImpl= new AdminNoticeDAOImpl();
+				AdminNoticeDAO andao = new AdminNoticeDAOImpl();
 				
+				//noticeList에서 검색결과를 받아옴
 				String search = request.getParameter("search");
 				
 				System.out.println("검색어 : "+search);
@@ -49,7 +51,7 @@ public class NoticeSearchAction implements Action {
 				List<AdminNoticeDTO> boardList = null;
 				
 				if( count != 0 ){ 
-					  boardList = andao.getSearch(search, startRow, pageSize);
+					  boardList = adminNoticeDAOImpl.getSearch(search, startRow, pageSize);
 				}
 				
 				// 전체 페이지수 계산
@@ -61,6 +63,7 @@ public class NoticeSearchAction implements Action {
 				int startPage = ((currentPage-1)/pageBlock)*pageBlock+1;
 				// 끝페이지
 				int endPage = startPage+pageBlock-1;
+				
 				if(endPage > pageCount){
 					endPage = pageCount;
 				}

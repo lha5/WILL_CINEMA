@@ -19,12 +19,14 @@ public class MovieReviewUpadatAction implements Action {
 		// 한글처리 
 		request.setCharacterEncoding("UTF-8");
 		
+		//세션처리
+		// 세션 -> 아이디, 파라미터 -> num,movie_num 값 가져오기
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		int num = Integer.parseInt(request.getParameter("num"));
-		
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 		System.out.println(" movie_num(update) : "+movie_num);
+		
 		
 		MovieReviewDTO mrdto = new MovieReviewDTO();
 		System.out.println("rating : "+request.getParameter("rating"));

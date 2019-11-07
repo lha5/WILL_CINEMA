@@ -14,10 +14,14 @@ import com.action.ActionForward;
 import com.admin.movie.db.AdminMovieDAO;
 import com.admin.movie.db.AdminMovieDAOImpl;
 import com.admin.movie.db.AdminMovieDTO;
+
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+
+
 
 public class MovieModifyAction implements Action {
 
@@ -33,6 +37,7 @@ public class MovieModifyAction implements Action {
 		String id = (String)session.getAttribute("id");
 
 		ActionForward forward = new ActionForward();
+		
 		if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
@@ -48,8 +53,12 @@ public class MovieModifyAction implements Action {
 
 		MultipartRequest multi = new MultipartRequest(request,realPath,maxSize,"UTF-8", new DefaultFileRenamePolicy());
 
+		System.out.println(request.getParameter("running_time"));
+		System.out.println(request.getAttribute("running_time"));
+		
 		AdminMovieDTO amdto = new AdminMovieDTO();
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
+
 		String title = multi.getParameter("title");
 		String genre = multi.getParameter("genre");
 		String director = multi.getParameter("director");
@@ -58,9 +67,6 @@ public class MovieModifyAction implements Action {
 		String image = multi.getFilesystemName("image");
 		String poster = multi.getFilesystemName("poster");
 		int running_time = Integer.parseInt(multi.getParameter("running_time"));
-		
-		System.out.print(" poster : "+poster+" image : "+image);
-		System.out.print("name : "+ title + " id : "+ id + " running_time : "+running_time+"movie_num(Action) : "+movie_num);
 
 		amdto.setMovie_num(movie_num);
 		amdto.setTitle(title);
@@ -77,12 +83,13 @@ public class MovieModifyAction implements Action {
 		// QnaDAOImpl객체 생성
 		AdminMovieDAO amdao = new AdminMovieDAOImpl();
 
-		// insertBoard()
+		// updateBoard()
 		amdao.updateBoard(amdto);
 
 		forward.setPath("./MovieList.mo");
 		forward.setRedirect(true);
 		return forward;
+		
 	}
 
 	public static Date transformDate(String date) {

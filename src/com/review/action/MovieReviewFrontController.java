@@ -43,10 +43,17 @@ public class MovieReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MovieReviewUpdate.mr")) {
-			forward = new ActionForward();
+			action = new MovieReviewUpadate();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			/*forward = new ActionForward();
 			
 			forward.setPath("./review/reviewUpdate.jsp");
-			forward.setRedirect(false);
+			forward.setRedirect(false);*/
 		} else if (command.equals("/MovieReviewUpadatAction.mr")) {
 			action = new MovieReviewUpadatAction();
 			try {

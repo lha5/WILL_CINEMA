@@ -7,18 +7,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@ include file="../include/header.jsp" %>
 <h1>영화 수정 페이지</h1>
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
 	MovieDAOImpl mdao = new MovieDAOImpl();
 	AdminMovieDTO mdto = mdao.getBoard(movie_num);
+	
 %>
+
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
 			<legend>영화 수정</legend>
+=======
+	<fieldset>
+		
+
 				<table>
 					<tr>
 						<td>영화 제목</td>
@@ -48,7 +57,7 @@
 						</td>
 						<td>등급</td>
 						<td>
-							<select nane="grade">
+							<select name="grade">
 								<option value="all">전체관람가</option>
 								<option value="12">12</option>
 								<option value="15">15</option>
@@ -65,7 +74,7 @@
 						<td>개봉일~마감일</td>
 						<td>
 							<input type="text" name="open_date" placeholder="yyyyMMdd" value="<%=mdto.getOpen_date()%>"> ~
-							<input type="text" name="close_date" placeholder="yyyyMMdd" value="<%=mdto.getClose_date()%>">
+							<input type="text" name="close_date" placeholder="yyyyMMdd" value="<%=mdto.getClose_date()%>" >
 						</td>
 					</tr>
 					<tr>

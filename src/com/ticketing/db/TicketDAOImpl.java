@@ -342,6 +342,7 @@ public class TicketDAOImpl implements TicketDAO{
 	@Override
 	public String getSeatNum(int cinema_num, int movie_num, int roomNum, String running_date, String running_time) {
 		String seat="";
+		int cnt=0;
 		try {
 			con = getCon();
 			
@@ -357,8 +358,13 @@ public class TicketDAOImpl implements TicketDAO{
 			
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
-				seat=rs.getString("seat");	
+			while (rs.next()) {
+				if(cnt==0){
+					seat=rs.getString("seat");	
+				}else{
+					seat+=","+rs.getString("seat");
+				}
+				cnt++;
 			}
 			
 		} catch (Exception e) { 	
@@ -378,7 +384,7 @@ public class TicketDAOImpl implements TicketDAO{
 		try {
 			con = getCon();
 
-			sql = "select max(num) from book";
+			sql = "select max(book_num) from book";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -388,8 +394,8 @@ public class TicketDAOImpl implements TicketDAO{
 				num = 1;
 			}
 
-			sql = "insert into book(num,id,pass,movie_num,cinema_num,seat,room,date,day,running_time,"
-					+ "person_num,payment,price,now()) " + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into book(book_num,id,pass,movie_num,cinema_num,seat,room,date,day,"
+					+ "running_time,person_num,payment,price,sell_date) " + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, tdto.getId());
