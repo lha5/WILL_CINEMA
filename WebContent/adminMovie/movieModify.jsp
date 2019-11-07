@@ -25,7 +25,10 @@
 	
 %>
 
-<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" >
+
+<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
+			<legend>영화 수정</legend>
+
 	<fieldset>
 			<legend>영화 추가</legend>
 				<table>

@@ -118,6 +118,10 @@ public class MemberNaverLoginAction implements Action{
 	    
 	    String collect_id = "N"+dateFormat+"-"+insert_num;
 	    
+	    if(nickname==null){
+	    	nickname = collect_id;
+	    }
+	    
 	    // 자바빈(DTO) 객체를 생성
 	    MemberDTO mdto = new MemberDTO();
 	    mdto.setId(collect_id);
