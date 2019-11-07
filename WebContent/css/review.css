@@ -51,12 +51,7 @@
 	text-align: center;
 }
 #right {
-	height: 17px;
-  width: 580px;
-  padding: .8em .5em;
-  border: 1px solid;
-  position: relative;
-	bottom: 7px;
+	float: right;
 }
 #button {
  width: 125px;
@@ -82,8 +77,18 @@
 	color: red;
 }
 
-
-	
-	
-	
+#textBox {
+	width: 600px;
+	height: 38px;
+	position: relative;
+	left: 30px;
 }
+
+#table {
+	border-bottom: 1px solid red;
+	border-top: 1px solid red;
+	color: #444;
+  padding: 18px;
+  width: 100%;
+}
+

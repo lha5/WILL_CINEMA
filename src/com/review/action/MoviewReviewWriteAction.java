@@ -21,6 +21,13 @@ public class MoviewReviewWriteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		ActionForward forward = new ActionForward();
+		
+		if(id == null){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 		System.out.println(" movie_num(write) : "+movie_num);
@@ -39,8 +46,6 @@ public class MoviewReviewWriteAction implements Action {
 		request.setAttribute("movie_num2", movie_num);
 		
 		System.out.println("Attribute movie_num(write) : "+request.getAttribute("movie_num2"));
-		
-		ActionForward forward = new ActionForward();
 		
 		forward.setPath("./DetailView.mo?movie_num="+movie_num);
 		forward.setRedirect(true);

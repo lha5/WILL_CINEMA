@@ -51,6 +51,7 @@ a {text-decoration:none;color:#555;}
 	width:980px; 
 	padding:0 0 0 0;  
 	color:#231f20;
+	margin: 0 auto;
 }
 
 .calendar fieldset .month-picker-label {
