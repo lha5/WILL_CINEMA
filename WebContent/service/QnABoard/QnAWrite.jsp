@@ -11,7 +11,25 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="./summernote/lang/summernote-ko-KR.js"></script>
+<script type="text/javascript">
 
+	function QnANonCheck() { 
+		if(document.QnAWritefr.subject.value == ""){
+			alert("입력해 주십시오.");
+			document.reviewAddfr.subject.focus();
+			return false;
+		}
+		if(document.QnAWritefr.content.value == ""){
+			alert(" 입력해 주십시오.");
+			document.reviewAddfr.content.focus();
+			return false;
+		}
+		
+	}
+
+
+
+</script>
 </head>
 <body>
 
@@ -23,12 +41,13 @@
 		response.sendRedirect("./MemberLogin.me");
 	}
 	
-	String name = (String) session.getAttribute("name");
+	String name = (String) session.getAttribute("id");
 	%>
 
 	<fieldset>
 		<legend>1:1 문의 작성</legend>
-		<form action="./QnAWriteAction.sq" method="post" enctype="multipart/form-data">
+		<form action="./QnAWriteAction.sq" method="post" name="QnAWritefr" enctype="multipart/form-data"
+			onsubmit="return QnANonCheck()">
 			<table>
 				<tr>
 					<td>작성자</td>
