@@ -27,7 +27,7 @@
 	}
  	 
 	.contents {
-		border: 1px solid purple;
+		/* border: 1px solid purple; */
 		width: inherit;
 		margin: 0 auto;
 		vertical-align: middle
@@ -36,7 +36,7 @@
 	/* banner */
 	.banner {
 		position: relative;
-		border: 1px solid red;
+		/* border: 1px solid red; */
 		/* width: 10000px; */
 		width: auto;
 		height: 420px;
