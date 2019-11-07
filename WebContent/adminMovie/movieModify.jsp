@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="././css/modify.css">
+
 </head>
 <body>
 
@@ -105,7 +108,7 @@
 						</td>
 					</tr>
 					 <tr>
-						<td>이미지( 구하기 힘든 사진이라서 뷰페이지에 다 주석처리중 )</td>
+						<td>이미지</td>
 						<td colspan="3">
 							<input type="file" name="image" value="<%=mdto.getImage()%>">
 						</td>
@@ -113,7 +116,7 @@
 									 
 					 <tr>
 						<td colspan="4">
-							<input type="submit" value="영화 수정">
+							<input type="submit" value="영화 수정" class="modify" >
 						</td>
 					</tr>
 				</table>
