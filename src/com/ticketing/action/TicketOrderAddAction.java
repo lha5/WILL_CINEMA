@@ -31,7 +31,7 @@ public class TicketOrderAddAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("MallOrderAddAction execute()-----------------------------------------------------");
+		System.out.println("ticketOrderProc.jsp ajax ->TicketOrderAddAction execute()--------------------------------");
 		
 		// 세션값 처리
 		HttpSession session = request.getSession();
@@ -57,7 +57,7 @@ public class TicketOrderAddAction implements Action {
 		String data = URLDecoder.decode(getBody(request), "UTF-8");
 		// System.out.println("넘겨 받은 Request Body 값 : " + data);		
 		
-		// 받아온 데이터를 특정 문자를 기준으로 추출 >> 순서 : mdto.getMovie_num, cdto.getCinema_num, seat, roomNum
+		// 받아온 데이터를 특정 문자를 기준으로 추출 >> 순서 : movie_num, cinema_num, seat, roomNum
 		// person_num, realPri, running_date, running_time, week, KakaoPay
 		String[] splitData = data.split(",");
 		
@@ -81,27 +81,29 @@ public class TicketOrderAddAction implements Action {
 				seat=row+" "+col;
 			}
 		}
-		
-		tdto.setRoom(splitData[3]);
 		tdto.setSeat(seat);
-		tdto.setPrice(Integer.parseInt(splitData[4]));
+		tdto.setRoom(splitData[3]);
+		tdto.setPerson_num(splitData[4]);
+		tdto.setPrice(Integer.parseInt(splitData[5]));
 		
 		
-		String fDate[]=splitData[5].split("-");
+		String fDate[]=splitData[6].split("-");
 		
 		Date date= new Date(Integer.parseInt(fDate[0])-1900
 				,Integer.parseInt(fDate[1])-1,Integer.parseInt(fDate[2]));
 		tdto.setDate(date);
-		tdto.setRunnging_time(splitData[6]);
-		tdto.setDay(splitData[7]);
-		tdto.setPayment(splitData[8]);
+		tdto.setRunnging_time(splitData[7]);
 		
+		tdto.setDay(splitData[8]);
+		tdto.setPayment(splitData[9]);
+		
+		System.out.println(tdto.toString());
 
 		// 메소드 객체 생성 및 실행
 		TicketDAO tdao = new TicketDAOImpl();
 		tdao.setTicket(tdto);
 		
-		int percentage = (int) Math.round(Integer.parseInt(splitData[4]) * 0.002);	// 포인트 적립
+		int percentage = (int) Math.round(Integer.parseInt(splitData[5]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
 		// 페이지 이동
