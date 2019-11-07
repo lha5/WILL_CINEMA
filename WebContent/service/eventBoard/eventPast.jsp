@@ -10,6 +10,54 @@
 
 <script src="./js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="./css/eventPast.css">
+<style type="text/css">
+
+input[type=text] {
+	width: 240px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	color: #1c1c1c;
+	font-size: 14px;
+}
+
+input[type=submit] {
+	width: 100px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 14px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+
+div#goBack {
+	text-align: center;
+	background-color: #d7282d;
+	padding: 20px;
+	width: 250px;
+	margin: 20px auto;
+}
+
+#goBack>a {
+	color: #ffffff;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-family: inherit;
+	font-weight: 500;
+}
+</style>
 
 <script type="text/javascript">
 	function moreRead(){
@@ -71,6 +119,11 @@
 		li{float:left;width:100px;height:100px;background:#000;color:#fff;}
 		li:nth-of-type(4n-3){background:red;display:block;content:"";clear:left;}
 	 -->
+	 <div id="oldOne">
+		 <span id="pastEvent">지난 이벤트</span>
+		 &nbsp;
+		 <span id="inform">윌시네마에서 진행한 다양한 이벤트들을 확인해보세요</span>
+	 </div>
 	 <input type="hidden" id="startCnt" value="0">
 	 <input type="hidden" id="viewCnt" value="4">
 	 <input type="hidden" id="item" value="<%=item%>">
@@ -84,7 +137,7 @@
 		</ul>
 	</div>
 	<div class="eventheader">
-		<h2>
+		<span id="category">
 		<%if(item.equals("movie") ){%>
 			영화
 		<%}else if(item.equals("preview") ){%>
@@ -94,10 +147,10 @@
 		<%}else if(item.equals("collabo") ){%>
 			제휴할인
 		<%} %>
-		</h2>
-		<form action="./EventPast.ae?item=<%=item %>" method="post">
-		<input type="text" name="keyward" value="<%=keyward%>">
-		<input type="submit" value="검색">
+		</span>
+		<form action="./EventPast.ae?item=<%=item %>" id="fr" method="post">
+			<input type="text" name="keyward" value="<%=keyward%>">
+			<input type="submit" value="검색">
 		</form>
 	</div>
 	<%
@@ -127,7 +180,9 @@
 			진행되는 이벤트가 없습니다.
 		<%}%>
 		<br class="clear">
-		<a href="./EventSummary.ae">이벤트 목록</a>
+		<br>
+		<br>
+		<div id="goBack"><a href="./EventSummary.ae">이벤트 목록</a></div>
 	</div>
 	
 	
