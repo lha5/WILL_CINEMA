@@ -16,6 +16,8 @@
 	}
 </style>
 
+<link rel="stylesheet" href="././css/review.css">
+
 </head>
 <body>
 
@@ -28,10 +30,12 @@
 	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 	String pageNum = (String) request.getAttribute("pageNum");
 %>
-		<table border="1">
+		<div id="Wrap">
+		
+		<table border="1" class="accordion">
 			<tr>
-				<td>제목</td>
-				<td colspan="5"><%=mdto.getTitle() %></td>
+				<td colspan="5"><img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
+				<td><%=mdto.getTitle() %></td>
 			</tr>
 		
 			<tr>
@@ -50,15 +54,10 @@
 					<img src="./upload/<%=mdto.getImage()%>" height="50px" width="50px"></td>
 				
 			</tr> --%>
-			<tr>	
-				<td>포스터</td>
-				<td colspan="5">
-					<img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px"></td>
-				
+			<tr>
 			</tr>
 			<tr>
-				<td>줄거리 내용</td>
-				<td colspan="5"><%=mdto.getStory() %>
+				<td colspan="6"><%=mdto.getStory() %>
 				</td>	
 			</tr>
 			<tr>
@@ -87,6 +86,8 @@
 			}
 			%>
 		</table>
+		
+		</div>
 
 	<jsp:include page="../review/reviewList.jsp"/>
 

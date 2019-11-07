@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="././css/review.css">
+
 </head>
 <body>
 	
@@ -13,7 +16,9 @@
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	%>
 	
-	<fieldset>
+	<div id="Wrap">
+	
+	<fieldset class="accordion">
 		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
 			<table>
 				<tr>
@@ -32,6 +37,8 @@
 
 		</form>
 	</fieldset>
+	
+	</div>
 
 </body>
 </html>
