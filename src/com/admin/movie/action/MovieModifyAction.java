@@ -9,8 +9,7 @@ import com.action.ActionForward;
 import com.admin.movie.db.AdminMovieDAO;
 import com.admin.movie.db.AdminMovieDAOImpl;
 import com.admin.movie.db.AdminMovieDTO;
-import com.movie.db.MovieDAOImpl;
-import com.movie.db.MovieDTO;
+
 
 public class MovieModifyAction implements Action {
 
@@ -24,12 +23,16 @@ public class MovieModifyAction implements Action {
 		String id = (String)session.getAttribute("id");
 
 		ActionForward forward = new ActionForward();
+		
 		if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
 
+		System.out.println(request.getParameter("running_time"));
+		System.out.println(request.getAttribute("running_time"));
+		
 		AdminMovieDTO amdto = new AdminMovieDTO();
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 		String name = request.getParameter("name");
@@ -39,7 +42,7 @@ public class MovieModifyAction implements Action {
 		String actor = request.getParameter("actor");
 		int running_time = Integer.parseInt(request.getParameter("running_time"));
 
-		System.out.print("name : "+ name + " id : "+ id + " running_time : "+running_time+"movie_num(Action) : "+movie_num);
+		System.out.print("name : "+ name + " id : "+ id + " runing_time : "+running_time+"movie_num(Action) : "+movie_num);
 
 		amdto.setMovie_num(movie_num);
 		amdto.setTitle(name);
@@ -52,11 +55,12 @@ public class MovieModifyAction implements Action {
 		// QnaDAOImpl객체 생성
 		AdminMovieDAO amdao = new AdminMovieDAOImpl();
 
-		// insertBoard()
+		// updateBoard()
 		amdao.updateBoard(amdto);
 
 		forward.setPath("./MovieList.mo");
 		forward.setRedirect(true);
 		return forward;
+		
 	}
 }

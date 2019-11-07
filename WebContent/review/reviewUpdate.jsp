@@ -6,10 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="stylesheet" href="./css/review.css">
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<div>
 	<%
 		int num = Integer.parseInt(request.getParameter("num"));
 		int movie_num = Integer.parseInt(request.getParameter("movie_num"));
@@ -26,7 +29,7 @@
 	
 	
 		<form action="./MovieReviewUpadatAction.mr?movie_num=<%=movie_num %>&num=<%=num %>" method="post">
-			<table>
+			<table class="table accordion" border="1">
 				<tr>
 					<td>평점</td>
 					<td>
@@ -48,14 +51,14 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-						<input type="submit" value="글수정">
-						<input type="button" value="취소" onclick="location.href='./DetailView.mo?movie_num=<%=movie_num%>'">
+						<input id="button" type="submit" value="글수정">
+						<input id="button" type="button" value="취소" onclick="location.href='./DetailView.mo?movie_num=<%=movie_num%>'">
 					</td>
 				</tr>
 			</table>
 
 		</form>
-
+</div>
 		
 </body>
 </html>

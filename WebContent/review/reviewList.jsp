@@ -8,8 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script src="./js/jquery-3.4.1.min.js">
-</script><link rel="stylesheet" href="./css/review.css">
+<script src="./js/jquery-3.4.1.min.js"></script>
+<!-- <link rel="stylesheet" href="./css/review.css"> -->
  
 
 <title> 리뷰 페이지 </title>
@@ -18,7 +18,7 @@
 </head>
 <body>
 	
-	
+	<div id="Wrap">
 	<%	
 		String id = (String) session.getAttribute("id");
 		int movie_num = (int) request.getAttribute("movie_num");
@@ -34,28 +34,26 @@
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
 	 <div id="review_content_update<%=mrdto.getNum() %>">
-	 <table border="1">
+	 <table class="table accordion" border="1">
 	 
      <tr>
        <td>평점</td><td><%=mrdto.getRating() %></td>
        <td>작성자</td><td><%=mrdto.getId() %></td>
+    <%
+	  if(id != null){
+	     if(id.equals("admin") || id.equals(mrdto.getId())){ %>
+	     
+	     	<td rowspan="2">
+		     	<input id="button" type="button" value="수정하기" onclick="review_modify(<%=movie_num%>,<%=mrdto.getNum() %>,'<%=mrdto.getId()%>')"><br>
+				<input id="button" type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	</td>	
+	 <%}
+	     }%>
      </tr>
      <tr>
        <td>내용</td><td colspan="5"><%=mrdto.getContent() %></td>
      </tr>
-	 <%
-	  if(id != null){
-	     if(id.equals("admin") || id.equals(mrdto.getId())){ %>
-	     <tr>
-	     	<td colspan="6">
-		     	<%-- <input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'"> --%>
-		     	<input type="button" value="수정하기" onclick="review_modify(<%=movie_num%>,<%=mrdto.getNum() %>,'<%=mrdto.getId()%>')">
-				<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-	     	</td>
-	     </tr>
-		
-	 <%}
-	     }%>
+	
 	  </table>
 	 </div> 
      <%} %>
@@ -63,7 +61,7 @@
 	</div>
 	
 	
-	
+	<!-- 수정하기 스크립트 -->
 	<script>
 			
 		function review_modify(movie_num,num,out_id){
@@ -71,6 +69,7 @@
 		}
 			
 	</script>
-
+	<!-- 수정하기 스크립트 -->
+	
 </body>
 </html>
