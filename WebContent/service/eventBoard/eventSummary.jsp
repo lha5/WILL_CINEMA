@@ -9,6 +9,15 @@
 <title>WILL CINEMA - 이벤트</title>
 <!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
+<style type="text/css">
+.ctgr {
+	padding: 5px;
+	padding-left: 3px;
+	letter-spacing: 2px;
+	font-size: 1.3em;
+	font-weight: 500;
+}
+</style>
 
 </head>
 <body>
