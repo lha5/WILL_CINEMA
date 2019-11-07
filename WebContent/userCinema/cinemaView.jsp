@@ -15,10 +15,6 @@
 <link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
-/*롯데 영화관   */
-/* style="width:10000px; height:420px;
- background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
- no-repeat;display:table-cell;vertical-align:middle" */
 
  
 	/* 하위 메뉴 고정 */
@@ -400,7 +396,7 @@
         form.submit();
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
-	
+	/*  영화관 위치 / 영화재생   */
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
