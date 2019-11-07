@@ -34,7 +34,6 @@
 		<img src="./upload/<%=mdto.getPoster()%>" width="500px" height="600px" id="img">
 		<table border="1" class="accordion">
 			<tr>
-				
 				<td>예매순위</td>
 				<td><%=mdto.getBooking_ration() %></td>
 				<td>개봉일</td>
