@@ -26,10 +26,10 @@
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
      <tr>
-       <td>평점</td><td colspan="7"><%=mrdto.getRating() %></td>
+       <td>평점</td><td><%=mrdto.getRating() %></td><td><%=mrdto.getId() %></td>
      </tr>
      <tr>
-       <td colspan="6"><%=mrdto.getContent() %></td><td colspan="1"><%=mrdto.getId() %></td>
+       <td colspan="3"><%=mrdto.getContent() %></td>
      </tr>
 	     <%if(id.equals(mrdto.getId())){ %>
 	     <tr>
