@@ -31,7 +31,6 @@
 			</div>
 		</form>
 	</fieldset>
-
 	</div>
 </body>
 </html>
