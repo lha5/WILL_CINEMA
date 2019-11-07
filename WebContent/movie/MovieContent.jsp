@@ -64,8 +64,8 @@
 			<tr>
 				<td colspan="6">
 				<div class="rightloat">
-					<input type="button" value="수정하기" id="button" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-					<input type="button" value="삭제하기" id="button" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+					<input type="button" value="수정하기" id="button"   onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+					<input type="button" value="삭제하기" id="button"   onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 				</div>
 				</td>
 			</tr>

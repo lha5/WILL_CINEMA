@@ -11,6 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@ include file="../include/header.jsp" %>
 <h1>영화 수정 페이지</h1>
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
@@ -19,7 +21,8 @@
 	AdminMovieDTO mdto = mdao.getBoard(movie_num);
 	
 %>
-<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post">
+
+<form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" >
 	<fieldset>
 			<legend>영화 추가</legend>
 				<table>
