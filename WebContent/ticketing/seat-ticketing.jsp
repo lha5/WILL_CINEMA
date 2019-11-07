@@ -291,16 +291,17 @@
 	System.out.println("좌석 행 :"+row+", 좌석 열 :"+col);
 
 %>
-
+<%@ include file="../../include/header.jsp" %>
 
 <fieldset>
-	<legend>좌석 선택</legend>
 	<!-- form action -->
 	<form action="TicketOrderAction.ti" method="post">
 	<input type="hidden" id="row" value=<%=row %>>
 	<input type="hidden" id="col" value=<%=col %>>
 	<input type="hidden" name="payment">
 	<input type="hidden" name="person_num">
+	
+	<div>
 	<%
 	if(seatRow.size()!=0){
 	for(int i=0; i<seatRow.size(); i++){ %>
@@ -308,6 +309,7 @@
 	<input type="hidden" name="seatCol" value=<%=seatCol.get(i) %>>
 	<%} 
 	}%>
+	</div>
 	
 	성인 : <select name="adult">
 			<option value="0" selected="selected">0</option>
@@ -668,6 +670,6 @@
 	
 	</form>
 </fieldset>
-
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

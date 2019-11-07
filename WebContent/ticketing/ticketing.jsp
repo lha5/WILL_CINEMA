@@ -185,7 +185,6 @@
 			//체크된 날짜의 요일
 			var week=$('label[for="' +monthNames[mon]+date[2] +'"]').find('span').text();
 			return date[0]+"."+date[1]+"."+date[2]+"("+week+")";
-
 		});
 
 		//openMovie(event,'book');
