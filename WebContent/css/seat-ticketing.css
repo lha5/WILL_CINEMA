@@ -1,7 +1,12 @@
 @CHARSET "UTF-8";
 
 .bgColor{
-	background-color:#f9f6ec;
+	background-color:#fffff2;
+}
+
+.bgColor h1{
+	margin: 30px 0px 50px 150px;
+	padding-top: 50px;
 }
 
 .selectPeopleNum{
@@ -64,7 +69,6 @@
 }
 
 .seatTable td .seatbg{
-	background: #f9f6ec;
 	color: #000000;
 	border: none;
 	width: 25px;
@@ -96,7 +100,7 @@
 	background:url('../img/bg/bg_seat03.gif') no-repeat 50% 50% !important;
 	border:0 !important;
 	color:#b7b7b7 !important;
-	pointer-events: none;
+/* 	pointer-events: none; */
 }
 
 .seatTable td .disabled{
@@ -112,40 +116,34 @@
 	border-left-style: none;
 	border-right-style: none;
 	width: 1200px;
-	margin: 0px auto 50px;
+	margin: 0px auto 120px;
 	text-align: left;
 }
 
 
 .seatTable2{
-	border-left:1px solid red;
-	border-right:1px solid red;
 	margin:10px; auto;
 	width: 1200px;
 }
 
-.seatTable2>td{
-	border-left:1px solid red;
-	border-right:1px solid red;
-	text-align: left;
-}
-
-
-.dtTitle{
-	
-}
 
 .seatTable2 input{
 	border: none;
 	width: 150px;
-	background-color:#f9f6ec;
+	background-color:#fffff2;
+}
+.seatTable2 .tdLine{
+	border-left:2px solid #7b7b7b;
+	border-right:2px solid #7b7b7b;
 }
 
 .innerTable{
-	width:250px;
-	margin: 10px auto;
-}
 
+	margin-left: 30px;
+}
+.innerTable td{
+	font-size:14px;
+}
 .innerTable th span{
 	margin-left: 10px;
 }
@@ -159,6 +157,24 @@
 	width:75px;
 }
 
+.innerTable2{
+	margin-left: 30px;
+}
+
+.innerTable2 td{
+	padding: 3px;
+	font-size:14px;
+}
+
+.innerTable3{
+	margin-left: 30px;
+}
+
+.innerTable3 td{
+	padding: 8px 0px;
+	font-size:14px;
+}
+
 .payButton{
 	margin:20px;
 	width:120px;
@@ -166,10 +182,30 @@
 	background-color:#d7282d;
 	color:#fff;
 	border:none;
+	float: right;
 }
 
+.prevButton{
+	margin:20px;
+	width:120px;
+	height:40px;
+	background-color:#000000;
+	color:#fff;
+	border:none;
+}
 
+.SeatTitle{
+	font-size:16px;
+	font-weight: bold;
+}
 
-
+.totalPrice1{
+	text-align: right;
+}
+.totalPrice2{
+	text-align: right;
+	font-size:20px;
+	font-weight: bold;
+}
 
 

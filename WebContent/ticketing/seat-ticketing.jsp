@@ -8,20 +8,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 좌석 선택</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="./css/seat-ticketing.css">
 
 <script type="text/javascript">
 	$(function(){
 		var regexp = /\B(?=(\d{3})+(?!\d))/g; //정규식
-		var selectSeat='';
+		var selectSeat=0;
 		var row= $('#row').val();//총 행 개수
 		var col= $('#col').val();//총 열 개수
 		var price=0;
 		var person_num='';
 		var seatRow=new Array();
 		var seatCol=new Array();
+		$('input[name=price]').val("0");
 		if($('input[name=seatRow]').length!=0){
 			seatRow=new Array($('input[name=seatRow]').length);
 			seatCol=new Array($('input[name=seatCol]').length);
@@ -36,135 +37,49 @@
 				$('.seatTable').find('input[name=seat'+seatRow[i]+seatCol[i]+']').addClass('reserve');
 			}
 		}
-		//인원수
+		//선택할수 있는 인원수
 		var pNum=$('select[name=adult]').val()*1+
 		$('select[name=teenager]').val()*1+$('select[name=senior]').val()*1;
 		
 		//좌석 붙임 설정
 		$('input[type=radio]').prop('disabled', true);
 		
-		
 		/*--------------- 처음 실행될것들 ----------------*/
+		//마우스 이동시
+			$('.seatTable').find('input[type=button]').bind('mouseover', function(){
+				//$(this).addClass("over");
+				overMouse(this);
+			}).bind('mouseleave', function(){
+				$('.seatTable').find('input[type=button]').removeClass('over');
+			});
 		
-		//인원 선택
+		/*--------------- 셀렉트 박스(인원선택) -------------*/
 		$('select').bind('change', function(){
 			//좌석 초기화
 			$('input[name=seat]').val("");
 			pNum=$('select[name=adult]').val()*1+
 			$('select[name=teenager]').val()*1+$('select[name=senior]').val()*1;
-			$('input[name=price]').val("");//가격초기화
+			$('input[name=price]').val("0");//가격초기화
 			
 			//셀렉트를 변경하면 초기화
 			$('.seatTable').find('input[type=button].disabled').removeClass('disabled');
 			$('.seatTable').find('input[type=button].on').removeClass('on');
 			alert("선택된 좌석"+pNum);
 			
-			//좌석개수
-			var seatlen=$('.seatTable').find('.seat').length-1;
-			var grSize=$('.seatTable').find('.seat').eq(seatlen).attr('class');
-			grSize=grSize.split(' ')[1];
-			//전체 그룹 개수
-			grSize=grSize.substr(5);
-			
-			if(pNum==1){//1명
-				$('#one').prop('disabled', false);
-				$('#one').prop('checked', true);
-				//마우스 이동시
-				$('input[type=button]').bind('mouseover', function(){
-					$(this).addClass("over");
-				}).bind('mouseleave', function(){
-					$(this).removeClass("over");
-				});
-				
-				/*---------함수로 변경---------  */
-				
-				//1명 선택시
-				for(var i=1; i<=Number(grSize); i++){
-					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
-					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;
-					//남은자리가 2자리일 때
-					if(grRemain==2){//선택 못하게 막음
-						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-					}else if(grRemain>2){//2자리 이상일때
-						//그룹의 두번째좌석 비활성
-						$('.seatTable').find('.grNum'+i).eq(1).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-						//그룹의 마지막의 다음좌석 비활성
-						$('.seatTable').find('.grNum'+i).eq(grRemain-2).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-					}
-				}
-				
-			}else if(pNum==2){//2명 선택시(남은 인원2명)
-				$('#one').prop('disabled', true);
-				$('#four').prop('disabled', true);
-				$('#two').prop('disabled', false);
-				$('#two').prop('checked', true);
-				
-				
-				
-				//1명 선택시
-				for(var i=1; i<=Number(grSize); i++){
-					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
-					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;
-
-					//남은자리가 2자리일 때
-					if(grRemain==2){//선택 못하게 막음
-						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-					}else if(grRemain>2){//2자리 이상일때
-						//그룹의 두번째좌석 비활성
-						$('.seatTable').find('.grNum'+i).eq(1).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-						//그룹의 마지막의 다음좌석 비활성
-						$('.seatTable').find('.grNum'+i).eq(grRemain-2).not('.on').each(function(){
-							if(!$(this).hasClass('reserve')){
-								$(this).addClass('disabled');
-							}
-						});
-					}
-				}
-				
-			}else if(pNum==3){
-				
-			}else if(pNum==4){
-				
-			}else if(pNum==5){
-				
-			}else if(pNum==6){
-				
-			}else if(pNum==7){
-				
-			}else if(pNum==8){
-				
-			}else{
-				alert("최대 인원수는 8명입니다.");
-				pNum=$('select[name=adult]').val(0)+$('select[name=teenager]').val(0)+$('select[name=senior]').val(0);
-				//$('input[type=button]').unbind('mouseover').unbind('mouseleave');
-				
-			}
+			selectSeatFn();
+			getpNum();
 		});
-		
-		//버튼 클릭
-		$('input[type=button]').bind('click', function(){
+		/*--------------- 셀렉트 박스(인원선택) -------------*/
+
+		/*-------------------- 좌석 버튼 클릭 -------------------*/
+		$('.seatTable').find('input[type=button]').bind('click', function(){
 			alert(pNum);
-			if(pNum==0){
+			//바꾸기
+			$('.seatTable').find('input[type=button]').attr("over","on");
+			pNum=selectSeat-pNum;
+			selectSeatFn();
+			getpNum();
+			/* if(pNum==0){
 				alert("인원을 선택하세요");
 			}else if(pNum==1){//1명
 				alert('클릭');
@@ -186,7 +101,7 @@
 					$('input[name=price]').val(price.toString().replace(regexp,','));
 					 */
 					
-					
+					 /*	
 				}
 
 			}else if(pNum==2){
@@ -213,7 +128,7 @@
 				
 			}else{
 				
-			}
+			} */
 			person_num="";
 
 			if($('select[name=adult]').val()>=1){
@@ -238,15 +153,210 @@
 			$('input[name=price]').val(price.toString().replace(regexp,','));
 			$('input[name=person_num]').val(person_num);
 		});
-		
-		//인원이 1명일때 버튼 변경
-		/* if(pNum==1){
+
+		/*----------- 마우스 올렸을때 선택 -----------  */
+		function overMouse(select){
+			var selSeat=$(select);//선택한것
+			var group = selSeat.attr('class').split(' ')[1];//그룹번호
+			var allGrp = $('.seatTable').find('.'+group).length; //그룹내의 좌석수
+			var index = $('.seatTable').find('.'+group).index(selSeat); //그룹내의 자신 위치
+			var allSeat=$('.seatTable').find('.'+group); //모든 그룹
+			var right=allGrp-(index+selectSeat);//라디오박스에서 선택한 자리와 현재자리를 전체 개수에 뺌
 			
-		} */
+			$('.seatTable').find('input[type=button]').removeClass('over');
+			
+			/* alert(selSeat +" " + group +" " + allGrp + " " + index + " "+allSeat + selectSeat);*/
+			console.log(!selSeat.hasClass('on')&&!selSeat.hasClass('disabled')
+					&&!selSeat.hasClass('reserve')&&selectSeat>0);
+			//좌석이 있으면
+			if(!selSeat.hasClass('on')&&!selSeat.hasClass('disabled')
+					&&!selSeat.hasClass('reserve')&&selectSeat>0){
+				if(selectSeat>1){//선택좌석이 2개 이상일때
+					if(index<2){//왼쪽에 자리가 1개 이하일때
+						for(var i=0; i<selectSeat; i++)
+							allSeat.eq(i).addClass('over');
+					}else if(right<1){//오른쪽에 남은자리가 1자리 이하일때
+						for(var i=1; i<=selectSeat; i++)
+							allSeat.eq(allGrp-i).addClass('over');
+					}else if(index>1&&right>1){//왼쪽과 오른쪽 남은자리가 1자리 이상
+						if(index%2==1)//선택한 좌석이 홀수일때 짝수부터 시작
+							index-=1;
+						for(var i=0; i<selectSeat; i++)
+							allSeat.eq(index+i).addClass('over');
+					}else{
+						if(right<2&&index-1<2){//왼쪽자리 오른쪽자리 1자리 이하
+							index=0;
+						}else if(right<2&&index-1>1){//왼쪽자리 1자리 이상 오른쪽자리 1자리 이하
+							index-=1;
+						}
+						for(var i=0; i<selectSeat; i++)
+							allSeat.eq(index+i).addClass('over');
+					}
+				}else{//선택좌석 1개일때
+					$(select).addClass('over');
+				}
+			}
+		}
+		/*----------- 마우스 올렸을때 선택 -----------  */
+		
+		/*------------------- pNum재설정 -----------------  */
+		function getpNum(){
+			/* pNum=$('select[name=adult]').val()*1+
+			$('select[name=teenager]').val()*1+$('select[name=senior]').val()*1; */
+			if(pNum==0){
+				//좌석 붙임 설정
+				$('input[type=radio]').prop('disabled', true);
+				selectSeat=0;
+			}else if(pNum==1){//1명
+				$('#one').prop('disabled', false);
+				$('#one').prop('checked', true);
+				selectSeat=1;
+
+			}else if(pNum==2){//2명 선택시(남은 인원2명)
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', true);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else if(pNum==3){
+				$('input[type=radio]').prop('disabled', true);
+				selectSeat=3;
+			}else if(pNum==4){
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', false);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else if(pNum==5){
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', true);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else if(pNum==6){
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', false);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else if(pNum==7){
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', false);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else if(pNum==8){
+				$('#one').prop('disabled', true);
+				$('#four').prop('disabled', false);
+				$('#two').prop('disabled', false);
+				$('#two').prop('checked', true);
+				selectSeat=2;
+			}else{
+				alert("최대 인원수는 8명입니다.");
+				pNum=$('select[name=adult]').val(0)+$('select[name=teenager]').val(0)+$('select[name=senior]').val(0);
+				selectSeat=0;
+				$('input[type=radio]').prop('disabled', true);
+			}
+		}
+		/*------------------- pNum재설정 -----------------  */
 		
 		
 		
+		/*----------- 라디오버튼 좌석 붙임 설정-----------  */
+		function selectSeatFn(){
+			//전체 좌석개수
+			var seatlen=$('.seatTable').find('.seat').length-1;
+			//전체 그룹 개수 계산
+			var grSize=$('.seatTable').find('.seat').eq(seatlen).attr('class');
+			grSize=grSize.split(' ')[1];
+			//전체 그룹 개수
+			grSize=grSize.substr(5);
+			
+			
+			if(selectSeat==0){
+				if($('.seatTable').find('input[type=button]').hasClass("on")){//이미 클릭된 상태면
+					$('.seatTable').find('input[type=button]').not('on').addClass('disabled');
+				}else{//클릭되지 않은 상태
+					$('.seatTable').find('input[type=button]').not('on').removeClass('disabled');
+				}
+			}else if(selectSeat==1){
+				//1명 선택시
+				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
+					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
+					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;//남은 자리수
+					//남은자리가 2자리일 때
+					if(grRemain==2){//선택 못하게 막음
+						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+					}else if(grRemain>2){//2자리 이상일때
+						//그룹의 두번째좌석 비활성
+						$('.seatTable').find('.grNum'+i).eq(1).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+						//그룹의 마지막의 다음좌석 비활성
+						$('.seatTable').find('.grNum'+i).eq(grRemain-2).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+					}
+				}	
+			}else if(selectSeat==2){
+				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
+					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
+					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;//남은 자리수
+					
+					if(grRemain<2||grRemain==3){//남은좌석수 1or 3이면
+						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+					}else if(grRemain==5){
+						$('.seatTable').find('.grNum'+i).not('.on').each(function(n){
+							if(n==2){
+								if(!$(this).hasClass('reserve')){
+									$(this).addClass('disabled');
+								}
+							}
+						});
+					}
+				}
+			}else if(selectSeat==3){
+				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
+					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
+					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;//남은 자리수
+					
+					if(grRemain<3||grRemain==4){//남은좌석수 1,2or 4이면
+						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+					}
+				}
+			}else if(selectSeat==4){
+				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
+					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
+					var grRemain=$('.seatTable').find('.grNum'+i).length-grSeLen;//남은 자리수
+					
+					if(grRemain<4||grRemain==5){//남은좌석수 1,2,3or 5이면
+						$('.seatTable').find('.grNum'+i).not('.on').each(function(){
+							if(!$(this).hasClass('reserve')){
+								$(this).addClass('disabled');
+							}
+						});
+					}
+				}
+			}
+		}
 		
+		/*----------- 라디오버튼 좌석 붙임 설정-----------  */
 		
 	});
 
@@ -292,6 +402,7 @@
 %>
 <%@ include file="../../include/header.jsp" %>
 <div class="bgColor">
+<h1>인원/좌석선택</h1>
 <fieldset class="loginField">
 	<div>
 	<!-- form action -->
@@ -652,6 +763,7 @@
 	
 	<!-- /좌석선택 -->
 	<hr>
+	<input type="button" class="prevButton" value="영화선택" onclick="location.href='Ticketing.ti'">
 	<input type="submit" class="payButton" value="결제하기">
 	<hr>
 	
@@ -665,8 +777,8 @@
 					<th colspan="2"><span>영화</span></th>
 				</tr>
 				<tr>
-					<td class="tdSpan" rowspan="4"><img src="/upload/<%=mdto.getPoster() %>" ></td>
-					<td><input type="text" name="movie_title" value="<%=mdto.getTitle() %>" readonly="readonly"></td>
+					<td class="tdSpan" rowspan="4"><img src="./upload/<%=mdto.getPoster() %>" ></td>
+					<td ><input type="text" class="SeatTitle" name="movie_title" value="<%=mdto.getTitle() %>" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td><%=mdto.getGenre() %></td>
@@ -675,12 +787,12 @@
 					<td><input type="hidden" name="movie_num" value="<%=mdto.getMovie_num() %>"></td>
 				</tr>
 				<tr>
-					<td><%=mdto.getGrade() %></td>
+					<td><%=mdto.getGrade() %>세 이상</td>
 				</tr>
 				</table>
 			</td>
-			<td>
-				<table class="innerTable">
+			<td class="tdLine">
+				<table class="innerTable2">
 					<tr>
 						<th colspan="2"><span>예매정보</span></th>
 					</tr>
@@ -707,13 +819,13 @@
 				</table>
 			</td>
 			<td>
-				<table class="innerTable">
+				<table class="innerTable3">
 					<tr>
 						<th colspan="2"><span>총 결제 금액</span></th>
 					</tr>
 					<tr>
 						<td>영화예매</td>
-						<td><input type="text" name="price"> 원</td>
+						<td><input type="text" class="totalPrice1"  name="price"> 원</td>
 					</tr>
 					<tr>
 						<td></td><td></td>
@@ -723,7 +835,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="text" name="price"> 원</td>
+						<td><input type="text" class="totalPrice2" name="price"> 원</td>
 					</tr>
 				</table>
 			</td>
