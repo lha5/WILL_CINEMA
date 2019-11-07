@@ -103,8 +103,9 @@
 					</tr>
 					<tr>
 						<td>포스터</td>
-						<td colspan="3">
-							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
+						<td colspan="3" class="filebox" >
+							<label for="ex_file">파일추가 </label>
+							<input type="file" name="poster" id="ex_file" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
 					 <tr>
