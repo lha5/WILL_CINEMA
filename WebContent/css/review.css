@@ -84,3 +84,11 @@
 	left: 30px;
 }
 
+#table {
+	border-bottom: 1px solid red;
+	border-top: 1px solid red;
+	color: #444;
+  padding: 18px;
+  width: 100%;
+}
+
