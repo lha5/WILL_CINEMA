@@ -25,8 +25,8 @@ public class SeatSelect implements Action{
 		
 		//세션 처리
 		request.setCharacterEncoding("UTF-8");
-		/*
-		// 세션값 체크
+		
+		//세션값 체크
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
@@ -37,7 +37,7 @@ public class SeatSelect implements Action{
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
-		}*/
+		}
 		
 		//ticketing.jsp에서 전달받은 데이터
 		int movie_num=Integer.parseInt(request.getParameter("movie_num")); //영화번호
@@ -106,7 +106,6 @@ public class SeatSelect implements Action{
 		request.setAttribute("week", week);
 		
 		// 페이지 이동
-		ActionForward forward = new ActionForward();
 		forward.setPath("./ticketing/seat-ticketing.jsp");
 		forward.setRedirect(false);
 		

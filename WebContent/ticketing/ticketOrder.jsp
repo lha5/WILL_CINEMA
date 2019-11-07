@@ -100,8 +100,43 @@
 		
 	
 		<!-- 비동기 처리 -->
-		<script>
-			function acyncMovePage(url) {
+		<script type="text/javascript">
+			function acyncMovePage(putUrl) {
+				var week='<%=week%>';
+				var realPri=<%=payment%>;
+				var seat='<%=seat%>';
+				var person_num='<%=person_num%>';
+				var running_date='<%=running_date%>';
+				var running_time='<%=running_time%>';
+				var region_name='<%=cdto.getName()%>';
+				var cinema_num=<%=cdto.getCinema_num()%>;
+				var movie_num=<%=mdto.getMovie_num()%>;
+				var movie_title='<%=mdto.getTitle()%>';
+				var roomNum='<%=roomNum%>';
+				var email='<%=memdto.getEmail()%>';
+				var tel='<%=memdto.getMobile()%>';
+				var buyer_name='<%=memdto.getName()%>';
+			    $.ajax({
+		            url : putUrl,
+		            async : true,
+		            type : "POST",
+		            dataType : "html",
+		            data:{week:week,realPri:realPri,seat:seat,person_num:person_num,running_date:running_date,
+		            	running_time:running_time,region_name:region_name,cinema_num:cinema_num,movie_num:movie_num,
+		            	movie_title:movie_title,roomNum:roomNum,email:email,tel:tel,buyer_name:buyer_name},
+		            cache : false,
+					error:function(request,status,error){
+						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+		               }
+		    	}).done(function(data){
+			        // Contents 영역 삭제
+			        $('#paySection').children().remove();
+			        // Contents 영역 교체
+			        $('#paySection').html(data);
+			    });
+			}
+			
+			/* function acyncMovePage(url) {
 			    var ajaxOption = {
 			            url : url,
 			            async : true,
@@ -116,15 +151,16 @@
 			        // Contents 영역 교체
 			        $('#paySection').html(data);
 			    });
-			}
-		</script>
-
+			} */
+		
+<%-- acyncMovePage('./TicketOrderProc.ti?week=<%=week%>&realPri=<%=payment%>&seat=<%=seat%>&person_num=<%=person_num%>&running_date=<%=running_date%>&running_time=<%=running_time%>&cdto=<%=cdto%>&mdto=<%=mdto%>&roomNum=<%=roomNum%>&memdto=<%=memdto%>');--%>
+				
 		<!-- 결제 모듈 -->
-		<script type="text/javascript">
-			document.querySelector('#goPay').addEventListener('click', function() {
+		
+		document.querySelector('#goPay').addEventListener('click', function() {
 				//가격, mdto(영화명,영화번호),cdto(지점명) , 상영관, 상영일, 상영시간,가격,인원수
-				acyncMovePage('./TicketOrderProc.ti?week=<%=week%>&realPri=<%=payment%>&seat=<%=seat%>&person_num=<%=person_num%>&running_date=<%=running_date%>&running_time=<%=running_time%>&cdto=<%=cdto%>&mdto=<%=mdto%>&roomNum=<%=roomNum%>&memdto=<%=memdto%>');
-			});
+				acyncMovePage('./TicketOrderProc.ti');
+		});
 	
 		</script>
 		
