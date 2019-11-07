@@ -61,6 +61,7 @@
 		padding: 0;
 	}
 	
+
 	#cinemaname { 
 	position:relative; 
 	clear:both;
@@ -69,6 +70,7 @@
 	color:#231f20;
 	margin: 0 auto;
 }
+
 	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 		display: block;
 	}
@@ -461,6 +463,7 @@
 	
 		 %>
 		<tr>
+
 		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2><input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
 		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
 		</tr>
@@ -468,6 +471,7 @@
 		<td>총 상영관수:<%=cdto.getRoom() %>관</td>
 		<td></td>
 		<td>주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+
 		
 		
 
