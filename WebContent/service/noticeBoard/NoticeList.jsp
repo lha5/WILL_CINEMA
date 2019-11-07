@@ -10,8 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항</title>
+
 <!--CSS  -->
 <link rel="stylesheet" href="././css/noticeWrite.css">
+
 </head>
 <body>
 
@@ -19,9 +21,11 @@
 
 
 
+
 	<%
 		int count = (Integer) request.getAttribute("count");
 		List<AdminNoticeDTO> boardList = (List<AdminNoticeDTO>) request.getAttribute("boardList");
+		
 		String pageNum = (String) request.getAttribute("pageNum");
 
 		int pageCount = (Integer) request.getAttribute("pageCount");
@@ -33,17 +37,24 @@
 
 
 
-		<div id="notiList">공지사항		
-		<form action="./NoticeSearchAction.an" method="post">
-		<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력">
-		<input type="submit" value="검색" />
-		</form>
 		
-		</div>
 		
 		
 		
 		<div id="notiWrap">
+		<h1>공지사항</h1>
+		<div id="notiList">		
+		
+		<form action="./NoticeSearchAction.an" method="post" id="searching">
+		<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력" >
+		<input type="submit" value="검색" />
+		</form>
+		
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
 				<% 
 		 for (int i=0;i<boardList.size();i++) {
 			AdminNoticeDTO andto = boardList.get(i);

@@ -1,3 +1,4 @@
+
 <%@page import="com.review.db.MovieReviewDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +20,6 @@
 		List<MovieReviewDTO> boardList = (List<MovieReviewDTO>) request.getAttribute("boardList");
 		System.out.println("boardList : "+boardList+" id : "+id);
 	%>
-
 	<div id="Wrap">	
 	 <table id="table" border="0">
 	 <%for(int i=0;i<boardList.size();i++){ 
@@ -45,6 +45,6 @@
 	</table>
 	
 	</div>	
-	
+
 </body>
 </html>
