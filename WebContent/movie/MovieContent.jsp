@@ -31,12 +31,8 @@
 	String pageNum = (String) request.getAttribute("pageNum");
 %>
 		<div id="Wrap">
-		
+		<img src="./upload/<%=mdto.getPoster()%>" width="500px" height="600px" id="img">
 		<table border="1" class="accordion">
-			<tr>
-				<td colspan="6"><img src="./upload/<%=mdto.getPoster()%>" height="50px" width="50px" id="img"></td>
-			</tr>
-		
 			<tr>
 				
 				<td>예매순위</td>
