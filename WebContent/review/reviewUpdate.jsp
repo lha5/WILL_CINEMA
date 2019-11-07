@@ -20,9 +20,7 @@
 		System.out.println("id : "+id);
 		if(id == null){
 			response.sendRedirect("./MemberLogin.me");
-		}
-		
-		
+		}		
 	%>
 	
 	
@@ -43,8 +41,7 @@
 					<td>작성자</td>
 					<td><%=mrdto.getId() %></td>
 				</tr>
-				<tr>
-					<td>내용</td>
+				<tr><td>내용</td>
 					<td colspan="4">
 						<textarea name="content" row="10" cols="50"><%=mrdto.getContent() %></textarea>
 					</td>

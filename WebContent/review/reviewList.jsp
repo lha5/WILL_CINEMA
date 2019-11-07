@@ -8,21 +8,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/jquery-3.4.1.min.js">
+</script><link rel="stylesheet" href="./css/review.css">
+ 
 
 <title> 리뷰 페이지 </title>
-	<script>
-		
-			
-		function review_modify(movie_num,num,out_id){
-			$("#review_content_update").load("./MovieReviewUpdate.mr?movie_num="+movie_num+"&num="+num+"&id="+out_id);  
-		}
-			
-	</script>
+	
 
 </head>
 <body>
-	<div>
+	
 	
 	<%	
 		String id = (String) session.getAttribute("id");
@@ -38,7 +33,7 @@
 	 <%for(int i=0;i<boardList.size();i++){ 
 	 	MovieReviewDTO mrdto = boardList.get(i);
 	 %>
-	 <div id="review_content_update">
+	 <div id="review_content_update<%=mrdto.getNum() %>">
 	 <table border="1">
 	 
      <tr>
@@ -69,7 +64,13 @@
 	
 	
 	
-	
+	<script>
+			
+		function review_modify(movie_num,num,out_id){
+			$("#review_content_update"+num).load("./MovieReviewUpdate.mr?movie_num="+movie_num+"&num="+num+"&id="+out_id);  
+		}
+			
+	</script>
 
 </body>
 </html>
