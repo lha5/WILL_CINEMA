@@ -75,3 +75,11 @@
 	position: relative;
 	left: 10px;
 }
+
+#table {
+	color: #444;
+  padding: 18px;
+  width: 100%;
+	border-bottom: 1px solid red;
+	border-top: 1px solid red;
+}
