@@ -26,17 +26,16 @@
 						<textarea name="content" row="10" cols="70" id="right"></textarea>	
 					</td>
 				</tr>
-			</table>
-
-			</div>
-			<div class="rightloat">
-				<select name="rating">
+				<tr>
+					<td><select name="rating">
 						<option value=1>1</option>
 						<option value=2>2</option>
 						<option value=3>3</option>
 						<option value=4>4</option>
 						<option value=5>5</option>
-				</select>  <input type="submit"  value="글쓰기" id="button2">
+				</select>  <input type="submit"  value="글쓰기" id="button2"></td>
+				</tr>
+			</table>
 			</div>
 		</form>
 	</fieldset>

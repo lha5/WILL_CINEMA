@@ -18,8 +18,7 @@
 	AdminMovieDTO mdto = mdao.getBoard(movie_num);
 %>
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
-	<fieldset>
-			<legend>영화 추가</legend>
+			<legend>영화 수정</legend>
 				<table>
 					<tr>
 						<td>영화 제목</td>
@@ -96,13 +95,13 @@
 					<tr>
 						<td>포스터</td>
 						<td colspan="3">
-							<input type="file" name="poster" value="<%=mdto.getPoster()%>">
+							<input type="file" name="poster">
 						</td>
 					</tr>
 					 <tr>
-						<td>이미지( 구하기 힘든 사진이라서 뷰페이지에 다 주석처리중 )</td>
+						<td>이미지</td>
 						<td colspan="3">
-							<input type="file" name="image" value="<%=mdto.getImage()%>">
+							<input type="file" name="image">
 						</td>
 					</tr>
 									 
@@ -112,8 +111,6 @@
 						</td>
 					</tr>
 				</table>
-	
-		</fieldset>
 		
 	</form>
 	
