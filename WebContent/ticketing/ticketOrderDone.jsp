@@ -5,6 +5,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+@font-face {
+	font-family: 'NanumGothic';
+	src: url('../font/NanumGothic.ttf') format('truetype');
+}
+
+.ri-checkbox-circle-line {
+	color: #2ae853;
+}
+
+#done {
+	width: 700px;
+	margin: 50px auto;
+	text-align: center;
+	font-family: NanumGothic;
+	color: #1c1c1c;
+}
+
+span {
+	font-size: 1.2em;
+}
+
+#thanks {
+	font-size: 18px;
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
