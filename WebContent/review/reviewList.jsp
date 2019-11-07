@@ -6,7 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<title> 리뷰 페이지 </title>
 </head>
 <body>
 	
@@ -34,14 +37,17 @@
      <tr>
        <td>내용</td><td colspan="5"><%=mrdto.getContent() %></td>
      </tr>
-	     <%if(id.equals(mrdto.getId())){ %>
+	 <%
+	  if(id != null){
+	     if(id.equals(id)){ %>
 	     <tr>
 	     	<td colspan="6">
 		     	<input type="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
 				<input type="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
 	     	</td>
 	     </tr>
-	     <%} %>
+	 <%}
+	     }%>
      <%} %>
 
 </body>
