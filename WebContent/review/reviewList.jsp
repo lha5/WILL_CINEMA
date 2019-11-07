@@ -13,7 +13,6 @@
 </head>
 <body>
 	
-	
 	<%	
 		String id = (String) session.getAttribute("id");
 		int movie_num = (int) request.getAttribute("movie_num");
