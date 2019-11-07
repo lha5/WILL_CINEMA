@@ -25,12 +25,7 @@ public class TicketDTO{
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public String getPerson_num() {
-		return person_num;
-	}
-	public void setPerson_num(String person_num) {
-		this.person_num = person_num;
-	}
+
 	public int getBook_num() {
 		return book_num;
 	}
@@ -98,7 +93,12 @@ public class TicketDTO{
 		this.price = price;
 	}
 	
-	
+	public String getPerson_num() {
+		return person_num;
+	}
+	public void setPerson_num(String person_num) {
+		this.person_num = person_num;
+	}
 	public Date getSell_date() {
 		return sell_date;
 	}
@@ -107,7 +107,7 @@ public class TicketDTO{
 	}
 	@Override
 	public String toString() {
-		return "["+book_num+","+id+","+pass+","+movie_num+","+cinema_num+","+seat+","+room+","+
-	date+","+runnging_time+","+payment+","+price+","+sell_date+"]";		
+		return "["+book_num+", "+id+","+pass+", "+movie_num+", "+cinema_num+", "+seat+", "+room+", "+
+	date+", "+runnging_time+", "+payment+", "+price+", "+sell_date+", "+person_num+", "+day+"]";		
 	}
 }

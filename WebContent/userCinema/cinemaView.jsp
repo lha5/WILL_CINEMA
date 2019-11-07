@@ -66,11 +66,11 @@
 	
 	#cinemaname {
 		border: 1px solid blue;
-		width: 600px;
-		height: 200px;
+		width: 800px;
+		height: 400px;
 		clear: both;
-		margin: 10px auto 10px 25em;
 		text-align: center;
+		margin-left:25em; 
 	}
 	
 	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
@@ -92,7 +92,7 @@
 		var rollingId;
 
 		//정해진 초마다 함수 실행
-		rollingId = setInterval(function() { rollingStart(); }, 7000);//다음 이미지로 롤링 애니메이션 할 시간차
+		rollingId = setInterval(function() { rollingStart(); }, 8500);//다음 이미지로 롤링 애니메이션 할 시간차
 
 		
 		function rollingStart() {
@@ -100,7 +100,7 @@
 			$banner.css("height", $bannerHeight + "px");
 		
 			//배너의 좌측 위치를 옮겨 준다.
-			$banner.animate({left: - $bannerWidth + "px"}, 7000, function() { //숫자는 롤링 진행되는 시간이다.
+			$banner.animate({left: - $bannerWidth + "px"}, 8500, function() { //숫자는 롤링 진행되는 시간이다.
 				
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				
@@ -175,15 +175,14 @@
 	
 		 %>
 		<tr>
-		<td>영화관 넘버 :<%=cdto.getCinema_num() %></td>
-		<td><h2>영화관 이름 :<%=cdto.getName() %></h2></td>
+		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2></td>
 		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
 		</tr>
 		<tr>
 		<td>상영관 :<%=cdto.getRoom() %></td>
 		<td>영화관 전화번호 :<%=cdto.getTel() %></td>
-		<td>영화관주소 :<%=cdto.getAddr() %></td>
-		<td><input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+		<td>영화관주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+		
 		
 		
 		
