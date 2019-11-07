@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항</title>
+
+
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeContent.css">
+
 </head>
 <body>
 
@@ -17,12 +22,12 @@
 	String image = andto.getImage();
 	%>
 
-	<table border="1">
+	<table id="content">
 		<tr>
-			<td>번호</td>
-			<td><%=andto.getNum() %></td>
+			<td class="notice">번호</td>
+			<td class="notice2"><%=andto.getNum() %></td>
 			<td>조회수</td>
-			<td><%=andto.getReadcount() %></td>
+			<td class="notice2"><%=andto.getReadcount() %></td>
 		</tr>
 		<tr>	
 			<td>카테고리</td>
@@ -48,22 +53,28 @@
 				<%=andto.getContent()%>
 			</td>
 		</tr>
-		<%
+		
+			<tr>
+				<td colspan="4">
+				<%
 		if (id != null) {
 			if (id.equals("admin")) {
 		%>
-			<tr>
-				<td colspan="4">
-		    		<input type="button" value="수정하기" onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
-		    		<input type="button" value="삭제하기" onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
-		    	</td>	  
-			</tr>
+		    		<input type="button" value="수정하기"  class="noc1" onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
+		    		<input type="button" value="삭제하기" class="noc1" onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
 		<%
 			}
 		}
 		%>
+					<input type="button" value="목록으로"  class="noc1" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
+		    	</td>	  
+			</tr>
+		
 	</table>
-	<input type="button" value="목록으로" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
+	
+	
+	
+	
 	<%@ include file="../../include/footer.jsp" %>
 	
 </body>

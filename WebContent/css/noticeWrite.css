@@ -54,12 +54,57 @@
 	margin: 10px auto;
 }
 
-#notiWrap {
-	/* border: 1px solid red; */
-	width: 900px;
-	margin: 50px auto;
-}
 
 #notipagingNumber {
 	text-align: center;
 }
+
+
+#notiWrap {
+height:450px;
+position:relative;
+
+}
+#searching {
+	position:absolute;
+	right:0;
+	margin: 20px 0 10px 500px ;
+	width: 450px;
+	height:100;
+}
+
+input[type=text] {
+	width: 200px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #240e04;
+	color: #240e04;
+	font-size: 13px;
+}
+
+input[type=submit] {
+	width: 75px;
+	height: 37px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 19px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+
+
+
+
+
+
