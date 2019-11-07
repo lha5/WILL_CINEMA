@@ -40,13 +40,6 @@
 				<td>장르</td>
 				<td><%=mdto.getGenre() %></td>
 			</tr>
-			
-			<%-- <tr>	
-				<td>이미지</td>
-				<td colspan="5">
-					<img src="./upload/<%=mdto.getImage()%>" height="50px" width="50px"></td>
-				
-			</tr> --%>
 			<tr>
 			</tr>
 			<tr>
@@ -73,7 +66,7 @@
 				<div class="rightloat">
 					<input type="button" value="수정하기" id="button" onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 					<input type="button" value="삭제하기" id="button" onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-				<div class="rightloat">
+				</div>
 				</td>
 			</tr>
 			<%

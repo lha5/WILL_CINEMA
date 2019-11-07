@@ -37,7 +37,6 @@
 
 	<div id="contentsWrap">	
    	<center>
-   <table border="1">
    <table border="1" class="accordion">
      <tr>
        <td>번호</td>
@@ -98,9 +97,8 @@
 
 	<form action="./QnASearchAction.sq" method="post">
 		<input type="text" name="search">
-		<button type="submit">검색</button>
+		<button type="submit" id="button">검색</button>
 	</form>
-	</form>	
 
 	</div>
 	<%@ include file="../../include/footer.jsp" %>
