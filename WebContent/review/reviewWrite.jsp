@@ -7,6 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="././css/review.css">
+<script type="text/javascript">
+	function reviewNonCheck() { 
+		if(document.reviewAddfr.content.value == ""){
+			alert("리뷰를 입력해 주십시오.");
+			document.reviewAddfr.content.focus();
+			return false;
+		}
+		
+	}
+
+</script>
+
 </head>
 <body>
 	
@@ -17,13 +29,15 @@
 	<div id="Wrap">
 	
 	<fieldset class="accordion">
-		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post">
+		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" name="reviewAddfr" method="post"
+			onsubmit="return reviewNonCheck()">
 			<div ><!-- class="table" -->
 			<table>
 				<tr>
 					<td id="font"> 리뷰</td>
 					<td>
-						<textarea id="right" name="content" row="10" cols="70" ></textarea>	
+						<textarea id="right" name="content" row="10" cols="70" 
+							placeholder="아름다운 말로 멋진 영화를 빛내주세요"></textarea>	
 					</td>
 				</tr>
 				<tr>
