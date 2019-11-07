@@ -19,7 +19,7 @@ public class MemberPassUpdateAction implements Action {
 		System.out.println("MemberPassUpdateAction execute()---------------------------------");
 		
 		request.setCharacterEncoding("UTF-8");
-		
+		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
