@@ -24,7 +24,6 @@ table {
 
 td {
 	height: 50px;
-	
 }
 
 tr:NTH-CHILD(1)>td {

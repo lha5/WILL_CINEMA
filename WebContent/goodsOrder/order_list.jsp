@@ -10,6 +10,16 @@
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
+<!-- CSS -->
+<style type="text/css">
+#list {
+	border-collapse: collapse;
+	border: 1px solid #1c1c1c;
+	width: 700px;
+	margin: 50px auto;
+}
+</style>
+
 </head>
 <body>
 	
@@ -19,15 +29,14 @@
 	List<MallOrderDTO> orderList = (List<MallOrderDTO>) request.getAttribute("orderList");
 	%>
 
-	<%-- <%@ include file="../include/header.jsp" %> --%>
 
 	<div id="wrap">
 	
 		<h2>주문한 내역</h2>
 		
-		<table border="1">
+		<table id="list">
 			<tr>
-				<td>주문 번호</td>
+				<td id="transcNo">주문 번호</td>
 				<td>구매 상품</td>
 				<td>주문 갯수</td>
 				<td>금액</td>
@@ -51,6 +60,5 @@
 	
 	</div>
 	
-	<%-- <%@ include file="../include/footer.jsp" %> --%>
 </body>
 </html>

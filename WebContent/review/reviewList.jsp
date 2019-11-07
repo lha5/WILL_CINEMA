@@ -6,9 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
 
 <link rel="stylesheet" href="././css/review.css">
+
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<title> 리뷰 페이지 </title>
 
 </head>
 <body>
@@ -36,7 +40,9 @@
      <tr>
        <td colspan="6"><%=mrdto.getContent() %></td><td colspan="1"><%=mrdto.getId() %></td>
      </tr>
-	     <%if(id.equals(mrdto.getId())){ %>
+	 <%
+	  if(id != null){
+	     if(id.equals(id)){ %>
 	     <tr>
 	     	<td colspan="8">
 	     	<div class="rightloat">
@@ -45,7 +51,8 @@
 	     	</div>
 	     	</td>
 	     </tr>
-	     <%} %>
+	 <%}
+	     }%>
      <%} %>
 	</table>
 	
