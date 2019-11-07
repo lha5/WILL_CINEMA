@@ -85,7 +85,7 @@ input[type=submit] {
 
 	<fieldset>
 		<span id="inin">비회원 로그인</span>
-		<form method="post" action="../NonMemberLoginAction.me">
+		<form method="post" action="././NonMemberLoginAction.me">
 			<table>
 				<tr>
 					<td>성함</td>

@@ -18,9 +18,7 @@
 		String pageNum = (String)request.getAttribute("pageNum");
 		System.out.println("카테고리 : " + qadto.getCategory());
 	%>
-
-
-	<h1>글 내용 보기</h1>
+	
 	<div id="contentsWrap">
 
 	<table border="1" class="accordion">
