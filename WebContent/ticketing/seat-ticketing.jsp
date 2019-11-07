@@ -28,7 +28,8 @@
 			seatCol=new Array($('input[name=seatCol]').length);
 		}
 		/*--------------- 처음 실행될것들 ----------------*/
-		//예약좌석 비활성
+		
+		//예약좌석 비활성1
 		if($('input[name=seatRow]').length!=0){
 			for(var i=0; i<$('input[name=seatRow]').length; i++){
 				seatRow[i]=$('input[name=seatRow]')[i].value;
