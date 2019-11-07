@@ -1,5 +1,45 @@
 @CHARSET "UTF-8";
 
+.bgColor{
+	background-color:#f9f6ec;
+}
+
+.selectPeopleNum{
+	height: 50px;
+	padding-top: 10px;
+	margin-left: 10px; 
+}
+
+.selectPeopleNum span{
+	margin: 0px 10px;
+}
+.selectPeopleNum >div{
+	float: left;
+	margin: 0 10px;
+}
+.selectPeopleNum em{
+	line-height: 50px;
+	font-size: 12px;
+	float: right;
+	color: #727272;
+	margin-right: 10px;
+}
+
+.selectPeopleNum2{
+	height: 30px;
+	line-height: 30px;
+	margin-left:10px; 
+}
+
+.selectPeopleNum2 div{
+	float: left;
+	margin: 0 10px;
+}
+
+.seatTable{
+	margin: 30px auto;
+}
+
 .seatTable td .seat{
 	display:inline-block;
 	border: none;
@@ -24,7 +64,7 @@
 }
 
 .seatTable td .seatbg{
-	background: #fff;
+	background: #f9f6ec;
 	color: #000000;
 	border: none;
 	width: 25px;
@@ -66,3 +106,70 @@
 	color: rgba(0, 0, 0, 0);
 	pointer-events: none;
 }
+
+
+.loginField {
+	border-left-style: none;
+	border-right-style: none;
+	width: 1200px;
+	margin: 0px auto 50px;
+	text-align: left;
+}
+
+
+.seatTable2{
+	border-left:1px solid red;
+	border-right:1px solid red;
+	margin:10px; auto;
+	width: 1200px;
+}
+
+.seatTable2>td{
+	border-left:1px solid red;
+	border-right:1px solid red;
+	text-align: left;
+}
+
+
+.dtTitle{
+	
+}
+
+.seatTable2 input{
+	border: none;
+	width: 150px;
+	background-color:#f9f6ec;
+}
+
+.innerTable{
+	width:250px;
+	margin: 10px auto;
+}
+
+.innerTable th span{
+	margin-left: 10px;
+}
+
+.innerTable img{
+	width:65px;
+	height:94px;
+	margin: 10px;
+}
+.innerTable .tdSpan{
+	width:75px;
+}
+
+.payButton{
+	margin:20px;
+	width:120px;
+	height:40px;
+	background-color:#d7282d;
+	color:#fff;
+	border:none;
+}
+
+
+
+
+
+

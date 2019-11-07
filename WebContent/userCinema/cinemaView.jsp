@@ -251,7 +251,6 @@
 			//체크된 날짜의 요일
 			week=$('label[for="' +monthNames[mon]+date2[2] +'"]').find('span').text();
 			week= date2[0]+"."+date2[1]+"."+date2[2]+"("+week+")";
-			alert("클릭체크 : "+week);
 			
 			$.ajax({
 				url:"./ShowTime.ti",
