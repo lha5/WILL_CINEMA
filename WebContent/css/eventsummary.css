@@ -106,3 +106,43 @@ a {
 nav>ul>li:NTH-CHILD(4)>ul {
 	display: block;
 }
+
+#old {
+	float: right;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100px;
+	height: 40px;
+	border: 1px solid #1c1c1c;
+	/* border-radius: 2px; */
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 16px;
+	color: #1c1c1c;
+	letter-spacing: 2px;
+}
+
+#clear {
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.ctgr {
+	/* border: 1px solid green; */
+	padding: 7px;
+	margin-right: 12px;
+}
+
+.more {
+	position: relative;
+}
+
+span>a {
+	b/* order: 1px solid lime; */
+	position: absolute;
+	top: 9px;
+	font-size: 13px;
+	color: #6e6e6e;
+}

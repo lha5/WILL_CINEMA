@@ -7,6 +7,7 @@ public class QnADTO {
 	private String category;
 	private String name;
 	private String subject;
+	private String id;
 	private String content;
 	private int readcount;
 	private Date date;
@@ -14,7 +15,7 @@ public class QnADTO {
 	private int re_lev;
 	private int re_seq;
 	private String image;
-	private String id;
+	
 	
 	
 	public String getId() {

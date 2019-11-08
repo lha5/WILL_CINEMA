@@ -16,7 +16,7 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
-		// String id = (String)session.getAttribute("id");
+		id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");

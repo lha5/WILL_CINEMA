@@ -331,16 +331,6 @@ nav>ul>li:NTH-CHILD(5) ul {
 }
 
 .cine {
-	display: none;
-	border: 1px solid red;
-	position: relative;
-	width: 200px;
-	height: 25px;
-	top: 50px;
-	left: -20px;
-}
-
-.cine>li {
-	float: left;
-	position: absolute;
-}
+text-align: left;
+	margin-left: -8em;
+	}

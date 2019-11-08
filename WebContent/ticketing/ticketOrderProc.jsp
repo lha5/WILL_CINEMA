@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 결제 진행</title>
 </head>
 <body>
 <h1>WebContent/ticketing/ticketOrderProc.jsp</h1>

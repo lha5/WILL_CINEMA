@@ -1,5 +1,50 @@
 @CHARSET "UTF-8";
 
+.bgColor{
+	background-color:#fffff2;
+}
+
+.bgColor h1{
+	margin: 30px 0px 50px 150px;
+	padding-top: 50px;
+}
+
+.selectPeopleNum{
+	height: 50px;
+	padding-top: 10px;
+	margin-left: 10px; 
+}
+
+.selectPeopleNum span{
+	margin: 0px 10px;
+}
+.selectPeopleNum >div{
+	float: left;
+	margin: 0 10px;
+}
+.selectPeopleNum em{
+	line-height: 50px;
+	font-size: 12px;
+	float: right;
+	color: #727272;
+	margin-right: 10px;
+}
+
+.selectPeopleNum2{
+	height: 30px;
+	line-height: 30px;
+	margin-left:10px; 
+}
+
+.selectPeopleNum2 div{
+	float: left;
+	margin: 0 10px;
+}
+
+.seatTable{
+	margin: 30px auto;
+}
+
 .seatTable td .seat{
 	display:inline-block;
 	border: none;
@@ -24,7 +69,6 @@
 }
 
 .seatTable td .seatbg{
-	background: #fff;
 	color: #000000;
 	border: none;
 	width: 25px;
@@ -56,7 +100,7 @@
 	background:url('../img/bg/bg_seat03.gif') no-repeat 50% 50% !important;
 	border:0 !important;
 	color:#b7b7b7 !important;
-	pointer-events: none;
+/* 	pointer-events: none; */
 }
 
 .seatTable td .disabled{
@@ -66,3 +110,102 @@
 	color: rgba(0, 0, 0, 0);
 	pointer-events: none;
 }
+
+
+.loginField {
+	border-left-style: none;
+	border-right-style: none;
+	width: 1200px;
+	margin: 0px auto 120px;
+	text-align: left;
+}
+
+
+.seatTable2{
+	margin:10px; auto;
+	width: 1200px;
+}
+
+
+.seatTable2 input{
+	border: none;
+	width: 150px;
+	background-color:#fffff2;
+}
+.seatTable2 .tdLine{
+	border-left:2px solid #7b7b7b;
+	border-right:2px solid #7b7b7b;
+}
+
+.innerTable{
+
+	margin-left: 30px;
+}
+.innerTable td{
+	font-size:14px;
+}
+.innerTable th span{
+	margin-left: 10px;
+}
+
+.innerTable img{
+	width:65px;
+	height:94px;
+	margin: 10px;
+}
+.innerTable .tdSpan{
+	width:75px;
+}
+
+.innerTable2{
+	margin-left: 30px;
+}
+
+.innerTable2 td{
+	padding: 3px;
+	font-size:14px;
+}
+
+.innerTable3{
+	margin-left: 30px;
+}
+
+.innerTable3 td{
+	padding: 8px 0px;
+	font-size:14px;
+}
+
+.payButton{
+	margin:20px;
+	width:120px;
+	height:40px;
+	background-color:#d7282d;
+	color:#fff;
+	border:none;
+	float: right;
+}
+
+.prevButton{
+	margin:20px;
+	width:120px;
+	height:40px;
+	background-color:#000000;
+	color:#fff;
+	border:none;
+}
+
+.SeatTitle{
+	font-size:16px;
+	font-weight: bold;
+}
+
+.totalPrice1{
+	text-align: right;
+}
+.totalPrice2{
+	text-align: right;
+	font-size:20px;
+	font-weight: bold;
+}
+
+
