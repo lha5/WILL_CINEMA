@@ -48,7 +48,7 @@
 				<li id="forcustomer"><a href="./FAQUserList.af">고객센터</a>
 					<ul id="dropdown">
 						<li><a href="./FAQUserList.af">FAQ</a></li>
-						<li><a href="./QnAList.sq">1:1 문의</a></li>
+						<li><a href="./QnAUserList.sq">1:1 문의</a></li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
 				</li>

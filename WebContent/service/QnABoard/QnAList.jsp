@@ -13,12 +13,10 @@
 
 </head>
 <body>
+
 	<%@ include file="../../include/header.jsp" %>
 	
-	<%
-		id = (String)session.getAttribute("id");
-		System.out.println("session id : "+id);
-		
+	<%		
 		int count = (Integer) request.getAttribute("count");
 		
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -29,6 +27,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		
 	%>
 	
 	
@@ -90,7 +89,7 @@
 		}
 	%>
 		</div>	
-	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
+	<%-- <h3><a href="./QnAWrite.sq?name=<%=name%>">글 쓰기</a></h3> --%>
 
 
 

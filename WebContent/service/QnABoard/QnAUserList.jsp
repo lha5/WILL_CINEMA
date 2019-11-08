@@ -16,8 +16,7 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
-		List info = (List) request.getAttribute("info");
-		String name = String.valueOf(info.get(0));		
+		String name = String.valueOf(request.getAttribute("name"));		
 		session.setAttribute("name", name);
 		
 		int count = (Integer) request.getAttribute("count");
@@ -47,7 +46,7 @@
      	for (int i=boardList.size()-1;i>-1;i--) {
     		QnADTO qadto = boardList.get(i);
     		
-    		if (id.equals(qadto.getId())) {
+    		if (id.equals(qadto.getPass())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>

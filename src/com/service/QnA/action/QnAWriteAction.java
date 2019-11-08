@@ -46,7 +46,7 @@ public class QnAWriteAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		qadto.setName(multi.getParameter("id"));
-		qadto.setId(multi.getParameter("id"));
+		qadto.setPass(multi.getParameter("pass"));
 		qadto.setSubject(multi.getParameter("subject"));
 		qadto.setCategory(multi.getParameter("category"));
 		qadto.setContent(multi.getParameter("content"));
@@ -57,7 +57,7 @@ public class QnAWriteAction implements Action {
 		QnADAO qadaoImpl = new QnADAOImpl();
 		qadaoImpl.insertBoard(qadto);
 		
-		forward.setPath("./QnAList.sq");
+		forward.setPath("./QnAUserList.sq");
 		forward.setRedirect(true);
 		return forward;
 	}
