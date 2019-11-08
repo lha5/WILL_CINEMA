@@ -84,7 +84,7 @@ public class QnAListAction implements Action {
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
+		request.setAttribute("endPage", startPage);
 		request.setAttribute("info", info);
 		
 		if(id.equals("admin")){
