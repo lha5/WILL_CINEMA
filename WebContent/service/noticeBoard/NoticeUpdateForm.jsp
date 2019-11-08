@@ -31,7 +31,7 @@
 	String image = andto.getImage();
 	%>
 
-	<fieldset>
+	<fieldset id="">
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
