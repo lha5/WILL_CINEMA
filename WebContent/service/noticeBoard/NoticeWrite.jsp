@@ -25,7 +25,7 @@
 	
 	
 	
-	
+	<div id="wrap">
 	
 	
 	
@@ -34,21 +34,11 @@
 		response.sendRedirect("./Main.me");
 	}
 	%>
-<<<<<<< HEAD
-		
-					<div id="wrap1">
-			   		<div id="witewrap">	
-					
-						
-=======
 	
 	<div id="sectionWrap">
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
-					
-				<table>
-			   	
-			   		
+			<table>
+			   	<tr>
 			   		<td>글쓴이</td>
 			   		<td><input type="text" name="name" value="<%=id%>"></td>
 			   		<td>
@@ -69,7 +59,7 @@
 			   				<option value="제주">제주</option>
 			   			</select>
 			   		</td>
-				
+				</tr>
 				<tr>
 			   		<td>제목</td>
 			   		<td colspan="3"><input type="text" name="subject"></td>
@@ -98,20 +88,12 @@
 			   		</td>
 				</tr>
 			</table>	
-		
 		</form>
-<<<<<<< HEAD
-		</div>	
-		</div>
-	
-	
-=======
 	</div>
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	
 	<%@ include file="../../include/footer.jsp" %>
 	
-	
+	</div>
 	
 </body>
 </html>
