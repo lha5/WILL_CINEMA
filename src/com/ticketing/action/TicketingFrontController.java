@@ -104,8 +104,8 @@ public class TicketingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
-			//action = new MovieScheAction(); 
+		}else if(command.equals("/TicketingList.ti")){ //상영 시간표 페이지
+			action = new TicketingListAction(); 
 			
 			try {
 				forward=action.execute(request, response);
