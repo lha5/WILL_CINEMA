@@ -91,14 +91,14 @@ input[type=text] {
 
 
 #noticlick1{
-  width: 200px;
-  padding: 10px 15px;
-  margin: 5px 10px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  background-color: #0080ff;
-  color:#fff
+    width: 100px;
+  	padding: 10px 15px;
+  	margin: 8px 15px;
+  	display: inline-block;
+ 	border: 1px solid #ccc;
+  	box-sizing: border-box;
+  	background-color: #0080ff;
+  	color:#fff
 	
 	
 }
