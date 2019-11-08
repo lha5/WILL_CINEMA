@@ -397,7 +397,7 @@
         form.submit();
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
-	/*  영화관 위치 / 영화재생   */
+	/*  영화관 위치 / 영화재생  j쿼리  */
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
@@ -408,8 +408,7 @@
 	function movieing(){ 	        	        
 	    var movieck = $('#moving').val();
 	        
-	    window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","width=600,height=400");    
-	}
+	    window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","left="+(screen.availWidth-1000)/2+",top="+(screen.availHeight-600)/2+", width=1000px,height=600px");}
 </script>
 
 </head>
