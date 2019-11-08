@@ -254,6 +254,10 @@ function acyncMovePage(url){
 	
 	<!-- 버튼을 클릭하면 아래에 페이지가 로드되게 하는 코드 -->
 	<script type="text/javascript">
+		// 내 예매 내역
+		document.querySelector('#bookingList').addEventListener('click', function() {
+			acyncMovePage('./TicketingList.ti');
+		});
 		
 		// 구매 내역
 		document.querySelector('#myMallOrderList').addEventListener('click', function() {
@@ -267,7 +271,7 @@ function acyncMovePage(url){
 		
 		// 내 정보 관리
 		document.querySelector('#myInfoManagement').addEventListener('click', function() {
-			acyncMovePage('./MyPage.me');
+			acyncMovePage('./MemberInfo.me');
 		});
 	</script>
 
