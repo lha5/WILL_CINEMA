@@ -77,7 +77,7 @@ public class MemberLoginAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		// 로그인 안되어 있음 회원가입으로 감
-		forward.setPath("./Main.me");
+		forward.setPath("./MyInfoPage.me");
 		// 정보값 가져가지 않아서  true
 		forward.setRedirect(true);
 		

@@ -31,4 +31,7 @@ public interface TicketDAO {
 	
 	// 예매 리스트
 	public List<TicketDTO> getTicketingList();
+	
+	// 예매 내역 상세
+	public TicketDTO getBookDetail(int book_num);
 }
