@@ -43,11 +43,15 @@ public class ServiceQnAFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} /*else if (command.equals("/QnAUserList.sq")) {
-			forward = new ActionForward();
-			forward.setPath("./service/QnABoard/QnAUserList.jsp");
-			forward.setRedirect(false);
-		}*/ else if(command.equals("/QnAUpdate.sq")){ //QnA 수정 페이지
+		} else if (command.equals("/QnAUserList.sq")) {
+			action = new QnAListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/QnAUpdate.sq")){ //QnA 수정 페이지
 			//QnAUpdate() -> QnAUpdateForm -> QnAUpdateAction()
 			action = new QnAUpdate();
 			try {

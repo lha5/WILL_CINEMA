@@ -24,6 +24,7 @@ public class QnAListAction implements Action {
 		QnADAO qadaoImpl = new QnADAOImpl();
 		
 		int count = qadaoImpl.getBoardCount();
+		System.out.println(" count : "+count);
 		
 		int pageSize = 10;
 		
@@ -59,6 +60,7 @@ public class QnAListAction implements Action {
 		
 		if( count != 0 ){ 
 			  boardList = qadaoImpl.getBoardList(startRow,pageSize);
+			  System.out.println(" action boardLis : "+boardList);
 		}
 		
 		// 전체 페이지수 계산
@@ -89,12 +91,16 @@ public class QnAListAction implements Action {
 		request.setAttribute("endPage", startPage);
 		request.setAttribute("name", name);
 		
-		if (id.equals("admin")) {
-			forward.setPath("./service/QnABoard/QnAList.jsp");
-			forward.setRedirect(false);
-		} else {
-			forward.setPath("./service/QnABoard/QnAUserList.jsp");
-			forward.setRedirect(false);
+		if(id.equals("admin")){
+		
+		forward.setPath("./service/QnABoard/QnAList.jsp");
+		forward.setRedirect(false);
+		
+		}else {
+			
+		forward.setPath("./service/QnABoard/QnAUserList.jsp");
+		forward.setRedirect(false);
+		
 		}
 		
 		return forward;
