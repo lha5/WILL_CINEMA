@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="././css/modify.css">
+
 </head>
 <body>
 
@@ -22,12 +25,12 @@
 	
 %>
 
+
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
 			<legend>영화 수정</legend>
-=======
-	<fieldset>
-		
 
+	<fieldset>
+			<legend>영화 추가</legend>
 				<table>
 					<tr>
 						<td>영화 제목</td>
@@ -103,27 +106,43 @@
 					</tr>
 					<tr>
 						<td>포스터</td>
-						<td colspan="3">
-							<input type="file" name="poster">
+						<td colspan="3" class="filebox">
+							<input class="upload-name" value="업로드" disabled="disabled">
+							
+							<label for="ex_filename">업로드 </label>
+							<input type="file" name="poster" id="ex_filename"  class ="upload-hidden" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
 					 <tr>
 						<td>이미지</td>
-						<td colspan="3">
-							<input type="file" name="image">
+						<td colspan="3" class="filebox" class="upload-hidden"> 
+							<input class="upload-name" value="업로드" disabled="disabled">
+							
+							<label for="ex_filename">업로드</label>
+							<input type="file" name="image" id="ex_filename" value="<%=mdto.getImage()%>">
 						</td>
 					</tr>
 									 
 					 <tr>
 						<td colspan="4">
-							<input type="submit" value="영화 수정">
+							<input type="submit" value="영화 수정" class="modify" >
 						</td>
 					</tr>
 				</table>
+	
+		</fieldset>
 		
 	</form>
 	
-	<%@ include file="../include/footer.jsp" %>
+	
+	
+	
+<%@ include file="../include/footer.jsp" %>
+
+
+
+
+
 
 </body>
 </html>

@@ -13,12 +13,10 @@
 
 </head>
 <body>
+
 	<%@ include file="../../include/header.jsp" %>
 	
-	<%
-		// String id = (String)session.getAttribute("id");
-		System.out.println("session id : "+id);
-		
+	<%		
 		int count = (Integer) request.getAttribute("count");
 		
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
@@ -29,6 +27,7 @@
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
 		int endPage = (Integer) request.getAttribute("endPage");
+		
 	%>
 	
 	
@@ -43,7 +42,7 @@
        <td>카테고리</td>
        <td>글쓴이</td>
        <td>날짜</td>
-       <td>죄회수</td>
+       <td>조회수</td>
      </tr>
      <%
      	for (int i=boardList.size()-1;i>-1;i--) {
@@ -90,7 +89,7 @@
 		}
 	%>
 		</div>	
-	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
+	<%-- <h3><a href="./QnAWrite.sq?name=<%=name%>">글 쓰기</a></h3> --%>
 
 
 

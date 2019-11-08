@@ -2,6 +2,7 @@
 <%@page import="com.mall.db.MallDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +30,7 @@ nav>ul>li:NTH-CHILD(5)>ul {
 
 #goods>li {
 	float: left;
-	/* border: 1px solid blue; */
+	border: 1px solid #e6e6e6;
 	width: 190px;
 	height: 220px;
 	margin: 20px 0px 55px 78px;
@@ -57,6 +58,8 @@ a>#goodsName {
 	List goodsList = (List)request.getAttribute("goodsList");
 	%>
 	
+	
+	
 	<div id="container">
 	<ul id="goods">
 		<%
@@ -70,7 +73,8 @@ a>#goodsName {
 					<span id="goodsName"><%=mdto.getName()%></span>
 				</a>
 				<br><br>
-				<%=mdto.getPrice() %>원
+				<fmt:formatNumber type="number" var="price" maxFractionDigits="3" value="<%=mdto.getPrice()%>" />
+				${price} 원
 			</li>
 		<%
 		} 

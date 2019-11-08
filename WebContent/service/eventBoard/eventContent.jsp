@@ -12,6 +12,65 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="././css/eventsummary.css">
+
+<style type="text/css">
+span {
+	padding: 5px;
+	letter-spacing: 2px;
+	font-size: 1.3em;
+	font-weight: 500;
+}
+
+form {
+	/* border: 1px solid lime; */
+	padding-left: 588px;
+}
+
+input[type=text] {
+	width: 240px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	color: #1c1c1c;
+	font-size: 14px;
+}
+
+input[type=submit] {
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 14px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+
+div#goBack {
+	text-align: center;
+	background-color: #d7282d;
+	padding: 20px;
+}
+
+#goBack>a {
+	color: #ffffff;
+	font-size: 16px;
+	letter-spacing: 2px;
+	font-family: inherit;
+	font-weight: 500;
+}
+</style>
+
 <script type="text/javascript">
 	function moreRead(){
 		var viewCnt=5;
@@ -52,60 +111,63 @@
 	}
 </script>
 </head>
-<%	
-	//request.setCharacterEncoding("UTF-8");
-	List eventList = (List)request.getAttribute("eventList");
-	String item=request.getParameter("item");
-	String keyward=(String)request.getAttribute("keyward");
-	int viewList=3;//보여줄 이벤트 개수-1
-
-	if(keyward==null){
-		keyward="";
-	}
-%>
+	<%	
+		//request.setCharacterEncoding("UTF-8");
+		List eventList = (List)request.getAttribute("eventList");
+		String item=request.getParameter("item");
+		String keyward=(String)request.getAttribute("keyward");
+		int viewList=3;//보여줄 이벤트 개수-1
+	
+		if(keyward==null){
+			keyward="";
+		}
+	%>
 <body>
 
-<%@ include file="../../include/header.jsp" %>
+	<%@ include file="../../include/header.jsp" %>
 	<!-- 
 		CSS li줄바꿈 처리
 		li{float:left;width:100px;height:100px;background:#000;color:#fff;}
 		li:nth-of-type(4n-3){background:red;display:block;content:"";clear:left;}
 	 -->
-	 <input type="hidden" id="startCnt" value="0">
-	 <input type="hidden" id="viewCnt" value="4">
-	 <input type="hidden" id="item" value="<%=item%>">
+	<input type="hidden" id="startCnt" value="0">
+	<input type="hidden" id="viewCnt" value="4">
+	<input type="hidden" id="item" value="<%=item%>">
+	
 	<div class="event_cwrap">
-	<div>
-		<h2>
-		<%if(item.equals("movie") ){%>
-			영화
-		<%}else if(item.equals("preview") ){%>
-			시사회/무대인사
-		<%}else if(item.equals("nevnet") ){%>
-			윌시 NOW
-		<%}else if(item.equals("collabo") ){%>
-			제휴할인
-		<%} %>
-		</h2>
-		<form action="./EventContent.ae?item=<%=item %>" method="post">
-		<input type="text" name="keyward" value="<%=keyward%>">
-		<input type="submit" value="검색">
-		</form>
-	</div>
-	<%
+	
+		<div>
+			<span>
+			<%if(item.equals("movie") ){%>
+				영화
+			<%}else if(item.equals("preview") ){%>
+				시사회/무대인사
+			<%}else if(item.equals("nevnet") ){%>
+				윌시 NOW
+			<%}else if(item.equals("collabo") ){%>
+				제휴할인
+			<%} %>
+			</span>
+			<form action="./EventContent.ae?item=<%=item %>" method="post">
+				<input type="text" name="keyward" value="<%=keyward%>">
+				<input type="submit" value="검색">
+			</form>
+		</div>
+		<%
 		if(eventList.size()!=0){
-	%>
-	<ul class="event_list">
-	<%
+		%>
+		<ul class="event_list">
+			<%
 			for(int i=0; i<eventList.size(); i++){ //카테고리 리스트
 				if(i>viewList){break;}
 				AdminEventDTO aedto=(AdminEventDTO)eventList.get(i);
-	%>
+			%>
 	
-		<li>
+			<li>
 			<a href="./EventDetail.ae?eventId=<%=aedto.getNum() %>" >
 				<img src="./upload/<%=aedto.getImage().split(",")[0]%>">
 			</a>
+			<br>
 			<p><%=aedto.getF_date()%>~<%=aedto.getE_date()%></p>
 		</il>
 	<% }%>
@@ -119,7 +181,7 @@
 			진행되는 이벤트가 없습니다.
 		<%}%>
 		<br class="more">
-		<a href="./EventSummary.ae">이벤트 목록</a>
+		<div id="goBack"><a href="./EventSummary.ae">이벤트 목록</a></div>
 	</div>
 	
 	

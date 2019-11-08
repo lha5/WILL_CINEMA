@@ -285,7 +285,8 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
-				mdto.setCountry(rs.getString("country"));			
+				mdto.setCountry(rs.getString("country"));
+				mdto.setPoster(rs.getString("poster"));
 			}
 			
 		} catch (Exception e) { 	

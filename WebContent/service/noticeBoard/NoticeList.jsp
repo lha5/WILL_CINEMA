@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+		<div id=Wrap2>
 	<%@ include file="../../include/header.jsp" %>
 
 
@@ -61,11 +61,12 @@
 		 
 		%>
 	  	
-	  	<button class="notiaccordion">[<%=andto.getCategory() %>] <%=andto.getSubject() %> 조회수 :<%=andto.getReadcount() %> </button>
+	  	<button class="notiaccordion" onclick="location.href='./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>' "><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>">[<%=andto.getCategory() %>]<%=andto.getSubject()%></a> </button>
+	  	
 	  	<div class ="notipanel">
 	  	
 	  	
-	  	<a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>"><%=andto.getSubject()%>(자세히보기 클릭)</a>
+	  	
 	  	
 	  	<%=andto.getContent() %>
 	  	</div><!--공지사항 내용  -->
@@ -74,7 +75,7 @@
 		}/* 반복문 */ 
 		%> 	
 	<script>
-			var acc = document.getElementsByClassName("notiaccordion");
+			/* var acc = document.getElementsByClassName("notiaccordion");
 			
 			for (var i = 0; i < acc.length; i++) {
 	 			acc[i].addEventListener("click", function() {
@@ -86,7 +87,7 @@
 	     					panel.style.display = "block";
 	    			}
 	  			});
-			}
+			} */
 		</script>	
 	
 	<div id="notipagingNumber">
@@ -124,12 +125,13 @@
 	if (id != null) {
 		if (id.equals("admin")) {
 	%>
-			<input type="button" value="공지사항 작성하기" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
+		
+		<input type="button" value="공지사항 작성하기" id="noticlick1" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	<%
 	 }
 	}
 	%>
-	
+	</div>	
 	<%@ include file="../../include/footer.jsp" %>
 	
 

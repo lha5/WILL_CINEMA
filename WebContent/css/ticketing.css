@@ -27,7 +27,7 @@ a {text-decoration:none;color:#555;}
 .cont_ticket {
 	width: 100%;
 	min-height: 100px;
-	background: #f9f6ec;
+	background: #e6e6e6;
 }
 
 .cont_ticket_Area {
@@ -42,15 +42,18 @@ a {text-decoration:none;color:#555;}
 .ticket_wrap {
 	border: 1px solid red;
 	width: 100%;
-	background: #f6f6ea
+	background: #e6e6e6;
 }
 
 .calendar { 
+	box-sizing: border-box;
 	position:relative; 
 	clear:both;
 	width:980px; 
-	padding:0 0 0 0;  
+	padding:10px 5px 10px 5px;  
 	color:#231f20;
+	margin: 0 auto;
+	background: #e6e6e6;
 }
 
 .calendar fieldset .month-picker-label {
@@ -58,6 +61,10 @@ a {text-decoration:none;color:#555;}
 	width: 30px;
 	padding: 0 15px;
 	text-align: center;
+}
+
+.month-picker {
+	margin: 0 10px;
 }
 
 .calendar .month-picker {
@@ -324,7 +331,7 @@ label, caption,  tfoot, thead{
 [class^=grade_] {display:inline-block;overflow:hidden;vertical-align:middle;width:20px;height:20px;margin-right:5px;text-indent:-99999em;} 
 
 /* 선택 정보 */
-.selectMv {width:980px; margin:0 auto; background:#ffefa3;}
+.selectMv {width:980px; margin:0 auto; background:#ffffff; border-top: 1px solid #e6e6e6; border-bottom: 2px solid #1c1c1c;}
 
 .selectMv_Area {overflow:hidden; width:980px;padding:10px 10px 15px 20px; box-sizing:border-box;}
 .selectMv_Area div{float:left; overflow:hidden; font-size:16px; padding-left: 10px;}
@@ -405,8 +412,7 @@ label, caption,  tfoot, thead{
 /* .time_line dd .theater_time li:hover .seat {display:none} */
 .time_line dd .theater_time li a:hover .seat {display:none}
 
-.time_tit {width:980px;padding:20px;background:#ffdfdf;font-size:20px;color:#231f20;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;font-weight:bold;}
-
+.time_tit {width:980px;padding:20px;background:#1c1c1c;font-size:20px;color:#ffffff;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;font-weight:bold;}
 
 
 #time_noData {text-align:center; line-height:324px;}

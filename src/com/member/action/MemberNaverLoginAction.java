@@ -104,7 +104,7 @@ public class MemberNaverLoginAction implements Action{
 	    System.out.println(snsMember_id);
 	    
 	    if(snsMember_id==null || snsMember_id.equals("fail")){
-	    	
+	    	//System.out.println("아이디 없을시 이동");
 	    //네이버 로그인 전용 id 생성
 	    //Calendar 타입으로 현재 날짜 가져오기
 	    //id중간부에 쓸 부분
@@ -117,6 +117,10 @@ public class MemberNaverLoginAction implements Action{
 	    int insert_num = mdao.SNSMemberinsertNum();
 	    
 	    String collect_id = "N"+dateFormat+"-"+insert_num;
+	    
+	    if(nickname==null){
+	    	nickname = collect_id;
+	    }
 	    
 	    // 자바빈(DTO) 객체를 생성
 	    MemberDTO mdto = new MemberDTO();

@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - (관리자 전용 - 영화관 수정)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -37,8 +39,9 @@
 
 %>
 
-<form action="./CinemaModifyAction.ci" method="post">
-	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>">
+<form action="./CinemaModifyAction.ci" method="post" >
+	<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num()%>" 
+		name="cinemaModifyfr" onsubmit="return cinemaModifyCheck()">
 		<table border="1">
 			<tr>
 				<td>지역</td>
@@ -74,7 +77,9 @@
 			</tr>
 			<tr>
 				<td>상영관 수</td>
-				<td><input type="text" name="room" value="<%=cdto.getRoom() %>"></td>
+				<td><input type="text" name="room" value="<%=cdto.getRoom() %>">
+					<input type="hidden" name="room_count" value="">
+				</td>
 				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
 			</tr>
 			<!-- ajax -->
@@ -142,6 +147,22 @@
     
     var room = $('input[name=room]').val();
     
+    //제약조건
+    function cinemaModifyCheck() { 
+    	if(document.cinemaModifyfr.room_count.value == ""){
+			alert("관 수를 입력해 주십시오.");
+			document.cinemaModifyfr.room_count.focus();
+			return false;
+		}
+		if(document.cinemaModifyfr.room_count.value != room){
+			alert("입력한 관 수가 다릅니다.");
+			document.cinemaModifyfr.room_count.focus();
+			return false;
+		}
+		
+		
+	}
+    
     //추가 버튼
     $(document).ready(function(){
     $('input[name=add_room]').click(function(){
@@ -154,6 +175,8 @@
     		alert("8관 이상 추가 안됩니다.");
     		return;
     	}
+        
+        $('input[name=room_count]').val(i);
         $('input[name=room]').val(room);
         
     	var addRoomText =

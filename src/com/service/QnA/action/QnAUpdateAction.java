@@ -41,7 +41,7 @@ public class QnAUpdateAction implements Action {
 		
 		qadto.setNum(Integer.parseInt(request.getParameter("num")));
 		qadto.setName(multi.getParameter("name"));
-		qadto.setId(multi.getParameter("id"));
+		qadto.setPass(multi.getParameter("pass"));
 		qadto.setCategory(multi.getParameter("category"));
 		qadto.setSubject(multi.getParameter("subject"));
 		qadto.setContent(multi.getParameter("content"));

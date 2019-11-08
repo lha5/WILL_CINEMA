@@ -18,7 +18,7 @@ public interface MovieReviewDAO {
 	int commentCount();
 	
 	//리뷰 가져오기
-	public MovieReviewDTO getReview(String id,int movie_num);
+	public MovieReviewDTO getReview(String id, int movie_num,int num);
 
 	
 	

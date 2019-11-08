@@ -77,7 +77,7 @@ public class QnADAOImpl implements QnADAO {
 			pstmt.setInt(1, num);
 			pstmt.setString(2, qadto.getCategory());
 			pstmt.setString(3, qadto.getName());
-			pstmt.setString(4, qadto.getId());
+			pstmt.setString(4, qadto.getPass());
 			pstmt.setString(5, qadto.getSubject());
 			pstmt.setString(6, qadto.getContent());
 			pstmt.setInt(7, qadto.getReadcount());
@@ -148,7 +148,7 @@ public class QnADAOImpl implements QnADAO {
 				
 				qadto.setNum(rs.getInt("num"));
 				qadto.setName(rs.getString("name"));
-				qadto.setId(rs.getString("id"));
+				qadto.setPass(rs.getString("pass"));
 				qadto.setSubject(rs.getString("subject"));
 				qadto.setContent(rs.getString("content"));
 				qadto.setCategory(rs.getString("category"));
@@ -224,7 +224,7 @@ public class QnADAOImpl implements QnADAO {
 				qadto.setImage(rs.getString("image"));
 				qadto.setName(rs.getString("name"));
 				qadto.setNum(rs.getInt("num"));
-				qadto.setId(rs.getString("id"));
+				qadto.setPass(rs.getString("pass"));
 				qadto.setRe_lev(rs.getInt("re_lev"));
 				qadto.setRe_ref(rs.getInt("re_ref"));
 				qadto.setRe_seq(rs.getInt("re_seq"));
@@ -254,7 +254,7 @@ public class QnADAOImpl implements QnADAO {
 			
 			System.out.println(qadto.getNum());
 			
-			sql = "select id from qna where num=?";
+			sql = "select pass from qna where num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, qadto.getNum());
@@ -262,7 +262,7 @@ public class QnADAOImpl implements QnADAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				if(qadto.getId().equals(rs.getString("id"))){
+				if(qadto.getPass().equals(rs.getString("pass"))){
 					sql = "update qna set name=? ,subject=?, content=?, category=?,image=? where num=?";
 					
 					pstmt = con.prepareStatement(sql);
@@ -364,7 +364,7 @@ public class QnADAOImpl implements QnADAO {
 				
 				qadto.setNum(rs.getInt("num"));
 				qadto.setName(rs.getString("name"));
-				qadto.setId(rs.getString("id"));
+				qadto.setPass(rs.getString("pass"));
 				qadto.setSubject(rs.getString("subject"));
 				qadto.setContent(rs.getString("content"));
 				qadto.setCategory(rs.getString("category"));

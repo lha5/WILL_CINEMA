@@ -5,11 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeDelete.css">
+
 </head>
 <body>
+	<%@ include file="../../include/header.jsp" %>
 
-
-	<h1>WebContent/service/noticeBoard/NoticeDelete.jsp</h1>
 
 	<%
 	// 로그인 여부를 체크 하여, 비로그인시 삭제 불가 
@@ -23,15 +27,15 @@
 	  String pageNum = request.getParameter("pageNum");
 	
 	%>
-<fieldset>
-       <legend> 글 삭제 하기 </legend>
+
+       <legend> <h1>글 삭제 하기</h1> </legend>
        <form action="./NoticeDeleteAction.an?pageNum=<%=pageNum %>" method="post">
          <input type="hidden" name="num" value="<%=num%>">      
                  비밀번호 : <input type="password" name="pass">         
-         <input type="submit" value="삭제하기">       
+         <input type="submit" value="삭제하기" id="notidel">       
        </form>    
-    </fieldset>	
+    
 
-
+<%@ include file="../../include/footer.jsp" %>
 </body>
 </html>

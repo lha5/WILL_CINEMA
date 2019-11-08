@@ -162,19 +162,20 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		
 	}
 	
-	// 리뷰 목록
+	// 수정할 리뷰 가져오기
 	@Override
-	public MovieReviewDTO getReview(String id,int movie_num) {
+	public MovieReviewDTO getReview(String id,int movie_num,int num) {
 		
 		MovieReviewDTO mrdto = new MovieReviewDTO();
 		try {
 			con = getCon();
 			
-			sql = "select * from review where id=? and  movie_num=?";
+			sql = "select * from review where id=? and movie_num=? and num=?";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, id);
 			pstmt.setInt(2, movie_num);
+			pstmt.setInt(3, num);
 			
 			rs = pstmt.executeQuery();
 			

@@ -20,7 +20,6 @@ public class AdminMovieDTO {
 	private int grade;
 	
 	
-	
 	public int getMovie_num() {
 		return movie_num;
 	}

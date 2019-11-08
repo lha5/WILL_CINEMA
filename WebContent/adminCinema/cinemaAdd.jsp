@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - (관리자 전용 - 영화관 등록)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 
 <%@ include file="../include/header.jsp" %>
-	<form action="./CinemaAddAction.ci" method="post">
+	<form action="./CinemaAddAction.ci" method="post" name="cinemaAddfr" onsubmit="return cinemaAddsCheck()">
 		<table border="1">
 			
 			<tr>

@@ -10,6 +10,17 @@
 
 <link rel="stylesheet" href="./css/review.css">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function reviewNonCheck() { 
+		if(document.reviewAddfr.content.value == ""){
+			alert("리뷰를 입력해 주십시오.");
+			document.reviewAddfr.content.focus();
+			return false;
+		}
+		
+	}
+
+</script>
 </head>
 <body>
 	<div>
@@ -28,7 +39,8 @@
 	
 	
 	
-		<form action="./MovieReviewUpadatAction.mr?movie_num=<%=movie_num %>&num=<%=num %>" method="post">
+		<form action="./MovieReviewUpadatAction.mr?movie_num=<%=movie_num %>&num=<%=num %>" 
+			name="reviewAddfr" method="post" onsubmit="return reviewNonCheck()">
 			<table class="table accordion" border="1">
 				<tr>
 					<td>평점</td>

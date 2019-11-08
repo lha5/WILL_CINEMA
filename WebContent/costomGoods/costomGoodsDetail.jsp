@@ -1,6 +1,7 @@
 <%@page import="com.mall.db.MallDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,8 +64,8 @@ nav>ul>li:NTH-CHILD(5)>ul {
 }
 
 #goShopping, #contents {
-	border-top: 2px solid #240e04;
-	border-bottom: 2px solid #240e04;
+	border-top: 2px solid #e6e6e6;
+	border-bottom: 2px solid #e6e6e6;
 	width: 900px;
 	margin: 50px auto;
 }
@@ -103,8 +104,7 @@ input[type="number"] {
 	}
 	
 }
-&
-	.pt_Quantity {
+&.pt_Quantity {
 		display: inline-block;
 		margin: 0 0 10px;
 		position: relative; & input { color : #443017;
@@ -131,8 +131,7 @@ input[type="number"] {
 	}
 	
 	}
-&
-		.pt_QuantityNav {
+&.pt_QuantityNav {
 			float: left;
 			position: relative;
 			height: 30px; & . pt_QuantityButton { position : relative;
@@ -154,16 +153,14 @@ input[type="number"] {
 			-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 		}
 
-&
-			.pt_QuantityUp {
+&.pt_QuantityUp {
 				position: absolute;
 				height: 50%;
 				top: 0;
 				border-bottom: 1px solid #b7b7b7;
 			}
 
-&
-				.pt_QuantityDown {
+&.pt_QuantityDown {
 					position: absolute;
 					bottom: 0px;
 					height: 50%;
@@ -175,6 +172,12 @@ input[type="number"] {
 
 #contents>h1 {
 	margin: 10px 0 25px 0;
+}
+
+#contents {
+	line-height: 2em;
+	box-sizing: border-box;
+	padding: 20px;
 }
 
 input[type=submit] {
@@ -229,7 +232,10 @@ input[type=button] {
 				<td>
 					<ul>
 						<li><h2><%=mdto.getName()%></h2></li>
-						<li><%=mdto.getPrice()%> 원</li>
+						<li>
+						<fmt:formatNumber type="number" var="price" maxFractionDigits="3" value="<%=mdto.getPrice()%>" />
+							${price} 원
+						</li>
 						<li><%=mdto.getContent()%></li>
 						<li>유효기간 : 관람권 6개월 / 상품권 6개월</li>
 						<li>
@@ -249,7 +255,7 @@ input[type=button] {
 	
 	<div id="contents">
 		<h1>상세정보</h1>
-		
+		<br>
 		주는 무엇을 행복스럽고 그들의 말이다. 피어나기 얼마나 피고, 가진 운다. 긴지라 싹이 발휘하기 이는 예수는 있음으로써
 		것이다. 이상은 그들을 고동을 이상의 따뜻한 천고에 찬미를 바로 있으랴? 뜨거운지라, 바이며, 안고, 피어나기 것이다. 가는
 		속잎나고, 그러므로 이성은 그들은 청춘이 뭇 것이다. 원대하고, 능히 인생을 그러므로 튼튼하며, 있는 것이다. 전인 거선의

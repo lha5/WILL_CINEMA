@@ -23,7 +23,7 @@
 	<%
 		QnADTO qadto = (QnADTO) request.getAttribute("qadto");
 		String pageNum = (String) request.getAttribute("pageNum");
-		System.out.println(" id : "+qadto.getId());
+		System.out.println(" id : "+qadto.getPass());
 	%>
 	
 	<fieldset>
@@ -34,7 +34,7 @@
 					<td>작성자</td>
 					<td>
 						<input type="text" name="name" value="<%=qadto.getName()%>" readonly>
-						<input type="hidden" name="id" value="<%=qadto.getId()%>">
+						<input type="hidden" name="id" value="<%=qadto.getPass()%>">
 					</td>
 					<td>카테고리</td>
 					<td>

@@ -48,14 +48,14 @@ input[type=text] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #240e04;
-	color: #240e04;
+	border: 1px solid #e6e6e6;
+	color: #1c1c1c;
 	font-size: 13px;
 }
 
 input[type=submit] {
 	width: 75px;
-	height: 37px;
+	height: 35px;
 	outline-style: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -63,7 +63,7 @@ input[type=submit] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 19px;
+	font-size: 16px;
 	color: #ffffff;
 	letter-spacing: 2px;
 }
@@ -105,13 +105,15 @@ input[type=submit] {
 					<img src="./upload/<%=mdto.getPoster()%>" width="228px" height="334px">
 					<br><br>
 					<h4><%=mdto.getTitle() %></h4>
-					예매율 <%=mdto.getBooking_ration() %>% | <%=mdto.getGenre() %>
 					</a>
+					예매율 <%=mdto.getBooking_ration() %>% | <%=mdto.getGenre() %>
+						<% System.out.println("예매율"+mdto.getBooking_ration());%>	
 				</li>			
 			<%
 			}
 			%>
 		</ul>
+		
 		<%
 		if (id != null) {
 			if (id.equals("admin")) {
