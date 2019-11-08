@@ -29,4 +29,7 @@ public interface AdminNoticeDAO {
 
 	// 글 찾기
 	public List<AdminNoticeDTO> getSearch(String search,int startRow,int pageSize);
+	
+	// 메인에 가져갈 글
+	public String[] getSubject();
 }

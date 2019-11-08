@@ -35,7 +35,7 @@ nav>ul>li:NTH-CHILD(2)>ul {
 }
 
 #searching {
-	margin: 20px 0 10px 450px;
+	margin: 20px 0 10px 500px;
 }
 
 input[type=text] {
@@ -55,7 +55,7 @@ input[type=text] {
 
 input[type=button] {
 	width: 90px;
-	height: 37px;
+	height: 35px;
   outline-style: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -63,7 +63,7 @@ input[type=button] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 16px;
+	font-size: 14px;
 	color: #ffffff;
 	letter-spacing: 2px;
 }
@@ -77,9 +77,17 @@ input[type=submit] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 16px;
+	font-size: 14px;
 	color: #ffffff;
 	letter-spacing: 2px;
+}
+
+.writeData {
+	/* border: 1px solid yellow; */
+	width: 300px;
+	clear: both;
+	margin: 30px auto;
+	text-align: center;
 }
 </style>
 
@@ -107,9 +115,7 @@ input[type=submit] {
 		    </select>
 		   
 		    <input type="text" name="searchText">
-		    <input type="submit" value="검색">
-			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
-		
+		    <input type="submit" value="검색">		
 		</form>
 		
 		<ul>
@@ -131,11 +137,17 @@ input[type=submit] {
 			%>
 		</ul>
 		
+		<div class="writeData">
+			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
+		</div>
+		
 		<%
 		if (id != null) {
 			if (id.equals("admin")) {
 		%>
+		<div class="writeData">
 			<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
+		</div>
 		<%
 			}
 		}
