@@ -53,6 +53,20 @@ input[type=text] {
 	font-size: 13px;
 }
 
+input[type=button] {
+	width: 90px;
+	height: 35px;
+  outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 14px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
 input[type=submit] {
 	width: 75px;
 	height: 35px;
@@ -63,9 +77,17 @@ input[type=submit] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 16px;
+	font-size: 14px;
 	color: #ffffff;
 	letter-spacing: 2px;
+}
+
+.writeData {
+	/* border: 1px solid yellow; */
+	width: 300px;
+	clear: both;
+	margin: 30px auto;
+	text-align: center;
 }
 </style>
 
@@ -91,8 +113,9 @@ input[type=submit] {
 		        <option value="director">감독</option>
 		    	<option value="actor">배우</option>
 		    </select>
+		   
 		    <input type="text" name="searchText">
-		    <input type="submit" value="검색" class="btn">
+		    <input type="submit" value="검색">		
 		</form>
 		
 		<ul>
@@ -114,11 +137,17 @@ input[type=submit] {
 			%>
 		</ul>
 		
+		<div class="writeData">
+			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
+		</div>
+		
 		<%
 		if (id != null) {
 			if (id.equals("admin")) {
 		%>
+		<div class="writeData">
 			<h3><a href="./MovieAdd.am">영화 데이터 작성하기</a></h3>
+		</div>
 		<%
 			}
 		}

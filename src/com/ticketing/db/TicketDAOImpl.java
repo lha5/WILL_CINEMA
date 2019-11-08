@@ -414,12 +414,122 @@ public class TicketDAOImpl implements TicketDAO{
 
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			closeDB();
 		}
 	}
 	/*------------------- 티켓예매 정보 저장 --------------------*/
+
+	
+	// 예매 내역 리스트 -------------------------------------------
+	@Override
+	public List<TicketDTO> getTicketingList() {
+		List<TicketDTO> bookList = new ArrayList<TicketDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT book_num, sell_date, date, movie_num FROM book";
+			
+			pstmt = con.prepareStatement(sql);
+						
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TicketDTO tdto = new TicketDTO();
+				
+				tdto.setBook_num(rs.getInt("book_num"));
+				tdto.setSell_date(rs.getDate("sell_date"));
+				tdto.setDate(rs.getDate("date"));
+				tdto.setMovie_num(rs.getInt("movie_num"));
+				
+				bookList.add(tdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("예매 내역 리스트 불러오기 성공");
+		return bookList;
+	}
+
+	
+	// 예매 리스트(사용자)
+	@Override
+	public List<TicketDTO> getMyBookList(String id) {
+		List<TicketDTO> bookList = new ArrayList<TicketDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT book_num, sell_date, date, movie_num FROM book WHERE id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+						
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TicketDTO tdto = new TicketDTO();
+				
+				tdto.setBook_num(rs.getInt("book_num"));
+				tdto.setSell_date(rs.getDate("sell_date"));
+				tdto.setDate(rs.getDate("date"));
+				tdto.setMovie_num(rs.getInt("movie_num"));
+				
+				bookList.add(tdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println(id + "님의 예매 내역 리스트 불러오기 성공, 값 : " + bookList);
+		return bookList;
+	}
+	
+
+	// 예매 내역 상세
+	@Override
+	public TicketDTO getBookDetail(int book_num) {
+		TicketDTO tdto = null;
+		try {
+			con = getCon();
+			
+			sql = "SELECT * FROM book WHERE book_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, book_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				tdto = new TicketDTO();
+				
+				tdto.setBook_num(book_num);
+				tdto.setCinema_num(rs.getInt("cinema_num"));
+				tdto.setDate(rs.getDate("date"));
+				tdto.setDay(rs.getString("day"));
+				tdto.setId(rs.getString("id"));
+				tdto.setMovie_num(rs.getInt("movie_num"));
+				tdto.setPass(rs.getString("pass"));
+				tdto.setPayment(rs.getString("payment"));
+				tdto.setPerson_num(rs.getString("person_num"));
+				tdto.setPrice(rs.getInt("price"));
+				tdto.setRoom(rs.getString("room"));
+				tdto.setRunnging_time(rs.getString("running_time"));
+				tdto.setSeat(rs.getString("seat"));
+				tdto.setSell_date(rs.getDate("sell_date"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("예매 내역 상세 데이터 저장 완료");
+		return tdto;
+	}
 
 }

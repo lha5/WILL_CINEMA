@@ -35,7 +35,7 @@ public class MyPageAction implements Action {
 		request.setAttribute("id", id);
 		request.setAttribute("info", info);
 		
-		forward.setPath("./member/info.jsp");
+		forward.setPath("./member/myInfoPage.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

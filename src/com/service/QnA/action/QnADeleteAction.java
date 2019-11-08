@@ -24,12 +24,12 @@ public class QnADeleteAction implements Action {
 		String pageNum = request.getParameter("pageNum");
 				
 		// pass, num 저장(post)
-		String id = (String) session.getAttribute("id");
-		System.out.println(" 삭제할 글의 아이디 : "+id);
+		String pass = (String) session.getAttribute("id");
+		System.out.println(" 삭제할 글의 pass : "+pass);
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		QnADAOImpl qadaoImpl = new QnADAOImpl();
-		int check = qadaoImpl.deleteBoard(num,id);
+		int check = qadaoImpl.deleteBoard(num,pass);
 		
 		// check 0, 1, -1
 		response.setContentType("text/html; charset=UTF-8");

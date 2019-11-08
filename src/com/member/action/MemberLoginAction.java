@@ -25,7 +25,6 @@ public class MemberLoginAction implements Action {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
-		
 		// 디비 만들고   생성 하고 
 		MemberDAO mdao = new MemberDAOImpl();
 		
@@ -78,7 +77,7 @@ public class MemberLoginAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		// 로그인 안되어 있음 회원가입으로 감
-		forward.setPath("./Main.me");
+		forward.setPath("./MyInfoPage.me");
 		// 정보값 가져가지 않아서  true
 		forward.setRedirect(true);
 		

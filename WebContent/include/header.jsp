@@ -40,7 +40,7 @@
 				<li><a href="./MemberLogin.me">로그인</a></li>
 				<%}%>
 				<%if (id != null) {%>
-				<li><a href="./Main.me">마이시네마</a></li>
+				<li><a href="./MyInfoPage.me">마이시네마</a></li>
 				<%} else {%>
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>

@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+		
 	<%@ include file="../../include/header.jsp" %>
 
 
@@ -41,27 +41,27 @@
 		
 		
 		
+		
 		<div id="notiWrap">
 		<h1>공지사항</h1>
 		<div id="notiList">		
-		
-		<form action="./NoticeSearchAction.an" method="post" id="searching">
-		<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력" >
-		<input type="submit" value="검색" />
-		</form>
-		
+			<form action="./NoticeSearchAction.an" method="post" id="searching">
+				<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력" >
+				<input type="submit" value="검색">
+				<input type="button" value="목록으로" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'"/>
+			</form>		
 		</div>
 		<br>
 		<br>
 		<br>
 		<br>
-				<% 
-		 for (int i=0;i<boardList.size();i++) {
-			AdminNoticeDTO andto = boardList.get(i);
+			<% 
+			for (int i=0;i<boardList.size();i++) {
+				AdminNoticeDTO andto = boardList.get(i);
 		 
-		%>
+			%>
 	  	
-	  	<button class="notiaccordion"><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>">[<%=andto.getCategory() %>]<%=andto.getSubject()%></a> </button>
+	  	<button class="notiaccordion" onclick="location.href='./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>' "><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>">[<%=andto.getCategory() %>]<%=andto.getSubject()%></a></button>
 	  	
 	  	<div class ="notipanel">
 	  	
@@ -89,21 +89,22 @@
 	  			});
 			} */
 		</script>	
-	
+	<br>
+	<br>
 	<div id="notipagingNumber">
 		<%
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
 		%>
-			<a href="./NoticeList.an?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+			<a href="./NoticeList.an?pageNum=<%=startPage - pageBlock%>">이전&nbsp;&nbsp;</a>
 		<%
 			}
 
 			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
-			<a href="./NoticeList.an?pageNum=<%=i%>">[<%=i%>]
+			<a href="./NoticeList.an?pageNum=<%=i%>"><%=i%>&nbsp;&nbsp;
 			</a>
 			<%
 			}
@@ -111,7 +112,7 @@
 			// 다음
 			if (endPage < pageCount) {
 			%>
-			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+			<a href="./NoticeList.an?pageNum=<%=startPage + pageBlock%>">&nbsp;&nbsp;다음</a>
 			<%
 			
 			}
@@ -131,7 +132,7 @@
 	 }
 	}
 	%>
-	
+
 	<%@ include file="../../include/footer.jsp" %>
 	
 

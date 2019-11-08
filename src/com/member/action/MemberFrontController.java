@@ -22,7 +22,7 @@ public class MemberFrontController extends HttpServlet{
 		ActionForward forward =null;
 		Action action=null;
 		//가상주소 비교
-		if(command.equals("/MyPage.me")){ //마이페이지([구매/예매, 문의내역, 회원(수정,탈퇴)])
+		if(command.equals("/MyInfoPage.me")){ //마이페이지([구매/예매, 문의내역, 회원(수정,탈퇴)])
 			action = new MyPageAction(); 
 			
 			try {

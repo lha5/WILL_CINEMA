@@ -51,7 +51,8 @@
 
 #notiList {
 	width: 900px;
-	margin: 10px auto;
+	margin: 50px auto;
+	position: relative;
 }
 
 
@@ -61,16 +62,16 @@
 
 
 #notiWrap {
-height:450px;
-position:relative;
+	width: 900px;
+	margin: 50px auto;
 
 }
 #searching {
+	/* border: 1px solid lime; */
 	position:absolute;
 	right:0;
-	margin: 20px 0 10px 500px ;
-	width: 450px;
-	height:100;
+	margin: 20px 0 10px 220px ;
+	width: 400px;
 }
 
 input[type=text] {
@@ -91,22 +92,22 @@ input[type=text] {
 
 
 #noticlick1{
-  width: 200px;
-  padding: 10px 15px;
-  margin: 5px 10px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  background-color: #0080ff;
-  color:#fff
+    width: 150px;
+  	padding: 10px 15px;
+  	margin: 8px 15px;
+  	display: inline-block;
+ 	border: 1px solid #ccc;
+  	box-sizing: border-box;
+  	background-color: #0080ff;
+  	color:#fff
 	
 	
 }
 
 
 
-input[type=submit] {
-	width: 75px;
+input[type=submit],input[type=button] {
+	width: 85px;
 	height: 37px;
 	outline-style: none;
 	-webkit-appearance: none;
@@ -115,12 +116,12 @@ input[type=submit] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 19px;
+	font-size: 16px;
 	color: #ffffff;
 	letter-spacing: 2px;
 }
 
-
-
-
-
+#notipagingNumber {
+	margin-top: 20px;
+	padding-top: 10px;
+}
