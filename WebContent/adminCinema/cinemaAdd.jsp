@@ -6,12 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - (관리자 전용 - 영화관 등록)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="./css/main.css">
+
+
 </head>
 <body>
 
 <%@ include file="../include/header.jsp" %>
-	<form action="./CinemaAddAction.ci" method="post" name="cinemaAddfr" onsubmit="return cinemaAddsCheck()">
+	<div>
+	<form action="./CinemaAddAction.ci" method="post" 
+		name="cinemaAddfr" onsubmit="return cinemaAddsCheck()">
 		<table border="1">
 			
 			<tr>
@@ -90,7 +93,7 @@
 		</table>	
 	</form>
 	
-	 
+</div>	 
 	<script>
     //상영관 번호 및 name태그에 붙일 번호 생성
     var i = $('input[name=room_countnum]').val();
