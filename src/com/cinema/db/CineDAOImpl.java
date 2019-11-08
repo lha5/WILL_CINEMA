@@ -326,5 +326,34 @@ public class CineDAOImpl implements CineDAO{
 		}
 		
 	}
+
+	
+	// 영화관 이름 가져오기
+	@Override
+	public CineDTO getCineName(int cinema_num) {
+		CineDTO cdto = new CineDTO();
+		try {
+			con = getCon();
+			
+			sql = "SELECT region, name FROM cinema WHERE cinema_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, cinema_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				cdto.setRegion(rs.getString("region"));
+				cdto.setName(rs.getString("name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("영화관 지점의 지역과 지점명 저장 완료");
+		return cdto;
+	}
 	
 }

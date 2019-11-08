@@ -31,7 +31,13 @@ public class TicketingListAction implements Action {
 		}
 		
 		TicketDAO tdao = new TicketDAOImpl();
-		List<TicketDTO> bookList = tdao.getTicketingList();
+		List<TicketDTO> bookList = null;
+		
+		if (id.equals("admin")) {
+			bookList = tdao.getTicketingList();
+		} else {
+			bookList = tdao.getMyBookList(id);
+		}
 		
 		request.setAttribute("bookList", bookList);
 		

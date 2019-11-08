@@ -189,26 +189,29 @@ public class MovieDAOImpl implements MovieDAO{
 	
 	
 	@Override
-	public String getTitle(int movie_num) {
-		String title = "";
+	public AdminMovieDTO getTitle(int movie_num) {
+		AdminMovieDTO amdto = new AdminMovieDTO();
 		try {
 			con = getCon();
 			
-			sql = "SELECT title FROM movie WHERE movie_num = ?";
+			sql = "SELECT title, poster FROM movie WHERE movie_num = ?";
 			
 			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
 			
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				title += rs.getString("title");
+				amdto.setTitle(rs.getString("title"));
+				amdto.setPoster(rs.getString("poster"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		System.out.println("영화 제목 저장 완료, 저장한 영화 제목 : " + title);
-		return title;
+		System.out.println("영화 제목과 포스터 저장 완료");
+		return amdto;
 	}
 }
