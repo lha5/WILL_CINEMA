@@ -54,7 +54,7 @@
 
 		script.println("alert('인증에 성공했습니다.');");
 
-		script.println("location.href = 'non_memberlogin.jsp'");
+		script.println("location.href = '../NonMemberLogin.me'");
 
 		script.println("</script>");
 

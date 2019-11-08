@@ -88,7 +88,33 @@ public class NonMemberDAO {
 
 	}
 
-	
+	public int search(String name) {
+		int num = -1;
+		try {
+			con = getCon();
+			
+			sql = "SELECT email FROM non_member WHERE name = ?";
+			
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+
+				num = 1;
+
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			
+		}
+		
+		return num;
+	}
 
 	public int join(NonMemberDTO user) {
 		int check = -1;
