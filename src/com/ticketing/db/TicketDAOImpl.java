@@ -416,6 +416,8 @@ public class TicketDAOImpl implements TicketDAO{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			closeDB();
 		}
 	}
 	/*------------------- 티켓예매 정보 저장 --------------------*/
