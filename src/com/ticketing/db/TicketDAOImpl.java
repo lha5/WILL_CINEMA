@@ -414,10 +414,42 @@ public class TicketDAOImpl implements TicketDAO{
 
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 	}
 	/*------------------- 티켓예매 정보 저장 --------------------*/
+
+	
+	// 예매 내역 리스트
+	@Override
+	public List<TicketDTO> getTicketingList() {
+		List<TicketDTO> bookList = new ArrayList<TicketDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT book_num, date FROM book";
+			
+			pstmt = con.prepareStatement(sql);
+						
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TicketDTO tdto = new TicketDTO();
+				
+				tdto.setBook_num(rs.getInt("book_num"));
+				tdto.setDate(rs.getDate("date"));
+				
+				bookList.add(tdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("예매 내역 리스트 불러오기 성공, 값 : " + bookList);
+		return bookList;
+	}
 
 }
