@@ -16,7 +16,7 @@
 
 </head>
 <body>
-		<div id=Wrap2>
+		
 	<%@ include file="../../include/header.jsp" %>
 
 
@@ -41,15 +41,17 @@
 		
 		
 		
-		<div id="notiWrap">
+		
 		<h1>공지사항</h1>
+		<div id="notiWrap">
 		<div id="notiList">		
+		
 		
 		<form action="./NoticeSearchAction.an" method="post" id="searching">
 		<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력" >
-		<input type="submit" value="검색" />
-		</form>
-		
+		<input type="submit" value="검색">
+		<input type="button" value="목록으로" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'"/>
+		</form>		
 		</div>
 		<br>
 		<br>
@@ -131,7 +133,7 @@
 	 }
 	}
 	%>
-	</div>	
+
 	<%@ include file="../../include/footer.jsp" %>
 	
 
