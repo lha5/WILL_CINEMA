@@ -15,9 +15,16 @@ public class MallOrderDTO {
 	private Date order_date;	//구매날짜
 	private String barcode;
 	private String barcode_img;
+	private int used;
 	
 	
 	
+	public int getUsed() {
+		return used;
+	}
+	public void setUsed(int used) {
+		this.used = used;
+	}
 	public String getTrans_num() {
 		return trans_num;
 	}

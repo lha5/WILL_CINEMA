@@ -53,23 +53,21 @@
 				<%=andto.getContent()%>
 			</td>
 		</tr>
-		
-			<tr>
-				<td colspan="4">
+		<tr>
+			<td colspan="4">
 				<%
-		if (id != null) {
-			if (id.equals("admin")) {
-		%>
-		    		<input type="button" value="수정하기"  class="noc1" onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
-		    		<input type="button" value="삭제하기" class="noc1" onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
-		<%
-			}
-		}
-		%>
-					<input type="button" value="목록으로"  class="noc1" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
-		    	</td>	  
-			</tr>
-		
+				if (id != null) {
+					if (id.equals("admin")) {
+				%>
+			    		<input type="button" value="수정하기"  class="noc1" onclick="location.href='./NoticeUpdate.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
+			    		<input type="button" value="삭제하기" class="noc1" onclick="location.href='./NoticeDelete.an?num=<%=andto.getNum() %>&pageNum=<%=pageNum %>'">
+				<%
+					}
+				}
+				%>
+				<input type="button" value="목록으로"  class="noc1" onclick="location.href='./NoticeList.an?pageNum=<%=pageNum%>'">
+		    </td>	  
+		</tr>
 	</table>
 	
 	

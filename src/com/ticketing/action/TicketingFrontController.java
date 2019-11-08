@@ -104,11 +104,18 @@ public class TicketingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/MovieScheAction.ti")){ //상영 시간표 페이지
-			//action = new MovieScheAction(); 
+		}else if(command.equals("/TicketingList.ti")){ // 예매 내역 리스트
+			action = new TicketingListAction(); 
 			
 			try {
 				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/TicketingDetail.ti")) { // 예매 내역 상세
+			action = new TicketingDetailAction();
+			try {
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

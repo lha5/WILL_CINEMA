@@ -15,8 +15,10 @@ public interface TicketDAO {
 
 	//영화 예매순
 	public List<AdminMovieDTO> bookRatingList();
+	
 	//영화 평점순
 	public List<AdminMovieDTO> totalRatingList();
+	
 	//선택된 영화 정보
 	public AdminMovieDTO getMovie(int num);
 
@@ -28,4 +30,13 @@ public interface TicketDAO {
 	
 	//티켓예매 정보 저장
 	public void setTicket(TicketDTO tdto);
+	
+	// 예매 리스트(관리자)
+	public List<TicketDTO> getTicketingList();
+	
+	// 내 예매 리스트(사용자)
+	public List<TicketDTO> getMyBookList(String id);
+	
+	// 예매 내역 상세
+	public TicketDTO getBookDetail(int book_num);
 }

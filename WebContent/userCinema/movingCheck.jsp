@@ -14,25 +14,25 @@ System.out.println(moving);
 %>
 
 <%if(moving.equals("movieIm1.jpg")) {%>
-<video width="600" height="400" controls><!--controls ,autoplay  -->
+<video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src="http://caching2.lottecinema.co.kr/lotte_image/2019/KeepSecret/KeepSecret_1280720_1.mp4"
   type="video/mp4"></source>
  </video>
 <%}else if(moving.equals("movieIm2.jpg")){ %>
-<video width="600" height="400" controls><!--controls ,autoplay  -->
+<video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src=
   "http://caching2.lottecinema.co.kr/lotte_image/2019/AngelHasFallen/1104/AngelHasFallen_1280720.mp4"
   type="video/mp4"></source>
  </video>
 <%}else if(moving.equals("movieIm3.jpg")){ %>
-<video width="600" height="400" controls><!--controls ,autoplay  -->
+<video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src=
   "http://caching2.lottecinema.co.kr/lotte_image/2019/Unalterable/Unalterable_1280720.mp4"
   type="video/mp4"></source>
  </video>
 <%}else if(moving.equals("movieIm4.jpg")){ %>
 
-<video width="600" height="400" controls><!--controls ,autoplay  -->
+<video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src="http://caching2.lottecinema.co.kr/lotte_image/2019/Wrathful/1023/Wrathful_1280720.mp4"
   type="video/mp4"></source>
  </video>

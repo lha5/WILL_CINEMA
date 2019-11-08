@@ -35,7 +35,7 @@ nav>ul>li:NTH-CHILD(2)>ul {
 }
 
 #searching {
-	margin: 20px 0 10px 500px;
+	margin: 20px 0 10px 450px;
 }
 
 input[type=text] {
@@ -53,6 +53,20 @@ input[type=text] {
 	font-size: 13px;
 }
 
+input[type=button] {
+	width: 90px;
+	height: 37px;
+  outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
 input[type=submit] {
 	width: 75px;
 	height: 35px;
@@ -91,8 +105,11 @@ input[type=submit] {
 		        <option value="director">감독</option>
 		    	<option value="actor">배우</option>
 		    </select>
+		   
 		    <input type="text" name="searchText">
-		    <input type="submit" value="검색" class="btn">
+		    <input type="submit" value="검색">
+			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
+		
 		</form>
 		
 		<ul>

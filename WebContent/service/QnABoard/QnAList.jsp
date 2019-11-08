@@ -16,7 +16,9 @@
 
 	<%@ include file="../../include/header.jsp" %>
 	
-	<%		
+	<%	
+		
+	
 		int count = (Integer) request.getAttribute("count");
 		
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
