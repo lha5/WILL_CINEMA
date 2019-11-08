@@ -70,7 +70,7 @@ public class QnADAOImpl implements QnADAO {
 			}
 			System.out.println("num : "+num);
 			
-			sql = "insert into qna(num,category,name,id,subject,content,readcount,date,re_ref,re_lev,re_seq,image) values(?,?,?,?,?,?,?,now(),?,?,?,?)";
+			sql = "insert into qna(num,category,name,pass,subject,content,readcount,date,re_ref,re_lev,re_seq,image) values(?,?,?,?,?,?,?,now(),?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -300,14 +300,14 @@ public class QnADAOImpl implements QnADAO {
 	
 	// 게시글 삭제
 	@Override
-	public int deleteBoard(int num,String id) {
+	public int deleteBoard(int num,String pass) {
 		
 		int check = -1;
 		
 		try {
 			con = getCon();
 			
-			sql = "select id from qna where num=?";
+			sql = "select pass from qna where num=?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -316,7 +316,7 @@ public class QnADAOImpl implements QnADAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				if(id.equals(rs.getString("id"))){
+				if(pass.equals(rs.getString("pass"))){
 					
 					sql = "delete from qna where num=?";
 					

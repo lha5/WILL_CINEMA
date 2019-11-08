@@ -41,7 +41,7 @@
 			response.sendRedirect("./MemberLogin.me");
 		}
 	
-		String name = (String) session.getAttribute("id");
+		String name = (String) session.getAttribute("name");
 		System.out.println("name : "+session.getAttribute("name"));
 
 	%>
