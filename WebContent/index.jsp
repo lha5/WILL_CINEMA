@@ -10,6 +10,8 @@
 	<%
 		response.sendRedirect("Index.me");
 	%>
+	
+	<!-- header.jsp에 세션값(id)이 들어가있으니 각각 페이지에서 세션값 받아오지 마세요 -->
 </body>
 </html>
 

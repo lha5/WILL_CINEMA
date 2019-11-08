@@ -24,6 +24,7 @@ public class QnAListAction implements Action {
 		QnADAO qadaoImpl = new QnADAOImpl();
 		
 		int count = qadaoImpl.getBoardCount();
+		System.out.println(" count : "+count);
 		
 		int pageSize = 10;
 		
@@ -59,6 +60,7 @@ public class QnAListAction implements Action {
 		
 		if( count != 0 ){ 
 			  boardList = qadaoImpl.getBoardList(startRow,pageSize);
+			  System.out.println(" action boardLis : "+boardList);
 		}
 		
 		// 전체 페이지수 계산
@@ -77,6 +79,8 @@ public class QnAListAction implements Action {
 		// 회원 이름 가져가기
 		MemberDAO mdao = new MemberDAOImpl();
 		List info = mdao.forPointLevel(id);
+		String name = String.valueOf(info.get(0));
+		System.out.println("접속자 : " + name);
 		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
@@ -85,14 +89,18 @@ public class QnAListAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", startPage);
-		request.setAttribute("info", info);
+		request.setAttribute("name", name);
 		
 		if(id.equals("admin")){
-			forward.setPath("./service/QnABoard/QnAList.jsp");
-			forward.setRedirect(false);
-		}else{
-			forward.setPath("./service/QnABoard/QnAUserList.jsp");
-			forward.setRedirect(false);
+		
+		forward.setPath("./service/QnABoard/QnAList.jsp");
+		forward.setRedirect(false);
+		
+		}else {
+			
+		forward.setPath("./service/QnABoard/QnAUserList.jsp");
+		forward.setRedirect(false);
+		
 		}
 		
 		return forward;

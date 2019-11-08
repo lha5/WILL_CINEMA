@@ -1,4 +1,4 @@
-package com.member.action;
+package com.ticketing.action;
 
 import java.util.List;
 
@@ -8,34 +8,34 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
-import com.member.db.MemberDAO;
-import com.member.db.MemberDAOImpl;
+import com.ticketing.db.TicketDAO;
+import com.ticketing.db.TicketDAOImpl;
+import com.ticketing.db.TicketDTO;
 
-public class MyPageAction implements Action {
+public class TicketingListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("MyPageAction execute()--------------------------------------------------");
+		System.out.println("TicketingListAction execute()---------------------------------------------");
 		
+		// 세션값 처리
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-		
+		String id = (String) session.getAttribute("id");
+
 		ActionForward forward = new ActionForward();
-		if(id == null){
+		if (id == null) {
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
 		
-		MemberDAO mdao = new MemberDAOImpl();
+		TicketDAO tdao = new TicketDAOImpl();
+		List<TicketDTO> bookList = tdao.getTicketingList();
 		
-		List info = mdao.forPointLevel(id);
+		request.setAttribute("bookList", bookList);
 		
-		request.setAttribute("id", id);
-		request.setAttribute("info", info);
-		
-		forward.setPath("./member/myInfoPage.jsp");
+		forward.setPath("./ticketing/ticketingList.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

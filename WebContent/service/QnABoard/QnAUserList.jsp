@@ -16,14 +16,13 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
-		List info = (List) request.getAttribute("info");
-		String name = String.valueOf(info.get(0));		
+		String name = String.valueOf(request.getAttribute("name"));		
 		session.setAttribute("name", name);
 		
-		int count = (Integer) request.getAttribute("count");
+// 		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
 		String pageNum = (String)request.getAttribute("pageNum");
-	
+		System.out.println("boardLis : "+boardList);
 		int pageCount = (Integer) request.getAttribute("pageCount");
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
@@ -46,8 +45,8 @@
      <%
      	for (int i=boardList.size()-1;i>-1;i--) {
     		QnADTO qadto = boardList.get(i);
-    		
-    		if (id.equals(qadto.getId())) {
+    		System.out.println("pass : "+qadto.getPass());
+    		if (id.equals(qadto.getPass())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
@@ -66,7 +65,7 @@
 	</table>
 	</center>
 	<div id="pagingNumber">
-	<%
+<%-- 	<%
 		// 페이징 처리
 		if(count != 0) {
 			// 이전
@@ -89,7 +88,7 @@
 			<%
 				}
 		}
-	%>
+	%> --%>
 		</div>	
 	<h3><a href="./QnAWrite.sq">글 쓰기</a></h3>
 	

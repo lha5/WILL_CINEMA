@@ -28,4 +28,10 @@ public interface TicketDAO {
 	
 	//티켓예매 정보 저장
 	public void setTicket(TicketDTO tdto);
+	
+	// 예매 리스트
+	public List<TicketDTO> getTicketingList();
+	
+	// 예매 내역 상세
+	public TicketDTO getBookDetail(int book_num);
 }

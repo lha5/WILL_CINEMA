@@ -142,6 +142,7 @@ public class MemberNaverLoginAction implements Action{
 	    List info = mdao.forPointLevel(snsMember_id);
 		
 		session.setAttribute("id", snsMember_id);
+		session.setAttribute("SnSLogin", "SnSLogin");
 		session.setAttribute("info", info);
 		
 		ActionForward forward = new ActionForward();

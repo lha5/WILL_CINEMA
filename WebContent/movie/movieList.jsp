@@ -48,14 +48,28 @@ input[type=text] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #240e04;
-	color: #240e04;
+	border: 1px solid #e6e6e6;
+	color: #1c1c1c;
 	font-size: 13px;
 }
 
-input[type=submit],input[type=button] {
+input[type=button] {
 	width: 90px;
 	height: 37px;
+  outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+input[type=submit] {
+	width: 75px;
+	height: 35px;
 	outline-style: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -63,7 +77,7 @@ input[type=submit],input[type=button] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 19px;
+	font-size: 16px;
 	color: #ffffff;
 	letter-spacing: 2px;
 }

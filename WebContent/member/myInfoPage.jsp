@@ -141,9 +141,6 @@ function acyncMovePage(url){
 
 	<%
 	// String id = (String) session.getAttribute("id");
-	// 네이버 로그인 체크용 
-	String SnSLogin = (String) session.getAttribute("SnSLogin");
-	
 	System.out.println(" info : "+session.getAttribute("info"));
 	List info = (List) session.getAttribute("info");
 	// info.get(0) : 이름
@@ -245,9 +242,7 @@ function acyncMovePage(url){
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><input type="button" value="멤버십" id="myMembership"></li>
 				<li><input type="button" value="내가본영화" id="myMovies"></li>
-				<li><input type="button" value="내 정보 관리" id="myInfoManagement">
-					<input type="hidden" name="SnSLoginId_check" value="<%=SnSLogin %>">
-				</li>
+				<li><input type="button" value="내 정보 관리" id="myInfoManagement"></li>
 			</ul>
 		</div>
 		
@@ -259,9 +254,11 @@ function acyncMovePage(url){
 	
 	<!-- 버튼을 클릭하면 아래에 페이지가 로드되게 하는 코드 -->
 	<script type="text/javascript">
-		var SnSLoginId_check = $('input[name=SnSLoginId_check]').val();
-	
-	
+		// 내 예매 내역
+		document.querySelector('#bookingList').addEventListener('click', function() {
+			acyncMovePage('./TicketingList.ti');
+		});
+		
 		// 구매 내역
 		document.querySelector('#myMallOrderList').addEventListener('click', function() {
 			acyncMovePage('./MallOrderList.mor');
@@ -274,13 +271,7 @@ function acyncMovePage(url){
 		
 		// 내 정보 관리
 		document.querySelector('#myInfoManagement').addEventListener('click', function() {
-			
-			if(SnSLoginId_check == 'SnSLogin'){
-				alert("네이버 아이디 로그인 회원은 접근이 불가합니다.");
-			}else{
-				acyncMovePage('./MyPage.me');
-			}
-			
+			acyncMovePage('./MemberInfo.me');
 		});
 	</script>
 

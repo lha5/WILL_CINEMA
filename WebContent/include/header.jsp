@@ -40,7 +40,7 @@
 				<li><a href="./MemberLogin.me">로그인</a></li>
 				<%}%>
 				<%if (id != null) {%>
-				<li><a href="./Main.me">마이시네마</a></li>
+				<li><a href="./MyInfoPage.me">마이시네마</a></li>
 				<%} else {%>
 				<li><a href="./MemberJoin.me">회원가입</a></li>
 				<%}%>
@@ -48,7 +48,7 @@
 				<li id="forcustomer"><a href="./FAQUserList.af">고객센터</a>
 					<ul id="dropdown">
 						<li><a href="./FAQUserList.af">FAQ</a></li>
-						<li><a href="./QnAList.sq">1:1 문의</a></li>
+						<li><a href="./QnAUserList.sq">1:1 문의</a></li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
 				</li>

@@ -41,7 +41,9 @@
 			response.sendRedirect("./MemberLogin.me");
 		}
 	
-	String name = (String) session.getAttribute("id");
+		String name = (String) session.getAttribute("name");
+		System.out.println("name : "+session.getAttribute("name"));
+
 	%>
 
 	<fieldset>
@@ -53,7 +55,7 @@
 					<td>작성자</td>
 					<td>
 						<input type="text" name="name" value="<%=name%>" readonly>
-						<input type="hidden" name="id" value="<%=id%>">
+						<input type="hidden" name="pass" value="<%=id%>">
 					</td>
 					<td>카테고리</td>
 					<td>
