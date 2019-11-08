@@ -9,8 +9,24 @@
 <title>WILL CINEMA - 영화관 지점</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<link rel="stylesheet" href="././css/qnalist2.css">
+
+<style type="text/css">
+	table{
+		
+	}
+ 	input[type=button]{
+		border:none;
+		padding: 0;
+		background:none;
+	} 
+	
+</style>
+
 </head>
 <body>
+	
+	
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
@@ -30,10 +46,11 @@
 	int endPage = (Integer) request.getAttribute("endPage");
 	int pageSize = (Integer) request.getAttribute("pageSize");
 	%>
-
-	<table >
+	
+	<div id="contentsWrap">
+	<table>
 		<tr>
-			<td colspan="8"><a href="./CinemaAdd.ci">등록</a></td>
+			<td colspan="8" class="cinemaWrite"><a href="./CinemaAdd.ci">등록</a></td>
 		</tr>
  		
 		
@@ -68,7 +85,7 @@
 		 	<td>
 		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">
 		 		관 추가 및 수정</a>
-		 		/<a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>">지점,관 삭제</a>
+		 		/ <a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>">지점,관 삭제</a>
 		 	</td>
 		 	
 		 </tr>	
@@ -128,7 +145,7 @@
 		
 	</table>
 		
-	
+	<div id="pagingNumber">
 	<%
 		if(count != 0) {
 			// 이전
@@ -154,7 +171,9 @@
 				}
 		}
 	%>
-
+	</div>
+		</div>
+	
 <script>
 	
 	var list_num = $('input[name=list_num]').val();
@@ -190,6 +209,8 @@
 </script>
 
 	<%@ include file="../include/footer.jsp" %>
-	
+
+
+
 </body>
 </html>
