@@ -70,7 +70,7 @@ public class IndexAction implements Action {
 		
 		// 공지사항
 		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
-		String[] noticeList = andao.getSubject();
+		String noticeSbj = andao.getSubject();
 		
 		// 정보 저장 
 		request.setAttribute("eventMovieList", eventMovieList);
@@ -82,7 +82,7 @@ public class IndexAction implements Action {
 		request.setAttribute("FAQList", FAQList);
 		System.out.println("@@@@@@@@@@@"+faqcount+""+FAQList);
 		
-		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("noticeSbj", noticeSbj);
 		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
