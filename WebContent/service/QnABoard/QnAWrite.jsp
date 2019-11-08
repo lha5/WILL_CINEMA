@@ -24,6 +24,7 @@
 		}
 	
 		String name = (String) session.getAttribute("id");
+		System.out.println("name : "+session.getAttribute("name"));
 	%>
 
 	<fieldset>
