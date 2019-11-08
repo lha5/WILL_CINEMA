@@ -1,4 +1,4 @@
-package com.member.action;
+	package com.member.action;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -97,6 +97,7 @@ public class NonMemberLoginAction implements Action {
 			session.setAttribute("name", name);
 			session.setAttribute("birth", birth);
 			session.setAttribute("email", email);
+			session.setAttribute("NonMember", "비회원");
 			
 			PrintWriter out = response.getWriter();
 			
