@@ -59,11 +59,6 @@ tr:NTH-CHILD(1)>td {
 	width: 60%;
 }
 
-#mypage>tr:NTH-CHILD(3)>td:NTH-CHILD(2) {
-	text-align: center;
-	font-size: 14px;
-}
-
 #sec02 ul {
 	/* border: 1px solid pink; */
 	width: 700px;
@@ -109,6 +104,10 @@ tr:NTH-CHILD(1)>td {
 #left_point {
 	margin-bottom: 5px;
 }
+
+#ranking {
+	border: 1px solid aqua;
+}
 </style>
 
 <!-- 비동기 처리 -->
@@ -140,7 +139,6 @@ function acyncMovePage(url){
 	<%@ include file="../include/header.jsp" %>
 
 	<%
-	// String id = (String) session.getAttribute("id");
 	// 네이버 로그인 체크용 
 	String SnSLogin = (String) session.getAttribute("SnSLogin");
 	
@@ -226,7 +224,7 @@ function acyncMovePage(url){
 				</td>
 				<td>
 					<div id="ranking">
-						<h2><%=info.get(0)%>님의 현재 등급은<br><%=level%>입니다.</h2>
+						<%=info.get(0)%>님의 현재 등급은<br><%=level%>입니다.
 					</div>
 				</td>
 			</tr>
@@ -259,8 +257,10 @@ function acyncMovePage(url){
 	
 	<!-- 버튼을 클릭하면 아래에 페이지가 로드되게 하는 코드 -->
 	<script type="text/javascript">
-		var SnSLoginId_check = $('input[name=SnSLoginId_check]').val();
-	
+		// 예매 내역
+		document.querySelector('#bookingList').addEventListener('click', function() {
+			acyncMovePage('./TicketingList.ti');
+		});
 	
 		// 구매 내역
 		document.querySelector('#myMallOrderList').addEventListener('click', function() {
@@ -272,6 +272,12 @@ function acyncMovePage(url){
 			acyncMovePage('./Membership.me');
 		});
 		
+		// 내가 본 영화(준비중)
+		document.querySelector('#myMovies').addEventListener('click', function() {
+			alert('준비중 입니다');
+		});
+		
+		var SnSLoginId_check = $('input[name=SnSLoginId_check]').val();
 		// 내 정보 관리
 		document.querySelector('#myInfoManagement').addEventListener('click', function() {
 			

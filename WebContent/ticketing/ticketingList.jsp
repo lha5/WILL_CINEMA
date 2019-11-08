@@ -11,6 +11,12 @@
 <style type="text/css">
 table {
 	border-collapse: collapse;
+	width: 500px;
+	margin: 20px auto 50px auto;
+}
+
+#no {
+	font-weight: bold;
 }
 </style>
 </head>
@@ -34,7 +40,7 @@ table {
 				TicketDTO tdto = list.get(i);
 			%>
 			<tr>
-				<td><a href="./TicketingDetail.ti?book_num=<%=tdto.getBook_num()%>"><%=tdto.getBook_num()%></a></td>
+				<td id="no"><a href="./TicketingDetail.ti?book_num=<%=tdto.getBook_num()%>"><%=tdto.getBook_num()%></a></td>
 				<td><%=tdto.getSell_date()%></td>
 				<td><%=tdto.getDate()%></td>
 			</tr>

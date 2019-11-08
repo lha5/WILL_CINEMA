@@ -391,12 +391,17 @@ List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
 		
 		return boardList;
 	}
-		
-		
-		
 	
 
-	
-	
-	
+	@Override
+	public String[] getSubject() {
+		try {
+			con = getCon();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}	
+		return null;
+	}	
 }

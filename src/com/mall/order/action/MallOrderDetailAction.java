@@ -8,8 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.mall.db.MallDAO;
+import com.mall.db.MallDAOImpl;
 import com.mall.order.db.MallOrderDAO;
 import com.mall.order.db.MallOrderDAOImpl;
+import com.mall.order.db.MallOrderDTO;
 
 public class MallOrderDetailAction implements Action {
 
@@ -35,10 +38,14 @@ public class MallOrderDetailAction implements Action {
 		
 		// OrderDAO 객체 생성 및 orderDetail(trade_no) 메소드 사용
 		MallOrderDAO modao = new MallOrderDAOImpl();
-		List mallOrderDetail = modao.orderDetail(trans_num);
+		MallOrderDTO modto = modao.orderDetail(trans_num);
+		
+		MallDAO mdao = new MallDAOImpl();
+		String imgSrc = mdao.getGoodsImage(modto.getOrder_goods_num());
 				
 		// 주문 상세 페이지 정보를 저장
-		request.setAttribute("mallOrderDetail", mallOrderDetail);
+		request.setAttribute("modto", modto);
+		request.setAttribute("imgSrc", imgSrc);
 		
 		// 페이지 이동
 		forward.setPath("./goodsOrder/order_detail.jsp");

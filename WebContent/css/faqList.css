@@ -52,6 +52,8 @@
 #faqList {
 	width: 900px;
 	margin: 10px auto;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
 #faqWrap {

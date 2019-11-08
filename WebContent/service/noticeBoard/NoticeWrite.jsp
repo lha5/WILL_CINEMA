@@ -34,11 +34,16 @@
 		response.sendRedirect("./Main.me");
 	}
 	%>
+<<<<<<< HEAD
 		
 					<div id="wrap1">
 			   		<div id="witewrap">	
 					
 						
+=======
+	
+	<div id="sectionWrap">
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 		<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
 					
 				<table>
@@ -95,10 +100,14 @@
 			</table>	
 		
 		</form>
+<<<<<<< HEAD
 		</div>	
 		</div>
 	
 	
+=======
+	</div>
+>>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 	
 	<%@ include file="../../include/footer.jsp" %>
 	

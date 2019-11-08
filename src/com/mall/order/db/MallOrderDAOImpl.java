@@ -174,8 +174,8 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 	
 	// 주문 상세 내역
 	@Override
-	public List orderDetail(String trans_num) {
-		List orderDetailList = new ArrayList();
+	public MallOrderDTO orderDetail(String trans_num) {
+		MallOrderDTO modto = new MallOrderDTO();
 		
 		try {
 			con = getCon();
@@ -188,9 +188,7 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 			
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
-				MallOrderDTO modto = new MallOrderDTO();
-				
+			if (rs.next()) {
 				modto.setTrans_num(rs.getString("trans_num"));
 				modto.setGoods_amount(rs.getInt("goods_amount"));
 				modto.setGoods_name(rs.getString("goods_name"));
@@ -203,15 +201,14 @@ public class MallOrderDAOImpl implements MallOrderDAO{
 				modto.setBarcode(rs.getString("barcode"));
 				modto.setBarcode_img(rs.getString("barcode_img"));
 				
-				orderDetailList.add(modto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		
-		return orderDetailList;
+		System.out.println("구매 상세 내역 데이터 저장 완료");
+		return modto;
 	}
 
 	
