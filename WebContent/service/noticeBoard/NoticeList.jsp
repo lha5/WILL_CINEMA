@@ -16,7 +16,7 @@
 
 </head>
 <body>
-
+		<div id=Wrap2>
 	<%@ include file="../../include/header.jsp" %>
 
 
@@ -61,7 +61,7 @@
 		 
 		%>
 	  	
-	  	<button class="notiaccordion"><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>">[<%=andto.getCategory() %>]<%=andto.getSubject()%></a> </button>
+	  	<button class="notiaccordion" onclick="location.href='./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>' "><a href="./NoticeContent.an?num=<%=andto.getNum()%>&pageNum=<%=pageNum%>">[<%=andto.getCategory() %>]<%=andto.getSubject()%></a> </button>
 	  	
 	  	<div class ="notipanel">
 	  	
@@ -131,7 +131,7 @@
 	 }
 	}
 	%>
-	
+	</div>	
 	<%@ include file="../../include/footer.jsp" %>
 	
 

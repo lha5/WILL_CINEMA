@@ -109,14 +109,17 @@
 						<td colspan="3" class="filebox">
 							<input class="upload-name" value="업로드" disabled="disabled">
 							
-							<label for="ex_filename">파일추가 </label>
+							<label for="ex_filename">업로드 </label>
 							<input type="file" name="poster" id="ex_filename"  class ="upload-hidden" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
 					 <tr>
 						<td>이미지</td>
-						<td colspan="3">
-							<input type="file" name="image" value="<%=mdto.getImage()%>">
+						<td colspan="3" class="filebox" class="upload-hidden"> 
+							<input class="upload-name" value="업로드" disabled="disabled">
+							
+							<label for="ex_filename">업로드</label>
+							<input type="file" name="image" id="ex_filename" value="<%=mdto.getImage()%>">
 						</td>
 					</tr>
 									 
@@ -134,25 +137,9 @@
 	
 	
 	
-	<%@ include file="../include/footer.jsp" %>
-<script>
-$(document).ready(function(){ 
-	var fileTarget = $('.filebox .upload-hidden'); 
-	fileTarget.on('change', function(){ // 값이 변경되면
-		if(window.FileReader){ // modern browser 
-			var filename = $(this)[0].files[0].name; } 
-		else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
-			} // 추출한 파일명 삽입 
-			$(this).siblings('.upload-name').val(filename); 
-			}); 
-	});
+<%@ include file="../include/footer.jsp" %>
 
 
-	
-
-
-</script>
 
 
 
