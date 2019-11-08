@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 자주 묻는 질문(관리자)</title>
+</style>
 </head>
 <body>
 

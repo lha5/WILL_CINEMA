@@ -10,7 +10,11 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="././css/faqList.css">
-
+<style type="text/css">
+.fqpanel {
+	line-height: 2em;
+}
+</style>
 </head>
 <body>
 

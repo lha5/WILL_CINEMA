@@ -52,6 +52,7 @@
 #notiList {
 	width: 900px;
 	margin: 50px auto;
+	position: relative;
 }
 
 
@@ -66,11 +67,11 @@
 
 }
 #searching {
+	/* border: 1px solid lime; */
 	position:absolute;
 	right:0;
-	margin: 20px 0 10px 500px ;
-	width: 500px;
-	height:150px;
+	margin: 20px 0 10px 220px ;
+	width: 400px;
 }
 
 input[type=text] {
@@ -115,9 +116,12 @@ input[type=submit],input[type=button] {
 	border: 1px solid #d7282d;
 	background-color: #d7282d;
 	font-family: inherit;
-	font-size: 19px;
+	font-size: 16px;
 	color: #ffffff;
 	letter-spacing: 2px;
 }
 
-
+#notipagingNumber {
+	margin-top: 20px;
+	padding-top: 10px;
+}
