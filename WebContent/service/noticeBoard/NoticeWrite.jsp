@@ -7,18 +7,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항 작성</title>
 
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeWrite.css">
+
 <!-- summernote 적용시키기 위한 준비 -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="./summernote/lang/summernote-ko-KR.js"></script>
 
+	
+
 </head>
 <body>
 	
 	<%@ include file="../../include/header.jsp" %>
 	
+	
+	
 	<div id="wrap">
+	
+	
 	
 	<%
 	if (id == null || !id.equals ("admin")) {
@@ -75,7 +84,7 @@
 				</tr>
 				<tr>
 			   		<td>
-			   			<input type="submit" value="공지사항 작성하기">
+			   			<input type="submit" value="공지사항 작성하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	
