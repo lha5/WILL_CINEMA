@@ -32,8 +32,6 @@
 
 	<div id="wrap">
 	
-		<h2>주문한 내역</h2>
-		
 		<table id="list">
 			<tr>
 				<td id="transcNo">주문 번호</td>
