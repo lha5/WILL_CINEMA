@@ -270,7 +270,7 @@ function acyncMovePage(url){
 		
 		// 내가 본 영화(준비중)
 		document.querySelector('#myMovies').addEventListener('click', function() {
-			alert('준비중입니다.');
+			alert('준비중 입니다');
 		});
 		
 		var SnSLoginId_check = $('input[name=SnSLoginId_check]').val();
