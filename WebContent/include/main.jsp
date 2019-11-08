@@ -330,14 +330,14 @@ $(document).ready(function() {
 				<div class="w3-content w3-display-container">
  					<ul>
  						<%
- 						for (int i = 0; i < NoticeList.size(); i++) {
- 						%>
+ 						String notiSbj = (String) request.getAttribute("noticeSbj");
  						
- 						<%
- 						}
  						%>
 						<li>
-							<div id="goNotice"><a href="./NoticeList.an" >공지사항</a></div>
+							<div id="goNotice">
+								<a href="./NoticeList.an">공지사항</a>
+								<a hef="./NoticeList.an"><%=notiSbj%></a>
+							</div>
 						</li>
 							<span id="goFAQ"><a href="./FAQUserList.af">자주 묻는 질문</a></span>
 			  				<%

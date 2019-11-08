@@ -31,5 +31,5 @@ public interface AdminNoticeDAO {
 	public List<AdminNoticeDTO> getSearch(String search,int startRow,int pageSize);
 	
 	// 메인에 가져갈 글
-	public String[] getSubject();
+	public String getSubject();
 }
