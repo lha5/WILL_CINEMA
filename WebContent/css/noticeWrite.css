@@ -51,7 +51,7 @@
 
 #notiList {
 	width: 900px;
-	margin: 10px auto;
+	margin: 50px auto;
 }
 
 
@@ -61,16 +61,16 @@
 
 
 #notiWrap {
-height:450px;
-position:relative;
+	width: 900px;
+	margin: 50px auto;
 
 }
 #searching {
 	position:absolute;
 	right:0;
 	margin: 20px 0 10px 500px ;
-	width: 450px;
-	height:100;
+	width: 500px;
+	height:150px;
 }
 
 input[type=text] {
@@ -105,8 +105,8 @@ input[type=text] {
 
 
 
-input[type=submit] {
-	width: 75px;
+input[type=submit],input[type=button] {
+	width: 85px;
 	height: 37px;
 	outline-style: none;
 	-webkit-appearance: none;
@@ -119,8 +119,5 @@ input[type=submit] {
 	color: #ffffff;
 	letter-spacing: 2px;
 }
-
-
-
 
 
