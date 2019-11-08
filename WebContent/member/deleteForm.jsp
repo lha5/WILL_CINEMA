@@ -28,20 +28,26 @@
 		<form action="./MemberDeleteAction.me" class="sec" method="post">
 			<table>
 				<tr>
-					<td><label><i class="ri-2g" ></i>아이디</label></td>
-					<td><input type="text" name="id" value="<%=id%>" readonly></td>
+					<td><label>아이디</label></td>
+					<td><%=id%></td>
 				</tr>
 				<tr>
-			     	<td><label><i class="ri-2g">비밀번호</i></label>
+			     	<td><label>비밀번호</label>
 					<td><input type="password" name="pass"></td>
 				</tr>
 				<tr>	
 					<td colspan="2">
-					<input type="submit" value="회원탈퇴">
+					<input type="submit" value="회원 계정 삭제">
 				</td>
 				</tr>
 		</table>
 		</form>
+		<!-- 탈퇴 확인 메시지 -->
+		<script type="text/javascript">
+			document.querySelector('form').addEventListener('submit', function() {
+				confirm('정말 탈퇴를 진행하시겠습니까? 한번 삭제된 계정은 복구하실 수 없습니다.')
+			});
+		</script>
 	</fieldset>
 	<%@ include file="../include/footer.jsp" %>
 </body>

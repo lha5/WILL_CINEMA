@@ -13,5 +13,5 @@ public interface MallOrderDAO {
 	public List<MallOrderDTO> getOrderList(String id);
 	
 	// 구매 상세 내역
-	public List orderDetail(String trans_num);
+	public MallOrderDTO orderDetail(String trans_num);
 }

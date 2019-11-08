@@ -104,6 +104,10 @@ tr:NTH-CHILD(1)>td {
 #left_point {
 	margin-bottom: 5px;
 }
+
+#ranking {
+	border: 1px solid aqua;
+}
 </style>
 
 <!-- 비동기 처리 -->
