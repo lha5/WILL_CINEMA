@@ -34,8 +34,8 @@
 		response.sendRedirect("./Main.me");
 	}
 	%>
-
-	<fieldset>
+	
+	<div id="sectionWrap">
 		<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -89,7 +89,7 @@
 				</tr>
 			</table>	
 		</form>
-	</fieldset>
+	</div>
 	
 	<%@ include file="../../include/footer.jsp" %>
 	
