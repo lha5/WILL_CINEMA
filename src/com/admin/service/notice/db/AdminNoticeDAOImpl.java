@@ -403,8 +403,11 @@ List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
 			
 			pstmt = con.prepareStatement(sql);
 			
-			subject += pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
+			if (rs.next()) {
+				subject += rs.getString("subject");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

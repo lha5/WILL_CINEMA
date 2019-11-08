@@ -336,15 +336,16 @@ $(document).ready(function() {
 						<li>
 							<div id="goNotice">
 								<a href="./NoticeList.an">공지사항</a>
-								<a hef="./NoticeList.an"><%=notiSbj%></a>
+								&emsp;&emsp;&emsp;
+								<span id="ns"><a href="./NoticeList.an"><%=notiSbj%></a></span>
 							</div>
 						</li>
-							<span id="goFAQ"><a href="./FAQUserList.af">자주 묻는 질문</a></span>
 			  				<%
 						     for (int i=0;i<FAQList.size();i++) {
 								AdminFAQDTO afdto = FAQList.get(i);
 							%>
 								<li class="mySlides">
+							<span id="goFAQ"><a href="./FAQUserList.af">자주 묻는 질문</a></span>
 				 					<a href="./FAQUserList.af">
 				 						<button class="accordion"><%=afdto.getSubject() %></button>
 				 					</a>
