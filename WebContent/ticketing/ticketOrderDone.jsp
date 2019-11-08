@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 결제완료</title>
 <style type="text/css">
 @font-face {
 	font-family: 'NanumGothic';
@@ -35,18 +35,16 @@ span {
 <body>
 	<div id="wrap">
 		<%@ include file="../include/header.jsp" %>
-
-		<%
-		// 주소줄에 있는 정보 받아오기
-		// String trans_num = request.getParameter("trans_num");
-		%>
-		
-		<div>
+	<div id="done">
+			<i class="ri-checkbox-circle-line ri-5x"></i>
+			<br>
+			<br>
 			<h2>구매가 완료되었습니다.</h2>
-			<h2>저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</h2>
-			<h3><a href="./Main.me">마이시네마 페이지로 이동하기</a></h3>
-			<%-- <h2>구매 번호 : <a href="./MallOrderDetail.mor?trans_num=<%=trans_num%>"><%=trans_num%></a></h2> --%>
-		</div>
+			<br>
+			<div id="thanks">저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</div>
+			<br><br>
+			<span><a href="./Main.me">마이시네마 페이지로 이동하기</a></span>
+	</div>
 		<%@ include file="../include/footer.jsp" %>
 	</div>
 </body>

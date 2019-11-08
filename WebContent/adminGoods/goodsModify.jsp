@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Will_CINEMA - 상품 수정(관리자)</title>
 </head>
 <body>
 

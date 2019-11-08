@@ -16,7 +16,7 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
-		// String id = (String)session.getAttribute("id");
+		id = (String)session.getAttribute("id");
 		System.out.println("session id : "+id);
 		
 		int count = (Integer) request.getAttribute("count");
@@ -43,7 +43,7 @@
        <td>카테고리</td>
        <td>글쓴이</td>
        <td>날짜</td>
-       <td>죄회수</td>
+       <td>조회수</td>
      </tr>
      <%
      	for (int i=boardList.size()-1;i>-1;i--) {

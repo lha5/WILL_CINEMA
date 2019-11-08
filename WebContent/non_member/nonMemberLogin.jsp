@@ -92,6 +92,10 @@ input[type=submit] {
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birth"></td>
+				</tr>
+				<tr>
 					<td>이메일</td>
 					<td><input type="text" name="email"></td>
 				</tr>

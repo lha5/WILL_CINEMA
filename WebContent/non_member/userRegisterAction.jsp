@@ -16,25 +16,30 @@
 
 	String email = null;
 
-	if(request.getParameter("name") != null) {
+	if(session.getAttribute("name") != null) {
 
-		name = (String) request.getParameter("name");
-
-	}
-
-	if(request.getParameter("birth") != null) {
-
-		birth = (String) request.getParameter("birth");
+		name = (String) session.getAttribute("name");
 
 	}
 
-	if(request.getParameter("email") != null) {
+	if(session.getAttribute("birth") != null) {
 
-		email = (String) request.getParameter("email");
+		birth = (String) session.getAttribute("birth");
+
+	}
+
+	if(session.getAttribute("email") != null) {
+
+		email = (String) session.getAttribute("email");
 
 	}
 
 	if (name == null || birth == null || email == null) {
+		
+		System.out.println(" name : "+name);
+		System.out.println(" birth : "+birth);
+		System.out.println(" email : "+email);
+		System.out.println(" email_hash : "+SHA256.getSHA256(email));
 
 		PrintWriter script = response.getWriter();
 

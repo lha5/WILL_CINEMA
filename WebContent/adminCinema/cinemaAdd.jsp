@@ -11,7 +11,7 @@
 <body>
 
 <%@ include file="../include/header.jsp" %>
-	<form action="./CinemaAddAction.ci" method="post">
+	<form action="./CinemaAddAction.ci" method="post" name="cinemaAddfr" onsubmit="return cinemaAddsCheck()">
 		<table border="1">
 			
 			<tr>

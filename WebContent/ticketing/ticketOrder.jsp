@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>WILL CINEMA - 티켓 결제</title>
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
@@ -16,7 +16,6 @@
 
 </head>
 <body>
-<h1>WebContent/ticketing/ticketOrder.jsp</h1>
 <%
 		//회원정보
 		MemberDTO memdto = (MemberDTO) request.getAttribute("memdto");
@@ -136,25 +135,6 @@
 			    });
 			}
 			
-			/* function acyncMovePage(url) {
-			    var ajaxOption = {
-			            url : url,
-			            async : true,
-			            type : "POST",
-			            dataType : "html",
-			            cache : false
-			    };
-			    
-			    $.ajax(ajaxOption).done(function(data){
-			        // Contents 영역 삭제
-			        $('#paySection').children().remove();
-			        // Contents 영역 교체
-			        $('#paySection').html(data);
-			    });
-			} */
-		
-<%-- acyncMovePage('./TicketOrderProc.ti?week=<%=week%>&realPri=<%=payment%>&seat=<%=seat%>&person_num=<%=person_num%>&running_date=<%=running_date%>&running_time=<%=running_time%>&cdto=<%=cdto%>&mdto=<%=mdto%>&roomNum=<%=roomNum%>&memdto=<%=memdto%>');--%>
-				
 		<!-- 결제 모듈 -->
 		
 		document.querySelector('#goPay').addEventListener('click', function() {

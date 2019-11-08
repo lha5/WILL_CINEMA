@@ -15,10 +15,6 @@
 <link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
-/*롯데 영화관   */
-/* style="width:10000px; height:420px;
- background: url(http://caching2.lottecinema.co.kr/lotte_image/2019/KimJiyoung/1025/KimJiyoung_1920420.jpg) 50% 0px 
- no-repeat;display:table-cell;vertical-align:middle" */
 
  
 	/* 하위 메뉴 고정 */
@@ -27,7 +23,7 @@
 	}
  	 
 	.contents {
-		border: 1px solid purple;
+		/* border: 1px solid purple; */
 		width: inherit;
 		margin: 0 auto;
 		vertical-align: middle
@@ -36,7 +32,7 @@
 	/* banner */
 	.banner {
 		position: relative;
-		border: 1px solid red;
+		/* border: 1px solid red; */
 		/* width: 10000px; */
 		width: auto;
 		height: 420px;
@@ -254,7 +250,6 @@
 			//체크된 날짜의 요일
 			week=$('label[for="' +monthNames[mon]+date2[2] +'"]').find('span').text();
 			week= date2[0]+"."+date2[1]+"."+date2[2]+"("+week+")";
-			/* alert("클릭체크 : "+week); */
 			
 			$.ajax({
 				url:"./ShowTime.ti",
@@ -402,7 +397,7 @@
         form.submit();
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
-	
+	/*  영화관 위치 / 영화재생   */
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
