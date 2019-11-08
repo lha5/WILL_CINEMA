@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 회원 계정 삭제</title>
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="./css/memberDelete.css">
+
+
 </head>
 <body>
 
@@ -17,14 +23,24 @@
 	}
 	%>
 	
-	<fieldset>
-		<legend> 회원 탈퇴 </legend>
-		<form action="./MemberDeleteAction.me" id="fm" method="post">
-			아이디 : <input type="text" name="id" value="<%=id%>" readonly>
-			<br>
-			비밀번호 : <input type="password" name="pass">
-			<br>
-			<input type="submit" value="회원 탈퇴">
+	<fieldset class="deleteField">
+	<span id="outout">회원 탈퇴</span> 
+		<form action="./MemberDeleteAction.me" class="sec" method="post">
+			<table>
+				<tr>
+					<td><label><i class="ri-2g" ></i>아이디</label></td>
+					<td><input type="text" name="id" value="<%=id%>" readonly></td>
+				</tr>
+				<tr>
+			     	<td><label><i class="ri-2g">비밀번호</i></label>
+					<td><input type="password" name="pass"></td>
+				</tr>
+				<tr>	
+					<td colspan="2">
+					<input type="submit" value="회원탈퇴">
+				</td>
+				</tr>
+		</table>
 		</form>
 	</fieldset>
 	<%@ include file="../include/footer.jsp" %>
