@@ -15,5 +15,5 @@ public interface MovieDAO {
 	public List<AdminMovieDTO> getSearch(String searchType,String search,int startRow,int pageSize);
 	
 	// 영화 번호를 매개변수로 영화 정보(이름) 가져오기
-	public String getTitle(int movie_num);
+	public AdminMovieDTO getTitle(int movie_num);
 }

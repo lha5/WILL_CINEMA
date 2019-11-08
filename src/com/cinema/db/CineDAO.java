@@ -22,4 +22,7 @@ public interface CineDAO {
 	
 	// 등록된 영화관 지점 삭제
 	public void deleteCinema(int cinema_num);
+	
+	// 지점 번호로 지점 이름 가져오기
+	public CineDTO getCineName(int cinema_num);
 }

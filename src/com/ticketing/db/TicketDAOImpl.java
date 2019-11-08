@@ -450,12 +450,46 @@ public class TicketDAOImpl implements TicketDAO{
 		} finally {
 			closeDB();
 		}
-		System.out.println("예매 내역 리스트 불러오기 성공, 값 : " + bookList);
+		System.out.println("예매 내역 리스트 불러오기 성공");
 		return bookList;
 	}
 
 	
+	// 예매 리스트(사용자)
+	@Override
+	public List<TicketDTO> getMyBookList(String id) {
+		List<TicketDTO> bookList = new ArrayList<TicketDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT book_num, sell_date, date, movie_num FROM book WHERE id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+						
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TicketDTO tdto = new TicketDTO();
+				
+				tdto.setBook_num(rs.getInt("book_num"));
+				tdto.setSell_date(rs.getDate("sell_date"));
+				tdto.setDate(rs.getDate("date"));
+				tdto.setMovie_num(rs.getInt("movie_num"));
+				
+				bookList.add(tdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println(id + "님의 예매 내역 리스트 불러오기 성공, 값 : " + bookList);
+		return bookList;
+	}
 	
+
 	// 예매 내역 상세
 	@Override
 	public TicketDTO getBookDetail(int book_num) {
@@ -481,7 +515,7 @@ public class TicketDAOImpl implements TicketDAO{
 				tdto.setId(rs.getString("id"));
 				tdto.setMovie_num(rs.getInt("movie_num"));
 				tdto.setPass(rs.getString("pass"));
-				tdto.setPayment(rs.getString("patment"));
+				tdto.setPayment(rs.getString("payment"));
 				tdto.setPerson_num(rs.getString("person_num"));
 				tdto.setPrice(rs.getInt("price"));
 				tdto.setRoom(rs.getString("room"));
