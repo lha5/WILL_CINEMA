@@ -37,9 +37,9 @@
 	<%@ include file="../../include/header.jsp" %>
 	
 	<%
-	if(id == null){
-		response.sendRedirect("./MemberLogin.me");
-	}
+		if(id == null){
+			response.sendRedirect("./MemberLogin.me");
+		}
 	
 	String name = (String) session.getAttribute("id");
 	%>
