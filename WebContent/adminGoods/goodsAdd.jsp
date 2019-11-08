@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상품 등록</title>
+<title>Will_CINEMA - 상품 등록(관리자)</title>
 <!-- 제품등록 내역 부족시 submit 차단  -->
 <script type="text/javascript">
 	function goodsCheck() { 

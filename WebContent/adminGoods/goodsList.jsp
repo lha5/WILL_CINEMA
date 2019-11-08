@@ -7,21 +7,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Will_CINEMA - 상품 목록(관리자)</title>
+<link rel="stylesheet" href="./css/goodsList.css">
+
+<style type="text/css">
+	.admin_goods_img{
+		width: 100px;
+		height: 140px;
+	
+	#admin_goods_head {
+		width: 900px;
+		margin: 10px auto;
+	}
+</style>
+
 </head>
 <body>
-
+	
+	
 	<%@ include file="../include/header.jsp" %>
 	
+	
+	<div id="wrap">
 	<%
 	// DB에서 가져온 정보 저장
 	//request.setAttribute("goodsList", goodsList);
 	List goodsList = (List)request.getAttribute("goodsList");
 	%>
-
+	<div id="admin_goods_head">
 	<h1>상품 목록(관리자 전용)</h1>
 	
 	<h3><a href="./GoodsAdd.al">상품 등록하기(관리자)</a></h3>
+	</div>
 	
 	<table border="1">
 	
@@ -40,7 +57,7 @@
 	    <td><%=amdto.getGoods_num() %></td>
 	    <td><%=amdto.getCategory() %></td>
 	    <td><%=amdto.getName() %></td>
-	    <td><img src="./upload/<%=amdto.getImage()%>"></td>
+	    <td><img class="admin_goods_img" src="./upload/<%=amdto.getImage()%>" ></td>
 	    <td><%=amdto.getPrice() %> 원</td>
 	    <td> <a href="./GoodsModify.al?num=<%=amdto.getGoods_num()%>">수정</a>
 	      / 
@@ -49,6 +66,8 @@
 	  <%} %>
 	  
 	  </table>
+	  
+	  </div>
 	  
 	  <%@ include file="../include/footer.jsp" %>
 </body>
