@@ -25,7 +25,6 @@ public class MemberLoginAction implements Action {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
-		
 		// 디비 만들고   생성 하고 
 		MemberDAO mdao = new MemberDAOImpl();
 		
