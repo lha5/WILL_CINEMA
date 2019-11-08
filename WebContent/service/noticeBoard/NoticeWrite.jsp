@@ -25,7 +25,7 @@
 	
 	
 	
-	<div id="wrap">
+	
 	
 	
 	
@@ -34,11 +34,16 @@
 		response.sendRedirect("./Main.me");
 	}
 	%>
-
-	<fieldset>
+		
+					<div id="wrap1">
+			   		<div id="witewrap">	
+					
+						
 		<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
-			<table>
-			   	<tr>
+					
+				<table>
+			   	
+			   		
 			   		<td>글쓴이</td>
 			   		<td><input type="text" name="name" value="<%=id%>"></td>
 			   		<td>
@@ -59,7 +64,7 @@
 			   				<option value="제주">제주</option>
 			   			</select>
 			   		</td>
-				</tr>
+				
 				<tr>
 			   		<td>제목</td>
 			   		<td colspan="3"><input type="text" name="subject"></td>
@@ -88,12 +93,16 @@
 			   		</td>
 				</tr>
 			</table>	
+		
 		</form>
-	</fieldset>
+		</div>	
+		</div>
+	
+	
 	
 	<%@ include file="../../include/footer.jsp" %>
 	
-	</div>
+	
 	
 </body>
 </html>

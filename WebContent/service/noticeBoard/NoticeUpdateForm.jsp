@@ -7,6 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항 내용 수정</title>
 
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeWrite.css">
+
+
 <!-- summernote 적용시키기 위한 준비 -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
@@ -16,10 +20,10 @@
 </head>
 <body>
 
-	<div id="wrap">
-
-	<%@ include file="../../include/header.jsp" %>
 	
+	<%@ include file="../../include/header.jsp" %>
+	<div id="wrap">
+	<div id="updatewrap">
 	<%
 	AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
 	String pageNum = (String) request.getAttribute("pageNum");
@@ -97,12 +101,14 @@
 			   		</td>
 				</tr>
 			</table>	
+		
 		</form>
 	</fieldset>
-
+	
+		</div>
+		</div>
 	<%@ include file="../../include/footer.jsp" %>
 	
-	</div>
 
 </body>
 </html>
