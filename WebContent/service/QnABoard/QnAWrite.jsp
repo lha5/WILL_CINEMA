@@ -15,12 +15,12 @@
 
 	function QnANonCheck() { 
 		if(document.QnAWritefr.subject.value == ""){
-			alert("입력해 주십시오.");
+			alert("문의할 제목을 입력해 주십시오.");
 			document.reviewAddfr.subject.focus();
 			return false;
 		}
 		if(document.QnAWritefr.content.value == ""){
-			alert(" 입력해 주십시오.");
+			alert("문의할 내용을 입력해 주십시오.");
 			document.reviewAddfr.content.focus();
 			return false;
 		}
