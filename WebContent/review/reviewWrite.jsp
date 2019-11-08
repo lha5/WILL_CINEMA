@@ -15,7 +15,6 @@
 			document.reviewAddfr.content.focus();
 			return false;
 		}
-		
 	}
 
 </script>
@@ -35,21 +34,19 @@
 			<div ><!-- class="table" -->
 			<table>
 				<tr>
-					<td id="font"> 리뷰</td>
 					<td>
-						<textarea id="right" name="content" row="10" cols="70" 
+						<textarea id="textBox"  name="content" row="10" cols="50"
 							placeholder="아름다운 말로 멋진 영화를 빛내주세요"></textarea>	
+							<select name="rating">
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+		
+							</select>  
+							<input type="submit"  value="글쓰기" id="button2">
 					</td>
-				</tr>
-				<tr>
-					<td><select name="rating">
-						<option value=1>1</option>
-						<option value=2>2</option>
-						<option value=3>3</option>
-						<option value=4>4</option>
-						<option value=5>5</option>
-
-				</select>  <input type="submit"  value="글쓰기" id="button2"></td>
 				</tr>
 			</table>
 
