@@ -27,7 +27,7 @@ input[type=button] {
 </style>
 </head>
 <body>
-<%
+	<%
 	String id = (String) session.getAttribute("id");
 	String name = (String) session.getAttribute("name");
 
@@ -36,7 +36,7 @@ input[type=button] {
 	}
 
 	MemberDTO mdto = (MemberDTO) request.getAttribute("mdto");
-%>
+	%>
 
 	<input type="button" value="회원 정보 수정" onclick="location.href='./MemberUpdate.me'">&nbsp;&nbsp;
 	<input type="button" value="비밀번호 변경" onclick="location.href='./MemberPassCheck.me'">&nbsp;&nbsp;
@@ -59,6 +59,8 @@ input[type=button] {
 		<a href="./NoticeWrite.an">공지사항 글쓰기(관리자 전용)</a>
 		<br><br>
 		<a href="./FAQList.af">FAQ 관리(관리자 전용)</a>
+		<br><br>
+		<a href="./QnAList.af">1:1 문의 관리(관리자 전용)</a>
 		<br><br>
 		<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a>
 		<br><br>
