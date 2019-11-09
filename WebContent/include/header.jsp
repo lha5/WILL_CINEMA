@@ -82,7 +82,7 @@
 				</li>
 				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
 					<ul class="cine">
-						<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=1001">서울</a></li>
 						<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털</a></li>						
 						<li><a href="./CinemaUserView.ci?cinema_num=2001">안산</a></li>
 						<li><a href="./CinemaUserView.ci?cinema_num=2002">부천역</a></li>

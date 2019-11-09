@@ -22,6 +22,7 @@
 		grSize=grSize.substr(5);
 		var curGroup=grSize;
 		
+		var saleTime=$('#saleTime').val();
 		var regexp = /\B(?=(\d{3})+(?!\d))/g; //정규식
 		var selectSeat=0;
 		var row= $('#row').val();//총 행 개수
@@ -110,8 +111,8 @@
 			$('input[name=price]').val("0");//가격초기화
 			
 			//셀렉트를 변경하면 초기화
-			$('.seatTable').find('input[type=button].disabled').removeClass('disabled');
-			$('.seatTable').find('input[type=button].on').removeClass('on');
+			$('.seatTable').find('input[type=button]').removeClass('disabled');
+			$('.seatTable').find('input[type=button]').removeClass('on');
 			
 			getpNum();
 			//selectSeatFn();
@@ -219,12 +220,12 @@
 				pNum=pNum-selectSeat;
 				
 				/* console.log("선택된 좌석 : "+$('.seatTable').find('.'+group).attr('name')); */
-			}else if(selSeat.hasClass('on')){
+			}else if(selSeat.hasClass('on')){//지정한 좌석 한번 더 눌렀을때
 				//선택한 버튼의 그룹번호
 				//on 클래스를 제거
 				$('.seatTable').find('.'+group).removeClass('on');
 				
-				pNum=pNum+$('.seatTable').find('.'+group).length;
+				pNum=pNum+allGrp;
 			}
 		}
 		/*----------- 마우스 클릭시 선택 -----------  */
@@ -282,13 +283,12 @@
 				$('#two').prop('disabled', false);
 				$('#two').prop('checked', true);
 				selectSeat=2;
-			}else if(pNum>=8){
+			}else if(pNum>8){
 				alert("최대 인원수는 8명입니다.");
 				pNum=$('select[name=adult]').val(0)+$('select[name=teenager]').val(0)+$('select[name=senior]').val(0);
 				selectSeat=0;
 				$('input[type=radio]').prop('disabled', true);
 			}
-			
 			selectSeatFn();
 		}
 		/*------------------- pNum재설정 -----------------  */
@@ -311,11 +311,13 @@
 				}else{//클릭되지 않은 상태
 					$('.seatTable').find('input[type=button].disabled').removeClass('disabled');
 				}
-				price=$('select[name=adult]').val()*10000+
-				$('select[name=teenager]').val()*8000+$('select[name=senior]').val()*5000;
-				//가격
-				$('input[name=payment]').val(price);
-				$('input[name=price]').val(price.toString().replace(regexp,','));
+				if(saleTime=="조조"||saleTime=="야간"){
+					price=$('select[name=adult]').val()*8000+
+						$('select[name=teenager]').val()*8000+$('select[name=senior]').val()*5000;
+				}else{
+					price=$('select[name=adult]').val()*10000+
+						$('select[name=teenager]').val()*8000+$('select[name=senior]').val()*5000;
+				}
 			}else if(selectSeat==1){
 				//1명 선택시
 				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
@@ -343,6 +345,7 @@
 						});
 					}
 				}	
+				price=0;
 			}else if(selectSeat==2){
 				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
 					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
@@ -364,6 +367,7 @@
 						});
 					}
 				}
+				price=0;
 			}else if(selectSeat==3){
 				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
 					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
@@ -377,6 +381,7 @@
 						});
 					}
 				}
+				price=0;
 			}else if(selectSeat==4){
 				for(var i=1; i<=Number(grSize); i++){//첫 그룹부터 끝 그룹까지
 					var grSeLen=$('.seatTable').find('.grNum'+i+'[class*=on]').length;
@@ -390,7 +395,11 @@
 						});
 					}
 				}
+				price=0;
 			}
+			//가격
+			$('input[name=payment]').val(price);
+			$('input[name=price]').val(price.toString().replace(regexp,','));
 			grReset();
 		}
 		
@@ -458,7 +467,6 @@
 	
 	function check(){
 		var form = document.fr;
-			alert(form.payment.value);
 		  if (form.payment.value==0) {
 				alert("좌석을 선택하세요");
 				document.fr.adult.focus();
@@ -492,18 +500,12 @@
 	int roomNum = (Integer)request.getAttribute("roomNum"); //상영관 번호
 	String week=(String)request.getAttribute("week"); //요일
 	
-	
 	List seatRow=(List)request.getAttribute("seatRow");
 	List seatCol=(List)request.getAttribute("seatCol");
-	System.out.println(seatRow+" "+seatCol);
 	
 	String seat = cdto.getSeat().split(",")[roomNum-1]; //총좌석
-	//Integer row = Integer.parseInt(seat.split(" ")[0]); //행
-	//Integer col = Integer.parseInt(seat.split(" ")[1]); //열
-	int row=16;
-	int col=18;
-	
-	System.out.println("좌석 행 :"+row+", 좌석 열 :"+col);
+	Integer row = Integer.parseInt(seat.split(" ")[0]); //행
+	Integer col = Integer.parseInt(seat.split(" ")[1]); //열
 
 %>
 <%@ include file="../../include/header.jsp" %>
@@ -517,7 +519,7 @@
 	<input type="hidden" id="col" value=<%=col %>>
 	<input type="hidden" name="payment">
 	<input type="hidden" name="person_num">
-	
+	<input type="hidden" id="saleTime" value=<%=saleTime %>>
 	<div>
 	<%
 	if(seatRow.size()!=0){

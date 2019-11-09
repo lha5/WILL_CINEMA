@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 관리자 이벤트 관리</title>
+<title>WILL CINEMA - 이벤트 작성(관리자)</title>
 <!-- jqueryui.com의 jquery파일(인터넷 사용 가능일때)-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">

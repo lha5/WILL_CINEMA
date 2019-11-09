@@ -276,8 +276,6 @@
 		var input = new Array();
 		var week=$('.txtdate').find('dd').text();
 		
-		alert(movie_num+" "+saleTime+" "+roomNum+" "
-				+name+" "+running_date+" "+running_time+" 요일:"+week);
         form.action = "./SeatSelect.ti";
         form.method = "post";
         
