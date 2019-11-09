@@ -48,14 +48,14 @@ public class CinemaAddAction implements Action {
 				seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i);
 				start_times += request.getParameter("start_times"+i);
 				end_times += request.getParameter("end_times"+i);
-				start_priod += request.getParameter("end_priod"+i);
+				start_priod += request.getParameter("start_priod"+i);
 				end_priod += request.getParameter("end_priod"+i);
 				movie_num += request.getParameter("movie"+i);
 			}else{// 데이터를 나누는 ','를 입력
 				seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i)+",";
 				start_times += request.getParameter("start_times"+i)+",";
 				end_times += request.getParameter("end_times"+i)+",";
-				start_priod += request.getParameter("end_priod"+i)+",";
+				start_priod += request.getParameter("start_priod"+i)+",";
 				end_priod += request.getParameter("end_priod"+i)+",";
 				movie_num += request.getParameter("movie"+i)+",";
 			}
@@ -67,7 +67,7 @@ public class CinemaAddAction implements Action {
 		seat += request.getParameter("seat_line"+i)+" "+request.getParameter("seat_row"+i)+",";
 		start_times += request.getParameter("start_times"+i)+",";
 		end_times += request.getParameter("end_times"+i)+",";
-		start_priod += request.getParameter("end_priod"+i)+",";
+		start_priod += request.getParameter("start_priod"+i)+",";
 		end_priod += request.getParameter("end_priod"+i)+",";
 		movie_num += request.getParameter("movie"+i)+",";
 		}
