@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.action.Action;
 import com.action.ActionForward;
 import com.admin.service.notice.action.NoticeContentAction;
+import com.admin.service.notice.action.NoticeSearchAction;
 
 //FAQ관리 페이지(관리자)
 public class AdminFAQFrontController extends HttpServlet{
@@ -80,6 +81,13 @@ public class AdminFAQFrontController extends HttpServlet{
 		}else if(command.equals("/FAQContent.af")){ //공지 내용 페이지
 			//action = new NoticeContentAction();
 			action = new FAQContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/FAQSearchAction.af")){// 검색하기
+			action = new FAQSearchAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
