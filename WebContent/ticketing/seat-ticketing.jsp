@@ -43,7 +43,6 @@
 			for(var i=0; i<$('input[name=seatRow]').length; i++){
 				seatRow[i]=$('input[name=seatRow]')[i].value;
 				seatCol[i]=$('input[name=seatCol]')[i].value;
-				console.log(seatRow[i]+" "+seatCol[i]);
 				$('.seatTable').find('input[name=seat'+seatRow[i]+seatCol[i]+']').addClass('reserve');
 			}
 		}
@@ -59,13 +58,11 @@
 		
 		/*---------------마우스 이동, 밖, 클릭 ------------------------*/
 		$('.seatTable').find('input[type=button]').bind('mouseover', function(){
-				//alert(selectSeat);
 				overMouse(this);
 			}).bind('mouseleave', function(){
 				$('.seatTable').find('input[type=button]').removeClass('over');
 			}).bind('click',function(){
 				onMouse(this);
-				alert("남은 좌석 : "+pNum);
 				getpNum();
 				
 				person_num="";
@@ -115,7 +112,6 @@
 			//셀렉트를 변경하면 초기화
 			$('.seatTable').find('input[type=button].disabled').removeClass('disabled');
 			$('.seatTable').find('input[type=button].on').removeClass('on');
-			alert("선택된 좌석"+pNum);
 			
 			getpNum();
 			//selectSeatFn();
@@ -125,7 +121,6 @@
 		/*-------------------- 좌석붙임 라디오버튼 변경 -------------------*/
 		$('input[type=radio]').change(function(){
 			selectSeat=Number($('input[type=radio]:checked').val());
-			alert(selectSeat);
 			
 			//getpNum();
 			selectSeatFn();
@@ -140,11 +135,7 @@
 			var index = $('.seatTable').find('.'+group).index(selSeat); //그룹내의 자신 위치
 			var allSeat=$('.seatTable').find('.'+group); //모든 그룹
 			var right=allGrp-(index+selectSeat);//라디오박스에서 선택한 자리와 현재자리를 전체 개수에 뺌
-			
-			/* $('.seatTable').find('input[type=button]').removeClass('over'); */
-			
-			/* alert(selSeat +" " + group +" " + allGrp + " " + index + " "+allSeat + selectSeat);*/
-			console.log(selectSeat+" ,오른쪽 남은 자리 :  "+right);
+
 			//좌석이 있으면
 			if(!selSeat.hasClass('on')&&!selSeat.hasClass('disabled')
 					&&!selSeat.hasClass('reserve')&&selectSeat>0){
@@ -234,8 +225,6 @@
 				$('.seatTable').find('.'+group).removeClass('on');
 				
 				pNum=pNum+$('.seatTable').find('.'+group).length;
-				//$('.seatTable').find('.seat').length-1
-				alert(pNum);
 			}
 		}
 		/*----------- 마우스 클릭시 선택 -----------  */
@@ -411,11 +400,12 @@
 		function grReset(){
 			var group=0;
 			grSize=1;//전체 그룹 개수 초기화
-			
-			$('.seatTable').find('input[type=button]').each(function(){
-				var line=  $(this).prev('input[type=button]').attr('seat-line');
+			var cnt=0;
+			$('.seatTable').find('input[type=button]').each(function(){			
+				var line=$(this).attr('seat-line');
+				if(cnt>1) line= $(this).prev().attr('seat-line');
+
 				/* console("이전 라인 : " + line/*  + "현재 라인 : "+$(this).attr('seat-line')); */
-				console.log("이전 요소"+$(this).prev('input[type=button]').attr('type')+"이전 라인 : " + line + "현재 라인 : "+$(this).attr('seat-line'));
 				var grClass = $(this).attr('group');//그룹번호
 				//var innergroup =$(this).data('group');
 				var innergroup =curGroup; //이전 저장된 그룹수
@@ -428,18 +418,18 @@
 						group=innergroup;
 						grSize++;
 					}else if($(this).hasClass('disabled')){ //선택불가 왼쪽좌석이 선택가능할때
-						if(!$(this).prev('input[type=button]').hasClass('disabled')){
+						if(!$(this).prev().hasClass('disabled')){
 							group=innergroup;
 							grSize++;
 						}
 					}else if($(this).hasClass('reserve')){//예약좌석 왼쪽좌석이 예약안됐을때
-						if(!$(this).prev('input[type=button]').hasClass('reserve')){
+						if(!$(this).prev().hasClass('reserve')){
 							group=innergroup;
 							grSize++;
 						}
 					}else if($(this).hasClass('on')){
-						if(!$(this).prev('input[type=button]').hasClass('on')
-								&&$(this).prev('input[type=button]').length>0){
+						if(!$(this).prev().hasClass('on')
+								&&$(this).prev().length>0){
 							group=innergroup;
 							grSize++;
 						}
@@ -447,19 +437,20 @@
 				}
 				
 				//현재 좌석이 선택된 좌석이 아니고 이전 좌선이 선택됐을때
-				if(!$(this).hasClass('on')&&$(this).prev('input[type=button]').hasClass('on')){
+				if(!$(this).hasClass('on')&&$(this).prev().hasClass('on')){
 					group=innergroup;
 					grSize++;
 				}else if(!$(this).hasClass('disabled')//현재 좌석이 사용가능하고 이전좌석도 사용가능
-						&&$(this).prev('input[type=button]').hasClass('disabled')){
+						&&$(this).prev().hasClass('disabled')){
 					group=innergroup;
 					grSize++;
-				}else if($(this).index()==1){
+				}else if(line!=$(this).attr('seat-line')){
 					group=innergroup;
 					grSize++;
 				}
 				
 				$(this).addClass('grNum'+grSize).attr('group','grNum'+grSize);
+				cnt++;
 			});
 		}
 		/*----------- 좌석 선택시 그룹 재설정-----------  */
@@ -606,7 +597,27 @@
 	 for문으로 배열해 둠
 	 후에 수정하실분은 유의할 것
 	 -->
+	 <div class="seatform">
+	 <div class="seatform-chd1">
+	 <table class="seatRow">
+	 	<tr>
+		 	<td>
+		 	<%
+		 	Character alpChar = 65;
+		 	for(int i=1;i<=row;i++){
+		 		String alpStr = String.valueOf(alpChar); 
+		 		%>
+		 		<a class="seatbg" name="seat<%=alpStr %>"><%=alpStr %></a><br>
+		 		<%
+		 		alpChar++;
+		 	}
+		 	%>
+		 	</td>
+	 	</tr>
+	 </table>
+	 </div>
 	 
+	 <div class="seatform-chd2">
 	 <table class="seatTable">
 	 <tr>
 	 		<!-- 열 번호 -->
@@ -615,18 +626,12 @@
 		<td><!-- 좌석 배치 칸 -->
 		<!-- 아스키코드 초기화후 i증가에 따라 증가 -->
 	<%
-	Character alpChar = 65;
+	alpChar = 65;
 	int cnt=1;
 	for(int i=1;i<=row;i++){
 		String alpStr = String.valueOf(alpChar); 
-			for(int j=0;j<=col;j++){
+			for(int j=1;j<=col;j++){
 				int grNum=3;
-				
-				if(j==0){//행 알파벳 보여줌
-	%>			
-				<a class="seatbg" name="seat<%=alpStr %>"><%=alpStr %></a>
-	<%	
-				}else{
 					//행:12 열:18 좌우 3개
 					if(col==18){
 						if(j<=3){
@@ -863,10 +868,8 @@
 							cnt++;
 						}	
 					}
-				}
-
 			}%>
-	<br>
+	<!-- <br> -->
 	<%
 		
 		alpChar++;
@@ -874,7 +877,8 @@
 			</td>
 		</tr>
 	</table>
-	
+		</div>
+	</div>
 	
 	<!-- /좌석선택 -->
 	<hr>
@@ -956,7 +960,7 @@
 			</td>
 		</tr>
 	</table>
-	
+
 	</form>
 	</div>
 </fieldset>
