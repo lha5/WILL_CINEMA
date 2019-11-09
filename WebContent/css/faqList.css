@@ -65,3 +65,39 @@
 #fqpagingNumber {
 	text-align: center;
 }
+#faqsearch {
+	/* border: 1px solid lime; */
+	position:absolute;
+	width: 800px;
+}
+input[type=submit],input[type=button] {
+	width: 85px;
+	height: 37px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+
+input[type=text] {
+	width: 200px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #240e04;
+	color: #240e04;
+	font-size: 13px;
+}
+
+
