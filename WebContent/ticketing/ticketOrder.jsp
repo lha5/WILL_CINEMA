@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 티켓 결제</title>
+<link rel="stylesheet" href="./css/eventWrite.css">
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
@@ -39,9 +40,10 @@
  	
 		<%@ include file="../include/header.jsp" %>
 
-		
-		<h1>주문 내역</h1>
-		<table border="1">
+		<fieldset class="eventFieldset">
+		<h1>주문/결제</h1>
+		<form method="post" name="fr" class="eventform">
+		<table>
 			<tr>
 				<td>제목</td>
 				<td>사진</td>
@@ -63,13 +65,7 @@
 				<td><%=price%>원</td>
 			</tr>
 		</table>
-	
-		<br>
-		<br>
-		<br>
-		
-		
-		<fieldset>
+
 	
 				<h3>결제 방법</h3>
 				
@@ -86,7 +82,7 @@
 				<input type="button" value="결제하기" id="goPay">
 				&nbsp;&nbsp;
 				<input type="button" value="이전 단계" id="before">
-
+				</form>
 		</fieldset>
 		
 		<!-- 뒤로 가기 버튼 기능 추가 -->
@@ -100,42 +96,42 @@
 	
 		<!-- 비동기 처리 -->
 		<script type="text/javascript">
-			function acyncMovePage(putUrl) {
-				var week='<%=week%>';
-				var realPri=<%=payment%>;
-				var seat='<%=seat%>';
-				var person_num='<%=person_num%>';
-				var running_date='<%=running_date%>';
-				var running_time='<%=running_time%>';
-				var region_name='<%=cdto.getName()%>';
-				var cinema_num=<%=cdto.getCinema_num()%>;
-				var movie_num=<%=mdto.getMovie_num()%>;
-				var movie_title='<%=mdto.getTitle()%>';
-				var roomNum='<%=roomNum%>';
-				var email='<%=memdto.getEmail()%>';
-				var tel='<%=memdto.getMobile()%>';
-				var buyer_name='<%=memdto.getName()%>';
-			    $.ajax({
-		            url : putUrl,
-		            async : true,
-		            type : "POST",
-		            dataType : "html",
-		            data:{week:week,realPri:realPri,seat:seat,person_num:person_num,running_date:running_date,
-		            	running_time:running_time,region_name:region_name,cinema_num:cinema_num,movie_num:movie_num,
-		            	movie_title:movie_title,roomNum:roomNum,email:email,tel:tel,buyer_name:buyer_name},
-		            cache : false,
-					error:function(request,status,error){
-						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-		               }
-		    	}).done(function(data){
-			        // Contents 영역 삭제
-			        $('#paySection').children().remove();
-			        // Contents 영역 교체
-			        $('#paySection').html(data);
-			    });
-			}
+		function acyncMovePage(putUrl) {
+			var week='<%=week%>';
+			var realPri=<%=payment%>;
+			var seat='<%=seat%>';
+			var person_num='<%=person_num%>';
+			var running_date='<%=running_date%>';
+			var running_time='<%=running_time%>';
+			var region_name='<%=cdto.getName()%>';
+			var cinema_num=<%=cdto.getCinema_num()%>;
+			var movie_num=<%=mdto.getMovie_num()%>;
+			var movie_title='<%=mdto.getTitle()%>';
+			var roomNum='<%=roomNum%>';
+			var email='<%=memdto.getEmail()%>';
+			var tel='<%=memdto.getMobile()%>';
+			var buyer_name='<%=memdto.getName()%>';
+		    $.ajax({
+	            url : putUrl,
+	            async : true,
+	            type : "POST",
+	            dataType : "html",
+	            data:{week:week,realPri:realPri,seat:seat,person_num:person_num,running_date:running_date,
+	            	running_time:running_time,region_name:region_name,cinema_num:cinema_num,movie_num:movie_num,
+	            	movie_title:movie_title,roomNum:roomNum,email:email,tel:tel,buyer_name:buyer_name},
+	            cache : false,
+				error:function(request,status,error){
+					alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	               }
+	    	}).done(function(data){
+		        // Contents 영역 삭제
+		        $('#paySection').children().remove();
+		        // Contents 영역 교체
+		        $('#paySection').html(data);
+		    });
+		}
 			
-		<!-- 결제 모듈 -->
+		/* 결제 모듈 */
 		
 		document.querySelector('#goPay').addEventListener('click', function() {
 				//가격, mdto(영화명,영화번호),cdto(지점명) , 상영관, 상영일, 상영시간,가격,인원수
