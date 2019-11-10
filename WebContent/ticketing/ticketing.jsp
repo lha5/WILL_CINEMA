@@ -244,7 +244,6 @@
 
 	//영화 선택
 	function selectMov(event){
-		console.log(event);
 		var movClass=event.currentTarget.className;
 		//다른 영화 선택시
 		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){ //자신 이외에 on class가 있는지
@@ -320,7 +319,6 @@
 			data:{cinema:cinema,movie:movie,date:date},
 			success:function(data){
 				var cnt=1;
-				console.log(data.length);
 				//html초기화
 				$('.time_inner').find('.time_list01').empty();
 				document.getElementById('time_noData').style.display="none";
@@ -331,7 +329,6 @@
 				
 				
 				$.each(data,function(index,cdto){//영화관의 상영 영화 정보
-					console.log(cdto);
 					var runtimeS='';
 					var runtimeE='';
 					var saleTime='';
