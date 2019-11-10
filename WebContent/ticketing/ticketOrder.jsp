@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 티켓 결제</title>
-<link rel="stylesheet" href="./css/eventWrite.css">
+<link rel="stylesheet" href="./css/seat-ticketing.css">
 <!-- jQuery 연결 -->
 <script src="./js/jquery-3.4.1.min.js"></script>
 
@@ -36,54 +36,107 @@
 				"좌석 : "+seat+"구매자: "+memdto.getName()+"전화번호 : "+memdto.getMobile());
 %>
 	
-<div id="wrap">
+<div class="bgColor">
  	
 		<%@ include file="../include/header.jsp" %>
-
-		<fieldset class="eventFieldset">
-		<h1>주문/결제</h1>
-		<form method="post" name="fr" class="eventform">
-		<table>
-			<tr>
-				<td>제목</td>
-				<td>사진</td>
-				<td>상영일</td>
-				<td>상영관</td>
-				<td>좌석</td>
-				<td>상영시간</td>
-				<td>관람인원</td>
-				<td>가격</td>
-			</tr>
-			<tr>
-				<td><%=mdto.getTitle() %></td>
-				<td><img src="./upload/<%=mdto.getPoster() %>" width="65" height="94"></td>
-				<td><%=running_date %></td>
-				<td><%=cdto.getName() %> <%=roomNum %></td>
-				<td><%=seat%></td>
-				<td><%=running_time%></td>
-				<td><%=person_num %></td>
-				<td><%=price%>원</td>
-			</tr>
-		</table>
-
-	
-				<h3>결제 방법</h3>
-				
-				<div id="kpay">
-	
-					<label>
-						<input type="radio" value="Kakaopay" name="payment" checked>
-						&nbsp;
+		<div class="ticketheader">
+			<h1>주문/결제</h1>
+		</div>
+		<fieldset class="loginField">
+		
+		<form method="post" name="fr" class="seatForm">
+		
+		<table class="seatTable2">
+		<tr>
+			<td>
+				<table class="innerTable">
+				<tr>
+					<th colspan="2"><span>영화</span></th>
+				</tr>
+				<tr>
+					<td class="tdSpan" rowspan="4"><img src="./upload/<%=mdto.getPoster() %>" ></td>
+					<td ><input type="text" class="SeatTitle" name="movie_title" value="<%=mdto.getTitle() %>" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td><%=mdto.getGenre() %></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="movie_num" value="<%=mdto.getMovie_num() %>"></td>
+				</tr>
+				<tr>
+					<td><%=mdto.getGrade() %>세 이상</td>
+				</tr>
+				</table>
+			</td>
+			<td class="tdLine">
+				<table class="innerTable2">
+					<tr>
+						<th colspan="2"><span>예매정보</span></th>
+					</tr>
+					<tr>
+						<td>상영일</td>
+						<td><input type="text" name="running_date" class="totalPrice1" value="<%=running_date %>(<%=week %>)" readonly></td>
+					</tr>
+					<tr>
+						<td>상영시간</td>
+						<td><input type="text" name="running_time" class="totalPrice1" value="<%=running_time %>" readonly></td>
+					</tr>
+					<tr>
+						<td>상영관</td>
+						<td>
+							<input type="text" name="room_num" class="totalPrice1" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
+							<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>"  readonly>
+							<input type="hidden" name="roomNum" value="<%=roomNum %>"  readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>좌석</td>
+						<td><input type="text" name="seat" class="totalPrice1" value=<%=seat %> readonly></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table class="innerTable3">
+					<tr>
+						<th colspan="2"><span>총 결제 금액</span></th>
+					</tr>
+					<tr>
+						<td>영화예매</td>
+						<td><input type="text" class="totalPrice1"  name="price" value="<%=price %>원"> </td>
+					</tr>
+					<tr>
+						<td>관람인원</td><td><input type="text" class="totalPrice1"  name="person_num" value=<%=person_num %>></td>
+					</tr>
+					<tr>
+						<td></td><td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="text" class="totalPrice2" name="price"value=<%=price %>> 원</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<hr>		
+	<div id="kpay">
+	<h3>결제 방법</h3>
+		<ul>
+			<li>
+				<label>
+					<input type="radio" value="Kakaopay" name="payment" checked>
+								&nbsp;
 						<img alt="카카오페이" src="./img/payment.png">
-					</label>
-				</div>
-					
-				
-				<input type="button" value="결제하기" id="goPay">
-				&nbsp;&nbsp;
-				<input type="button" value="이전 단계" id="before">
-				</form>
-		</fieldset>
+				</label>
+			</li>
+			<li>
+				<input type="button" class="payButton" value="결제하기" id="goPay">
+				<input type="button" class="prevButton" value="이전 단계" id="before">
+			</li>
+		</ul>
+	</div>
+	</form>
+</fieldset>
 		
 		<!-- 뒤로 가기 버튼 기능 추가 -->
 		<script type="text/javascript">

@@ -223,9 +223,30 @@
 			}else if(selSeat.hasClass('on')){//지정한 좌석 한번 더 눌렀을때
 				//선택한 버튼의 그룹번호
 				//on 클래스를 제거
-				$('.seatTable').find('.'+group).removeClass('on');
+				allSeat.eq(index).removeClass('on');
+				var i=1
+				var addSeat=1;
+				while(true){//자신의 왼쪽에 선택된 좌석이 있으면
+					if(allSeat.eq(index-i).hasClass('on')&&index-i>=0){
+						allSeat.eq(index-i).removeClass('on');
+					}else{
+						break;
+					}
+					i++;
+					addSeat++;
+				}
+				i=1;
+				while(true){//자신의 왼쪽에 선택된 좌석이 있으면
+					if(allSeat.eq(index+i).hasClass('on')){
+						allSeat.eq(index+i).removeClass('on');
+					}else{
+						break;
+					}
+					i++;
+					addSeat++;
+				}
 				
-				pNum=pNum+allGrp;
+				pNum=pNum+Number(addSeat);
 			}
 		}
 		/*----------- 마우스 클릭시 선택 -----------  */
@@ -298,7 +319,7 @@
 		function selectSeatFn(){
 			//전체 좌석개수
 			seatlen=$('.seatTable').find('.seat').length-1;
-			//전체 그룹 개수 계산
+			//전체 그룹 개수 계산(잘못됨)
 			grSize=$('.seatTable').find('.seat').eq(seatlen).attr('group'); //ex)grNum15
 			//전체 그룹 개수
 			grSize=grSize.substr(5);
@@ -400,46 +421,37 @@
 			//가격
 			$('input[name=payment]').val(price);
 			$('input[name=price]').val(price.toString().replace(regexp,','));
-			grReset();
+			//grReset();
 		}
 		
 		/*----------- 라디오버튼 좌석 붙임 설정-----------  */
 		
 		/*----------- 좌석 선택시 그룹 재설정-----------  */
-		function grReset(){
+		/* function grReset(){
 			var group=0;
 			grSize=1;//전체 그룹 개수 초기화
 			var cnt=0;
 			$('.seatTable').find('input[type=button]').each(function(){			
 				var line=$(this).attr('seat-line');
 				if(cnt>1) line= $(this).prev().attr('seat-line');
-
-				/* console("이전 라인 : " + line/*  + "현재 라인 : "+$(this).attr('seat-line')); */
+				//console("이전 라인 : " + line/*  + "현재 라인 : "+$(this).attr('seat-line'));
 				var grClass = $(this).attr('group');//그룹번호
-				//var innergroup =$(this).data('group');
-				var innergroup =curGroup; //이전 저장된 그룹수
 				$(this).removeClass(grClass);//현재 좌석 그룹번호 지움
-				/* $(this).attr */
+
 				//현재 좌석이 사용불가나 예약,선택 되어있으면
 				if($(this).hasClass('on') ||$(this).hasClass('disabled') 
-						|| $(this).hasClass('reserve')||innergroup!=group){
-					if(innergroup!=group){
-						group=innergroup;
-						grSize++;
-					}else if($(this).hasClass('disabled')){ //선택불가 왼쪽좌석이 선택가능할때
+						|| $(this).hasClass('reserve')){
+					if($(this).hasClass('disabled')){ //선택불가 왼쪽좌석이 선택가능할때
 						if(!$(this).prev().hasClass('disabled')){
-							group=innergroup;
 							grSize++;
 						}
 					}else if($(this).hasClass('reserve')){//예약좌석 왼쪽좌석이 예약안됐을때
 						if(!$(this).prev().hasClass('reserve')){
-							group=innergroup;
 							grSize++;
 						}
 					}else if($(this).hasClass('on')){
 						if(!$(this).prev().hasClass('on')
 								&&$(this).prev().length>0){
-							group=innergroup;
 							grSize++;
 						}
 					}
@@ -447,21 +459,18 @@
 				
 				//현재 좌석이 선택된 좌석이 아니고 이전 좌선이 선택됐을때
 				if(!$(this).hasClass('on')&&$(this).prev().hasClass('on')){
-					group=innergroup;
 					grSize++;
 				}else if(!$(this).hasClass('disabled')//현재 좌석이 사용가능하고 이전좌석도 사용가능
 						&&$(this).prev().hasClass('disabled')){
-					group=innergroup;
 					grSize++;
 				}else if(line!=$(this).attr('seat-line')){
-					group=innergroup;
 					grSize++;
 				}
 				
 				$(this).addClass('grNum'+grSize).attr('group','grNum'+grSize);
 				cnt++;
 			});
-		}
+		} */
 		/*----------- 좌석 선택시 그룹 재설정-----------  */
 	});
 	
@@ -510,7 +519,10 @@
 %>
 <%@ include file="../../include/header.jsp" %>
 <div class="bgColor">
-<h1>인원/좌석선택</h1>
+		<div class="ticketheader">
+			<h1>인원/좌석선택</h1>
+		</div>
+
 <fieldset class="loginField">
 	<div>
 	<!-- form action -->
@@ -889,7 +901,6 @@
 	<hr>
 	
 	<!-- 예약 정보 -->
-	<!-- 테이블 형식은 후에 css중 변경 가능 -->
 	<table class="seatTable2">
 		<tr>
 			<td>
@@ -919,16 +930,16 @@
 					</tr>
 					<tr>
 						<td>상영일</td>
-						<td><input type="text" name="running_date" value="<%=running_date %>(<%=week %>)" readonly></td>
+						<td><input type="text" name="running_date" class="totalPrice1" value="<%=running_date %>(<%=week %>)" readonly></td>
 					</tr>
 					<tr>
 						<td>상영시간</td>
-						<td><input type="text" name="running_time" value="<%=running_time %>" readonly></td>
+						<td><input type="text" name="running_time" class="totalPrice1" value="<%=running_time %>" readonly></td>
 					</tr>
 					<tr>
 						<td>상영관</td>
 						<td>
-							<input type="text" name="room_num" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
+							<input type="text" name="room_num"  class="totalPrice1" value="<%=cdto.getName()%> <%=roomNum %>관" readonly>
 							<input type="hidden" name="cinema_num" value="<%=cdto.getCinema_num() %>"  readonly>
 							<input type="hidden" name="roomNum" value="<%=roomNum %>"  readonly>
 						</td>
@@ -946,7 +957,7 @@
 					</tr>
 					<tr>
 						<td>영화예매</td>
-						<td><input type="text" class="totalPrice1"  name="price"> 원</td>
+						<td><input type="text" class="totalPrice1"  name="price">원</td>
 					</tr>
 					<tr>
 						<td></td><td></td>

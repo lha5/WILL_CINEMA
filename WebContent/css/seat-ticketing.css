@@ -9,9 +9,37 @@
 	background-color:#fffff2;
 }
 
-.bgColor h1{
-	margin: 30px 0px 50px 150px;
+.bgColor .ticketheader{
 	padding-top: 50px;
+	width: 1200px;
+	margin: 0px auto 50px;
+	text-align: left;
+}
+
+.loginField .seatForm #kpay{
+	padding: 20px;
+	margin: 0px auto 20px;
+	text-align: center;
+}
+
+#kpay h3{
+	margin: 20px;
+}
+
+#kpay li{
+	margin: 50px;
+}
+
+#kpay {
+	
+}
+
+#kpay .payButton{
+	float: none;
+}
+
+#kpay .prevButton{
+	float: none;
 }
 
 .selectPeopleNum{
@@ -254,6 +282,10 @@
 	margin-right:100px;
 }
 
-.loginFeild .seatform{
+ .loginField .kpay label{
+	margin:20px;
+}
 
+.loginField .kpay{
+	margin:20px auto;
 }
