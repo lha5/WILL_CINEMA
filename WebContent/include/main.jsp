@@ -29,10 +29,10 @@
 <!-- 랜덤 광고 이미지 -->
 <script language = "javascript">
 	var imgArray = new Array();
-	imgArray[0] = "./upload/AngelHasFallen.jpg";
-	imgArray[1] = "./upload/DoctorSleep.jpg";
-	imgArray[2] = "./upload/Unalterable.jpg"
-	imgArray[3] = "./upload/WeatheringWithYou.jpg";
+	imgArray[0] = "./upload/AngelHasFallen_AD.jpg";
+	imgArray[1] = "./upload/DoctorSleep_AD.jpg";
+	imgArray[2] = "./upload/Unalterable_AD.jpg"
+	imgArray[3] = "./upload/WeatheringWithYou_AD.jpg";
 	
 	function showImage(){
 		var imgNum = Math.round(Math.random()*3);
