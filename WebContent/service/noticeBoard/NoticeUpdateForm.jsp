@@ -22,8 +22,8 @@
 
 	
 	<%@ include file="../../include/header.jsp" %>
-	<div id="wrap">
-	<div id="updatewrap">
+	
+	
 	<%
 	AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
 	String pageNum = (String) request.getAttribute("pageNum");
@@ -31,7 +31,7 @@
 	String image = andto.getImage();
 	%>
 
-	<fieldset id="">
+		<div id="notiWrap">
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -97,16 +97,16 @@
 			   		
 			   		
 			   		<td>
-			   			<input type="submit" value="공지사항 수정하기">
+			   			<input type="submit" value="수정하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	
 		
 		</form>
-	</fieldset>
+	
 	
 		</div>
-		</div>
+		
 	<%@ include file="../../include/footer.jsp" %>
 	
 

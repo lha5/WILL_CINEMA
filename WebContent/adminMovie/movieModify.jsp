@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Insert title here</title>
+<title>WILL CINEMA - 영화 수정페이지</title>
 
 <link rel="stylesheet" href="././css/modify.css">
 
@@ -17,6 +17,8 @@
 
 <%@ include file="../include/header.jsp" %>
 <h1>영화 수정 페이지</h1>
+<div id="movieupdate">
+
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
@@ -27,10 +29,10 @@
 
 
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
-			<legend>영화 수정</legend>
+			
 
-	<fieldset>
-			<legend>영화 추가</legend>
+	
+			
 				<table>
 					<tr>
 						<td>영화 제목</td>
@@ -130,10 +132,10 @@
 					</tr>
 				</table>
 	
-		</fieldset>
+		
 		
 	</form>
-	
+	</div>
 	
 	
 	
