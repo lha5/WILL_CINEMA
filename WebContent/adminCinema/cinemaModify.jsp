@@ -9,6 +9,22 @@
 <title>WILL CINEMA - (관리자 전용 - 영화관 수정)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+	<style type="text/css">
+		table, table td{
+				border: none;
+				text-align: center;
+				
+				padding: 5px auto;
+				margin: 10px auto 70px;
+			}
+		table tr{
+			height: 50px;
+		}
+		input[type=button],input[type=submit] {
+	 		background-color: silver;
+	 		color: #552;
+		}	
+	</style>
 
 </head>
 <body>
