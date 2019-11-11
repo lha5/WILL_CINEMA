@@ -74,7 +74,7 @@
 					    	height: 300,
 					        minHeight: 100,
 					        maxHeight: 500
-					      });
+					      	});
 						</script>
 			   		</td>
 				</tr>
