@@ -53,6 +53,10 @@ border-radius: .25em;
 appearance: none; 
 }
 
-
+#movieupdate{
+	width: 900px;
+	margin: 50px auto;
+	
+}
 
 
