@@ -56,7 +56,7 @@ td {
 	text-align: center;
 }
 
-td:NTH-CHILD(1), td:NTH-CHILD(2), td:NTH-CHILD(4), td:NTH-CHILD(5), td:NTH-CHILD(6) {
+td:NTH-CHILD(1), td:NTH-CHILD(2),td:NTH-CHILD(3), td:NTH-CHILD(4), td:NTH-CHILD(5), td:NTH-CHILD(6) {
 	text-align: center;
 }
 
@@ -76,7 +76,7 @@ input[type=text] {
 }
 
 
-input[type=submit], input[type=button]{
+input[type=submit], input[type=button] {
 	outline-style: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -95,6 +95,22 @@ input[type=submit], input[type=button]{
 input[type=button]:HOVER, input[type=submit]:HOVER{
 	background-color: #ffffff;
 	color: #1c1c1c;
+}
+
+.modifing:HOVER{
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 90px;
+	height: 36px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 15px;
+	color: #ffffff;
+	
+	position: relative;
 }
 
 #bttns {
@@ -174,9 +190,9 @@ input[type=button]:HOVER, input[type=submit]:HOVER{
 		 	<td><%=cdto.getAddr() %></td>
 		 	<td><%=cdto.getTel() %></td>
 		 	<td>
-		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">
+		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>" class="modifing">
 		 		관 추가,수정</a>
-		 		/ <br><a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>">지점,관 삭제</a>
+		 		/ <br><a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>" class="modifing">지점,관 삭제</a>
 		 	</td>
 		 	
 		 </tr>	
