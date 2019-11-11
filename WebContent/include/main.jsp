@@ -29,10 +29,10 @@
 <!-- 랜덤 광고 이미지 -->
 <script language = "javascript">
 	var imgArray = new Array();
-	imgArray[0] = "./upload/AngelHasFallen_AD.jpg";
-	imgArray[1] = "./upload/DoctorSleep_AD.jpg";
-	imgArray[2] = "./upload/Unalterable_AD.jpg"
-	imgArray[3] = "./upload/WeatheringWithYou_AD.jpg";
+	imgArray[0] = ".img/banner/ChildOfWeather_main.jpg";
+	imgArray[1] = ".img/banner/HansuOfGod_main.jpg";
+	imgArray[2] = ".img/banner/THEBADGUYS_main.jpg"
+	imgArray[3] = ".img/banner/AngelHasFalen_main.jpg";
 	
 	function showImage(){
 		var imgNum = Math.round(Math.random()*3);
@@ -224,16 +224,19 @@ $(document).ready(function() {
     </div>
 				</article>
 				<article id="image">
-					
 	<div class="contents">
 		<div class="banner">
 			<ul>
-				  <%
-     	for (int i=0;i<7;i++) {
+				<li><a href="./DetailView.mo?movie_num=17"><img src ="./img/banner/ChildOfWeather_main.jpg"></a></li>
+				<li><a href="./DetailView.mo?movie_num=11"><img src ="./img/banner/HansuOfGod_main.jpg"></a></li>
+				<li><a href=".DetailView.mo?movie_num=6"><img src ="./img/banner/THEBADGUYS_main.jpg"></a></li>
+				<li><a href="./DetailView.mo?movie_num=14"><img src ="./img/banner/AngelHasFallen_main.png"></a></li>
+			<%-- 	  <%
+     	for (int i=0;i<4;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		<li><img src ="./upload/<%=mdto.getPoster() %>"></li>
-					<%} %>
+					<%} %> --%>
 					</ul>
 		</div>
 	</div>
