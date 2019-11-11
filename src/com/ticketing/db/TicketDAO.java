@@ -9,6 +9,8 @@ public interface TicketDAO {
 	//전체 영화관 정보
 	public List<CineDTO> getCinemaList();
 	
+	public List<CineDTO> getCinemaList(int region_num);
+	
 	public CineDTO getSelectList(String cinema);
 	
 	public CineDTO getSelectList(int cinema_num);

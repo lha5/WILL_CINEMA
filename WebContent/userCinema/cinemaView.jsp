@@ -451,11 +451,13 @@ nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 
 	<%
 	CineDTO cdto = (CineDTO)request.getAttribute("cineList");
+	List<CineDTO> cineList3=(List)request.getAttribute("cineList3");
 	int count = (Integer) request.getAttribute("count");
 	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	
 	/* List allRegion = (List)request.getAttribute("allRegion");//모든지역  */
 	System.out.println(cdto.getName());
+	System.out.println("영화 :"+cineList3.get(0).getName());
 	%>
 	
 	
@@ -481,8 +483,15 @@ nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 	
 	
 	<div class="contents">
-		
-		
+		<div class="cinemaList">
+			<ul class="cine_list">
+				<%for(int i=0; i<cineList3.size(); i++){ 
+					CineDTO cdto2=cineList3.get(i);
+				%>
+				<li><a href="./CinemaUserView.ci?cinema_num=<%=cdto2.getCinema_num() %>"><%=cdto2.getName() %></a></li>
+				<%} %>
+			</ul>
+		</div>
 		<div id="cinemaname">
 		
 		<table id="info">

@@ -31,13 +31,14 @@ public class CinemaUserViewAction implements Action {
 		
 		System.out.println("CinemaUserViewAction 나와용나와용 ");
 		int cinema_num=Integer.parseInt(request.getParameter("cinema_num"));
+		int region_num=cinema_num/1000;
 	 
 		 // 시네마 정보 가지고 오기 
 		CineDAO cdao = new CineDAOImpl();
 		CineDTO cineList = cdao.getCinema(cinema_num);
 		
 		//리스트저장
-		System.out.println("지금 확인중"+ cinema_num);
+		//System.out.println("지금 확인중"+ cinema_num);
 	
 		/////////////// 시네마 정보 
 		
@@ -64,6 +65,9 @@ public class CinemaUserViewAction implements Action {
 		//영화관DB 정보 다 가져오기
 		TicketDAO tdao=new TicketDAOImpl();
 		List<CineDTO> cineList2 = tdao.getCinemaList();
+		
+		//해당 지역 영화관 리스트 
+		List<CineDTO> cineList3 = tdao.getCinemaList(region_num);
 		
 		/*-----영화관 각 상영관의 모든 영화 상영 날짜 리스트----------*/
 		HashSet<String> allDate= new HashSet<>();
@@ -108,6 +112,7 @@ public class CinemaUserViewAction implements Action {
 		
 		// 정보 저장 
 		request.setAttribute("cineList", cineList);
+		request.setAttribute("cineList3", cineList3);
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
 		
