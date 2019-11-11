@@ -139,7 +139,7 @@ hr {
 								<li><span class="tag">관람평점</span> <%=avg%></li>
 								<li><span class="tag">등급</span> <%=grade%></li>
 								<li><span class="tag">개봉일</span> <%=mdto.getOpen_date() %></li>
-								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %></li>
+								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %> | <%=mdto.getCountry() %></li>
 								<li><span class="tag">타입</span> 2D | 3D | 4D</li>
 							</ul>
 						</td>
