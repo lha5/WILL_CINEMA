@@ -88,7 +88,20 @@ input[type=submit] {
 	margin: 50px auto;
 	text-align: center;
 }
+
+.moviespace{
+	height:100px;
+	margin-bottom: 100px;
+}
+
 </style>
+
+<script type="text/javascript" src="./js/js-load.js"></script>
+<script src="./js/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
 
 </head>
 <body>
@@ -114,7 +127,6 @@ input[type=submit] {
 		    <input type="text" name="searchText">
 		    <input type="submit" value="검색">		
 		</form>
-		
 		<ul>
 			<%
 			for (int i = 0; i < boardList.size(); i++) {
@@ -133,7 +145,7 @@ input[type=submit] {
 			}
 			%>
 		</ul>
-		
+		<div class="moviespace"></div>
 		<div class="writeData">
 			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
 		</div>
@@ -150,7 +162,7 @@ input[type=submit] {
 		}
 		%>
 	</div>
-	
+	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
 	<div id="clear"></div>
 	   	
 	<%@ include file="../include/footer.jsp" %>
