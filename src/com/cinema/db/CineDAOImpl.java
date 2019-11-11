@@ -58,16 +58,17 @@ public class CineDAOImpl implements CineDAO{
 		try {
 			con = getCon();
 			
-			sql = "SELECT MAX(cinema_num) FROM cinema";
+			sql = "SELECT MAX(cinema_num) FROM cinema where region = ?";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cdto.getRegion());
 			
-			rs = pstmt.executeQuery();
-			
+			rs = pstmt.executeQuery();	
+
 			if (rs.next()) {
 				cinema_num = rs.getInt(1) + 1;
 			} else {
-				cinema_num = 1;
+				cinema_num = (cdto.getRegion_num()*1000)+1;
 			}
 			
 			sql = "INSERT INTO cinema"
