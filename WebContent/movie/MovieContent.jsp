@@ -122,7 +122,7 @@ hr {
 			break;
 	}
 	
-	int avg = (int) request.getAttribute("avg");
+	int avg = (int) request.getAttribute("avgRating");
 	%>
 		<div id="Wrap">
 		
@@ -136,7 +136,7 @@ hr {
 							<h1><%=mdto.getTitle()%></h1>
 							<ul>
 								<li><span class="tag">예매율</span> <%=mdto.getBooking_ration() %> %</li>
-								<li><span class="tag">관람평점</span> <%=avg%></li>
+								<li><span class="tag">관람평점</span> <%=avg%>/5</li>
 								<li><span class="tag">등급</span> <%=grade%></li>
 								<li><span class="tag">개봉일</span> <%=mdto.getOpen_date() %></li>
 								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %> | <%=mdto.getCountry() %></li>

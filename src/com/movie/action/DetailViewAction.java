@@ -61,7 +61,7 @@ public class DetailViewAction implements Action{
 			request.setAttribute("mdto", amdto);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("boardList", boardList);
-			request.setAttribute("avg", avgRating);
+			request.setAttribute("avgRating", avgRating);
 			
 			// 페이지 이동
 			ActionForward forward = new ActionForward();
