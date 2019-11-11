@@ -30,8 +30,9 @@
 	
 	String image = andto.getImage();
 	%>
-
+	
 		<div id="notiWrap">
+		<h1>영화 수정 </h1>
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -41,7 +42,7 @@
 			   			<input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
 			   		</td>
 			   		<td>
-			   		비밀번호 :<input type="password" name="pass"> 
+			   		비밀번호 <input type="password" name="pass"> 
 			   		</td>
 			   		<td>카테고리</td>
 			   		<td>
