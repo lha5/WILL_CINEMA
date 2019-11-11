@@ -21,6 +21,7 @@
 	<%
 	String id = (String) session.getAttribute("id");
 	String NonMember = (String) session.getAttribute("NonMember");
+	System.out.println(" id : "+id+" NonMember : "+NonMember);
 	if(NonMember==null){
 		NonMember = "없음";
 	}
@@ -56,7 +57,7 @@
 					<ul id="dropdown">
 						<li><a href="./FAQUserList.af">FAQ</a></li>
 						<li>
-						<%if(!NonMember.equals("비회원")){ %>
+						<%if(NonMember.equals("비회원")){ %>
 							<a>1:1 문의</a>
 						<%}else{ %>
 							<a href="./QnAUserList.sq">1:1 문의</a>
