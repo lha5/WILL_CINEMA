@@ -18,7 +18,6 @@ nav>ul>li:NTH-CHILD(2)>ul {
 #contents {
 	/* border: 1px solid red; */
 	width: 1000px;
-	height: 1900px;
 	margin: 50px auto;
 }
 
@@ -86,7 +85,7 @@ input[type=submit] {
 	/* border: 1px solid yellow; */
 	width: 300px;
 	clear: both;
-	margin: 30px auto;
+	margin: 50px auto;
 	text-align: center;
 }
 </style>
@@ -95,14 +94,12 @@ input[type=submit] {
 <body>
 		<%@ include file="../include/header.jsp" %>	
 		<%
-			// String id = (String)session.getAttribute("id");
+		int count = (Integer) request.getAttribute("count"); 
+		List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 			
-			int count = (Integer) request.getAttribute("count"); 
-			List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
+		String pageNum = (String) request.getAttribute("pageNum");
 			
-			String pageNum = (String) request.getAttribute("pageNum");
-			
-			System.out.println("이동성공");
+		System.out.println("이동성공");
 		%>
 	
 	<div id="contents">
