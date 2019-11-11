@@ -83,7 +83,9 @@
 					</select>
 				</td>
 				<td>지점명</td>
-				<td><input type="text" name="name" value="<%=cdto.getName()%>"><input type="hidden" name="room_countnum" value=<%=room %>></td>
+				<td><input type="text" name="name" value="<%=cdto.getName()%>">
+					<input type="hidden" name="room_countnum" value=<%=room %>>
+				</td>
 			</tr>
 			<tr>
 				<td>주소</td> <!-- 다음 API ? -->
@@ -203,15 +205,15 @@
 		'</td>'+
 		'<td>좌석 수(행,열)</td>'+
 		'<td>'+
-		'<select name="seat_line"'+i+'>'+
-		'<option value="">좌석 행을 입력하시오</option>'+
+		'<select name="seat_line'+i+'">'+
+		'<option value="">좌석 행</option>'+
 		'<option value="12">12</option>'+
 		'<option value="14">14</option>'+
 		'<option value="16">16</option>'+
 		'</select>'+
 		','+
-		'<select name="seat_row"'+i+'>'+
-		'<option value="">좌석 열을 입력하시오</option>'+
+		'<select name="seat_row'+i+'">'+
+		'<option value="">좌석 열</option>'+
 		'<option value="18">18</option>'+
 		'<option value="20">20</option>'+
 		'<option value="22">22</option>'+

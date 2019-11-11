@@ -75,6 +75,9 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+	
+
 </script>
 
 </head>
@@ -83,7 +86,7 @@ function sample6_execDaumPostcode() {
 <%@ include file="../include/header.jsp" %>
 	<div>
 	<form action="./CinemaAddAction.ci" method="post" 
-		name="cinemaAddfr" onsubmit="return cinemaAddsCheck()">
+		name="cinemaAddfr" onsubmit="return cienma_add_Check()">
 		<table>
 			
 			<tr>
@@ -114,7 +117,8 @@ function sample6_execDaumPostcode() {
 			<tr>
 				<td>상영관 수</td>
 				<td><input type="text" name="room"></td>
-				<td colspan="2"><input type="button" name="add_room" value="관 추가"></td>
+				<td colspan="2"><input type="button" name="add_room" value="관 추가">
+				</td>
 			</tr>
 			<!-- ajax -->
 			
@@ -125,14 +129,14 @@ function sample6_execDaumPostcode() {
 				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
 				
 				<td>
-				<select name="seat_line1">
+				<select name="seat_line1" class="seat_line">
 				<option value="">좌석 행</option>
 				<option value="12">12</option>
 				<option value="14">14</option>
 				<option value="16">16</option>
 				</select>
 				,
-				<select name="seat_row1">
+				<select name="seat_row1" class="seat_row">
 				<option value="">좌석 열</option>
 				<option value="18">18</option>
 				<option value="20">20</option>
@@ -191,14 +195,14 @@ function sample6_execDaumPostcode() {
 		'</td>'+
 		'<td>좌석 수(행,열)</td>'+
 		'<td>'+
-		'<select name="seat_line"'+i+'>'+
+		'<select name="seat_line'+i+'">'+
 		'<option value="">좌석 행</option>'+
 		'<option value="12">12</option>'+
 		'<option value="14">14</option>'+
 		'<option value="16">16</option>'+
 		'</select>'+
 		','+
-		'<select name="seat_row"'+i+'>'+
+		'<select name="seat_row'+i+'">'+
 		'<option value="">좌석 열</option>'+
 		'<option value="18">18</option>'+
 		'<option value="20">20</option>'+
@@ -226,7 +230,7 @@ function sample6_execDaumPostcode() {
          
         trHtml.after(addRoomText); //마지막 room_addbody명 뒤에 붙인다.
         
-        
+        $('input[name=added_room]').val(i);
         
     });
      
@@ -249,6 +253,28 @@ function sample6_execDaumPostcode() {
     
     });
     
+    function cienma_add_Check(){
+		if(document.cinemaAddfr.name.value==""){
+			alert("지점명을 입력해 주십시오.");
+			document.cinemaAddfr.name.focus();
+			return false;
+		}if(document.cinemaAddfr.value==""){
+			alert("주소를 입력하십시오.");
+			document.cinemaAddfr.addr.focus();
+			return false;
+		}
+		if(document.cinemaAddfr.add_room.value == ""){
+			alert("관 수를 입력하십시오.");
+			document.cinemaAddfr.add_room.focus();
+			return false;
+		}
+		if(document.cinemaAddfr.add_room.value <= i){
+			alert("입력한 관 수가 다릅니다.");
+			document.cinemaAddfr.add_room.focus();
+			return false;
+		}
+		
+	}
 
 </script>	
 
