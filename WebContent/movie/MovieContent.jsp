@@ -69,7 +69,6 @@ nav>ul>li:NTH-CHILD(2)>ul {
 #synopsis, #director {
 	/* border: 1px solid blue; */
 	width: 100%;
-	height: 250px;
 	padding: 15px;
 }
 
