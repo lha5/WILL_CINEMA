@@ -40,6 +40,21 @@
 .ri-star-fill {
 	color: #d7282d;
 }
+
+input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 70px;
+	height: 40px;
+	border: 1px solid #1c1c1c;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 14px;
+	color: #1c1c1c;
+	letter-spacing: 2px;
+}
 </style>
 
 </head>
@@ -96,21 +111,21 @@
 			<td>
 				<%=mrdto.getContent() %>
 			</td>
-		</tr>
 	     	<%
 	     	if (id != null) {
 	     		if(id.equals(mrdto.getId())){ %>
 			<td>
-	     			<div class="rightloat">
+	     		<div class="rightloat">
 			     	<input type="button" id="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
 					<input type="button" id="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-		     		</div>
+		     	</div>
 	     	</td>
 			<%
 				}
 			}
 	     } 
 		%>
+		</tr>
 	</table>
 	
 	</div>	
