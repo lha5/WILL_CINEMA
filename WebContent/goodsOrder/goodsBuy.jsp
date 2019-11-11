@@ -66,7 +66,7 @@
 	line-height: 2.3em;
 	text-align: center;
 	padding-top: 30px;
-	border: 1px solid #e6e6e6;
+	border: 1px none;
 }
 
 #goPay {
@@ -169,7 +169,7 @@
 					<li>
 						사용할 포인트
 						<br>
-						<input type="number" name="usingPnt" min="0" max="<%=total%>" step="100">
+						<input type="number" name="usingPnt" min="0" max="<%if (total>memdto.getPoint()) {%><%=memdto.getPoint()%><%} else {%><%=total%><%}%>" step="100">
 					</li>
 				</ul>
 			</div>
