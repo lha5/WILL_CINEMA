@@ -40,7 +40,7 @@
  	
 		<%@ include file="../include/header.jsp" %>
 		<div class="ticketheader">
-			<h1>주문/결제</h1>
+			<h1>결제</h1>
 		</div>
 		<fieldset class="loginField">
 		
@@ -124,8 +124,7 @@
 		<ul>
 			<li>
 				<label>
-					<input type="radio" value="Kakaopay" name="payment" checked>
-								&nbsp;
+					<input type="hidden" value="Kakaopay" name="payment">
 						<img alt="카카오페이" src="./img/payment.png">
 				</label>
 			</li>
