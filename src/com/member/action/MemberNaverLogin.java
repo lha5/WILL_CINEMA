@@ -41,7 +41,7 @@ public class MemberNaverLogin implements Action{
 		    String code = request.getParameter("code");
 		    String state = request.getParameter("state");
 		 	// 후에 서버에 올라갈시 URL 변경, 추가 필요
-		    String redirectURI = URLEncoder.encode("http://itwillbs12.cafe24.com/WillCinema/MemberNaverLogin.me", "UTF-8");
+		    String redirectURI = URLEncoder.encode("http://itwillbs12.cafe24.com/MemberNaverLogin.me", "UTF-8");
 		    String apiURL;
 		    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 		    apiURL += "client_id=" + clientId;
