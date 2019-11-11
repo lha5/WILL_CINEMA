@@ -19,7 +19,6 @@ nav>ul>li:NTH-CHILD(2)>ul {
 #container {
 	/* border: 1px solid lime; */
 	width: 900px;
-	height: 900px;
 	margin: 0 auto 50px auto;
 	padding: 15px;
 }
@@ -86,6 +85,12 @@ nav>ul>li:NTH-CHILD(2)>ul {
 hr {
 	border-color: #e6e6e6;
 }
+
+#bttns {
+	width: 100%;
+	margin: 10px auto;
+	text-align: center;
+}
 </style>
 <link rel="stylesheet" href="././css/review.css">
 </head>
@@ -114,7 +119,6 @@ hr {
 								<li><span class="tag">개봉일</span> <%=mdto.getOpen_date() %></li>
 								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %></li>
 								<li><span class="tag">타입</span> 2D | 3D | 4D</li>
-								<li><span class="tag">공식홈페이지</span> <a href="#">임시 링크 주소</a></li>
 							</ul>
 						</td>
 					</tr>
@@ -140,52 +144,21 @@ hr {
 		</div>
 		
 		
-		<%-- <table border="1" class="accordion">
-			<tr>
-				<td>예매순위</td>
-				<td><%=mdto.getBooking_ration() %></td>
-				<td>개봉일</td>
-				<td><%=mdto.getOpen_date() %></td>
-				<td>장르</td>
-				<td><%=mdto.getGenre() %></td>
-			</tr>
-			<tr>
-			</tr>
-			<tr>
-				<td colspan="6">
-					<%=mdto.getStory() %>
-				</td>	
-			</tr>
-			<tr>
-				<td>감독</td>
-				<td colspan="5"><%=mdto.getDirector() %>
-				</td>		
-			</tr>
-			
-			<tr>
-				<td>출연진</td>
-			<td colspan="5"><%=mdto.getActor() %>
-			</td>
-			</tr> --%>
-			<%
-			if (id != null) {
-				if (id.equals("admin")) {
-			%>
-			<tr>
-				<td colspan="6">
-				<div class="rightloat">
-					<input type="button" value="수정하기" id="button"   onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-					<input type="button" value="삭제하기" id="button"   onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
-				</div>
-				</td>
-			</tr>
-			<%
-				}
-			}
-			%>
-		</table>
 		
+		<%
+		if (id != null) {
+			if (id.equals("admin")) {
+		%>
+		<div id="bttns">
+			<input type="button" value="수정하기" id="button"   onclick="location.href='./MovieModify.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
+			<input type="button" value="삭제하기" id="button"   onclick="location.href='./MovieDelete.am?movie_num=<%=mdto.getMovie_num() %>&pageNum=<%=pageNum%>'">
 		</div>
+		<%
+			}
+		}
+		%>
+		</div>
+		
 		
 		<hr>
 		

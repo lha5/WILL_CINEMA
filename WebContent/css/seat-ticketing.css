@@ -6,7 +6,7 @@
 }
 /* -------- 전체에 적용할 속성들 --------*/
 .bgColor{
-	background-color:#fffff2;
+	background-color: #ffffff;
 }
 
 .bgColor .ticketheader{
@@ -163,7 +163,7 @@
 .seatTable2 input{
 	border: none;
 	width: 250px;
-	background-color:#fffff2;
+	background-color: #ffffff;
 }
 
 .seatTable2 input:focus { outline:none; }

@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <title>WILL CINEMA</title>
 
 <!-- CSS -->
@@ -56,11 +55,7 @@
 					<ul id="dropdown">
 						<li><a href="./FAQUserList.af">FAQ</a></li>
 						<li>
-						<%if(!NonMember.equals("비회원")){ %>
-							<a>1:1 문의</a>
-						<%}else{ %>
 							<a href="./QnAUserList.sq">1:1 문의</a>
-						<%} %>
 						</li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
