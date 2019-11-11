@@ -89,19 +89,67 @@ input[type=submit] {
 	text-align: center;
 }
 
-.moviespace{
-	height:100px;
-	margin-bottom: 100px;
+.js-load {
+    display: none;
+}
+.js-load.active {
+    display: block;
+}
+.is_comp.js-load:after {
+    display: none;
+}
+.btn-wrap, .lists, .main {
+    display: block;
+}
+
+.btn-wrap {
+    text-align: center;
+}
+
+.btn-wrap a{
+	display:inline-block;
+	width: 100%;
+	height: 50px;
+	font-size:18px;
+	font-weight:bold;
+	text-align: center;
+	line-height: 50px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #5a5a5a;
+	color:#000;
+	background: #e0dfdf;
+	margin:20px auto;
+	border: 1px solid #dedede;
 }
 
 </style>
 
-<script type="text/javascript" src="./js/js-load.js"></script>
 <script src="./js/jquery-3.4.1.min.js"></script>
 
 <script type="text/javascript">
-
+	$(function(){
+		load('#js-load', '6');
+		$("#js-btn-wrap .button").on("click", function () {
+			load('#js-load', '6', '#js-btn-wrap');
+		});
+	});
+	function load(id, cnt, btn) {
+		var girls_list = id + " .js-load:not(.active)";
+		var girls_length = $(girls_list).length;
+		var girls_total_cnt;
+		if (cnt < girls_length) {
+			girls_total_cnt = cnt;
+		} else {
+			girls_total_cnt = girls_length;
+			$('.button').hide()
+		}
+		$(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+	}
 </script>
+
+
 
 </head>
 <body>
@@ -127,12 +175,13 @@ input[type=submit] {
 		    <input type="text" name="searchText">
 		    <input type="submit" value="검색">		
 		</form>
+		<div id="js-load">
 		<ul>
 			<%
 			for (int i = 0; i < boardList.size(); i++) {
 	     		AdminMovieDTO mdto = boardList.get(i);
 			%>
-				<li>
+				<li class="js-load">
 					<a href="./DetailView.mo?movie_num=<%=mdto.getMovie_num() %>">
 					<img src="./upload/<%=mdto.getPoster()%>" width="228px" height="334px">
 					<br><br>
@@ -145,7 +194,11 @@ input[type=submit] {
 			}
 			%>
 		</ul>
-		<div class="moviespace"></div>
+		<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+		</div>
+		
+		
+		
 		<div class="writeData">
 			<input type="button" value="목록으로" onclick="location.href='./MovieList.mo?pageNum=<%=pageNum%>'"/>
 		</div>
@@ -162,7 +215,6 @@ input[type=submit] {
 		}
 		%>
 	</div>
-	<div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
 	<div id="clear"></div>
 	   	
 	<%@ include file="../include/footer.jsp" %>

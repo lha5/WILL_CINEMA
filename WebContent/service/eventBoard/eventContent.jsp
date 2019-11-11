@@ -17,8 +17,8 @@
 span {
 	padding: 5px;
 	letter-spacing: 2px;
-	font-size: 1.3em;
-	font-weight: 500;
+	font-size: 1.7em;
+	font-weight: bold;
 }
 
 form {
@@ -58,16 +58,20 @@ input[type=submit] {
 
 div#goBack {
 	text-align: center;
-	background-color: #d7282d;
-	padding: 20px;
+	line-height: 52px;
 }
 
 #goBack>a {
+	display:inline-block;
+	border: none;
 	color: #ffffff;
 	font-size: 16px;
 	letter-spacing: 2px;
 	font-family: inherit;
 	font-weight: 500;
+	width: 100%;
+	background-color: #d7282d;
+	padding:3px 0px;;
 }
 </style>
 
