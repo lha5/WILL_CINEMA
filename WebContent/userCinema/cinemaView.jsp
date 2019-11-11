@@ -445,8 +445,11 @@ nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 	
 	function movieing(){ 	        	        
 	    var movieck = $('#moving').val();
-	        
-	    window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","left="+(screen.availWidth-1000)/2+",top="+(screen.availHeight-600)/2+", width=1000px,height=600px");}
+		w = 1000; //팝업창의 너비
+		h = 600; //팝업창의 높이
+		LeftPosition=(screen.width-w)/2;
+		TopPosition=(screen.height-h)/2;
+	    window.open("./userCinema/movingCheck.jsp?getimage="+movieck,"","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");}
 </script>
 
 </head>
