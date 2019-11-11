@@ -173,7 +173,6 @@ $(document).ready(function() {
      <ul>
       <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a> | 
       <a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></h5></li>
-     
      </ul>
      </div>
 

@@ -64,7 +64,10 @@ width: 320px;
 	box-sizing: border-box;
 	width: 360px;
 	height: 160px;
-	background-image: url("../img/main/boxoffice.jpg");
+	background-image: url("../img/main/h2_boxoffice.png");
+	background-color: #1c1c1c;
+	background-repeat: no-repeat;
+	background-position: 80px;
 }
 
 .entry>ul {
