@@ -127,7 +127,7 @@
 		if (id.equals("admin")) {
 	%>
 		
-		<input type="button" value="공지사항 작성하기" id="noticlick1" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
+		<input type="button" value="작성하기" id="noticlick1" onclick="location.href='./NoticeWrite.an?pageNum=<%=pageNum%>'">
 	<%
 	 }
 	}

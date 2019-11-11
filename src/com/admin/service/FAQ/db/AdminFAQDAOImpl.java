@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.admin.service.notice.db.AdminNoticeDTO;
 import com.movie.db.MovieDTO;
 
 //FAQ게시판 DB(관리자전용)
@@ -356,6 +355,56 @@ int count = 0;
 		
 		return FAQList;
 	}
+
+	@Override
+	public List<AdminFAQDTO> getSearch(String search, int startRow, int pageSize) {
+		// TODO Auto-generated method stub
+		
+List<AdminFAQDTO> FAQList = new ArrayList<AdminFAQDTO>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from faq where subject like ?";
+			pstmt = con.prepareStatement(sql);
+			
+			System.out.println(search);
+			
+			pstmt.setString(1, "%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				AdminFAQDTO andto = new AdminFAQDTO();
+				
+				
+				
+				
+				andto.setCategory(rs.getString("category"));
+				andto.setContent(rs.getString("content"));
+				andto.setImage(rs.getString("image"));
+				andto.setName(rs.getString("name"));
+				andto.setNum(rs.getInt("num"));
+				andto.setPass(rs.getString("pass"));
+				andto.setSubject(rs.getString("subject"));
+				FAQList.add(andto);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		
+		return FAQList;
+	}
+		
+		
+		
+		
+		
+		
 	
 	
 

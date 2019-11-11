@@ -8,15 +8,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Insert title here</title>
+<title>WILL CINEMA - 영화 수정</title>
 
+<!--CSS  -->
 <link rel="stylesheet" href="././css/modify.css">
+
+<!-- summernote 적용시키기 위한 준비 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<script src="./summernote/lang/summernote-ko-KR.js"></script>
+
+ 
+
 
 </head>
 <body>
 
 <%@ include file="../include/header.jsp" %>
-<h1>영화 수정 페이지</h1>
+<div id="movieupdate">
+<h1>영화 수정 </h1>
+
+
 <%                                                                                                                                 
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	System.out.println("movie_num : "+movie_num);
@@ -27,11 +40,11 @@
 
 
 <form action="./MovieModifyAction.am?movie_num=<%=movie_num %>" method="post" enctype="multipart/form-data">
-			<legend>영화 수정</legend>
+			
 
-	<fieldset>
-			<legend>영화 추가</legend>
-				<table>
+	
+			
+				
 					<tr>
 						<td>영화 제목</td>
 						<td>
@@ -70,7 +83,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td>상영 시간</td>
+						<br>
+						<td><br>상영 시간</td>
 						<td>
 							<input type="text" name="running_time" value="<%=mdto.getRunning_time()%>">
 						</td>
@@ -81,7 +95,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td>스토리</td>
+					<br><br>
+						<td><h3>스토리</h3></td>
 						<td colspan="3">
 							<textarea id="summernote" name="story"><%=mdto.getStory()%></textarea>
 							<script>
@@ -95,6 +110,7 @@
 						</td>
 					</tr>
 					<tr>
+					
 						<td>감독</td>
 						<td>
 							<input type="text" name="director" value="<%=mdto.getDirector()%>">
@@ -105,6 +121,7 @@
 						</td>
 					</tr>
 					<tr>
+					<br>
 						<td>포스터</td>
 						<td colspan="3" class="filebox">
 							<input class="upload-name" value="업로드" disabled="disabled">
@@ -114,6 +131,7 @@
 						</td>
 					</tr>
 					 <tr>
+					 <br>
 						<td>이미지</td>
 						<td colspan="3" class="filebox" class="upload-hidden"> 
 							<input class="upload-name" value="업로드" disabled="disabled">
@@ -124,16 +142,17 @@
 					</tr>
 									 
 					 <tr>
+						<br>
 						<td colspan="4">
 							<input type="submit" value="영화 수정" class="modify" >
 						</td>
 					</tr>
-				</table>
+				
 	
-		</fieldset>
+		
 		
 	</form>
-	
+	</div>
 	
 	
 	

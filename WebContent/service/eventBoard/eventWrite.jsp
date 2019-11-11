@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 관리자 이벤트 관리</title>
+<title>WILL CINEMA - 이벤트 작성(관리자)</title>
 <!-- jqueryui.com의 jquery파일(인터넷 사용 가능일때)-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="./css/eventWrite.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -106,12 +107,13 @@ $( function() {
 
 <%@ include file="../../include/header.jsp" %>
 
-<fieldset>
-<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
-		<table border="1">
+<fieldset class="eventFieldset">
+<form action="./EventWriteAction.ae" method="post" name="fr" class="eventform" onsubmit="return checkValue();" enctype="multipart/form-data">
+		<h1>Event 글 작성</h1>
+		<table>
 			<tr>
 				<td>카테고리</td> 
-				<td><select name="category">
+				<td><select name="category" class="eventSelect">
 						<option value="movie">영화</option>
 						<option value="preview">시사회/무대인사</option>
 						<option value="nevent">윌시NOW</option>

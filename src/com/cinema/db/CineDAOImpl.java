@@ -220,6 +220,69 @@ public class CineDAOImpl implements CineDAO{
 	}*/
 
 	
+	// 검색된 지점 목록 보여주기
+		@Override
+		public List<CineDTO> getCineList(int startRow, int pageSize, String category, String search) {
+			List<CineDTO> cineList = new ArrayList<CineDTO>();
+			try {
+				con = getCon();
+				
+				if(category.equals("region")){//검색 카테고리가 지역일 경우
+					sql = "SELECT * FROM cinema where region like ? order by region_num,cinema_num limit ?,?";
+				}else if(category.equals("name")){//검색 카테고리가 지점명일 경우
+					sql = "SELECT * FROM cinema where name like ? order by region_num,cinema_num limit ?,?";
+				}
+				
+				//sql = "SELECT * FROM cinema order by region_num,cinema_num limit ?,?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				if(category.equals("region")){//검색 카테고리가 지역일 경우
+					pstmt.setString(1,"%"+search+"%");
+					pstmt.setInt(2, startRow-1);
+					pstmt.setInt(3, pageSize);
+				}else if(category.equals("name")){//검색 카테고리가 지점명일 경우
+					pstmt.setString(1,"%"+search+"%");
+					pstmt.setInt(2, startRow-1);
+					pstmt.setInt(3, pageSize);
+				}
+				
+				
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					CineDTO cdto = new CineDTO();
+					
+					cdto.setCinema_num(rs.getInt("cinema_num"));
+					cdto.setRegion_num(rs.getInt("region_num"));
+					cdto.setRegion(rs.getString("region"));
+					cdto.setName(rs.getString("name"));
+					cdto.setRoom(rs.getString("room"));
+					cdto.setSeat(rs.getString("seat"));
+					cdto.setAddr(rs.getString("addr"));
+					cdto.setTel(rs.getString("tel"));
+					cdto.setStart_times(rs.getString("start_times"));
+					cdto.setEnd_times(rs.getString("end_times"));
+					cdto.setStart_priod(rs.getString("start_priod"));
+					cdto.setEnd_priod(rs.getString("end_priod"));
+					cdto.setMovie_num(rs.getString("movie_num"));
+					
+					
+					cineList.add(cdto);
+					
+					System.out.println(cineList.toString());
+				}
+				System.out.println("cineList 검색 목록 저장 완료------------------------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return cineList;
+
+		}
+	
+	
 	
 	//수정할 영화관 가져오기
 	@Override

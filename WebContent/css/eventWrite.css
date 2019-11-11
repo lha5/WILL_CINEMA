@@ -1,0 +1,227 @@
+@CHARSET "UTF-8";
+@font-face {
+	font-family: 'nanumSR';
+	src: url('../font/NanumSquareR.otf') format('opentype');
+}
+.eventFieldset {
+	width: 700px;
+	height: auto;
+	margin: 50px auto;
+	border-style: none;
+}
+
+legend {
+	text-align: center;
+	font-family: inherit;
+	font-size: 2em;
+	color: #240e04;
+}
+
+table {
+	border-collapse: collapse;
+	border-top: 2px solid #240e04;
+	border-bottom: 2px solid #240e04;
+	margin: 50px auto;
+	width: 600px;
+	padding: 10px;
+}
+
+.eventFieldset .eventListTable{
+	border-collapse: collapse;
+	border-top: 2px solid #240e04;
+	border-bottom: 2px solid #240e04;
+	margin: 50px auto;
+	width: 800px;
+	padding: 10px;
+}
+
+.eventform .eventListTable td{
+	text-align: center;
+}
+
+.eventform .eventListTable .listTr td{
+	text-align: center;
+	font-weight: bold;
+}
+
+.eventListTable .eventModify:hover{
+	background-color: #17b9f7;
+	border:none;
+	color: #fff;
+	font-weight: bold;
+}
+
+.eventListTable .eventDelete:hover{
+	background-color: #ff3333;
+	color: #fff;
+	font-weight: bold;
+	border:none;
+}
+
+.eventListTable img{
+	margin:10px;
+}
+
+.eventFieldset .eventform>.eventSub{
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	/* border-radius: 2px; */
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 17px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin-left:10px;
+	border-radius:5px;
+}
+
+tr:NTH-CHILD(1)>td {
+	padding-top: 10px;
+}
+
+
+tr:NTH-CHILD(9)>td:NTH-CHILD(2), tr:NTH-CHILD(10)>td:NTH-CHILD(2) {
+	padding-left: 230px;
+}
+
+tr:NTH-CHILD(11) {
+	border-top: 2px solid #240e04;
+	margin-top: 10px;
+}
+
+tr:NTH-CHILD(11)>td {
+	height: 70px;
+	text-align: center;
+}
+
+.eventFieldset input[type=text]{
+	border-radius:5px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 2px solid #c7bab8;
+	color: #240e04;
+	font-size: 14px;
+}
+
+.eventFieldset input[type=submit], #main {
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	/* border-radius: 2px; */
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 17px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin : 20px 20px 20px 180px;
+}
+
+.eventFieldset input[type=reset] {
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	/* border-radius: 2px; */
+	background-color: #000000;
+	font-family: inherit;
+	font-size: 17px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin : 20px;
+}
+
+.eventFieldset input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	background-color: #ffffff;
+	color: #1c1c1c;
+	font-family: inherit;
+	padding: 3px;
+}
+
+
+.eventform td, .eventform tr{
+	text-align: left;
+	padding-left: 20px;
+}
+
+.eventform td{
+	height:60px;
+}
+
+.eventFieldset a{
+	margin:50px 10px;
+	text-decoration: none;
+    color: #555;
+    display:inline-block;
+}
+
+.eventFieldset .eventSub{
+	width: 130px;
+	height: 40px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	/* border-radius: 2px; */
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 17px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	margin : 20px 20px 20px 180px;
+}
+
+.eventFieldset .eventa{
+	margin-top:30px;
+	text-decoration: none;
+    color: #555;
+    display:inline-block;
+}
+
+.ui-datepicker select.ui-datepicker-month{
+	padding:0px;
+}
+
+.eventform .eventPaging{
+	text-align: center;
+}
+
+.eventform .eventPaging a{
+	margin:10px;
+}
+
+.eventform hr{
+	margin: 10px auto;
+	width: 600px;
+	border: 0.5px solid #240e04;
+}
+/* 
+.ui-datepicker>td, .ui-datepicker>tr {
+	border: 0;
+	padding: 1px;
+	height: 37px;
+	width:51px
+} */

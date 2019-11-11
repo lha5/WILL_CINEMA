@@ -59,7 +59,7 @@ public class EventUpdateAction implements Action {
 		/*dto에 전달받은 내용 저장*/
 		
 		//이미지 변경이 없으면 기존 이미지를 사용
-		if(image!="null,null,null,null"){
+		if(!image.equals("null,null,null,null")){
 			aedto.setImage(image);
 		}else{
 			aedto.setImage(image2);
@@ -73,7 +73,6 @@ public class EventUpdateAction implements Action {
 		response.setContentType("text/html; charset=UTF-8");
 		if(chk==1){//이벤트 수정 완료
 			if(image2!="null,null,null,null"){//저장된 이미지가 있으면
-				System.out.println("파일 있음");
 				
 				//이미 있는 이미지를 삭제
 				for(int i=0; i<image2.split(",").length; i++){ 

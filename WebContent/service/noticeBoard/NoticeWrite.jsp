@@ -34,8 +34,8 @@
 		response.sendRedirect("./Main.me");
 	}
 	%>
-
-	<fieldset>
+	
+	<div id="sectionWrap">
 		<form action="./NoticeWriteAction.an" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -84,12 +84,12 @@
 				</tr>
 				<tr>
 			   		<td>
-			   			<input type="submit" value="공지사항 작성하기" id="noticlick1">
+			   			<input type="submit" value="글 작성하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	
 		</form>
-	</fieldset>
+	</div>
 	
 	<%@ include file="../../include/footer.jsp" %>
 	

@@ -43,6 +43,20 @@ public class TicketOrderAddAction implements Action {
 			forward.setRedirect(true);
 			return forward;
 		}
+		
+		int movie_num=Integer.parseInt(request.getParameter("movie_num"));
+		int cinema_num=Integer.parseInt(request.getParameter("cinema_num"));
+		String sendseat=request.getParameter("seat");
+		String roomNum=request.getParameter("roomNum");
+		String person_num=request.getParameter("person_num");
+		int realPri=Integer.parseInt(request.getParameter("realPri"));
+		String runnging_date=request.getParameter("running_date");
+		String runnging_time=request.getParameter("running_time");
+		String week=request.getParameter("week");
+		String payment=request.getParameter("payment");
+		
+		System.out.println("전달받은 값 "+ movie_num+" "+cinema_num+" "+sendseat+" "+roomNum+" "+
+		person_num+" "+realPri+" "+runnging_date+" "+runnging_time+" "+week+" "+payment );
 
 		//TicketDTO 객체 생성
 		TicketDTO tdto = new TicketDTO();
@@ -54,12 +68,60 @@ public class TicketOrderAddAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 		// RequestBody에서 데이터 받아오기
-		String data = URLDecoder.decode(getBody(request), "UTF-8");
-		// System.out.println("넘겨 받은 Request Body 값 : " + data);		
+		/*String data = URLDecoder.decode(getBody(request), "UTF-8");	
+		
+		String[] splitData = data.split(",");
+		
+		for(int i =0; i<splitData.length; i++){
+			System.out.println(splitData[i]+"   ");
+		}*/
+		
+		// tdto에 값 저장하기
+		tdto.setId(id);
+		tdto.setPass(mdto.getPass());
+		tdto.setMovie_num(movie_num);
+		tdto.setCinema_num(cinema_num);
+		
+		String allSeat=sendseat;//ex)D12,D14
+		String[] splitSeat=allSeat.split(",");//[0]=D12,[1]=D14
+		String row="";
+		String col="";
+		String seat="";
+		for(int i=0; i<splitSeat.length; i++){
+			row=splitSeat[i].substring(0, 1);
+			col=splitSeat[i].substring(1);
+			if(i>=1){
+				seat+=","+row+" "+col;
+			}else if(i==0){
+				seat=row+" "+col;
+			}
+		}
+		tdto.setSeat(seat);
+		tdto.setRoom(roomNum);
+		tdto.setPerson_num(person_num);
+		tdto.setPrice(realPri);
+		
+		
+		String fDate[]=runnging_date.split("-");
+		
+		Date date= new Date(Integer.parseInt(fDate[0])-1900
+				,Integer.parseInt(fDate[1])-1,Integer.parseInt(fDate[2]));
+		tdto.setDate(date);
+		tdto.setRunnging_time(runnging_time);
+		
+		tdto.setDay(week);
+		tdto.setPayment(payment);
+		
+		
+		
 		
 		// 받아온 데이터를 특정 문자를 기준으로 추출 >> 순서 : movie_num, cinema_num, seat, roomNum
 		// person_num, realPri, running_date, running_time, week, KakaoPay
-		String[] splitData = data.split(",");
+		/*String[] splitData = data.split(",");
+		
+		for(int i =0; i<splitData.length; i++){
+			System.out.println(splitData[i]+"   ");
+		}
 		
 		// tdto에 값 저장하기
 		tdto.setId(id);
@@ -95,7 +157,7 @@ public class TicketOrderAddAction implements Action {
 		tdto.setRunnging_time(splitData[7]);
 		
 		tdto.setDay(splitData[8]);
-		tdto.setPayment(splitData[9]);
+		tdto.setPayment(splitData[9]);*/
 		
 		System.out.println(tdto.toString());
 
@@ -103,7 +165,7 @@ public class TicketOrderAddAction implements Action {
 		TicketDAO tdao = new TicketDAOImpl();
 		tdao.setTicket(tdto);
 		
-		int percentage = (int) Math.round(Integer.parseInt(splitData[5]) * 0.002);	// 포인트 적립
+		int percentage = (int) Math.round(realPri* 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
 		// 페이지 이동
@@ -112,7 +174,7 @@ public class TicketOrderAddAction implements Action {
 		return forward;
 	}
 	
-	public static String getBody(HttpServletRequest request) throws IOException {
+/*	public static String getBody(HttpServletRequest request) throws IOException {
 		
 		String body = null;
 		StringBuilder stringBuilder = new StringBuilder();
@@ -145,5 +207,5 @@ public class TicketOrderAddAction implements Action {
 		body = stringBuilder.toString();
 		
 		return body;
-	}
+	}*/
 }

@@ -7,6 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 공지사항 내용 수정</title>
 
+<!--CSS  -->
+<link rel="stylesheet" href="././css/noticeWrite.css">
+
+
 <!-- summernote 적용시키기 위한 준비 -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
@@ -16,9 +20,9 @@
 </head>
 <body>
 
-	<div id="wrap">
-
+	
 	<%@ include file="../../include/header.jsp" %>
+	
 	
 	<%
 	AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
@@ -26,8 +30,9 @@
 	
 	String image = andto.getImage();
 	%>
-
-	<fieldset>
+	
+		<div id="notiWrap">
+		<h1>영화 수정 </h1>
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -37,7 +42,7 @@
 			   			<input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
 			   		</td>
 			   		<td>
-			   		비밀번호 :<input type="password" name="pass"> 
+			   		비밀번호 <input type="password" name="pass"> 
 			   		</td>
 			   		<td>카테고리</td>
 			   		<td>
@@ -93,16 +98,18 @@
 			   		
 			   		
 			   		<td>
-			   			<input type="submit" value="공지사항 수정하기">
+			   			<input type="submit" value="수정하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	
+		
 		</form>
-	</fieldset>
-
+	
+	
+		</div>
+		
 	<%@ include file="../../include/footer.jsp" %>
 	
-	</div>
 
 </body>
 </html>

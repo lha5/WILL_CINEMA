@@ -1,12 +1,45 @@
 @CHARSET "UTF-8";
-
+/* -------- 글씨체 -------- */
+@font-face {
+	font-family: 'NanumGothic';
+	src: url('../font/NanumGothic.ttf') format('truetype');
+}
+/* -------- 전체에 적용할 속성들 --------*/
 .bgColor{
 	background-color:#fffff2;
 }
 
-.bgColor h1{
-	margin: 30px 0px 50px 150px;
+.bgColor .ticketheader{
 	padding-top: 50px;
+	width: 1200px;
+	margin: 0px auto 50px;
+	text-align: left;
+}
+
+.loginField .seatForm #kpay{
+	padding: 20px;
+	margin: 0px auto 20px;
+	text-align: center;
+}
+
+#kpay h3{
+	margin: 20px;
+}
+
+#kpay li{
+	margin: 50px;
+}
+
+#kpay {
+	
+}
+
+#kpay .payButton{
+	float: none;
+}
+
+#kpay .prevButton{
+	float: none;
 }
 
 .selectPeopleNum{
@@ -43,6 +76,10 @@
 
 .seatTable{
 	margin: 30px auto;
+}
+
+.seatTable td{
+	width: 600px;
 }
 
 .seatTable td .seat{
@@ -129,9 +166,12 @@
 
 .seatTable2 input{
 	border: none;
-	width: 150px;
+	width: 250px;
 	background-color:#fffff2;
 }
+
+.seatTable2 input:focus { outline:none; }
+
 .seatTable2 .tdLine{
 	border-left:2px solid #7b7b7b;
 	border-right:2px solid #7b7b7b;
@@ -162,7 +202,7 @@
 }
 
 .innerTable2 td{
-	padding: 3px;
+	padding: 5px;
 	font-size:14px;
 }
 
@@ -208,4 +248,44 @@
 	font-weight: bold;
 }
 
+.seatform{
+	margin: 0 auto;
+	height:550px;
+	padding-left:300px;
+}
 
+
+.seatform div{
+	float: left;
+}
+
+.seatRow{
+	margin :30px auto;
+}
+
+.seatRow td a{
+	display:inline-block;
+	border: none;
+	width: 25px;
+	height: 25px;
+	font-size:12px;
+	font-weight:bold;
+	text-align: center;
+	line-height: 23px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin-bottom: 4px;
+}
+
+.seatform-chd2{
+	margin-right:100px;
+}
+
+ .loginField .kpay label{
+	margin:20px;
+}
+
+.loginField .kpay{
+	margin:20px auto;
+}

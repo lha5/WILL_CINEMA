@@ -391,12 +391,28 @@ List<AdminNoticeDTO> boardList = new ArrayList<AdminNoticeDTO>();
 		
 		return boardList;
 	}
-		
-		
-		
 	
 
-	
-	
-	
+	@Override
+	public String getSubject() {
+		String subject = "";
+		try {
+			con = getCon();
+			
+			sql = "SELECT subject FROM notice WHERE num = (SELECT MAX(num) FROM notice)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				subject += rs.getString("subject");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}	
+		return subject;
+	}	
 }

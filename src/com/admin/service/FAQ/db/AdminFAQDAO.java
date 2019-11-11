@@ -3,6 +3,7 @@ package com.admin.service.FAQ.db;
 import java.util.List;
 
 
+
 public interface AdminFAQDAO {
 
 	//FAQ글쓰기
@@ -26,5 +27,7 @@ public interface AdminFAQDAO {
 	
 	public List<AdminFAQDTO> getBoardList();
 	
+	// 찾기 
+	public List<AdminFAQDTO> getSearch(String search,int startRow,int pageSize);
 	
 }

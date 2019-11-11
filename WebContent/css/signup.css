@@ -97,9 +97,9 @@ input[type=button] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: 1px solid #240e04;
+	border: 1px solid #1c1c1c;
 	background-color: #ffffff;
-	color: #240e04;
+	color: #1c1c1c;
 	font-family: inherit;
 	padding: 3px;
 }

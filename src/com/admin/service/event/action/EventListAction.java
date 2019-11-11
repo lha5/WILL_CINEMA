@@ -31,8 +31,6 @@ public class EventListAction implements Action {
 		if(item==null){
 			item="";
 		}
-		System.out.println("카테고리"+item+"카테고리");
-		System.out.println("키워드"+keyward+"키워드");
 		
 		//이벤트 글 개수
 		/*if(item=="all" || item==""){//카테고리 지정 안했을 경우
@@ -70,25 +68,16 @@ public class EventListAction implements Action {
 		if(cnt!=0){
 			//DB에서 가져온 정보 저장
 			if(keyward=="" && item==""){
-				
 				eventList=aedao.getAllList(startRow-1 ,viewCnt);
-				System.out.println("검색 없이 얻어온 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
-					+", 끝 : " + endRow);
 			}else if(keyward!=""&&item==""){
 				cnt = aedao.getEventCount(keyward);
 				eventList=aedao.getSearch(keyward,startRow-1 ,viewCnt);
-				System.out.println("카테고리X 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
-						+", 끝 : " + endRow);
 			}else{
 				cnt = aedao.getEventCount(item,keyward);
-				System.out.println("검색 시 리스트 개수 "+cnt);
 				
 				eventList=aedao.getEventList(item,keyward,startRow-1 ,viewCnt);
-				System.out.println("검색해서 얻어온 리스트 개수 : " + eventList.size() + " , 시작 : "+ (startRow-1)
-					+", 끝 : " + endRow);
 			}
 		}
-		System.out.println("리스트 개수 "+cnt);
 		//전체 페이지수 계산
 		//한 화면에 보여줄 페이지 계산	
 		int pageCount=cnt/pageSize+(cnt%pageSize==0?0:1);
@@ -104,8 +93,6 @@ public class EventListAction implements Action {
 		if(endPage > pageCount){
 			endPage = pageCount;
 		}
-		
-		
 		
 		//글 개수, 게시판 정보(DB), 페이지 정보(pageNum, pageCount, pageBlock, startPage, endPage)
 		request.setAttribute("cnt", cnt);

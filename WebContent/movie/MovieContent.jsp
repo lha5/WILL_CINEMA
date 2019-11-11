@@ -12,25 +12,135 @@
 <title>WILL CINEMA - 영화 상세 보기</title>
 <!-- 하위 메뉴 고정 -->
 <style type="text/css">
-	nav>ul>li:NTH-CHILD(2)>ul {
-		display: block;
-	}
+nav>ul>li:NTH-CHILD(2)>ul {
+	display: block;
+}
+
+#container {
+	/* border: 1px solid lime; */
+	width: 900px;
+	height: 900px;
+	margin: 0 auto 50px auto;
+	padding: 15px;
+}
+
+#desc {
+	/* border: 1px solid orange; */
+	width: 100%;
+	height: 300px;
+}
+
+#info {
+	border-collapse: collapse;
+	border-top: 2px solid #e6e6e6;
+	border-bottom: 2px solid #e6e6e6;
+	width: 100%;
+	height: 300px;
+}
+
+#info td:NTH-CHILD(1) {
+	width: 175px;
+}
+
+#info td:NTH-CHILD(2) {
+	padding-left: 40px;
+	text-align: left;
+}
+
+#info ul {
+	line-height: 2em;
+}
+
+#info h1 {
+	margin: 10px 2px;
+}
+
+.tag {
+	border: 1px solid #e6e6e6;
+	padding: 1px;
+	margin: 2px;
+	background-color: #e6e6e6;
+	font-size: 14px;
+}
+
+#info li {
+	font-size: 14px;
+}
+
+#synopsis, #director {
+	/* border: 1px solid blue; */
+	width: 100%;
+	height: 250px;
+	padding: 15px;
+}
+
+#synopsis {
+	margin-top: 25px;
+	margin-bottom: 20px;
+}
+
+#ctnt {
+	margin: 20px 0;
+}
+
+hr {
+	border-color: #e6e6e6;
+}
 </style>
 <link rel="stylesheet" href="././css/review.css">
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
-<%
+	<%
 	int movie_num = Integer.parseInt(request.getParameter("movie_num"));
 	request.setAttribute("movie_num", movie_num);
-	System.out.println("Attribute : "+request.getAttribute("movie_num"));
 	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 	String pageNum = (String) request.getAttribute("pageNum");
-%>
+	%>
 		<div id="Wrap">
-
-		<img src="./upload/<%=mdto.getPoster()%>" width="500px" height="600px" id="img">
-		<table border="1" class="accordion">
+		
+		<div id="container">
+			
+			<div id="desc">				
+				<table id="info">
+					<tr>
+						<td><img src="./upload/<%=mdto.getPoster()%>" width="175px" height="250px"></td>
+						<td>
+							<h1><%=mdto.getTitle()%></h1>
+							<ul>
+								<li><span class="tag">예매율</span> <%=mdto.getBooking_ration() %> %</li>
+								<li><span class="tag">관람평점</span></li>
+								<li><span class="tag">등급</span> <%=mdto.getGrade()%></li>
+								<li><span class="tag">개봉일</span> <%=mdto.getOpen_date() %></li>
+								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %></li>
+								<li><span class="tag">타입</span> 2D | 3D | 4D</li>
+								<li><span class="tag">공식홈페이지</span> <a href="#">임시 링크 주소</a></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="synopsis">
+				<h3>시놉시스</h3>
+				<div id="ctnt">
+					<%=mdto.getStory() %>
+				</div>
+			</div>
+						
+			<div id="director">
+				<h3>감독</h3>
+				<br>
+				<%=mdto.getDirector() %>
+				<br><br><br><br>
+				<h3>배우</h3>
+				<br>
+				<%=mdto.getActor() %>
+			</div>
+		</div>
+		
+		
+		<%-- <table border="1" class="accordion">
 			<tr>
 				<td>예매순위</td>
 				<td><%=mdto.getBooking_ration() %></td>
@@ -42,7 +152,8 @@
 			<tr>
 			</tr>
 			<tr>
-				<td colspan="6"><%=mdto.getStory() %>
+				<td colspan="6">
+					<%=mdto.getStory() %>
 				</td>	
 			</tr>
 			<tr>
@@ -55,7 +166,7 @@
 				<td>출연진</td>
 			<td colspan="5"><%=mdto.getActor() %>
 			</td>
-			</tr>
+			</tr> --%>
 			<%
 			if (id != null) {
 				if (id.equals("admin")) {
@@ -75,8 +186,13 @@
 		</table>
 		
 		</div>
-	<jsp:include page="../review/reviewList.jsp"/>
-	<jsp:include page="../review/reviewWrite.jsp"/>
-	<%@ include file="../include/footer.jsp" %>
+		
+		<hr>
+		
+		<jsp:include page="../review/reviewWrite.jsp"/>
+		
+		<jsp:include page="../review/reviewList.jsp"/>
+		
+		<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

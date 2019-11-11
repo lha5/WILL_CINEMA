@@ -16,6 +16,9 @@ import com.admin.service.FAQ.db.AdminFAQDAOImpl;
 import com.admin.service.FAQ.db.AdminFAQDTO;
 import com.admin.service.event.db.AdminEventDAO;
 import com.admin.service.event.db.AdminEventDAOImpl;
+import com.admin.service.notice.db.AdminNoticeDAO;
+import com.admin.service.notice.db.AdminNoticeDAOImpl;
+import com.admin.service.notice.db.AdminNoticeDTO;
 import com.cinema.db.CineDTO;
 import com.movie.db.MovieDAO;
 import com.movie.db.MovieDAOImpl;
@@ -65,6 +68,10 @@ public class IndexAction implements Action {
 		List<AdminMovieDTO> totalRatingList=tdao.totalRatingList();//평점순
 		//예매순 가지고 오기 
 		
+		// 공지사항
+		AdminNoticeDAO andao = new AdminNoticeDAOImpl();
+		String noticeSbj = andao.getSubject();
+		
 		// 정보 저장 
 		request.setAttribute("eventMovieList", eventMovieList);
 		request.setAttribute("eventPreviewList", eventPreviewList);
@@ -74,6 +81,8 @@ public class IndexAction implements Action {
 		request.setAttribute("faqcount", faqcount);
 		request.setAttribute("FAQList", FAQList);
 		System.out.println("@@@@@@@@@@@"+faqcount+""+FAQList);
+		
+		request.setAttribute("noticeSbj", noticeSbj);
 		
 		request.setAttribute("count", count);
 		request.setAttribute("boardList", boardList);
