@@ -106,7 +106,7 @@ tr:NTH-CHILD(1)>td {
 }
 
 #ranking {
-	border: 1px solid aqua;
+	text-align: center;
 }
 </style>
 
@@ -242,7 +242,7 @@ function acyncMovePage(url){
 				<li><input type="button" value="예매내역" id="bookingList"></li>
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><input type="button" value="멤버십" id="myMembership"></li>
-				<li><input type="button" value="내가본영화" id="myMovies"></li>
+				<li><input type="button" value="내 문의·질문" id="myQnA"></li>
 				<li><input type="button" value="내 정보 관리" id="myInfoManagement">
 					<input type="hidden" name="SnSLoginId_check" value="<%=SnSLogin %>">
 				</li>
@@ -273,8 +273,8 @@ function acyncMovePage(url){
 		});
 		
 		// 내가 본 영화(준비중)
-		document.querySelector('#myMovies').addEventListener('click', function() {
-			alert('준비중 입니다');
+		document.querySelector('#myQnA').addEventListener('click', function() {
+			location.href = './QnAUserList.sq';
 		});
 		
 		var SnSLoginId_check = $('input[name=SnSLoginId_check]').val();
