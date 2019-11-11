@@ -39,7 +39,7 @@ span {
 			<i class="ri-checkbox-circle-line ri-5x"></i>
 			<br>
 			<br>
-			<h2>구매가 완료되었습니다.</h2>
+			<h2>발권이 완료되었습니다.</h2>
 			<br>
 			<div id="thanks">저희 WILL CINEMA를 이용해주셔서 대단히 감사드립니다.</div>
 			<br><br>
