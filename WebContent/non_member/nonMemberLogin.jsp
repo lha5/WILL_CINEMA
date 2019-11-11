@@ -93,7 +93,7 @@ input[type=submit] {
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input type="text" name="birth"></td>
+					<td><input type="text" name="birth" placeholder="yyyy.MM.dd"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
