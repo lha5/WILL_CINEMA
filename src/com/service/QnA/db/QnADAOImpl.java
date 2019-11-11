@@ -386,6 +386,66 @@ public class QnADAOImpl implements QnADAO {
 		
 		return boardList;
 	}
+
+	
+	
+	
+	@Override
+	public void reInsertBoard(QnADTO qnadto) {
+		int num = 0;
+		try {
+			con = getCon();
+			
+			sql = "SELECT MAX(num) FROM qna";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				num = rs.getInt(1) + 1;	// rs.getInt(1)에서 괄호 안의 1은 첫 번째(1번) 컬럼이라는 뜻
+			}
+			
+			System.out.println("실행할 답글 글 번호 : " + num);
+			
+			// 답글 순서 재배치
+			sql = "UPDATE qna SET re_seq = re_seq + 1 WHERE re_ref=? and re_seq > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, qnadto.getRe_ref());
+			pstmt.setInt(2, qnadto.getRe_seq());
+			
+			pstmt.executeUpdate();
+			
+			// 답글 작성
+			sql = "INSERT INTO qna(num, name, pass, subject, content, readcount, re_ref, re_lev, re_seq, date, image, category)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);// 위에서 계산한 글 번호(no) 입력
+			pstmt.setString(2, qnadto.getName());
+			pstmt.setString(3, qnadto.getPass());
+			pstmt.setString(4, qnadto.getSubject());
+			pstmt.setString(5, qnadto.getContent());
+			pstmt.setInt(6, 0);	// 모든 글의 조회수는 항상 0으로 초기화
+			pstmt.setInt(7, qnadto.getRe_ref());
+			pstmt.setInt(8, qnadto.getRe_lev() + 1);	// 원래 글에서 1 증가된 값을 가진다.
+			pstmt.setInt(9, qnadto.getRe_seq());
+			pstmt.setString(10, qnadto.getImage());
+			pstmt.setString(11, qnadto.getCategory());
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("답글 쓰기 메소드 실행 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
 	
 }	
 

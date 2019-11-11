@@ -105,6 +105,15 @@ input[type=button] {
 				<input type="button" id="button" value="수정하기" onclick="location.href='./QnAUpdate.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
 				<input type="button" id="button" value="삭제하기" onclick="location.href='./QnADeleteAction.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
 				<input type="button" id="button" value="목록보기" onclick="location.href='./QnAList.sq?pageNum=<%=pageNum%>'">
+				<%
+				if (id != null) {
+					if (id.equals("admin")) {
+				%>
+					<input type="button" id="button" value="답변하기" onclick="location.href='./QnAReWrite.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
+				<%
+					}
+				}
+				%>
 			</td>
 		</tr>
 

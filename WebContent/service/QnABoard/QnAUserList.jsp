@@ -97,10 +97,10 @@ input[type=submit] {
 		String name = String.valueOf(request.getAttribute("name"));		
 		session.setAttribute("name", name);
 		
-		// int count = (Integer) request.getAttribute("count");
+		int count = (Integer) request.getAttribute("count");
 		List<QnADTO> boardList = (List<QnADTO>) request.getAttribute("boardList");
 		String pageNum = (String)request.getAttribute("pageNum");
-		System.out.println("boardLis : "+boardList);
+		
 		int pageCount = (Integer) request.getAttribute("pageCount");
 		int pageBlock = (Integer) request.getAttribute("pageBlock");
 		int startPage = (Integer) request.getAttribute("startPage");
@@ -128,6 +128,30 @@ input[type=submit] {
 				<td><%=qadto.getNum() %></td>
 				<td><%=qadto.getCategory()%></td>
 				<td>
+					<%
+					int wid = 0;
+					if (qadto.getRe_ref() > 0) {
+						wid = qadto.getRe_lev() * 10;
+					%>
+					<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
+					<%
+					}					
+					%>
+					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
+					<%=qadto.getSubject() %>
+					</a>
+				</td>
+				<td><%=qadto.getName() %></td>
+				<td><%=qadto.getDate() %></td>
+				<td><%=qadto.getReadcount() %></td>
+			</tr>
+		<%
+			} else if (id.equals("admin")) {	
+		%>
+				<tr>
+				<td><%=qadto.getNum() %></td>
+				<td><%=qadto.getCategory()%></td>
+				<td>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
 					</a>
@@ -143,32 +167,32 @@ input[type=submit] {
 	</table>
 
 	<div id="pagingNumber">
-		<%-- 
+		
 		<%
 		// 페이징 처리
 		if(count != 0) {
 			// 이전
 			if (startPage > pageBlock) {
 			%>
-			<a href="./QnAList.sq?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+			<a href="./QnAUserList.sq?pageNum=<%=startPage - pageBlock%>">이전&nbsp;&nbsp;</a>
 			<%
 			}
 			// 1...10  11..20  21...30
 			for (int i = startPage; i <= endPage; i++) {
 			%>
-			<a href="./QnAList.sq?pageNum=<%=i%>">[<%=i%>]
+			<a href="./QnAUserList.sq?pageNum=<%=i%>"><%=i%>&nbsp;&nbsp;
 			</a>
 			<%
 			}
 			// 다음
 			if (endPage < pageCount) {
 			%>
-			<a href="./QnAList.sq?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+			<a href="./QnAUserList.sq?pageNum=<%=startPage + pageBlock%>">&nbsp;&nbsp;다음</a>
 			<%
 				}
 		}
 		%> 
-		--%>
+		
 	</div>	
 	
 	<div id="bttns">

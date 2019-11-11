@@ -9,7 +9,84 @@
 <title>WILL CINEMA</title>
 
 <!-- CSS -->
-<link rel="stylesheet" href="././css/qnalist2.css">
+<style type="text/css">
+#contentsWrap {
+	width: 900px;
+	margin: 20px auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #1c1c1c;
+	margin: 20px 0;
+}
+
+td {
+	border: 1px solid #1c1c1c;
+	padding: 10px;
+}
+
+tr:NTH-CHILD(1) td {
+	background-color: #1c1c1c;
+	color: #ffffff;
+	text-align: center;
+}
+
+td:NTH-CHILD(1), td:NTH-CHILD(2), td:NTH-CHILD(4), td:NTH-CHILD(5), td:NTH-CHILD(6) {
+	text-align: center;
+}
+
+#bttns {
+	width: 100%;
+	text-align: right;
+}
+
+input[type=text] {
+	width: 170px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	color: #1c1c1c;
+	font-size: 12px;
+}
+
+input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #1c1c1c;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 14px;
+	color: #1c1c1c;
+	letter-spacing: 2px;
+}
+
+input[type=submit] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 70px;
+	height: 36px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+</style>
 
 </head>
 <body>
@@ -32,39 +109,42 @@
 		
 	%>
 	
-	
-	<div id="faqList"><center>질문 목록</center></div> 
+	</div> 
 
 	<div id="contentsWrap">	
-   	<center>
-   <table border="1" class="accordion">
-     <tr>
-       <td>번호</td>
-       <td>제목</td>
-       <td>카테고리</td>
-       <td>글쓴이</td>
-       <td>날짜</td>
-       <td>조회수</td>
-     </tr>
-     <%
+		<h2>내 1:1 문의</h2>
+   		<table>
+		     <tr>
+		       <td>번호</td>
+		       <td>카테고리</td>
+		       <td>제목</td>
+		       <td>글쓴이</td>
+		       <td>날짜</td>
+		       <td>조회수</td>
+		     </tr>
+		<%
      	for (int i=boardList.size()-1;i>-1;i--) {
     		QnADTO qadto = boardList.get(i);
+    		if (id.equals(qadto.getPass())) {
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
+				<td><%=qadto.getCategory()%></td>
 				<td>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
 					</a>
 				</td>
-				<td><%=qadto.getCategory()%></td>
 				<td><%=qadto.getName() %></td>
 				<td><%=qadto.getDate() %></td>
 				<td><%=qadto.getReadcount() %></td>
 			</tr>
-		<%}%>
+		<%
+			}
+		}
+		%>
 	</table>
-	</center>
+	
 	<div id="pagingNumber">
 	<%
 		// 페이징 처리
@@ -90,16 +170,15 @@
 				}
 		}
 	%>
-		</div>	
-	<%-- <h3><a href="./QnAWrite.sq?name=<%=name%>">글 쓰기</a></h3> --%>
-
-
-
-	<form action="./QnASearchAction.sq" method="post">
-		<input type="text" name="search">
-		<button type="submit" id="button">검색</button>
-	</form>
-
+	</div>	
+	
+	</div>	
+	
+	<div id="bttns">
+		<form action="./QnASearchAction.sq" method="post" id="goSearch">
+			<input type="text" name="search">
+			<input type="submit" value="검색">
+		</form>
 	</div>
 	<%@ include file="../../include/footer.jsp" %>
 
