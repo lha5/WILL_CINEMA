@@ -44,7 +44,7 @@
 
 	
 			
-				<table>
+				
 					<tr>
 						<td>영화 제목</td>
 						<td>
@@ -83,7 +83,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td>상영 시간</td>
+						<br>
+						<td><br>상영 시간</td>
 						<td>
 							<input type="text" name="running_time" value="<%=mdto.getRunning_time()%>">
 						</td>
@@ -94,7 +95,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td>스토리</td>
+					<br><br>
+						<td><h3>스토리</h3></td>
 						<td colspan="3">
 							<textarea id="summernote" name="story"><%=mdto.getStory()%></textarea>
 							<script>
@@ -108,6 +110,7 @@
 						</td>
 					</tr>
 					<tr>
+					
 						<td>감독</td>
 						<td>
 							<input type="text" name="director" value="<%=mdto.getDirector()%>">
@@ -118,6 +121,7 @@
 						</td>
 					</tr>
 					<tr>
+					<br>
 						<td>포스터</td>
 						<td colspan="3" class="filebox">
 							<input class="upload-name" value="업로드" disabled="disabled">
@@ -127,6 +131,7 @@
 						</td>
 					</tr>
 					 <tr>
+					 <br>
 						<td>이미지</td>
 						<td colspan="3" class="filebox" class="upload-hidden"> 
 							<input class="upload-name" value="업로드" disabled="disabled">
@@ -137,11 +142,12 @@
 					</tr>
 									 
 					 <tr>
+						<br>
 						<td colspan="4">
 							<input type="submit" value="영화 수정" class="modify" >
 						</td>
 					</tr>
-				</table>
+				
 	
 		
 		
