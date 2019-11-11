@@ -88,12 +88,12 @@ width: 320px;
 
 
 
-.contents {width: 890px; height: 500px;  margin: 0 auto;}
+.contents {width: 890px; height: 550px;  margin: 0 auto;}
 	
 	/* banner */
-.banner {position: relative; width: 890px; height: 500px;  margin:0 auto; padding:0; overflow: hidden;}
+.banner {position: relative; width: 890px; height: 550px;  margin:0 auto; padding:0; overflow: hidden;}
 .banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-.banner ul li {float: left; width: 890px; height: 500px; margin:0; padding:0;}
+.banner ul li {float: left; width: 890px; height: 550px; margin:0; padding:0;}
 
 
 
