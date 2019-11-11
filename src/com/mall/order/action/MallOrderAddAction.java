@@ -4,11 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -92,8 +89,10 @@ public class MallOrderAddAction implements Action {
 		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
 		
 		MemberDAO mdao = new MemberDAOImpl();
-		
-		//mdao.substractPoint(id, usingPoint);
+		int usingPoint = Integer.parseInt(splitData[6]);
+		if (usingPoint != 0) {
+			mdao.substractPoint(id, usingPoint); // 사용 포인트가 있다면 차감
+		}
 		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
@@ -109,8 +108,8 @@ public class MallOrderAddAction implements Action {
 		System.out.println("문자로 보낼 내용 : "+msg);
 		
 		//수신번호를 저장해야 하므로 등록후 등록한 번호만 사용
-		to = "01093654019";
-		SendSMS(msg, to);
+		/*to = "01093654019";
+		SendSMS(msg, to);*/
 		
 		// 현재 이 Action페이지는 ajax로 들어와 데이터 연결작업만 하기에 
 		// 이동 작업은 처리되지 않음

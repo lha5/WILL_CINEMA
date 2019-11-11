@@ -11,6 +11,7 @@ import com.admin.movie.db.AdminMovieDTO;
 import com.movie.db.MovieDAO;
 import com.movie.db.MovieDAOImpl;
 import com.movie.db.MovieDTO;
+import com.review.db.MovieReviewDAO;
 import com.review.db.MovieReviewDAOImpl;
 import com.review.db.MovieReviewDTO;
 
@@ -51,13 +52,16 @@ public class DetailViewAction implements Action{
 			List<MovieReviewDTO> boardList = null;
 			
 			boardList = mrdaoImpl.commentList(movie_num);
-
+			
+			// 평점 평균
+			MovieReviewDAO mrdao = new MovieReviewDAOImpl();
+			int avgRating = mrdao.avgRating(movie_num);
 	
 			// 정보 저장
 			request.setAttribute("mdto", amdto);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("boardList", boardList);
-		
+			request.setAttribute("avg", avgRating);
 			
 			// 페이지 이동
 			ActionForward forward = new ActionForward();

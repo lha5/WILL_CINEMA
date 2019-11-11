@@ -286,4 +286,32 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 	}
 
 
+
+	@Override
+	public int avgRating(int movie_num) {
+		int avg = 0;
+		try {
+			con = getCon();
+			
+			sql = "SELECT AVG(rating) FROM review WHERE movie_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				avg = rs.getInt("rating");
+			} else {
+				avg = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return avg;
+	}
+
 }

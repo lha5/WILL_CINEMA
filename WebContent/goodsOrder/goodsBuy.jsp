@@ -211,6 +211,9 @@
 			    });
 			}
 			
+			// 사용할 포인트 값 가져오기
+			var usingPoint = document.getElementByName('usingPnt').value;
+			
 			// 결제 모듈 불러오기
 			document.querySelector('#goPay').addEventListener('click', function() {
 				acyncMovePage('./MallOrderProc.mor?price=<%=total%>&goods_amount=<%=amount%>&goods_name=<%=malldto.getName()%>&goods_num=<%=malldto.getGoods_num()%>&email=<%=memdto.getEmail()%>&tel=<%=memdto.getMobile()%>&buyer_name=<%=memdto.getName()%>');

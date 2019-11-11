@@ -69,6 +69,7 @@ public class MovieDAOImpl implements MovieDAO{
 				amdto.setMovie_num(rs.getInt("movie_num"));
 				amdto.setTitle(rs.getString("title"));
 				amdto.setGenre(rs.getString("genre"));
+				amdto.setGrade(rs.getString("grade"));
 				amdto.setStory(rs.getString("story"));
 				amdto.setRunning_time(rs.getInt("running_time"));
 				amdto.setDirector(rs.getString("director"));
@@ -167,6 +168,7 @@ public class MovieDAOImpl implements MovieDAO{
 				amdto.setBooking_ration(rs.getDouble("booking_ration"));
 				amdto.setCountry(rs.getString("country"));
 				amdto.setDirector(rs.getString("director"));
+				amdto.setGrade(rs.getString("grade"));
 				amdto.setGenre(rs.getString("genre"));
 				amdto.setImage(rs.getString("image"));
 				amdto.setMovie_num(rs.getInt("movie_num"));
