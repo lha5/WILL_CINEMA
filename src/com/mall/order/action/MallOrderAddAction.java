@@ -92,6 +92,7 @@ public class MallOrderAddAction implements Action {
 		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
 		
 		MemberDAO mdao = new MemberDAOImpl();
+		
 		//mdao.substractPoint(id, usingPoint);
 		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
