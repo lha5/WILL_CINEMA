@@ -47,21 +47,23 @@ public class DetailViewAction implements Action{
 			MovieDAO mdao = new MovieDAOImpl(); 
 			MovieReviewDAOImpl mrdaoImpl = new MovieReviewDAOImpl();
 			
-			// 글 번호에 해당하는 글 정보 가져오기
-			AdminMovieDTO amdto = mdao.getBoard(movie_num);
-			List<MovieReviewDTO> boardList = null;
 			
+			List<MovieReviewDTO> boardList = null;
 			boardList = mrdaoImpl.commentList(movie_num);
 			
 			// 평점 평균
 			MovieReviewDAO mrdao = new MovieReviewDAOImpl();
 			int avgRating = mrdao.avgRating(movie_num);
-	
+			
+			mdao.setRating(movie_num,avgRating);
+			// 글 번호에 해당하는 글 정보 가져오기
+			AdminMovieDTO amdto = mdao.getBoard(movie_num);
+						
 			// 정보 저장
 			request.setAttribute("mdto", amdto);
 			request.setAttribute("pageNum", pageNum);
 			request.setAttribute("boardList", boardList);
-			request.setAttribute("avgRating", avgRating);
+			//request.setAttribute("avgRating", avgRating);
 			
 			// 페이지 이동
 			ActionForward forward = new ActionForward();
