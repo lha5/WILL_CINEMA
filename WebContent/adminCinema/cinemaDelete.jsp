@@ -8,6 +8,24 @@
 <title>WILL CINEMA - (관리자 전용 - 영화관 삭제)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+	<style type="text/css">
+		table, table td{
+				border: none;
+				text-align: center;
+				width: 900px;
+				padding: 5px auto;
+				margin: 10px auto 70px;
+			}
+		table tr{
+			height: 50px;
+		}
+		input[type=button],input[type=submit] {
+	 		background-color: silver;
+	 		color: #552;
+		}
+		
+	</style>
+
 </head>
 <body>
 
@@ -33,20 +51,27 @@
 				<td>지역</td>
 				<td>
 		<!-- //1-서울, 2-경기/인천, 3-충청/대전, 4-전라/광주, 5-경북/대구, 6-경남/부산/울산, 7-강원, 8-제주 -->
-					<input type="text" name="region" value="<%=region %>" readonly>
+					<input type="hidden" name="region" value="<%=region %>" readonly>
 				</td>
 				<td>지점명</td>
-				<td><input type="text" name="name" value="<%=cdto.getName()%>" readonly></td>
+				<td><%=cdto.getName()%>
+					<input type="hidden" name="name" value="<%=cdto.getName()%>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>주소</td> <!-- 다음 API ? -->
-				<td><input type="text" name="addr" value="<%=cdto.getAddr()%>" readonly></td>
+				<td><%=cdto.getAddr()%>
+					<input type="hidden" name="addr" value="<%=cdto.getAddr()%>" size="auto" readonly >
+				</td>
 				<td>전화번호</td>
-				<td><input type="text" name="tel" value="<%=cdto.getTel()%>" readonly></td>
+				<td><%=cdto.getTel()%>
+					<input type="hidden" name="tel" value="<%=cdto.getTel()%>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>상영관 수</td>
-				<td><input type="text" name="room" value="<%=cdto.getRoom() %>" readonly>
+				<td><%=cdto.getRoom() %>
+					<input type="hidden" name="room" value="<%=cdto.getRoom() %>" readonly>
 					<input type="hidden" name="before_room" value="<%=cdto.getRoom() %>">
 				</td>
 				<td><input type="button" name="del_cinema" value="<%=cdto.getName() %> 삭제"></td>
@@ -68,24 +93,36 @@
 			<tbody>
 			<tr>
 				<td><%=room_num %>상영관 상영 영화</td>
-				<td><input type="text" name="movie<%=room_num %>" value="<%=movie_num %>" readonly>
+				<td><%=movie_num %>
+				<input type="hidden" name="movie<%=room_num %>" value="<%=movie_num %>" readonly>
 					<input type="hidden" name="del_room_num" value="<%=room_num%>">
 				</td>
 				<td>좌석 수(행,열)</td> <!-- (A~Z),(1~9) -->
-				<td><input type="text" name="seat_line<%=room_num %>" size="5" value="<%=seat.split(" ")[0] %>" readonly>
-					,<input type="text" name="seat_row<%=room_num %>" size="5" value="<%=seat.split(" ")[1] %>" readonly></td>
+				<td><%=seat.split(" ")[0] %>
+				<input type="hidden" name="seat_line<%=room_num %>" size="5" value="<%=seat.split(" ")[0] %>" readonly>
+				, <%=seat.split(" ")[1] %>
+				<input type="hidden" name="seat_row<%=room_num %>" size="5" value="<%=seat.split(" ")[1] %>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>상영 시작시간</td>
-				<td><input type="text" name="start_times<%=room_num%>" value="<%=start_times%>" readonly></td>
+				<td><%=start_times%>
+					<input type="hidden" name="start_times<%=room_num%>" value="<%=start_times%>" readonly>
+				</td>
 				<td>상영 종료시간</td>
-				<td><input type="text" name="end_times<%=room_num%>" value="<%=end_times%>" readonly></td>
+				<td><%=end_times%>
+					<input type="hidden" name="end_times<%=room_num%>" value="<%=end_times%>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>상영 시작일</td>
-				<td><input type="text" name="start_priod<%=room_num%>" value="<%=start_priod%>" readonly></td>
+				<td><%=start_priod%>
+					<input type="hidden" name="start_priod<%=room_num%>" value="<%=start_priod%>" readonly>
+				</td>
 				<td>상영 종료일</td>
-				<td><input type="text" name="end_priod<%=room_num%>" value="<%=end_priod%>" readonly></td>
+				<td><%=end_priod%>
+					<input type="hidden" name="end_priod<%=room_num%>" value="<%=end_priod%>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td><input type="button" name="delRoom" value="<%=room_num%>상영관 삭제"></td>
