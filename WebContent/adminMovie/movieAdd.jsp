@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA - 관리자 영화 등록 페이지</title>
+<!--CSS  -->
+<link rel="stylesheet" href="././css/modify.css">
+
 
 <!-- summernote 적용시키기 위한 준비 -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -48,7 +51,7 @@
 						</td>
 						<td>등급</td>
 						<td>
-							<select nane="grade">
+							<select name="grade">
 								<option value="all">전체관람가</option>
 								<option value="12">12세관람가</option>
 								<option value="15">15세관람가</option>
@@ -106,7 +109,7 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<input type="submit" value="영화 추가">
+							<input type="submit" value="영화 추가" class="add">
 						</td>
 					</tr>
 				</table>

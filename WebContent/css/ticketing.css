@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+.grade_19 {background:url('../img/bg/bg_grade_18.png') no-repeat 0 0; } 
 .grade_18 {background:url('../img/bg/bg_grade_18.png') no-repeat 0 0; } 
 .grade_15 {background:url('../img/bg/bg_grade_15.png') no-repeat 0 0; }
 .grade_12 {background:url('../img/bg/bg_grade_12.png') no-repeat 0 0; }
@@ -9,14 +10,14 @@
 .disabled [class^=grade_].grade_15 {background:url('../img/bg/bg_grade_15_off.png') no-repeat 0 0; }
 .disabled [class^=grade_].grade_12 {background:url('../img/bg/bg_grade_12_off.png') no-repeat 0 0; }
 .disabled [class^=grade_].grade_all {background:url('../img/bg/bg_grade_all_off.png') no-repeat 0 0; }
-.disabled [class^=grade_].grade_19 {background:url('../img/bg/bg_grade_19_off.png') no-repeat 0 0;} 
+.disabled [class^=grade_].grade_19 {background:url('../img/bg/bg_grade_18_off.png') no-repeat 0 0;} 
 .disabled [class^=grade_].grade_mi {background:url('../img/bg/bg_grade_mi_off.png') no-repeat 0 0;} 
 
 .movie_list .disabled [class^=grade_].grade_18 {background:url('../img/bg/bg_grade_18_off.png') no-repeat 0 0; } 
 .movie_list .disabled [class^=grade_].grade_15 {background:url('../img/bg/bg_grade_15_off.png') no-repeat 0 0; }
 .movie_list .disabled [class^=grade_].grade_12 {background:url('../img/bg/bg_grade_12_off.png') no-repeat 0 0; }
 .movie_list .disabled [class^=grade_].grade_all {background:url('../img/bg/bg_grade_all_off.png') no-repeat 0 0; }
-.movie_list .disabled [class^=grade_].grade_19 {background:url('../img/bg/bg_grade_19_off.png') no-repeat 0 0;} 
+.movie_list .disabled [class^=grade_].grade_19 {background:url('../img/bg/bg_grade_18_off.png') no-repeat 0 0;} 
 
 .movie_list li a.disabled.on {background:#fff url('../img/bg/bg_ckth.png') no-repeat 10px center;  border:1px solid #999}
 .movie_list li a.on em {font-weight:bold;}
@@ -417,3 +418,32 @@ label, caption,  tfoot, thead{
 
 #time_noData {text-align:center; line-height:324px;}
 #time_noData .noData {display:inline-block; padding-left:27px; font-size:18px; color:#777}
+
+.cine_list li{float:left; margin:10px 20px; display:table; }
+
+.cine_list li a {
+	overflow: hidden;
+	display: table-cell;
+	vertical-align: middle;
+	width: 160px;
+	height: 50px;
+	border: none;
+	background: #c6c6c6;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	line-height: 15px;
+	font-size: 16px;
+	color: #000000;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.contents .cinemaList{
+	position: relative;
+	clear: both;
+	width: 900px;
+	padding: 50px 0;
+	color: #231f20;
+	margin: 50px auto;
+}

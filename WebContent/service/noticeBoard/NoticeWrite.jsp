@@ -84,7 +84,7 @@
 				</tr>
 				<tr>
 			   		<td>
-			   			<input type="submit" value="공지사항 작성하기" id="noticlick1">
+			   			<input type="submit" value="글 작성하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	

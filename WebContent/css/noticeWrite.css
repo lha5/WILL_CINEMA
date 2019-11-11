@@ -92,7 +92,7 @@ input[type=text] {
 
 
 #noticlick1{
-    width: 150px;
+    width: 130px;
   	padding: 10px 15px;
   	margin: 8px 15px;
   	display: inline-block;
@@ -130,3 +130,7 @@ input[type=submit],input[type=button] {
 	width: 1000px;
 	margin: 20px auto;
 }
+
+
+	
+

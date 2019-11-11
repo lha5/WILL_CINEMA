@@ -22,16 +22,17 @@
 
 	
 	<%@ include file="../../include/header.jsp" %>
-	<div id="wrap">
-	<div id="updatewrap">
+	
+	
 	<%
 	AdminNoticeDTO andto =(AdminNoticeDTO) request.getAttribute("andto");
 	String pageNum = (String) request.getAttribute("pageNum");
 	
 	String image = andto.getImage();
 	%>
-
-	<fieldset id="">
+	
+		<div id="notiWrap">
+		<h1>영화 수정 </h1>
 		<form action="./NoticeUpdateAction.an?pageNum=<%=pageNum %>" enctype="multipart/form-data" method="post" > 
 			<table>
 			   	<tr>
@@ -41,7 +42,7 @@
 			   			<input type="text" name="name" value="<%=andto.getName()%>" readonly><br>
 			   		</td>
 			   		<td>
-			   		비밀번호 :<input type="password" name="pass"> 
+			   		비밀번호 <input type="password" name="pass"> 
 			   		</td>
 			   		<td>카테고리</td>
 			   		<td>
@@ -97,16 +98,16 @@
 			   		
 			   		
 			   		<td>
-			   			<input type="submit" value="공지사항 수정하기">
+			   			<input type="submit" value="수정하기" id="noticlick1">
 			   		</td>
 				</tr>
 			</table>	
 		
 		</form>
-	</fieldset>
+	
 	
 		</div>
-		</div>
+		
 	<%@ include file="../../include/footer.jsp" %>
 	
 

@@ -11,14 +11,15 @@ import com.cinema.db.CineDAO;
 import com.cinema.db.CineDAOImpl;
 import com.cinema.db.CineDTO;
 
-public class CinemaAdminDetailAction implements Action {
+public class CinemaAdminSearchDetailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("CinemaAdminDetailAction execute()-----------------------------------------------------");
+		System.out.println("CinemaAdminSearchDetailAction execute()-----------------------------------------------------");
 		
-
+		request.setCharacterEncoding("UTF-8");
+		
 		// CineDAO 객체 생성
 		CineDAO cdao = new CineDAOImpl();
 		// 지점 수 확인 매서드
@@ -45,13 +46,17 @@ public class CinemaAdminDetailAction implements Action {
 
 		/*********************************************************/
 		
-		
-		
 		// getCineList(); >> List 형태의 데이터를 리턴
 		List<CineDTO> cineList =null;
 		
-		if(count !=0){
-			cineList= cdao.getCineList(startRow, pageSize);
+		// 검색 결과
+		String search = request.getParameter("search");
+		String category = request.getParameter("category");
+		
+		System.out.println(search+","+category);
+		
+		if(search != null || count != 0){
+			cineList = cdao.getCineList(startRow, pageSize, category, search);
 		}
 		
 		// 페이지 출력

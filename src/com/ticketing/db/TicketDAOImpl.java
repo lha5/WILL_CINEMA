@@ -96,7 +96,52 @@ public class TicketDAOImpl implements TicketDAO{
 
 	 /*--------------------- 영화관 정보 --------------------*/
 
-  
+    /*--------------------- 영화관 정보 --------------------*/
+	@Override
+	public List<CineDTO> getCinemaList(int region_num) {
+		List<CineDTO> cineList = new ArrayList<CineDTO>();
+		try {
+			con = getCon();
+			
+			sql = "SELECT * FROM cinema where region_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, region_num);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				CineDTO cdto = new CineDTO();
+				
+				cdto.setRegion_num(rs.getInt("region_num"));
+				cdto.setCinema_num(rs.getInt("cinema_num"));
+				cdto.setRegion(rs.getString("region"));
+				cdto.setName(rs.getString("name"));
+				cdto.setRoom(rs.getString("room"));
+				cdto.setSeat(rs.getString("seat"));
+				cdto.setAddr(rs.getString("addr"));
+				cdto.setTel(rs.getString("tel"));
+				cdto.setStart_times(rs.getString("start_times"));
+				cdto.setEnd_times(rs.getString("end_times"));
+				cdto.setStart_priod(rs.getString("start_priod"));
+				cdto.setEnd_priod(rs.getString("end_priod"));
+				cdto.setMovie_num(rs.getString("movie_num"));
+				
+				cineList.add(cdto);
+			}
+			
+			System.out.println("cineList 목록 저장 완료------------------------------");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cineList;
+	}
+
+	 /*--------------------- 영화관 정보 --------------------*/
+	
+	
 	/*--------------------- 선택된 영화관 정보 (영화관 명)--------------------*/
 	 @Override
 	public CineDTO getSelectList(String cinema) {
@@ -201,7 +246,7 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				mdto.setGrade(rs.getInt("grade"));
+				mdto.setGrade(rs.getString("grade"));
 				mdto.setTotal_rating(rs.getDouble("total_rating"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
 				movieList.add(mdto);
@@ -243,7 +288,7 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setDirector(rs.getString("director"));
 				mdto.setActor(rs.getString("actor"));
 				mdto.setCountry(rs.getString("country"));
-				mdto.setGrade(rs.getInt("grade"));
+				mdto.setGrade(rs.getString("grade"));
 
 				mdto.setTotal_rating(rs.getDouble("total_rating"));
 				mdto.setBooking_ration(rs.getDouble("booking_ration"));
@@ -280,7 +325,7 @@ public class TicketDAOImpl implements TicketDAO{
 				mdto.setMovie_num(rs.getInt("movie_num"));
 				mdto.setTitle(rs.getString("title"));
 				mdto.setGenre(rs.getString("genre"));
-				mdto.setGrade(rs.getInt("grade"));
+				mdto.setGrade(rs.getString("grade"));
 				mdto.setStory(rs.getString("story"));
 				mdto.setRunning_time(rs.getInt("running_time"));
 				mdto.setDirector(rs.getString("director"));
