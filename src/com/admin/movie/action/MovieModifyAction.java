@@ -61,6 +61,7 @@ public class MovieModifyAction implements Action {
 
 		String title = multi.getParameter("title");
 		String genre = multi.getParameter("genre");
+		String country=multi.getParameter("country");
 		String director = multi.getParameter("director");
 		String story = multi.getParameter("story");
 		String actor = multi.getParameter("actor");
@@ -70,6 +71,7 @@ public class MovieModifyAction implements Action {
 
 		amdto.setMovie_num(movie_num);
 		amdto.setTitle(title);
+		amdto.setCountry(country);
 		amdto.setGenre(genre);
 		amdto.setDirector(director);
 		amdto.setStory(story);

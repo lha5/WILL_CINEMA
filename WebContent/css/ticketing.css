@@ -296,7 +296,7 @@ label, caption,  tfoot, thead{
 .area_zone > a {display:block; width:116px; height:40px; line-height:40px; padding-left:13px; color:#666; text-align:left; vertical-align:middle; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}
 .area_zone > a.active {/* 0308 width:107px;*/width:107px;padding-left:22px;background:#231f20 url('../img/Bullet/bullet03.gif') no-repeat 10px center;color:#fff !important;letter-spacing:-1px;}
 
-.area_list {overflow:hidden; width:409px; }
+.area_list {overflow:hidden;}
 .area_list li {float:left; margin:0 0 8px 7px; display:table; }
 .area_list li a {overflow:hidden; display:table-cell; vertical-align:middle; width:129px; height:40px; border:1px solid #efefef; background:#efefef; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; line-height:16px; font-size:12px; color:#666; text-align:center; letter-spacing:-1px;}
 .area_list li a.on {padding:0 25px; border:1px solid #999; color:#231f20; font-weight:bold; background:#fff url('../img/bg/bg_ckth.png') no-repeat 10px 50%;}
