@@ -73,52 +73,27 @@ input[type=button] {
 		System.out.println("boardList : "+boardList+" id : "+id);
 	%>
 	<div id="Wrap">	
-	 <table id="tbl">
-		 <%for(int i=0;i<boardList.size();i++){ 
-		 	MovieReviewDTO mrdto = boardList.get(i);
-		 	int rating = mrdto.getRating();
-		 %>
-		<tr>
-			<td>
-				<%
-				if (rating == 1) {
-					%>
-					<i class="ri-star-fill ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i>
-					<%
-				} else if (rating == 2) {
-					%>
-					<i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i>
-					<%
-				} else if (rating == 3) {
-					%>
-					<i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-line ri-lg"></i><i class="ri-star-line ri-lg"></i>
-					<%
-				} else if (rating == 4) {
-					%>
-					<i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-line ri-lg"></i>
-					<%
-				} else if (rating == 5) {
-					%>
-					<i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i><i class="ri-star-fill ri-lg"></i>
-					<%
-				}
-				%>
-				<br>
-				<%=mrdto.getId() %>
-				<br>
-				<%=mrdto.getDate() %>
-				</td>
-			<td>
-				<%=mrdto.getContent() %>
-			</td>
-	     	<%
-	     	if (id != null) {
-	     		if(id.equals(mrdto.getId())){ %>
-			<td>
-	     		<div class="rightloat">
-			     	<input type="button" id="button" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-					<input type="button" id="button" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
-		     	</div>
+
+	 <table id="table" border="0">
+	 <%for(int i=0;i<boardList.size();i++){ 
+	 	MovieReviewDTO mrdto = boardList.get(i);
+	 %>
+     <tr>
+       <td>평점</td><td><%=mrdto.getRating() %></td><td><%=mrdto.getId() %></td>
+     </tr>
+     <tr>
+       <td colspan="3"><%=mrdto.getContent() %></td>
+     </tr>
+	     <%
+	     if (id != null) {
+	     	if(id.equals(mrdto.getId())){ %>
+	     <tr>
+	     	<td colspan="8">
+	     	<div class="rightloat">
+		     	<input type="button" id="button1" value="수정하기" onclick="location.href='./MovieReviewUpdate.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+				<input type="button" id="button1" value="삭제하기" onclick="location.href='./MovieReviewDeleteAction.mr?movie_num=<%=movie_num %>&num=<%=mrdto.getNum() %>'">
+	     	</div>
+	
 	     	</td>
 			<%
 				}

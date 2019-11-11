@@ -77,6 +77,7 @@ public class MovieModifyAction implements Action {
 		amdto.setRunning_time(running_time);
 		amdto.setImage(image);
 		amdto.setPoster(poster);
+		amdto.setGrade(multi.getParameter("grade"));
 		amdto.setOpen_date(transformDate(multi.getParameter("open_date")));
 		amdto.setClose_date(transformDate(multi.getParameter("close_date")));
 

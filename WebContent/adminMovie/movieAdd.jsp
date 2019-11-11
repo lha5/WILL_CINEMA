@@ -51,7 +51,7 @@
 						</td>
 						<td>등급</td>
 						<td>
-							<select nane="grade">
+							<select name="grade">
 								<option value="all">전체관람가</option>
 								<option value="12">12세관람가</option>
 								<option value="15">15세관람가</option>

@@ -68,8 +68,8 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			System.out.println("movie_num : " + movie_num);
 			
 
-			sql = "insert into movie(title, movie_num, genre, story, running_time, director, actor, open_date, close_date, country, booking_ration,poster,image) "
-					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into movie(title, movie_num, genre, story, running_time, director, actor, open_date, close_date, country, booking_ration,poster,image,grade) "
+					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -86,6 +86,7 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			pstmt.setDouble(11, 0);
 			pstmt.setString(12, mdto.getPoster());
 			pstmt.setString(13, mdto.getImage());
+			pstmt.setString(14, mdto.getGrade());
 			
 			pstmt.executeUpdate();
 			
@@ -144,7 +145,7 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {// check = 1;
-				sql = "update movie set title=? , genre=?, story=?, running_time=?, director=?, actor=?, open_date=?, close_date=?, country=?, poster=?, image=? where movie_num = ?";
+				sql = "update movie set title=? , genre=?, story=?, running_time=?, director=?, actor=?, open_date=?, close_date=?, country=?, poster=?, image=?, grade=? where movie_num = ?";
 					
 				pstmt = con.prepareStatement(sql);
 				
@@ -159,7 +160,8 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 				pstmt.setString(9, mdto.getCountry());
 				pstmt.setString(10, mdto.getPoster());
 				pstmt.setString(11, mdto.getImage());
-				pstmt.setInt(12, mdto.getMovie_num());
+				pstmt.setString(12, mdto.getGrade());
+				pstmt.setInt(13, mdto.getMovie_num());
 				
 				check = pstmt.executeUpdate();
 			}else{
