@@ -13,6 +13,8 @@ public interface CineDAO {
 	//public List<CineDTO> getCineList();
 	public List<CineDTO> getCineList(int startRow,int pageSize);
 	
+	public List<CineDTO> getCineList(int startRow,int pageSize,String category,String search);
+	
 	// 수정할 영화관 내용 가져오기
 	public CineDTO getCinema(int cinema_num);
 	

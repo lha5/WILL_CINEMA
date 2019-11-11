@@ -70,8 +70,8 @@ function sample6_execDaumPostcode() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             //document.getElementById('sample6_postcode').value = data.zonecode;
             document.getElementById("sample6_address").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample6_detailAddress").focus();
+            // 커서를 주소 필드로 이동한다.
+            document.getElementById("sample6_address").focus();
         }
     }).open();
 }
@@ -106,8 +106,7 @@ function sample6_execDaumPostcode() {
 			<tr>
 				<td>주소 &nbsp;&nbsp;<input type="button" onclick="sample6_execDaumPostcode()" value="주소 찾기"></td> <!-- 다음 API ? -->
 				<td>
-					<input type="text" id="sample6_address" name="addr" placeholder="주소"><br>
-					<input type="text" id="sample6_detailAddress" name="detailaddr" placeholder="상세주소"><br>
+					<input type="text" id="sample6_address" name="addr" placeholder="주소">
 				</td>
 				<td>전화번호</td>
 				<td><input type="text" name="tel"></td>

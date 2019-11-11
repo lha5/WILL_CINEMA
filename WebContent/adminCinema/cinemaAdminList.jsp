@@ -19,7 +19,7 @@
 			padding: 0 auto;
 			margin: 0 auto;
 		}
-	 	input[type=button]{
+	 	.detail{
 			border:none;
 			padding: 0;
 			background:none;
@@ -57,10 +57,18 @@
 	
 	<div id="contentsWrap">
 	<table border="1">
-		
-			 <a href="./CinemaAdd.ci" class="cinemaWrite">등록</a>
-		
- 		
+		<div class="cinemaWrite">
+			<form action="./CinemaAdminSearchDetail.ci" method="post">
+			<select name="category">
+				<option value="region">지역</option>
+				<option value="name">지점명</option>
+			</select>
+			<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력">
+			<input type="submit" value="검색">
+			</form>
+			<input type="button" onclick="location.href='./CinemaAdd.ci'" value="등록">
+			<input type="button" value="목록으로" onclick="location.href='./CinemaAdminDetail.ci?pageNum=<%=pageNum%>'"/>
+ 		</div>
 		
  		
 	<% //리스트 갯수 
@@ -82,7 +90,7 @@
 		 	<td rowspan="2">
 		 		<input type="button" name="detail<%=i %>" 
 		 			value="상세보기" onclick="detail('<%=i%>')"
-		 			class="cinemaWrite">
+		 			class="cinemaWrite detail">
 		 	</td>
 		 </tr>
 		<tr class="table_border">
