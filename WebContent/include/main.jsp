@@ -29,9 +29,9 @@
 <!-- 랜덤 광고 이미지 -->
 <script language = "javascript">
 	var imgArray = new Array();
-	imgArray[0] = "./upload/ChildOfWeather_AD.jpg";
-	imgArray[1] = "./upload/HansuOfGod_AD.jpg";
-	imgArray[2] = "./upload/THEBADGUYS_AD.jpg"
+	imgArray[0] = "./upload/WeatheringWithYou_AD.jpg";
+	imgArray[1] = "./upload/KeepSecret_AD.jpg";
+	imgArray[2] = "./upload/DoctorSleep_AD.jpg"
 	imgArray[3] = "./upload/AngelHasFalen_AD.jpg";
 	
 	function showImage(){
