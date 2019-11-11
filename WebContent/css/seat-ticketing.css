@@ -78,10 +78,6 @@
 	margin: 30px auto;
 }
 
-.seatTable td{
-	width: 600px;
-}
-
 .seatTable td .seat{
 	display:inline-block;
 	border: none;

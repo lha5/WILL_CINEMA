@@ -509,13 +509,13 @@
 	int roomNum = (Integer)request.getAttribute("roomNum"); //상영관 번호
 	String week=(String)request.getAttribute("week"); //요일
 	
-	List seatRow=(List)request.getAttribute("seatRow");
+	List seatRow=(List)request.getAttribute("seatRow");//예약된 좌석
 	List seatCol=(List)request.getAttribute("seatCol");
 	
 	String seat = cdto.getSeat().split(",")[roomNum-1]; //총좌석
 	Integer row = Integer.parseInt(seat.split(" ")[0]); //행
 	Integer col = Integer.parseInt(seat.split(" ")[1]); //열
-
+	System.out.println("행 : "+row +" 열 : "+ col);
 %>
 <%@ include file="../../include/header.jsp" %>
 <div class="bgColor">
@@ -883,7 +883,7 @@
 						}	
 					}
 			}%>
-	<!-- <br> -->
+	<br>
 	<%
 		
 		alpChar++;
