@@ -108,12 +108,11 @@ public class MallOrderAddAction implements Action {
 		System.out.println("문자로 보낼 내용 : "+msg);
 		
 		//수신번호를 저장해야 하므로 등록후 등록한 번호만 사용
-		/*to = "01093654019";
-		SendSMS(msg, to);*/
+		to = "01093654019";
+		SendSMS(msg, to);
 		
 		// 현재 이 Action페이지는 ajax로 들어와 데이터 연결작업만 하기에 
 		// 이동 작업은 처리되지 않음
-		
 		// 페이지 이동
 		//forward.setPath("./MallOrderDone.mor");
 		//forward.setRedirect(true);

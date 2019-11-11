@@ -40,6 +40,7 @@ td:NTH-CHILD(1), td:NTH-CHILD(2), td:NTH-CHILD(4), td:NTH-CHILD(5), td:NTH-CHILD
 #bttns {
 	width: 100%;
 	text-align: right;
+	clear: both;
 }
 
 input[type=text] {
@@ -85,6 +86,12 @@ input[type=submit] {
 	font-size: 16px;
 	color: #ffffff;
 	letter-spacing: 2px;
+}
+
+#pagingNumber {
+	width: 900px;
+	margin: 20px auto;
+	text-align: center;
 }
 </style>
 
@@ -133,7 +140,7 @@ input[type=submit] {
 					if (qadto.getRe_ref() > 0) {
 						wid = qadto.getRe_lev() * 10;
 					%>
-					<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
+						<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
 					<%
 					}					
 					%>
@@ -152,6 +159,15 @@ input[type=submit] {
 				<td><%=qadto.getNum() %></td>
 				<td><%=qadto.getCategory()%></td>
 				<td>
+					<%
+					int wid = 0;
+					if (qadto.getRe_ref() > 0) {
+						wid = qadto.getRe_lev() * 10;
+					%>
+						<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
+					<%
+					}					
+					%>
 					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
 					<%=qadto.getSubject() %>
 					</a>

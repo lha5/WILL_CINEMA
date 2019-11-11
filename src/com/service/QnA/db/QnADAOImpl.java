@@ -136,7 +136,7 @@ public class QnADAOImpl implements QnADAO {
 		try {
 			con = getCon();
 			
-			sql = "select * from qna order by re_ref desc, re_seq asc limit ?,?";
+			sql = "select * from qna ORDER BY re_ref DESC, re_seq ASC LIMIT ?, ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
