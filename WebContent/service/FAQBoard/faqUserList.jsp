@@ -38,7 +38,7 @@
 			<form action="./FAQSearchAction.af" method="post" id="faqsearch">
 				<input type="text" name="search" placeholder="단어를 입력하세요" title="제목 입력" >
 				<input type="submit" value="검색">
-				<input type="button" value="목록으로" onclick="location.href='./FAQList.af?pageNum=<%=pageNum%>'"/>
+				<input type="button" value="목록으로" onclick="location.href='./FAQUserList.af?pageNum=<%=pageNum%>'"/>
 			</form>	
 	
 	

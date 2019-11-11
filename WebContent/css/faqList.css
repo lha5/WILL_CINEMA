@@ -67,8 +67,10 @@
 }
 #faqsearch {
 	/* border: 1px solid lime; */
+	padding-right: 5px;
 	position:absolute;
-	width: 800px;
+	width: 900px;
+	text-align: right;
 }
 input[type=submit],input[type=button] {
 	width: 85px;
