@@ -30,7 +30,9 @@
 
 	String tel = request.getParameter("tel");
 	
-	int price = Integer.parseInt(request.getParameter("price"));
+	int usingPoint = Integer.parseInt(request.getParameter("usingPoint"));
+	
+	int price = Integer.parseInt(request.getParameter("price")) - usingPoint;
 	%>
 	<!-- 결제 모듈 
 		https://smujihoon.tistory.com/m/103
@@ -59,7 +61,7 @@
 						dataType: 'text',
 						// contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'+',<%=tel %>'
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'+',<%=tel %>,<%=usingPoint%>'
 					}).done(function(data) {
 												
 					});

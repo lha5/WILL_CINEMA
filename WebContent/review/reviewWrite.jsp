@@ -27,36 +27,6 @@
 	%>
 	
 	<div id="Wrap">
-	
-	<%-- <fieldset class="accordion">
-		<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" name="reviewAddfr" method="post"
-			onsubmit="return reviewNonCheck()">
-			<div ><!-- class="table" -->
-			<table>
-				<tr>
-					<td>
-						<textarea id="textBox"  name="content" row="10" cols="50"
-							placeholder="아름다운 말로 멋진 영화를 빛내주세요"></textarea>	
-							<select name="rating">
-								<option value=1>1</option>
-								<option value=2>2</option>
-								<option value=3>3</option>
-								<option value=4>4</option>
-								<option value=5>5</option>
-		
-							</select>  
-							<input type="submit"  value="글쓰기" id="button2">
-					</td>
-				</tr>
-			</table>
-
- 
-
-
-			</div>
-		</form>
-	</fieldset> --%>
-
 		<fieldset>
 			<h2>평점 및 영화 리뷰</h2>
 			<form action="./MovieReviewWriteAction.mr?movie_num=<%=movie_num %>" method="post" id="rvwForm">

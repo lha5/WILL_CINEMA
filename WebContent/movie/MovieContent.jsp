@@ -101,6 +101,28 @@ hr {
 	request.setAttribute("movie_num", movie_num);
 	AdminMovieDTO mdto = (AdminMovieDTO) request.getAttribute("mdto");
 	String pageNum = (String) request.getAttribute("pageNum");
+	
+	// 관람 등급
+	String grade = "";
+	switch (mdto.getGrade()) {
+		case "all":
+			grade += "전체관람가";
+			break;
+		case "12":
+			grade += "12세 이상 관람가";
+			break;
+		case "15":
+			grade += "15세 이상 관람가";
+			break;
+		case "19":
+			grade += "청소년 관람 불가";
+			break;
+		case "limited":
+			grade += "제한관람가(제한상영가)";
+			break;
+	}
+	
+	int avg = (int) request.getAttribute("avg");
 	%>
 		<div id="Wrap">
 		
@@ -114,8 +136,8 @@ hr {
 							<h1><%=mdto.getTitle()%></h1>
 							<ul>
 								<li><span class="tag">예매율</span> <%=mdto.getBooking_ration() %> %</li>
-								<li><span class="tag">관람평점</span></li>
-								<li><span class="tag">등급</span> <%=mdto.getGrade()%></li>
+								<li><span class="tag">관람평점</span> <%=avg%></li>
+								<li><span class="tag">등급</span> <%=grade%></li>
 								<li><span class="tag">개봉일</span> <%=mdto.getOpen_date() %></li>
 								<li><span class="tag">기본정보</span> <%=mdto.getGenre() %></li>
 								<li><span class="tag">타입</span> 2D | 3D | 4D</li>
