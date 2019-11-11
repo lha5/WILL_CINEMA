@@ -242,7 +242,7 @@ function acyncMovePage(url){
 				<li><input type="button" value="예매내역" id="bookingList"></li>
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><input type="button" value="멤버십" id="myMembership"></li>
-				<li><input type="button" value="내 문의·질문" id="myQnA"></li>
+				<li><input type="button" value="내 1:1문의" id="myQnA"></li>
 				<li><input type="button" value="내 정보 관리" id="myInfoManagement">
 					<input type="hidden" name="SnSLoginId_check" value="<%=SnSLogin %>">
 				</li>

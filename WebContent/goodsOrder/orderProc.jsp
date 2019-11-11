@@ -22,7 +22,6 @@
 	
 	String buyer_name = request.getParameter("buyer_name");
 	
-	int price = Integer.parseInt(request.getParameter("price"));
 	int goods_amount = Integer.parseInt(request.getParameter("goods_amount"));
 	String goods_name = request.getParameter("goods_name");
 	int goods_num = Integer.parseInt(request.getParameter("goods_num"));
@@ -30,6 +29,8 @@
 	String email = request.getParameter("email");
 
 	String tel = request.getParameter("tel");
+	
+	int price = Integer.parseInt(request.getParameter("price"));
 	%>
 	<!-- 결제 모듈 
 		https://smujihoon.tistory.com/m/103

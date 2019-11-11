@@ -210,6 +210,10 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/ApplyMyPoint.me")) {
+			forward = new ActionForward();
+			forward.setPath("./goodsOrder/usePoint.jsp");
+			forward.setRedirect(false);
 		}
 		
 		

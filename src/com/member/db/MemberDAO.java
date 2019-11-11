@@ -33,6 +33,10 @@ public interface MemberDAO {
 	// 포인트 적립
 	public void addPoint(String id, int percentage);
 
+	// 포인트 차감
+	public void substractPoint(String id, int usingPoint);
+	
+	
   // 아이디 찾기
 	List<MemberDTO> searchId(MemberDTO mdto);
 
@@ -51,7 +55,4 @@ public interface MemberDAO {
 	
 	//SNS회원 등록
 	public void insertSNSMember(MemberDTO mdto);
-
-	
-
 }
