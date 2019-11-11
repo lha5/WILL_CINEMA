@@ -29,10 +29,10 @@
 <!-- 랜덤 광고 이미지 -->
 <script language = "javascript">
 	var imgArray = new Array();
-	imgArray[0] = ".img/banner/ChildOfWeather_main.jpg";
-	imgArray[1] = ".img/banner/HansuOfGod_main.jpg";
-	imgArray[2] = ".img/banner/THEBADGUYS_main.jpg"
-	imgArray[3] = ".img/banner/AngelHasFalen_main.jpg";
+	imgArray[0] = "./upload/ChildOfWeather_AD.jpg";
+	imgArray[1] = "./upload/HansuOfGod_AD.jpg";
+	imgArray[2] = "./upload/THEBADGUYS_AD.jpg"
+	imgArray[3] = "./upload/AngelHasFalen_AD.jpg";
 	
 	function showImage(){
 		var imgNum = Math.round(Math.random()*3);
