@@ -35,6 +35,7 @@
 	MovieDAOImpl mdao = new MovieDAOImpl();
 	AdminMovieDTO mdto = mdao.getBoard(movie_num);
 	
+	String country = mdto.getCountry();
 %>
 
 
@@ -73,11 +74,11 @@
 						<td>등급</td>
 						<td>
 							<select name="grade">
-								<option value="all">전체관람가</option>
-								<option value="12">12</option>
-								<option value="15">15</option>
-								<option value="18">18</option>
-								<option value="limited">제한상영가(제한관람가)</option>
+								<option value="all" <%if (mdto.getGrade().equals("all")) {%>selected<%}%>>전체관람가</option>
+								<option value="12" <%if (mdto.getGrade().equals("12")) {%>selected<%}%>>12</option>
+								<option value="15" <%if (mdto.getGrade().equals("15")) {%>selected<%}%>>15</option>
+								<option value="18" <%if (mdto.getGrade().equals("18")) {%>selected<%}%>>18</option>
+								<option value="limited" <%if (mdto.getGrade().equals("limited")) {%>selected<%}%>>제한상영가(제한관람가)</option>
 							</select>
 						</td>
 					</tr>
@@ -123,9 +124,6 @@
 					<br>
 						<td>포스터</td>
 						<td colspan="3" class="filebox">
-							<input class="upload-name" value="업로드" disabled="disabled">
-							
-							<label for="ex_filename">업로드 </label>
 							<input type="file" name="poster" id="ex_filename"  class ="upload-hidden" value="<%=mdto.getPoster()%>">
 						</td>
 					</tr>
