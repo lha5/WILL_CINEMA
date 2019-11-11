@@ -293,7 +293,7 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 		try {
 			con = getCon();
 			
-			sql = "SELECT AVG(rating) FROM review WHERE movie_num = ?";
+			sql = "SELECT AVG(rating) AS avgrate FROM review WHERE movie_num = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -302,7 +302,8 @@ public class MovieReviewDAOImpl implements MovieReviewDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				avg = rs.getInt("rating");
+				avg = (int) rs.getInt("avgrate");
+				System.out.println("평점 값 : " + avg);
 			} else {
 				avg = 0;
 			}
