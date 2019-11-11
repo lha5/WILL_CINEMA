@@ -428,11 +428,19 @@ nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
 	/*  영화관 위치 / 영화재생  j쿼리  */
+
+
+	
+	
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
 			 
-		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
+		w = 800; //팝업창의 너비
+		h = 600; //팝업창의 높이
+		LeftPosition=(screen.width-w)/2;
+		TopPosition=(screen.height-h)/2;
+		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");     
 	}
 	
 	function movieing(){ 	        	        
