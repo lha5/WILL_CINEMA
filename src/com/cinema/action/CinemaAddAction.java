@@ -102,13 +102,15 @@ public class CinemaAddAction implements Action {
 		else if(regionCode==8){region="제주";}
 		else{region="서울";}
 		
+		String addr = request.getParameter("addr") + ", " + request.getParameter("detailaddr");
+		
 		
 		cdto.setRegion(region);
 		cdto.setRegion_num(regionCode);
 		cdto.setName(request.getParameter("name"));
 		cdto.setRoom(room);
 		cdto.setSeat(seat);
-		cdto.setAddr(request.getParameter("addr"));
+		cdto.setAddr(addr);
 		cdto.setTel(request.getParameter("tel"));
 		cdto.setStart_times(start_times);
 		cdto.setEnd_times(end_times);

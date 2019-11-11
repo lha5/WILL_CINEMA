@@ -11,17 +11,25 @@
 
 <link rel="stylesheet" href="././css/qnalist2.css">
 
-<style type="text/css">
-	table{
+	<style type="text/css">
+		table, .table_border{
+			border: none;
+			text-align: center;
+			width: 900px;
+			padding: 0 auto;
+			margin: 0 auto;
+		}
+	 	input[type=button]{
+			border:none;
+			padding: 0;
+			background:none;
+		}
+		.cinemaWrite{ 
+			color: #a33;
+			float: right;
+		}
 		
-	}
- 	input[type=button]{
-		border:none;
-		padding: 0;
-		background:none;
-	} 
-	
-</style>
+	</style>
 
 </head>
 <body>
@@ -48,10 +56,10 @@
 	%>
 	
 	<div id="contentsWrap">
-	<table>
-		<tr>
-			<td colspan="8" class="cinemaWrite"><a href="./CinemaAdd.ci">등록</a></td>
-		</tr>
+	<table border="1">
+		
+			 <a href="./CinemaAdd.ci" class="cinemaWrite">등록</a>
+		
  		
 		
  		
@@ -63,7 +71,7 @@
 		int room_num = Integer.parseInt(room);
 		
 	%>	
-		<tr>
+		<tr class="table_border">
  			<td>지점 번호</td>
  			<td>지역</td>
 		 	<td>지점명</td>
@@ -72,10 +80,12 @@
 		 	<td>전화번호</td>
 		 	<td>수정/삭제</td>
 		 	<td rowspan="2">
-		 		<input type="button" name="detail<%=i %>" value="상세보기" onclick="detail('<%=i%>')">
+		 		<input type="button" name="detail<%=i %>" 
+		 			value="상세보기" onclick="detail('<%=i%>')"
+		 			class="cinemaWrite">
 		 	</td>
 		 </tr>
-		<tr>
+		<tr class="table_border">
 			<td><%=cdto.getRegion_num()%>-<%=cdto.getCinema_num() %></td>
 			<td><%=cdto.getRegion() %></td>
 		 	<td><%=cdto.getName() %></td>
@@ -90,8 +100,8 @@
 		 	
 		 </tr>	
 		 
-		<tr >
-		<td colspan="8">
+		<tr class="table_border">
+		<td class="scrite_table" colspan="8">
 		<table border="1" id="detail_part<%=i %>" style="display:none">
 		 <%//관 나누기
 			for(int j=0;j<room_num;j++){
