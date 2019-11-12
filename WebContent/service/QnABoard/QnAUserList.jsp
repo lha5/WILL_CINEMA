@@ -132,7 +132,7 @@ input[type=submit] {
     		
 		%>
 			<tr>
-				<td><%=qadto.getNum() %></td>
+				<td><%=i+1 %></td>
 				<td><%=qadto.getCategory()%></td>
 				<td>
 					<%
