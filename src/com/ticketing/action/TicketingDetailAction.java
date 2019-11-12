@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.admin.movie.db.AdminMovieDAO;
+import com.admin.movie.db.AdminMovieDAOImpl;
 import com.admin.movie.db.AdminMovieDTO;
 import com.cinema.db.CineDAO;
 import com.cinema.db.CineDAOImpl;
@@ -43,6 +45,9 @@ public class TicketingDetailAction implements Action {
 		AdminMovieDTO amdto = mdao.getTitle(tdto.getMovie_num());
 		System.out.println("amdto " + amdto);
 		
+		AdminMovieDAO amdao = new AdminMovieDAOImpl();
+		String src = amdao.getPoster(amdto.getMovie_num());
+		
 		CineDAO cdao = new CineDAOImpl();
 		CineDTO cdto = cdao.getCineName(tdto.getCinema_num());
 		System.out.println("cdto " + cdto);
@@ -50,6 +55,7 @@ public class TicketingDetailAction implements Action {
 		request.setAttribute("tdto", tdto);
 		request.setAttribute("amdto", amdto);
 		request.setAttribute("cdto", cdto);
+		request.setAttribute("src", src);
 		
 		forward.setPath("./ticketing/ticketingDetail.jsp");
 		forward.setRedirect(false);

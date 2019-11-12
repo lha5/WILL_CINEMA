@@ -215,4 +215,32 @@ public class AdminMovieDAOImpl implements AdminMovieDAO{
 		return check;
 	}
 	
+	
+
+	@Override
+	public String getPoster(int movie_num) {
+		String src = "";
+		try {
+			con = getCon();
+			
+			sql = "SELECT poster FROM movie WHERE movie_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, movie_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				src += rs.getString("poster");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("포스터 주소 가져오기 완료");
+		return src;
+	}
+	
 }
