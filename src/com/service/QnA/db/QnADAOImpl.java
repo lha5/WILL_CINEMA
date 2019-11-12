@@ -81,9 +81,9 @@ public class QnADAOImpl implements QnADAO {
 			pstmt.setString(5, qadto.getSubject());
 			pstmt.setString(6, qadto.getContent());
 			pstmt.setInt(7, qadto.getReadcount());
-			pstmt.setInt(8, qadto.getRe_ref());
-			pstmt.setInt(9, qadto.getRe_lev());
-			pstmt.setInt(10, qadto.getRe_seq());
+			pstmt.setInt(8, num);
+			pstmt.setInt(9, 0);
+			pstmt.setInt(10, 0);
 			pstmt.setString(11, qadto.getImage());
 			
 			int value = pstmt.executeUpdate();
