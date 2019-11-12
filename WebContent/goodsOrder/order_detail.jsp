@@ -98,14 +98,14 @@ tr:NTH-CHILD(6)>td>a {
 			<td>구매한 상품</td>
 			<td colspan="3">
 				<a href="./GoodsDetail.ml?num=<%=modto.getOrder_goods_num()%>">
-					<img alt="goods" src="<%=imgSrc%>" width="200"><br><%=modto.getGoods_name()%>
+					<img alt="goods" src="./upload/<%=imgSrc%>" width="200"><br><%=modto.getGoods_name()%>
 				</a>
 			</td>
 		</tr>
 		<tr>
 			<td>교환권 번호</td>
 			<td>
-				<img alt="교환권" src="<%=modto.getBarcode_img()%>">
+				<img alt="교환권" src="./barcode/<%=modto.getBarcode_img()%>">
 				<br>
 				<%=modto.getBarcode()%>
 			</td>
