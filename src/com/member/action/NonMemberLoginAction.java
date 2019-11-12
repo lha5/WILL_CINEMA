@@ -82,6 +82,7 @@ public class NonMemberLoginAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", name);
 			session.setAttribute("info", info);
+			session.setAttribute("NonMember", "비회원");
 					
 			// 로그인 안되어 있음 회원가입으로 감
 			forward.setPath("./Main.me");
@@ -97,7 +98,6 @@ public class NonMemberLoginAction implements Action {
 			session.setAttribute("name", name);
 			session.setAttribute("birth", birth);
 			session.setAttribute("email", email);
-			session.setAttribute("NonMember", "비회원");
 			
 			PrintWriter out = response.getWriter();
 			
