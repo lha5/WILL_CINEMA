@@ -20,6 +20,7 @@
 	<%
 	String id = (String) session.getAttribute("id");
 	String NonMember = (String) session.getAttribute("NonMember");
+	System.out.println(" id : "+id+" NonMember : "+NonMember);
 	if(NonMember==null){
 		NonMember = "없음";
 	}
@@ -55,7 +56,11 @@
 					<ul id="dropdown">
 						<li><a href="./FAQUserList.af">FAQ</a></li>
 						<li>
+						<%if(NonMember.equals("비회원")){ %>
+							<a>1:1 문의</a>
+						<%}else{ %>
 							<a href="./QnAUserList.sq">1:1 문의</a>
+						<%} %>
 						</li>
 						<li><a href="./NoticeList.an">공지사항</a></li>
 					</ul>
@@ -89,15 +94,19 @@
 					</ul>
 				</li>
 				<li><a href="./CinemaUserView.ci?cinema_num=1001">영화관</a>	
-					<ul><!--  class="cine" -->
-						<li><a href="./CinemaUserView.ci?cinema_num=1001">서울</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=2001">경기/인천</a></li>						
-						<li><a href="./CinemaUserView.ci?cinema_num=3001">충청/대전</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=4001">전라/광주</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=5001">경북/대구</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=6001">경남/부산/울산</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=7001">강원</a></li>
-						<li><a href="./CinemaUserView.ci?cinema_num=8001">제주</a></li>
+					<ul class="cine">
+						<li><a href="./CinemaUserView.ci?cinema_num=1001">영등포</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=1002">가산디지털</a></li>						
+						<li><a href="./CinemaUserView.ci?cinema_num=2001">안산</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=2002">부천역</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=3001">서산</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=3002">대전</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=4001">수완(광주)</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=4002">광주백화점</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=5001">경주</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=5002">포항</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=6001">서면(전포동)</a></li>
+						<li><a href="./CinemaUserView.ci?cinema_num=6002">창원</a></li>
 					</ul>
 				</li>
 				<li>
