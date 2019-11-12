@@ -58,7 +58,7 @@ public class QnADeleteAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println(" alert('삭제 성공'); ");
-		out.println(" location.href='./QnAList.sq?pageNum="+pageNum+"' ");
+		out.println(" location.href='./QnAUserList.sq?pageNum="+pageNum+"' ");
 		out.println("</script>");
 		
 		out.close();

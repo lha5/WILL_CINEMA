@@ -126,10 +126,10 @@ input[type=submit] {
 		       <td>조회수</td>
 		     </tr>
 		<%
-     	for (int i=boardList.size()-1;i>-1;i--) {
+     	for (int i=0;i<boardList.size();i++) {
     		QnADTO qadto = boardList.get(i);
     		//System.out.println("pass : "+qadto.getPass());
-    		if (id.equals(qadto.getPass())) {
+    		
 		%>
 			<tr>
 				<td><%=qadto.getNum() %></td>
@@ -140,7 +140,7 @@ input[type=submit] {
 					if (qadto.getRe_ref() > 0) {
 						wid = qadto.getRe_lev() * 10;
 					%>
-						<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
+						<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">
 					<%
 					}					
 					%>
@@ -153,31 +153,6 @@ input[type=submit] {
 				<td><%=qadto.getReadcount() %></td>
 			</tr>
 		<%
-			} else if (id.equals("admin")) {	
-		%>
-				<tr>
-				<td><%=qadto.getNum() %></td>
-				<td><%=qadto.getCategory()%></td>
-				<td>
-					<%
-					int wid = 0;
-					if (qadto.getRe_ref() > 0) {
-						wid = qadto.getRe_lev() * 10;
-					%>
-						<img alt="level" src="./img/level.gif" width="<%= wid %>" height="15">└RE:
-					<%
-					}					
-					%>
-					<a href="./QnAContent.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>">
-					<%=qadto.getSubject() %>
-					</a>
-				</td>
-				<td><%=qadto.getName() %></td>
-				<td><%=qadto.getDate() %></td>
-				<td><%=qadto.getReadcount() %></td>
-			</tr>
-		<%
-			}
 		}
 		%>
 	</table>
