@@ -92,6 +92,8 @@ hr {
 }
 </style>
 <link rel="stylesheet" href="././css/review.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -123,6 +125,8 @@ hr {
 	
 	/* int avg = (int) request.getAttribute("avgRating"); */
 	%>
+	
+	
 		<div id="Wrap">
 		
 		<div id="container">
@@ -130,7 +134,9 @@ hr {
 			<div id="desc">				
 				<table id="info">
 					<tr>
-						<td><img src="./upload/<%=mdto.getPoster()%>" width="175px" height="250px"></td>
+						<td><a href="javascript:void(0);"><img src="./upload/<%=mdto.getPoster()%>" onclick="mmovieing()"  width="175px" height="250px">
+						<input type="hidden" id="mmoving" value="<%=mdto.getPoster()%>"></a>
+						</td>
 						<td>
 							<h1><%=mdto.getTitle()%></h1>
 							<ul>
@@ -145,6 +151,19 @@ hr {
 					</tr>
 				</table>
 			</div>
+			<script type="text/javascript">
+function mmovieing() { 	        	        
+	var mmoving = $('#mmoving').val();
+		 
+	w = 1000; //팝업창의 너비
+	h = 600; //팝업창의 높이
+	LeftPosition=(screen.width-w)/2;
+	TopPosition=(screen.height-h)/2;
+	window.open("./movie/movieIng.jsp?mmovingnum="+mmoving,"","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");     
+}
+
+</script>
+			
 			
 			<div id="synopsis">
 				<h3>시놉시스</h3>
