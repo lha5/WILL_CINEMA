@@ -205,7 +205,6 @@ $(document).ready(function() {
      		
      	%>
      	 <li>
-     	 	<%=i+1 %>.
      	  <a href="Ticketing.ti" class="mov<%=mdto.getMovie_num() %>">
      	   <span class="grade_<%=mdto.getGrade() %>"><%=mdto.getGrade() %></span>
      	   <span><%=mdto.getTitle() %></span>
@@ -229,7 +228,7 @@ $(document).ready(function() {
 			<ul>
 				<li><a href="./DetailView.mo?movie_num=17"><img src ="./img/banner/ChildOfWeather_main.jpg"></a></li>
 				<li><a href="./DetailView.mo?movie_num=11"><img src ="./img/banner/HansuOfGod_main.jpg"></a></li>
-				<li><a href=".DetailView.mo?movie_num=6"><img src ="./img/banner/THEBADGUYS_main.jpg"></a></li>
+				<li><a href="./DetailView.mo?movie_num=6"><img src ="./img/banner/THEBADGUYS_main.jpg"></a></li>
 				<li><a href="./DetailView.mo?movie_num=14"><img src ="./img/banner/AngelHasFallen_main.png"></a></li>
 			<%-- 	  <%
      	for (int i=0;i<4;i++) {
