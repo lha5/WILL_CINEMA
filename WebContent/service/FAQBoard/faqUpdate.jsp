@@ -19,18 +19,19 @@
 	<%
 	AdminFAQDTO afdto =(AdminFAQDTO) request.getAttribute("afdto");
 	String pageNum = (String) request.getAttribute("pageNum");	
+	System.out.println("글 번호 : " + afdto.getNum());
 	%>
 	<%@ include file="../../include/header.jsp" %>
 	
 	<fieldset>
 		<legend>자주 묻는 질문 내용 수정</legend>
-		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post" enctype="multipart/form-data">
+		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>&num=<%=afdto.getNum()%>" method="post">
 			<table>
 				<tr>
 					<td>작성자
-						<input type="hidden" name="num" value="<%=afdto.getNum()%>">
-						<input type="text" name="name" value="<%=afdto.getName()%>" readonly>
-						<input type="hidden" name="pass" value="<%=afdto.getPass()%>">
+						<%-- <input type="hidden" name="num" value="<%=afdto.getNum()%>"> --%>
+						<input type="text" name="name" value="<%=id%>" readonly>
+						<input type="password" name="pass">
 					</td>
 				</tr>
 				<tr>

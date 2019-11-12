@@ -23,8 +23,9 @@ public class FAQUpdateAction implements Action {
 	String pageNum = request.getParameter("pageNum");//전달정보
 	
 	AdminFAQDTO afdto = new AdminFAQDTO();
-	
-	afdto.setNum(Integer.parseInt(request.getParameter("num")));
+	int num = Integer.parseInt(request.getParameter("num"));
+	afdto.setNum(num);
+	System.out.println("가져온 글 번호 값 : " + num);
 	afdto.setName(request.getParameter("name"));
 	afdto.setPass(request.getParameter("pass"));
 	afdto.setSubject(request.getParameter("subject"));
