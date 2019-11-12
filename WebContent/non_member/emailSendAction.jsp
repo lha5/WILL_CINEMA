@@ -55,7 +55,7 @@
 
 	// 사용자에게 보낼 메시지를 기입합니다.
 
-	String host = "http://localhost:8088/WillCinema/non_member/";
+	String host = "http://itwillbs12.cafe24.com/non_member/";
 
 	String from = "wh4873@naver.com";
 
