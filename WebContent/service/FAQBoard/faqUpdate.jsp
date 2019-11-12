@@ -20,6 +20,7 @@
 	AdminFAQDTO afdto =(AdminFAQDTO) request.getAttribute("afdto");
 	System.out.println(afdto.getNum());
 	String pageNum = (String) request.getAttribute("pageNum");	
+	System.out.println("글 번호 : " + afdto.getNum());
 	%>
 	<%@ include file="../../include/header.jsp" %>
 	
