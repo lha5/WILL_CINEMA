@@ -26,23 +26,13 @@
 	
 	<fieldset>
 		<legend>자주 묻는 질문 내용 수정</legend>
-<<<<<<< HEAD
-		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>&num=<%=afdto.getNum()%>" method="post">
-=======
 		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 			<table>
 				<tr>
 					<td>작성자
-<<<<<<< HEAD
-						<%-- <input type="hidden" name="num" value="<%=afdto.getNum()%>"> --%>
-						<input type="text" name="name" value="<%=id%>" readonly>
-						<input type="password" name="pass">
-=======
 						<input type="hidden" name="num" value="<%=afdto.getNum()%>">
 						<input type="text" name="name" value="<%=afdto.getName()%>" readonly>
 						<input type="hidden" name="pass" value="<%=afdto.getName()%>">
->>>>>>> branch 'master' of https://github.com/lha5/WILL_CINEMA.git
 					</td>
 				</tr>
 				<tr>
