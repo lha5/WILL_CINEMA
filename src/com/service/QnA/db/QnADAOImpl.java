@@ -80,7 +80,7 @@ public class QnADAOImpl implements QnADAO {
 			pstmt.setString(4, qadto.getPass());
 			pstmt.setString(5, qadto.getSubject());
 			pstmt.setString(6, qadto.getContent());
-			pstmt.setInt(7, qadto.getReadcount());
+			pstmt.setInt(7, 0);
 			pstmt.setInt(8, num);
 			pstmt.setInt(9, 0);
 			pstmt.setInt(10, 0);
