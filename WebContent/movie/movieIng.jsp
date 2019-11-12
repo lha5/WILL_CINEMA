@@ -17,18 +17,18 @@ System.out.print(movie);
 
 
 <!--  -->
-<%if(movie.equals("Jokermain.jpg")) {%>
+<%if(movie.equals("Joker.jpg")) {%>
 <video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src="http://caching.lottecinema.co.kr//Media/MovieFile/MovieMedia/201910/14879_301_1.mp4"
   type="video/mp4"></source>
  </video>
-<%}else if(movie.equals("Maleficentmain.jpg")){ %>
+<%}else if(movie.equals("Mal2.jpg")){ %>
 <video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src=
   "http://caching.lottecinema.co.kr//Media/MovieFile/MovieMedia/201910/14314_301_1.mp4"
   type="video/mp4"></source>
  </video>
-<%}else if(movie.equals("MyBestSummermain.jpg")){ %>
+<%}else if(movie.equals("summer.jpg")){ %>
 <video width="1000" height="600" controls><!--controls ,autoplay  -->
   <source src=
   "http://caching.lottecinema.co.kr//Media/MovieFile/MovieMedia/201910/14853_301_1.mp4"
