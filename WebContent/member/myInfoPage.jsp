@@ -241,7 +241,7 @@ function acyncMovePage(url){
 				<li><input type="button" value="예매내역" id="bookingList"></li>
 				<li><input type="button" value="매점 구매 내역" id="myMallOrderList"></li>
 				<li><input type="button" value="멤버십" id="myMembership"></li>
-				<li><input type="button" value="내가본영화" id="myMovies"></li>
+				<li><input type="button" value="1:1문의" id="myMovies" onclick="location.href='./QnAUserList.sq'"></li>
 				<li><input type="button" value="내 정보 관리" id="myInfoManagement"></li>
 			</ul>
 		</div>
