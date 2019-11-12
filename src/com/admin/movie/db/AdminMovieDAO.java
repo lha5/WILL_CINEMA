@@ -12,4 +12,7 @@ public interface AdminMovieDAO {
 	
 	// 영화 삭제
 	public int deleteBoard(int movie_num);
+	
+	// 영화 이미지 가져오기
+	public String getPoster(int movie_num);
 }

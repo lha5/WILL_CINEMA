@@ -98,6 +98,7 @@ a>#goList {
 	TicketDTO tdto  = (TicketDTO) request.getAttribute("tdto");
 	AdminMovieDTO amdto = (AdminMovieDTO) request.getAttribute("amdto");
 	CineDTO cdto = (CineDTO) request.getAttribute("cdto");
+	String src = (String) request.getAttribute("src");
 	%>
 	
 	<fmt:formatNumber type="number" var="price" maxFractionDigits="3" value="<%=tdto.getPrice()%>" />
@@ -107,7 +108,7 @@ a>#goList {
 		<table id="list">
 			<tr>
 				<td>
-					<img alt="poster" src="<%=amdto.getPoster()%>" width="170px">
+					<img alt="poster" src="./upload/<%=amdto.getPoster()%>" width="170px">
 				</td>
 				<td>
 					<span id="title"><a href="./DetailView.mo?movie_num=<%=tdto.getMovie_num()%>"><%=amdto.getTitle()%></a></span>

@@ -462,7 +462,7 @@ nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
 	List<CineDTO> cineList3=(List)request.getAttribute("cineList3");
 	int count = (Integer) request.getAttribute("count");
 	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
-	
+
 	/* List allRegion = (List)request.getAttribute("allRegion");//모든지역  */
 	System.out.println(cdto.getName());
 	System.out.println("영화 :"+cineList3.get(0).getName());
