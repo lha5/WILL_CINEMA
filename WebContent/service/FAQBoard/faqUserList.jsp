@@ -33,7 +33,17 @@
 	%>
 
   	
-	<div id="faqList">자주 묻는 질문</div>
+	<div id="faqList">자주 묻는 질문
+	<div id="faqsearch">		
+			<form action="./FAQSearchAction.af" method="post" id="faqsearch">
+				<input type="text" name="search" placeholder="단어를 입력하세요" title="제목 입력" >
+				<input type="submit" value="검색">
+				<input type="button" value="목록으로" onclick="location.href='./FAQUserList.af?pageNum=<%=pageNum%>'"/>
+			</form>	
+	
+	
+	</div>
+	</div>
 		
   	<div id="faqWrap">	
 		

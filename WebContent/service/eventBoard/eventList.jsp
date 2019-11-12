@@ -7,7 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 이벤트</title>
+<title>WILL CINEMA - 이벤트 리스트(관리자)</title>
+<link rel="stylesheet" href="./css/eventWrite.css">
+
 <script type="text/javascript">
 	function chk(num){
 		if(confirm("삭제하시겠습니까?")){
@@ -42,11 +44,11 @@
 
 %>
 
-
+<fieldset class="eventFieldset">
 <h1>상품 리스트</h1>
-<h3><a href="./EventSummary.ae">이벤트 페이지</a></h3>
+<h3><a href="./EventSummary.ae" class="eventa">이벤트 페이지로..</a></h3>
 
-<form action="EventList.ae" method="post">
+<form action="EventList.ae"  class="eventform" method="post">
 <select name="category">
 	<option value="" <%if(item.equals("")){%>selected<%} %>>전체보기</option>
 	<option value="movie" <%if(item.equals("movie")){%>selected<%} %>>영화</option>
@@ -54,13 +56,12 @@
 	<option value="nevent" <%if(item.equals("nevent")){%>selected<%} %>>윌시NOW</option>
 	<option value="collabo" <%if(item.equals("collabo")){%>selected<%} %>>제휴 할인</option>
 </select>
-<input type="text" name="keyward" value="<%=keyward%>"><input type="submit" value="검색">
-</form>
+<input type="text" name="keyward" value="<%=keyward%>"><input type="submit" class="eventSub" value="검색">
 
-<br><br>
+
 <!-- 카테고리 만들기 -->
-<table border="1">
-	<tr><td>번호</td><td>카테고리</td><td>제목</td>
+<table class="eventListTable">
+	<tr class="listTr"><td>번호</td><td>카테고리</td><td>제목</td>
 	<td>이미지</td><td>이벤트 기간</td><td>수정/삭제</td></tr>
 <%
 int currentPage = Integer.parseInt(pageNum);
@@ -78,12 +79,12 @@ if(eventList.size()!=0){
 			<img src="./upload/<%=aedto.getImage().split(",")[0] %>" width="120" height="80">
 		</td>
 		<td><%=aedto.getF_date() %>~<%=aedto.getE_date() %></td>
-		<td><input type="button" value="수정" onclick="location.href='./EventUpdate.ae?num=<%=aedto.getNum()%>'"> 
-		<input type="button" value="삭제" onclick="chk(<%=aedto.getNum()%>);"></td></tr>
+		<td><input type="button" value="수정" class="eventModify" onclick="location.href='./EventUpdate.ae?num=<%=aedto.getNum()%>'"> 
+		<input type="button" value="삭제" class="eventDelete" onclick="chk(<%=aedto.getNum()%>);"></td></tr>
 	<%} 
 }%>
 </table>
-
+<div class="eventPaging">
 <%
 /*****************페이징 처리********************/
 //이전
@@ -100,7 +101,7 @@ if(eventList.size()!=0){
 		for(int i=startPage; i<=endPage; i++){
 			%>
 			<a href="./EventList.ae?category=<%=item %>&pageNum=<%=i%>
-			&keyward=<%=keyward %>">[<%=i%>]</a>
+			&keyward=<%=keyward %>"><%=i%></a>
 			
 			<%
 		}
@@ -108,13 +109,15 @@ if(eventList.size()!=0){
 		if(endPage<pageCount){
 			%>
 			<a href="./EventList.ae?&category=<%=item %>&pageNum=<%=startPage+pageBlock%>
-			&keyward=<%=keyward %>"">[다음]</a>
+			&keyward=<%=keyward %>" class="eventa">[다음]</a>
 			<%
 		}
 	}
 /********************************************/
 %>
-
+</div>
+</form>
+</fieldset>
 <%@ include file="../../include/footer.jsp" %>
 
 </body>

@@ -744,4 +744,29 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 
 		
+		
+		
+	// 포인트 차감	
+	@Override
+	public void substractPoint(String id, int usingPoint) {
+		try {
+			con = getCon();
+			
+			sql = "UPDATE member SET point -= ? WHERE id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, usingPoint);
+			pstmt.setString(2, id);
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("포인트 사용 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	
 }

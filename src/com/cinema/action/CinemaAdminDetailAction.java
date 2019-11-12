@@ -28,7 +28,7 @@ public class CinemaAdminDetailAction implements Action {
 		// 페이징 처리
 
 		// 한 페이지에서 보여줄 글의 개수 설정
-		int pageSize = 2;
+		int pageSize = 4;
 		
 		// 현 페이지가 몇페이지 인지를 가져오기
 		String pageNum = request.getParameter("pageNum");
@@ -47,9 +47,9 @@ public class CinemaAdminDetailAction implements Action {
 		
 		
 		
-		
 		// getCineList(); >> List 형태의 데이터를 리턴
 		List<CineDTO> cineList =null;
+		
 		if(count !=0){
 			cineList= cdao.getCineList(startRow, pageSize);
 		}
@@ -61,7 +61,7 @@ public class CinemaAdminDetailAction implements Action {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 
 		// 한화면에 보여줄 페이지 번호 계산
-		int pageBlock = 3;
+		int pageBlock = 5;
 
 		// 시작페이지
 		// 1~10 =>1 11~20 => 11 21~30 => 21

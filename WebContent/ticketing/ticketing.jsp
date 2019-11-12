@@ -126,20 +126,11 @@
 					+ '" class="month-picker-label noDate" style="left:' + (i * 60) + 'px"><span>' 
 					+ dayNames[d.getDay()] + '</span><em>' + d.getDate() + '</em></label>';
 				}
-				
-				
+
 				calendar.find('.calendarArea').append(html);
 				
 				calendar.find('.calendarArea').find(changeDay).prop("checked", true);
-				/*
-				if(d.getFullYear()==today.getFullYear()
-						&&monthNames[d.getMonth()] == monthNames[today.getMonth()]
-						&&d.getDate()==today.getDate()&&changeDay==''){
-					//alert('today');
-					calendar.find('.calendarArea').find('input:radio').eq(Number(i)-Number(startDate)).prop("checked", true);
-				}else{
-					//$('input:radio[id="'+changeDay+'"])'.prop("checked", true);
-				}*/
+
 				if(dayNames[d.getDay()]=='토'){
 					calendar.find('.calendarArea').find('label').eq(Number(i)-Number(startDate)).addClass('sat');
 				}else if(dayNames[d.getDay()]=='일'){
@@ -154,10 +145,6 @@
 					calendar.find('fieldset').append('<span class="month" style="top:-47px; left:' + ((pos.left) + 47) + 'px"><em>' 
 					+ monData + '</em><span>' + yearData2 + ' ' + monthNames[d.getMonth()] + '</span></span>');
 				}
-				//cnt++;
-				//alert(d.getMonth() + ", " + monthData);
-				//alert("달 일치 : "+d.getMonth()!=monthData);
-				//alert(" 횟수 : " + cnt)
 				
 				cnt++;
 				
@@ -257,7 +244,6 @@
 
 	//영화 선택
 	function selectMov(event){
-		console.log(event);
 		var movClass=event.currentTarget.className;
 		//다른 영화 선택시
 		if($('.movie_list').find('.on').not($(event.currentTarget)).length>=1){ //자신 이외에 on class가 있는지
@@ -289,8 +275,6 @@
 		var input = new Array();
 		var week=$('.txtdate').find('dd').text();
 		
-		alert(movie_num+" "+saleTime+" "+roomNum+" "
-				+name+" "+running_date+" "+running_time+" 요일:"+week);
         form.action = "./SeatSelect.ti";
         form.method = "post";
         
@@ -335,7 +319,6 @@
 			data:{cinema:cinema,movie:movie,date:date},
 			success:function(data){
 				var cnt=1;
-				console.log(data.length);
 				//html초기화
 				$('.time_inner').find('.time_list01').empty();
 				document.getElementById('time_noData').style.display="none";
@@ -346,7 +329,6 @@
 				
 				
 				$.each(data,function(index,cdto){//영화관의 상영 영화 정보
-					console.log(cdto);
 					var runtimeS='';
 					var runtimeE='';
 					var saleTime='';
@@ -357,7 +339,7 @@
 					if(cdto.runtimeS.length>=1){
 					html+="<dl class='time_line movie"+cdto.movie_num+"'>";
 					html+="<dt><span class='grade_"+cdto.movie_grade+"'>"+cdto.movie_grade+"</span>"+cdto.movie_name+
-					"<a href='#' class='btn_detail'><img src='./img/btn/btn_time_view.png'></a></dt>";
+					"<a href='./DetailView.mo?movie_num="+cdto.movie_num+"' class='btn_detail'><img src='./img/btn/btn_time_view.png'></a></dt>";
 					html+="<dd><ul class='theater_time list"+cdto.movie_num+"'>"
 					}else{
 						document.getElementById('time_noData').style.display="block";

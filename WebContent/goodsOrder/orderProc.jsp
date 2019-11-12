@@ -22,7 +22,6 @@
 	
 	String buyer_name = request.getParameter("buyer_name");
 	
-	int price = Integer.parseInt(request.getParameter("price"));
 	int goods_amount = Integer.parseInt(request.getParameter("goods_amount"));
 	String goods_name = request.getParameter("goods_name");
 	int goods_num = Integer.parseInt(request.getParameter("goods_num"));
@@ -30,6 +29,10 @@
 	String email = request.getParameter("email");
 
 	String tel = request.getParameter("tel");
+	
+	int usingPoint = Integer.parseInt(request.getParameter("usingPoint"));
+	
+	int price = Integer.parseInt(request.getParameter("price")) - usingPoint;
 	%>
 	<!-- 결제 모듈 
 		https://smujihoon.tistory.com/m/103
@@ -58,7 +61,7 @@
 						dataType: 'text',
 						// contentType : "application/json; charset=UTF-8",
 						async: false,
-						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'+',<%=tel %>'
+						data: '<%=goods_num%>,<%=goods_name%>,<%=goods_amount%>,<%=price%>,'+'KakaoPay'+',<%=tel %>,<%=usingPoint%>'
 					}).done(function(data) {
 												
 					});

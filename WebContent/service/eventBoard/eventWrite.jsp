@@ -4,18 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WILL CINEMA - 관리자 이벤트 관리</title>
+<title>WILL CINEMA - 이벤트 작성(관리자)</title>
 <!-- jqueryui.com의 jquery파일(인터넷 사용 가능일때)-->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- summernote 적용시키기 위한 준비 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
-<script src="./summernote/lang/summernote-ko-KR.js"></script>
 
+<link rel="stylesheet" href="./css/eventWrite.css">
+
+<!-- summernote 적용시키기 위한 준비 -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<script src="./summernote/lang/summernote-ko-KR.js"></script> -->
 
 <script type="text/javascript">
 /* 달력 한글 출력 코드 */
@@ -33,11 +35,9 @@ $.datepicker.setDefaults({
 });
 
 $( function() {
-
-    var dateFormat = "yy-mm-dd",
-
-      from = $( "#from" )
-        .datepicker({
+		var dateFormat = "yy-mm-dd";
+		
+      from = $( "#from" ).datepicker({
           defaultDate: "+1w",
           changeMonth: true,
           numberOfMonths: 2
@@ -106,12 +106,13 @@ $( function() {
 
 <%@ include file="../../include/header.jsp" %>
 
-<fieldset>
-<form action="./EventWriteAction.ae" method="post" name="fr" onsubmit="return checkValue();" enctype="multipart/form-data">
-		<table border="1">
+<fieldset class="eventFieldset">
+<form action="./EventWriteAction.ae" method="post" name="fr" class="eventform" onsubmit="return checkValue();" enctype="multipart/form-data">
+		<h1>Event 글 작성</h1>
+		<table>
 			<tr>
 				<td>카테고리</td> 
-				<td><select name="category">
+				<td><select name="category" class="eventSelect">
 						<option value="movie">영화</option>
 						<option value="preview">시사회/무대인사</option>
 						<option value="nevent">윌시NOW</option>

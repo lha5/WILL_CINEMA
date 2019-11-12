@@ -36,14 +36,14 @@ public class ServiceQnAFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/QnAList.sq")){ //QnA 리스트 페이지
+		}/*else if(command.equals("/QnAList.sq")){ //QnA 리스트 페이지
 			action = new QnAListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/QnAUserList.sq")) {
+		} */else if (command.equals("/QnAUserList.sq")) {
 			action = new QnAListAction();
 			
 			try {
@@ -89,6 +89,23 @@ public class ServiceQnAFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/QnASearchAction.sq")){
 			action = new QnASearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/QnAReWrite.sq")) {
+			/*forward = new ActionForward();
+			forward.setPath("./service/QnABoard/QnARewrite.jsp");
+			forward.setRedirect(false);*/
+			action = new QnAReWrite();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/QnAReWriteAction.sq")) {
+			action = new QnAReWriteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

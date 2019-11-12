@@ -4,11 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -81,18 +78,21 @@ public class MallOrderAddAction implements Action {
 		System.out.println("바코드 번호 : " + code);
 		
 		//바코드 현재 주석처리
-		//CreateBarcode cb = new CreateBarcode();
+		CreateBarcode cb = new CreateBarcode();
 		//경로 수정 필요
-		//String barcodeImgPath = cb.saveBarcodeImage(code, "E:/workspace_project/WillCinema/WebContent/upload", 1, 60);
-		//modto.setBarcode_img(barcodeImgPath);
-		
-		//System.out.println("바코드가 저장되는 경로 : " + barcodeImgPath);
+		String barcodeImgPath = cb.saveBarcodeImage(code, "./barcode", 1, 60);
+		modto.setBarcode_img(barcodeImgPath);
+		System.out.println("바코드가 저장되는 경로 : " + barcodeImgPath);
 		
 		// 메소드 객체 생성 및 실행
 		MallOrderDAO modao = new MallOrderDAOImpl();
 		modao.addOrder(modto);	// 구매 테이블에 구매 내역 저장
 		
 		MemberDAO mdao = new MemberDAOImpl();
+		int usingPoint = Integer.parseInt(splitData[6]);
+		if (usingPoint != 0) {
+			mdao.substractPoint(id, usingPoint); // 사용 포인트가 있다면 차감
+		}
 		int percentage = (int) Math.round(Integer.parseInt(splitData[3]) * 0.002);	// 포인트 적립
 		mdao.addPoint(id, percentage);
 		
@@ -113,7 +113,6 @@ public class MallOrderAddAction implements Action {
 		
 		// 현재 이 Action페이지는 ajax로 들어와 데이터 연결작업만 하기에 
 		// 이동 작업은 처리되지 않음
-		
 		// 페이지 이동
 		//forward.setPath("./MallOrderDone.mor");
 		//forward.setRedirect(true);

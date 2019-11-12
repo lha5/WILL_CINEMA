@@ -64,7 +64,10 @@ width: 320px;
 	box-sizing: border-box;
 	width: 360px;
 	height: 160px;
-	background-image: url("../img/main/boxoffice.jpg");
+	background-image: url("../img/main/h2_boxoffice.png");
+	background-color: #1c1c1c;
+	background-repeat: no-repeat;
+	background-position: 80px;
 }
 
 .entry>ul {
@@ -85,12 +88,12 @@ width: 320px;
 
 
 
-.contents {width: 890px; height: 500px;  margin: 0 auto;}
+.contents {width: 890px; height: 550px;  margin: 0 auto;}
 	
 	/* banner */
-.banner {position: relative; width: 890px; height: 500px;  margin:0 auto; padding:0; overflow: hidden;}
+.banner {position: relative; width: 890px; height: 550px;  margin:0 auto; padding:0; overflow: hidden;}
 .banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-.banner ul li {float: left; width: 890px; height: 500px; margin:0; padding:0;}
+.banner ul li {float: left; width: 890px; height: 550px; margin:0; padding:0;}
 
 
 
@@ -98,7 +101,7 @@ width: 320px;
 	/* border: 1px solid tomato; */
 	float: right;
 	width: 890px;
-	height: 568px;
+	height: 550px;
 	margin-right : 100px;
 	margin-top: 1px;
 	margin-bottom: 20px;
@@ -158,13 +161,49 @@ width: 320px;
 }
 
 #notice {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	width: 60%;
-	height: auto;
+	height: 70px;
 	clear: both;
-	 margin: 20px auto 10px auto;
+	margin: 20px auto 10px auto;
 	padding: 10px auto;
-	 text-align: center;
+	text-align: center;
+}
+
+#goNotice {
+	margin: 5px;
+	text-aline: left;
+}
+
+.accordion {
+	margin: 5px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	background-color: #ffffff;
+	color: #1c1c1c;
+	font-family: inherit;
+	padding: 3px 5px;
+}
+
+.faqbut {
+	margin: 2px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	color: #ffffff;
+	font-family: inherit;
+}
+
+#ns {
+	border: 1px solid #1c1c1c;
+	padding: 3px 10px;
+	font-size: 14px;
 }
 
 .eventlist{
@@ -175,4 +214,9 @@ width: 320px;
 }
 
 
-
+#ad {
+	/* border: 1px solid red; */
+	width: 1100px;
+	margin: 15px auto 0 auto;
+	text-align: center;
+}

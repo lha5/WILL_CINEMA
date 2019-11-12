@@ -15,66 +15,96 @@
 <link rel="stylesheet" href="./css/ticketing.css">
 <style type="text/css">
 
+/* 하위 메뉴 고정 */
+nav>ul>li:NTH-CHILD(3)>ul {
+	display: block;
+}
 
- 
-	/* 하위 메뉴 고정 */
-	nav>ul>li:NTH-CHILD(3)>ul {
-		display: block;
-	}
- 	 
-	.contents {
-		/* border: 1px solid purple; */
-		width: inherit;
-		margin: 0 auto;
-		vertical-align: middle
-	}
-	
-	/* banner */
-	.banner {
-		position: relative;
-		/* border: 1px solid red; */
-		/* width: 10000px; */
-		width: auto;
-		height: 420px;
-		margin: 0 auto;
-		padding: 0;
-		overflow: hidden;
-	}
-	
-	.banner ul {
-		position: absolute;
-		margin: 0px;
-		padding: 0;
-		list-style: none;
-	}
-	
-	.banner ul li {
-		float: left;
-		/* width: 10000px; */
-		width: auto;
-		height: 420px;
-		margin: 0;
-		padding: 0;
-	}
-	
+.contents {
+	/* border: 1px solid purple; */
+	width: inherit;
+	margin: 0 auto;
+	vertical-align: middle
+}
 
-	#cinemaname { 
-	position:relative; 
-	clear:both;
-	width:980px; 
-	padding:0 0 0 0;  
-	color:#231f20;
+/* banner */
+.banner {
+	position: relative;
+	/* border: 1px solid red; */
+	/* width: 10000px; */
+	width: auto;
+	height: 420px;
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.banner ul {
+	position: absolute;
+	margin: 0px;
+	padding: 0;
+	list-style: none;
+}
+
+.banner ul li {
+	float: left;
+	/* width: 10000px; */
+	width: auto;
+	height: 420px;
+	margin: 0;
+	padding: 0;
+}
+
+#cinemaname {
+	position: relative;
+	clear: both;
+	width: 980px;
+	padding: 0 0 0 0;
+	color: #231f20;
 	margin: 0 auto;
 }
 
-	nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
-		display: block;
-	}
-	.moviechk{
+nav>ul>li:NTH-CHILD(3)>ul:HOVER #sub_ul2 {
+	display: block;
+}
+
+.moviechk {
 	padding: 5px;
 	margin-left: 30px;
-	}
-	
+}
+
+#loc {
+	width: 70px;
+	height: 30px;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d7282d;
+	background-color: #d7282d;
+	font-family: inherit;
+	font-size: 12px;
+	color: #ffffff;
+	padding: 2px 5px;
+}
+
+#loc:HOVER {
+	cursor: pointer;
+}
+
+#where {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+#info td {
+	/* border: 1px solid skyblue; */
+	height: 50px;
+}
+
+.calendar {
+	background-color: #ffffff;
+}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -398,11 +428,19 @@
     }
 	/*-------------- 상영시간 클릭시 좌석 선택 페이지 이동 ------------------*/
 	/*  영화관 위치 / 영화재생  j쿼리  */
+
+
+	
+	
 	
 	function moviechk() { 	        	        
 		var ciadd = $('#cilocal').val();
 			 
-		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width=600,height=400");     
+		w = 800; //팝업창의 너비
+		h = 600; //팝업창의 높이
+		LeftPosition=(screen.width-w)/2;
+		TopPosition=(screen.height-h)/2;
+		window.open("./userCinema/cinemalocal.jsp?cinemaAdd="+ciadd,"","width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");     
 	}
 	
 	function movieing(){ 	        	        
@@ -421,57 +459,68 @@
 
 	<%
 	CineDTO cdto = (CineDTO)request.getAttribute("cineList");
+	List<CineDTO> cineList3=(List)request.getAttribute("cineList3");
 	int count = (Integer) request.getAttribute("count");
 	List<AdminMovieDTO> boardList = (List<AdminMovieDTO>) request.getAttribute("boardList");
 	
 	/* List allRegion = (List)request.getAttribute("allRegion");//모든지역  */
 	System.out.println(cdto.getName());
+	System.out.println("영화 :"+cineList3.get(0).getName());
 	%>
 	
 	
-<div class="banner">
+	<div class="banner">
 			<ul>
-				  <%
-     	for (int i=0;i<4;i++) {
-     		AdminMovieDTO mdto = boardList.get(i);
-		%>
-						
-		<li><a href="javascript:void(0);"><img src ="./upload/<%=mdto.getImage()%>"   onclick="movieing()">
-					<input type="hidden" id="moving" value="<%=mdto.getImage()%>"></li></a>
+				<%
+				for (int i=0;i<4;i++) {
+					AdminMovieDTO mdto = boardList.get(i);
+				%>
+					<li>
+						<a href="javascript:void(0);">
+							<img src ="./upload/<%=mdto.getImage()%>" onclick="movieing()">
+							<input type="hidden" id="moving" value="<%=mdto.getImage()%>">
+						</a>
+					</li>
 					
-					<%} %>
+				<%
+				} 
+				%>
 					
-					</ul>
-
-		</div>
+			</ul>
+	</div>
 	
 	
 	<div class="contents">
+		<div class="cinemaList">
+			<ul class="cine_list">
+				<%for(int i=0; i<cineList3.size(); i++){ 
+					CineDTO cdto2=cineList3.get(i);
+				%>
+				<li><a href="./CinemaUserView.ci?cinema_num=<%=cdto2.getCinema_num() %>"><%=cdto2.getName() %></a></li>
+				<%} %>
+			</ul>
+		</div>
+		<div id="cinemaname">
 		
+		<table id="info">
+			<tr>
+				<td>
+					<span id="where">윌시네마 <%=cdto.getName()%></span>
+					<input type="hidden" name="cinemaName" value="<%=cdto.getName() %>">&nbsp;
+					<input type="button" value="영화관 위치" class="moviechk" onclick="moviechk();" id="loc">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">총 상영관 수 : <%=cdto.getRoom()%>관
+				&emsp;&emsp;&emsp;
+				<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
+			</tr>
+		</table>
 		
-	<div id="cinemaname">
+		</div>
 	
-	<table >
-	<%
 	
 	
-		 %>
-		<tr>
-
-		<td colspan="2"><h2>영화관 이름 :<%=cdto.getName() %></h2><input type="hidden" name="cinemaName" value="<%=cdto.getName() %>"></td>
-		<td><input type="button" value="영화관위치" class="moviechk" onclick="moviechk();" ></td>
-		</tr>
-		<tr>
-		<td>총 상영관수:<%=cdto.getRoom() %>관</td>
-		<td></td>
-		<td>주소 :<%=cdto.getAddr() %> <input type="hidden" id="cilocal" value="<%=cdto.getAddr() %>"></td>
-
-		
-		
-
-		</tr>
-	</table>
-	</div>
 	<div class="calendar"> <!-- 달력 -->
 			<a href="javascript:void(0);" class="month-picker-nav prev">이전</a>
 			<fieldset class="month-picker-fieldset">

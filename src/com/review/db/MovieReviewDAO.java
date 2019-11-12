@@ -21,5 +21,6 @@ public interface MovieReviewDAO {
 	public MovieReviewDTO getReview(String id, int movie_num,int num);
 
 	
-	
+	// 리뷰 평점 평균 계산
+	public int avgRating(int movie_num);
 }

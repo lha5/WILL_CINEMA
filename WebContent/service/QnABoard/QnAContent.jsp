@@ -7,7 +7,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WILL CINEMA</title>
 
-<link rel="stylesheet" href="././css/qnalist2.css">
+<!-- CSS -->
+<style type="text/css">
+#contentsWrap {
+	width: 900px;
+	margin: 20px auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #1c1c1c;
+	margin: 20px 0;
+}
+
+tr:NTH-CHILD(1)>td, tr:NTH-CHILD(2)>td {
+	width: 25%;
+	text-align: center;
+}
+
+td:NTH-CHILD(1) {
+	text-align: center;
+}
+
+td {
+	border: 1px solid #1c1c1c;
+	padding: 10px;
+	height: 35px;
+}
+
+input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #1c1c1c;
+	background-color: #ffffff;
+	font-family: inherit;
+	font-size: 14px;
+	color: #1c1c1c;
+	letter-spacing: 2px;
+}
+</style>
 
 </head>
 <body>
@@ -21,7 +64,7 @@
 	
 	<div id="contentsWrap">
 
-	<table border="1" class="accordion">
+	<table>
 		<tr>
 			<td>글번호</td><td><%=qadto.getNum() %></td>
 			<td>조회수</td><td><%=qadto.getReadcount() %></td>
@@ -31,24 +74,46 @@
 			<td>작성일</td><td><%=qadto.getDate() %></td>
 		</tr>
 		<tr>
-			<td>글 제목</td><td colspan="3"><%=qadto.getSubject() %></td>
-			
-		</tr>
-		<tr>
 			<td>카테고리</td><td colspan="3"><%=qadto.getCategory() %></td>
 		</tr>
 		<tr>
-			<td>첨부파일</td><td colspan="3"><img src="./upload/<%=qadto.getImage()%>"></td>
+			<td>제목</td><td colspan="3"><%=qadto.getSubject() %></td>
+			
 		</tr>
 		<tr>
-			<td>글 내용</td><td colspan="3"><%=qadto.getContent() %></td>
+			<td>내용</td><td colspan="3"><%=qadto.getContent() %></td>
+		</tr>
+		<tr>
+			<td>첨부파일</td>
+			<td colspan="3">
+				<%
+				if (qadto.getImage() != null) {
+				%>
+				<img src="./upload/<%=qadto.getImage()%>">
+				<%
+				} else {
+				%>
+				첨부파일 없음
+				<%
+				}
+				%>
+			</td>
 		</tr>
 
 		<tr>
 			<td colspan="4">
-				<input type="button" id="button" class="rightloat" value="수정하기" onclick="location.href='./QnAUpdate.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
-				<input type="button" id="button" class="rightloat" value="삭제하기" onclick="location.href='./QnADeleteAction.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
-				<input type="button" id="button" class="rightloat" value="목록보기" onclick="location.href='./QnAList.sq?pageNum=<%=pageNum%>'">
+				<input type="button" id="button" value="수정하기" onclick="location.href='./QnAUpdate.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
+				<input type="button" id="button" value="삭제하기" onclick="location.href='./QnADeleteAction.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
+				<input type="button" id="button" value="목록보기" onclick="location.href='./QnAUserList.sq?pageNum=<%=pageNum%>'">
+				<%
+				if (id != null) {
+					if (id.equals("admin")) {
+				%>
+					<input type="button" id="button" value="답변하기" onclick="location.href='./QnAReWrite.sq?num=<%=qadto.getNum() %>&pageNum=<%=pageNum%>'">
+				<%
+					}
+				}
+				%>
 			</td>
 		</tr>
 

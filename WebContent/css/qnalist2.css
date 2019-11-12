@@ -42,8 +42,26 @@
 
 #pagingNumber {
 	text-align: center;
+	margin : 0 0 50px 0;
 }
 
 #button {
   background-color: silver;
 }
+
+
+.notiaccordion2{
+	background-color: #eee;
+  	color: #444;
+  	cursor: pointer;
+  	padding: 18px;
+  	width: 100%;
+  	border: none;
+  	text-align: left;
+  	outline: none;
+  	font-size: 15px;
+  	transition: 0.4s;
+	
+	
+}
+

@@ -9,6 +9,22 @@
 <title>WILL CINEMA - (관리자 전용 - 영화관 수정)</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+	<style type="text/css">
+		table, table td{
+				border: none;
+				text-align: center;
+				
+				padding: 5px auto;
+				margin: 10px auto 70px;
+			}
+		table tr{
+			height: 50px;
+		}
+		input[type=button],input[type=submit] {
+	 		background-color: silver;
+	 		color: #552;
+		}	
+	</style>
 
 </head>
 <body>
@@ -67,7 +83,9 @@
 					</select>
 				</td>
 				<td>지점명</td>
-				<td><input type="text" name="name" value="<%=cdto.getName()%>"><input type="hidden" name="room_countnum" value=<%=room %>></td>
+				<td><input type="text" name="name" value="<%=cdto.getName()%>">
+					<input type="hidden" name="room_countnum" value=<%=room %>>
+				</td>
 			</tr>
 			<tr>
 				<td>주소</td> <!-- 다음 API ? -->
@@ -187,15 +205,15 @@
 		'</td>'+
 		'<td>좌석 수(행,열)</td>'+
 		'<td>'+
-		'<select name="seat_line"'+i+'>'+
-		'<option value="">좌석 행을 입력하시오</option>'+
+		'<select name="seat_line'+i+'">'+
+		'<option value="">좌석 행</option>'+
 		'<option value="12">12</option>'+
 		'<option value="14">14</option>'+
 		'<option value="16">16</option>'+
 		'</select>'+
 		','+
-		'<select name="seat_row"'+i+'>'+
-		'<option value="">좌석 열을 입력하시오</option>'+
+		'<select name="seat_row'+i+'">'+
+		'<option value="">좌석 열</option>'+
 		'<option value="18">18</option>'+
 		'<option value="20">20</option>'+
 		'<option value="22">22</option>'+

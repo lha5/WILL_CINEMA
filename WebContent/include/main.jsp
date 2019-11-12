@@ -26,7 +26,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-
+<!-- 랜덤 광고 이미지 -->
+<script language = "javascript">
+	var imgArray = new Array();
+	imgArray[0] = "./upload/WeatheringWithYou_AD.jpg";
+	imgArray[1] = "./upload/KeepSecret_AD.jpg";
+	imgArray[2] = "./upload/DoctorSleep_AD.jpg"
+	imgArray[3] = "./upload/AngelHasFalen_AD.jpg";
+	
+	function showImage(){
+		var imgNum = Math.round(Math.random()*3);
+		var objImg = document.getElementById("introImg");
+		objImg.src = imgArray[imgNum];
+	}
+</script>
 
 
 <script language="JavaScript">
@@ -128,7 +141,7 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body>
+<body onload="showImage()">
 	<%
 	int count = (Integer) request.getAttribute("count");
 	int faqcount =(Integer)request.getAttribute("faqcount"); 
@@ -160,7 +173,6 @@ $(document).ready(function() {
      <ul>
       <li><h5><a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'book')">예매순</a> | 
       <a href="javascript:void(0);" class="ratingLink" onclick="openMovie(event,'total')">평점순</a></h5></li>
-     
      </ul>
      </div>
 
@@ -212,16 +224,19 @@ $(document).ready(function() {
     </div>
 				</article>
 				<article id="image">
-					
 	<div class="contents">
 		<div class="banner">
 			<ul>
-				  <%
-     	for (int i=0;i<7;i++) {
+				<li><a href="./DetailView.mo?movie_num=17"><img src ="./img/banner/ChildOfWeather_main.jpg"></a></li>
+				<li><a href="./DetailView.mo?movie_num=11"><img src ="./img/banner/HansuOfGod_main.jpg"></a></li>
+				<li><a href=".DetailView.mo?movie_num=6"><img src ="./img/banner/THEBADGUYS_main.jpg"></a></li>
+				<li><a href="./DetailView.mo?movie_num=14"><img src ="./img/banner/AngelHasFallen_main.png"></a></li>
+			<%-- 	  <%
+     	for (int i=0;i<4;i++) {
      		AdminMovieDTO mdto = boardList.get(i);
 		%>
 		<li><img src ="./upload/<%=mdto.getPoster() %>"></li>
-					<%} %>
+					<%} %> --%>
 					</ul>
 		</div>
 	</div>
@@ -311,36 +326,47 @@ $(document).ready(function() {
 			
 			</div><!--서비스  -->
 			
-			<!-- ---------------------------------- -->
 			
-			<div id="notice">
-		<div class="w3-content w3-display-container">
- 	<ul>
-		<li><h2 class="noticemore" ><a href="./NoticeList.an" >공지사항 </a></h2></li>
-			  
-			   
-			  <%
-     	for (int i=0;i<FAQList.size();i++) {
-			AdminFAQDTO afdto = FAQList.get(i);
-		%>
-		<li class="mySlides">
-		 <h3><a href="./FAQUserList.af" ><button class="accordion"><%=afdto.getSubject() %></button></a><button class="faqbut" onclick="plusDivs(-1)">&#10094;</button><button class="faqbut" onclick="plusDivs(1)">&#10095;</button></h3>
-  
-		<div class="panel">
-
- <%=afdto.getContent()%><br>
-</div>
-		</li>
-					<%} %>
+			
+			<div id="notice"><!--공지사항  -->
+				<div class="w3-content w3-display-container">
+ 					<ul>
+ 						<%
+ 						String notiSbj = (String) request.getAttribute("noticeSbj");
+ 						
+ 						%>
+						<li>
+							<div id="goNotice">
+								<a href="./NoticeList.an">공지사항</a>
+								&emsp;&emsp;&emsp;
+								<span id="ns"><a href="./NoticeList.an"><%=notiSbj%></a></span>
+							</div>
+						</li>
+			  				<%
+						     for (int i=0;i<FAQList.size();i++) {
+								AdminFAQDTO afdto = FAQList.get(i);
+							%>
+								<li class="mySlides">
+							<span id="goFAQ"><a href="./FAQUserList.af">자주 묻는 질문</a></span>
+				 					<a href="./FAQUserList.af">
+				 						<button class="accordion"><%=afdto.getSubject() %></button>
+				 					</a>
+				 					<button class="faqbut" onclick="plusDivs(-1)">&#10094;</button><button class="faqbut" onclick="plusDivs(1)">&#10095;</button>
+								</li>
+							<%
+							} 
+							%>
 					</ul>
-  
- 
-</div>
-		</div> <!--공지사항  -->
+				</div>
+			</div><!--공지사항  -->
+		
+		<div id="ad">
+			<img id = "introImg" border="0">
+		</div>
 		
 		
-			</div><!--전체  -->
-		</section>
+		</div><!--전체  -->
+	</section>
 	<script>
 			var acc = document.getElementsByClassName("accordion");
 			

@@ -13,6 +13,76 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="./summernote/lang/summernote-ko-KR.js"></script>
 
+<!-- CSS -->
+<style type="text/css">
+fieldset {
+	width: 900px;
+	border: none;
+	margin: 20px auto;
+}
+
+legend {
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	/* border: 1px solid #1c1c1c; */
+}
+
+td {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+td:NTH-CHILD(1) {
+	width: 120px;
+	text-align: center;
+}
+
+td:NTH-CHILD(3) {
+	width: 120px;
+	text-align: center;
+}
+
+input[type=text] {
+	width: 170px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #e6e6e6;
+	color: #1c1c1c;
+	font-size: 12px;
+}
+
+input#sbj {
+	width: 100%;
+}
+
+input[type=submit] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 90px;
+	height: 40px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+}
+</style>
 </head>
 <body>
 

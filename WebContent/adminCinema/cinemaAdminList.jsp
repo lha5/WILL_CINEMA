@@ -9,8 +9,121 @@
 <title>WILL CINEMA - 영화관 지점</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<link rel="stylesheet" href="././css/qnalist2.css">
+
+	<!-- <style type="text/css">
+		table, .table_border{
+			border: none;
+			text-align: center;
+			width: 900px;
+			padding: 0 auto;
+			margin: 0 auto;
+		}
+	 	.detail{
+			border:none;
+			padding: 0;
+			background:none;
+		}
+		.cinemaWrite{ 
+			color: #a33;
+			float: right;
+		}
+		
+	</style> -->
+	
+	<!-- CSS -->
+<style type="text/css">
+#contentsWrap {
+	width: 900px;
+	margin: 20px auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #1c1c1c;
+	margin: 20px 0;
+}
+
+td {
+	border: 1px solid #1c1c1c;
+	padding: 10px;
+}
+
+.content_sub {
+	background-color: #1c1c1c;
+	color: #ffffff;
+	text-align: center;
+}
+
+td:NTH-CHILD(1), td:NTH-CHILD(2),td:NTH-CHILD(3), td:NTH-CHILD(4), td:NTH-CHILD(5), td:NTH-CHILD(6) {
+	text-align: center;
+}
+
+input[type=text] {
+	width: 170px;
+	height: auto;
+	line-height: normal;
+	padding: .8em .5em;
+	font-family: inherit;
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #1c1c1c;
+	color: #1c1c1c;
+	font-size: 12px;
+}
+
+
+input[type=submit], input[type=button] {
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 90px;
+	height: 36px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 16px;
+	color: #ffffff;
+	letter-spacing: 2px;
+	position: relative;
+}
+
+input[type=button]:HOVER, input[type=submit]:HOVER{
+	background-color: #ffffff;
+	color: #1c1c1c;
+}
+
+.modifing:HOVER{
+	outline-style: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 90px;
+	height: 36px;
+	border: 1px solid #1c1c1c;
+	background-color: #1c1c1c;
+	font-family: inherit;
+	font-size: 15px;
+	color: #ffffff;
+	
+	position: relative;
+}
+
+#bttns {
+	width: 100%;
+	text-align: right;
+}
+
+</style>
+
 </head>
 <body>
+	
+	
 	<%@ include file="../include/header.jsp" %>
 	
 	<%
@@ -30,12 +143,21 @@
 	int endPage = (Integer) request.getAttribute("endPage");
 	int pageSize = (Integer) request.getAttribute("pageSize");
 	%>
-
-	<table >
-		<tr>
-			<td colspan="8"><a href="./CinemaAdd.ci">등록</a></td>
-		</tr>
- 		
+	<div id="contentsWrap">
+	<div id="bttns">
+	<table border="1">
+		<div class="cinemaWrite">
+			<form action="./CinemaAdminSearchDetail.ci" method="post">
+			<select name="category">
+				<option value="region">지역</option>
+				<option value="name">지점명</option>
+			</select>
+			<input type="text" name="search" placeholder="검색어를 입력하세요" title="검색어 입력">
+			<input type="submit" value="검색">
+			</form>
+			<input type="button" onclick="location.href='./CinemaAdd.ci'" value="등록">
+			<input type="button" value="목록으로" onclick="location.href='./CinemaAdminDetail.ci?pageNum=<%=pageNum%>'"/>
+ 		</div>
 		
  		
 	<% //리스트 갯수 
@@ -46,7 +168,7 @@
 		int room_num = Integer.parseInt(room);
 		
 	%>	
-		<tr>
+		<tr class="content_sub">
  			<td>지점 번호</td>
  			<td>지역</td>
 		 	<td>지점명</td>
@@ -54,11 +176,13 @@
 		 	<td>주소</td>
 		 	<td>전화번호</td>
 		 	<td>수정/삭제</td>
-		 	<td rowspan="2">
-		 		<input type="button" name="detail<%=i %>" value="상세보기" onclick="detail('<%=i%>')">
+		 	<td rowspan="2" class="content_sub_but">
+		 		<input type="button" name="detail<%=i %>" 
+		 			value="상세보기" onclick="detail('<%=i%>')"
+		 			>
 		 	</td>
 		 </tr>
-		<tr>
+		<tr >
 			<td><%=cdto.getRegion_num()%>-<%=cdto.getCinema_num() %></td>
 			<td><%=cdto.getRegion() %></td>
 		 	<td><%=cdto.getName() %></td>
@@ -66,14 +190,14 @@
 		 	<td><%=cdto.getAddr() %></td>
 		 	<td><%=cdto.getTel() %></td>
 		 	<td>
-		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>">
-		 		관 추가 및 수정</a>
-		 		/<a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>">지점,관 삭제</a>
+		 		<a href="./CinemaModify.ci?cinema_num=<%=cdto.getCinema_num() %>" class="modifing">
+		 		관 추가,수정</a>
+		 		/ <br><a href="./CinemaDelete.ci?cinema_num=<%=cdto.getCinema_num() %>" class="modifing">지점,관 삭제</a>
 		 	</td>
 		 	
 		 </tr>	
 		 
-		<tr >
+		<tr>
 		<td colspan="8">
 		<table border="1" id="detail_part<%=i %>" style="display:none">
 		 <%//관 나누기
@@ -88,7 +212,7 @@
 		%>
 		 
 		 
-		 <tr>
+		 <tr class="content_sub">
 		 	<td>영화번호(영화로 변경)</td>
 		 	<td>관 번호</td>
 		 	<td>좌석 수</td>
@@ -96,7 +220,6 @@
 		 	<td>상영 종료 시간</td>
 		 	<td>상영 시작 일</td>
 		 	<td>상영 종료 일</td>
-		 	
  		</tr>		
 		
 		 <tr>
@@ -107,7 +230,6 @@
 		 	<td><%=end_times %></td>
 		 	<td><%=start_priod %></td>
 		 	<td><%=end_priod %></td>
-		 	
 		</tr>
 		
 		
@@ -128,7 +250,7 @@
 		
 	</table>
 		
-	
+	<div id="pagingNumber">
 	<%
 		if(count != 0) {
 			// 이전
@@ -154,7 +276,9 @@
 				}
 		}
 	%>
+	</div>
 
+	</div>
 <script>
 	
 	var list_num = $('input[name=list_num]').val();
@@ -190,6 +314,8 @@
 </script>
 
 	<%@ include file="../include/footer.jsp" %>
-	
+
+
+
 </body>
 </html>

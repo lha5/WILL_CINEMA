@@ -15,7 +15,7 @@ System.out.println(cinemam);
 %>
 
 
-<div id="map" style="width:550px;height:350px;"></div>
+<div id="map" style="width:800px;height:600px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b4d6029dc202bc3833408e3cc36e893f&libraries=services"></script>
 <script>

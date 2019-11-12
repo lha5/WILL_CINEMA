@@ -95,15 +95,6 @@ public class TicketingFrontController extends HttpServlet{
 			
 			forward.setPath("./ticketing/ticketOrderDone.jsp");
 			forward.setRedirect(false);
-		}else if(command.equals("/TestSendEmailAction.ti")){ //이메일 발송 페이지
-				action = new TestSendEmailAction();
-				
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e){
-				e.printStackTrace();
-			}
-			
 		}else if(command.equals("/TicketingList.ti")){ // 예매 내역 리스트
 			action = new TicketingListAction(); 
 			
