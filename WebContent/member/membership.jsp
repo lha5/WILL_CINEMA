@@ -7,6 +7,6 @@
 <title>WILL CINEMA - 멤버십</title>
 </head>
 <body>
-	멤버십
+	<h4 style="color:red">현재 준비중입니다.</h4>
 </body>
 </html>
