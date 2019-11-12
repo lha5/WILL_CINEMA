@@ -159,7 +159,7 @@
 				
 		<h1 id="ttl">결제 방법</h1>
 		<fieldset id="howToPay">
-			<div id="applyPoint">
+			<%-- <div id="applyPoint">
 				<ul>
 					<li>
 						잔여 포인트
@@ -172,7 +172,7 @@
 						<input type="number" name="usingPnt" min="0" max="<%if (total>memdto.getPoint()) {%><%=memdto.getPoint()%><%} else {%><%=total%><%}%>" step="100">
 					</li>
 				</ul>
-			</div>
+			</div> --%>
 			<div id="kpay">
 				<input type="hidden" value="Kakaopay" name="payment" checked>
 				<img alt="카카오페이" src="./img/payment.png">
@@ -192,7 +192,7 @@
 		
 	
 		<!-- 비동기 처리 -->
-		<script>
+		<script type="text/javascript">
 			// 결제 모듈
 			function acyncMovePage(url) {
 			    var ajaxOption = {
@@ -210,9 +210,8 @@
 			        $('#paySection').html(data);
 			    });
 			}
-			
-			// 사용할 포인트 값 가져오기
-			var usingPoint = document.getElementByName('usingPnt').value;
+		</script>
+		<script type="text/javascript">
 			
 			// 결제 모듈 불러오기
 			document.querySelector('#goPay').addEventListener('click', function() {
