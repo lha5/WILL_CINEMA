@@ -5,8 +5,7 @@
 	auth="Container"
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost:3309/itwillbs12"
+	url="jdbc:mysql://localhost:3306/itwillbs12"
 	username="itwillbs12"
 	password="itwillbs8030909"
 	/>
-</Context>
