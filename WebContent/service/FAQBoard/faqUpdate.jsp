@@ -18,19 +18,20 @@
 
 	<%
 	AdminFAQDTO afdto =(AdminFAQDTO) request.getAttribute("afdto");
+	System.out.println(afdto.getNum());
 	String pageNum = (String) request.getAttribute("pageNum");	
 	%>
 	<%@ include file="../../include/header.jsp" %>
 	
 	<fieldset>
 		<legend>자주 묻는 질문 내용 수정</legend>
-		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post" enctype="multipart/form-data">
+		<form action="./FAQUpdateAction.af?pageNum=<%=pageNum %>" method="post">
 			<table>
 				<tr>
 					<td>작성자
 						<input type="hidden" name="num" value="<%=afdto.getNum()%>">
 						<input type="text" name="name" value="<%=afdto.getName()%>" readonly>
-						<input type="hidden" name="pass" value="<%=afdto.getPass()%>">
+						<input type="hidden" name="pass" value="<%=afdto.getName()%>">
 					</td>
 				</tr>
 				<tr>
@@ -55,7 +56,7 @@
 				<td>FAQ내용</td>
 				<td colspan="2">
 					<textarea id="summernote" name="content">
-						<img alt="image" src="<%=afdto.getImage()%>">
+						<%-- <img alt="image" src="<%=afdto.getImage()%>"> --%>
 						<%=afdto.getContent() %>
 					</textarea>
 					<!-- summernote -->
@@ -70,11 +71,11 @@
 				</td>
 				</tr>
 				
-				<tr>
+				<%-- <tr>
 				<td>이미지</td>
 				<td colspan="2">
 				<input type="file" name="image" value="<%=afdto.getImage()%>"></td>
-				</tr>
+				</tr> --%>
 								
 				<tr><td colspan="5">
 				<input type="submit" value="내용 수정하기">
