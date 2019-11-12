@@ -23,5 +23,7 @@ public interface QnADAO {
 	
 	// 게시글 삭제
 	public int deleteBoard(int num,String pass);
-
+	
+	// 답글 쓰기
+	public void reInsertBoard(QnADTO qnadto);
 }

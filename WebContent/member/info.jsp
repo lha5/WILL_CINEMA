@@ -60,7 +60,7 @@ input[type=button] {
 		<br><br>
 		<a href="./FAQList.af">FAQ 관리(관리자 전용)</a>
 		<br><br>
-		<a href="./QnAList.af">1:1 문의 관리(관리자 전용)</a>
+		<a href="./QnAUserList.sq">1:1 문의 관리(관리자 전용)</a>
 		<br><br>
 		<a href="./EventWrite.ae">이벤트 글쓰기(관리자)</a>
 		<br><br>
