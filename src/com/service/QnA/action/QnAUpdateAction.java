@@ -86,7 +86,7 @@ public class QnAUpdateAction implements Action {
 				
 		out.println("<script>");
 		out.println("alert('문의 내용 수정이 완료되었습니다.');");
-		out.println("location.href='./QnAList.sq' ");
+		out.println("location.href='./QnAUserList.sq' ");
 		out.println("</script>");
 				
 		out.close();
