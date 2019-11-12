@@ -24,7 +24,7 @@ public class FAQUpdate implements Action {
 	
 	 AdminFAQDAO afdao = new AdminFAQDAOImpl();
 	 AdminFAQDTO afdto = afdao.getFAQ(num);
-		
+	
 	 // 정보저장
 	 request.setAttribute("afdto", afdto);
 	 request.setAttribute("pageNum", pageNum);
