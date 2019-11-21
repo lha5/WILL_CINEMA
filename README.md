@@ -1,6 +1,6 @@
 <h1>WILL_CINEMA</h1>
 <h3>2조 팀 프로젝트</h3>
-
+<p>itwillbs12.cafe24.com</p>
 
 <h3>영화 예매 사이트(롯데시네마를 참조함)</h3>
 
