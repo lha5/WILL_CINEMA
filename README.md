@@ -58,3 +58,4 @@
 
 <h2>4. 데이터베이스 설계 및 구조</h2>
 <img alt="DB_Diagram" src="https://user-images.githubusercontent.com/55972804/70036126-7c9d2400-15f7-11ea-9cdb-a05df42b24e7.png">
+<p>예매(book)와 회원(member) 테이블을 중심으로 유기적인 관계를 갖도록 설계</p>
