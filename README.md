@@ -2,6 +2,10 @@
 <h3>2조 팀 프로젝트</h3>
 <p><a href="http://itwillbs12.cafe24.com">WILL CINEMA 홈페이지</a></p>
 
+<p>
+  <img src="#" alt="메인_화면">
+</p>
+
 <h1>1 프로젝트 소개</h1>
 <h3>영화 예매 사이트(롯데시네마를 참조함)</h3>
 
