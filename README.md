@@ -18,3 +18,35 @@
   <li>#jQuery #Ajax #비동기처리</li>
   <li>#각종_라이브러리</li>
 </ul>
+
+<h2>3. 개발 환경 및 기술 스택</h2>
+<ol>
+  <li>
+    개발 환경
+    <ul>
+      <li>Windows10</li>
+      <li>Chrome</li>
+    </ul>
+  </li>
+  <li>
+    사용 기술
+    <ul>  
+      <li>JDK1.8</li>
+      <li>JSP2.3/Servlet3.1</li>
+      <li>SQL - MySQL5.7</li>
+      <li>JavaScript</li>
+      <li>jQuery & Ajax</li>
+      <li>HTML5</li>
+      <li>CSS3</li>
+    </ul>
+  </li>
+  <li>
+    개발에 사용한 툴 및 기타
+    <ul>
+      <li>Eclipse neon.3</li>
+      <li>MySQL Workbench 6.3 CE</li>
+      <li>Apache Tomcat 8.5</li>
+      <li>PuTTY 및 FileZilla Client</li>
+    </ul>
+  </li>
+</ol>
