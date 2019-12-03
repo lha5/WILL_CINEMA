@@ -55,3 +55,6 @@
     </ul>
   </li>
 </ol>
+
+##4. 데이터베이스 설계 및 구조
+<img alt="DB_Diagram" src="https://user-images.githubusercontent.com/55972804/70036126-7c9d2400-15f7-11ea-9cdb-a05df42b24e7.png">
