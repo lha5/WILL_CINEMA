@@ -3,7 +3,7 @@
 <p><a href="http://itwillbs12.cafe24.com">WILL CINEMA 홈페이지</a></p>
 
 <p>
-  <img src="#" alt="메인_화면">
+  <img src="https://user-images.githubusercontent.com/55972804/70032008-e3b6da80-15ef-11ea-92ac-82d990c042bb.png" alt="메인_화면">
 </p>
 
 <h1>1 프로젝트 소개</h1>
