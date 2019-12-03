@@ -1,5 +1,6 @@
 <h1>WILL_CINEMA</h1>
 <h3>2조 팀 프로젝트</h3>
+<p>팀원 - 김창일, 박찬일, 이승욱, 이태길, 이혜안, 조윤규</p>
 <p><a href="http://itwillbs12.cafe24.com">WILL CINEMA 홈페이지</a></p>
 
 <p>
